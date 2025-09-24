@@ -6,7 +6,7 @@ For any global suggestion, please [start a discussion](https://github.com/EOSC-E
 - [Submit an idea on how to use CPPs](https://github.com/EOSC-EDEN/wp1-cpp-descriptions/discussions/categories/ideas-on-cpp-usage)
 - [Propose a new reference implementation](https://github.com/EOSC-EDEN/wp1-cpp-descriptions/discussions/new?category=suggest-a-reference-implementation)
 - [Propose a new use case](https://github.com/EOSC-EDEN/wp1-cpp-descriptions/discussions/categories/suggest-a-use-case)
-- [Ask any question about CPPs][https://github.com/EOSC-EDEN/wp1-cpp-descriptions/discussions/categories/q-a]
+- [Ask any question about CPPs](https://github.com/EOSC-EDEN/wp1-cpp-descriptions/discussions/categories/q-a)
 
 For specific suggestions to exisitng parts of one CPP, please add comments/suggestions to the following Google Docs:
 - [CPP-001](https://docs.google.com/document/d/1yt5EsZRo_iwiJ1WpZStNRhFLSFCFW2Sj/edit#heading=h.ws648dduj83)
