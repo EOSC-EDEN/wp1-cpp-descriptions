@@ -486,7 +486,8 @@
 			<xsd:element name="data">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="dataElement" maxOccurs="unbounded" type="xsd:string"
+						<xsd:element name="dataElement" maxOccurs="unbounded"
+							type="inputOutputElement"
 							minOccurs="0">
 							<xsd:annotation>
 								<xsd:documentation xml:lang="en">Subtype of Object, or Information
@@ -499,7 +500,8 @@
 			<xsd:element name="metadata">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="metadataElement" maxOccurs="unbounded" type="xsd:string"
+						<xsd:element name="metadataElement" maxOccurs="unbounded"
+							type="inputOutputElement"
 							minOccurs="0">
 							<xsd:annotation>
 								<xsd:documentation xml:lang="en">Subtype of Metadata that the CPP
@@ -512,7 +514,8 @@
 			<xsd:element name="guidance">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="guidanceElement" maxOccurs="unbounded" type="xsd:string"
+						<xsd:element name="guidanceElement" maxOccurs="unbounded"
+							type="inputOutputElement"
 							minOccurs="0">
 							<xsd:annotation>
 								<xsd:documentation xml:lang="en">Guidance or documentation that the
@@ -524,6 +527,21 @@
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="inputOutputElement">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Input or output element</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="optional" type="xsd:boolean" default="false">
+					<xsd:annotation>
+						<xsd:documentation xml:lang="en">States whether the element is optional, 
+							if applicable.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
 	</xsd:complexType>
 	<xsd:complexType name="institution">
 		<xsd:sequence>
