@@ -483,12 +483,11 @@
 			<xsd:documentation xml:lang="en">Complex type for inputs or outputs</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="data">
+			<xsd:element name="data" minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="dataElement" maxOccurs="unbounded"
-							type="inputOutputElement"
-							minOccurs="0">
+							type="inputOutputElement">
 							<xsd:annotation>
 								<xsd:documentation xml:lang="en">Subtype of Object, or Information
 									Package, that the CPP acts upon - uses or produces. </xsd:documentation>
@@ -497,12 +496,11 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="metadata">
+			<xsd:element name="metadata" minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="metadataElement" maxOccurs="unbounded"
-							type="inputOutputElement"
-							minOccurs="0">
+							type="inputOutputElement">
 							<xsd:annotation>
 								<xsd:documentation xml:lang="en">Subtype of Metadata that the CPP
 									acts upon - uses or produces. </xsd:documentation>
@@ -511,12 +509,11 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="guidance">
+			<xsd:element name="guidance" minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="guidanceElement" maxOccurs="unbounded"
-							type="inputOutputElement"
-							minOccurs="0">
+							type="inputOutputElement">
 							<xsd:annotation>
 								<xsd:documentation xml:lang="en">Guidance or documentation that the
 									CPP acts upon - uses or produces. It is intended to be one of
