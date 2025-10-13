@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-002" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Checksum Validation</cpp:label>
+        <cpp:authors>
+            <cpp:author>Kris Dekeyser</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Johan Kylander</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Laura Molloy</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The Checksum Validation process compares the checksums that come with the Information Package, with checksums based on the current state of the File’s data at Ingest or Access time.</cpp:shortDefinition>
+    <cpp:descriptionAndScope>
+        <p>The Checksum Validation process compares the checksums that come with the <em>Information
+            Package</em>, with checksums based on the current state of the <em>File</em>’s
+            data. Checksums of <em>Files</em> are validated at <em>Ingest</em>
+            or <em>Access</em> to a TDA. The checksums may be either part of 1) a <em>
+            SIP</em>; 2) an imported <em>AIP</em>; or 3) an <em>AIP</em>
+            stored in the <em>TDA</em>. </p>
+        <p>A misalignment between the checksum algorithms used in the <em>Information
+            Package</em> and the TDA’s checksum policy’s list of algorithms may occur. For
+            example, incoming <em>Information Packages</em> (<em>SIPs</em>
+            and <em>AIPs</em>) may include a checksum with a different algorithm created
+            by the producer. In the case of <em>AIPs</em>, the checksum policy might
+            have been updated during the lifecycle of the TDA, resulting in the removal and/or
+            addition of algorithms. In such cases, the process should use whatever algorithm is
+            associated with a given checksum to the best of its potential. </p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>File</cpp:dataElement>
+            </cpp:data>
+            <cpp:guidance>
+                <cpp:guidanceElement>Fixity metadata</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:metadata>
+                <cpp:metadataElement>Provenance metadata (the checksum validation event, including the datetime)</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <p><em>SIP</em> or <em>AIP</em> import</p>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description><p><em>DIP</em> generation</p></cpp:description>
+                <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description><p><em>AIP</em> export</p></cpp:description>
+                <cpp:correspondingCPP>CPP-006</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement><p>Fixity information</p></cpp:inputElement>
+                    <cpp:supplier>CPP-001</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement><p>Fixity information from <em>SIP</em></p></cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                        <p>Get the list of pre-calculated checksums with their respective algorithms</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement><p>List of checksums and algorithms</p></cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement><p>List of checksums and algorithms</p></cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement><p>Digital archive system configuration</p></cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>Evaluate for each algorithm individually if it is supported by the system.</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Algorithm supported (step 3)</p>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Algorithm not supported:</p>
+                        <ol>
+                            <li>
+                                examine further procedure (e.g. based on legal agreements; submission policies; communication with producer, if possible)
+                            </li>
+                            <li>Process completed</li>
+                        </ol>
+                    </cpp:outputElement>
+                    <cpp:supplier>CPP-000</cpp:supplier>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p><em>File</em></p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>List of checksums and algorithms</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>For each algorithm, recalculate the checksum of the <em>File</em> and match it with the given checksum</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>All <em>File</em> checksums match (step 5)</p>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Alert that any of the <em>File</em> checksums does not match:</p>
+                        <ol>
+                            <li>Examine further procedure</li>
+                            <li>Process completed</li>
+                        </ol>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>All <em>File</em> checksums match</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>Document the event and its timestamp</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Datetime for the checksum generation in the Provenance metadata</p>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription><p>Making sure the data content is still in the condition as intended </p></cpp:purposeDescription>
+            <cpp:worstCase><p>Data corruption during transfers into the system or during export could go unnoticed</p></cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-001</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>CPP-002 relies on fixity information as produced and stored by CPP-001, but only during CPP-025 Enabling Access and 
+                    CPP-006 AIP Batch Export. During CPP-029 Ingest, the fixity information supplied by the SIP will be used instead.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-006</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>To ensure the integrity of the data during transport from the TDA storage the exported Files’ checksums need to be verified.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>As the <em>DIP</em> is created, all <em>File</em> checksums need to be validated to ensure that the <em>DIP</em>
+                    is representative of the <em>AIP</em>.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>For any <em>SIP</em> submitted to the TDA all included <em>File</em> checksums need to be checked to validate the integrity of the <em>Files</em>.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>All new <em>AIP</em> copies must have their checksum validated to verify that the process was successful. However, the checksum validation is
+                    more mechanical in its nature, only aiming at verification of the copy process. The CPP-002 checksum validation is more comprehensive
+                    (including negotiations with producers and validation of results).</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-030</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>All new <em>AIP</em> copies must have their checksum validated to verify that the process was successful. However, the checksum validation is
+                    more mechanical in its nature, only aiming at verification of the copy process. The CPP-002 checksum validation is more comprehensive
+                    (including negotiations with producers and validation of results).</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-011</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>When <em>Files</em> are replicated, successful replication is validated by comparing the replicated <em>Files’</em> checksums
+                    against the original <em>Files’</em> checksums</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>Both CPPs get input from CPP-001, and both calculate a checksum from an <em>Information package</em> and compare it to a given checksum.
+                    The difference is that CPP-002 is done during the <em>Ingest</em> or <em>Access</em> phases (relating to transfer of content, changes in space), 
+                    while CPP-003 is done periodically during the preservation of the contents in the archival storage (relating to changes over time).
+                    Thus, CPP-002 and CPP-003 are not only triggered by different processes, but also trigger different responses.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <p>Checksum (cf <a href="https://zenodo.org/records/7051096">Extended Guidance documentation</a>)</p>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <p>Information Technology and Security/Storage &amp; Integrity (R14)</p>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <p>Quality assurance</p>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <p>4.2.3.3 (Ingest)</p>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:documentationLanguage>English</cpp:documentationLanguage>
+            <cpp:linkToDocumentation>
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:documentationLanguage>Finnish</cpp:documentationLanguage>
+            <cpp:linkToDocumentation>
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943 (Annex 3, section 2.1.1)</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:documentationLanguage>English</cpp:documentationLanguage>
+            <cpp:linkToDocumentation>
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
