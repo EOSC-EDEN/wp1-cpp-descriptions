@@ -283,7 +283,8 @@
             </cpp:institution>
             <cpp:documentationLanguage>Finnish</cpp:documentationLanguage>
             <cpp:linkToDocumentation>
-                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943 (Annex 3, section 2.1.1)</cpp:hyperlink>
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943</cpp:hyperlink>
+                <cpp:comment>Annex 3, section 2.1.1</cpp:comment>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
         <cpp:publicDocumentation>
