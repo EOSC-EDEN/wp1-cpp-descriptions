@@ -397,7 +397,7 @@
 												<xsd:element name="useCasetitle" type="xsd:string"></xsd:element>
 												<xsd:element name="institution" type="institution" />
 												<xsd:element name="linkToDocumentation"
-													type="hyperlinkPlusComment" minOccurs="0">
+													type="hyperlinkPlusComment" minOccurs="0" maxOccurs="unbounded">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">A hyperlink
 															to a paper, blog post, report, etc.
