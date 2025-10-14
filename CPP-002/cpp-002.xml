@@ -51,9 +51,9 @@
             <cpp:data>
                 <cpp:dataElement>File</cpp:dataElement>
             </cpp:data>
-            <cpp:guidance>
-                <cpp:guidanceElement>Fixity metadata</cpp:guidanceElement>
-            </cpp:guidance>
+            <cpp:metadata>
+                <cpp:metadataElement>Fixity metadata</cpp:metadataElement>
+            </cpp:metadata>
         </cpp:inputs>
         <cpp:outputs>
             <cpp:metadata>
