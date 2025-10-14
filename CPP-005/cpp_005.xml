@@ -1,0 +1,690 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<cpp xmlns="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp cpp.xsd"
+    ID="CPP-005" xml:lang="en">
+    <header>
+        <label>Identifier Management</label>
+        <authors>
+            <author>Mikko Laukkanen</author>
+            <author>Juha Lehtonen</author>
+        </authors>
+        <contributors>
+            <contributor>Bertrand Caron</contributor>
+            <contributor>Johan Kylander</contributor>
+        </contributors>
+        <evaluators>
+            <evaluator>Felix Burger</evaluator>
+            <evaluator>Maria Benauer</evaluator>
+        </evaluators>
+        <history>
+            <version>
+                <versionNumber>
+                    <majorVersion>1</majorVersion>
+                    <minorVersion>0</minorVersion>
+                    <patchVersion>0</patchVersion>
+                </versionNumber>
+                <versionDate>2025-08-29</versionDate>
+                <versionNotes>Milestone version</versionNotes>
+            </version>
+        </history>
+    </header>
+    <shortDefinition>Identifiers are assigned to Objects, Information packages 
+        and/or Metadata, and managed along to their life cycle.
+    </shortDefinition>
+    <descriptionAndScope>
+        <xhtml:p>Identifier management is the process of creating and updating identifiers 
+            and assigning them to Objects, Metadata or Information packages. Identifiers 
+            are essential components of digital preservation systems, serving as stable, 
+            long-term references to Digital Objects that can remain valid even when the 
+            Objects themselves are moved, renamed, or migrated to new systems.
+        </xhtml:p>
+        <xhtml:p>Identifiers must be managed throughout the entire life cycle, taking into 
+            account any changes to their associated Objects, Metadata or Information packages. 
+            It is important to consider that not all types of identifiers are globally unique, 
+            some are unique only within their own identifier system.
+        </xhtml:p>
+        <xhtml:p>A Persistent Identifier (PID) system can be used to generate unequivocal 
+            (this term is preferred over the “unique” adjective applied traditionally to 
+            identifiers. Indeed, it suggests that an identifier must reference one and 
+            only one thing, while “unique” might suggest that the thing must be referenced 
+            by only one identifier) identifiers to ensure that Objects can be precisely 
+            identified worldwide. PIDs are machine-readable strings of characters that 
+            conform to a defined scheme. Through providing and updating the reference link 
+            in the Metadata, these identifiers prevent the fundamental problem of "link rot" 
+            and ensure reliable access to preserved Digital Objects over time. However, 
+            this requires continuous maintenance of the identifiers to keep the Metadata 
+            up-to-date. Depending on the use case, it may be useful to assign multiple 
+            identifiers from different systems to an entity. To be able to provide user-facing 
+            PIDs, a TDA must manage local identifiers which provide the minimal baseline for 
+            providing persistent access and control to the data.
+        </xhtml:p>
+        <xhtml:p>Common examples of PIDs are Digital Object Identifier (DOI), Uniform Resource 
+            Name (URN), handles and Archival Resource Key (ARK). One advantage of using PIDs is 
+            that their Metadata can be used to not only provide information about the Object 
+            itself, but also about its status, access conditions, and storage location. Even 
+            Objects which are not publicly accessible or have been disposed, can be identified 
+            and described by a PID. PIDs can also be moved from one organisation’s administration 
+            to another.
+        </xhtml:p>
+        <xhtml:p>All types of identifiers can be assigned to multiple levels of entities, 
+            creating a hierarchical identification structure that reflects the complex nature 
+            of digital collections and their preservation requirements. Identifiers are usually 
+            assigned on the level of a) Objects, b) collections and aggregations, and c) 
+            Information Packages (AIPs and DIPs). In addition, identifiers can be assigned to 
+            Metadata entities, collections of other related entities, and even institutions or 
+            persons.
+        </xhtml:p>
+        <xhtml:p>Identifiers and their Metadata should be updated according to the entity’s 
+            life cycle. In particular, when an entity may be deleted, merged, split or become 
+            partially unavailable, its identifier should be preserved. Moreover, its Provenance 
+            metadata should be updated in order to provide proper detail of information to the 
+            end users about its initial entity as well as the relationships to potential new 
+            entities that were created from the initial one. When using PIDs, some changes 
+            (e.g. the creation of identical parallel copies of the data that create new internal 
+            identifiers for each copy) can be documented in the PID version Metadata without 
+            creating a new PID.
+        </xhtml:p>
+        <xhtml:p>Identifiers in a TDA are created at specific strategic points throughout the 
+            preservation life cycle, with timing and methods varying based on institutional 
+            policies and system architectures. Identifiers are typically assigned during Ingest 
+            as part of the packaging process, ensuring that every preserved Object has a 
+            persistent reference from the moment it enters the system. However, some institutions 
+            create identifiers earlier in the workflow (e.g. during acquisition planning or 
+            transfer preparation). This is especially useful when using PIDs, since it allows 
+            for early referencing and tracking of Objects before they undergo preservation 
+            processing. Identifiers can also be created after the initial preservation 
+            processing is complete, particularly when the final preserved format and structure 
+            have been determined. Identifiers can be also assigned to services or Objects which 
+            are not stored in the TDA but only generated on the fly based on user requests.
+        </xhtml:p>
+        <xhtml:p>Identifiers may reveal the hierarchical relationships in the identifier string 
+            (e.g. by using qualifiers) or might hide them by creating a whole new string for 
+            components. This CPP does not choose between these approaches. Similarly, it does 
+            not make any assumptions on the organisation in charge of managing identifiers and 
+            whether identifiers are managed by the TDA directly. Since PID management is 
+            relatively resource-intensive and can also be performed outside the scope of digital 
+            long-term preservation, no assumptions are made here about the structure or 
+            organisation of this work area; instead, reference is made only to the entity “the 
+            PID management service”.
+        </xhtml:p>
+    </descriptionAndScope>
+    <process>
+        <inputs>
+            <data>
+                <dataElement>Information package</dataElement>
+                <dataElement>Object</dataElement>
+            </data>
+            <metadata>
+                <metadataElement>Technical metadata</metadataElement>
+                <metadataElement>Descriptive metadata</metadataElement>
+            </metadata>
+            <guidance>
+                <guidanceElement>Identifier creation and management policy</guidanceElement>
+            </guidance>
+        </inputs>
+        <outputs>
+            <data />
+            <metadata>
+                <metadataElement>Identifier-enriched Information package, Object(s) or Metadata</metadataElement>
+                <metadataElement>Provenance metadata</metadataElement>
+            </metadata>
+            <guidance />
+        </outputs>
+        <triggerEvents>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Pre-ingest transfer preparation</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-029</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Ingestion workflow</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-029</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Creation of new Files or Representations</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-028</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Replacement of corrupted Files</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-004</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Data export</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-006</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Data replication</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-011</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Data migration</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-014</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Data normalisation</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-026</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Metadata ingest and creation</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-016</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Data version update</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-021</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Broken File needs a new identifier</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-027</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Information package, File or Metadata is removed from the TDA holdings</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-017</correspondingCPP>
+            </triggerEvent>
+        </triggerEvents>
+        <stepByStepDescription>
+            <step stepNumber="1a">
+                <input>
+                    <inputElement>
+                        <xhtml:p>A producer or a TDA has a need to reserve an identifier, 
+                            (e.g. a PID, prior to the entity being added)
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Reservation of identifier prior to new entity assignment (step 2)</xhtml:p>
+                </stepDescription>
+                <output/>
+            </step>
+            <step stepNumber="1b">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Object</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Information package</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Metadata</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>New entity added or a need to assign an identifier to an existing entity (step 2)</xhtml:p>
+                </stepDescription>
+                <output/>
+            </step>
+            <step stepNumber="1c">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Object</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Information package</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Metadata</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Entity with an identifier has changed (step 4)</xhtml:p>
+                </stepDescription>
+                <output/>
+            </step>
+            <step stepNumber="1d">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Object</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Information package</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Metadata</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Entity is disposed (step 7)</xhtml:p>
+                </stepDescription>
+                <output/>
+            </step>
+            <step stepNumber="2">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Identifier creation and management policy</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Create a new identifier according to the TDAs policy for identifier 
+                        management
+                    </xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Identifier</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="3">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>(new) Identifier</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Object</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Information package</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Metadata</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Assign the new identifier to the entity and add it as a part of 
+                        the entity’s Metadata
+                    </xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Metadata</xhtml:p>
+                    </outputElement>
+                    <supplier>CPP-004</supplier>
+                    <supplier>CPP-011</supplier>
+                    <supplier>CPP-014</supplier>
+                    <supplier>CPP-016</supplier>
+                    <supplier>CPP-021</supplier>
+                    <supplier>CPP-025</supplier>
+                    <supplier>CPP-027</supplier>
+                    <supplier>CPP-028</supplier>
+                    <supplier>CPP-029</supplier>
+                </output>
+            </step>
+            <step stepNumber="4">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Identifier creation and management policy</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>If the changed entity has a PID assigned to it: evaluate if a new PID is required</xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Need for new PID identified (go back to step 2)</xhtml:p>
+                    </outputElement>
+                </output>
+                <output>
+                    <outputElement>
+                        <xhtml:p>No need for new PID identified (step 5)</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="5">
+                <input/>
+                <stepDescription>
+                    <xhtml:p>Update or add identifier relationships (e.g. hierarchical relations, sequential 
+                        relations etc.) for the assigned entity
+                    </xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Metadata</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="6">
+                <input/>
+                <stepDescription>
+                    <xhtml:p>Update Provenance metadata for the entity so that identifiers have a history</xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Provenance metadata</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="7">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>Disposed entity</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                    <supplier>CPP-017</supplier>
+                </input>
+                <stepDescription>
+                    <xhtml:p>If the entity is disposed: retain minimum metadata and the 
+                        identifier for the disposed entity
+                    </xhtml:p>
+                </stepDescription>
+                <output/>
+            </step>
+        </stepByStepDescription>
+    </process>
+    <rationaleWorstCase>
+        <purpose>
+            <purposeDescription>
+                <xhtml:p>The rationale for implementing PIDs in TDAs stems from fundamental 
+                    challenges in maintaining long-term access to digital objects and the core 
+                    mission of preservation itself.
+                </xhtml:p>
+            </purposeDescription>
+            <worstCase>
+                <xhtml:p>Link rot as well as problems and challenges in: Internal data management 
+                    problemsm, System migrations, Format migrations, Activity tracking, 
+                    Interoperability
+                </xhtml:p>
+            </worstCase>
+        </purpose>
+    </rationaleWorstCase>
+    <cppRelationships>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-016</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>While ingesting into a TDA, the Metadata should be assigned an identifier. 
+                    Also, the management functions of the Metadata may require replacing and/or 
+                    updating identifiers.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-017</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>When the life cycle of the Digital Object or File ends, the identifier 
+                    should be updated to “retired” status.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-021</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>When an AIP gets a new version, the new AIP version must also 
+                    be assigned a new identifier.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-024</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Enabling Discovery should make use of identifiers.</xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-025</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Accessing Digital Object, File(s) or Metadata should be based on 
+                    identifiers as parameters.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-029</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>The ingestion workflow is responsible for assigning identifiers 
+                    to various entities in TDA, such as Files and Metadata.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-004</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>If a File is corrupted, it may need to be repaired or replaced. 
+                    During this process, a new identifier may be created.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-011</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>When a Digital Object or File is replicated, the replicant may 
+                    be assigned a new identifier.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-013</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>The management and reporting should require that the data is 
+                    identified with identifiers.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-014</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>During format migration, the migrated File format may be 
+                    assigned a new identifier.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-019</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>The data quality assessment may include validating the 
+                    identifiers and their linked resources.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-026</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>A normalised File format may be assigned with a new identifier.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-027</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>A repaired File may get a new identifier.</xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>May be required by</relationshipType>
+            <relatedCPP>CPP-028</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>A derivative of a File may get its own identifier.</xhtml:p>
+            </relationshipDescription>
+        </relationship>
+    </cppRelationships>
+    <frameworkMappings>
+        <mapping>
+            <frameworkName>CoreTrustSeal</frameworkName>
+            <correspondingTerm>
+                <xhtml:p>Persistent Identifiers</xhtml:p>
+            </correspondingTerm>
+            <correspondingSection>
+                <xhtml:p>R09 Preservation Plan</xhtml:p>
+                <xhtml:p>R12 Discovery and Identification</xhtml:p>
+            </correspondingSection>
+        </mapping>
+        <mapping>
+            <frameworkName>Nestor Seal</frameworkName>
+            <correspondingTerm>
+                <xhtml:p>Persistent Identifiers</xhtml:p>
+            </correspondingTerm>
+            <correspondingSection>
+                <xhtml:p>C27 Identification</xhtml:p>
+            </correspondingSection>
+        </mapping>
+        <mapping>
+            <frameworkName>ISO 16363</frameworkName>
+            <correspondingTerm>
+                <xhtml:p>Persistent Identifiers</xhtml:p>
+            </correspondingTerm>
+            <correspondingSection>
+                <xhtml:p>4.2.4</xhtml:p>
+                <xhtml:p>4.2.5.4</xhtml:p>
+                <xhtml:p>4.2.6.3</xhtml:p>
+            </correspondingSection>
+        </mapping>
+        <mapping>
+            <frameworkName>OAIS</frameworkName>
+            <correspondingTerm>
+                <xhtml:p>Persistent Identifiers</xhtml:p>
+            </correspondingTerm>
+            <correspondingSection>
+                <xhtml:p>6.2.4</xhtml:p>
+            </correspondingSection>
+        </mapping>
+        <mapping>
+            <frameworkName>PREMIS</frameworkName>
+            <correspondingTerm>
+                <xhtml:p>Persistent Identifiers</xhtml:p>
+            </correspondingTerm>
+            <correspondingSection>
+                <xhtml:p>Data dictionary, 1.1 objectIdentifier</xhtml:p>
+            </correspondingSection>
+        </mapping>
+    </frameworkMappings>
+    <referenceImplementations>
+        <useCases>
+            <useCase>
+                <useCasetitle>DOI given for a research dataset by TDA</useCasetitle>
+                <institution>
+                    <institutionLabel>CSC, Finland (Digital Preservation Service for Research Data)</institutionLabel>
+                    <institutionCountry>FI</institutionCountry>
+                </institution>
+                <linkToDocumentation>
+                    <hyperlink>https://wiki.eduuni.fi/x/9ZRYH</hyperlink>
+                </linkToDocumentation>
+                <linkToDocumentation>
+                    <hyperlink>https://doi.org/10.23729/e399409c-ac6f-4893-a93f-9d0c10bf00bd</hyperlink>
+                </linkToDocumentation>
+                <triggerEvent>
+                    <xhtml:p>Submitting research data to the TDA</xhtml:p>
+                </triggerEvent>
+                <problemStatement><xhtml:p>Research dataset does not have a DOI</xhtml:p></problemStatement>
+                <proposedSolution>
+                    <xhtml:p>Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset 
+                    via a description tool or via a metadata API. When a dataset has been submitted, TDA 
+                    automatically creates a DataCite description including a new DOI, and eventually it 
+                    creates a corresponding publicly available website for the dataset Metadata.</xhtml:p>
+                </proposedSolution>
+            </useCase>
+        </useCases>
+        <publicDocumentation>
+            <institution>
+                <institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</institutionLabel>
+                <institutionCountry>DE</institutionCountry>
+                <institutionType>National library</institutionType>
+                <institutionType>Non-commercial digital preservation service</institutionType>
+                <institutionType>Research infrastructure</institutionType>
+                <institutionType>Research performing organisation</institutionType>
+            </institution>
+            <documentationLanguage>en</documentationLanguage>
+            <linkToDocumentation>
+                <hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-Identifyingmetadata</hyperlink>
+            </linkToDocumentation>
+        </publicDocumentation>
+        <publicDocumentation>
+            <institution>
+                <institutionLabel>CSC – IT Center for Science Ltd.</institutionLabel>
+                <institutionCountry>FI</institutionCountry>
+                <institutionType>Non-commercial digital preservation service</institutionType>
+            </institution>
+            <documentationLanguage>en</documentationLanguage>
+            <linkToDocumentation>
+                <hyperlink>
+                    https://urn.fi/urn:nbn:fi-fe2020100578094</hyperlink>
+                <comment>section 2.4.1.</comment>
+            </linkToDocumentation>
+        </publicDocumentation>
+        <publicDocumentation>
+            <institution>
+                <institutionLabel>Archivematica</institutionLabel>
+                <institutionCountry>CA</institutionCountry>
+                <institutionType>Digital preservation system</institutionType>
+            </institution>
+            <documentationLanguage>en</documentationLanguage>
+            <linkToDocumentation>
+                <hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices</hyperlink>
+            </linkToDocumentation>
+        </publicDocumentation>
+    </referenceImplementations>
+</cpp>
