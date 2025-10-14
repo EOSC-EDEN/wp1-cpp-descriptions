@@ -29,7 +29,9 @@
             </cpp:version>
         </cpp:history>
     </cpp:header>
-    <cpp:shortDefinition>The Checksum Validation process compares the checksums that come with the Information Package, with checksums based on the current state of the File’s data at Ingest or Access time.</cpp:shortDefinition>
+    <cpp:shortDefinition>
+        The TDA validates checksums against those stored in the Information Package at Ingest or Access. 
+    </cpp:shortDefinition>
     <cpp:descriptionAndScope>
         <p>The Checksum Validation process compares the checksums that come with the <em>Information
             Package</em>, with checksums based on the current state of the <em>File</em>’s
