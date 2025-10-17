@@ -583,7 +583,8 @@
 						<xsd:enumeration value="Academic journal publisher" />
 						<xsd:enumeration value="Commercial digital preservation service" />
 						<xsd:enumeration value="Governmental or state library" />
-						<xsd:enumeration value="Digital preservation system" />
+            <xsd:enumeration value="Digital preservation system" />
+            <xsd:enumeration value="Discipline-agnostic data repository" />
 						<xsd:enumeration value="Discipline-specific data repository" />
 						<xsd:enumeration value="Local archive" />
 						<xsd:enumeration value="Museum or gallery" />
