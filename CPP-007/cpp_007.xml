@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp xmlns="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp cpp.xsd"
+    ID="CPP-007" xml:lang="en">
+    <header>
+        <label>Virus Scanning</label>
+        <authors>
+            <author>Mattias Levlin</author>
+            <author>Johan Kylander</author>
+        </authors>
+        <contributors>
+            <contributor>Kris Dekeyser</contributor>
+        </contributors>
+        <evaluators>
+            <evaluator>Felix Burger</evaluator>
+            <evaluator>Maria Benauer</evaluator>
+            <evaluator>Fen Zhang</evaluator>
+        </evaluators>
+        <history>
+            <version>
+                <versionNumber>
+                    <majorVersion>1</majorVersion>
+                    <minorVersion>0</minorVersion>
+                    <patchVersion>0</patchVersion>
+                </versionNumber>
+                <versionDate>2025-08-29</versionDate>
+                <versionNotes>Milestone version</versionNotes>
+            </version>
+        </history>
+    </header>
+    <shortDefinition>Information packages are virus checked, with appropriate
+        facilities for quarantine.
+    </shortDefinition>
+    <descriptionAndScope>
+        <xhtml:p>Virus scanning is the process of examining <xhtml:em>Files</xhtml:em> 
+            as proposed for ingestion into an archive for the presence of malicious 
+            software (i.e. malware) such as viruses, trojans, worms, spyware, 
+            and ransomware etc. The primary goal of virus scanning is to detect 
+            and prevent such harmful code from entering the digital archive to 
+            safeguard the integrity and trustworthiness of the preserved content. 
+            This security measure protects not only the archival system itself, 
+            but also users or other connected systems that access or receive 
+            content from the archive. Effective virus scanning is a core step 
+            of the ingest process and an essential strategic component in 
+            <xhtml:b>Risk Mitigation</xhtml:b> (CPP-012), ensuring that the 
+            archive remains a secure and reliable repository for digital assets. 
+            It is a means to mitigate deliberate, human-made threats to digital 
+            preservation.
+        </xhtml:p>
+        <xhtml:p>Virus scanning is first and foremost applied during ingest, 
+            acting as a checkpoint before <xhtml:em>Files</xhtml:em> are fully 
+            accepted and integrated into a TDA's holdings. In addition, it may 
+            be triggered during preservation (archival storage) or dissemination. 
+            This may be done either to ensure that no viruses have infected the 
+            content after ingest, or to make sure that disseminated content has 
+            been checked using up-to-date signature databases.
+        </xhtml:p>
+        <xhtml:p>A TDA must employ virus scanning tools and malware signature 
+            databases to ensure effective and up-to-date threat detection. This 
+            includes a process to maintain and frequently update a malware 
+            signature database that is used by the virus scanning tools. The 
+            system must provide secure workspaces and guidelines for managing 
+            detected threats, which typically involves isolating suspicious 
+            <xhtml:em>Files</xhtml:em> in a staging or quarantine area to prevent 
+            potential harm to the storage. The TDA can reject and remove the 
+            contaminated <xhtml:em>Files</xhtml:em> or <xhtml:em>Information 
+            packages</xhtml:em> during ingest in cases where decontamination is 
+            not a viable option.
+        </xhtml:p>
+        <xhtml:p>All scanning activities, detected threats, and subsequent actions 
+            (i.e. quarantine, rejection, deletion) must be documented as part of 
+            the ingest record and preservation actions as <xhtml:em>Provenance metadata</xhtml:em>. 
+            This documentation contributes to the audit trail of the ingested <xhtml:em>Files</xhtml:em> 
+            and should be incorporated into broader <xhtml:b>Object Management Reporting</xhtml:b> (CPP-013).
+        </xhtml:p>
+    </descriptionAndScope>
+    <process>
+        <inputs>
+            <data>
+                <dataElement>Information package(s)</dataElement>
+            </data>
+            <guidance>
+                <guidanceElement>Malware signature database(s)</guidanceElement>
+                <guidanceElement>Guidelines for managing detected threats</guidanceElement>
+            </guidance>
+        </inputs>
+        <outputs>
+            <metadata>
+                <metadataElement>Provenance metadata</metadataElement>
+            </metadata>
+            <guidance>
+                <guidanceElement>Scan report</guidanceElement>
+            </guidance>
+        </outputs>
+        <triggerEvents>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Periodic quality check of <xhtml:em>Files</xhtml:em></xhtml:p>
+                </description>
+                <correspondingCPP>CPP-019</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Pre-access check of DIPs</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-025</correspondingCPP>
+            </triggerEvent>
+            <triggerEvent>
+                <description>
+                    <xhtml:p>Ingest</xhtml:p>
+                </description>
+                <correspondingCPP>CPP-029</correspondingCPP>
+            </triggerEvent>
+        </triggerEvents>
+        <stepByStepDescription>
+            <step stepNumber="1">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>SIP(s)</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                    <supplier>CPP-029</supplier>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Receive and Stage Content: Content arrives and is 
+                        placed in a temporary, isolated staging area designated 
+                        for pre-ingest checks</xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p><xhtml:em>SIP(s)</xhtml:em> in the staging area</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="2">
+                <input>
+                    <inputElement>
+                        <xhtml:p>
+                            <xhtml:em>AIP(s)</xhtml:em>
+                        </xhtml:p>
+                    </inputElement>
+                    <supplier>CPP-019</supplier>
+                    <supplier>CPP-025</supplier>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Select <xhtml:em>AIP(s)</xhtml:em> for virus scan 
+                        and copy their <xhtml:em>Files</xhtml:em> to the staging 
+                        area for checks</xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p><xhtml:em>AIP(s)</xhtml:em> in the staging area</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="3">
+                <input>
+                    <inputElement>
+                        <xhtml:p><xhtml:em>File(s)</xhtml:em> in staging area</xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>Configured virus scanners</xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Perform Scan: Initiate a comprehensive scan of all 
+                        <xhtml:em>Files</xhtml:em> within the staged 
+                        <xhtml:em>Information packages</xhtml:em></xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Scan report/log (indicating clean <xhtml:em>Files</xhtml:em>, 
+                            and any detected threats with file paths and malware names)</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="4">
+                <input>
+                    <inputElement>
+                        <xhtml:p>Scan report/log</xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Evaluate Scan Results</xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>All <xhtml:em>Files</xhtml:em> reported as clean (step 7)</xhtml:p>
+                    </outputElement>
+                </output>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Any <xhtml:em>Files</xhtml:em> reported as infected or suspicious (step 5)</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="5">
+                <input>
+                    <inputElement>
+                        <xhtml:p>Infected/suspicious file(s)</xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>Scan report</xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>Guidelines for managing detected threats</xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Handling infected or suspicious <xhtml:em>Files</xhtml:em>, 
+                        the TDA conducts a first analysis</xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Decontamination recommended:  Move the identified 
+                            <xhtml:em>File(s)</xhtml:em> to a secure quarantine 
+                            area, isolated from other systems and content for 
+                            further analysis and potential disinfection, and 
+                            inform dedicated staff members (step 6)</xhtml:p>
+                    </outputElement>
+                    <customer>CPP-013</customer>
+                </output>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Rejection recommended: Mark the 
+                            <xhtml:em>File(s)</xhtml:em> (or the entire 
+                            <xhtml:em>SIP(s)</xhtml:em> (as in case of ingest) 
+                            for rejection. Notify the producer with reasons, if 
+                            appropriate and/or defined by policy (end of the 
+                            process)</xhtml:p>
+                    </outputElement>
+                    <customer>CPP-013</customer>
+                </output>
+            </step>
+            <step stepNumber="6">
+                <input>
+                    <inputElement>
+                        <xhtml:p>Quarantined file(s)</xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>Notification to staff</xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>In-Depth Analysis: The personnel analyses the 
+                        threat, leading to multiple potential outcomes</xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>False positive identified: the detected malware 
+                            does not pose a threat. Whitelist the threat and 
+                            move the <xhtml:em>Files</xhtml:em> from quarantine 
+                            back to the staging (loop back to step 1)</xhtml:p>
+                    </outputElement>
+                </output>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Decontamination required and possible: The 
+                            TDA disinfects the <xhtml:em>Files</xhtml:em> and 
+                            moves the <xhtml:em>Files</xhtml:em> from quarantine 
+                            back to the staging (loop back to step 1)</xhtml:p>
+                    </outputElement>
+                </output>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Decontamination required but not possible: 
+                            Notify stakeholders: The TDA notifies the stakeholders 
+                            that their content is at risk and that it most likely 
+                            must be deleted and re-submitted. The <xhtml:em>Files</xhtml:em> 
+                            are not moved away from the quarantine area. This is 
+                            a more likely outcome for AIP <xhtml:em>Files</xhtml:em> 
+                            that are scanned during the preservation (triggered 
+                            by CPP-019). (step 7)</xhtml:p>
+                    </outputElement>
+                </output>
+            </step>
+            <step stepNumber="7">
+                <input>
+                    <inputElement>
+                        <xhtml:p>Scan report</xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>Actions taken (quarantine, disinfection, rejection)</xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Record the virus scan and its Outcome as a Preservation Event<xhtml:br />
+                        This documentation should include:<xhtml:br />
+                        <xhtml:ul>
+                            <xhtml:li>Datetime of scan</xhtml:li>
+                            <xhtml:li>Scanner software name</xhtml:li>
+                            <xhtml:li>Virus definition file version/date</xhtml:li>
+                            <xhtml:li>Files scanned</xhtml:li>
+                            <xhtml:li>Outcome for each file (e.g., 'clean',
+                                'infected - [virus_name]', 'quarantined', 'rejected').</xhtml:li>
+                            <xhtml:li>Any additional actions taken</xhtml:li>
+                        </xhtml:ul>
+                    </xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p><xhtml:em>Provenance metadata</xhtml:em></xhtml:p>
+                    </outputElement>
+                    <customer>CPP-016</customer>
+                    <customer>CPP-013</customer>
+                </output>
+            </step>
+            <step stepNumber="8">
+                <input>
+                    <inputElement>
+                        <xhtml:p>Clean <xhtml:em>File(s)</xhtml:em></xhtml:p>
+                    </inputElement>
+                </input>
+                <input>
+                    <inputElement>
+                        <xhtml:p>Documentation of scan event</xhtml:p>
+                    </inputElement>
+                </input>
+                <stepDescription>
+                    <xhtml:p>Proceed with Clean Content or finalise Rejection:<xhtml:br />
+                        <xhtml:ul>
+                            <xhtml:li>If content is clean: release Files from 
+                                the staging area or proceed with ingest</xhtml:li>
+                            <xhtml:li>If any relevant content was rejected: 
+                                Finalise the rejection process and archive the documentation</xhtml:li>
+                        </xhtml:ul>
+                    </xhtml:p>
+                </stepDescription>
+                <output>
+                    <outputElement>
+                        <xhtml:p>Clean <xhtml:em>File(s)</xhtml:em> passed to 
+                            the next ingest stage, or rejection process completed</xhtml:p>
+                    </outputElement>
+                    <customer>CPP-013</customer>
+                </output>
+            </step>
+        </stepByStepDescription>
+    </process>
+    <rationaleWorstCase>
+        <purpose>
+            <purposeDescription>
+                <xhtml:p>Detection of malware in <xhtml:em>SIP(s)</xhtml:em></xhtml:p>
+            </purposeDescription>
+            <worstCase>
+                <xhtml:p>Ingest of contaminated <xhtml:em>Files</xhtml:em>, 
+                    risking destruction of the entire TDA.</xhtml:p>
+            </worstCase>
+        </purpose>
+        <purpose>
+            <purposeDescription>
+                <xhtml:p>Process to handle and potentially reject and delete 
+                    infected <xhtml:em>SIP(s)</xhtml:em></xhtml:p>
+            </purposeDescription>
+            <worstCase>
+                <xhtml:p>Ingest of contaminated <xhtml:em>Files</xhtml:em>, 
+                    risking destruction of the entire TDA</xhtml:p>
+            </worstCase>
+        </purpose>
+        <purpose>
+            <purposeDescription>
+                <xhtml:p>Processes to maintain up-to-date malware signature 
+                    databases and virus scanning tools</xhtml:p>
+            </purposeDescription>
+            <worstCase>
+                <xhtml:p>Ingest of contaminated <xhtml:em>Files,</xhtml:em> 
+                    risking destruction of the entire TDA</xhtml:p>
+            </worstCase>
+        </purpose>
+        <purpose>
+            <purposeDescription>
+                <xhtml:p>Detection of malware in AIP(s)</xhtml:p>
+            </purposeDescription>
+            <worstCase>
+                <xhtml:p>Risking destruction of the entire TDA.</xhtml:p>
+            </worstCase>
+        </purpose>
+    </rationaleWorstCase>
+    <cppRelationships>
+        <relationship>
+            <relationshipType>Requires</relationshipType>
+            <relatedCPP>CPP-012</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Virus scanning is a direct risk mitigation activity 
+                    against threats to content integrity and system security 
+                    triggered by CPP-012.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-013</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Reports on virus scanning activities, frequency of 
+                    threats, and outcomes of the actions provide essential input 
+                    for operational management and risk assessment.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-019</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Virus scanning is performed as a step in the overall 
+                    Data Quality Assessment process.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Required by</relationshipType>
+            <relatedCPP>CPP-029</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Virus scanning is one of the core processes that must 
+                    be performed during ingest.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Affinity with</relationshipType>
+            <relatedCPP>CPP-003</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Both processes aim to ensure the "health" of Files. 
+                    However, Integrity Checking focuses on detecting technical 
+                    corruption of Files (e.g. bit rot), whereas virus scanning 
+                    looks to mitigate human-made risks ( e.g. malicious code).
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Not to be confused with</relationshipType>
+            <relatedCPP>CPP-004</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>If a File is detected as infected and cannot be cleaned, 
+                    it might be considered "damaged." However, CPP-004 typically 
+                    applies to technical corruption or loss, rather than deliberately 
+                    human-made damage such as malware-infected Files. In practice, 
+                    infected Files are more likely to be replaced (by the producer) 
+                    or rejected.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+        <relationship>
+            <relationshipType>Not to be confused with</relationshipType>
+            <relatedCPP>CPP-010</relatedCPP>
+            <relationshipDescription>
+                <xhtml:p>Both processes scan the Files to ensure that they are 
+                    suitable for preservation. File Format Validation checks if 
+                    a file conforms to its purported format specification (e.g. 
+                    is this a valid PDF/A file?) while Virus Scanning checks for 
+                    malware, regardless of format validity.
+                </xhtml:p>
+            </relationshipDescription>
+        </relationship>
+    </cppRelationships>
+    <frameworkMappings>
+        <mapping>
+            <frameworkName>CoreTrustSeal</frameworkName>
+        </mapping>
+        <mapping>
+            <frameworkName>Nestor Seal</frameworkName>
+        </mapping>
+        <mapping>
+            <frameworkName>ISO 16363</frameworkName>
+        </mapping>
+        <mapping>
+            <frameworkName>OAIS</frameworkName>
+            <correspondingTerm>
+                <xhtml:p>Quality Assurance (within Ingest), Security</xhtml:p>
+            </correspondingTerm>
+            <correspondingSection>
+                <xhtml:p>4.2.3.3</xhtml:p>
+                <xhtml:p>4.3.4</xhtml:p>
+            </correspondingSection>
+        </mapping>
+        <mapping>
+            <frameworkName>PREMIS</frameworkName>
+            <correspondingTerm>
+                <xhtml:p>Event (with eventType 'virus check', Agent (the scanning software)</xhtml:p>
+            </correspondingTerm>
+            <correspondingSection>
+                <xhtml:p>Event Entity</xhtml:p>
+                <xhtml:p>Agent Entity</xhtml:p>
+                <xhtml:p>eventType Controlled vocabulary (2.2)</xhtml:p>
+            </correspondingSection>
+        </mapping>
+    </frameworkMappings>
+    <referenceImplementations>
+        <useCases>
+            <useCase>
+                <useCasetitle>Virus Scan as Part of Ingest at CSC</useCasetitle>
+                <institution>
+                    <institutionLabel>CSC – IT Center for Science Ltd., Finland</institutionLabel>
+                    <institutionCountry>FI</institutionCountry>
+                </institution>
+                <linkToDocumentation>
+                    <hyperlink>https://www.clamav.net/</hyperlink>
+                </linkToDocumentation>
+                <triggerEvent>
+                    <xhtml:p>Ingest</xhtml:p>
+                </triggerEvent>
+                <problemStatement>
+                    <xhtml:p>Files must be scanned for viruses as part of the 
+                        ingest pipeline to protect the TDA from viruses
+                    </xhtml:p>
+                </problemStatement>
+                <proposedSolution>
+                    <xhtml:p>Python script to detect viruses using ClamAv virus 
+                        scanner<xhtml:br /><xhtml:br />
+                        def check_virus(path):<xhtml:br />
+                        """Scan files in directory with ClamAV virus scanner.<xhtml:br />
+                        ...
+                    </xhtml:p>
+                </proposedSolution>
+            </useCase>
+        </useCases>
+        <publicDocumentation>
+            <institution>
+                <institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</institutionLabel>
+                <institutionCountry>DE</institutionCountry>
+                <institutionType>National library</institutionType>
+                <institutionType>Non-commercial digital preservation service</institutionType>
+                <institutionType>Research infrastructure</institutionType>
+                <institutionType>Research performing organisation</institutionType>
+            </institution>
+            <documentationLanguage>en</documentationLanguage>
+            <linkToDocumentation>
+                <hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest</hyperlink>
+            </linkToDocumentation>
+        </publicDocumentation>
+        <publicDocumentation>
+            <institution>
+                <institutionLabel>CSC – IT Center for Science Ltd.</institutionLabel>
+                <institutionCountry>FI</institutionCountry>
+                <institutionType>Non-commercial digital preservation service</institutionType>
+            </institution>
+            <documentationLanguage>en</documentationLanguage>
+            <linkToDocumentation>
+                <hyperlink>
+                    https://digitalpreservation.fi/en/services/quality_reports/2024</hyperlink>
+                <comment>Monitoring of the Digital Preservation Services: 
+                    "Up-to-date status of the virus check database"
+                </comment>
+            </linkToDocumentation>
+        </publicDocumentation>
+        <publicDocumentation>
+            <institution>
+                <institutionLabel>Archivematica</institutionLabel>
+                <institutionCountry>CA</institutionCountry>
+                <institutionType>Digital preservation system</institutionType>
+            </institution>
+            <documentationLanguage>en</documentationLanguage>
+            <linkToDocumentation>
+                <hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.14/user-manual/transfer/scan-for-viruses/#scan-for-viruses</hyperlink>
+            </linkToDocumentation>
+        </publicDocumentation>
+        <publicDocumentation>
+            <institution>
+                <institutionLabel>DANS (Data Archiving and Networked Services), Netherlands</institutionLabel>
+                <institutionCountry>NL</institutionCountry>
+                <institutionType>Commercial digital preservation service</institutionType>
+                <institutionType>Discipline-specific data repository</institutionType>
+                <institutionType>Discipline-agnostic data repository</institutionType>
+            </institution>
+            <documentationLanguage>en</documentationLanguage>
+            <linkToDocumentation>
+                <hyperlink>
+                    https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf</hyperlink>
+                <comment>"Virus-scans are performed periodically for ingest by 
+                    the web interface and standard for all other ingest ways 
+                    (like SWORD)."
+                </comment>
+            </linkToDocumentation>
+        </publicDocumentation>
+    </referenceImplementations>
+</cpp>
