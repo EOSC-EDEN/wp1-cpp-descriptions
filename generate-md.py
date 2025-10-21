@@ -9,59 +9,65 @@ logging.basicConfig(
 )
 
 def clean_text(text):
-    """A lighter touch cleaner that preserves intentional whitespace for lists."""
+    """The original cleaner for block-level text."""
     return ' '.join(text.strip().split()) if text else ''
 
 def element_to_markdown(element):
     """
-    Recursively converts an XML element and its children to a Markdown string,
-    preserving paragraphs, lists, links, and emphasis.
+    Recursively converts an XML element and its children to a Markdown string.
+    This version handles both paragraph structure and inline emphasis spacing.
     """
     if element is None:
         return ""
 
-    markdown_parts = []
-
-    # Start with the element's own text (text before the first child)
+    # This iterator intelligently walks through the element's text and its children's text/tails
+    parts = []
+    # Start with the element's own text. Don't clean it yet.
     if element.text:
-        markdown_parts.append(clean_text(element.text))
+        parts.append(element.text)
 
     # Process each child element
     for child in element:
-        # Get the tag name without the namespace
         tag = child.tag.split('}')[-1]
-        
-        # Recursively get the content of the child
-        child_content = element_to_markdown(child)
+        child_content = element_to_markdown(child) # Recursive call
 
         # Apply formatting based on the tag
         if tag == 'p':
-            markdown_parts.append(f"\n\n{child_content}")
+            # Paragraphs are block-level. Add newlines BEFORE the content.
+            # The content itself is cleaned to handle internal line breaks from the XML source.
+            parts.append(f"\n\n{clean_text(child_content)}")
         elif tag == 'em':
-            markdown_parts.append(f"*{child_content}*")
+            # Emphasis is inline. Just wrap the raw content. No extra spaces or newlines.
+            parts.append(f"*{child_content}*")
         elif tag == 'a':
             href = child.get('href', '')
-            markdown_parts.append(f"[{child_content}]({href})")
+            parts.append(f"[{child_content}]({href})")
         elif tag == 'ul':
-            markdown_parts.append(f"\n{child_content}")
+            parts.append(f"\n{child_content}")
         elif tag == 'li':
-            markdown_parts.append(f"\n* {child_content}")
+            parts.append(f"\n* {clean_text(child_content)}")
         else: # Default for unknown tags
-            markdown_parts.append(child_content)
-
-        # Append the text that comes *after* the child element (its tail)
+            parts.append(child_content)
+        
+        # This part is crucial. It appends the text that comes AFTER an element.
         if child.tail:
-            markdown_parts.append(clean_text(child.tail))
+            parts.append(child.tail)
             
-    # Join all parts and clean up resulting whitespace
-    return ''.join(markdown_parts).strip()
+    # Join all the pieces together.
+    # Then, clean the final string ONLY if we are at the top-level description element.
+    # The recursion for <p> tags handles its own cleaning, preserving the \n\n.
+    final_string = "".join(parts)
+
+    # We only apply the aggressive clean_text at the block level (inside the <p> case above).
+    # The final return for the whole description should be stripped, but not have its newlines collapsed.
+    return final_string.strip()
 
 
 def format_multiline_cell(text):
     """Replaces newlines with <br> for presentation in a Markdown table cell."""
     if not text:
         return ""
-    # Convert paragraph breaks and list newlines to <br> tags
+    # Convert paragraph breaks and list newlines to <br> tags.
     return text.replace('\n\n', '<br><br>').replace('\n*', '<br>*')
 
 
@@ -90,8 +96,7 @@ def format_markdown_table(headers, data):
 
 def parse_xml_to_markdown(xml_file):
     """
-    Parses a single XML file and converts it to a Markdown string, now with
-    rich text formatting for content fields.
+    Parses a single XML file and converts it to a Markdown string.
     """
     logging.info(f"--- Processing file: {xml_file} ---")
     try:
@@ -136,19 +141,21 @@ def parse_xml_to_markdown(xml_file):
         contributors = [get_simple_text(el) for el in findall(header, 'contributors/contributor')]
         evaluators = [get_simple_text(el) for el in findall(header, 'evaluators/evaluator')]
 
-    # --- 2. Extract Main Content (using the new rich text parser) ---
+    # --- 2. Extract Main Content ---
     short_definition = get_simple_text(find(root, 'shortDefinition'))
-    description_and_scope = element_to_markdown(find(root, 'descriptionAndScope'))
+    description_and_scope_raw = element_to_markdown(find(root, 'descriptionAndScope'))
+    # Clean up the final block of text
+    description_and_scope = '\n\n'.join([clean_text(p) for p in description_and_scope_raw.split('\n\n')])
     
     # --- 3. Build Markdown String ---
     markdown = f"# {label or 'No Label Found'}\n\n"
     if short_definition: markdown += f"**Short Definition:** {short_definition}\n\n"
-    if description_and_scope: markdown += f"## Description and Scope\n{description_and_scope}\n\n"
+    if description_and_scope: markdown += f"## Description and Scope\n{description_and_scope.strip()}\n\n"
     if authors: markdown += "## Authors\n" + "".join(f"- {author}\n" for author in authors) + "\n"
     if contributors: markdown += "## Contributors\n" + "".join(f"- {contributor}\n" for contributor in contributors) + "\n"
     if evaluators: markdown += "## Evaluators\n" + "".join(f"- {evaluator}\n" for evaluator in evaluators) + "\n"
         
-    # --- 4. Process Steps into a Table (using the new rich text parser) ---
+    # --- 4. Process Steps into a Table ---
     steps = findall(root, './/step')
     if steps:
         markdown += "## Process Steps\n\n"
@@ -156,10 +163,14 @@ def parse_xml_to_markdown(xml_file):
         headers = ["Step", "Description", "Inputs", "Outputs"]
         
         for step in steps:
-            # Parse the rich text content first
-            desc_md = element_to_markdown(find(step, 'stepDescription'))
-            inputs_md = [element_to_markdown(el) for el in findall(step, 'input/inputElement')]
-            outputs_md = [element_to_markdown(el) for el in findall(step, 'output/outputElement')]
+            desc_raw = element_to_markdown(find(step, 'stepDescription'))
+            desc_md = '\n\n'.join([clean_text(p) for p in desc_raw.split('\n\n')])
+
+            inputs_raw = [element_to_markdown(el) for el in findall(step, 'input/inputElement')]
+            inputs_md = ['\n\n'.join([clean_text(p) for p in item.split('\n\n')]) for item in inputs_raw]
+
+            outputs_raw = [element_to_markdown(el) for el in findall(step, 'output/outputElement')]
+            outputs_md = ['\n\n'.join([clean_text(p) for p in item.split('\n\n')]) for item in outputs_raw]
             
             table_data.append({
                 "Step": step.get('stepNumber', ""),
