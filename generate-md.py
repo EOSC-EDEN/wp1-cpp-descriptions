@@ -1,3 +1,9 @@
+"""
+generate-md.py
+
+Script for generation of README.md files for each CPP-XYZ.xml file
+"""
+
 import os
 import xml.etree.ElementTree as ET
 import logging
@@ -20,7 +26,7 @@ def element_to_markdown(element):
     if element is None:
         return ""
 
-    # This iterator intelligently walks through the element's text and its children's text/tails
+    # This iterator walks through the element's text and its children's text/tails
     parts = []
     # Start with the element's own text. Don't clean it yet.
     if element.text:
@@ -49,7 +55,7 @@ def element_to_markdown(element):
         else: # Default for unknown tags
             parts.append(child_content)
         
-        # This part is crucial. It appends the text that comes AFTER an element.
+        # Append the text that comes AFTER an element.
         if child.tail:
             parts.append(child.tail)
             
@@ -58,7 +64,7 @@ def element_to_markdown(element):
     # The recursion for <p> tags handles its own cleaning, preserving the \n\n.
     final_string = "".join(parts)
 
-    # We only apply the aggressive clean_text at the block level (inside the <p> case above).
+    # Only apply the aggressive clean_text at the block level (inside the <p> case above).
     # The final return for the whole description should be stripped, but not have its newlines collapsed.
     return final_string.strip()
 
