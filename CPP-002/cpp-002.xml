@@ -141,7 +141,7 @@
                             <li>Process completed</li>
                         </ol>
                     </cpp:outputElement>
-                    <cpp:supplier>CPP-000</cpp:supplier>
+                    <cpp:customer>CPP-000</cpp:customer>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="3">
@@ -318,8 +318,7 @@
                 <cpp:institutionType>Research infrastructure</cpp:institutionType>
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>English</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -329,8 +328,7 @@
                 <cpp:institutionCountry>FI</cpp:institutionCountry>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>Finnish</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943</cpp:hyperlink>
                 <cpp:comment>Annex 3, section 2.1.1</cpp:comment>
             </cpp:linkToDocumentation>
@@ -341,8 +339,7 @@
                 <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>English</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
