@@ -28,7 +28,7 @@
             </cpp:version>
         </cpp:history>
     </cpp:header>
-    <cpp:shortDefinition>The <em>TDA</em> supports periodic integrity checking, reporting any damaged or missing <em>Files</em>.</cpp:shortDefinition>
+    <cpp:shortDefinition>The TDA supports periodic integrity checking, reporting any damaged or missing Files.</cpp:shortDefinition>
     <cpp:descriptionAndScope>
         <p>Integrity checking is a periodically performed process where a checksum is calculated for a
             target <em>Information Package</em> and compared to the existing stored checksum (as calculated in
@@ -309,10 +309,11 @@
                 <cpp:institutionType>Research infrastructure</cpp:institutionType>
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
-            <cpp:linkToDocumentation xml:lang="en">
+            <cpp:documentationLanguage>English</cpp:documentationLanguage>
+            <cpp:linkToDocumentation>
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</cpp:hyperlink>
             </cpp:linkToDocumentation>
-            <cpp:linkToDocumentation xml:lang="en">
+            <cpp:linkToDocumentation>
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Integrityassurance</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -322,7 +323,8 @@
                 <cpp:institutionCountry>FI</cpp:institutionCountry>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
-            <cpp:linkToDocumentation xml:lang="en">
+            <cpp:documentationLanguage>English</cpp:documentationLanguage>
+            <cpp:linkToDocumentation>
                 <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports/2024</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -332,7 +334,8 @@
                 <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
-            <cpp:linkToDocumentation xml:lang="en">
+            <cpp:documentationLanguage>English</cpp:documentationLanguage>
+            <cpp:linkToDocumentation>
                 <cpp:hyperlink>https://www.archivematica.org/en/docs/storage-service-0.23/fixity/#fixity-docs</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -342,7 +345,8 @@
                 <cpp:institutionCountry>AT</cpp:institutionCountry>
                 <cpp:institutionType>Discipline-specific data repository</cpp:institutionType>
             </cpp:institution>
-            <cpp:linkToDocumentation xml:lang="en">
+            <cpp:documentationLanguage>English</cpp:documentationLanguage>
+            <cpp:linkToDocumentation>
                 <cpp:hyperlink>https://aussda.at/fileadmin/user_upload/p_aussda/Documents/kaczmirek_bischof_2024_preservation_fixity_checks_v1_0-1.pdf</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
