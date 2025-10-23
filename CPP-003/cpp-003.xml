@@ -48,7 +48,7 @@
             intervals of checks. The results of the integrity checks, including Fixity Metadata, should be
             documented as preservation actions.</p>
         <p>If integrity checks discover problems in the integrity of the target Information Packages, this
-            information must be clearly documented in a digital archive’s system, so that the broken
+            information must be clearly documented in a digital archive's system, so that the broken
             Information Packages can be restored from valid copies (see CPP-004 Data Corruption
             Management).</p>
     </cpp:descriptionAndScope>
@@ -115,7 +115,7 @@
                     <cpp:supplier>CPP-001</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>For each AIP in the selected batch: Gather the AIP’s fixity metadata</p>
+                    <p>For each AIP in the selected batch: Gather the AIP's fixity metadata</p>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
