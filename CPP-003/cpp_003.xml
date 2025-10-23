@@ -28,34 +28,34 @@
             </cpp:version>
         </cpp:history>
     </cpp:header>
-    <cpp:shortDefinition>The TDA supports periodic integrity checking, reporting any damaged or missing Files.</cpp:shortDefinition>
+    <cpp:shortDefinition>The <em>TDA</em> supports periodic integrity checking, reporting any damaged or missing <em>Files</em>.</cpp:shortDefinition>
     <cpp:descriptionAndScope>
         <p>Integrity checking is a periodically performed process where a checksum is calculated for a
-            target Information Package and compared to the existing stored checksum (as calculated in
+            target <em>Information Package</em> and compared to the existing stored checksum (as calculated in
             CPP-001 Checksum Generation and Recording). The goal of integrity checking is to
-            confirm that a target Information Package has remained unaltered across its life cycle. A
-            TDA must perform and document periodic checks, and the frequency of the checks should
+            confirm that a target <em>Information Package</em> has remained unaltered across its life cycle. A
+            <em>TDA</em> must perform and document periodic checks, and the frequency of the checks should
             be defined in its policy as part of the Risk Mitigation (CPP-012) approach.</p>
         <p>Integrity checking is closely related to the process of Checksum Validation (CPP-002).
-            Whereas Checksum Validation is tied to Ingest (CPP-029), Enabling Access (CPP-025), or
-            Replication (CPP-011) (i.e. processes where Files are transferred or new copies are
+            Whereas Checksum Validation is tied to <em>Ingest</em> (CPP-029), Enabling <em>Access</em> (CPP-025), or
+            Replication (CPP-011) (i.e. processes where <em>Files</em> are transferred or new copies are
             created), Integrity Checking is related to continuous risk management. Integrity checking
             aims to mitigate bit rot and provides evidence for trustworthy preservation by maintaining a
-            continuous audit trail verifying that a File has remained unchanged and authentic over time.</p>
+            continuous audit trail verifying that a <em>File</em> has remained unchanged and authentic over time.</p>
         <p>Periodic integrity checks are performed separately on all accessible copies of a target
-            Information Package (for example, off-line copies in a dark archive are usually excluded from
+            <em>Information Package</em> (for example, off-line copies in a dark archive are usually excluded from
             periodic integrity checks). Copies on different storage media might be subjected to different
             intervals of checks. The results of the integrity checks, including Fixity Metadata, should be
             documented as preservation actions.</p>
-        <p>If integrity checks discover problems in the integrity of the target Information Packages, this
-            information must be clearly documented in a digital archive's system, so that the broken
-            Information Packages can be restored from valid copies (see CPP-004 Data Corruption
+        <p>If integrity checks discover problems in the integrity of the target <em>Information Packages</em>, this
+            information must be clearly documented in a digital archive’s system, so that the broken
+            <em>Information Packages</em> can be restored from valid copies (see CPP-004 Data Corruption
             Management).</p>
     </cpp:descriptionAndScope>
     <cpp:process>
         <cpp:inputs>
             <cpp:data>
-                <cpp:dataElement>Information package</cpp:dataElement>
+                <cpp:dataElement>Information Package</cpp:dataElement>
             </cpp:data>
             <cpp:metadata>
                 <cpp:metadataElement>Fixity metadata</cpp:metadataElement>
@@ -75,7 +75,7 @@
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Frequency of integrity checks defined in a digital archives policy</p>
+                    <p>Frequency of integrity checks defined in a digital archive's policy</p>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-012</cpp:correspondingCPP>
             </cpp:triggerEvent>
@@ -94,11 +94,11 @@
                     <cpp:supplier>CPP-012</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Gather a batch of targets to check and their corresponding Fixity metadata (e.g. Information Packages whose last-checked timestamp is older than the specified checking frequency)</p>
+                    <p>Gather a batch of targets to check and their corresponding Fixity metadata (e.g. <em>Information Packages</em> whose last-checked timestamp is older than the specified checking frequency)</p>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>AIPs</p>
+                        <p><em>AIPs</em></p>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
@@ -115,7 +115,7 @@
                     <cpp:supplier>CPP-001</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>For each AIP in the selected batch: Gather the AIP's fixity metadata</p>
+                    <p>For each <em>AIP</em> in the selected batch: Gather the <em>AIP</em>'s fixity metadata</p>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
@@ -130,7 +130,7 @@
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Calculate the checksum of the AIP from the specified File path</p>
+                    <p>Calculate the checksum of the <em>AIP</em> from the specified <em>File</em> path</p>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
@@ -154,14 +154,14 @@
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Alert that any of the checksums does not match: mark broken AIP for repair and proceed to next step</p>
+                        <p>Alert that any of the checksums does not match: mark broken <em>AIP</em> for repair and proceed to next step</p>
                     </cpp:outputElement>
                     <cpp:customer>CPP-004</cpp:customer>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2d">
                 <cpp:stepDescription>
-                    <p>Store the new integrity checking event to the AIP</p>
+                    <p>Store the new integrity checking event to the <em>AIP</em></p>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
@@ -197,7 +197,7 @@
                 <p>Periodic integrity checks on all copies</p>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Data can get corrupted and degenerate (i.e. the chain of custody is not safeguarded, and the authenticity of IPs may be destroyed)</p>
+                <p>Data can get corrupted and degenerate (i.e. the chain of custody is not safeguarded, and the authenticity of <em>IPs</em> may be destroyed)</p>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -220,35 +220,41 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Periodic integrity checking provides reports on the integrity of data and reports corrupted AIPs.</p>
+                <p>Periodic integrity checking provides reports on the integrity of data and reports corrupted <em>AIPs</em>.</p>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The timestamp of the AIPs checksum needs to be updated to keep track of the last successful check.</p>
+                <p>The timestamp of the <em>AIPs</em>' checksums needs to be updated to keep track of the last successful check.</p>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Triggers</cpp:relationshipType>
             <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>In case of broken target Information, Packages must be marked for repair.</p>
+                <p>In case of broken target <em>Information Packages</em>, they must be marked for repair.</p>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-007</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Both processes aim to ensure the "health" of files. However, Integrity Checking focuses on detecting technical corruption of Files (e.g. bit rot), whereas virus scanning looks to mitigate human-made risks ( e.g. malicious code).</p>
+                <p>Both processes aim to ensure the "health" of files. However, Integrity Checking focuses on detecting technical corruption of <em>Files</em> (e.g. bit rot), whereas virus scanning looks to mitigate human-made risks ( e.g. malicious code).</p>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Both CPPs can get input from CPP-001, and both calculate a checksum from an Information Package and compare it to a given checksum. The difference is that CPP-002 is done during the ingest or access phases (relating to transfer of content, changes in space), while CPP-003 is done periodically during the preservation of the contents in the archival storage (relating to changes over time). Thus, CPP-002 and CPP-003 are not only triggered by different processes, but also trigger different responses.</p>
+                <p>Both CPPs can get input from CPP-001, and both calculate a checksum from an <em>Information
+                    Package</em> and compare it to a given checksum. The difference is that CPP-002
+                    is done during the <em>Ingest</em> or <em>Access</em> phases (relating to
+                    transfer of content, changes in space), while CPP-003 is done periodically
+                    during the preservation of the contents in the archival storage (relating to
+                    changes over time). Thus, CPP-002 and CPP-003 are not only triggered by
+                    different processes, but also trigger different responses.</p>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
