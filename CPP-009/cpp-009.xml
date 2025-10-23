@@ -493,7 +493,7 @@
                             href="https://en.wikipedia.org/wiki/Group_of_pictures">group of pictures</a>
                         .</p>
                     <p>XML was the preferred syntax for the extractor tool output, as it could be
-                        easily wrapped in METS Files..</p>
+                        easily wrapped in METS Files.</p>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
                     <p>BnF has selected the tool MediaInfo as its extractor tool for AV Files,
@@ -514,8 +514,7 @@
                 <cpp:institutionType>Research infrastructure</cpp:institutionType>
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -525,8 +524,7 @@
                 <cpp:institutionCountry>FI</cpp:institutionCountry>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2020100578096</cpp:hyperlink>
                 <cpp:comment>section 5</cpp:comment>
             </cpp:linkToDocumentation>
@@ -537,8 +535,7 @@
                 <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization</cpp:hyperlink>
             </cpp:linkToDocumentation>
