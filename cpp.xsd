@@ -546,7 +546,7 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="alerts">
+			<xsd:element name="alerts" minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
 						<xsd:element name="alert" maxOccurs="unbounded" type="xsd:string"
