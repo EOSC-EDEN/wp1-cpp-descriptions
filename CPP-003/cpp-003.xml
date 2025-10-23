@@ -302,7 +302,7 @@
     <cpp:referenceImplementations>
         <cpp:publicDocumentation>
             <cpp:institution>
-                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionLabel>TIB - Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
                 <cpp:institutionCountry>DE</cpp:institutionCountry>
                 <cpp:institutionType>National library</cpp:institutionType>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
@@ -313,13 +313,24 @@
             <cpp:linkToDocumentation>
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</cpp:hyperlink>
             </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB - Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:documentationLanguage>English</cpp:documentationLanguage>
             <cpp:linkToDocumentation>
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Integrityassurance</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
         <cpp:publicDocumentation>
             <cpp:institution>
-                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionLabel>CSC - IT Center for Science Ltd.</cpp:institutionLabel>
                 <cpp:institutionCountry>FI</cpp:institutionCountry>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
