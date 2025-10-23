@@ -142,8 +142,8 @@
                         <p>Updated <em>Fixity metadata</em> of the <em>
                                 File</em> in the TDA database</p>
                     </cpp:outputElement>
-                    <cpp:supplier>CPP-002</cpp:supplier>
-                    <cpp:supplier>CPP-003</cpp:supplier>
+                    <cpp:customer>CPP-002</cpp:customer>
+                    <cpp:customer>CPP-003</cpp:customer>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="4">
@@ -296,8 +296,7 @@
                 <cpp:institutionType>Research infrastructure</cpp:institutionType>
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata</cpp:hyperlink>
             </cpp:linkToDocumentation>
@@ -308,8 +307,7 @@
                 <cpp:institutionCountry>FI</cpp:institutionCountry>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata</cpp:hyperlink>
                 <cpp:comment>section 2.4.4.2</cpp:comment>
@@ -321,8 +319,7 @@
                 <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices</cpp:hyperlink>
             </cpp:linkToDocumentation>
