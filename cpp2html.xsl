@@ -12,24 +12,7 @@
 
         <html>
             <head>
-                <style type="text/css">
-                    body { font-family: Arial, sans-serif; margin: 20px; }
-                    table {
-                        border-collapse: collapse;
-                        margin-top: 20px;
-                        width: 100%;
-                        border: 1px solid #000;
-                    }
-                    th, td {
-                        border: 2px solid #000;
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-                    th { background-color: #f2f2f2; }
-                    table.intro td:nth-child(1) { font-weight: bold}
-                    table.intro td.history { font-weight: normal; background-color: #fff;}
-                </style>
+                <link rel="stylesheet" href="../cpp.css" type="text/css"/>
                 <title>
                     <xsl:text>EOSC-EDEN_</xsl:text>
                     <xsl:value-of select="$CPP" />
