@@ -1,0 +1,41 @@
+# File Format Validation
+
+**Short Definition:** The TDA validates Files against File format specifications.
+
+## Description and Scope
+File Format validation is the process of checking a *File*’s structure against the specifications of the format it purports to be, or it was identified as in File Format Identification (CPP-008). In addition to *file* structure, validation generally encompasses internal integrity checks to verify that the File is not truncated and that each of its components are intact (e.g. by using internal *Metadata* like CRC checksums of the frames, or size of the data streams).
+
+Erroneous format structures have many different causes. Some examples are listed below: * Improper behaviours of creation software (e.g. InDesign, in some previous versions, was known to export corrupted PDFs); * Partial or failed transfers (e.g. digital photographs transferred through an unstable Bluetooth connection); * Edition with a different software than the creation tool (e.g. PDFs produced with pdfTeX, then edited with Quark XPress).
+
+The TDA validation policy should define the following aspects for each format: * Tool(s) used to validate the *File*. Since validation tools may produce false positives and false negatives, combining multiple tools - if possible - is suggested depending on the complexity of the format - PDF, in particular, is a very complex format for which validation tools may return very different results. * Tool settings (e.g. strict or relaxed mode, verbosity, etc.); * Severity rating of the issue; * Guidelines for validation error handling.
+
+The scope of format validation is limited to the conformance of the File against the structures as described in the format specification. It does not assess the quality of the information conveyed by the *File*. Thus, it is only one aspect of quality assurance, which can be automated or done manually. Although most of the File Format Validation process described in this CPP can be automated, human intervention is mandatory if the validity status of the File is “invalid”
+
+Some tools (e.g. [JHOVE](https://jhove.openpreservation.org/) follow the XML validation logic and differentiate “well-formedness” (i.e. the *File* conforms to purely syntactic requirements) and “validity” (i.e. the *File* also complies with semantic requirements). In addition, tools may return additional information or warnings, e.g. if unrecognised or private chunks are found in the *File*. In such cases,the output of a validation process should include some additional free-text besides a short controlled term (e.g. “well-formed and valid”, “well-formed but not valid”, “not well-formed”)..
+
+This CPP does not prescribe the action the TDA should undertake if File Format Validation returns errors, but rather includes fallback solutions, such as 1) ingesting the *File* as it is with warnings, 2) requesting a new delivery or searching for a suitable replacement, or 3) trying to repair the *File* (by triggering CPP-027 File Repair). One of these solutions should generally be preferred over rejecting the *Object*.
+
+Format validation is a recommended process to detect potential risks caused by incorrect format structures. However, its application must be carefully evaluated based on organisational capacities and the digital Objects of investigation (see on this subject Paul Wheatley’s blog post “A valediction for validation?”, 11 October 2018, available at [https://www.dpconline.org/blog/a-valediction-for-validation](https://www.dpconline.org/blog/a-valediction-for-validation)). Depending on organisational capacities, and the control the TDA has over digital Objects (indeed, the TDA may be able to require new, valid Files from a digitisation contractor or a depositor subject to legal deposit; on the other hand, it may be impossible for a private donor to meet the requirements for valid Files), it may decide to not perform File Format Validation due to: * The lack of suitable tool(s), in particular for proprietary formats; * The lack of skilled staff to handle errors returned by the process.
+
+## Authors
+- Bertrand Caron
+
+## Contributors
+- Kris Dekeyser
+
+## Evaluators
+- Matthew Addis
+- Maria Benauer
+- Laura Molloy
+
+## Process Steps
+
+| Step | Description                                                                                                                                                   | Inputs                                                                                                                                    | Outputs                                                                                                                                                                                      |
+|:----:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1    | According to input, select the right tool(s) to perform format validation. If the provided Metadata is not sufficient, perform CPP-009 (Metadata extraction). | - File format identifier<br>- Technical metadata<br>- File format policy - Validation                                                     | - [Validation tool(s)](https://coptr.digipres.org/index.php/Validation)<br><br>(Format validation is generally performed by a single tool. Nevertheless, for some complex formats like PDF, TDAs may want to use more than one tool to identify possible structure errors.) |
+| 2    | Apply the validation tools(s)                                                                                                                                 | - *File*<br>- [Validation tool(s)](https://coptr.digipres.org/index.php/Validation); as a default, reference parsing tools associated with the format | - Raw validation output<br>- Errors and warnings                                                                                                                                             |
+| 3    | Check validity status                                                                                                                                         | - Errors and warnings<br>- Raw validation output                                                                                          | - Confirm Validity status (step 4)<br>- Invalid file detected (step 3a)                                                                                                                      |
+| 3a   | Conduct technical analysis (e.g. rendition and other uses of the File, comparison with the file format specification, etc.)                                   | - Errors and warnings<br>- Validity status<br>- File format specification                                                                 | - Results of manual tests                                                                                                                                                                    |
+| 3b   | Assess and choose one among the following outputs (in the given order)                                                                                        | - Results of manual tests                                                                                                                 | - Retain the File as it is<br>- Find another valid Representation (e.g. by establishing contact with the producer)<br>- Trigger File Repair to correct the file structure<br>- Reject the *Object* |
+| 4    | Document the process                                                                                                                                          |                                                                                                                                           | - Provenance metadata                                                                                                                                                                        |
+
