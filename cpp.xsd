@@ -546,11 +546,10 @@
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
-			<xsd:element name="alerts">
+			<xsd:element name="alerts" minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="alert" maxOccurs="unbounded" type="xsd:string"
-							minOccurs="0">
+						<xsd:element name="alert" maxOccurs="unbounded" type="xsd:string"							>
 							<xsd:annotation>
 								<xsd:documentation xml:lang="en">Alert monitored (inputs) or raised (outputs) by the CPP.</xsd:documentation>
 							</xsd:annotation>
