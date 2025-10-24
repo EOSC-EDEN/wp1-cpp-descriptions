@@ -302,8 +302,7 @@
                 <cpp:institutionType>Research infrastructure</cpp:institutionType>
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>English</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -316,8 +315,7 @@
                 <cpp:institutionType>Research infrastructure</cpp:institutionType>
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>English</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Integrityassurance</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -327,8 +325,7 @@
                 <cpp:institutionCountry>FI</cpp:institutionCountry>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>English</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports/2024</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -338,8 +335,7 @@
                 <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>English</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://www.archivematica.org/en/docs/storage-service-0.23/fixity/#fixity-docs</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
@@ -349,8 +345,7 @@
                 <cpp:institutionCountry>AT</cpp:institutionCountry>
                 <cpp:institutionType>Discipline-specific data repository</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>English</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://aussda.at/fileadmin/user_upload/p_aussda/Documents/kaczmirek_bischof_2024_preservation_fixity_checks_v1_0-1.pdf</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
