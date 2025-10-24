@@ -45,7 +45,7 @@
         <p>Periodic integrity checks are performed separately on all accessible copies of a target
             <em>Information Package</em> (for example, off-line copies in a dark archive are usually excluded from
             periodic integrity checks). Copies on different storage media might be subjected to different
-            intervals of checks. The results of the integrity checks, including Fixity Metadata, should be
+            intervals of checks. The results of the integrity checks, including <em>Fixity Metadata</em>, should be
             documented as preservation actions.</p>
         <p>If integrity checks discover problems in the integrity of the target <em>Information Packages</em>, this
             information must be clearly documented in a digital archive's system, so that the broken
@@ -94,7 +94,7 @@
                     <cpp:supplier>CPP-012</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Gather a batch of targets to check and their corresponding Fixity metadata (e.g. <em>Information Packages</em> whose last-checked timestamp is older than the specified checking frequency)</p>
+                    <p>Gather a batch of targets to check and their corresponding <em>Fixity metadata</em> (e.g. <em>Information Packages</em> whose last-checked timestamp is older than the specified checking frequency)</p>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
@@ -103,14 +103,14 @@
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Fixity metadata</p>
+                        <p><em>Fixity metadata</em></p>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2a">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Fixity metadata</p>
+                        <p><em>Fixity metadata</em></p>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-001</cpp:supplier>
                 </cpp:input>
@@ -119,14 +119,14 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Fixity metadata</p>
+                        <p><em>Fixity metadata</em></p>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2b">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Fixity metadata (algorithms)</p>
+                        <p><em>Fixity metadata</em> (algorithms)</p>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
@@ -134,14 +134,14 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Fixity metadata</p>
+                        <p><em>Fixity metadata</em></p>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2c">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Fixity metadata</p>
+                        <p><em>Fixity metadata</em></p>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
@@ -175,7 +175,7 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Fixity metadata (timestamp)</p>
+                        <p><em>Fixity metadata</em> (timestamp)</p>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
