@@ -48,7 +48,7 @@
             intervals of checks. The results of the integrity checks, including Fixity Metadata, should be
             documented as preservation actions.</p>
         <p>If integrity checks discover problems in the integrity of the target <em>Information Packages</em>, this
-            information must be clearly documented in a digital archive’s system, so that the broken
+            information must be clearly documented in a digital archive's system, so that the broken
             <em>Information Packages</em> can be restored from valid copies (see CPP-004 Data Corruption
             Management).</p>
     </cpp:descriptionAndScope>
@@ -228,13 +228,6 @@
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <p>The timestamp of the <em>AIPs</em>' checksums needs to be updated to keep track of the last successful check.</p>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Triggers</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <p>In case of broken target <em>Information Packages</em>, they must be marked for repair.</p>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
