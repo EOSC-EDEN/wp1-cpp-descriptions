@@ -1,64 +1,67 @@
+:root {
+    --main-width: 800px;
+    --main-margin: 40px;
+    --main-font-family: Arial, sans-serif;
+    --main-font-size: 12pt;
+    --main-line-height: 1.5;
+    --main-background-color: #fff;
+    --main-color: #000;
+    --border-color: #222;
+    --header-background-color: #e0e0e0;
+    --table-font-size: 12pt;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-    margin: 40px;
+    font-family: var(--main-font-family);
+    font-size: var(--main-font-size);
+    line-height: var(--main-line-height);
+    margin: var(--main-margin);
+    max-width: var(--main-width);
+    background-color: var(--main-background-color);
+    color: var(--main-color);s
 }
 
 h1 {
-    font-size: 18pt;
+    font-size: 26pt;
+    font-weight: normal;
 }
 
 h2 {
-    font-size: 14pt;
+    font-size: 20pt;
+    font-weight: normal;
     margin-top: 20px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
 }
 
 h3 {
-    font-size: 12pt;
+    font-size: 16pt;
+    font-weight: normal;
     margin-top: 15px;
+}
+
+h4 {
+    font-size: 14pt;
+    font-weight: normal;
+    margin-top: 10px;
 }
 
 table {
     border-collapse: collapse;
     margin: 10px 0;
     width: 100%;
-    border: 1px solid #000;
-    font-size: 10pt;
+    border: 2px solid var(--border-color);
+    font-size: var(--table-font-size);
 }
 
 th,
 td {
-    border: 1px solid #ccc;
+    border: 2px solid var(--border-color);
     padding: 8px;
     text-align: left;
     vertical-align: top;
 }
 
 th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-table.header-table td:first-child,
-table.process-table th:first-child {
-    width:
-        15%;
-}
-
-table.header-table td {
-    border: none;
-    padding: 2px 8px;
-}
-
-table.header-table {
-    width: auto;
-    margin-left: 20px;
-    border: 1px solid #ccc;
-}
-
-table.header-table tr:first-child td {
+    background-color: var(--header-background-color);
     font-weight: bold;
 }
 
@@ -68,5 +71,5 @@ table.intro td:first-child {
 
 table.intro td.history {
     font-weight: normal;
-    background-color: #fff;
+    background-color: var(--main-background-color);
 }
