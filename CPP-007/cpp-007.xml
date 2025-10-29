@@ -525,8 +525,7 @@
                 <cpp:institutionType>Research infrastructure</cpp:institutionType>
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest</cpp:hyperlink>
             </cpp:linkToDocumentation>
@@ -537,8 +536,7 @@
                 <cpp:institutionCountry>FI</cpp:institutionCountry>
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://digitalpreservation.fi/en/services/quality_reports/2024</cpp:hyperlink>
                 <cpp:comment>Monitoring of the Digital Preservation Services: 
@@ -552,8 +550,7 @@
                 <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://www.archivematica.org/en/docs/archivematica-1.14/user-manual/transfer/scan-for-viruses/#scan-for-viruses</cpp:hyperlink>
             </cpp:linkToDocumentation>
@@ -566,8 +563,7 @@
                 <cpp:institutionType>Discipline-specific data repository</cpp:institutionType>
                 <cpp:institutionType>Discipline-agnostic data repository</cpp:institutionType>
             </cpp:institution>
-            <cpp:documentationLanguage>en</cpp:documentationLanguage>
-            <cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf</cpp:hyperlink>
                 <cpp:comment>"Virus-scans are performed periodically for ingest by 
