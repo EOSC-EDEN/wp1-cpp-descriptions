@@ -188,7 +188,7 @@
             <cpp:metadata>
                 <cpp:metadataElement>Provenance metadata </cpp:metadataElement>
                 <cpp:metadataElement>Storage management information (new version identifier)</cpp:metadataElement>
-                <cpp:metadataElement>Updated Metadata</cpp:metadataElement>
+                <cpp:metadataElement>Updated Descriptive, Technical and/or Structural Metadata</cpp:metadataElement>
             </cpp:metadata>
         </cpp:outputs>
         <cpp:triggerEvents>
