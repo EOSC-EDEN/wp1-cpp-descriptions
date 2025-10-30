@@ -58,3 +58,11 @@ Feedback is sought by the Work Package 1 Task 1.2 group both on the structure an
 # In the root, run
 python generate-md.py
 ```
+
+## Generating HTML documents
+
+An experiment is also going on with XSL transformation to HTML and, from that point, to PDF.
+
+In order to use the experimental `cpp2html.xsl` file to generate an HTML version from the CPP XML files, you can use any XSL processor (Saxon, Xalan, etc.). In the example below, the [xsltproc](https://linux.die.net/man/1/xsltproc) is used:
+
+`xsltproc cpp2html.xsl CPP-009/cpp-009.xml > cpp-009.htm`
