@@ -3,13 +3,13 @@
 **Short Definition:** Information packages are virus checked, with appropriate facilities for quarantine.
 
 ## Description and Scope
-Virus scanning is the process of examining *Files* as proposed for ingestion into an archive for the presence of malicious software (i.e. malware) such as viruses, trojans, worms, spyware, and ransomware etc. The primary goal of virus scanning is to detect and prevent such harmful code from entering the digital archive to safeguard the integrity and trustworthiness of the preserved content. This security measure protects not only the archival system itself, but also users or other connected systems that access or receive content from the archive. Effective virus scanning is a core step of the ingest process and an essential strategic component in Risk Mitigation (CPP-012), ensuring that the archive remains a secure and reliable repository for digital assets. It is a means to mitigate deliberate, human-made threats to digital preservation.
+Virus scanning is the process of examining*Files*as proposed for ingestion into an archive for the presence of malicious software (i.e. malware) such as viruses, trojans, worms, spyware, and ransomware etc. The primary goal of virus scanning is to detect and prevent such harmful code from entering the digital archive to safeguard the integrity and trustworthiness of the preserved content. This security measure protects not only the archival system itself, but also users or other connected systems that access or receive content from the archive. Effective virus scanning is a core step of the ingest process and an essential strategic component in**Risk Mitigation**(CPP-012), ensuring that the archive remains a secure and reliable repository for digital assets. It is a means to mitigate deliberate, human-made threats to digital preservation.
 
-Virus scanning is first and foremost applied during ingest, acting as a checkpoint before *Files* are fully accepted and integrated into a TDA's holdings. In addition, it may be triggered during preservation (archival storage) or dissemination. This may be done either to ensure that no viruses have infected the content after ingest, or to make sure that disseminated content has been checked using up-to-date signature databases.
+Virus scanning is first and foremost applied during ingest, acting as a checkpoint before*Files*are fully accepted and integrated into a TDA's holdings. In addition, it may be triggered during preservation (archival storage) or dissemination. This may be done either to ensure that no viruses have infected the content after ingest, or to make sure that disseminated content has been checked using up-to-date signature databases.
 
-A TDA must employ virus scanning tools and malware signature databases to ensure effective and up-to-date threat detection. This includes a process to maintain and frequently update a malware signature database that is used by the virus scanning tools. The system must provide secure workspaces and guidelines for managing detected threats, which typically involves isolating suspicious *Files* in a staging or quarantine area to prevent potential harm to the storage. The TDA can reject and remove the contaminated *Files* or *Information packages* during ingest in cases where decontamination is not a viable option.
+A TDA must employ virus scanning tools and malware signature databases to ensure effective and up-to-date threat detection. This includes a process to maintain and frequently update a malware signature database that is used by the virus scanning tools. The system must provide secure workspaces and guidelines for managing detected threats, which typically involves isolating suspicious*Files*in a staging or quarantine area to prevent potential harm to the storage. The TDA can reject and remove the contaminated*Files*or*Information packages*during ingest in cases where decontamination is not a viable option.
 
-All scanning activities, detected threats, and subsequent actions (i.e. quarantine, rejection, deletion) must be documented as part of the ingest record and preservation actions as *Provenance metadata*. This documentation contributes to the audit trail of the ingested *Files* and should be incorporated into broader Object Management Reporting (CPP-013).
+All scanning activities, detected threats, and subsequent actions (i.e. quarantine, rejection, deletion) must be documented as part of the ingest record and preservation actions as*Provenance metadata*. This documentation contributes to the audit trail of the ingested*Files*and should be incorporated into broader**Object Management Reporting**(CPP-013).
 
 ## Authors
 - Mattias Levlin
@@ -23,32 +23,48 @@ All scanning activities, detected threats, and subsequent actions (i.e. quaranti
 - Maria Benauer
 - Fen Zhang
 
+## Process Definition
+
+**Inputs:**
+- Information package(s)
+- Malware signature database(s)
+- Guidelines for managing detected threats
+
+**Outputs:**
+- Provenance metadata
+- Scan report
+
+**Trigger Events:**
+- Periodic quality check of*Files* (see `CPP-019`)
+- Pre-access check of DIPs (see `CPP-025`)
+- Ingest (see `CPP-029`)
+
 ## Process Steps
 
-| Step | Description                                                                                                                                                                                                                                                                                                                          | Inputs                                                | Outputs                                                                                                                                                                                                                                                                                                                                                                      |
-|:----:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| 1    | Receive and Stage Content: Content arrives and is placed in a temporary, isolated staging area designated for pre-ingest checks                                                                                                                                                                                                      | - *SIP(s)*                                            | - *SIP(s)* in the staging area                                                                                                                                                                                                                                                                                                                                               |
-| 2    | Select *AIP(s)* for virus scan and copy their *Files* to the staging area for checks                                                                                                                                                                                                                                                 | - *AIP(s)*                                            | - *AIP(s)* in the staging area                                                                                                                                                                                                                                                                                                                                               |
-| 3    | Perform Scan: Initiate a comprehensive scan of all *Files* within the staged *Information packages*                                                                                                                                                                                                                                  | - *File(s)* in staging area<br>- Configured virus scanners | - Scan report/log (indicating clean *Files*, and any detected threats with file paths and malware names)                                                                                                                                                                                                                                                                     |
-| 4    | Evaluate Scan Results                                                                                                                                                                                                                                                                                                                | - Scan report/log                                     | - All *Files* reported as clean (step 7)<br>- Any *Files* reported as infected or suspicious (step 5)                                                                                                                                                                                                                                                                        |
-| 5    | Handling infected or suspicious *Files*, the TDA conducts a first analysis                                                                                                                                                                                                                                                           | - Infected/suspicious file(s)<br>- Scan report<br>- Guidelines for managing detected threats | - Decontamination recommended: Move the identified *File(s)* to a secure quarantine area, isolated from other systems and content for further analysis and potential disinfection, and inform dedicated staff members (step 6)<br>- Rejection recommended: Mark the *File(s)* (or the entire *SIP(s)* (as in case of ingest) for rejection. Notify the producer with reasons, if appropriate and/or defined by policy (end of the process) |
-| 6    | In-Depth Analysis: The personnel analyses the threat, leading to multiple potential outcomes                                                                                                                                                                                                                                         | - Quarantined file(s)<br>- Notification to staff      | - False positive identified: the detected malware does not pose a threat. Whitelist the threat and move the *Files* from quarantine back to the staging (loop back to step 1)<br>- Decontamination required and possible: The TDA disinfects the *Files* and moves the *Files* from quarantine back to the staging (loop back to step 1)<br>- Decontamination required but not possible: Notify stakeholders: The TDA notifies the stakeholders that their content is at risk and that it most likely must be deleted and re-submitted. The *Files* are not moved away from the quarantine area. This is a more likely outcome for AIP *Files* that are scanned during the preservation (triggered by CPP-019). (step 7) |
-| 7    | Record the virus scan and its Outcome as a Preservation Event<br /> This documentation should include: * Datetime of scan * Scanner software name * Virus definition file version/date * Files scanned * Outcome for each file (e.g., 'clean', 'infected - [virus_name]', 'quarantined', 'rejected'). * Any additional actions taken | - Scan report<br>- Actions taken (quarantine, disinfection, rejection) | - *Provenance metadata*                                                                                                                                                                                                                                                                                                                                                      |
-| 8    | Proceed with Clean Content or finalise Rejection: * If content is clean: release Files from the staging area or proceed with ingest * If any relevant content was rejected: Finalise the rejection process and archive the documentation                                                                                             | - Clean *File(s)*<br>- Documentation of scan event    | - Clean *File(s)* passed to the next ingest stage, or rejection process completed                                                                                                                                                                                                                                                                                            |
+| Step | Description                                                                                                                     | Inputs                                                | Outputs                                                                                                                                                                                                                                                                                                                                                                  |
+| :--- | :------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Receive and Stage Content: Content arrives and is placed in a temporary, isolated staging area designated for pre-ingest checks | - *SIP(s)*                                            | - *SIP(s)*in the staging area                                                                                                                                                                                                                                                                                                                                            |
+| 2    | Select*AIP(s)*for virus scan and copy their*Files*to the staging area for checks                                                | - *AIP(s)*                                            | - *AIP(s)*in the staging area                                                                                                                                                                                                                                                                                                                                            |
+| 3    | Perform Scan: Initiate a comprehensive scan of all*Files*within the staged*Information packages*                                | - *File(s)*in staging area<br>- Configured virus scanners | - Scan report/log (indicating clean*Files*, and any detected threats with file paths and malware names)                                                                                                                                                                                                                                                                  |
+| 4    | Evaluate Scan Results                                                                                                           | - Scan report/log                                     | - All*Files*reported as clean (step 7)<br>- Any*Files*reported as infected or suspicious (step 5)                                                                                                                                                                                                                                                                        |
+| 5    | Handling infected or suspicious*Files*, the TDA conducts a first analysis                                                       | - Infected/suspicious file(s)<br>- Scan report<br>- Guidelines for managing detected threats | - Decontamination recommended: Move the identified*File(s)*to a secure quarantine area, isolated from other systems and content for further analysis and potential disinfection, and inform dedicated staff members (step 6)<br>- Rejection recommended: Mark the*File(s)*(or the entire*SIP(s)*(as in case of ingest) for rejection. Notify the producer with reasons, if appropriate and/or defined by policy (end of the process) |
+| 6    | In-Depth Analysis: The personnel analyses the threat, leading to multiple potential outcomes                                    | - Quarantined file(s)<br>- Notification to staff      | - False positive identified: the detected malware does not pose a threat. Whitelist the threat and move the*Files*from quarantine back to the staging (loop back to step 1)<br>- Decontamination required and possible: The TDA disinfects the*Files*and moves the*Files*from quarantine back to the staging (loop back to step 1)<br>- Decontamination required but not possible: Notify stakeholders: The TDA notifies the stakeholders that their content is at risk and that it most likely must be deleted and re-submitted. The*Files*are not moved away from the quarantine area. This is a more likely outcome for AIP*Files*that are scanned during the preservation (triggered by CPP-019). (step 7) |
+| 7    | Record the virus scan and its Outcome as a Preservation Event This documentation should include:<br>•  Datetime of scan<br>•  Scanner software name<br>•  Virus definition file version/date<br>•  Files scanned<br>•  Outcome for each file (e.g., 'clean', 'infected - [virus_name]', 'quarantined', 'rejected').<br>•  Any additional actions taken | - Scan report<br>- Actions taken (quarantine, disinfection, rejection) | - *Provenance metadata*                                                                                                                                                                                                                                                                                                                                                  |
+| 8    | Proceed with Clean Content or finalise Rejection:<br>•  If content is clean: release Files from the staging area or proceed with ingest<br>•  If any relevant content was rejected: Finalise the rejection process and archive the documentation | - Clean*File(s)*<br>- Documentation of scan event     | - Clean*File(s)*passed to the next ingest stage, or rejection process completed                                                                                                                                                                                                                                                                                          |
 
 ## Rationale / Worst Case
 
-| Purpose                                                                               | Worst Case                                                             |
-|:-------------------------------------------------------------------------------------:|:----------------------------------------------------------------------:|
-| Detection of malware in *SIP(s)*                                                      | Ingest of contaminated *Files*, risking destruction of the entire TDA. |
-| Process to handle and potentially reject and delete infected *SIP(s)*                 | Ingest of contaminated *Files*, risking destruction of the entire TDA  |
-| Processes to maintain up-to-date malware signature databases and virus scanning tools | Ingest of contaminated *Files,* risking destruction of the entire TDA  |
-| Detection of malware in AIP(s)                                                        | Risking destruction of the entire TDA.                                 |
+| Purpose                                                                               | Worst Case                                                            |
+| :------------------------------------------------------------------------------------ | :-------------------------------------------------------------------- |
+| Detection of malware in*SIP(s)*                                                       | Ingest of contaminated*Files*, risking destruction of the entire TDA. |
+| Process to handle and potentially reject and delete infected*SIP(s)*                  | Ingest of contaminated*Files*, risking destruction of the entire TDA  |
+| Processes to maintain up-to-date malware signature databases and virus scanning tools | Ingest of contaminated*Files,*risking destruction of the entire TDA   |
+| Detection of malware in AIP(s)                                                        | Risking destruction of the entire TDA.                                |
 
 ## Relationships
 
 | Type                    | Related CPP | Description                                                                                                                                                                                                                                                                                                                         |
-|:-----------------------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| :---------------------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Requires                | CPP-012     | Virus scanning is a direct risk mitigation activity against threats to content integrity and system security triggered by CPP-012.                                                                                                                                                                                                  |
 | Required by             | CPP-013     | Reports on virus scanning activities, frequency of threats, and outcomes of the actions provide essential input for operational management and risk assessment.                                                                                                                                                                     |
 | Required by             | CPP-019     | Virus scanning is performed as a step in the overall Data Quality Assessment process.                                                                                                                                                                                                                                               |
@@ -65,27 +81,27 @@ All scanning activities, detected threats, and subsequent actions (i.e. quaranti
 - **OAIS**
   - **Term:** Quality Assurance (within Ingest), Security
   - **Section:** 4.2.3.3
-                
-
-4.3.4
+    
+    4.3.4
 - **PREMIS**
   - **Term:** Event (with eventType 'virus check', Agent (the scanning software)
   - **Section:** Event Entity
-                
-
-Agent Entity
-                
-
-eventType Controlled vocabulary (2.2)
+    
+    Agent Entity
+    
+    eventType Controlled vocabulary (2.2)
 
 ## Reference Implementations
 
 ### Use Cases
 - **Virus Scan as Part of Ingest at CSC**
-  - **Institution:** CSC – IT Center for Science Ltd., Finland (FI)
+  - **Institution:** CSC – IT Center for Science Ltd., Finland
   - **Documentation:** https://www.clamav.net/
   - **Problem:** Files must be scanned for viruses as part of the ingest pipeline to protect the TDA from viruses
-  - **Solution:** `Python script to detect viruses using ClamAv virus scanner<br /><br /> def check_virus(path):<br /> """Scan files in directory with ClamAV virus scanner.<br /> ...`
+  - **Solution:**
+```python
+Python script to detect viruses using ClamAv virus scanner def check_virus(path): """Scan files in directory with ClamAV virus scanner.
+```
 
 ### Public Documentation
 - **TIB – Leibniz Information Centre for Science and Technology and University Library**
@@ -98,4 +114,8 @@ eventType Controlled vocabulary (2.2)
 - **DANS (Data Archiving and Networked Services), Netherlands**
   - **Link:** https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf
   - **Comment:** "Virus-scans are performed periodically for ingest by the web interface and standard for all other ingest ways (like SWORD)."
+
+
+
+---
 

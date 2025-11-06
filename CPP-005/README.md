@@ -31,10 +31,35 @@ Identifiers may reveal the hierarchical relationships in the identifier string (
 - Felix Burger
 - Maria Benauer
 
+## Process Definition
+
+**Inputs:**
+- Information package
+- Object
+- Identifier creation and management policy
+
+**Outputs:**
+- Identifier-enriched Information package, Object(s) or Metadata
+- Provenance metadata
+
+**Trigger Events:**
+- Pre-ingest transfer preparation (see `CPP-029`)
+- Ingestion workflow (see `CPP-029`)
+- Creation of new Files or Representations (see `CPP-028`)
+- Replacement of corrupted Files (see `CPP-004`)
+- Data export (see `CPP-006`)
+- Data replication (see `CPP-011`)
+- Data migration (see `CPP-014`)
+- Data normalisation (see `CPP-026`)
+- Metadata ingest and creation (see `CPP-016`)
+- Data version update (see `CPP-021`)
+- Broken File needs a new identifier (see `CPP-027`)
+- Information package, File or Metadata is removed from the TDA holdings (see `CPP-017`)
+
 ## Process Steps
 
 | Step | Description                                                                                                             | Inputs                                                                                                   | Outputs                                           |
-|:----:|:-----------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------:|:-------------------------------------------------:|
+| :--- | :---------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
 | 1a   | Reservation of identifier prior to new entity assignment (step 2)                                                       | - A producer or a TDA has a need to reserve an identifier, (e.g. a PID, prior to the entity being added) |                                                   |
 | 1b   | New entity added or a need to assign an identifier to an existing entity (step 2)                                       | - *Object*<br>- *Information package*<br>- *Metadata*                                                    |                                                   |
 | 1c   | Entity with an identifier has changed (step 4)                                                                          | - *Object*<br>- *Information package*<br>- *Metadata*                                                    |                                                   |
@@ -49,13 +74,13 @@ Identifiers may reveal the hierarchical relationships in the identifier string (
 ## Rationale / Worst Case
 
 | Purpose                                                                                                                                                                       | Worst Case                                                                                                                                                    |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | The rationale for implementing PIDs in TDAs stems from fundamental challenges in maintaining long-term access to digital objects and the core mission of preservation itself. | Link rot as well as problems and challenges in: Internal data management problemsm, System migrations, Format migrations, Activity tracking, Interoperability |
 
 ## Relationships
 
 | Type               | Related CPP | Description                                                                                                                                                                  |
-|:------------------:|:-----------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| :----------------- | :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Required by        | CPP-016     | While ingesting into a TDA, the Metadata should be assigned an identifier. Also, the management functions of the Metadata may require replacing and/or updating identifiers. |
 | Required by        | CPP-017     | When the life cycle of the Digital Object or File ends, the identifier should be updated to “retired” status.                                                                |
 | Required by        | CPP-021     | When an AIP gets a new version, the new AIP version must also be assigned a new identifier.                                                                                  |
@@ -76,21 +101,18 @@ Identifiers may reveal the hierarchical relationships in the identifier string (
 - **CoreTrustSeal**
   - **Term:** Persistent Identifiers
   - **Section:** R09 Preservation Plan
-                
-
-R12 Discovery and Identification
+    
+    R12 Discovery and Identification
 - **Nestor Seal**
   - **Term:** Persistent Identifiers
   - **Section:** C27 Identification
 - **ISO 16363**
   - **Term:** Persistent Identifiers
   - **Section:** 4.2.4
-                
-
-4.2.5.4
-                
-
-4.2.6.3
+    
+    4.2.5.4
+    
+    4.2.6.3
 - **OAIS**
   - **Term:** Persistent Identifiers
   - **Section:** 6.2.4
@@ -102,10 +124,13 @@ R12 Discovery and Identification
 
 ### Use Cases
 - **DOI given for a research dataset by TDA**
-  - **Institution:** CSC, Finland (Digital Preservation Service for Research Data) (FI)
+  - **Institution:** CSC, Finland (Digital Preservation Service for Research Data)
   - **Documentation:** https://wiki.eduuni.fi/x/9ZRYH
   - **Problem:** Research dataset does not have a DOI
-  - **Solution:** `Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset via a description tool or via a metadata API. When a dataset has been submitted, TDA automatically creates a DataCite description including a new DOI, and eventually it creates a corresponding publicly available website for the dataset Metadata.`
+  - **Solution:**
+```python
+Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset via a description tool or via a metadata API. When a dataset has been submitted, TDA automatically creates a DataCite description including a new DOI, and eventually it creates a corresponding publicly available website for the dataset Metadata.
+```
 
 ### Public Documentation
 - **TIB – Leibniz Information Centre for Science and Technology and University Library**
@@ -115,4 +140,8 @@ R12 Discovery and Identification
   - **Comment:** section 2.4.1.
 - **Archivematica**
   - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices
+
+
+
+---
 
