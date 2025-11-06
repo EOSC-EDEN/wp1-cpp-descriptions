@@ -46,3 +46,73 @@ Identifiers may reveal the hierarchical relationships in the identifier string (
 | 6    | Update Provenance metadata for the entity so that identifiers have a history                                            |                                                                                                          | - Provenance metadata                             |
 | 7    | If the entity is disposed: retain minimum metadata and the identifier for the disposed entity                           | - *Disposed entity*                                                                                      |                                                   |
 
+## Rationale / Worst Case
+
+| Purpose                                                                                                                                                                       | Worst Case                                                                                                                                                    |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| The rationale for implementing PIDs in TDAs stems from fundamental challenges in maintaining long-term access to digital objects and the core mission of preservation itself. | Link rot as well as problems and challenges in: Internal data management problemsm, System migrations, Format migrations, Activity tracking, Interoperability |
+
+## Relationships
+
+| Type               | Related CPP | Description                                                                                                                                                                  |
+|:------------------:|:-----------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Required by        | CPP-016     | While ingesting into a TDA, the Metadata should be assigned an identifier. Also, the management functions of the Metadata may require replacing and/or updating identifiers. |
+| Required by        | CPP-017     | When the life cycle of the Digital Object or File ends, the identifier should be updated to “retired” status.                                                                |
+| Required by        | CPP-021     | When an AIP gets a new version, the new AIP version must also be assigned a new identifier.                                                                                  |
+| Required by        | CPP-024     | Enabling Discovery should make use of identifiers.                                                                                                                           |
+| Required by        | CPP-025     | Accessing Digital Object, File(s) or Metadata should be based on identifiers as parameters.                                                                                  |
+| Required by        | CPP-029     | The ingestion workflow is responsible for assigning identifiers to various entities in TDA, such as Files and Metadata.                                                      |
+| May be required by | CPP-004     | If a File is corrupted, it may need to be repaired or replaced. During this process, a new identifier may be created.                                                        |
+| May be required by | CPP-011     | When a Digital Object or File is replicated, the replicant may be assigned a new identifier.                                                                                 |
+| May be required by | CPP-013     | The management and reporting should require that the data is identified with identifiers.                                                                                    |
+| May be required by | CPP-014     | During format migration, the migrated File format may be assigned a new identifier.                                                                                          |
+| May be required by | CPP-019     | The data quality assessment may include validating the identifiers and their linked resources.                                                                               |
+| May be required by | CPP-026     | A normalised File format may be assigned with a new identifier.                                                                                                              |
+| May be required by | CPP-027     | A repaired File may get a new identifier.                                                                                                                                    |
+| May be required by | CPP-028     | A derivative of a File may get its own identifier.                                                                                                                           |
+
+## Framework Mappings
+
+- **CoreTrustSeal**
+  - **Term:** Persistent Identifiers
+  - **Section:** R09 Preservation Plan
+                
+
+R12 Discovery and Identification
+- **Nestor Seal**
+  - **Term:** Persistent Identifiers
+  - **Section:** C27 Identification
+- **ISO 16363**
+  - **Term:** Persistent Identifiers
+  - **Section:** 4.2.4
+                
+
+4.2.5.4
+                
+
+4.2.6.3
+- **OAIS**
+  - **Term:** Persistent Identifiers
+  - **Section:** 6.2.4
+- **PREMIS**
+  - **Term:** Persistent Identifiers
+  - **Section:** Data dictionary, 1.1 objectIdentifier
+
+## Reference Implementations
+
+### Use Cases
+- **DOI given for a research dataset by TDA**
+  - **Institution:** CSC, Finland (Digital Preservation Service for Research Data) (FI)
+  - **Documentation:** https://wiki.eduuni.fi/x/9ZRYH
+  - **Problem:** Research dataset does not have a DOI
+  - **Solution:** `Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset via a description tool or via a metadata API. When a dataset has been submitted, TDA automatically creates a DataCite description including a new DOI, and eventually it creates a corresponding publicly available website for the dataset Metadata.`
+
+### Public Documentation
+- **TIB – Leibniz Information Centre for Science and Technology and University Library**
+  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-Identifyingmetadata
+- **CSC – IT Center for Science Ltd.**
+  - **Link:** https://urn.fi/urn:nbn:fi-fe2020100578094
+  - **Comment:** section 2.4.1.
+- **Archivematica**
+  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices
+

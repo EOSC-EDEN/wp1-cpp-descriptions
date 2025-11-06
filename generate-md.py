@@ -21,7 +21,7 @@ def clean_text(text):
 def element_to_markdown(element):
     """
     Recursively converts an XML element and its children to a Markdown string.
-    This version handles both paragraph structure and inline emphasis spacing.
+    This version handles paragraph structure and inline emphasis spacing.
     """
     if element is None:
         return ""
@@ -45,13 +45,19 @@ def element_to_markdown(element):
         elif tag == 'em':
             # Emphasis is inline. Just wrap the raw content. No extra spaces or newlines.
             parts.append(f"*{child_content}*")
-        elif tag == 'a':
-            href = child.get('href', '')
-            parts.append(f"[{child_content}]({href})")
+        elif tag == 'a' or tag == 'hyperlink':
+            href = child.get('href', '') or child.text
+            # If child_content is the same as the href, just show the link
+            if child_content == href:
+                parts.append(f"<{href}>")
+            else:
+                parts.append(f"[{child_content}]({href})")
         elif tag == 'ul':
             parts.append(f"\n{child_content}")
         elif tag == 'li':
             parts.append(f"\n* {clean_text(child_content)}")
+        elif tag == 'br':
+            parts.append("<br />")
         else: # Default for unknown tags
             parts.append(child_content)
         
@@ -60,8 +66,6 @@ def element_to_markdown(element):
             parts.append(child.tail)
             
     # Join all the pieces together.
-    # Then, clean the final string ONLY if we are at the top-level description element.
-    # The recursion for <p> tags handles its own cleaning, preserving the \n\n.
     final_string = "".join(parts)
 
     # Only apply the aggressive clean_text at the block level (inside the <p> case above).
@@ -74,7 +78,12 @@ def format_multiline_cell(text):
     if not text:
         return ""
     # Convert paragraph breaks and list newlines to <br> tags.
-    return text.replace('\n\n', '<br><br>').replace('\n*', '<br>*')
+    # Also handle bullet points within cells.
+    formatted_text = text.replace('\n\n', '<br><br>').replace('\n*', '<br>• ')
+    # Ensure lists within cells are properly formatted
+    if '<ul>' in text or '<li>' in text:
+        return text # Don't process html lists further
+    return formatted_text.replace('\n', '<br>')
 
 
 def format_markdown_table(headers, data):
@@ -82,10 +91,18 @@ def format_markdown_table(headers, data):
     if not data:
         return ""
 
-    col_widths = {header: len(header) for header in headers}
+    # Prepare data, converting all cell content to strings
+    safe_data = []
     for row in data:
+        new_row = {}
         for header in headers:
-            cell_content = row.get(header, "")
+            new_row[header] = str(row.get(header, ""))
+        safe_data.append(new_row)
+
+    col_widths = {header: len(header) for header in headers}
+    for row in safe_data:
+        for header in headers:
+            cell_content = row[header]
             # Find the longest line in case of multi-line content
             max_line_length = max((len(line) for line in cell_content.split('<br>')), default=0)
             col_widths[header] = max(col_widths[header], max_line_length)
@@ -93,7 +110,9 @@ def format_markdown_table(headers, data):
     header_line = "| " + " | ".join(header.ljust(col_widths[header]) for header in headers) + " |"
     separator_line = "|:" + ":|:".join("-" * col_widths[header] for header in headers) + ":|"
     data_lines = []
-    for row in data:
+    for row in safe_data:
+        # This part needs to correctly handle multi-line cells without breaking alignment
+        # The alignment is based on the longest line, so just adding the cell content is enough
         row_cells = [row.get(header, "").ljust(col_widths[header]) for header in headers]
         data_lines.append("| " + " | ".join(row_cells) + " |")
 
@@ -116,11 +135,11 @@ def parse_xml_to_markdown(xml_file):
     ns_map = {}
     if '}' in root.tag:
         uri = root.tag.split('}')[0][1:]
-        ns_map = {'ns': uri}
+        ns_map = {'cpp': uri} # Use 'cpp' as the prefix for clarity
 
     def get_path(path_str):
         if not ns_map: return path_str
-        return '/'.join(['ns:' + tag if tag and not tag.startswith('.') and tag != '*' else tag for tag in path_str.split('/')])
+        return '/'.join(['cpp:' + tag if tag and not tag.startswith('.') and tag != '*' else tag for tag in path_str.split('/')])
 
     def find(parent, path):
         if parent is None: return None
@@ -150,10 +169,9 @@ def parse_xml_to_markdown(xml_file):
     # --- 2. Extract Main Content ---
     short_definition = get_simple_text(find(root, 'shortDefinition'))
     description_and_scope_raw = element_to_markdown(find(root, 'descriptionAndScope'))
-    # Clean up the final block of text
     description_and_scope = '\n\n'.join([clean_text(p) for p in description_and_scope_raw.split('\n\n')])
     
-    # --- 3. Build Markdown String ---
+    # --- 3. Build Markdown String (Initial Part) ---
     markdown = f"# {label or 'No Label Found'}\n\n"
     if short_definition: markdown += f"**Short Definition:** {short_definition}\n\n"
     if description_and_scope: markdown += f"## Description and Scope\n{description_and_scope.strip()}\n\n"
@@ -188,6 +206,89 @@ def parse_xml_to_markdown(xml_file):
         markdown += format_markdown_table(headers, table_data) + "\n\n"
     else:
         logging.warning(f"No <step> elements found in {xml_file}.")
+
+    # --- 5. Rationale / Worst Case ---
+    rationale = find(root, 'rationaleWorstCase')
+    if rationale:
+        markdown += "## Rationale / Worst Case\n\n"
+        table_data = []
+        headers = ["Purpose", "Worst Case"]
+        purposes = findall(rationale, 'purpose')
+        for p in purposes:
+            table_data.append({
+                "Purpose": format_multiline_cell(element_to_markdown(find(p, 'purposeDescription'))),
+                "Worst Case": format_multiline_cell(element_to_markdown(find(p, 'worstCase')))
+            })
+        markdown += format_markdown_table(headers, table_data) + "\n\n"
+
+    # --- 6. CPP Relationships ---
+    relationships = find(root, 'cppRelationships')
+    if relationships:
+        markdown += "## Relationships\n\n"
+        table_data = []
+        headers = ["Type", "Related CPP", "Description"]
+        relations = findall(relationships, 'relationship')
+        for r in relations:
+            table_data.append({
+                "Type": get_simple_text(find(r, 'relationshipType')),
+                "Related CPP": get_simple_text(find(r, 'relatedCPP')),
+                "Description": format_multiline_cell(element_to_markdown(find(r, 'relationshipDescription')))
+            })
+        markdown += format_markdown_table(headers, table_data) + "\n\n"
+
+    # --- 7. Framework Mappings ---
+    mappings = find(root, 'frameworkMappings')
+    if mappings:
+        markdown += "## Framework Mappings\n\n"
+        for mapping in findall(mappings, 'mapping'):
+            framework_name = get_simple_text(find(mapping, 'frameworkName'))
+            markdown += f"- **{framework_name}**\n"
+            term = element_to_markdown(find(mapping, 'correspondingTerm'))
+            if term: markdown += f"  - **Term:** {term}\n"
+            section = element_to_markdown(find(mapping, 'correspondingSection'))
+            if section: markdown += f"  - **Section:** {section}\n"
+        markdown += "\n"
+
+    # --- 8. Reference Implementations ---
+    references = find(root, 'referenceImplementations')
+    if references:
+        markdown += "## Reference Implementations\n\n"
+        
+        # Use Cases
+        use_cases = findall(references, 'useCases/useCase')
+        if use_cases:
+            markdown += "### Use Cases\n"
+            for case in use_cases:
+                title = get_simple_text(find(case, 'useCasetitle'))
+                institution_label = get_simple_text(find(case, 'institution/institutionLabel'))
+                institution_country = get_simple_text(find(case, 'institution/institutionCountry'))
+                link = element_to_markdown(find(case, 'linkToDocumentation/hyperlink'))
+
+                markdown += f"- **{title}**\n"
+                markdown += f"  - **Institution:** {institution_label} ({institution_country})\n"
+                if link: markdown += f"  - **Documentation:** {link}\n"
+                
+                # Additional fields
+                problem = element_to_markdown(find(case, 'problemStatement'))
+                solution = element_to_markdown(find(case, 'proposedSolution'))
+                if problem: markdown += f"  - **Problem:** {problem}\n"
+                if solution: markdown += f"  - **Solution:** `{solution.strip()}`\n" # Using code block for code
+            markdown += "\n"
+
+        # Public Documentation
+        public_docs = findall(references, 'publicDocumentation')
+        if public_docs:
+            markdown += "### Public Documentation\n"
+            for doc in public_docs:
+                institution_label = get_simple_text(find(doc, 'institution/institutionLabel'))
+                link_element = find(doc, 'linkToDocumentation/hyperlink')
+                link = element_to_markdown(link_element) if link_element is not None else "N/A"
+                comment = get_simple_text(find(doc, 'linkToDocumentation/comment'))
+                
+                markdown += f"- **{institution_label}**\n"
+                markdown += f"  - **Link:** {link}\n"
+                if comment: markdown += f"  - **Comment:** {comment}\n"
+            markdown += "\n"
                 
     return markdown
 
@@ -195,18 +296,26 @@ def main():
     """Main function to find XML files and generate a README.md in each directory."""
     start_dir = '.'
     logging.info(f"Starting script in directory: {os.path.abspath(start_dir)}")
-    for root_dir, _, files in os.walk(start_dir):
-        for file in files:
-            if file.endswith('.xml'):
-                xml_path = os.path.join(root_dir, file)
-                markdown_content = parse_xml_to_markdown(xml_path)
-                if markdown_content:
-                    readme_path = os.path.join(root_dir, 'README.md')
-                    try:
-                        with open(readme_path, 'w', encoding='utf-8') as f: f.write(markdown_content)
-                        logging.info(f"Successfully generated {readme_path}\n")
-                    except IOError as e:
-                        logging.error(f"Could not write to file {readme_path}. Error: {e}\n")
+    xml_files_found = [os.path.join(root_dir, file) for root_dir, _, files in os.walk(start_dir) for file in files if file.endswith('.xml')]
+    
+    if not xml_files_found:
+        logging.warning("No XML files found in the current directory or subdirectories.")
+        logging.info("Generating README.md from hardcoded user prompt data.")
+        user_prompt_content = """<YOUR_PROMPT_XML_HERE>""" # Placeholder for the user's XML data
+        return
+
+    for xml_path in xml_files_found:
+        markdown_content = parse_xml_to_markdown(xml_path)
+        if markdown_content:
+            # Save the README in the same directory as the XML file
+            readme_path = os.path.join(os.path.dirname(xml_path), 'README.md')
+            try:
+                with open(readme_path, 'w', encoding='utf-8') as f:
+                    f.write(markdown_content)
+                logging.info(f"Successfully generated {readme_path}\n")
+            except IOError as e:
+                logging.error(f"Could not write to file {readme_path}. Error: {e}\n")
+
 
 if __name__ == "__main__":
     main()

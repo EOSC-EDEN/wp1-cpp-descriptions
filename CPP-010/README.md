@@ -39,3 +39,63 @@ Format validation is a recommended process to detect potential risks caused by i
 | 3b   | Assess and choose one among the following outputs (in the given order)                                                                                        | - Results of manual tests                                                                                                                 | - Retain the File as it is<br>- Find another valid Representation (e.g. by establishing contact with the producer)<br>- Trigger File Repair to correct the file structure<br>- Reject the *Object* |
 | 4    | Document the process                                                                                                                                          |                                                                                                                                           | - Provenance metadata                                                                                                                                                                        |
 
+## Rationale / Worst Case
+
+| Purpose                                                                                                                                                                                                  | Worst Case |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------:|
+| Format validation may identify structural errors that would cause issues when attempting to render or transform the *File*. In particular, truncated *File* can be identified by File Format Validation. | /          |
+
+## Relationships
+
+| Type                    | Related CPP | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|:-----------------------:|:-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Requires                | CPP-008     | File Format Validation requires a specialised tool. In general, the result of File Format Identification is enough to determine which tool should be used.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| May require             | CPP-009     | Depending on the precision of the format registry used in the File Format Identification process, the resulting information may be insufficient for selecting the right validation tool. In such cases, additional Metadata from an extraction tool may be required. For example, if an organisation uses Unix File as its identification tool, which does not distinguish between different PDF “flavours”, and wants to validate PDF/A against the PDF/A standard. In that case, metadata extraction will be necessary to identify the conformance level and select veraPDF as the suitable validation tool. |
+| Required by             | CPP-013     | File Format Validation reports essential information on the well-formedness and validity of the Objects; validation errors; and data on the tools used in the process.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Required by             | CPP-014     | File Format Validation should be undertaken after File Migration was performed to ensure that the target *File(s)* or *Representation(s)* are valid..                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Required by             | CPP-015     | In order to have a decent level of confidence in the rendering process, the file format needs to be validated.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Required by             | CPP-023     | Risks can be related to specific file format erroneous structures                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Required by             | CPP-027     | File Repair is generally triggered by File Format Validation and is one of several ways to handle errors from this CPP.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| May be required by      | CPP-029     | A TDA may validate the format of the submitted Files in the ingest phase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Not to be confused with | CPP-007     | Both processes scan the Files to ensure that they are suitable for preservation. File Format Validation checks if a File conforms to its purported format specification (e.g. is this a valid PDF/A File?), while Virus Scanning checks for malware, regardless of format validity.                                                                                                                                                                                                                                                                                                                            |
+| Not to be confused with | CPP-008     | File Format Identification is only about identifying the format while File Format Validation describes full scanning of the File to ensure it complies with the format standard.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+
+## Framework Mappings
+
+- **CoreTrustSeal**
+  - **Section:** CTS does not explicitly mention format validation but it is in the scope of section Quality Assurance (R10) and understood as one of the “quality control checks in place to ensure the completeness and understandability of data”.
+- **Nestor Seal**
+  - **Section:** Format validation is not explicitly mentioned by Nestor Seal but is in scope of C21 “Submission Information Packages”; in particular, in the question “Which measures exist for validating the conformity of submission information packages?”.
+- **ISO 16363**
+  - **Term:** “checking that file formats are what they claim to be”
+  - **Section:** Section 4.1.5: “The repository shall have an ingest process which verifies each SIP for completeness and correctness”
+- **OAIS**
+  - **Term:** “validation of SIP data”
+  - **Section:** This operation is also in scope of what OAIS calls “validation of SIP data” in section 2.6.3 “Producer interaction”, where the standard suggests that the “validity” of SIPs are negotiated between the producer and the archive.
+- **PREMIS**
+  - **Term:** (Format) validation
+  - **Section:** Section: "Non-core metadata", subsection: "Quirks and anomalies" (p. 262).
+                
+
+Section: "Fixity, integrity, authenticity", p. 258.
+
+## Reference Implementations
+
+### Use Cases
+- **Format validation of born-digital sound**
+  - **Institution:** Bibliothèque nationale de France (FR)
+  - **Problem:** BnF decided to validate *Files* to identify transfer issues. However, the substantial volume of data and the considerable processing time have presented significant challenges to the performance and scalability of the validation operation.
+  - **Solution:** `FLAC *Files* are verified with the [flac command-line tool](https://xiph.org/flac/documentation_tools_flac.html), which ensures both the overall *File*'s internal integrity and that of every individual frame within the audio stream. This is achieved through calculation of the CRC32 checksum for each frame. As this process is labour-intensive, the choice was made to do it by sampling.
+                    
+
+As the producer is generally a major label with trained professionals in the domain of audio data, the chosen error handling method is to request a new, hopefully valid *File*.`
+
+### Public Documentation
+- **TIB – Leibniz Information Centre for Science and Technology and University Library**
+  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest
+- **CSC – IT Center for Science Ltd.**
+  - **Link:** https://urn.fi/urn:nbn:fi-fe2025040925236
+  - **Comment:** section 5.2
+- **Archivematica**
+  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization
+
