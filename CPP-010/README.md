@@ -30,23 +30,29 @@ Format validation is a recommended process to detect potential risks caused by i
 
 ## Process Definition
 
-**Inputs:**
-- File
-- File format specification
-- File format policy - Validation
+### Inputs
 
-**Outputs:**
-- Provenance metadata (Validity status)
-- Technical Metadata
-- Errors and Warnings
+| Type     | Input                           |
+| :------- | :------------------------------ |
+| Data     | File                            |
+| Guidance | File format specification       |
+| Guidance | File format policy - Validation |
 
-**Trigger Events:**
-- Ingest (see `CPP-029`)
-- Re-run of format validation because of the release of a new validation tool or tool version
-                    
+### Outputs
 
-(Because validation tools may evolve, especially for complex formats, re-assessing the validity of files already in storage is advised.)
-- Re-run of format identification and discrepancy between previous and current result (see `CPP-008`)
+| Type     | Output                                |
+| :------- | :------------------------------------ |
+| Metadata | Provenance metadata (Validity status) |
+| Metadata | Technical Metadata                    |
+| Metadata | Errors and Warnings                   |
+
+### Trigger Events
+
+| Description                                                                                                                              | Corresponding CPP |
+| :--------------------------------------------------------------------------------------------------------------------------------------- | :---------------- |
+| Ingest                                                                                                                                   | `CPP-029`         |
+| Re-run of format validation because of the release of a new validation tool or tool version<br>                    <br><br>(Because validation tools may evolve, especially for complex formats, re-assessing the validity of files already in storage is advised.) |                   |
+| Re-run of format identification and discrepancy between previous and current result                                                      | `CPP-008`         |
 
 ## Process Steps
 
@@ -82,44 +88,32 @@ Format validation is a recommended process to detect potential risks caused by i
 
 ## Framework Mappings
 
-- **CoreTrustSeal**
-  - **Section:** CTS does not explicitly mention format validation but it is in the scope of section Quality Assurance (R10) and understood as one of the “quality control checks in place to ensure the completeness and understandability of data”.
-- **Nestor Seal**
-  - **Section:** Format validation is not explicitly mentioned by Nestor Seal but is in scope of C21 “Submission Information Packages”; in particular, in the question “Which measures exist for validating the conformity of submission information packages?”.
-- **ISO 16363**
-  - **Term:** “checking that file formats are what they claim to be”
-  - **Section:** Section 4.1.5: “The repository shall have an ingest process which verifies each SIP for completeness and correctness”
-- **OAIS**
-  - **Term:** “validation of SIP data”
-  - **Section:** This operation is also in scope of what OAIS calls “validation of SIP data” in section 2.6.3 “Producer interaction”, where the standard suggests that the “validity” of SIPs are negotiated between the producer and the archive.
-- **PREMIS**
-  - **Term:** (Format) validation
-  - **Section:** Section: "Non-core metadata", subsection: "Quirks and anomalies" (p. 262).
-    
-    Section: "Fixity, integrity, authenticity", p. 258.
+| Framework     | Term                                                   | Section                                                                                                                                                                                                                                         |
+| :------------ | :----------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CoreTrustSeal |                                                        | CTS does not explicitly mention format validation but it is in the scope of section Quality Assurance (R10) and understood as one of the “quality control checks in place to ensure the completeness and understandability of data”.            |
+| Nestor Seal   |                                                        | Format validation is not explicitly mentioned by Nestor Seal but is in scope of C21 “Submission Information Packages”; in particular, in the question “Which measures exist for validating the conformity of submission information packages?”. |
+| ISO 16363     | “checking that file formats are what they claim to be” | Section 4.1.5: “The repository shall have an ingest process which verifies each SIP for completeness and correctness”                                                                                                                           |
+| OAIS          | “validation of SIP data”                               | This operation is also in scope of what OAIS calls “validation of SIP data” in section 2.6.3 “Producer interaction”, where the standard suggests that the “validity” of SIPs are negotiated between the producer and the archive.               |
+| PREMIS        | (Format) validation                                    | Section: "Non-core metadata", subsection: "Quirks and anomalies" (p. 262).<br><br>Section: "Fixity, integrity, authenticity", p. 258.                                                                                                           |
 
 ## Reference Implementations
 
 ### Use Cases
-- **Format validation of born-digital sound**
-  - **Institution:** Bibliothèque nationale de France
-  - **Problem:** BnF decided to validate *Files* to identify transfer issues. However, the substantial volume of data and the considerable processing time have presented significant challenges to the performance and scalability of the validation operation.
-  - **Solution:**
-```python
-FLAC *Files* are verified with the [flac command-line tool](https://xiph.org/flac/documentation_tools_flac.html), which ensures both the overall *File*'s internal integrity and that of every individual frame within the audio stream. This is achieved through calculation of the CRC32 checksum for each frame. As this process is labour-intensive, the choice was made to do it by sampling.
+
+| Title                                   | Institution                      | Documentation | Problem                                                                                                                                                                                                                                         | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| :-------------------------------------- | :------------------------------- | :------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Format validation of born-digital sound | Bibliothèque nationale de France |               | BnF decided to validate *Files* to identify transfer issues. However, the substantial volume of data and the considerable processing time have presented significant challenges to the performance and scalability of the validation operation. | <pre><code>FLAC *Files* are verified with the [flac command-line tool](https://xiph.org/flac/documentation_tools_flac.html), which ensures both the overall *File*'s internal integrity and that of every individual frame within the audio stream. This is achieved through calculation of the CRC32 checksum for each frame. As this process is labour-intensive, the choice was made to do it by sampling.
                     
 
-As the producer is generally a major label with trained professionals in the domain of audio data, the chosen error handling method is to request a new, hopefully valid *File*.
-```
+As the producer is generally a major label with trained professionals in the domain of audio data, the chosen error handling method is to request a new, hopefully valid *File*.</code></pre> |
 
 ### Public Documentation
-- **TIB – Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest
-- **CSC – IT Center for Science Ltd.**
-  - **Link:** https://urn.fi/urn:nbn:fi-fe2025040925236
-  - **Comment:** section 5.2
-- **Archivematica**
-  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization
+
+| Institution                                                                        | Link                                                                                                                      | Comment     |
+| :--------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :---------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest                                                           |             |
+| CSC – IT Center for Science Ltd.                                                   | https://urn.fi/urn:nbn:fi-fe2025040925236                                                                                 | section 5.2 |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization |             |
 
 
 

@@ -23,18 +23,27 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 
 ## Process Definition
 
-**Inputs:**
-- File
-- Storage management policy - Checksum algorithms
+### Inputs
 
-**Outputs:**
-- Fixity metadata (one or multiple checksum(s) for the File as well as their associated algorithms)
-- Provenance metadata (a timestamp or event that describes the checksum calculation)
+| Type     | Input                                           |
+| :------- | :---------------------------------------------- |
+| Data     | File                                            |
+| Guidance | Storage management policy - Checksum algorithms |
 
-**Trigger Events:**
-- A new *SIP* is submitted and processed (see `CPP-029`)
-- *File* update or replacement due to Preservation Action (e.g. migration) (see `CPP-014`)
-- Any other action that results in a new or updated *File* being added to the system
+### Outputs
+
+| Type     | Output                                                                                            |
+| :------- | :------------------------------------------------------------------------------------------------ |
+| Metadata | Fixity metadata (one or multiple checksum(s) for the File as well as their associated algorithms) |
+| Metadata | Provenance metadata (a timestamp or event that describes the checksum calculation)                |
+
+### Trigger Events
+
+| Description                                                                        | Corresponding CPP |
+| :--------------------------------------------------------------------------------- | :---------------- |
+| A new *SIP* is submitted and processed                                             | `CPP-029`         |
+| *File* update or replacement due to Preservation Action (e.g. migration)           | `CPP-014`         |
+| Any other action that results in a new or updated *File* being added to the system |                   |
 
 ## Process Steps
 
@@ -64,41 +73,23 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 
 ## Framework Mappings
 
-- **CoreTrustSeal**
-  - **Term:** Checksum (cf [Extended Guidance documentation](https://doi.org/10.5281/zenodo.7051096))
-  - **Section:** Information Technology & Security/Storage & Integrity (R14)
-- **Nestor Seal**
-  - **Term:** Integrity
-  - **Section:** C14 Integrity: Ingest Interface
-- **ISO 16363**
-  - **Term:** integrity measurements
-  - **Section:** Checksum Generation: 3.3.5 The repository shall define, collect, track, and
-                        appropriately provide its information integrity measurements.
-    
-    Recording: 4.1.6 The repository shall obtain sufficient control over the
-                        Digital Objects to preserve them.
-- **OAIS**
-  - **Section:** OAIS does not describe the process of checksum generation and recording in
-                        its functional model but defines fixity information as part of Administrative
-                        metadata, which is “necessary for adequate preservation of the Content Data
-                        Object”.
-- **PREMIS**
-  - **Term:** Message digest calculation
-  - **Section:** The term “message digest calculation” is referenced in the glossary.
-    
-    The general topic of fixity is addressed in section Fixity, Integrity,
-                        Authenticity, p. 258.
+| Framework     | Term                                                                                    | Section                                                                                           |
+| :------------ | :-------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| CoreTrustSeal | Checksum (cf [Extended Guidance documentation](https://doi.org/10.5281/zenodo.7051096)) | Information Technology & Security/Storage & Integrity (R14)                                       |
+| Nestor Seal   | Integrity                                                                               | C14 Integrity: Ingest Interface                                                                   |
+| ISO 16363     | integrity measurements                                                                  | Checksum Generation: 3.3.5 The repository shall define, collect, track, and<br>                    appropriately provide its information integrity measurements.<br><br>Recording: 4.1.6 The repository shall obtain sufficient control over the<br>                    Digital Objects to preserve them. |
+| OAIS          |                                                                                         | OAIS does not describe the process of checksum generation and recording in<br>                    its functional model but defines fixity information as part of Administrative<br>                    metadata, which is “necessary for adequate preservation of the Content Data<br>                    Object”. |
+| PREMIS        | Message digest calculation                                                              | The term “message digest calculation” is referenced in the glossary.<br><br>The general topic of fixity is addressed in section Fixity, Integrity,<br>                    Authenticity, p. 258. |
 
 ## Reference Implementations
 
 ### Public Documentation
-- **TIB – Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata
-- **CSC – IT Center for Science Ltd.**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata
-  - **Comment:** section 2.4.4.2
-- **Archivematica**
-  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices
+
+| Institution                                                                        | Link                                                                                                               | Comment         |
+| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- | :-------------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                          |                 |
+| CSC – IT Center for Science Ltd.                                                   | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                    | section 2.4.4.2 |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices |                 |
 
 
 

@@ -24,18 +24,27 @@ If integrity checks discover problems in the integrity of the target *Informatio
 
 ## Process Definition
 
-**Inputs:**
-- Information Package
-- Storage management policy - Integrity checking
-- Storage management policy - Checksum algorithms
+### Inputs
 
-**Outputs:**
-- Fixity metadata
-- Provenance metadata
+| Type     | Input                                           |
+| :------- | :---------------------------------------------- |
+| Data     | Information Package                             |
+| Guidance | Storage management policy - Integrity checking  |
+| Guidance | Storage management policy - Checksum algorithms |
 
-**Trigger Events:**
-- Frequency of integrity checks defined in a digital archive's policy (see `CPP-012`)
-- Suspicion of an error triggering an integrity check on an ad hoc basis
+### Outputs
+
+| Type     | Output              |
+| :------- | :------------------ |
+| Metadata | Fixity metadata     |
+| Metadata | Provenance metadata |
+
+### Trigger Events
+
+| Description                                                            | Corresponding CPP |
+| :--------------------------------------------------------------------- | :---------------- |
+| Frequency of integrity checks defined in a digital archive's policy    | `CPP-012`         |
+| Suspicion of an error triggering an integrity check on an ad hoc basis |                   |
 
 ## Process Steps
 
@@ -68,35 +77,25 @@ If integrity checks discover problems in the integrity of the target *Informatio
 
 ## Framework Mappings
 
-- **CoreTrustSeal**
-  - **Term:** Fixity checks
-  - **Section:** R14 Storage & Integrity
-- **Nestor Seal**
-  - **Term:** Integrity checks
-  - **Section:** C15 Integrity: Functions of the archival storage
-- **ISO 16363**
-  - **Term:** Fixity checks
-  - **Section:** 4.4.1.2
-- **OAIS**
-  - **Term:** Error checking
-  - **Section:** 4.2.3.4
-- **PREMIS**
-  - **Term:** Fixity check
-  - **Section:** 1.5.2, Glossary
+| Framework     | Term             | Section                                          |
+| :------------ | :--------------- | :----------------------------------------------- |
+| CoreTrustSeal | Fixity checks    | R14 Storage & Integrity                          |
+| Nestor Seal   | Integrity checks | C15 Integrity: Functions of the archival storage |
+| ISO 16363     | Fixity checks    | 4.4.1.2                                          |
+| OAIS          | Error checking   | 4.2.3.4                                          |
+| PREMIS        | Fixity check     | 1.5.2, Glossary                                  |
 
 ## Reference Implementations
 
 ### Public Documentation
-- **TIB - Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines
-- **TIB - Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Integrityassurance
-- **CSC - IT Center for Science Ltd.**
-  - **Link:** https://digitalpreservation.fi/en/services/quality_reports/2024
-- **Archivematica**
-  - **Link:** https://www.archivematica.org/en/docs/storage-service-0.23/fixity/#fixity-docs
-- **AUSSDA - Austrian Social Science Data Archive**
-  - **Link:** https://aussda.at/fileadmin/user_upload/p_aussda/Documents/kaczmirek_bischof_2024_preservation_fixity_checks_v1_0-1.pdf
+
+| Institution                                                                        | Link                                                                                                                    | Comment |
+| :--------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :------ |
+| TIB - Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines |         |
+| TIB - Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Integrityassurance            |         |
+| CSC - IT Center for Science Ltd.                                                   | https://digitalpreservation.fi/en/services/quality_reports/2024                                                         |         |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/storage-service-0.23/fixity/#fixity-docs                                          |         |
+| AUSSDA - Austrian Social Science Data Archive                                      | https://aussda.at/fileadmin/user_upload/p_aussda/Documents/kaczmirek_bischof_2024_preservation_fixity_checks_v1_0-1.pdf |         |
 
 
 

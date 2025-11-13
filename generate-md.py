@@ -148,7 +148,6 @@ def parse_xml_to_markdown(xml_file):
         find(root, "cpp:descriptionAndScope")
     )
 
-    # This splits the content by paragraph breaks, cleans each one, and rejoins them.
     if description_and_scope_raw:
         description_and_scope = "\n\n".join(
             [
@@ -187,36 +186,46 @@ def parse_xml_to_markdown(xml_file):
         markdown += "## Process Definition\n\n"
 
         # General Inputs
-        inputs = findall(process, "cpp:inputs/cpp:data/cpp:dataElement") + findall(
-            process, "cpp:inputs/cpp:guidance/cpp:guidanceElement"
-        )
-        if inputs:
-            markdown += "**Inputs:**\n"
-            for item in inputs:
-                markdown += f"- {get_simple_text(item)}\n"
-            markdown += "\n"
+        data_inputs = findall(process, "cpp:inputs/cpp:data/cpp:dataElement")
+        guidance_inputs = findall(process, "cpp:inputs/cpp:guidance/cpp:guidanceElement")
+        if data_inputs or guidance_inputs:
+            markdown += "### Inputs\n\n"
+            headers = ["Type", "Input"]
+            table_data = []
+            for item in data_inputs:
+                table_data.append({"Type": "Data", "Input": get_simple_text(item)})
+            for item in guidance_inputs:
+                table_data.append({"Type": "Guidance", "Input": get_simple_text(item)})
+            markdown += format_markdown_table(headers, table_data) + "\n\n"
 
         # General Outputs
-        outputs = findall(
-            process, "cpp:outputs/cpp:metadata/cpp:metadataElement"
-        ) + findall(process, "cpp:outputs/cpp:guidance/cpp:guidanceElement")
-        if outputs:
-            markdown += "**Outputs:**\n"
-            for item in outputs:
-                markdown += f"- {get_simple_text(item)}\n"
-            markdown += "\n"
+        metadata_outputs = findall(process, "cpp:outputs/cpp:metadata/cpp:metadataElement")
+        guidance_outputs = findall(process, "cpp:outputs/cpp:guidance/cpp:guidanceElement")
+        if metadata_outputs or guidance_outputs:
+            markdown += "### Outputs\n\n"
+            headers = ["Type", "Output"]
+            table_data = []
+            for item in metadata_outputs:
+                table_data.append({"Type": "Metadata", "Output": get_simple_text(item)})
+            for item in guidance_outputs:
+                table_data.append({"Type": "Guidance", "Output": get_simple_text(item)})
+            markdown += format_markdown_table(headers, table_data) + "\n\n"
 
         # Trigger Events
         triggers = findall(process, "cpp:triggerEvents/cpp:triggerEvent")
         if triggers:
-            markdown += "**Trigger Events:**\n"
+            markdown += "### Trigger Events\n\n"
+            headers = ["Description", "Corresponding CPP"]
+            table_data = []
             for trigger in triggers:
                 desc = element_to_markdown(find(trigger, "cpp:description"))
                 corr_cpp = get_simple_text(find(trigger, "cpp:correspondingCPP"))
-                markdown += (
-                    f"- {desc} (see `{corr_cpp}`)\n" if corr_cpp else f"- {desc}\n"
-                )
-            markdown += "\n"
+                table_data.append({
+                    "Description": format_multiline_cell(desc),
+                    "Corresponding CPP": f"`{corr_cpp}`" if corr_cpp else ""
+                })
+            markdown += format_markdown_table(headers, table_data) + "\n\n"
+
 
     steps = findall(process, ".//cpp:step") if process else []
     if steps:
@@ -284,73 +293,63 @@ def parse_xml_to_markdown(xml_file):
         markdown += format_markdown_table(headers, table_data) + "\n\n"
 
     mappings = find(root, "cpp:frameworkMappings")
-    if mappings:
+    if mappings and findall(mappings, "cpp:mapping"):
         markdown += "## Framework Mappings\n\n"
+        headers = ["Framework", "Term", "Section"]
+        table_data = []
         for mapping in findall(mappings, "cpp:mapping"):
             framework_name = get_simple_text(find(mapping, "cpp:frameworkName"))
-            markdown += f"- **{framework_name}**\n"
             term = element_to_markdown(find(mapping, "cpp:correspondingTerm"))
-            if term:
-                markdown += f"  - **Term:** {term}\n"
 
             section_element = find(mapping, "cpp:correspondingSection")
+            section_text = ""
             if section_element is not None:
                 section_parts = [element_to_markdown(p) for p in section_element]
-                section_text = "\n\n".join(section_parts)
-                # Indent every line for proper list formatting
-                indented_section = "  - **Section:** " + section_text.replace(
-                    "\n", "\n    "
-                )
-                markdown += f"{indented_section}\n"
-        markdown += "\n"
+                section_text = "\n\n".join(p for p in section_parts if p)
+
+            table_data.append({
+                "Framework": framework_name,
+                "Term": format_multiline_cell(term),
+                "Section": format_multiline_cell(section_text)
+            })
+        markdown += format_markdown_table(headers, table_data) + "\n\n"
+
 
     references = find(root, "cpp:referenceImplementations")
     if references:
         markdown += "## Reference Implementations\n\n"
+        
         use_cases = findall(references, "cpp:useCases/cpp:useCase")
         if use_cases:
-            markdown += "### Use Cases\n"
+            markdown += "### Use Cases\n\n"
+            headers = ["Title", "Institution", "Documentation", "Problem", "Solution"]
+            table_data = []
             for case in use_cases:
-                title = get_simple_text(find(case, "cpp:useCasetitle"))
-                institution_label = get_simple_text(
-                    find(case, "cpp:institution/cpp:institutionLabel")
-                )
-                link = element_to_markdown(
-                    find(case, "cpp:linkToDocumentation/cpp:hyperlink")
-                )
-                markdown += f"- **{title}**\n"
-                markdown += f"  - **Institution:** {institution_label}\n"
-                if link:
-                    markdown += f"  - **Documentation:** {link}\n"
-                problem = element_to_markdown(find(case, "cpp:problemStatement"))
                 solution_raw = element_to_markdown(find(case, "cpp:proposedSolution"))
-                if problem:
-                    markdown += f"  - **Problem:** {problem}\n"
-                if solution_raw:
-                    solution_clean = re.sub(
-                        r"\s*\.\.\.\s*$", "", solution_raw
-                    )  # Remove trailing '...'
-                    markdown += f"  - **Solution:**\n```python\n{solution_clean}\n```\n"
-            markdown += "\n"
+                solution_clean = re.sub(r"\s*\.\.\.\s*$", "", solution_raw)
+                solution_formatted = f"<pre><code>{solution_clean}</code></pre>" if solution_clean else ""
+
+                table_data.append({
+                    "Title": get_simple_text(find(case, "cpp:useCasetitle")),
+                    "Institution": get_simple_text(find(case, "cpp:institution/cpp:institutionLabel")),
+                    "Documentation": element_to_markdown(find(case, "cpp:linkToDocumentation/cpp:hyperlink")),
+                    "Problem": format_multiline_cell(element_to_markdown(find(case, "cpp:problemStatement"))),
+                    "Solution": solution_formatted,
+                })
+            markdown += format_markdown_table(headers, table_data) + "\n\n"
 
         public_docs = findall(references, "cpp:publicDocumentation")
         if public_docs:
-            markdown += "### Public Documentation\n"
+            markdown += "### Public Documentation\n\n"
+            headers = ["Institution", "Link", "Comment"]
+            table_data = []
             for doc in public_docs:
-                institution_label = get_simple_text(
-                    find(doc, "cpp:institution/cpp:institutionLabel")
-                )
-                link = element_to_markdown(
-                    find(doc, "cpp:linkToDocumentation/cpp:hyperlink")
-                )
-                comment = get_simple_text(
-                    find(doc, "cpp:linkToDocumentation/cpp:comment")
-                )
-                markdown += f"- **{institution_label}**\n"
-                markdown += f"  - **Link:** {link}\n"
-                if comment:
-                    markdown += f"  - **Comment:** {comment}\n"
-            markdown += "\n"
+                table_data.append({
+                    "Institution": get_simple_text(find(doc, "cpp:institution/cpp:institutionLabel")),
+                    "Link": element_to_markdown(find(doc, "cpp:linkToDocumentation/cpp:hyperlink")),
+                    "Comment": get_simple_text(find(doc, "cpp:linkToDocumentation/cpp:comment")),
+                })
+            markdown += format_markdown_table(headers, table_data) + "\n\n"
 
     return markdown
 
@@ -359,12 +358,10 @@ def main():
     start_dir = "."
     logging.info(f"Starting script in directory: {os.path.abspath(start_dir)}")
     for root_dir, _, files in os.walk(start_dir):
-        # Create one README per directory, assuming one primary XML source
         xml_files_in_dir = [f for f in files if f.endswith(".xml")]
         if xml_files_in_dir:
-            # We will generate one README from all XMLs in a directory
             full_markdown = ""
-            for file in sorted(xml_files_in_dir):  # Sort to ensure consistent order
+            for file in sorted(xml_files_in_dir):
                 xml_path = os.path.join(root_dir, file)
                 markdown_content = parse_xml_to_markdown(xml_path)
                 if markdown_content:

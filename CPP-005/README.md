@@ -33,28 +33,37 @@ Identifiers may reveal the hierarchical relationships in the identifier string (
 
 ## Process Definition
 
-**Inputs:**
-- Information package
-- Object
-- Identifier creation and management policy
+### Inputs
 
-**Outputs:**
-- Identifier-enriched Information package, Object(s) or Metadata
-- Provenance metadata
+| Type     | Input                                     |
+| :------- | :---------------------------------------- |
+| Data     | Information package                       |
+| Data     | Object                                    |
+| Guidance | Identifier creation and management policy |
 
-**Trigger Events:**
-- Pre-ingest transfer preparation (see `CPP-029`)
-- Ingestion workflow (see `CPP-029`)
-- Creation of new Files or Representations (see `CPP-028`)
-- Replacement of corrupted Files (see `CPP-004`)
-- Data export (see `CPP-006`)
-- Data replication (see `CPP-011`)
-- Data migration (see `CPP-014`)
-- Data normalisation (see `CPP-026`)
-- Metadata ingest and creation (see `CPP-016`)
-- Data version update (see `CPP-021`)
-- Broken File needs a new identifier (see `CPP-027`)
-- Information package, File or Metadata is removed from the TDA holdings (see `CPP-017`)
+### Outputs
+
+| Type     | Output                                                         |
+| :------- | :------------------------------------------------------------- |
+| Metadata | Identifier-enriched Information package, Object(s) or Metadata |
+| Metadata | Provenance metadata                                            |
+
+### Trigger Events
+
+| Description                                                            | Corresponding CPP |
+| :--------------------------------------------------------------------- | :---------------- |
+| Pre-ingest transfer preparation                                        | `CPP-029`         |
+| Ingestion workflow                                                     | `CPP-029`         |
+| Creation of new Files or Representations                               | `CPP-028`         |
+| Replacement of corrupted Files                                         | `CPP-004`         |
+| Data export                                                            | `CPP-006`         |
+| Data replication                                                       | `CPP-011`         |
+| Data migration                                                         | `CPP-014`         |
+| Data normalisation                                                     | `CPP-026`         |
+| Metadata ingest and creation                                           | `CPP-016`         |
+| Data version update                                                    | `CPP-021`         |
+| Broken File needs a new identifier                                     | `CPP-027`         |
+| Information package, File or Metadata is removed from the TDA holdings | `CPP-017`         |
 
 ## Process Steps
 
@@ -98,48 +107,29 @@ Identifiers may reveal the hierarchical relationships in the identifier string (
 
 ## Framework Mappings
 
-- **CoreTrustSeal**
-  - **Term:** Persistent Identifiers
-  - **Section:** R09 Preservation Plan
-    
-    R12 Discovery and Identification
-- **Nestor Seal**
-  - **Term:** Persistent Identifiers
-  - **Section:** C27 Identification
-- **ISO 16363**
-  - **Term:** Persistent Identifiers
-  - **Section:** 4.2.4
-    
-    4.2.5.4
-    
-    4.2.6.3
-- **OAIS**
-  - **Term:** Persistent Identifiers
-  - **Section:** 6.2.4
-- **PREMIS**
-  - **Term:** Persistent Identifiers
-  - **Section:** Data dictionary, 1.1 objectIdentifier
+| Framework     | Term                   | Section                               |
+| :------------ | :--------------------- | :------------------------------------ |
+| CoreTrustSeal | Persistent Identifiers | R09 Preservation Plan<br><br>R12 Discovery and Identification |
+| Nestor Seal   | Persistent Identifiers | C27 Identification                    |
+| ISO 16363     | Persistent Identifiers | 4.2.4<br><br>4.2.5.4<br><br>4.2.6.3   |
+| OAIS          | Persistent Identifiers | 6.2.4                                 |
+| PREMIS        | Persistent Identifiers | Data dictionary, 1.1 objectIdentifier |
 
 ## Reference Implementations
 
 ### Use Cases
-- **DOI given for a research dataset by TDA**
-  - **Institution:** CSC, Finland (Digital Preservation Service for Research Data)
-  - **Documentation:** https://wiki.eduuni.fi/x/9ZRYH
-  - **Problem:** Research dataset does not have a DOI
-  - **Solution:**
-```python
-Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset via a description tool or via a metadata API. When a dataset has been submitted, TDA automatically creates a DataCite description including a new DOI, and eventually it creates a corresponding publicly available website for the dataset Metadata.
-```
+
+| Title                                   | Institution                                                   | Documentation                  | Problem                              | Solution                                                                                                                                                                                                                                                                                                                                                          |
+| :-------------------------------------- | :------------------------------------------------------------ | :----------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DOI given for a research dataset by TDA | CSC, Finland (Digital Preservation Service for Research Data) | https://wiki.eduuni.fi/x/9ZRYH | Research dataset does not have a DOI | <pre><code>Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset via a description tool or via a metadata API. When a dataset has been submitted, TDA automatically creates a DataCite description including a new DOI, and eventually it creates a corresponding publicly available website for the dataset Metadata.</code></pre> |
 
 ### Public Documentation
-- **TIB – Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-Identifyingmetadata
-- **CSC – IT Center for Science Ltd.**
-  - **Link:** https://urn.fi/urn:nbn:fi-fe2020100578094
-  - **Comment:** section 2.4.1.
-- **Archivematica**
-  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices
+
+| Institution                                                                        | Link                                                                                                               | Comment        |
+| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-Identifyingmetadata                     |                |
+| CSC – IT Center for Science Ltd.                                                   | https://urn.fi/urn:nbn:fi-fe2020100578094                                                                          | section 2.4.1. |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices |                |
 
 
 

@@ -20,16 +20,25 @@ A misalignment between the checksum algorithms used in the *Information Package*
 
 ## Process Definition
 
-**Inputs:**
-- File
+### Inputs
 
-**Outputs:**
-- Provenance metadata (the checksum validation event, including the datetime)
+| Type | Input |
+| :--- | :---- |
+| Data | File  |
 
-**Trigger Events:**
-- *SIP* or *AIP* import (see `CPP-029`)
-- *DIP* generation (see `CPP-025`)
-- *AIP* export (see `CPP-006`)
+### Outputs
+
+| Type     | Output                                                                      |
+| :------- | :-------------------------------------------------------------------------- |
+| Metadata | Provenance metadata (the checksum validation event, including the datetime) |
+
+### Trigger Events
+
+| Description           | Corresponding CPP |
+| :-------------------- | :---------------- |
+| *SIP* or *AIP* import | `CPP-029`         |
+| *DIP* generation      | `CPP-025`         |
+| *AIP* export          | `CPP-006`         |
 
 ## Process Steps
 
@@ -61,23 +70,20 @@ A misalignment between the checksum algorithms used in the *Information Package*
 
 ## Framework Mappings
 
-- **CoreTrustSeal**
-  - **Term:** Checksum (cf [Extended Guidance documentation](https://zenodo.org/records/7051096))
-  - **Section:** Information Technology and Security/Storage & Integrity (R14)
-- **OAIS**
-  - **Term:** Quality assurance
-  - **Section:** 4.2.3.3 (Ingest)
+| Framework     | Term                                                                                | Section                                                       |
+| :------------ | :---------------------------------------------------------------------------------- | :------------------------------------------------------------ |
+| CoreTrustSeal | Checksum (cf [Extended Guidance documentation](https://zenodo.org/records/7051096)) | Information Technology and Security/Storage & Integrity (R14) |
+| OAIS          | Quality assurance                                                                   | 4.2.3.3 (Ingest)                                              |
 
 ## Reference Implementations
 
 ### Public Documentation
-- **TIB - Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines
-- **CSC - IT Center for Science Ltd.**
-  - **Link:** https://urn.fi/urn:nbn:fi-fe2024051731943
-  - **Comment:** Annex 3, section 2.1.1
-- **Archivematica**
-  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums
+
+| Institution                                                                        | Link                                                                                                                              | Comment                |
+| :--------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :--------------------- |
+| TIB - Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines           |                        |
+| CSC - IT Center for Science Ltd.                                                   | https://urn.fi/urn:nbn:fi-fe2024051731943                                                                                         | Annex 3, section 2.1.1 |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums |                        |
 
 
 

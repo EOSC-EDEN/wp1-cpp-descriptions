@@ -30,23 +30,32 @@ The output of the metadata extractor tools should be recorded in the Information
 
 ## Process Definition
 
-**Inputs:**
-- File or, in some specific cases, Representation
-- Policies and detection methods for significant properties, risk properties and quality properties
-- Metadata recording Policy
+### Inputs
 
-**Outputs:**
-- Technical Metadata
-- Provenance metadata
-- Descriptive Metadata
-- Structural Metadata
-- Rights Metadata
-- Errors and Warnings
+| Type     | Input                                                                                             |
+| :------- | :------------------------------------------------------------------------------------------------ |
+| Data     | File or, in some specific cases, Representation                                                   |
+| Guidance | Policies and detection methods for significant properties, risk properties and quality properties |
+| Guidance | Metadata recording Policy                                                                         |
 
-**Trigger Events:**
-- Ingest (see `CPP-029`)
-- Re-run of metadata extraction because of the release of a new metadata extractor tool or tool version
-- Verify the output of processes creating new Files or Representations (see `CPP-014`)
+### Outputs
+
+| Type     | Output               |
+| :------- | :------------------- |
+| Metadata | Technical Metadata   |
+| Metadata | Provenance metadata  |
+| Metadata | Descriptive Metadata |
+| Metadata | Structural Metadata  |
+| Metadata | Rights Metadata      |
+| Metadata | Errors and Warnings  |
+
+### Trigger Events
+
+| Description                                                                                           | Corresponding CPP |
+| :---------------------------------------------------------------------------------------------------- | :---------------- |
+| Ingest                                                                                                | `CPP-029`         |
+| Re-run of metadata extraction because of the release of a new metadata extractor tool or tool version |                   |
+| Verify the output of processes creating new Files or Representations                                  | `CPP-014`         |
 
 ## Process Steps
 
@@ -89,48 +98,29 @@ The output of the metadata extractor tools should be recorded in the Information
 
 ## Framework Mappings
 
-- **CoreTrustSeal**
-  - **Term:** Quality control checks
-  - **Section:** Section R10 (Quality assurance) implicitly requires metadata extraction as one of
-                        the processes implementing “quality control checks in place [that] ensure the
-                        completeness and understandability of data and metadata”.
-- **Nestor Seal**
-  - **Term:** Technical metadata collect[ion]
-  - **Section:** C30 Technical metadata
-- **ISO 16363**
-  - **Section:** /
-- **OAIS**
-  - **Section:** /
-- **PREMIS**
-  - **Term:** Metadata extraction
-  - **Section:** The PREMIS Data Dictionary mentions this operation as “characterization” ([p.
-                        249,
-                            section Special Topics / Format information](https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf#page=259)), but the event type
-                        vocabulary maintained by the PREMIS Editorial Committee at [id.loc.gov](http://id.loc.gov) uses the term [“metadata
-                        extraction”](https://id.loc.gov/vocabulary/preservation/eventType/mee.html).
+| Framework     | Term                            | Section                                                                                                                                                          |
+| :------------ | :------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CoreTrustSeal | Quality control checks          | Section R10 (Quality assurance) implicitly requires metadata extraction as one of<br>                    the processes implementing “quality control checks in place [that] ensure the<br>                    completeness and understandability of data and metadata”. |
+| Nestor Seal   | Technical metadata collect[ion] | C30 Technical metadata                                                                                                                                           |
+| ISO 16363     |                                 | /                                                                                                                                                                |
+| OAIS          |                                 | /                                                                                                                                                                |
+| PREMIS        | Metadata extraction             | The PREMIS Data Dictionary mentions this operation as “characterization” ([p.<br>                    249,<br>                        section Special Topics / Format information](https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf#page=259)), but the event type<br>                    vocabulary maintained by the PREMIS Editorial Committee at [id.loc.gov](http://id.loc.gov) uses the term [“metadata<br>                    extraction”](https://id.loc.gov/vocabulary/preservation/eventType/mee.html). |
 
 ## Reference Implementations
 
 ### Use Cases
-- **Metadata Extraction from AV material**
-  - **Institution:** Bibliothèque nationale de France
-  - **Problem:** Discussion with AV experts required that several quality properties be extracted, in particular properties related to the [group of pictures](https://en.wikipedia.org/wiki/Group_of_pictures) .
-                    
 
-XML was the preferred syntax for the extractor tool output, as it could be easily wrapped in METS Files.
-  - **Solution:**
-```python
-BnF has selected the tool MediaInfo as its extractor tool for AV Files, according to requirements collected by BnF. MPEG-7, one of its output formats, being standardised and expressed in XML, was selected as the format for Metadata to be stored in Archival Information Packages. As MediaInfo provides natively MPEG-7 as one of its output formats, no mapping from the tool output to a standard metadata format was required.
-```
+| Title                                | Institution                      | Documentation | Problem                                                                                                                                                                                          | Solution                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| :----------------------------------- | :------------------------------- | :------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Metadata Extraction from AV material | Bibliothèque nationale de France |               | Discussion with AV experts required that several quality properties be extracted, in particular properties related to the [group of pictures](https://en.wikipedia.org/wiki/Group_of_pictures) .<br>                    <br><br>XML was the preferred syntax for the extractor tool output, as it could be easily wrapped in METS Files. | <pre><code>BnF has selected the tool MediaInfo as its extractor tool for AV Files, according to requirements collected by BnF. MPEG-7, one of its output formats, being standardised and expressed in XML, was selected as the format for Metadata to be stored in Archival Information Packages. As MediaInfo provides natively MPEG-7 as one of its output formats, no mapping from the tool output to a standard metadata format was required.</code></pre> |
 
 ### Public Documentation
-- **TIB – Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest
-- **CSC – IT Center for Science Ltd.**
-  - **Link:** https://urn.fi/urn:nbn:fi-fe2020100578096
-  - **Comment:** section 5
-- **Archivematica**
-  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization
+
+| Institution                                                                        | Link                                                                                                                      | Comment   |
+| :--------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------ | :-------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest                                                           |           |
+| CSC – IT Center for Science Ltd.                                                   | https://urn.fi/urn:nbn:fi-fe2020100578096                                                                                 | section 5 |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization |           |
 
 
 

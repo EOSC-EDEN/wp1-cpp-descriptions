@@ -25,19 +25,28 @@ All scanning activities, detected threats, and subsequent actions (i.e. quaranti
 
 ## Process Definition
 
-**Inputs:**
-- Information package(s)
-- Malware signature database(s)
-- Guidelines for managing detected threats
+### Inputs
 
-**Outputs:**
-- Provenance metadata
-- Scan report
+| Type     | Input                                    |
+| :------- | :--------------------------------------- |
+| Data     | Information package(s)                   |
+| Guidance | Malware signature database(s)            |
+| Guidance | Guidelines for managing detected threats |
 
-**Trigger Events:**
-- Periodic quality check of *Files* (see `CPP-019`)
-- Pre-access check of DIPs (see `CPP-025`)
-- Ingest (see `CPP-029`)
+### Outputs
+
+| Type     | Output              |
+| :------- | :------------------ |
+| Metadata | Provenance metadata |
+| Guidance | Scan report         |
+
+### Trigger Events
+
+| Description                       | Corresponding CPP |
+| :-------------------------------- | :---------------- |
+| Periodic quality check of *Files* | `CPP-019`         |
+| Pre-access check of DIPs          | `CPP-025`         |
+| Ingest                            | `CPP-029`         |
 
 ## Process Steps
 
@@ -75,45 +84,30 @@ All scanning activities, detected threats, and subsequent actions (i.e. quaranti
 
 ## Framework Mappings
 
-- **CoreTrustSeal**
-- **Nestor Seal**
-- **ISO 16363**
-- **OAIS**
-  - **Term:** Quality Assurance (within Ingest), Security
-  - **Section:** 4.2.3.3
-    
-    4.3.4
-- **PREMIS**
-  - **Term:** Event (with eventType 'virus check', Agent (the scanning software)
-  - **Section:** Event Entity
-    
-    Agent Entity
-    
-    eventType Controlled vocabulary (2.2)
+| Framework     | Term                                                               | Section                               |
+| :------------ | :----------------------------------------------------------------- | :------------------------------------ |
+| CoreTrustSeal |                                                                    |                                       |
+| Nestor Seal   |                                                                    |                                       |
+| ISO 16363     |                                                                    |                                       |
+| OAIS          | Quality Assurance (within Ingest), Security                        | 4.2.3.3<br><br>4.3.4                  |
+| PREMIS        | Event (with eventType 'virus check', Agent (the scanning software) | Event Entity<br><br>Agent Entity<br><br>eventType Controlled vocabulary (2.2) |
 
 ## Reference Implementations
 
 ### Use Cases
-- **Virus Scan as Part of Ingest at CSC**
-  - **Institution:** CSC – IT Center for Science Ltd., Finland
-  - **Documentation:** https://www.clamav.net/
-  - **Problem:** Files must be scanned for viruses as part of the ingest pipeline to protect the TDA from viruses
-  - **Solution:**
-```python
-Python script to detect viruses using ClamAv virus scanner def check_virus(path): """Scan files in directory with ClamAV virus scanner.
-```
+
+| Title                               | Institution                               | Documentation           | Problem                                                                                          | Solution                                                                                                                                                        |
+| :---------------------------------- | :---------------------------------------- | :---------------------- | :----------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Virus Scan as Part of Ingest at CSC | CSC – IT Center for Science Ltd., Finland | https://www.clamav.net/ | Files must be scanned for viruses as part of the ingest pipeline to protect the TDA from viruses | <pre><code>Python script to detect viruses using ClamAv virus scanner def check_virus(path): """Scan files in directory with ClamAV virus scanner.</code></pre> |
 
 ### Public Documentation
-- **TIB – Leibniz Information Centre for Science and Technology and University Library**
-  - **Link:** https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest
-- **CSC – IT Center for Science Ltd.**
-  - **Link:** https://digitalpreservation.fi/en/services/quality_reports/2024
-  - **Comment:** Monitoring of the Digital Preservation Services: "Up-to-date status of the virus check database"
-- **Archivematica**
-  - **Link:** https://www.archivematica.org/en/docs/archivematica-1.14/user-manual/transfer/scan-for-viruses/#scan-for-viruses
-- **DANS (Data Archiving and Networked Services), Netherlands**
-  - **Link:** https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf
-  - **Comment:** "Virus-scans are performed periodically for ingest by the web interface and standard for all other ingest ways (like SWORD)."
+
+| Institution                                                                        | Link                                                                                                             | Comment                                                                                                                       |
+| :--------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest                                                  |                                                                                                                               |
+| CSC – IT Center for Science Ltd.                                                   | https://digitalpreservation.fi/en/services/quality_reports/2024                                                  | Monitoring of the Digital Preservation Services: "Up-to-date status of the virus check database"                              |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.14/user-manual/transfer/scan-for-viruses/#scan-for-viruses |                                                                                                                               |
+| DANS (Data Archiving and Networked Services), Netherlands                          | https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf              | "Virus-scans are performed periodically for ingest by the web interface and standard for all other ingest ways (like SWORD)." |
 
 
 
