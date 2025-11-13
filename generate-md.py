@@ -66,7 +66,7 @@ def element_to_markdown(element):
     # Join all the pieces together.
     final_string = "".join(parts)
 
-    # The final strip is okay, as it cleans the entire assembled string.
+    # The final strip cleans the entire assembled string.
     return final_string.strip()
 
 
@@ -187,13 +187,16 @@ def parse_xml_to_markdown(xml_file):
 
         # General Inputs
         data_inputs = findall(process, "cpp:inputs/cpp:data/cpp:dataElement")
+        metadata_inputs = findall(process, "cpp:inputs/cpp:metadata/cpp:metadataElement")
         guidance_inputs = findall(process, "cpp:inputs/cpp:guidance/cpp:guidanceElement")
-        if data_inputs or guidance_inputs:
+        if data_inputs or guidance_inputs or metadata_inputs:
             markdown += "### Inputs\n\n"
             headers = ["Type", "Input"]
             table_data = []
             for item in data_inputs:
                 table_data.append({"Type": "Data", "Input": get_simple_text(item)})
+            for item in metadata_inputs:
+                table_data.append({"Type": "Metadata", "Input": get_simple_text(item)})
             for item in guidance_inputs:
                 table_data.append({"Type": "Guidance", "Input": get_simple_text(item)})
             markdown += format_markdown_table(headers, table_data) + "\n\n"
@@ -231,31 +234,51 @@ def parse_xml_to_markdown(xml_file):
     if steps:
         markdown += "## Process Steps\n\n"
         table_data = []
-        headers = ["Step", "Inputs", "Description", "Outputs"]
+        headers = ["Step", "Supplier(s)", "Input(s)", "Description", "Output(s)", "Customer(s)"]
 
         for step in steps:
+            step_number = step.get("stepNumber", "")
             desc_md = element_to_markdown(find(step, "cpp:stepDescription"))
-            inputs_md = [
-                element_to_markdown(el)
-                for el in findall(step, "cpp:input/cpp:inputElement")
-            ]
-            outputs_md = [
-                element_to_markdown(el)
-                for el in findall(step, "cpp:output/cpp:outputElement")
-            ]
 
-            table_data.append(
-                {
-                    "Step": step.get("stepNumber", ""),
-                    "Inputs": format_multiline_cell(
-                        "<br>".join(f"- {item}" for item in inputs_md if item)
-                    ),
-                    "Description": format_multiline_cell(desc_md),
-                    "Outputs": format_multiline_cell(
-                        "<br>".join(f"- {item}" for item in outputs_md if item)
-                    ),
-                }
-            )
+            # --- Inputs and Suppliers ---
+            inputs_list = []
+            suppliers_set = set()
+            for inp in findall(step, "cpp:input"):
+                element_md = element_to_markdown(find(inp, "cpp:inputElement"))
+                if element_md:
+                    inputs_list.append(f"- {element_md}")
+                
+                supplier = get_simple_text(find(inp, "cpp:supplier"))
+                if supplier:
+                    suppliers_set.add(f"`{supplier}`")
+
+            # --- Outputs and Customers ---
+            outputs_list = []
+            customers_set = set()
+            for outp in findall(step, "cpp:output"):
+                element_md = element_to_markdown(find(outp, "cpp:outputElement"))
+                if element_md:
+                    outputs_list.append(f"- {element_md}")
+                
+                customers = [get_simple_text(c) for c in findall(outp, "cpp:customer")]
+                for customer in customers:
+                    if customer:
+                        customers_set.add(f"`{customer}`")
+
+            # --- Format for table ---
+            suppliers_str = "<br>".join(sorted(list(suppliers_set)))
+            inputs_str = "<br>".join(inputs_list)
+            customers_str = "<br>".join(sorted(list(customers_set)))
+            outputs_str = "<br>".join(outputs_list)
+
+            table_data.append({
+                "Step": step_number,
+                "Supplier(s)": format_multiline_cell(suppliers_str),
+                "Input(s)": format_multiline_cell(inputs_str),
+                "Description": format_multiline_cell(desc_md),
+                "Output(s)": format_multiline_cell(outputs_str),
+                "Customer(s)": format_multiline_cell(customers_str),
+            })
 
         markdown += format_markdown_table(headers, table_data) + "\n\n"
 
