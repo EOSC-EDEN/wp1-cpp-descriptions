@@ -38,12 +38,12 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 
 ## Process Steps
 
-| Step | Description                                                 | Inputs                                                           | Outputs                                                                        |
-| :--- | :---------------------------------------------------------- | :--------------------------------------------------------------- | :----------------------------------------------------------------------------- |
-| 1    | Get the list of accepted checksum algorithms                | - Storage management policy - Checksum algorithms                | - List of accepted checksum algorithms                                         |
-| 2    | Calculate the checksum for each algorithm                   | - *File*<br>- *List of checksum algorithms*                      | - List of checksums for the *File* based on different algorithms               |
-| 3    | Store the checksums in the *Fixity metadata* for the *File* | - List of checksums for the *File* based on different algorithms | - Updated *Fixity metadata* of the *File* in the TDA database                  |
-| 4    | Document the event and its datetime                         | - *File*                                                         | - Datetime for the checksum generation and other related *Provenance metadata* |
+| Step | Inputs                                                           | Description                                                 | Outputs                                                                        |
+| :--- | :--------------------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------------------------- |
+| 1    | - Storage management policy - Checksum algorithms                | Get the list of accepted checksum algorithms                | - List of accepted checksum algorithms                                         |
+| 2    | - *File*<br>- *List of checksum algorithms*                      | Calculate the checksum for each algorithm                   | - List of checksums for the *File* based on different algorithms               |
+| 3    | - List of checksums for the *File* based on different algorithms | Store the checksums in the *Fixity metadata* for the *File* | - Updated *Fixity metadata* of the *File* in the TDA database                  |
+| 4    | - *File*                                                         | Document the event and its datetime                         | - Datetime for the checksum generation and other related *Provenance metadata* |
 
 ## Rationale / Worst Case
 

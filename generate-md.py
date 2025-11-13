@@ -222,7 +222,7 @@ def parse_xml_to_markdown(xml_file):
     if steps:
         markdown += "## Process Steps\n\n"
         table_data = []
-        headers = ["Step", "Description", "Inputs", "Outputs"]
+        headers = ["Step", "Inputs", "Description", "Outputs"]
 
         for step in steps:
             desc_md = element_to_markdown(find(step, "cpp:stepDescription"))
@@ -238,10 +238,10 @@ def parse_xml_to_markdown(xml_file):
             table_data.append(
                 {
                     "Step": step.get("stepNumber", ""),
-                    "Description": format_multiline_cell(desc_md),
                     "Inputs": format_multiline_cell(
                         "<br>".join(f"- {item}" for item in inputs_md if item)
                     ),
+                    "Description": format_multiline_cell(desc_md),
                     "Outputs": format_multiline_cell(
                         "<br>".join(f"- {item}" for item in outputs_md if item)
                     ),
