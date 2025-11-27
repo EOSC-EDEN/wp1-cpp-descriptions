@@ -32,7 +32,7 @@
         <p>
             The Checksum Validation process compares the checksums that come with the <em>Information
             Package</em>, with checksums based on the current state of the <em>File</em>'s data.
-            Checksums of <em>Files</em> are validated at <em>Ingest</em> or <em>Access</em> to a
+            Checksums of <em>Files</em> are validated at <em>Ingest</em> and/or <em>Access</em> to a
             TDA. The checksums may be either part of 1&#41; a <em>SIP</em>; 2&#41; an imported 
             <em>AIP</em>; or 3&#41; an <em>AIP</em> stored in the <em>TDA</em>. 
         </p>
