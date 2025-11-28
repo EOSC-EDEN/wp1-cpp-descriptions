@@ -120,8 +120,7 @@
 
                     <h4>Trigger event&#40;s&#41;</h4>
 
-                    <!-- TODO -->
-                    <xsl:call-template name="copyContent">
+                    <xsl:call-template name="triggerEvents">
                         <xsl:with-param name="data" select="cpp:process/cpp:triggerEvents" />
                     </xsl:call-template>
 
@@ -390,10 +389,29 @@
 
     </xsl:template>
 
-    <xsl:template match="cpp:definitionAndScope">
-        <p>
-            <xsl:value-of select="." />
-        </p>
+    <xsl:template name="triggerEvents">
+        <xsl:param name="data" />
+
+        <table class="triggerEvents">
+            <tr>
+                <th>Trigger Event</th>
+                <th>CPP-identifier</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:triggerEvent">
+                <tr>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="./cpp:description" />
+                        </xsl:call-template>
+                    </td>
+                    <td>
+                        <xsl:value-of select="./cpp:correspondingCPP" />
+                    </td>
+                </tr>
+            </xsl:for-each>
+        </table>
+
     </xsl:template>
 
     <xsl:template match="cpp:processDescription">
