@@ -24,6 +24,12 @@
                         width: 100%;
                         border: 1px solid #000;
                     }
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
                     th, td {
                         border: 2px solid #000;
                         padding: 8px;
@@ -130,8 +136,7 @@
 
                     <h4>Step-by-step description</h4>
 
-                    <!-- TODO -->
-                    <xsl:call-template name="copyContent">
+                    <xsl:call-template name="stepTable">
                         <xsl:with-param name="data" select="cpp:process/cpp:stepByStepDescription" />
                     </xsl:call-template>
 
@@ -414,13 +419,26 @@
 
     </xsl:template>
 
-    <xsl:template match="cpp:processDescription">
+    <xsl:template name="stepTable">
+        <xsl:param name="data" />
 
-        <div class="processDescription">
-            <xsl:call-template name="copyContent">
-                <xsl:with-param name="data" select="." />
-            </xsl:call-template>
-        </div>
+        <table class="stepTable">
+            <tr>
+                <th>No</th>
+                <th>Supplier</th>
+                <th>Input</th>
+                <th class="stepsColumnHeader">Steps</th>
+                <th>Output</th>
+                <th>Customer</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:step">
+                <xsl:call-template name="stepRow">
+                    <xsl:with-param name="data" select="." />
+                </xsl:call-template>
+            </xsl:for-each>
+        
+        </table>
 
     </xsl:template>
 
@@ -594,6 +612,163 @@
         </xsl:for-each>
     </xsl:template>
 
+    <!-- Generic template for a single step -->
+    <xsl:template name="stepRow">
+        <xsl:param name="data" />
+
+        <xsl:variable name="cntInput" select="count($data/cpp:input)" />
+        <xsl:variable name="cntOutput" select="count($data/cpp:output)" />
+        <xsl:variable name="cntMax">
+            <xsl:choose>
+                <xsl:when test="$cntInput &lt; $cntOutput">
+                    <xsl:value-of select="$cntOutput" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$cntInput"></xsl:value-of>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:call-template name="stepDataRow">
+            <xsl:with-param name="data" select="$data" />
+            <xsl:with-param name="counter" select="1" />
+            <xsl:with-param name="max" select="$cntMax" />
+            <xsl:with-param name="maxInput" select="$cntInput" />
+            <xsl:with-param name="maxOutput" select="$cntOutput" />
+        </xsl:call-template>
+
+    </xsl:template>
+
+    <!-- Generic template for single data in step row -->
+    <xsl:template name="stepDataRow">
+        <xsl:param name="data" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="maxInput" />
+        <xsl:param name="maxOutput" />
+
+        <tr>
+            <xsl:if test="$counter = 1">
+                <!-- step number -->
+                <xsl:element name="td">
+                    <xsl:attribute name="rowspan">
+                        <xsl:value-of select="$max" />
+                    </xsl:attribute>
+                    <xsl:value-of select="$data/@stepNumber"></xsl:value-of>
+                </xsl:element>
+            </xsl:if>
+            <xsl:if test="$counter &lt;= $maxInput">
+                <!-- input columns -->
+                <xsl:call-template name="stepInput">
+                    <xsl:with-param name="data" select="$data/cpp:input[$counter]" />
+                    <xsl:with-param name="counter" select="$counter" />
+                    <xsl:with-param name="max" select="$maxInput" />
+                    <xsl:with-param name="total" select="$max" />
+                </xsl:call-template>
+            </xsl:if>
+            <xsl:if test="$counter = 1">
+                <xsl:element name="td">
+                    <xsl:attribute name="class">stepsColumn</xsl:attribute>
+                    <xsl:attribute name="rowspan">
+                        <xsl:value-of select="$max" />
+                    </xsl:attribute>
+                    <xsl:value-of select="$data/cpp:stepDescription" />
+                </xsl:element>
+            </xsl:if>
+            <xsl:if test="$counter &lt;= $maxOutput">
+                <xsl:call-template name="stepOutput">
+                    <xsl:with-param name="data" select="$data/cpp:output[$counter]" />
+                    <xsl:with-param name="counter" select="$counter" />
+                    <xsl:with-param name="max" select="$maxOutput" />
+                    <xsl:with-param name="total" select="$max" />
+                </xsl:call-template>
+            </xsl:if>
+        </tr>
+
+        <xsl:if test="$counter &lt;= $max">
+            <xsl:call-template name="stepDataRow">
+                <xsl:with-param name="data" select="$data" />
+                <xsl:with-param name="counter" select="$counter + 1" />
+                <xsl:with-param name="max" select="$max" />
+                <xsl:with-param name="maxInput" select="$maxInput" />
+                <xsl:with-param name="maxOutput" select="$maxOutput" />
+            </xsl:call-template>
+        </xsl:if>
+
+    </xsl:template>
+
+    <xsl:template name="stepInput">
+        <xsl:param name="data" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="total" />
+
+        <xsl:variable name="rowspan">
+            <xsl:choose>
+                <xsl:when test="$counter = $max">
+                    <xsl:value-of select="$total - $counter + 1" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="1" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:for-each select="$data/cpp:supplier">
+                <xsl:value-of select="." />
+                <xsl:if test="position() != last()">
+                    <hr />
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:element>
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:value-of select="$data/cpp:inputElement" />
+        </xsl:element>
+
+    </xsl:template>
+
+    <xsl:template name="stepOutput">
+        <xsl:param name="data" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="total" />
+
+        <xsl:variable name="rowspan">
+            <xsl:choose>
+                <xsl:when test="$counter = $max">
+                    <xsl:value-of select="$total - $counter + 1" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="1" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:value-of select="$data/cpp:outputElement" />
+        </xsl:element>
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:for-each select="$data/cpp:customer">
+                <xsl:value-of select="." />
+                <xsl:if test="position() != last()">
+                    <hr />
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:element>
+    </xsl:template>
 
     <!-- Generic formatted text template -->
     <xsl:template name="copyContent">
