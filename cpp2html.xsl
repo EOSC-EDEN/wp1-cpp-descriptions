@@ -13,7 +13,11 @@
         <html>
             <head>
                 <style type="text/css">
-                    body { font-family: Arial, sans-serif; margin: 20px; }
+                    body {
+                        font-family: Arial, sans-serif;
+                        width: 700px;
+                        margin: auto;
+                    }
                     table {
                         border-collapse: collapse;
                         margin-top: 20px;
