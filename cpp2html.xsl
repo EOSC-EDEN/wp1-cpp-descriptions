@@ -149,8 +149,7 @@
 
                 <h3>Rationale&#40;s&#41; and worst case&#40;s&#41;</h3>
 
-                <!-- TODO -->
-                <xsl:call-template name="copyContent">
+                <xsl:call-template name="rationaleAndWorstCases">
                     <xsl:with-param name="data" select="cpp:rationaleWorstCase" />
                 </xsl:call-template>
 
@@ -442,13 +441,31 @@
 
     </xsl:template>
 
-    <xsl:template match="cpp:rationaleAndWorstCases">
+    <xsl:template name="rationaleAndWorstCases">
+        <xsl:param name="data" />
 
-        <div class="rationaleAndWorstCases">
-            <xsl:call-template name="copyContent">
-                <xsl:with-param name="data" select="." />
-            </xsl:call-template>
-        </div>
+        <table class="rationaleAndWorstCases">
+            <tr>
+                <th>Rational</th>
+                <th>Impact of inaction or failure of the process</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:purpose">
+                <tr>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="./cpp:purposeDescription" />
+                        </xsl:call-template>
+                    </td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="./cpp:worstCase" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:for-each>
+
+        </table>
 
     </xsl:template>
 
