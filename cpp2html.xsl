@@ -563,6 +563,11 @@
             <xsl:with-param name="header" select="'Documentation/guidance'" />
         </xsl:call-template>
 
+        <xsl:call-template name="multiRowHeader">
+            <xsl:with-param name="data" select="$inout_data/cpp:alerts/cpp:alert" />
+            <xsl:with-param name="header" select="'Alerts'" />
+        </xsl:call-template>
+
     </xsl:template>
 
     <!-- Generic template for multi-row headers-->
