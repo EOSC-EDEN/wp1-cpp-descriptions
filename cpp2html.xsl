@@ -106,7 +106,6 @@
 
                 <h3>Definition and scope</h3>
 
-                <!-- TODO -->
                 <xsl:call-template name="copyContent">
                     <xsl:with-param name="data" select="cpp:descriptionAndScope" />
                 </xsl:call-template>
