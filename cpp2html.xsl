@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ cpp.xsd" version="1.0">
+<xsl:stylesheet 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ cpp.xsd"
+    version="1.0">
     <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
 
     <xsl:variable name="SPACE" select="' '"></xsl:variable>
