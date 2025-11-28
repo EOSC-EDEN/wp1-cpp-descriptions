@@ -672,7 +672,9 @@
                     <xsl:attribute name="rowspan">
                         <xsl:value-of select="$max" />
                     </xsl:attribute>
-                    <xsl:value-of select="$data/cpp:stepDescription" />
+                    <xsl:call-template name="copyContent">
+                        <xsl:with-param name="data" select="$data/cpp:stepDescription" />
+                    </xsl:call-template>
                 </xsl:element>
             </xsl:if>
             <xsl:if test="$counter &lt;= $maxOutput">
@@ -719,7 +721,9 @@
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
             <xsl:for-each select="$data/cpp:supplier">
-                <xsl:value-of select="." />
+                <xsl:call-template name="copyContent">
+                    <xsl:with-param name="data" select="." />
+                </xsl:call-template>
                 <xsl:if test="position() != last()">
                     <hr />
                 </xsl:if>
@@ -729,7 +733,9 @@
             <xsl:attribute name="rowspan">
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
-            <xsl:value-of select="$data/cpp:inputElement" />
+            <xsl:call-template name="copyContent">
+                <xsl:with-param name="data" select="$data/cpp:inputElement" />
+            </xsl:call-template>
         </xsl:element>
 
     </xsl:template>
@@ -755,14 +761,18 @@
             <xsl:attribute name="rowspan">
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
-            <xsl:value-of select="$data/cpp:outputElement" />
+            <xsl:call-template name="copyContent">
+                <xsl:with-param name="data" select="$data/cpp:outputElement" />
+            </xsl:call-template>
         </xsl:element>
         <xsl:element name="td">
             <xsl:attribute name="rowspan">
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
             <xsl:for-each select="$data/cpp:customer">
-                <xsl:value-of select="." />
+                <xsl:call-template name="copyContent">
+                    <xsl:with-param name="data" select="." />
+                </xsl:call-template>
                 <xsl:if test="position() != last()">
                     <hr />
                 </xsl:if>
