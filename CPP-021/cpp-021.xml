@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-021" xml:lang="en">
+    <cpp:header>
+        <cpp:label>AIP Versioning</cpp:label>
+        <cpp:authors>
+            <cpp:author>Bertrand Caron</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Micky Lindlar</cpp:contributor>
+            <cpp:contributor>Kris Dekeyser</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Matthew Addis</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Fen Zhang</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA creates successive versions of the Information 
+        Objects on its own or on the producer initiative.
+    </cpp:shortDefinition>
+    <cpp:descriptionAndScope>
+        <p>Updating AIPs is a common operation in a TDA that involves keeping 
+            track of changes to data or Metadata, and preserving previous 
+            versions (entirely or partially) in order to go back to different 
+            stages of an AIP. Either the producer or the TDA may initiate an 
+            update, usually because of technical or contextual changes on the 
+            level of File, Representation or Metadata.</p>
+        <p>Reasons for Versioning include, but are not limited to:</p>
+        <p>For contextual quality reasons:</p>
+        <ul>
+            <li>Removal of data
+                <ul>
+                    <li>Fault in the initial deposit: An AIP or Representation 
+                        contains File(s) that were not supposed to be part of 
+                        the deposit (e.g. system Files not needed for 
+                        preservation);</li>
+                    <li>Content being retracted after the initial deposit: An 
+                        AIP or Representation contains File(s) that were 
+                        withdrawn (e.g. due to security reasons, legal 
+                        restrictions).</li>
+                </ul>
+            </li>
+            <li>Update of data
+                <ul>
+                    <li>Update of File(s): An AIP or Representation contains 
+                        File(s) that have been replaced (e.g. due to faults in 
+                        the initial deposit);</li>
+                    <li>Enrichment or correction of Descriptive Metadata;</li>
+                    <li>Update of administrative Metadata (e.g. due to changes 
+                        in the access rights or legal information for an AIP).</li>
+                </ul>
+            </li>
+            <li>Addition of data
+                <ul>
+                    <li>Incomplete initial deposit: The initial Information 
+                        Package was missing Files and some need to be added 
+                        after its ingest;</li>
+                    <li>Enhancement of the initial deposit: After ingest of the 
+                        Information Package (IP), additional material was issued 
+                        and needs to be preserved in the IP.</li>
+                </ul>
+            </li>
+        </ul>
+        <p>For technical quality reasons:</p>
+        <ul>
+            <li>Replacement or Update due to preservation action: A File or 
+                Representation has been migrated into a format deemed more 
+                suitable for preservation;</li>
+            <li>Replacement or Update due to new packaging: A File or 
+                Representation has been re- or unpackaged (e.g. for ZIP, TAR, 
+                WARC or disk image containers).</li>
+        </ul>
+        <p>For Metadata quality reasons:</p>
+        <ul>
+            <li>Addition or replacement of Technical metadata as a consequence 
+                of re-running a characterisation process (i.e. Format 
+                Identification, Metadata Extraction or Format Validation) on 
+                already ingested AIPs (e.g. due to a new tool being released).</li>
+        </ul>
+        <p>Updates might involve the submission of a new SIP by the producer 
+            (e.g. in the case of changes to the initial deposit), but can also 
+            just take place on the storage level (e.g. new data being added as 
+            a result of a preservation action) without a SIP being involved.</p>
+        <p>In comparison to other IT domains, updating and creating new versions 
+            in digital preservation exhibits peculiarities for the following 
+            reasons:</p>
+        <ul>
+            <li>On the File level: As data and Metadata are generally stored in 
+                physical containers (such as ZIP, TAR, WARC, etc.), unpacking 
+                and merging content from the incoming SIP is a complex and risky 
+                process;</li>
+            <li>On the storage level: As physical containers corresponding to 
+                IPs are usually stored on tape or other cold-storage 
+                technologies, updates are generally asynchronous;</li>
+            <li>On the Metadata level: Authenticity and audit trail requirements 
+                imply that TDAs record precisely all details about the 
+                versioning impacts (e.g. requester, date, reasons, impacted data 
+                and Metadata, etc.). This is of particular importance when the 
+                versioning is requested by TDA and when the new version replaces 
+                the original one.</li>
+        </ul>
+        <p>A TDA must have a versioning policy in place for handling and 
+            documenting retracted or updated data. It may decide to partially or 
+            totally retain the older versions, based on several factors such as 
+            reversibility (e.g. addition of new Files versus replacement of 
+            Files), purpose of the update (e.g. correction, enrichment, risk 
+            mitigation, etc.), issuer of the updating request (i.e. Producer or 
+            TDA), etc.</p>
+        <p>The implementation of updates to AIP (i.e. data and/or Metadata) 
+            requires consideration of a range of factors including a) what is 
+            being updated and with what frequency, b) whether that should result 
+            in a new AIP version or simply an update to the current version, c) 
+            how often the different versions of the AIP need to be accessed, d) 
+            how the AIP is stored internally (e.g. using databases, file systems, 
+            tape libraries, cloud storage), and e) how versions are serialised 
+            and exported from the TDA when they need to be exchanged with 
+            third-parties.</p>
+        <p>Specific implementation approaches are outside of the scope of this 
+            CPP.. However, some considerations may include:</p>
+        <ul>
+            <li>Are there regular and incremental updates in dynamic collections 
+                of content?  If so, consider storing the changes (deltas) between 
+                AIP versions, rather than complete AIPs, which can reduce both 
+                storage requirements and processing overhead.</li>
+            <li>Are there any changes to the AIP content that do not require 
+                versioning (e.g. recording the results of fixity checks). If so, 
+                consider mechanisms that allow efficient tracking of preservation 
+                actions, such as preservation Metadata updates, without 
+                duplicating or accessing unchanged content.</li>
+            <li>Is there a need for enhanced traceability and provenance so that 
+                it is easy to follow the evolution of AIPs over time, without 
+                needing to access or analyse internal Metadata?  If so, consider 
+                additional indexing and logging mechanisms alongside AIP storage.</li>
+            <li>The ability to access the deltas between AIPs instead of whole 
+                versions can support easier integrity checks and rollback 
+                capabilities (e.g. enabling recovery from data corruption 
+                without full AIP restores).</li>
+            <li>Is there a need to externalise and exchange AIPs with third 
+                parties (e.g. repository migration, synchronisation, and 
+                replication)? Exchanging AIP versions as deltas can enable more 
+                efficient data transfer across distributed or replicated 
+                preservation systems.</li>
+            <li>If some or all of AIPs are held using offline media, then 
+                minimising data handling can be desirable to reduce the risk of 
+                corruption or damage when media is retrieved or read.  Isolating 
+                and preserving only changed components of AIPs can reduce 
+                unnecessary manipulation of stable data, which lowers the risk 
+                of inadvertent corruption, loss, or operational error.</li>
+        </ul>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>AIP</cpp:dataElement>
+                <cpp:dataElement>Optional: SIP (if Versioning is triggered by 
+                    an updating request the Producer)</cpp:dataElement>
+                <cpp:dataElement>Optional: File(s) or Representation(s) that 
+                    should replace existing ones or be added to an AIP</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Metadata that should be added to the 
+                    Information Package (i.e. Descriptive, Technical, Structural 
+                    and/or Administrative metadata)</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Versioning Policy</cpp:guidanceElement>
+                <cpp:guidanceElement>AIP packaging policy</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:data>
+                <cpp:dataElement>New AIP Version</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Provenance metadata </cpp:metadataElement>
+                <cpp:metadataElement>Storage management information (new version identifier)</cpp:metadataElement>
+                <cpp:metadataElement>Updated Descriptive, Technical and/or Structural Metadata</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <p>Updating request from the Producer in the form of an SIP ingest request</p>
+                </cpp:description>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <p>Data must be removed or redacted because of legal constraints</p>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-020</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <p>Re-run of a characterisation process (e.g. when a new 
+                        tool or new tool version is made available)</p>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-008</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-009</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-010</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <p>New Representations created by the TDA need to be added 
+                        or should replace the original</p>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-014</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-027</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-028</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:stepDescription>
+                    <p>Retrieve corresponding AIP Metadata</p>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:stepDescription>
+                    <p>Identify the scope of versioning</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Update of Metadata (step 3a)</p>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Addition or removal of Files (step 3b)</p>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Replacement of an AIP (step 3c)</p>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3a">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>Additional incoming Metadata</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>AIP Metadata</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>If the intended update concerns only Metadata, update 
+                        the AIP Metadata</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Digital archive database update</p>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3b">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>SIP (if relevant)</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>AIP</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>File(s) or Representation(s) that should replace 
+                            existing File(s) or be added to the AIP</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>Versioning policy</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>If the update involves the addition of Files, request 
+                        corresponding physical AIP and perform merging with 
+                        incoming data and Metadata</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Content of the new AIP version</p>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Digital archive database update</p>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3c">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>Versioning policy</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>If the update is a “full update”, ingest data and 
+                        Metadata as a complete replacement of the previous AIP 
+                        version</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Digital archive database update</p>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>New PID for the new AIP version</p>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-005</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>Request new identifier for the new AIP version</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>AIP version with PID assigned</p>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:stepDescription>
+                    <p>Document the date, requester, data or Metadata impacted, 
+                        and reason for the versioning</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>Provenance metadata</p>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>Content of the new AIP version</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>AIP packaging policy</p>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>Repackage the content of the new AIP according to the 
+                        TDA’s current packaging standards</p>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <p>New AIP</p>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-029</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <p>Versioning policy</p>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <p>Manage the retention of previous version(s) (i.e. partial, 
+                        total retainment or disposal)</p>
+                </cpp:stepDescription>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <p>Digital Objects are dynamic and easy to modify, correct or 
+                    enrich. Producers generally use this particularity to update 
+                    them for various reasons. A TDA should be able to manage 
+                    versioning in order to identify and preserve successive AIP 
+                    versions.</p>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <p>Inability to handle updating requests from the Producer 
+                    causes duplication because the TDA needs to store subsequent 
+                    AIP versions as new AIPs. See Caron, B. and Verrier, L. 2024. 
+                    From Products to Library Collections: Towards a Data-driven 
+                    Policy for Legal Deposit of Born-digital Sound at the 
+                    National Library of France. iPRES 2024 Papers - 
+                    International Conference on Digital Preservation. Available 
+                    at</p>
+                    <p>
+                        <a href="https://ipres2024.pubpub.org/pub/6m5xlcii/release/1"></a>
+                    </p>
+                    <p>.</p>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <p>Producers may want to perform complex updating operations 
+                    involving several changes to different parts of an AIP and 
+                    combine all changes into a single version. </p>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <p>Successive, incomplete changes performed by the Producer may 
+                    lead to the TDA’s inability to identify stable and complete 
+                    versions.</p>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>Every new AIP version must be assigned a new identifier. 
+                    The design and versioning of identifiers (e.g. creation of 
+                    entirely new identifiers, use of version qualifiers etc.) 
+                    should be defined in a persistent identifier minting policy.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>Soft dependency (i.e. may require): The documented event, 
+                    datetime, and Provenance metadata from the Metadata 
+                    Extraction process may be required by AIP Versioning.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>Risk Mitigation acts as a supplier to AIP Versioning, 
+                    providing AIP Versioning with risk mitigation policy details, 
+                    as they relate to managing risks in retention of previous 
+                    version(s) (i.e. partial, total retainment or disposal).</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>Versioning implies several delicate operations, in particular 
+                    in the case of a partial update, where the incoming SIP 
+                    should be merged with the existing AIP.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affects</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-006</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <p>Versioning impacts how the export will have to be run and 
+                    where and how information about the versions may be found. 
+                    In addition a policy might determine if only the last or all 
+                    versions should be exported.</p>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <p>versions</p>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <p>Provenance and authenticity (R07) The repository guarantees 
+                    the authenticity of the digital objects and provides 
+                    provenance information." includes "The repository approach 
+                    to changing and versioning data and metadata. How the 
+                    approach and records of changes are communicated to data 
+                    depositors and users."</p>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <p>versions</p>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <p>Topic not addressed, but briefly mentioned in C27 Identification</p>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <p>versions</p>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <p>AIP Versions and Editions are essential notions of the OAIS 
+                    / ISO 16363 model. No AIP versioning operation is described, 
+                    but the notion of versions is touched upon in the following 
+                    sections:</p>
+                <ul>
+                    <li>4.2.1.1 The repository shall have a definition of each 
+                        AIP or class of AIPs that is adequate for long-term 
+                        preservation, enabling the identification, extraction 
+                        and interpretation of all the required components within 
+                        each AIP.</li>
+                    <li>4.3.5 The repository must be able to export the relevant 
+                        AIPs to its successor location in the timescale required, 
+                        together with supplementary information including 
+                        specifications of the AIPs adequate for the information 
+                        contained in them to be extracted.</li>
+                    <li>4.4.1.1 The repository shall preserve the Content 
+                        Information of AIPs</li>
+                    <li>5.1.2 The repository shall manage the number, security, 
+                        coordination, and location of copies of all digital 
+                        objects.</li>
+                </ul>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <p>AIP Version</p>
+                <p>AIP Edition</p>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <p>Section 5.2.4.6 "Distinguishing AIP Versions, AIP Editions 
+                    and Derived AIPs"</p>
+                <p>OAIS distinguishes AIP Versions (triggered by migrations 
+                    performed by the Archive) and AIP Editions (triggered by 
+                    update requests from the Producer).</p>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingSection>
+                <p>PREMIS does not approach versioning. Nevertheless, the "1:1 
+                    principle" implies that if an Object (Representation, File 
+                    or Bitstream) is modified by the repository, this operation 
+                    creates a new Object that is declared as being derived from 
+                    the source Object.</p>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>BnF Information Package lifecycle Implementation</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Bibliothèque nationale de France</cpp:institutionLabel>
+                    <cpp:institutionCountry>FR</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>
+                        https://bnf.hal.science/hal-01617645v1</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <p>The paper describes several trigger events (update, 
+                        deletion or simple Metadata edition requests) and 
+                        different scenarios for versioning.</p>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <p>The paper describes scenarios for partial updates which 
+                        may have varying impacts on existing AIPs</p>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <p>Following an unsuccessful attempt to implement an 
+                        algorithm to determine the nature of update operations, 
+                        based on structural comparisons between incoming SIPs 
+                        and existing AIPs, BnF adopted a policy that permits 
+                        only full updates. As a result, producers are required 
+                        to request the relevant AIP and take responsibility for 
+                        merging it with the SIP according to their needs.</p>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://knowledge.exlibrisgroup.com/Rosetta/Product_Documentation/Rosetta_Staff_Users_Guide/Web_Editor/001_Web_Editor/003_Viewing_Digital_Objects_in_the_Web_Editor#Versions_Tab</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-EventLoggingofpreservationactions</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/aic/#aic</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#reingest</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
