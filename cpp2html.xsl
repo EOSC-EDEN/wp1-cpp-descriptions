@@ -254,6 +254,7 @@
         <div class="title">
             <h1>
                 <xsl:value-of select="$LABEL" />
+                <xsl:value-of select="$SPACE" />
                 <xsl:text>&#40;</xsl:text>
                 <xsl:value-of select="$CPP" />
                 <xsl:text>&#41;</xsl:text>
