@@ -185,8 +185,7 @@
 
                 <h3>Other relations</h3>
 
-                <!-- TODO -->
-                <xsl:call-template name="copyContent">
+                <xsl:call-template name="relationTable">
                     <xsl:with-param name="data" select="cpp:cppRelationships/cpp:relationship[cpp:relationshipType!='Requires']" />
                 </xsl:call-template>
 
@@ -505,6 +504,40 @@
 
         </table>
 
+    </xsl:template>
+
+    <!-- relations table -->
+
+    <xsl:template name="relationTable">
+
+        <xsl:param name="data"/>
+
+        <table class="relations">
+            <tr>
+                <th>Relation</th>
+                <th>CPP-ID</th>
+                <th>CPP-Title</th>
+                <th>Relationship description</th>
+            </tr>
+
+            <xsl:for-each select="$data">
+                <tr>
+                    <td>
+                        <xsl:value-of select="cpp:relationshipType" />
+                    </td>
+                    <td>
+                        <xsl:value-of select="cpp:relatedCPP" />
+                    </td>
+                    <td></td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="cpp:relationshipDescription" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:for-each>
+
+        </table>
     </xsl:template>
 
     <!-- Public documentation template -->
