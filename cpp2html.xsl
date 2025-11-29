@@ -155,7 +155,7 @@
 
                 <h3>Rationale&#40;s&#41; and worst case&#40;s&#41;</h3>
 
-                <xsl:call-template name="rationaleAndWorstCases">
+                <xsl:call-template name="rationaleTable">
                     <xsl:with-param name="data" select="cpp:rationaleWorstCase" />
                 </xsl:call-template>
 
@@ -447,7 +447,9 @@
 
     </xsl:template>
 
-    <xsl:template name="rationaleAndWorstCases">
+    <!-- Rationale and worst case table -->
+
+    <xsl:template name="rationaleTable">
         <xsl:param name="data" />
 
         <table class="rationaleAndWorstCases">
