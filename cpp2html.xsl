@@ -761,7 +761,7 @@
             <xsl:value-of select="cpp:institution/cpp:institutionCountry" />
         </xsl:variable>
         <xsl:variable name="language">
-            <xsl:value-of select="cpp:documentationLanguage" />
+            <xsl:value-of select="cpp:linkToDocumentation/@xml:lang" />
         </xsl:variable>
         <xsl:variable name="hyperlink">
             <xsl:element name="a">
