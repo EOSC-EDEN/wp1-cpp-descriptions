@@ -175,8 +175,7 @@
 
                 <h3>Dependencies</h3>
 
-                <!-- TODO -->
-                <xsl:call-template name="copyContent">
+                <xsl:call-template name="dependencyTable">
                     <xsl:with-param name="data" select="cpp:cppRelationships/cpp:relationship[cpp:relationshipType='Requires']" />
                 </xsl:call-template>
 
@@ -477,12 +476,35 @@
 
     </xsl:template>
 
-    <!-- Use case template -->
+    <!-- dependencies table -->
 
-    <xsl:template match="cpp:useCase">
-        <xsl:call-template name="copyContent">
-            <xsl:with-param name="data" select="." />
-        </xsl:call-template>
+    <xsl:template name="dependencyTable">
+
+        <xsl:param name="data"/>
+
+        <table class="dependencies">
+            <tr>
+                <th>CPP-ID</th>
+                <th>CPP-Title</th>
+                <th>Relationship description</th>
+            </tr>
+
+            <xsl:for-each select="$data">
+                <tr>
+                    <td>
+                        <xsl:value-of select="cpp:relatedCPP" />
+                    </td>
+                    <td></td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="cpp:relationshipDescription" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:for-each>
+
+        </table>
+
     </xsl:template>
 
     <!-- Public documentation template -->
