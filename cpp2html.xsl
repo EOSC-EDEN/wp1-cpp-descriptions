@@ -21,32 +21,97 @@
         <html>
             <head>
                 <style type="text/css">
-                    body {
-                        font-family: Arial, sans-serif;
-                        width: 700px;
-                        margin: auto;
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
                     }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
                     table {
                         border-collapse: collapse;
-                        margin-top: 20px;
+                        margin: 10px 0;
                         width: 100%;
-                        border: 1px solid #000;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
                     }
-                    .stepsColumn {
-                        background-color: #fce5cd;
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
                     }
-                    .stepsColumnHeader {
-                        background-color: #f9cb9c;
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
                     }
+
                     th, td {
                         border: 2px solid #000;
                         padding: 8px;
                         text-align: left;
                         vertical-align: top;
                     }
-                    th { background-color: #f2f2f2; }
-                    table.intro td:nth-child(1) { font-weight: bold}
-                    table.intro td.history { font-weight: normal; background-color: #fff;}
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
                 </style>
                 <title>
                     <xsl:text>EOSC-EDEN_</xsl:text>
