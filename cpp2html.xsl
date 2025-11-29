@@ -1060,4 +1060,14 @@
         </xsl:for-each>
     </xsl:template>
 
+    <!-- debug -->
+
+    <xsl:template name="debug">
+        <xsl:param name="msg" />
+        <xsl:message>
+            <xsl:text>DEBUG: </xsl:text>
+            <xsl:copy-of select="string($msg)" />
+        </xsl:message>
+    </xsl:template>
+
 </xsl:stylesheet>
