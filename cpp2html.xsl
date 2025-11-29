@@ -12,6 +12,7 @@
     <xsl:variable name="USCORE" select="'_'"></xsl:variable>
 
     <xsl:variable name="frameworks" select="document('frameworks.xml')" />
+
     <xsl:template match="/cpp:cpp">
 
         <xsl:variable name="CPP" select="@ID"></xsl:variable>
@@ -235,7 +236,7 @@
 
                 <h3>Use cases</h3>
 
-                <xsl:call-template name="copyContent">
+                <xsl:call-template name="useCases">
                     <xsl:with-param name="data" select="cpp:referenceImplementations/cpp:useCases" />
                 </xsl:call-template>
 
@@ -632,6 +633,104 @@
     </xsl:template>
 
     <!-- Use case section -->
+
+    <xsl:template name="useCases">
+        <xsl:param name="data"/>
+
+        <xsl:for-each select="$data/cpp:useCase">
+
+            <h4>
+                <xsl:value-of select="cpp:useCasetitle" />
+            </h4>
+
+            <xsl:call-template name="useCaseTable">
+                <xsl:with-param name="data" select="." />
+            </xsl:call-template>
+        </xsl:for-each>
+
+    </xsl:template>
+
+    <!-- Use case table -->
+
+    <xsl:template name="useCaseTable">
+        <xsl:param name="data"/>
+
+        <table class="useCaseTable">
+            <tr>
+                <th colspan="2">Institutional background</th>
+            </tr>
+
+            <tr>
+                <td style="width:20%">Institution</td>
+                <td>
+                    <xsl:value-of select="$data/cpp:institution/cpp:institutionLabel" />
+                    <xsl:text>, </xsl:text>
+                    <xsl:value-of select="$data/cpp:institution/cpp:institutionCountry" />
+                </td>
+            </tr>
+
+            <xsl:if test="$data/cpp:linkToDocumentation">
+                <tr>
+                    <td style="width:20%">Hyperlink</td>
+                    <td>
+                        <xsl:for-each select="$data/cpp:linkToDocumentation">
+                            <xsl:if test="position() &gt; 1"><br/></xsl:if>
+                            <xsl:if test="cpp:comment">
+                                <xsl:value-of select="cpp:comment"/>
+                                <xsl:value-of select="$SPACE"/>
+                            </xsl:if>
+                            <xsl:element name="a">
+                                <xsl:attribute name="href">
+                                    <xsl:value-of select="cpp:hyperlink" />
+                                </xsl:attribute>
+                                <xsl:value-of select="cpp:hyperlink"/>
+                            </xsl:element>
+                        </xsl:for-each>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <tr>
+                <th colspan="2">Description</th>
+            </tr>
+
+            <xsl:if test="$data/cpp:triggerEvent">
+                <tr>
+                    <td>Trigger event</td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="$data/cpp:triggerEvent" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <xsl:if test="$data/cpp:problemStatement">
+                <tr>
+                    <td>Problem statement</td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="$data/cpp:problemStatement" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <xsl:if test="$data/spp:proposedSolution">
+                <tr>
+                    <td>Proposed solution</td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="$data/cpp:proposedSolution" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:if>
+
+        </table>
+                
+    </xsl:template>
+
     <!-- Public documentation template -->
 
     <xsl:template name="publicDocumentationTable">
