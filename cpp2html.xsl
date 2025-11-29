@@ -1057,12 +1057,10 @@
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
             <xsl:for-each select="$data/cpp:supplier">
-                <xsl:call-template name="copyContent">
-                    <xsl:with-param name="data" select="." />
-                </xsl:call-template>
-                <xsl:if test="position() != last()">
-                    <hr />
+                <xsl:if test="position()!=1">
+                    <hr/>
                 </xsl:if>
+                <xsl:value-of select="." />
             </xsl:for-each>
         </xsl:element>
         <xsl:element name="td">
@@ -1106,12 +1104,10 @@
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
             <xsl:for-each select="$data/cpp:customer">
-                <xsl:call-template name="copyContent">
-                    <xsl:with-param name="data" select="." />
-                </xsl:call-template>
-                <xsl:if test="position() != last()">
-                    <hr />
+                <xsl:if test="position()!=1">
+                    <hr/>
                 </xsl:if>
+                <xsl:value-of select="." />
             </xsl:for-each>
         </xsl:element>
     </xsl:template>
