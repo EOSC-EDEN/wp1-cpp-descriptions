@@ -31,18 +31,109 @@ Identifiers may reveal the hierarchical relationships in the identifier string (
 - Felix Burger
 - Maria Benauer
 
+## Process Definition
+
+### Inputs
+
+| Type     | Input                                     |
+| :------- | :---------------------------------------- |
+| Data     | Information package                       |
+| Data     | Object                                    |
+| Metadata | Technical metadata                        |
+| Metadata | Descriptive metadata                      |
+| Guidance | Identifier creation and management policy |
+
+### Outputs
+
+| Type     | Output                                                         |
+| :------- | :------------------------------------------------------------- |
+| Metadata | Identifier-enriched Information package, Object(s) or Metadata |
+| Metadata | Provenance metadata                                            |
+
+### Trigger Events
+
+| Description                                                            | Corresponding CPP |
+| :--------------------------------------------------------------------- | :---------------- |
+| Pre-ingest transfer preparation                                        | `CPP-029`         |
+| Ingestion workflow                                                     | `CPP-029`         |
+| Creation of new Files or Representations                               | `CPP-028`         |
+| Replacement of corrupted Files                                         | `CPP-004`         |
+| Data export                                                            | `CPP-006`         |
+| Data replication                                                       | `CPP-011`         |
+| Data migration                                                         | `CPP-014`         |
+| Data normalisation                                                     | `CPP-026`         |
+| Metadata ingest and creation                                           | `CPP-016`         |
+| Data version update                                                    | `CPP-021`         |
+| Broken File needs a new identifier                                     | `CPP-027`         |
+| Information package, File or Metadata is removed from the TDA holdings | `CPP-017`         |
+
 ## Process Steps
 
-| Step | Description                                                                                                             | Inputs                                                                                                   | Outputs                                           |
-|:----:|:-----------------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------:|:-------------------------------------------------:|
-| 1a   | Reservation of identifier prior to new entity assignment (step 2)                                                       | - A producer or a TDA has a need to reserve an identifier, (e.g. a PID, prior to the entity being added) |                                                   |
-| 1b   | New entity added or a need to assign an identifier to an existing entity (step 2)                                       | - *Object*<br>- *Information package*<br>- *Metadata*                                                    |                                                   |
-| 1c   | Entity with an identifier has changed (step 4)                                                                          | - *Object*<br>- *Information package*<br>- *Metadata*                                                    |                                                   |
-| 1d   | Entity is disposed (step 7)                                                                                             | - *Object*<br>- *Information package*<br>- *Metadata*                                                    |                                                   |
-| 2    | Create a new identifier according to the TDAs policy for identifier management                                          | - *Identifier creation and management policy*                                                            | - Identifier                                      |
-| 3    | Assign the new identifier to the entity and add it as a part of the entity’s Metadata                                   | - *(new) Identifier*<br>- *Object*<br>- *Information package*<br>- *Metadata*                            | - Metadata                                        |
-| 4    | If the changed entity has a PID assigned to it: evaluate if a new PID is required                                       | - *Identifier creation and management policy*                                                            | - Need for new PID identified (go back to step 2)<br>- No need for new PID identified (step 5) |
-| 5    | Update or add identifier relationships (e.g. hierarchical relations, sequential relations etc.) for the assigned entity |                                                                                                          | - Metadata                                        |
-| 6    | Update Provenance metadata for the entity so that identifiers have a history                                            |                                                                                                          | - Provenance metadata                             |
-| 7    | If the entity is disposed: retain minimum metadata and the identifier for the disposed entity                           | - *Disposed entity*                                                                                      |                                                   |
+| Step | Supplier(s) | Input(s)                                                                                                 | Description                                                                                                             | Output(s)                                         | Customer(s) |
+| :--- | :---------- | :------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ | :---------- |
+| 1a   |             | - A producer or a TDA has a need to reserve an identifier, (e.g. a PID, prior to the entity being added) | Reservation of identifier prior to new entity assignment (step 2)                                                       |                                                   |             |
+| 1b   |             | - *Object*<br>- *Information package*<br>- *Metadata*                                                    | New entity added or a need to assign an identifier to an existing entity (step 2)                                       |                                                   |             |
+| 1c   |             | - *Object*<br>- *Information package*<br>- *Metadata*                                                    | Entity with an identifier has changed (step 4)                                                                          |                                                   |             |
+| 1d   |             | - *Object*<br>- *Information package*<br>- *Metadata*                                                    | Entity is disposed (step 7)                                                                                             |                                                   |             |
+| 2    |             | - *Identifier creation and management policy*                                                            | Create a new identifier according to the TDAs policy for identifier management                                          | - Identifier                                      |             |
+| 3    |             | - *(new) Identifier*<br>- *Object*<br>- *Information package*<br>- *Metadata*                            | Assign the new identifier to the entity and add it as a part of the entity’s Metadata                                   | - Metadata                                        | `CPP-004`<br>`CPP-011`<br>`CPP-014`<br>`CPP-016`<br>`CPP-021`<br>`CPP-025`<br>`CPP-027`<br>`CPP-028`<br>`CPP-029` |
+| 4    |             | - *Identifier creation and management policy*                                                            | If the changed entity has a PID assigned to it: evaluate if a new PID is required                                       | - Need for new PID identified (go back to step 2)<br>- No need for new PID identified (step 5) |             |
+| 5    |             |                                                                                                          | Update or add identifier relationships (e.g. hierarchical relations, sequential relations etc.) for the assigned entity | - Metadata                                        |             |
+| 6    |             |                                                                                                          | Update Provenance metadata for the entity so that identifiers have a history                                            | - Provenance metadata                             |             |
+| 7    | `CPP-017`   | - *Disposed entity*                                                                                      | If the entity is disposed: retain minimum metadata and the identifier for the disposed entity                           |                                                   |             |
+
+## Rationale / Worst Case
+
+| Purpose                                                                                                                                                                       | Worst Case                                                                                                                                                    |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The rationale for implementing PIDs in TDAs stems from fundamental challenges in maintaining long-term access to digital objects and the core mission of preservation itself. | Link rot as well as problems and challenges in: Internal data management problemsm, System migrations, Format migrations, Activity tracking, Interoperability |
+
+## Relationships
+
+| Type               | Related CPP | Description                                                                                                                                                                  |
+| :----------------- | :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Required by        | CPP-016     | While ingesting into a TDA, the Metadata should be assigned an identifier. Also, the management functions of the Metadata may require replacing and/or updating identifiers. |
+| Required by        | CPP-017     | When the life cycle of the Digital Object or File ends, the identifier should be updated to “retired” status.                                                                |
+| Required by        | CPP-021     | When an AIP gets a new version, the new AIP version must also be assigned a new identifier.                                                                                  |
+| Required by        | CPP-024     | Enabling Discovery should make use of identifiers.                                                                                                                           |
+| Required by        | CPP-025     | Accessing Digital Object, File(s) or Metadata should be based on identifiers as parameters.                                                                                  |
+| Required by        | CPP-029     | The ingestion workflow is responsible for assigning identifiers to various entities in TDA, such as Files and Metadata.                                                      |
+| May be required by | CPP-004     | If a File is corrupted, it may need to be repaired or replaced. During this process, a new identifier may be created.                                                        |
+| May be required by | CPP-011     | When a Digital Object or File is replicated, the replicant may be assigned a new identifier.                                                                                 |
+| May be required by | CPP-013     | The management and reporting should require that the data is identified with identifiers.                                                                                    |
+| May be required by | CPP-014     | During format migration, the migrated File format may be assigned a new identifier.                                                                                          |
+| May be required by | CPP-019     | The data quality assessment may include validating the identifiers and their linked resources.                                                                               |
+| May be required by | CPP-026     | A normalised File format may be assigned with a new identifier.                                                                                                              |
+| May be required by | CPP-027     | A repaired File may get a new identifier.                                                                                                                                    |
+| May be required by | CPP-028     | A derivative of a File may get its own identifier.                                                                                                                           |
+
+## Framework Mappings
+
+| Framework     | Term                   | Section                               |
+| :------------ | :--------------------- | :------------------------------------ |
+| CoreTrustSeal | Persistent Identifiers | R09 Preservation Plan<br><br>R12 Discovery and Identification |
+| Nestor Seal   | Persistent Identifiers | C27 Identification                    |
+| ISO 16363     | Persistent Identifiers | 4.2.4<br><br>4.2.5.4<br><br>4.2.6.3   |
+| OAIS          | Persistent Identifiers | 6.2.4                                 |
+| PREMIS        | Persistent Identifiers | Data dictionary, 1.1 objectIdentifier |
+
+## Reference Implementations
+
+### Use Cases
+
+| Title                                   | Institution                                                   | Documentation                  | Problem                              | Solution                                                                                                                                                                                                                                                                                                                                                          |
+| :-------------------------------------- | :------------------------------------------------------------ | :----------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DOI given for a research dataset by TDA | CSC, Finland (Digital Preservation Service for Research Data) | https://wiki.eduuni.fi/x/9ZRYH | Research dataset does not have a DOI | <pre><code>Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset via a description tool or via a metadata API. When a dataset has been submitted, TDA automatically creates a DataCite description including a new DOI, and eventually it creates a corresponding publicly available website for the dataset Metadata.</code></pre> |
+
+### Public Documentation
+
+| Institution                                                                        | Link                                                                                                               | Comment        |
+| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- | :------------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-Identifyingmetadata                     |                |
+| CSC – IT Center for Science Ltd.                                                   | https://urn.fi/urn:nbn:fi-fe2020100578094                                                                          | section 2.4.1. |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices |                |
+
+
+
+---
 

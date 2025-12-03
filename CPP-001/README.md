@@ -21,12 +21,77 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 - Maria Benauer
 - Fen Zhang
 
+## Process Definition
+
+### Inputs
+
+| Type     | Input                                           |
+| :------- | :---------------------------------------------- |
+| Data     | File                                            |
+| Guidance | Storage management policy - Checksum algorithms |
+
+### Outputs
+
+| Type     | Output                                                                                            |
+| :------- | :------------------------------------------------------------------------------------------------ |
+| Metadata | Fixity metadata (one or multiple checksum(s) for the File as well as their associated algorithms) |
+| Metadata | Provenance metadata (a timestamp or event that describes the checksum calculation)                |
+
+### Trigger Events
+
+| Description                                                                        | Corresponding CPP |
+| :--------------------------------------------------------------------------------- | :---------------- |
+| A new *SIP* is submitted and processed                                             | `CPP-029`         |
+| *File* update or replacement due to Preservation Action (e.g. migration)           | `CPP-014`         |
+| Any other action that results in a new or updated *File* being added to the system |                   |
+
 ## Process Steps
 
-| Step | Description                                                 | Inputs                                                           | Outputs                                                                        |
-|:----:|:-----------------------------------------------------------:|:----------------------------------------------------------------:|:------------------------------------------------------------------------------:|
-| 1    | Get the list of accepted checksum algorithms                | - Storage management policy - Checksum algorithms                | - List of accepted checksum algorithms                                         |
-| 2    | Calculate the checksum for each algorithm                   | - *File*<br>- *List of checksum algorithms*                      | - List of checksums for the *File* based on different algorithms               |
-| 3    | Store the checksums in the *Fixity metadata* for the *File* | - List of checksums for the *File* based on different algorithms | - Updated *Fixity metadata* of the *File* in the TDA database                  |
-| 4    | Document the event and its datetime                         | - *File*                                                         | - Datetime for the checksum generation and other related *Provenance metadata* |
+| Step | Supplier(s) | Input(s)                                                         | Description                                                 | Output(s)                                                                      | Customer(s) |
+| :--- | :---------- | :--------------------------------------------------------------- | :---------------------------------------------------------- | :----------------------------------------------------------------------------- | :---------- |
+| 1    |             | - Storage management policy - Checksum algorithms                | Get the list of accepted checksum algorithms                | - List of accepted checksum algorithms                                         |             |
+| 2    |             | - *File*<br>- *List of checksum algorithms*                      | Calculate the checksum for each algorithm                   | - List of checksums for the *File* based on different algorithms               |             |
+| 3    |             | - List of checksums for the *File* based on different algorithms | Store the checksums in the *Fixity metadata* for the *File* | - Updated *Fixity metadata* of the *File* in the TDA database                  | `CPP-002`<br>`CPP-003` |
+| 4    |             | - *File*                                                         | Document the event and its datetime                         | - Datetime for the checksum generation and other related *Provenance metadata* |             |
+
+## Rationale / Worst Case
+
+| Purpose                                                | Worst Case                                                                                                                                              |
+| :----------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Keeping track of the fixity information of each *File* | Corrupted data can get undetected or be detected when it is too late to take corrective action                                                          |
+| Event datetime for checksum generation                 | No starting point from when the fixity can be checked (and guaranteed)                                                                                  |
+| Multiple checksums for each *File*                     | Collisions where changes to a *File* produce the same checksum, are more likely with a single checksum algorithm than with multiple checksum algorithms |
+
+## Relationships
+
+| Type        | Related CPP | Description                                                                                                                                                                                                                                           |
+| :---------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Required by | CPP-002     | CPP-002 relies on fixity information as produced and stored by CPP-001, when triggered by CPP-025 Enabling Access and CPP-006 AIP Batch Export. When triggered by CPP-029 Ingest CPP-002 rather relies on the fixity information supplied in the SIP. |
+| Required by | CPP-003     | The integrity checking process relies on the fixity information as produced and stored by CPP-001.                                                                                                                                                    |
+| Required by | CPP-006     | *Fixity metadata* is used to verify the integrity of data written into the exported AIP.                                                                                                                                                              |
+| Required by | CPP-016     | The checksums and associated algorithms need to be stored in the *File*’s *Fixity metadata* is used to verify the integrity of data written into the exported AIP.                                                                                    |
+
+## Framework Mappings
+
+| Framework     | Term                                                                                    | Section                                                                                           |
+| :------------ | :-------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ |
+| CoreTrustSeal | Checksum (cf [Extended Guidance documentation](https://doi.org/10.5281/zenodo.7051096)) | Information Technology & Security/Storage & Integrity (R14)                                       |
+| Nestor Seal   | Integrity                                                                               | C14 Integrity: Ingest Interface                                                                   |
+| ISO 16363     | integrity measurements                                                                  | Checksum Generation: 3.3.5 The repository shall define, collect, track, and<br>                    appropriately provide its information integrity measurements.<br><br>Recording: 4.1.6 The repository shall obtain sufficient control over the<br>                    Digital Objects to preserve them. |
+| OAIS          |                                                                                         | OAIS does not describe the process of checksum generation and recording in<br>                    its functional model but defines fixity information as part of Administrative<br>                    metadata, which is “necessary for adequate preservation of the Content Data<br>                    Object”. |
+| PREMIS        | Message digest calculation                                                              | The term “message digest calculation” is referenced in the glossary.<br><br>The general topic of fixity is addressed in section Fixity, Integrity,<br>                    Authenticity, p. 258. |
+
+## Reference Implementations
+
+### Public Documentation
+
+| Institution                                                                        | Link                                                                                                               | Comment         |
+| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- | :-------------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                          |                 |
+| CSC – IT Center for Science Ltd.                                                   | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                    | section 2.4.4.2 |
+| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices |                 |
+
+
+
+---
 
