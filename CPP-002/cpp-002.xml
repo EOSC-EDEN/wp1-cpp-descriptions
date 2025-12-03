@@ -26,7 +26,7 @@
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>
-        The TDA validates checksums against those stored in the Information Package at Ingest or Access. 
+        The TDA validates checksums against those stored in the Information Package at Ingest and/or Access. 
     </cpp:shortDefinition>
     <cpp:descriptionAndScope>
         <p>
