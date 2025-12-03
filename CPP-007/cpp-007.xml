@@ -495,7 +495,7 @@
                     <cpp:institutionLabel>CSC – IT Center for Science Ltd., Finland</cpp:institutionLabel>
                     <cpp:institutionCountry>FI</cpp:institutionCountry>
                 </cpp:institution>
-                <cpp:linkToDocumentation>
+                <cpp:linkToDocumentation xml:lang="en">
                     <cpp:hyperlink>https://www.clamav.net/</cpp:hyperlink>
                 </cpp:linkToDocumentation>
                 <cpp:triggerEvent>
