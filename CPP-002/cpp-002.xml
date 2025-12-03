@@ -60,6 +60,10 @@
             <cpp:metadata>
                 <cpp:metadataElement>Provenance metadata &#40;the checksum validation event, including the datetime&#41;</cpp:metadataElement>
             </cpp:metadata>
+            <cpp:alerts>
+                <cpp:alert>File corruption alert for each File that fails the check</cpp:alert>
+                <cpp:alert>Unsupported checksum algorithm alert for each algorithm that is not supported by the system</cpp:alert>
+            </cpp:alerts>
         </cpp:outputs>
         <cpp:triggerEvents>
             <cpp:triggerEvent>
