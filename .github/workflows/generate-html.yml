@@ -1,0 +1,30 @@
+name: Generate HTML from CPP XML
+
+on:
+  push:
+    branches:
+      - dev
+    paths:
+      - CPP-*/cpp-*.xml
+      - cpp2html.xsd
+  pull_request:
+    branches:
+      - dev
+    paths:
+      - CPP-*/cpp-*.xml
+      - cpp2html.xsd
+
+jobs:
+  generate-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Generate HTML
+        run: |
+          for f in CPP-*/cpp-*.xml
+          do
+            outfile="${f%.xml}.html"
+            echo "Generating ${outfile} from $f"
+            xsltproc cpp2html.xsl "$f" > "${outfile}"
+          done
