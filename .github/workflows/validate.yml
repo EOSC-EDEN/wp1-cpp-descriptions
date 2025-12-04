@@ -1,0 +1,29 @@
+on:
+    push:
+        branches:
+            - dev
+        paths:
+            - 'CPP-*/cpp-*.xml'
+            - 'cpp.xsd'
+    pull_request:
+        branches:
+            - dev
+        paths:
+            - 'CPP-*/cpp-*.xml'
+            - 'cpp.xsd'
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            
+            - name: Install xmllint
+              run: sudo apt-get install -y libxml2-utils
+            
+            - name: Validate XML files against schema
+              run: |
+                    for file in CPP-*/cpp-*.xml; do
+                        echo "Validating $file..."
+                        xmllint --schema cpp.xsd "$file" --noout
+                    done
