@@ -781,7 +781,7 @@
                 </tr>
             </xsl:if>
 
-            <xsl:if test="$data/spp:proposedSolution">
+            <xsl:if test="$data/cpp:proposedSolution">
                 <tr>
                     <td>Proposed solution</td>
                     <td>
