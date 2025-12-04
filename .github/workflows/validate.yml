@@ -1,0 +1,46 @@
+name: Validate CPP XML
+
+on:
+    pull_request:
+        branches:
+            - dev
+        paths:
+            - 'CPP-*/cpp-*.xml'
+            - 'cpp.xsd'
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            
+            - name: Install xmllint (libxml2-utils)
+              run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+            - name: Find XML files
+              id: find_files
+              run: |
+                files=$(git ls-files 'CPP-*/cpp-*.xml' || true)
+                if [ -z "$files" ]; then
+                    echo "no_files=true" >> $GITHUB_OUTPUT
+                    echo "No matching XML files found."
+                else
+                    echo "no_files=false" >> $GITHUB_OUTPUT
+                    echo "$files" > /tmp/xml_files
+                    cat /tmp/xml_files
+                fi
+
+            - name: Validate XML files against cpp.xsd
+              if: steps.find_files.outputs.no_files == 'false'
+              run: |
+                set -e
+                errors=0
+                for f in $(cat /tmp/xml_files); do
+                    echo "Validating $f against cpp.xsd"
+                    xmllint --noout --schema cpp.xsd "$f" || errors=$((errors+1))
+                done
+                if [ $errors -gt 0 ]; then
+                    echo "$errors file(s) failed validation"
+                    exit 1
+                fi
