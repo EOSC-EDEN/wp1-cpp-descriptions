@@ -5,26 +5,94 @@ on:
     branches:
       - dev
     paths:
-      - CPP-*/cpp-*.xml
-      - cpp2html.xsd
-  pull_request:
-    branches:
-      - dev
-    paths:
-      - CPP-*/cpp-*.xml
-      - cpp2html.xsd
+      - 'cpp2html.xsl'
+      - 'frameworks.xml'
+      - 'CPP-*/cpp-*.xml'
+
+permissions:
+  contents: write
 
 jobs:
-  generate-html:
+  transform-and-commit:
+    name: Transform cpp-*.xml to HTML and commit
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Generate HTML
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install xsltproc (libxslt)
         run: |
-          for f in CPP-*/cpp-*.xml
-          do
-            outfile="${f%.xml}.html"
-            echo "Generating ${outfile} from $f"
-            xsltproc cpp2html.xsl "$f" > "${outfile}"
-          done
+          sudo apt-get update
+          sudo apt-get install -y xsltproc
+
+      - name: Run XSLT transformation for each CPP-*/cpp-*.xml
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Check if the XSL file exists.
+          XSL_FILE='cpp2html.xsl'
+          if [ -z "$XSL_FILE" ]; then
+            echo "cpp2html.xsl not found in repository; nothing to do."
+            exit 0
+          fi
+          echo "Using XSLT stylesheet: $XSL_FILE"
+
+          found=0
+          # Transform each cpp-*.xml under directories that start with CPP-
+          while IFS= read -r -d '' xml; do
+            found=1
+            out="${xml%.xml}.html"
+            echo "Transforming '$xml' -> '$out'"
+            mkdir -p "$(dirname "$out")"
+            if ! xsltproc "$XSL_FILE" "$xml" > "$out"; then
+              echo "Transformation failed for $xml" >&2
+              exit 1
+            fi
+          done < <(find . -type f -path "./CPP-*/*" -name 'cpp-*.xml' -print0 || true)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No CPP-*/cpp-*.xml files were found to transform."
+          fi
+
+      - name: Commit updated/new CPP-*/cpp-*.html files
+        if: always()
+        shell: bash
+        env:
+          GIT_AUTHOR_NAME: "github-actions[bot]"
+          GIT_AUTHOR_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
+        run: |
+          set -euo pipefail
+
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+
+          staged=false
+
+          # Stage modified or added HTML files matching CPP-*/cpp-*.html
+          # 1) staged/modified relative to HEAD
+          while IFS= read -r -d '' f; do
+            git add -f "$f"
+            staged=true
+          done < <(git diff --name-only --diff-filter=AM HEAD -z | grep -z -E '^CPP-[^/]+/cpp-.*\.html$' || true)
+
+          # 2) untracked HTML files that match the pattern
+          while IFS= read -r -d '' f; do
+            git add -f "$f"
+            staged=true
+          done < <(git ls-files --others --exclude-standard -z | grep -z -E '^CPP-[^/]+/cpp-.*\.html$' || true)
+
+          if [ "$staged" = false ]; then
+            echo "No CPP-*/cpp-*.html updates to commit."
+            exit 0
+          fi
+
+          git commit -m "Updated CPP HTML descriptions"
+
+          # Push back to the branch that triggered the workflow
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          echo "Pushing commit to branch: ${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
