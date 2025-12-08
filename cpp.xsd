@@ -166,7 +166,7 @@
 										<xsd:complexType>
 											<xsd:sequence>
 												<xsd:element name="description"
-													type="textSection">
+													type="tableCellContent">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">Free-text
 															description of the triggering event.</xsd:documentation>
@@ -208,7 +208,7 @@
 																<xsd:complexType>
 																	<xsd:complexContent>
 																		<xsd:extension
-																			base="textSection">
+																			base="tableCellContent">
 																			<xsd:attribute
 																				name="optional"
 																				type="xsd:boolean"
@@ -224,7 +224,7 @@
 													</xsd:complexType>
 												</xsd:element>
 												<xsd:element name="stepDescription"
-													type="textSection">
+													type="tableCellContent">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">A free-text
 															description of the process step.</xsd:documentation>
@@ -246,7 +246,7 @@
 																<xsd:complexType>
 																	<xsd:complexContent>
 																		<xsd:extension
-																			base="textSection">
+																			base="tableCellContent">
 																			<xsd:attribute
 																				name="optional"
 																				type="xsd:boolean"
@@ -314,10 +314,10 @@
 								<xsd:sequence>
 									<xsd:element
 										name="purposeDescription"
-										type="textSection" />
+										type="tableCellContent" />
 									<xsd:element
 										name="worstCase"
-										type="textSection" />
+										type="tableCellContent" />
 								</xsd:sequence>
 							</xsd:complexType>
 						</xsd:element>
@@ -353,7 +353,7 @@
 										</xsd:simpleType>
 									</xsd:element>
 									<xsd:element name="relatedCPP" type="cpp" />
-									<xsd:element name="relationshipDescription" type="textSection" />
+									<xsd:element name="relationshipDescription" type="tableCellContent" />
 								</xsd:sequence>
 							</xsd:complexType>
 						</xsd:element>
@@ -382,7 +382,7 @@
 											</xsd:restriction>
 										</xsd:simpleType>
 									</xsd:element>
-									<xsd:element name="correspondingTerm" type="textSection"
+									<xsd:element name="correspondingTerm" type="tableCellContent"
 										minOccurs="0" maxOccurs="unbounded">
 										<xsd:annotation>
 											<xsd:documentation xml:lang="en">The term used in the
@@ -390,7 +390,7 @@
 												with.</xsd:documentation>
 										</xsd:annotation>
 									</xsd:element>
-									<xsd:element name="correspondingSection" type="textSection"
+									<xsd:element name="correspondingSection" type="tableCellContent"
 										minOccurs="0">
 										<xsd:annotation>
 											<xsd:documentation xml:lang="en">The section, part or
@@ -429,7 +429,7 @@
 															details.</xsd:documentation>
 													</xsd:annotation>
 												</xsd:element>
-												<xsd:element name="triggerEvent" type="textSection"
+												<xsd:element name="triggerEvent" type="tableCellContent"
 													minOccurs="0">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">Specific
@@ -438,14 +438,14 @@
 													</xsd:annotation>
 												</xsd:element>
 												<xsd:element name="problemStatement"
-													type="textSection" minOccurs="0">
+													type="tableCellContent" minOccurs="0">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">Challenge
 															or need addressed by this use case.</xsd:documentation>
 													</xsd:annotation>
 												</xsd:element>
 												<xsd:element name="proposedSolution"
-													type="textSection" minOccurs="0">
+													type="tableCellContent" minOccurs="0">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">Description
 															of the implemented solution or
@@ -492,11 +492,23 @@
 	<xsd:complexType name="textSection">
 		<xsd:annotation>
 			<xsd:documentation xml:lang="en">Complex type for elements with extensive textual
-				material</xsd:documentation>
+				material.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence maxOccurs="unbounded">
 			<xsd:choice>
 				<xsd:element ref="xhtml:p" />
+				<xsd:group ref="xhtml:lists" />
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+		<xsd:complexType name="tableCellContent">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en">Complex type for elements with textual
+				material within a table cell.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:choice>
+				<xsd:element ref="xhtml:span" />
 				<xsd:group ref="xhtml:lists" />
 			</xsd:choice>
 		</xsd:sequence>
