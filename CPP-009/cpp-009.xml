@@ -103,19 +103,19 @@
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Ingest</p>
+                    <span>Ingest</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Re-run of metadata extraction because of the release of a new metadata
-                        extractor tool or tool version</p>
+                    <span>Re-run of metadata extraction because of the release of a new metadata
+                        extractor tool or tool version</span>
                 </cpp:description>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Verify the output of processes creating new Files or Representations</p>
+                    <span>Verify the output of processes creating new Files or Representations</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-014</cpp:correspondingCPP>
                 <cpp:correspondingCPP>CPP-026</cpp:correspondingCPP>
@@ -127,128 +127,128 @@
             <cpp:step stepNumber="1">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Format identifier</p>
+                        <span>Format identifier</span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-008</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Significant properties policy and detection method</p>
+                        <span>Significant properties policy and detection method</span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-022</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Risk properties policy and detection method</p>
+                        <span>Risk properties policy and detection method</span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-023</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Quality properties policy and detection method</p>
+                        <span>Quality properties policy and detection method</span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-019</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Select a suitable metadata extractor tool for the File(s), depending on its
+                    <span>Select a suitable metadata extractor tool for the File(s), depending on its
                         format identifier and on requirements from Significant Properties
-                        Definition, Data Quality Assessment and Risk Definition and Extraction</p>
+                        Definition, Data Quality Assessment and Risk Definition and Extraction</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Metadata extractor tool</p>
-                        <p>If relevant: configure the tool settings - syntax (XML, JSON, CSV, etc.),
+                        <span>Metadata extractor tool</span>
+                        <span>If relevant: configure the tool settings - syntax (XML, JSON, CSV, etc.),
                             format (e.g., EBUCore, PBCore, in case of an AV File) and verbosity
-                            level.</p>
+                            level.</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>File</em>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p><a href="https://coptr.digipres.org/index.php/Metadata_Extraction">Metadata
-                            extractor tool</a> configured according to selected settings</p>
+                        <span><a href="https://coptr.digipres.org/index.php/Metadata_Extraction">Metadata
+                            extractor tool</a> configured according to selected settings</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Applying one or sometimes several metadata extractor tool(s).</p>
+                    <span>Applying one or sometimes several metadata extractor tool(s).</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Tool(s) output</p>
+                        <span>Tool(s) output</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement optional="true">
-                        <p>Errors and warnings</p>
+                        <span>Errors and warnings</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="3" optional="true">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Errors and warnings</p>
+                        <span>Errors and warnings</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Analyse the errors and troubleshoot, e.g., by removing encryption</p>
+                    <span>Analyse the errors and troubleshoot, e.g., by removing encryption</span>
                 </cpp:stepDescription>
             </cpp:step>
             <cpp:step stepNumber="4" optional="true">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Tool(s) output</p>
+                        <span>Tool(s) output</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Policy on metadata recording</p>
+                        <span>Policy on metadata recording</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Map the extractor tool(s) output to metadata standard(s)</p>
-                    <p>The output of the extractor tool may be recorded as-is in the Information
+                    <span>Map the extractor tool(s) output to metadata standard(s)</span>
+                    <span>The output of the extractor tool may be recorded as-is in the Information
                         package, or may be mapped into a technical metadata standard (e.g., MIX for
-                        still images).</p>
+                        still images).</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Tool output in standard format(s)</p>
+                        <span>Tool output in standard format(s)</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="5">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Tool output in a standard format</p>
+                        <span>Tool output in a standard format</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Recording the results in the Information Package (i.e. in practice, in the
-                        digital archive database and/or in the physical Information Package)</p>
+                    <span>Recording the results in the Information Package (i.e. in practice, in the
+                        digital archive database and/or in the physical Information Package)</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Technical metadata, optionally other types of metadata, recorded in the
-                            Information Package</p>
+                        <span>Technical metadata, optionally other types of metadata, recorded in the
+                            Information Package</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-029</cpp:customer>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="6">
                 <cpp:stepDescription>
-                    <p>Document the event and its datetime</p>
+                    <span>Document the event and its datetime</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Provenance metadata</p>
+                        <span>Provenance metadata</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -257,25 +257,25 @@
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>All preservation actions beyond bit-level preservation are based on a
-                    comprehensive understanding of the File’s characteristics.</p>
+                <span>All preservation actions beyond bit-level preservation are based on a
+                    comprehensive understanding of the File’s characteristics.</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Files of poor quality may be unidentified.</p>
-                <p>Derivatives may be unadapted to the end users’ needs.</p>
-                <p>The result of a migration may be partial, as some parts of the source File may
-                    not have been identified, thus not been copied to the target File.</p>
+                <span>Files of poor quality may be unidentified.</span>
+                <span>Derivatives may be unadapted to the end users’ needs.</span>
+                <span>The result of a migration may be partial, as some parts of the source File may
+                    not have been identified, thus not been copied to the target File.</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Metadata extraction involves accessing the contents of the File. Hence it is an
+                <span>Metadata extraction involves accessing the contents of the File. Hence it is an
                     essential means to detect problematic Files (including errors like: corrupted,
                     non-conformant to format specification, encrypted or password protected, wrong
-                    file format identification etc.).</p>
+                    file format identification etc.).</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Problematic Files are not detected.</p>
+                <span>Problematic Files are not detected.</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -284,139 +284,139 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>CPP-002 relies on fixity information as produced and stored by CPP-001,
+                <span>CPP-002 relies on fixity information as produced and stored by CPP-001,
                     when triggered by CPP-025 Enabling Access and CPP-006 AIP Batch Export. When
                     triggered by CPP-029 Ingest CPP-002 rather relies on the fixity information
-                    supplied in the SIP.</p>
+                    supplied in the SIP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-008</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The selection of an appropriate extractor tool depends on file format
-                    information.</p>
+                <span>The selection of an appropriate extractor tool depends on file format
+                    information.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The selection of an appropriate extractor tool depends on requirements from the
-                    Data Quality Assessment CPP.</p>
+                <span>The selection of an appropriate extractor tool depends on requirements from the
+                    Data Quality Assessment CPP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The selection of an appropriate extractor tool depends on requirements from the
-                    Significant Properties Definition CPP.</p>
+                <span>The selection of an appropriate extractor tool depends on requirements from the
+                    Significant Properties Definition CPP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The selection of an appropriate extractor tool depends on requirements from the
-                    Risk Definition and Extraction CPP.</p>
+                <span>The selection of an appropriate extractor tool depends on requirements from the
+                    Risk Definition and Extraction CPP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Preservation actions (i.e. migration, emulation) in the storage depend on the
-                    identification of Files that share the same properties.</p>
+                <span>Preservation actions (i.e. migration, emulation) in the storage depend on the
+                    identification of Files that share the same properties.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>File format identification is generally limited to an indication of the container
+                <span>File format identification is generally limited to an indication of the container
                     format, while migration can apply to any property of the Files. Technical
                     metadata extraction is required to both assess the compliance of files format to
-                    the Archive’s format policy and control the outcome of the migration.</p>
+                    the Archive’s format policy and control the outcome of the migration.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Any metadata that was extracted from the File needs to be stored, searchable and
-                    retrievable</p>
+                <span>Any metadata that was extracted from the File needs to be stored, searchable and
+                    retrievable</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Metadata extraction returns Metadata that are used to assess the File quality
+                <span>Metadata extraction returns Metadata that are used to assess the File quality
                     (e.g. for an audiovisual File quality assessment may rely on Metadata such as
-                    bit depth, sampling frequency, etc.).</p>
+                    bit depth, sampling frequency, etc.).</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Metadata extraction returns Metadata that are used to identify preservation
-                    threats (e.g. for a PDF, the presence of an open password).</p>
+                <span>Metadata extraction returns Metadata that are used to identify preservation
+                    threats (e.g. for a PDF, the presence of an open password).</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-024</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Some Metadata provided to the consumer must have been extracted from the Files.</p>
+                <span>Some Metadata provided to the consumer must have been extracted from the Files.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Metadata extraction is one of the core processes that must be performed as part
-                    of Ingest.</p>
+                <span>Metadata extraction is one of the core processes that must be performed as part
+                    of Ingest.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Depending on the precision of the format registry used in the format
+                <span>Depending on the precision of the format registry used in the format
                     identification process, the resulting information may be insufficient for
-                    selecting the right validation tool.</p>
-                <p>In such cases, additional Metadata from an extraction tool may be required. For
+                    selecting the right validation tool.</span>
+                <span>In such cases, additional Metadata from an extraction tool may be required. For
                     example, if an organisation uses Unix File as its identification tool, which
                     does not distinguish between different PDF “flavours”, and wants to validate
-                    PDF/A against the PDF/A standard. </p>
-                <p>In that case, metadata extraction will be necessary to identify the conformance
-                    level and select veraPDF as the suitable validation tool</p>
+                    PDF/A against the PDF/A standard. </span>
+                <span>In that case, metadata extraction will be necessary to identify the conformance
+                    level and select veraPDF as the suitable validation tool</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-021</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The documented event, datetime, and Provenance metadata from the metadata
-                    extraction may be required by AIP Versioning.</p>
+                <span>The documented event, datetime, and Provenance metadata from the metadata
+                    extraction may be required by AIP Versioning.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Tools extracting properties of the File or Representation are useful (and
-                    sometimes even necessary) for identifying erroneous format structures. </p>
+                <span>Tools extracting properties of the File or Representation are useful (and
+                    sometimes even necessary) for identifying erroneous format structures. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affected by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Either due to changing significant properties or due to updated tools, metadata
-                    extraction requirements can be affected.</p>
+                <span>Either due to changing significant properties or due to updated tools, metadata
+                    extraction requirements can be affected.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -424,52 +424,52 @@
         <cpp:mapping>
             <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Quality control checks</p>
+                <span>Quality control checks</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>Section R10 (Quality assurance) implicitly requires metadata extraction as one of
+                <span>Section R10 (Quality assurance) implicitly requires metadata extraction as one of
                     the processes implementing “quality control checks in place [that] ensure the
-                    completeness and understandability of data and metadata”.</p>
+                    completeness and understandability of data and metadata”.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Technical metadata collect[ion]</p>
+                <span>Technical metadata collect[ion]</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>C30 Technical metadata</p>
+                <span>C30 Technical metadata</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>ISO 16363</cpp:frameworkName>
             <cpp:correspondingSection>
-                <p>/</p>
+                <span>/</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>OAIS</cpp:frameworkName>
             <cpp:correspondingSection>
-                <p>/</p>
+                <span>/</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>PREMIS</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Metadata extraction</p>
+                <span>Metadata extraction</span>
             </cpp:correspondingTerm>
             <cpp:correspondingTerm>
-                <p>Characterization</p>
+                <span>Characterization</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>The PREMIS Data Dictionary mentions this operation as “characterization” (<a
+                <span>The PREMIS Data Dictionary mentions this operation as “characterization” (<a
                         href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf#page=259">p.
                     249,
                         section Special Topics / Format information</a>), but the event type
                     vocabulary maintained by the PREMIS Editorial Committee at <a
                         href="http://id.loc.gov">id.loc.gov</a> uses the term <a
                         href="https://id.loc.gov/vocabulary/preservation/eventType/mee.html">“metadata
-                    extraction”</a>.</p>
+                    extraction”</a>.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
     </cpp:frameworkMappings>
@@ -482,26 +482,26 @@
                     <cpp:institutionCountry>FR</cpp:institutionCountry>
                 </cpp:institution>
                 <cpp:triggerEvent>
-                    <p>AV material must be analysed by proper tools, beyond format identification,
+                    <span>AV material must be analysed by proper tools, beyond format identification,
                         in particular because format identification generally returns information
                         about the container, while AV Files are wrapping streams of different nature
-                        and format</p>
+                        and format</span>
                 </cpp:triggerEvent>
                 <cpp:problemStatement>
-                    <p>Discussion with AV experts required that several quality properties be
+                    <span>Discussion with AV experts required that several quality properties be
                         extracted, in particular properties related to the <a
                             href="https://en.wikipedia.org/wiki/Group_of_pictures">group of pictures</a>
-                        .</p>
-                    <p>XML was the preferred syntax for the extractor tool output, as it could be
-                        easily wrapped in METS Files.</p>
+                        .</span>
+                    <span>XML was the preferred syntax for the extractor tool output, as it could be
+                        easily wrapped in METS Files.</span>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
-                    <p>BnF has selected the tool MediaInfo as its extractor tool for AV Files,
+                    <span>BnF has selected the tool MediaInfo as its extractor tool for AV Files,
                         according to requirements collected by BnF. MPEG-7, one of its output
                         formats, being standardised and expressed in XML, was selected as the format
                         for Metadata to be stored in Archival Information Packages. As MediaInfo
                         provides natively MPEG-7 as one of its output formats, no mapping from the
-                        tool output to a standard metadata format was required.</p>
+                        tool output to a standard metadata format was required.</span>
                 </cpp:proposedSolution>
             </cpp:useCase>
         </cpp:useCases>

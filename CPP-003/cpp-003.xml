@@ -75,13 +75,13 @@
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Frequency of integrity checks defined in a digital archive's policy</p>
+                    <span>Frequency of integrity checks defined in a digital archive's policy</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-012</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Suspicion of an error triggering an integrity check on an ad hoc basis</p>
+                    <span>Suspicion of an error triggering an integrity check on an ad hoc basis</span>
                 </cpp:description>
             </cpp:triggerEvent>
         </cpp:triggerEvents>
@@ -89,103 +89,103 @@
             <cpp:step stepNumber="1">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Storage management policy - Integrity checking</p>
+                        <span>Storage management policy - Integrity checking</span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-012</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Gather a batch of targets to check and their corresponding <em>Fixity metadata</em> (e.g. <em>Information Packages</em> whose last-checked timestamp is older than the specified checking frequency)</p>
+                    <span>Gather a batch of targets to check and their corresponding <em>Fixity metadata</em> (e.g. <em>Information Packages</em> whose last-checked timestamp is older than the specified checking frequency)</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>AIPs</em></p>
+                        <span><em>AIPs</em></span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>Fixity metadata</em></p>
+                        <span><em>Fixity metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2a">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p><em>Fixity metadata</em></p>
+                        <span><em>Fixity metadata</em></span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-001</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>For each <em>AIP</em> in the selected batch: Gather the <em>AIP</em>'s fixity metadata</p>
+                    <span>For each <em>AIP</em> in the selected batch: Gather the <em>AIP</em>'s fixity metadata</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>Fixity metadata</em></p>
+                        <span><em>Fixity metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2b">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p><em>Fixity metadata</em> (algorithms)</p>
+                        <span><em>Fixity metadata</em> (algorithms)</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Calculate the checksum of the <em>AIP</em> from the specified <em>File</em> path</p>
+                    <span>Calculate the checksum of the <em>AIP</em> from the specified <em>File</em> path</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>Fixity metadata</em></p>
+                        <span><em>Fixity metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2c">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p><em>Fixity metadata</em></p>
+                        <span><em>Fixity metadata</em></span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Compare the calculated checksum with the stored checksum</p>
+                    <span>Compare the calculated checksum with the stored checksum</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Checksums match: proceed to next step</p>
+                        <span>Checksums match: proceed to next step</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Alert that any of the checksums does not match: mark broken <em>AIP</em> for repair and proceed to next step</p>
+                        <span>Alert that any of the checksums does not match: mark broken <em>AIP</em> for repair and proceed to next step</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-004</cpp:customer>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2d">
                 <cpp:stepDescription>
-                    <p>Store the new integrity checking event to the <em>AIP</em></p>
+                    <span>Store the new integrity checking event to the <em>AIP</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Provenance metadata</p>
+                        <span>Provenance metadata</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2e">
                 <cpp:stepDescription>
-                    <p>Update the timestamp of the integrity check</p>
+                    <span>Update the timestamp of the integrity check</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>Fixity metadata</em> (timestamp)</p>
+                        <span><em>Fixity metadata</em> (timestamp)</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="3">
                 <cpp:stepDescription>
-                    <p>Document the event and its timestamp</p>
+                    <span>Document the event and its timestamp</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Provenance metadata</p>
+                        <span>Provenance metadata</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -194,10 +194,10 @@
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Periodic integrity checks on all copies</p>
+                <span>Periodic integrity checks on all copies</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Data can get corrupted and degenerate (i.e. the chain of custody is not safeguarded, and the authenticity of <em>IPs</em> may be destroyed)</p>
+                <span>Data can get corrupted and degenerate (i.e. the chain of custody is not safeguarded, and the authenticity of <em>IPs</em> may be destroyed)</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -206,89 +206,89 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-001</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>CPP-001 is responsible for creating checksums that are used in integrity checking.</p>
+                <span>CPP-001 is responsible for creating checksums that are used in integrity checking.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The frequency and target of periodic integrity checks (CPP-003) is defined by an institutional storage management policy as part of risk mitigation (CPP-012).</p>
+                <span>The frequency and target of periodic integrity checks (CPP-003) is defined by an institutional storage management policy as part of risk mitigation (CPP-012).</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Periodic integrity checking provides reports on the integrity of data and reports corrupted <em>AIPs</em>.</p>
+                <span>Periodic integrity checking provides reports on the integrity of data and reports corrupted <em>AIPs</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The timestamp of the <em>AIPs</em>' checksums needs to be updated to keep track of the last successful check.</p>
+                <span>The timestamp of the <em>AIPs</em>' checksums needs to be updated to keep track of the last successful check.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-007</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Both processes aim to ensure the "health" of files. However, Integrity Checking focuses on detecting technical corruption of <em>Files</em> (e.g. bit rot), whereas virus scanning looks to mitigate human-made risks ( e.g. malicious code).</p>
+                <span>Both processes aim to ensure the "health" of files. However, Integrity Checking focuses on detecting technical corruption of <em>Files</em> (e.g. bit rot), whereas virus scanning looks to mitigate human-made risks ( e.g. malicious code).</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Both CPPs can get input from CPP-001, and both calculate a checksum from an <em>Information
+                <span>Both CPPs can get input from CPP-001, and both calculate a checksum from an <em>Information
                     Package</em> and compare it to a given checksum. The difference is that CPP-002
                     is done during the <em>Ingest</em> or <em>Access</em> phases (relating to
                     transfer of content, changes in space), while CPP-003 is done periodically
                     during the preservation of the contents in the archival storage (relating to
                     changes over time). Thus, CPP-002 and CPP-003 are not only triggered by
-                    different processes, but also trigger different responses.</p>
+                    different processes, but also trigger different responses.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
     <cpp:frameworkMappings>
         <cpp:mapping>
             <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
-            <cpp:correspondingTerm><p>Fixity checks</p></cpp:correspondingTerm>
+            <cpp:correspondingTerm><span>Fixity checks</span></cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>R14 Storage &amp; Integrity</p>
+                <span>R14 Storage &amp; Integrity</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
-            <cpp:correspondingTerm><p>Integrity checks</p></cpp:correspondingTerm>
+            <cpp:correspondingTerm><span>Integrity checks</span></cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>C15 Integrity: Functions of the archival storage</p>
+                <span>C15 Integrity: Functions of the archival storage</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>ISO 16363</cpp:frameworkName>
-            <cpp:correspondingTerm><p>Fixity checks</p></cpp:correspondingTerm>
+            <cpp:correspondingTerm><span>Fixity checks</span></cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>4.4.1.2</p>
+                <span>4.4.1.2</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>OAIS</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Error checking</p>
+                <span>Error checking</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>4.2.3.4</p>
+                <span>4.2.3.4</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>PREMIS</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Fixity check</p>
+                <span>Fixity check</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>1.5.2, Glossary</p>
+                <span>1.5.2, Glossary</span>
             </cpp:correspondingSection>
         </cpp:mapping>
     </cpp:frameworkMappings>
