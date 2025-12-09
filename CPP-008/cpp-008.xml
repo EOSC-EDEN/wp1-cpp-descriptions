@@ -181,25 +181,25 @@
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>
+                    <span>
                         A new <em>SIP</em> is submitted and processed
-                    </p>
+                    </span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>
+                    <span>
                         <em>File</em> update or replacement due to a <em>Preservation Action</em> (e.g. migration)
-                    </p>
+                    </span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-014</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>
+                    <span>
                         Any other action that results in a new or updated <em>File</em> to be added to the system
-                    </p>
+                    </span>
                 </cpp:description>
             </cpp:triggerEvent>
         </cpp:triggerEvents>
@@ -207,174 +207,174 @@
             <cpp:step stepNumber="1">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>File</em>>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             File format policy - Identification
-                        </p>
+                        </span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-018</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Tool: <a href="https://coptr.digipres.org/index.php/File_Format_Identification">format identification tool</a>
-                        </p>
+                        <span>Tool: <a href="https://coptr.digipres.org/index.php/File_Format_Identification">format identification tool</a>
+                        </span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-018</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Apply the format identification tool(s) on the <em>File</em>
-                    </p>
+                    <span>Apply the format identification tool(s) on the <em>File</em>
+                    </span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>File format identification information</p>
+                        <span>File format identification information</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>File format identification information</p>
+                        <span>File format identification information</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Parse and evaluate its output</p>
+                    <span>Parse and evaluate its output</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>File format identification successful &#40;step 3&#41;</p>
+                        <span>File format identification successful &#40;step 3&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>File format could not be identified &#40;step 2a&#41;</p>
+                        <span>File format could not be identified &#40;step 2a&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2a">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>File format identification information</p>
+                        <span>File format identification information</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>File format policy - Identification</p>
+                        <span>File format policy - Identification</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Analyse the format identification information and decide on next steps</p>
+                    <span>Analyse the format identification information and decide on next steps</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>A gap in the format registry is identified &#40;step 2a- optional&#41;</p>
+                        <span>A gap in the format registry is identified &#40;step 2a- optional&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Need for configuration update identified &#40;step 2a- optional&#41;</p>
+                        <span>Need for configuration update identified &#40;step 2a- optional&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Manual file format identification possible &#40;step 3&#41;</p>
+                        <span>Manual file format identification possible &#40;step 3&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Mark the <em>File</em> for later review and add the reason for review to the event information &#40;step 5&#41;</p>
+                        <span>Mark the <em>File</em> for later review and add the reason for review to the event information &#40;step 5&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Reject the <em>File</em> &#40;step 5&#41;</p>
+                        <span>Reject the <em>File</em> &#40;step 5&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2a-optional">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>File</em>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Contribute to format registries by providing sample File to the registry administrators</p>
+                    <span>Contribute to format registries by providing sample File to the registry administrators</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>
-                            <em>File</em> samples</p>
+                        <span>
+                            <em>File</em> samples</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Registry update request and/or signature submission</p>
+                        <span>Registry update request and/or signature submission</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2a-optional">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Format Identification Tool</p>
+                        <span>Format Identification Tool</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Update system configuration</p>
+                    <span>Update system configuration</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>New configuration settings</p>
+                        <span>New configuration settings</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="3">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>File format information</p>
+                        <span>File format information</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>File format policy - Identification</p>
+                        <span>File format policy - Identification</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Check if the file format is a container format and the policy requires its content to be extracted</p>
+                    <span>Check if the file format is a container format and the policy requires its content to be extracted</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Extraction required &#40;e.g. as part of the ingest processing&#41;: extract <em>File</em>, ingest it and start identification process anew &#40;step 1&#41;. This loop 
-can be repeated as many times as needed.</p>
+                        <span>Extraction required &#40;e.g. as part of the ingest processing&#41;: extract <em>File</em>, ingest it and start identification process anew &#40;step 1&#41;. This loop 
+can be repeated as many times as needed.</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>No extraction required &#40;step 4&#41;</p>
+                        <span>No extraction required &#40;step 4&#41;</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="4">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>File format information</p>
+                        <span>File format information</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Store the file format information in the <em>File's Technical metadata</em>
-                    </p>
+                    <span>Store the file format information in the <em>File's Technical metadata</em>
+                    </span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Format information in <em>Technical metadata</em>
-                        </p>
+                        <span>Format information in <em>Technical metadata</em>
+                        </span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-009</cpp:customer>
                     <cpp:customer>CPP-010</cpp:customer>
@@ -383,13 +383,13 @@ can be repeated as many times as needed.</p>
             </cpp:step>
             <cpp:step stepNumber="5">
                 <cpp:stepDescription>
-                    <p>Register a format identification event containing the tool&#40;s&#41; name and version and the&#40;ir&#41; outcome&#40;s&#41;</p>
+                    <span>Register a format identification event containing the tool&#40;s&#41; name and version and the&#40;ir&#41; outcome&#40;s&#41;</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>
+                        <span>
                             <em>Provenance metadata</em>
-                        </p>
+                        </span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -398,19 +398,19 @@ can be repeated as many times as needed.</p>
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Identify the <em>File's</em> format and store it with the <em>File's Technical metadata</em> during the <em>Object's</em> life cycle in the TDA</p>
+                <span>Identify the <em>File's</em> format and store it with the <em>File's Technical metadata</em> during the <em>Object's</em> life cycle in the TDA</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>
-                    <em>Files</em> becoming obsolete; impossibility to extract <em>Technical metadata</em>;                    <em>File</em> being overlooked when identifying <em>File&#40;s&#41;</em> at risk</p>
+                <span>
+                    <em>Files</em> becoming obsolete; impossibility to extract <em>Technical metadata</em>;                    <em>File</em> being overlooked when identifying <em>File&#40;s&#41;</em> at risk</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Find <em>Files</em> where the file format cannot be determined or where the identified file format is too generic to be of practical use &#40;e.g. plain text or a binary octet stream&#41;.</p>
+                <span>Find <em>Files</em> where the file format cannot be determined or where the identified file format is too generic to be of practical use &#40;e.g. plain text or a binary octet stream&#41;.</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>The specific file format and contents of the <em>File</em> are unknown which prevents further preservation actions being applied &#40;e.g. file format validation or migration&#41; or the <em>File</em> being usable for the designated community &#40;suitable tools for opening, rendering or using the <em>File</em>cannot be identified&#41;.</p>
+                <span>The specific file format and contents of the <em>File</em> are unknown which prevents further preservation actions being applied &#40;e.g. file format validation or migration&#41; or the <em>File</em> being usable for the designated community &#40;suitable tools for opening, rendering or using the <em>File</em>cannot be identified&#41;.</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -419,64 +419,64 @@ can be repeated as many times as needed.</p>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Metadata Extraction &#40;CPP-009&#41; depends on the file format to aid selection of the appropriate extraction tool.</p>
+                <span>Metadata Extraction &#40;CPP-009&#41; depends on the file format to aid selection of the appropriate extraction tool.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Format Validation needs to know the format to aid selection of the appropriate validation tool.</p>
+                <span>Format Validation needs to know the format to aid selection of the appropriate validation tool.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>File format identification reports are required for a TDA to enable it to manage its content.</p>
+                <span>File format identification reports are required for a TDA to enable it to manage its content.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Format Migration needs to know the source format to aid application of the appropriate migration plan.</p>
+                <span>Format Migration needs to know the source format to aid application of the appropriate migration plan.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Format information needs to be stored with the <em>File's Technical metadata</em>.
-                </p>
+                <span>Format information needs to be stored with the <em>File's Technical metadata</em>.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Risks can be related to a file format generic properties and concern all instances of it.</p>
+                <span>Risks can be related to a file format generic properties and concern all instances of it.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The format information of the File in question is one of the deciding input parameters when considering File Normalisation.</p>
+                <span>The format information of the File in question is one of the deciding input parameters when considering File Normalisation.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>File formation identification is one of the core processes that must be performed during ingest.</p>
+                <span>File formation identification is one of the core processes that must be performed during ingest.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>CPP-008 is only about identifying the format while CPP-010 describes full scanning of the <em>File</em> to ensure it complies with the format standard.</p>
+                <span>CPP-008 is only about identifying the format while CPP-010 describes full scanning of the <em>File</em> to ensure it complies with the format standard.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -484,32 +484,32 @@ can be repeated as many times as needed.</p>
         <cpp:mapping>
             <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
             <cpp:correspondingSection>
-                <p>CoreTrustSeal doesn't explicitly focus on format identification as a separate requirement; it is an integral part of a TDA's data management practices. Identification is implied by references to format migration and is explicitly mentioned under R0(5) Levels of Curation.</p>
+                <span>CoreTrustSeal doesn't explicitly focus on format identification as a separate requirement; it is an integral part of a TDA's data management practices. Identification is implied by references to format migration and is explicitly mentioned under R0(5) Levels of Curation.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
             <cpp:correspondingSection>
-                <p>Nestor Seal does not explicitly mention Format Identification but this process is in scope, and sets the ground for C30 <em>Technical metadata</em>.
-                </p>
+                <span>Nestor Seal does not explicitly mention Format Identification but this process is in scope, and sets the ground for C30 <em>Technical metadata</em>.
+                </span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>ISO 16363</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>"identify the file type"</p>
+                <span>"identify the file type"</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>4.2.5.1 "The repository shall have tools or methods to identify the file type of all submitted Data Objects"</p>
+                <span>4.2.5.1 "The repository shall have tools or methods to identify the file type of all submitted Data Objects"</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>PREMIS</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>"Identification of the format of a file or bitstream"</p>
+                <span>"Identification of the format of a file or bitstream"</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>PREMIS provides a framework for recording and managing the format information in its format semantic unit, p. 65.</p>
+                <span>PREMIS provides a framework for recording and managing the format information in its format semantic unit, p. 65.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
     </cpp:frameworkMappings>
@@ -522,13 +522,13 @@ can be repeated as many times as needed.</p>
                     <cpp:institutionCountry>DE</cpp:institutionCountry>
                 </cpp:institution>
                 <cpp:triggerEvent>
-                    <p>Ingest of PDF<em>Files</em> from academic publishers.</p>
+                    <span>Ingest of PDF<em>Files</em> from academic publishers.</span>
                 </cpp:triggerEvent>
                 <cpp:problemStatement>
-                    <p>The format identification tool, DROID, returns multiple format identifiers for PDF <em>Files</em>, as PDF <em>Files</em> can declare conformance to both PDF/X and PDF/A versions.</p>
+                    <span>The format identification tool, DROID, returns multiple format identifiers for PDF <em>Files</em>, as PDF <em>Files</em> can declare conformance to both PDF/X and PDF/A versions.</span>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
-                    <p>The organisation chooses one among the two results (in this case, PDF/A) returned by DROID and records the relevant PUID along with the format registry used (PRONOM).</p>
+                    <span>The organisation chooses one among the two results (in this case, PDF/A) returned by DROID and records the relevant PUID along with the format registry used (PRONOM).</span>
                 </cpp:proposedSolution>
             </cpp:useCase>
         </cpp:useCases>
