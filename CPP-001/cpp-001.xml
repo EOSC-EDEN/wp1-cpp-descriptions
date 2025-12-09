@@ -67,21 +67,21 @@
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>A new <em>SIP</em> is submitted and processed</p>
+                    <span>A new <em>SIP</em> is submitted and processed</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p><em>File</em> update or replacement due to Preservation
-                        Action (e.g. migration)</p>
+                    <span><em>File</em> update or replacement due to Preservation
+                        Action (e.g. migration)</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-014</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Any other action that results in a new or updated <em>File</em>
-                        being added to the system</p>
+                    <span>Any other action that results in a new or updated <em>File</em>
+                        being added to the system</span>
                 </cpp:description>
             </cpp:triggerEvent>
         </cpp:triggerEvents>
@@ -89,58 +89,58 @@
             <cpp:step stepNumber="1">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Storage management policy - Checksum algorithms</p>
+                        <span>Storage management policy - Checksum algorithms</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Get the list of accepted checksum algorithms</p>
+                    <span>Get the list of accepted checksum algorithms</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>List of accepted checksum algorithms</p>
+                        <span>List of accepted checksum algorithms</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>File</em>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>List of checksum algorithms</em>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Calculate the checksum for each algorithm</p>
+                    <span>Calculate the checksum for each algorithm</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>List of checksums for the <em>File</em> based on
-                            different algorithms</p>
+                        <span>List of checksums for the <em>File</em> based on
+                            different algorithms</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="3">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>List of checksums for the <em>File</em> based on
-                            different algorithms</p>
+                        <span>List of checksums for the <em>File</em> based on
+                            different algorithms</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Store the checksums in the <em>Fixity metadata</em> for the <em>
-                        File</em></p>
+                    <span>Store the checksums in the <em>Fixity metadata</em> for the <em>
+                        File</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Updated <em>Fixity metadata</em> of the <em>
-                                File</em> in the TDA database</p>
+                        <span>Updated <em>Fixity metadata</em> of the <em>
+                                File</em> in the TDA database</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-002</cpp:customer>
                     <cpp:customer>CPP-003</cpp:customer>
@@ -149,18 +149,18 @@
             <cpp:step stepNumber="4">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>File</em>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Document the event and its datetime</p>
+                    <span>Document the event and its datetime</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Datetime for the checksum generation and other related <em>Provenance
-                            metadata</em></p>
+                        <span>Datetime for the checksum generation and other related <em>Provenance
+                            metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -169,30 +169,30 @@
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Keeping track of the fixity information of each <em>File</em></p>
+                <span>Keeping track of the fixity information of each <em>File</em></span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Corrupted data can get undetected or be detected when it is too
-                    late to take corrective action</p>
+                <span>Corrupted data can get undetected or be detected when it is too
+                    late to take corrective action</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Event datetime for checksum generation</p>
+                <span>Event datetime for checksum generation</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>No starting point from when the fixity can be checked (and
-                    guaranteed)</p>
+                <span>No starting point from when the fixity can be checked (and
+                    guaranteed)</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Multiple checksums for each <em>File</em></p>
+                <span>Multiple checksums for each <em>File</em></span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Collisions where changes to a <em>File</em> produce the same
+                <span>Collisions where changes to a <em>File</em> produce the same
                     checksum, are more likely with a single checksum algorithm than with multiple
-                    checksum algorithms</p>
+                    checksum algorithms</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -201,35 +201,35 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>CPP-002 relies on fixity information as produced and stored by CPP-001,
+                <span>CPP-002 relies on fixity information as produced and stored by CPP-001,
                     when triggered by CPP-025 Enabling Access and CPP-006 AIP Batch Export. When
                     triggered by CPP-029 Ingest CPP-002 rather relies on the fixity information
-                    supplied in the SIP.</p>
+                    supplied in the SIP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The integrity checking process relies on the fixity information as produced
-                    and stored by CPP-001.</p>
+                <span>The integrity checking process relies on the fixity information as produced
+                    and stored by CPP-001.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-006</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p><em>Fixity metadata</em> is used to verify the integrity of
-                    data written into the exported AIP.</p>
+                <span><em>Fixity metadata</em> is used to verify the integrity of
+                    data written into the exported AIP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>The checksums and associated algorithms need to be stored in the <em>
+                <span>The checksums and associated algorithms need to be stored in the <em>
                     File</em>’s <em>Fixity metadata</em> is used to verify the
-                    integrity of data written into the exported AIP.</p>
+                    integrity of data written into the exported AIP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -237,52 +237,52 @@
         <cpp:mapping>
             <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Checksum (cf <a href="https://doi.org/10.5281/zenodo.7051096">Extended
-                    Guidance documentation</a>)</p>
+                <span>Checksum (cf <a href="https://doi.org/10.5281/zenodo.7051096">Extended
+                    Guidance documentation</a>)</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>Information Technology &amp; Security/Storage &amp; Integrity (R14)</p>
+                <span>Information Technology &amp; Security/Storage &amp; Integrity (R14)</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Integrity</p>
+                <span>Integrity</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>C14 Integrity: Ingest Interface</p>
+                <span>C14 Integrity: Ingest Interface</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>ISO 16363</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>integrity measurements</p>
+                <span>integrity measurements</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>Checksum Generation: 3.3.5 The repository shall define, collect, track, and
-                    appropriately provide its information integrity measurements.</p>
-                <p>Recording: 4.1.6 The repository shall obtain sufficient control over the
-                    Digital Objects to preserve them.</p>
+                <span>Checksum Generation: 3.3.5 The repository shall define, collect, track, and
+                    appropriately provide its information integrity measurements.</span>
+                <span>Recording: 4.1.6 The repository shall obtain sufficient control over the
+                    Digital Objects to preserve them.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>OAIS</cpp:frameworkName>
             <cpp:correspondingSection>
-                <p>OAIS does not describe the process of checksum generation and recording in
+                <span>OAIS does not describe the process of checksum generation and recording in
                     its functional model but defines fixity information as part of Administrative
                     metadata, which is “necessary for adequate preservation of the Content Data
-                    Object”.</p>
+                    Object”.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>PREMIS</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Message digest calculation</p>
+                <span>Message digest calculation</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>The term “message digest calculation” is referenced in the glossary.</p>
-                <p>The general topic of fixity is addressed in section Fixity, Integrity,
-                    Authenticity, p. 258.</p>
+                <span>The term “message digest calculation” is referenced in the glossary.</span>
+                <span>The general topic of fixity is addressed in section Fixity, Integrity,
+                    Authenticity, p. 258.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
     </cpp:frameworkMappings>

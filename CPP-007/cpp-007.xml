@@ -94,19 +94,19 @@
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Periodic quality check of <em>Files</em></p>
+                    <span>Periodic quality check of <em>Files</em></span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-019</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Pre-access check of DIPs</p>
+                    <span>Pre-access check of DIPs</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <p>Ingest</p>
+                    <span>Ingest</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
             </cpp:triggerEvent>
@@ -115,123 +115,123 @@
             <cpp:step stepNumber="1">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>SIP(s)</em>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-029</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Receive and Stage Content: Content arrives and is placed 
+                    <span>Receive and Stage Content: Content arrives and is placed 
                         in a temporary, isolated staging area designated for 
-                        pre-ingest checks</p>
+                        pre-ingest checks</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>SIP(s)</em> in the staging area</p>
+                        <span><em>SIP(s)</em> in the staging area</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="2">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>
+                        <span>
                             <em>AIP(s)</em>
-                        </p>
+                        </span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-019</cpp:supplier>
                     <cpp:supplier>CPP-025</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Select <em>AIP(s)</em> for virus scan 
+                    <span>Select <em>AIP(s)</em> for virus scan 
                         and copy their <em>Files</em> to the staging 
-                        area for checks</p>
+                        area for checks</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>AIP(s)</em> in the staging area</p>
+                        <span><em>AIP(s)</em> in the staging area</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="3">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p><em>File(s)</em> in staging area</p>
+                        <span><em>File(s)</em> in staging area</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Configured virus scanners</p>
+                        <span>Configured virus scanners</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Perform Scan: Initiate a comprehensive scan of all 
-                        <em>Files</em> within the staged <em>Information packages</em></p>
+                    <span>Perform Scan: Initiate a comprehensive scan of all 
+                        <em>Files</em> within the staged <em>Information packages</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Scan report/log (indicating clean <em>Files</em>, 
-                            and any detected threats with file paths and malware names)</p>
+                        <span>Scan report/log (indicating clean <em>Files</em>, 
+                            and any detected threats with file paths and malware names)</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="4">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Scan report/log</p>
+                        <span>Scan report/log</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Evaluate Scan Results</p>
+                    <span>Evaluate Scan Results</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>All <em>Files</em> reported as clean (step 7)</p>
+                        <span>All <em>Files</em> reported as clean (step 7)</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Any <em>Files</em> reported as infected or suspicious (step 5)</p>
+                        <span>Any <em>Files</em> reported as infected or suspicious (step 5)</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="5">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Infected/suspicious file(s)</p>
+                        <span>Infected/suspicious file(s)</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Scan report</p>
+                        <span>Scan report</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Guidelines for managing detected threats</p>
+                        <span>Guidelines for managing detected threats</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Handling infected or suspicious <em>Files</em>, 
-                        the TDA conducts a first analysis</p>
+                    <span>Handling infected or suspicious <em>Files</em>, 
+                        the TDA conducts a first analysis</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Decontamination recommended:  Move the identified 
+                        <span>Decontamination recommended:  Move the identified 
                             <em>File(s)</em> to a secure quarantine area, 
                             isolated from other systems and content for further 
                             analysis and potential disinfection, and inform 
-                            dedicated staff members (step 6)</p>
+                            dedicated staff members (step 6)</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-013</cpp:customer>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Rejection recommended: Mark the <em>File(s)</em> (or 
+                        <span>Rejection recommended: Mark the <em>File(s)</em> (or 
                             the entire <em>SIP(s)</em> (as in case of ingest) 
                             for rejection. Notify the producer with reasons, if 
                             appropriate and/or defined by policy (end of the 
-                            process)</p>
+                            process)</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-013</cpp:customer>
                 </cpp:output>
@@ -239,62 +239,62 @@
             <cpp:step stepNumber="6">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Quarantined file(s)</p>
+                        <span>Quarantined file(s)</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Notification to staff</p>
+                        <span>Notification to staff</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>In-Depth Analysis: The personnel analyses the threat, 
-                        leading to multiple potential outcomes</p>
+                    <span>In-Depth Analysis: The personnel analyses the threat, 
+                        leading to multiple potential outcomes</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>False positive identified: the detected malware does 
+                        <span>False positive identified: the detected malware does 
                             not pose a threat. Whitelist the threat and move 
                             the <em>Files</em> from quarantine back to the 
-                            staging (loop back to step 1)</p>
+                            staging (loop back to step 1)</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Decontamination required and possible: The TDA 
+                        <span>Decontamination required and possible: The TDA 
                             disinfects the <em>Files</em> and moves the 
                             <em>Files</em> from quarantine back to the staging 
-                            (loop back to step 1)</p>
+                            (loop back to step 1)</span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Decontamination required but not possible: Notify 
+                        <span>Decontamination required but not possible: Notify 
                             stakeholders: The TDA notifies the stakeholders 
                             that their content is at risk and that it most 
                             likely must be deleted and re-submitted. The 
                             <em>Files</em> are not moved away from the 
                             quarantine area. This is a more likely outcome for 
                             AIP <em>Files</em> that are scanned during the 
-                            preservation (triggered by CPP-019). (step 7)</p>
+                            preservation (triggered by CPP-019). (step 7)</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="7">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Scan report</p>
+                        <span>Scan report</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Actions taken (quarantine, disinfection, rejection)</p>
+                        <span>Actions taken (quarantine, disinfection, rejection)</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Record the virus scan and its Outcome as a Preservation Event<br />
+                    <span>Record the virus scan and its Outcome as a Preservation Event<br />
                         This documentation should include:
-                    </p>
+                    </span>
                     <ul>
                         <li>Datetime of scan</li>
                         <li>Scanner software name</li>
@@ -306,7 +306,7 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p><em>Provenance metadata</em></p>
+                        <span><em>Provenance metadata</em></span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-016</cpp:customer>
                     <cpp:customer>CPP-013</cpp:customer>
@@ -315,16 +315,16 @@
             <cpp:step stepNumber="8">
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Clean <em>File(s)</em></p>
+                        <span>Clean <em>File(s)</em></span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <p>Documentation of scan event</p>
+                        <span>Documentation of scan event</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <p>Proceed with Clean Content or finalise Rejection:</p>
+                    <span>Proceed with Clean Content or finalise Rejection:</span>
                     <ul>
                         <li>If content is clean: release Files from the staging area or proceed with ingest</li>
                         <li>If any relevant content was rejected: Finalise the rejection process and archive the documentation</li>
@@ -332,8 +332,8 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <p>Clean <em>File(s)</em> passed to the next ingest 
-                            stage, or rejection process completed</p>
+                        <span>Clean <em>File(s)</em> passed to the next ingest 
+                            stage, or rejection process completed</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-013</cpp:customer>
                 </cpp:output>
@@ -343,39 +343,39 @@
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Detection of malware in <em>SIP(s)</em></p>
+                <span>Detection of malware in <em>SIP(s)</em></span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Ingest of contaminated <em>Files</em>, 
-                    risking destruction of the entire TDA.</p>
+                <span>Ingest of contaminated <em>Files</em>, 
+                    risking destruction of the entire TDA.</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Process to handle and potentially reject and delete infected 
-                    <em>SIP(s)</em></p>
+                <span>Process to handle and potentially reject and delete infected 
+                    <em>SIP(s)</em></span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Ingest of contaminated <em>Files</em>, risking destruction 
-                    of the entire TDA</p>
+                <span>Ingest of contaminated <em>Files</em>, risking destruction 
+                    of the entire TDA</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Processes to maintain up-to-date malware signature databases 
-                    and virus scanning tools</p>
+                <span>Processes to maintain up-to-date malware signature databases 
+                    and virus scanning tools</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Ingest of contaminated <em>Files,</em> 
-                    risking destruction of the entire TDA</p>
+                <span>Ingest of contaminated <em>Files,</em> 
+                    risking destruction of the entire TDA</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <p>Detection of malware in AIP(s)</p>
+                <span>Detection of malware in AIP(s)</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <p>Risking destruction of the entire TDA.</p>
+                <span>Risking destruction of the entire TDA.</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -384,74 +384,74 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Virus scanning is a direct risk mitigation activity against 
+                <span>Virus scanning is a direct risk mitigation activity against 
                     threats to content integrity and system security triggered 
                     by CPP-012.
-                </p>
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Reports on virus scanning activities, frequency of threats, 
+                <span>Reports on virus scanning activities, frequency of threats, 
                     and outcomes of the actions provide essential input for 
                     operational management and risk assessment.
-                </p>
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Virus scanning is performed as a step in the overall Data 
+                <span>Virus scanning is performed as a step in the overall Data 
                     Quality Assessment process.
-                </p>
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Virus scanning is one of the core processes that must be 
+                <span>Virus scanning is one of the core processes that must be 
                     performed during ingest.
-                </p>
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Both processes aim to ensure the "health" of Files. However, 
+                <span>Both processes aim to ensure the "health" of Files. However, 
                     Integrity Checking focuses on detecting technical corruption 
                     of Files (e.g. bit rot), whereas virus scanning looks to 
                     mitigate human-made risks ( e.g. malicious code).
-                </p>
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>If a File is detected as infected and cannot be cleaned, it 
+                <span>If a File is detected as infected and cannot be cleaned, it 
                     might be considered "damaged." However, CPP-004 typically 
                     applies to technical corruption or loss, rather than 
                     deliberately human-made damage such as malware-infected 
                     Files. In practice, infected Files are more likely to be 
                     replaced (by the producer) or rejected.
-                </p>
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <p>Both processes scan the Files to ensure that they are 
+                <span>Both processes scan the Files to ensure that they are 
                     suitable for preservation. File Format Validation checks if 
                     a file conforms to its purported format specification (e.g. 
                     is this a valid PDF/A file?) while Virus Scanning checks for 
                     malware, regardless of format validity.
-                </p>
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -468,22 +468,22 @@
         <cpp:mapping>
             <cpp:frameworkName>OAIS</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Quality Assurance (within Ingest), Security</p>
+                <span>Quality Assurance (within Ingest), Security</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>4.2.3.3</p>
-                <p>4.3.4</p>
+                <span>4.2.3.3</span>
+                <span>4.3.4</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>PREMIS</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <p>Event (with eventType 'virus check', Agent (the scanning software)</p>
+                <span>Event (with eventType 'virus check', Agent (the scanning software)</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <p>Event Entity</p>
-                <p>Agent Entity</p>
-                <p>eventType Controlled vocabulary (2.2)</p>
+                <span>Event Entity</span>
+                <span>Agent Entity</span>
+                <span>eventType Controlled vocabulary (2.2)</span>
             </cpp:correspondingSection>
         </cpp:mapping>
     </cpp:frameworkMappings>
@@ -495,24 +495,24 @@
                     <cpp:institutionLabel>CSC – IT Center for Science Ltd., Finland</cpp:institutionLabel>
                     <cpp:institutionCountry>FI</cpp:institutionCountry>
                 </cpp:institution>
-                <cpp:linkToDocumentation>
+                <cpp:linkToDocumentation xml:lang="en">
                     <cpp:hyperlink>https://www.clamav.net/</cpp:hyperlink>
                 </cpp:linkToDocumentation>
                 <cpp:triggerEvent>
-                    <p>Ingest</p>
+                    <span>Ingest</span>
                 </cpp:triggerEvent>
                 <cpp:problemStatement>
-                    <p>Files must be scanned for viruses as part of the 
+                    <span>Files must be scanned for viruses as part of the 
                         ingest pipeline to protect the TDA from viruses
-                    </p>
+                    </span>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
-                    <p>Python script to detect viruses using ClamAv virus 
+                    <span>Python script to detect viruses using ClamAv virus 
                         scanner<br /><br />
                         def check_virus(path):<br />
                         """Scan files in directory with ClamAV virus scanner.<br />
                         ...
-                    </p>
+                    </span>
                 </cpp:proposedSolution>
             </cpp:useCase>
         </cpp:useCases>
