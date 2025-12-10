@@ -48,3 +48,21 @@ Feedback is sought by the Work Package 1 Task 1.2 group both on the structure an
     - [CPP-028 Creation of derivatives](https://docs.google.com/document/d/1L5e-w5un5w1Y-yv5a3szftwaXJTFypMJh3akOA9ufgc/edit?tab=t.0#heading=h.1ruyt3tsxdzd)
     - [CPP-029 Ingest](https://docs.google.com/document/d/1EZ9xASOeNuCvsvm6-VRVBJIeiRsUkG90VPIRHZ2J3wg/edit?tab=t.0#heading=h.1ruyt3tsxdzd)
     - [CPP-030 Refreshment](https://docs.google.com/document/d/1mkXoH5PJRoExyOiK8YhEriWoN5CkRHY1MNK1HByIInU/edit?tab=t.0#heading=h.1ruyt3tsxdzd)
+
+## Generating .md formatted documents
+
+* Each existing XML file can be converted to `README.md` format 
+* The following script will take as input all existing `.xml` files in each folder, and output them as `README.md`
+
+```python
+# In the root, run
+python generate-md.py
+```
+
+## Generating HTML documents
+
+An experiment is also going on with XSL transformation to HTML and, from that point, to PDF.
+
+In order to use the experimental `cpp2html.xsl` file to generate an HTML version from the CPP XML files, you can use any XSL processor (Saxon, Xalan, etc.). In the example below, the [xsltproc](https://linux.die.net/man/1/xsltproc) is used:
+
+`xsltproc cpp2html.xsl CPP-009/cpp-009.xml > cpp-009.htm`

@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+         xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+         ID="CPP-010" xml:lang="en">
+    <cpp:header>
+        <cpp:label>File Format Validation</cpp:label>
+        <cpp:authors>
+            <cpp:author>Bertrand Caron</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Kris Dekeyser</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Matthew Addis</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Laura Molloy</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA validates Files against File format specifications.</cpp:shortDefinition>
+    <cpp:descriptionAndScope>
+        <p>File Format validation is the process of checking a <em>File</em>’s structure against the
+            specifications of the format it purports to be, or it was identified as in File Format
+            Identification (CPP-008). In addition to <em>file</em> structure, validation generally
+            encompasses internal integrity checks to verify that the File is not truncated and that
+            each of its components are intact (e.g. by using internal <em>Metadata</em> like CRC
+            checksums of the frames, or size of the data streams).</p>
+        <p>Erroneous format structures have many different causes. Some examples are listed below:</p>
+        <ul>
+            <li>Improper behaviours of creation software (e.g. InDesign, in some previous versions,
+                was known to export corrupted PDFs);</li>
+            <li>Partial or failed transfers (e.g. digital photographs transferred through an
+                unstable Bluetooth connection);</li>
+            <li>Edition with a different software than the creation tool (e.g. PDFs produced with
+                pdfTeX, then edited with Quark XPress).</li>
+        </ul>
+        <p>The TDA validation policy should define the following aspects for each format:</p>
+        <ul>
+            <li>Tool(s) used to validate the <em>File</em>. Since validation tools may produce false
+                positives and false negatives, combining multiple tools - if possible - is suggested
+                depending on the complexity of the format - PDF, in particular, is a very complex
+                format for which validation tools may return very different results.</li>
+            <li>Tool settings (e.g. strict or relaxed mode, verbosity, etc.);</li>
+            <li>Severity rating of the issue;</li>
+            <li>Guidelines for validation error handling.</li>
+        </ul>
+        <p>The scope of format validation is limited to the conformance of the File against the
+            structures as described in the format specification. It does not assess the quality of
+            the information conveyed by the <em>File</em>. Thus, it is only one aspect of quality
+            assurance, which can be automated or done manually. Although most of the File Format
+            Validation process described in this CPP can be automated, human intervention is
+            mandatory if the validity status of the File is “invalid”</p>
+        <p>Some tools (e.g. [JHOVE](https://jhove.openpreservation.org/) follow the XML validation
+            logic and differentiate “well-formedness” (i.e. the <em>File</em> conforms to purely
+            syntactic requirements) and “validity” (i.e. the <em>File</em> also complies with
+            semantic requirements). In addition, tools may return additional information or
+            warnings, e.g. if unrecognised or private chunks are found in the <em>File</em>. In such
+            cases,the output of a validation process should include some additional free-text
+            besides a short controlled term (e.g. “well-formed and valid”, “well-formed but not
+            valid”, “not well-formed”)..</p>
+        <p>This CPP does not prescribe the action the TDA should undertake if File Format Validation
+            returns errors, but rather includes fallback solutions, such as 1) ingesting the <em>
+                File</em> as it is with warnings, 2) requesting a new delivery or searching for a
+            suitable replacement, or 3) trying to repair the <em>File</em> (by triggering CPP-027
+            File Repair). One of these solutions should generally be preferred over rejecting the <em>
+                Object</em>.</p>
+        <p>Format validation is a recommended process to detect potential risks caused by incorrect
+            format structures. However, its application must be carefully evaluated based on
+            organisational capacities and the digital Objects of investigation (see on this subject
+            Paul Wheatley’s blog post “A valediction for validation?”, 11 October 2018,
+            available at
+            [https://www.dpconline.org/blog/a-valediction-for-validation](https://www.dpconline.org/blog/a-valediction-for-validation)).
+            Depending on organisational capacities, and the control the TDA has over digital Objects
+            (indeed, the TDA may be able to require new, valid Files from a digitisation contractor
+            or a depositor subject to legal deposit; on the other hand, it may be impossible for a
+            private donor to meet the requirements for valid Files), it may decide to not perform
+            File Format Validation
+            due to:</p>
+        <ul>
+            <li>The lack of suitable tool(s), in particular for proprietary formats;</li>
+            <li>The lack of skilled staff to handle errors returned by the process.</li>
+        </ul>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>File</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Technical Metadata (File format identifier)</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>File format specification</cpp:guidanceElement>
+                <cpp:guidanceElement>File format policy - Validation</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:metadata>
+                <cpp:metadataElement>Provenance metadata (Validity status)</cpp:metadataElement>
+                <cpp:metadataElement optional="true">Technical Metadata</cpp:metadataElement>
+                <cpp:metadataElement optional="true">Errors and Warnings</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Ingest</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Re-run of format validation because of the release of a new validation tool
+                        or tool version</span>
+                    <span>(Because validation tools may evolve, especially for complex formats,
+                        re-assessing the validity of files already in storage is advised.)</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Re-run of format identification and discrepancy between previous and current
+                        result</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-008</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>File format identifier </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-008</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement optional="true">
+                        <span>Technical metadata</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-009</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>File format policy - Validation</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>According to input, select the right tool(s) to perform format validation. If
+                        the provided Metadata is not sufficient, perform CPP-009 (Metadata
+                        extraction).</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <a href="https://coptr.digipres.org/index.php/Validation">Validation
+                                tool(s)</a>
+                        </span>
+                        <span>(Format validation is generally performed by a single tool. Nevertheless,
+                            for some complex formats like PDF, TDAs may want to use more than one
+                            tool to identify possible structure errors.)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>File</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span><a href="https://coptr.digipres.org/index.php/Validation">Validation
+                                tool(s)</a>; as a default, reference parsing tools associated with the
+                            format </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Apply the validation tools(s)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Raw validation output</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement optional="true">
+                        <span>Errors and warnings</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3" optional="true">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Errors and warnings</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Raw validation output</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Check validity status</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Confirm Validity status (step 4)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Invalid file detected (step 3a)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3a">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Errors and warnings</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Validity status</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>File format specification</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Conduct technical analysis (e.g. rendition and other uses of the File,
+                        comparison with the file format specification, etc.) </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Results of manual tests</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3b">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Results of manual tests</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Assess and choose one among the following outputs (in the given order) </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Retain the File as it is</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Find another valid Representation (e.g. by establishing contact with the
+                            producer)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Trigger File Repair to correct the file structure</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-027</cpp:customer>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Reject the <em>Object</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:stepDescription>
+                    <span>Document the process</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Provenance metadata</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Format validation may identify structural errors that would cause issues when
+                    attempting to render or transform the <em>File</em>. In particular, truncated <em>
+                        File</em> can be identified by File Format Validation.</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>/</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-008</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File Format Validation requires a specialised tool. In general, the result of
+                    File Format Identification is enough to determine which tool should be used. </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May require</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Depending on the precision of the format registry used in the File Format
+                    Identification process, the resulting information may be insufficient for
+                    selecting the right validation tool. In such cases, additional Metadata from an
+                    extraction tool may be required. For example, if an organisation uses Unix File
+                    as its identification tool, which does not distinguish between different PDF
+                    “flavours”, and wants to validate PDF/A against the PDF/A standard. In that
+                    case, metadata extraction will be necessary to identify the conformance level
+                    and select veraPDF as the suitable validation tool. </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File Format Validation reports essential information on the well-formedness and
+                    validity of the Objects; validation errors; and data on the tools used in the
+                    process.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File Format Validation should be undertaken after File Migration was performed to
+                    ensure that the target <em>File(s)</em> or <em>Representation(s)</em> are
+                    valid..</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-015</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>In order to have a decent level of confidence in the rendering process, the file format needs to be validated.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risks can be related to specific file format erroneous structures</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File Repair is generally triggered by File Format Validation and is one of several ways to handle errors from this CPP.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May be required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>A TDA may validate the format of the submitted Files in the ingest phase.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-007</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Both processes scan the Files to ensure that they are suitable for preservation. File Format Validation checks if a File conforms to its purported format specification (e.g. is this a valid PDF/A File?), while Virus Scanning checks for malware, regardless of format validity.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-008</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File Format Identification is only about identifying the format while File Format Validation describes full scanning of the File to ensure it complies with the format standard.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingSection>
+                <span>CTS does not explicitly mention format validation but it is in the scope of section Quality Assurance (R10) and understood as one of the “quality control checks in place to ensure the completeness and understandability of data”.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingSection>
+                <span>Format validation is not explicitly mentioned by Nestor Seal but is in scope of C21 “Submission Information Packages”; in particular, in the question “Which measures exist for validating the conformity of submission information packages?”.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm><span>“checking that file formats are what they claim to be”</span></cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Section 4.1.5: “The repository shall have an ingest process which verifies each SIP for completeness and correctness”</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>“validation of SIP data” </span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>This operation is also in scope of what OAIS calls “validation of SIP data” in section 2.6.3 “Producer interaction”, where the standard suggests that the “validity” of SIPs are negotiated between the producer and the archive.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>(Format) validation</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Section: "Non-core metadata", subsection: "Quirks and anomalies" (p. 262).</span>
+                <span>Section: "Fixity, integrity, authenticity", p. 258.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Format validation of born-digital sound</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Bibliothèque nationale de France</cpp:institutionLabel>
+                    <cpp:institutionCountry>FR</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:triggerEvent>
+                    <span>BnF started collecting albums published by the phonographic industry in 2019, in the context of legal deposit of born-digital sound. <em>Objects</em> are collected in the form of highly standardised FLAC <em>Files</em>.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>BnF decided to validate <em>Files</em> to identify transfer issues. However, the substantial volume of data and the considerable processing time have presented significant challenges to the performance and scalability of the validation operation. </span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>FLAC <em>Files</em> are verified with the <a href="https://xiph.org/flac/documentation_tools_flac.html">flac command-line tool</a>, which ensures both the overall <em>File</em>'s internal integrity and that of every individual frame within the audio stream. This is achieved through calculation of the CRC32 checksum for each frame. As this process is labour-intensive, the choice was made to do it by sampling. </span>
+                    <span>As the producer is generally a major label with trained professionals in the domain of audio data, the chosen error handling method is to request a new, hopefully valid <em>File</em>.</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2025040925236</cpp:hyperlink>
+                <cpp:comment>section 5.2</cpp:comment>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="fi">
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943</cpp:hyperlink>
+                <cpp:comment>Annex 4, section 2.2.1</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>

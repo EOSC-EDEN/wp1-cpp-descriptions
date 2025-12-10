@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-007" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Virus Scanning</cpp:label>
+        <cpp:authors>
+            <cpp:author>Mattias Levlin</cpp:author>
+            <cpp:author>Johan Kylander</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Kris Dekeyser</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Fen Zhang</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>Information packages are virus checked, with appropriate
+        facilities for quarantine.
+    </cpp:shortDefinition>
+    <cpp:descriptionAndScope>
+        <p>Virus scanning is the process of examining <em>Files</em> as proposed 
+            for ingestion into an archive for the presence of malicious software 
+            (i.e. malware) such as viruses, trojans, worms, spyware, and 
+            ransomware etc. The primary goal of virus scanning is to detect and 
+            prevent such harmful code from entering the digital archive to 
+            safeguard the integrity and trustworthiness of the preserved content. 
+            This security measure protects not only the archival system itself, 
+            but also users or other connected systems that access or receive 
+            content from the archive. Effective virus scanning is a core step 
+            of the ingest process and an essential strategic component in 
+            <b>Risk Mitigation</b> (CPP-012), ensuring that the archive remains 
+            a secure and reliable repository for digital assets. It is a means 
+            to mitigate deliberate, human-made threats to digital preservation.
+        </p>
+        <p>Virus scanning is first and foremost applied during ingest, acting 
+            as a checkpoint before <em>Files</em> are fully accepted and 
+            integrated into a TDA's holdings. In addition, it may be triggered 
+            during preservation (archival storage) or dissemination. This may 
+            be done either to ensure that no viruses have infected the content 
+            after ingest, or to make sure that disseminated content has been 
+            checked using up-to-date signature databases.
+        </p>
+        <p>A TDA must employ virus scanning tools and malware signature 
+            databases to ensure effective and up-to-date threat detection. This 
+            includes a process to maintain and frequently update a malware 
+            signature database that is used by the virus scanning tools. The 
+            system must provide secure workspaces and guidelines for managing 
+            detected threats, which typically involves isolating suspicious 
+            <em>Files</em> in a staging or quarantine area to prevent potential 
+            harm to the storage. The TDA can reject and remove the contaminated 
+            <em>Files</em> or <em>Information packages</em> during ingest in 
+            cases where decontamination is not a viable option.
+        </p>
+        <p>All scanning activities, detected threats, and subsequent actions 
+            (i.e. quarantine, rejection, deletion) must be documented as part of 
+            the ingest record and preservation actions as <em>Provenance metadata</em>. 
+            This documentation contributes to the audit trail of the ingested <em>Files</em> 
+            and should be incorporated into broader <b>Object Management Reporting</b> (CPP-013).
+        </p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Information package(s)</cpp:dataElement>
+            </cpp:data>
+            <cpp:guidance>
+                <cpp:guidanceElement>Malware signature database(s)</cpp:guidanceElement>
+                <cpp:guidanceElement>Guidelines for managing detected threats</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:metadata>
+                <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Scan report</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Periodic quality check of <em>Files</em></span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-019</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Pre-access check of DIPs</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Ingest</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>SIP(s)</em>
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-029</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Receive and Stage Content: Content arrives and is placed 
+                        in a temporary, isolated staging area designated for 
+                        pre-ingest checks</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>SIP(s)</em> in the staging area</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>AIP(s)</em>
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-019</cpp:supplier>
+                    <cpp:supplier>CPP-025</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Select <em>AIP(s)</em> for virus scan 
+                        and copy their <em>Files</em> to the staging 
+                        area for checks</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>AIP(s)</em> in the staging area</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span><em>File(s)</em> in staging area</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Configured virus scanners</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Perform Scan: Initiate a comprehensive scan of all 
+                        <em>Files</em> within the staged <em>Information packages</em></span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Scan report/log (indicating clean <em>Files</em>, 
+                            and any detected threats with file paths and malware names)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Scan report/log</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Evaluate Scan Results</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>All <em>Files</em> reported as clean (step 7)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Any <em>Files</em> reported as infected or suspicious (step 5)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Infected/suspicious file(s)</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Scan report</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Guidelines for managing detected threats</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Handling infected or suspicious <em>Files</em>, 
+                        the TDA conducts a first analysis</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Decontamination recommended:  Move the identified 
+                            <em>File(s)</em> to a secure quarantine area, 
+                            isolated from other systems and content for further 
+                            analysis and potential disinfection, and inform 
+                            dedicated staff members (step 6)</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-013</cpp:customer>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Rejection recommended: Mark the <em>File(s)</em> (or 
+                            the entire <em>SIP(s)</em> (as in case of ingest) 
+                            for rejection. Notify the producer with reasons, if 
+                            appropriate and/or defined by policy (end of the 
+                            process)</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-013</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Quarantined file(s)</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Notification to staff</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>In-Depth Analysis: The personnel analyses the threat, 
+                        leading to multiple potential outcomes</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>False positive identified: the detected malware does 
+                            not pose a threat. Whitelist the threat and move 
+                            the <em>Files</em> from quarantine back to the 
+                            staging (loop back to step 1)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Decontamination required and possible: The TDA 
+                            disinfects the <em>Files</em> and moves the 
+                            <em>Files</em> from quarantine back to the staging 
+                            (loop back to step 1)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Decontamination required but not possible: Notify 
+                            stakeholders: The TDA notifies the stakeholders 
+                            that their content is at risk and that it most 
+                            likely must be deleted and re-submitted. The 
+                            <em>Files</em> are not moved away from the 
+                            quarantine area. This is a more likely outcome for 
+                            AIP <em>Files</em> that are scanned during the 
+                            preservation (triggered by CPP-019). (step 7)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Scan report</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Actions taken (quarantine, disinfection, rejection)</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Record the virus scan and its Outcome as a Preservation Event<br />
+                        This documentation should include:
+                    </span>
+                    <ul>
+                        <li>Datetime of scan</li>
+                        <li>Scanner software name</li>
+                        <li>Virus definition file version/date</li>
+                        <li>Files scanned</li>
+                        <li>Outcome for each file (e.g., 'clean', 'infected - [virus_name]', 'quarantined', 'rejected').</li>
+                        <li>Any additional actions taken</li>
+                    </ul>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Provenance metadata</em></span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-016</cpp:customer>
+                    <cpp:customer>CPP-013</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="8">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Clean <em>File(s)</em></span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Documentation of scan event</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Proceed with Clean Content or finalise Rejection:</span>
+                    <ul>
+                        <li>If content is clean: release Files from the staging area or proceed with ingest</li>
+                        <li>If any relevant content was rejected: Finalise the rejection process and archive the documentation</li>
+                    </ul>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Clean <em>File(s)</em> passed to the next ingest 
+                            stage, or rejection process completed</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-013</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Detection of malware in <em>SIP(s)</em></span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Ingest of contaminated <em>Files</em>, 
+                    risking destruction of the entire TDA.</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Process to handle and potentially reject and delete infected 
+                    <em>SIP(s)</em></span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Ingest of contaminated <em>Files</em>, risking destruction 
+                    of the entire TDA</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Processes to maintain up-to-date malware signature databases 
+                    and virus scanning tools</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Ingest of contaminated <em>Files,</em> 
+                    risking destruction of the entire TDA</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Detection of malware in AIP(s)</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Risking destruction of the entire TDA.</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Virus scanning is a direct risk mitigation activity against 
+                    threats to content integrity and system security triggered 
+                    by CPP-012.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Reports on virus scanning activities, frequency of threats, 
+                    and outcomes of the actions provide essential input for 
+                    operational management and risk assessment.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Virus scanning is performed as a step in the overall Data 
+                    Quality Assessment process.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Virus scanning is one of the core processes that must be 
+                    performed during ingest.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Both processes aim to ensure the "health" of Files. However, 
+                    Integrity Checking focuses on detecting technical corruption 
+                    of Files (e.g. bit rot), whereas virus scanning looks to 
+                    mitigate human-made risks ( e.g. malicious code).
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>If a File is detected as infected and cannot be cleaned, it 
+                    might be considered "damaged." However, CPP-004 typically 
+                    applies to technical corruption or loss, rather than 
+                    deliberately human-made damage such as malware-infected 
+                    Files. In practice, infected Files are more likely to be 
+                    replaced (by the producer) or rejected.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Both processes scan the Files to ensure that they are 
+                    suitable for preservation. File Format Validation checks if 
+                    a file conforms to its purported format specification (e.g. 
+                    is this a valid PDF/A file?) while Virus Scanning checks for 
+                    malware, regardless of format validity.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Quality Assurance (within Ingest), Security</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.2.3.3</span>
+                <span>4.3.4</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Event (with eventType 'virus check', Agent (the scanning software)</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Event Entity</span>
+                <span>Agent Entity</span>
+                <span>eventType Controlled vocabulary (2.2)</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Virus Scan as Part of Ingest at CSC</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>CSC – IT Center for Science Ltd., Finland</cpp:institutionLabel>
+                    <cpp:institutionCountry>FI</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>https://www.clamav.net/</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>Ingest</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>Files must be scanned for viruses as part of the 
+                        ingest pipeline to protect the TDA from viruses
+                    </span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>Python script to detect viruses using ClamAv virus 
+                        scanner<br /><br />
+                        def check_virus(path):<br />
+                        """Scan files in directory with ClamAV virus scanner.<br />
+                        ...
+                    </span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://digitalpreservation.fi/en/services/quality_reports/2024</cpp:hyperlink>
+                <cpp:comment>Monitoring of the Digital Preservation Services: 
+                    "Up-to-date status of the virus check database"
+                </cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.14/user-manual/transfer/scan-for-viruses/#scan-for-viruses</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>DANS (Data Archiving and Networked Services), Netherlands</cpp:institutionLabel>
+                <cpp:institutionCountry>NL</cpp:institutionCountry>
+                <cpp:institutionType>Commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Discipline-specific data repository</cpp:institutionType>
+                <cpp:institutionType>Discipline-agnostic data repository</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf</cpp:hyperlink>
+                <cpp:comment>"Virus-scans are performed periodically for ingest by 
+                    the web interface and standard for all other ingest ways 
+                    (like SWORD)."
+                </cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
