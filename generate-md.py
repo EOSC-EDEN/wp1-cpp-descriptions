@@ -381,28 +381,29 @@ def main():
     start_dir = "."
     logging.info(f"Starting script in directory: {os.path.abspath(start_dir)}")
     for root_dir, _, files in os.walk(start_dir):
-        xml_files_in_dir = [f for f in files if f.endswith(".xml")]
-        if xml_files_in_dir:
-            full_markdown = ""
-            for file in sorted(xml_files_in_dir):
-                xml_path = os.path.join(root_dir, file)
-                markdown_content = parse_xml_to_markdown(xml_path)
-                if markdown_content:
-                    full_markdown += markdown_content + "\n\n---\n\n"
+        if os.path.basename(root_dir).startswith("CPP-"):
+            xml_files_in_dir = [f for f in files if f.endswith(".xml") and f.startswith("cpp-")]
+            if xml_files_in_dir:
+                full_markdown = ""
+                for file in sorted(xml_files_in_dir):
+                    xml_path = os.path.join(root_dir, file)
+                    markdown_content = parse_xml_to_markdown(xml_path)
+                    if markdown_content:
+                        full_markdown += markdown_content + "\n\n---\n\n"
 
-            if full_markdown:
-                readme_path = os.path.join(root_dir, "README.md")
-                try:
-                    with open(readme_path, "w", encoding="utf-8") as f:
-                        f.write(full_markdown)
-                    logging.info(
-                        f"Successfully generated {readme_path} from {len(xml_files_in_dir)} XML file(s).\n"
-                    )
-                except IOError as e:
-                    logging.error(
-                        f"Could not write to file {readme_path}. Error: {e}\n"
-                    )
-
+                if full_markdown:
+                    readme_path = os.path.join(root_dir, "README.md")
+                    try:
+                        with open(readme_path, "w", encoding="utf-8") as f:
+                            f.write(full_markdown)
+                        logging.info(
+                            f"Successfully generated {readme_path} from {len(xml_files_in_dir)} XML file(s).\n"
+                        )
+                    except IOError as e:
+                        logging.error(
+                            f"Could not write to file {readme_path}. Error: {e}\n"
+                        )
+   
 
 if __name__ == "__main__":
     main()
