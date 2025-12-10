@@ -1,0 +1,16 @@
+name: Validate CPP XML
+
+on:
+    pull_request:
+        branches:
+            - dev
+        paths-ignore:
+            - 'CPP-*/cpp-*.xml'
+            - 'cpp.xsd'
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Nothing to do
+              run: echo "CPPs not modified; still valid"
