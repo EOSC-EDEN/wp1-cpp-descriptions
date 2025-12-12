@@ -21,11 +21,20 @@
             <cpp:version>
                 <cpp:versionNumber>
                     <cpp:majorVersion>1</cpp:majorVersion>
-                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
                     <cpp:patchVersion>0</cpp:patchVersion>
                 </cpp:versionNumber>
                 <cpp:versionDate>2025-08-29</cpp:versionDate>
                 <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+                       <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-10-16</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
         </cpp:history>
     </cpp:header>
