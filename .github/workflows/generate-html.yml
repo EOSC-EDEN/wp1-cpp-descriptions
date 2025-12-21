@@ -14,14 +14,23 @@ permissions:
 
 jobs:
   transform-and-commit:
+    if: github.actor != 'github-actions[bot]'
     name: Transform cpp-*.xml to HTML and commit
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.ACTION_BOT_APP_ID }}
+          private-key: ${{ secrets.ACTION_BOT_PRIVATE_KEY }}
+          
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Install xsltproc (libxslt)
         run: |
@@ -90,9 +99,13 @@ jobs:
             exit 0
           fi
 
+          # Commit any changes to the HTML pages
           git commit -m "Updated CPP HTML descriptions"
+
+          # Pull any changes committed in the mean time (e.g. from other actions)
+          git pull --no-ff
 
           # Push back to the branch that triggered the workflow
           BRANCH="${GITHUB_REF#refs/heads/}"
           echo "Pushing commit to branch: ${BRANCH}"
-          git push https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git origin "HEAD:${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
