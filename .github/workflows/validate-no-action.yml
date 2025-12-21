@@ -1,4 +1,4 @@
-name: Validate CPP XML
+name: No validation required
 
 on:
     pull_request:
