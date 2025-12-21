@@ -154,7 +154,6 @@
                             <li>Process completed</li>
                         </ol>
                     </cpp:outputElement>
-                    <cpp:customer>CPP-000</cpp:customer>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="3">
