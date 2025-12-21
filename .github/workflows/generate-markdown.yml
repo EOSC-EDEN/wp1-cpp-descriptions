@@ -13,14 +13,23 @@ permissions:
 
 jobs:
   generate-and-commit:
+    if: github.actor != 'github-actions[bot]'
     name: Run generate-md.py and commit README updates
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.ACTION_BOT_APP_ID }}
+          private-key: ${{ secrets.ACTION_BOT_PRIVATE_KEY }}
+          
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -66,4 +75,4 @@ jobs:
           
           # Push back to the branch that triggered the workflow
           BRANCH="${GITHUB_REF#refs/heads/}"
-          git push https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git origin "HEAD:${BRANCH}"
+          git push origin "HEAD:${BRANCH}"
