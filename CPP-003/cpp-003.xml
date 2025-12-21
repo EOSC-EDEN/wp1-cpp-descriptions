@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+         xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+         ID="CPP-003" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Integrity Checking</cpp:label>
+        <cpp:authors>
+            <cpp:author>Johan Kylander</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Bertrand Caron</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Laura Molloy</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+                        <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-10-23</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA supports periodic integrity checking, reporting any damaged or missing Files.</cpp:shortDefinition>
+    <cpp:descriptionAndScope>
+        <p>Integrity checking is a periodically performed process where a checksum is calculated for a
+            target <em>Information Package</em> and compared to the existing stored checksum (as calculated in
+            CPP-001 Checksum Generation and Recording). The goal of integrity checking is to
+            confirm that a target <em>Information Package</em> has remained unaltered across its life cycle. A
+            <em>TDA</em> must perform and document periodic checks, and the frequency of the checks should
+            be defined in its policy as part of the Risk Mitigation (CPP-012) approach.</p>
+        <p>Integrity checking is closely related to the process of Checksum Validation (CPP-002).
+            Whereas Checksum Validation is tied to <em>Ingest</em> (CPP-029), Enabling <em>Access</em> (CPP-025), or
+            Replication (CPP-011) (i.e. processes where <em>Files</em> are transferred or new copies are
+            created), Integrity Checking is related to continuous risk management. Integrity checking
+            aims to mitigate bit rot and provides evidence for trustworthy preservation by maintaining a
+            continuous audit trail verifying that a <em>File</em> has remained unchanged and authentic over time.</p>
+        <p>Periodic integrity checks are performed separately on all accessible copies of a target
+            <em>Information Package</em> (for example, off-line copies in a dark archive are usually excluded from
+            periodic integrity checks). Copies on different storage media might be subjected to different
+            intervals of checks. The results of the integrity checks, including <em>Fixity Metadata</em>, should be
+            documented as preservation actions.</p>
+        <p>If integrity checks discover problems in the integrity of the target <em>Information Packages</em>, this
+            information must be clearly documented in a digital archive's system, so that the broken
+            <em>Information Packages</em> can be restored from valid copies (see CPP-004 Data Corruption
+            Management).</p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Information Package</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Fixity metadata</cpp:metadataElement>
+                <cpp:metadataElement>Storage management information</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Storage management policy - Integrity checking</cpp:guidanceElement>
+                <cpp:guidanceElement>Storage management policy - Checksum algorithms</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:metadata>
+                <cpp:metadataElement>Fixity metadata</cpp:metadataElement>
+                <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Frequency of integrity checks defined in a digital archive's policy</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-012</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Suspicion of an error triggering an integrity check on an ad hoc basis</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Storage management policy - Integrity checking</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Gather a batch of targets to check and their corresponding <em>Fixity metadata</em> (e.g. <em>Information Packages</em> whose last-checked timestamp is older than the specified checking frequency)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>AIPs</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Fixity metadata</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2a">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span><em>Fixity metadata</em></span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-001</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>For each <em>AIP</em> in the selected batch: Gather the <em>AIP</em>'s fixity metadata</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Fixity metadata</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2b">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span><em>Fixity metadata</em> (algorithms)</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Calculate the checksum of the <em>AIP</em> from the specified <em>File</em> path</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Fixity metadata</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2c">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span><em>Fixity metadata</em></span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Compare the calculated checksum with the stored checksum</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Checksums match: proceed to next step</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Alert that any of the checksums does not match: mark broken <em>AIP</em> for repair and proceed to next step</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-004</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2d">
+                <cpp:stepDescription>
+                    <span>Store the new integrity checking event to the <em>AIP</em></span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Provenance metadata</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2e">
+                <cpp:stepDescription>
+                    <span>Update the timestamp of the integrity check</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Fixity metadata</em> (timestamp)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:stepDescription>
+                    <span>Document the event and its timestamp</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Provenance metadata</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Periodic integrity checks on all copies</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Data can get corrupted and degenerate (i.e. the chain of custody is not safeguarded, and the authenticity of <em>IPs</em> may be destroyed)</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-001</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>CPP-001 is responsible for creating checksums that are used in integrity checking.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>The frequency and target of periodic integrity checks (CPP-003) is defined by an institutional storage management policy as part of risk mitigation (CPP-012).</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Periodic integrity checking provides reports on the integrity of data and reports corrupted <em>AIPs</em>.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>The timestamp of the <em>AIPs</em>' checksums needs to be updated to keep track of the last successful check.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-007</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Both processes aim to ensure the "health" of files. However, Integrity Checking focuses on detecting technical corruption of <em>Files</em> (e.g. bit rot), whereas virus scanning looks to mitigate human-made risks ( e.g. malicious code).</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Both CPPs can get input from CPP-001, and both calculate a checksum from an <em>Information
+                    Package</em> and compare it to a given checksum. The difference is that CPP-002
+                    is done during the <em>Ingest</em> or <em>Access</em> phases (relating to
+                    transfer of content, changes in space), while CPP-003 is done periodically
+                    during the preservation of the contents in the archival storage (relating to
+                    changes over time). Thus, CPP-002 and CPP-003 are not only triggered by
+                    different processes, but also trigger different responses.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm><span>Fixity checks</span></cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>R14 Storage &amp; Integrity</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm><span>Integrity checks</span></cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>C15 Integrity: Functions of the archival storage</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm><span>Fixity checks</span></cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.4.1.2</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Error checking</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.2.3.4</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Fixity check</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>1.5.2, Glossary</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB - Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB - Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Integrityassurance</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC - IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports/2024</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/storage-service-0.23/fixity/#fixity-docs</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>AUSSDA - Austrian Social Science Data Archive</cpp:institutionLabel>
+                <cpp:institutionCountry>AT</cpp:institutionCountry>
+                <cpp:institutionType>Discipline-specific data repository</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://aussda.at/fileadmin/user_upload/p_aussda/Documents/kaczmirek_bischof_2024_preservation_fixity_checks_v1_0-1.pdf</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
