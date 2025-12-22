@@ -868,10 +868,6 @@
                     </xsl:element>
                 </xsl:if>
 
-                <xsl:call-template name="debug"><xsl:with-param name="msg" select="$langcode" /></xsl:call-template>
-                <xsl:call-template name="debug"><xsl:with-param name="msg" select="$languages//language[@code=$langcode]/label" /></xsl:call-template>
-                <xsl:call-template name="debug"><xsl:with-param name="msg" select="$hyperlink" /></xsl:call-template>
-
                 <td>
                     <xsl:value-of select="$languages//language[@code=$langcode]/label" />
                 </td>
