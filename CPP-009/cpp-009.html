@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-009_Metadata_Extraction</title></head><body><div class="introSection"><div class="title"><h1>Metadata Extraction (CPP-009)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-009</td></tr><tr><td>CPP-Label</td><td>Metadata Extraction</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Juha Lehtonen</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer, Fen Zhang</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-10-16</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA extracts characteristics (such as size, image dimensions, video codec, audio run time, creating application).</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>File or, in some specific cases, Representation</td></tr><tr><td rowspan="1">Metadata</td><td>Technical Metadata (Format identifier)</td></tr><tr><td rowspan="2">Documentation/guidance</td><td>Policies and detection methods for significant properties, risk properties and quality properties</td></tr><tr><td>Metadata recording Policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="6">Metadata</td><td>Technical Metadata</td></tr><tr><td>Provenance metadata</td></tr><tr><td>Descriptive Metadata</td></tr><tr><td>Structural Metadata</td></tr><tr><td>Rights Metadata</td></tr><tr><td>Errors and Warnings</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Metadata extraction is the process of analysing a File or a set of Files (i.e. a PREMIS
+            Representation) by means of metadata extractor tools in order to retrieve its
+            characteristics in an automated way. In the digital preservation community, this
+            operation is sometimes referred to as “Characterisation”. Within EDEN, however,
+            characterisation is used to identify all operations aiming to extract properties from
+            digital Files (CPP-008 File Format Identification, CPP-009 Metadata Extraction, and
+            CPP-010 File Format Validation).</p><p>Metadata Extraction is generally performed at a File level; in some cases it has to be
+            applied to a complex file structure that is not wrapped in a container File. For
+            example, moving images stored as a sequence of DPX Files are handled as a whole by the
+            metadata extractor tool MediaInfo.</p><p>File properties as gathered through Metadata Extraction are generally considered
+            “Technical metadata”. However, by parsing the File, the process also extracts a wide
+            range of its internal Descriptive, Provenance and Rights metadata.</p><p>Knowledge of these characteristics is a key requirement for many subsequent operations.
+            In particular, it is essential for CPPs producing new Representations (i.e. CPP-026 File
+            Normalisation, CPP-027 File Repair, CPP-014 Format Migration, and CPP-028 Creation of
+            Derivatives) as they require further Metadata beyond the file format information as
+            provided by CPP-008. Audiovisual Files are the most obvious example: Most identification
+            tools provide information about the only container format, while any of the operations
+            mentioned above will need at least the video and audio stream format. This is equally
+            true for all other data types: TIFF may contain image streams compressed by different
+            algorithms, PDF 1.7 might be portfolios containing arbitrary Files, etc.</p><p>There are different types of extraction tools available: a) Generalist metadata extractor
+            tools which are able to perform metadata extraction on a great variety of file formats
+            of different content types (e.g. <a href="https://exiftool.org/">Exiftool</a>), b)
+            content-specific tools which cover most of the file formats for a specific content type
+            (e.g. <a href="https://mediaarea.net/fr/MediaInfo">MediaInfo</a> for AV Files), c)
+            format-specific tools which are specialised on a particular format (e.g. <a href="https://www.w3.org/publishing/epubcheck/">EPUBcheck</a> for EPUBs, <a href="https://xiph.org/flac/documentation_tools_metaflac.html">metaflac</a> for FLAC
+            Files, etc.). Metadata extraction therefore relies on a format identification and is
+            performed differently depending on the file format. TDAs might decide to apply several
+            metadata extractor tools if a single tool cannot extract all required properties.</p><p>Metadata extraction - like any parsing operation - can fail and result in diagnostic
+            error messages. These errors require systematic analysis to inform troubleshooting. In
+            particular, the following issues may be detected by Metadata extraction errors:</p><ul>
+            <li>Encrypted Files;</li>
+            <li>Truncated or broken Files</li>
+            <li>Files assigned incorrect file format information.</li>
+        </ul><p>The output of the metadata extractor tools should be recorded in the Information Package,
+            as Technical, Descriptive, Rights or Provenance Metadata. It may be recorded directly
+            as-is, or mapped to a metadata standard according to the TDA policy on metadata
+            recording.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Ingest</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Re-run of metadata extraction because of the release of a new metadata
+                        extractor tool or tool version</span></td><td></td></tr><tr><td><span>Verify the output of processes creating new Files or Representations</span></td><td>CPP-014 (File Migration)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="4">1</td><td rowspan="1">CPP-008 (File Format Identification)</td><td rowspan="1"><span>Format identifier</span></td><td class="stepsColumn" rowspan="4"><span>Select a suitable metadata extractor tool for the File(s), depending on its
+                        format identifier and on requirements from Significant Properties
+                        Definition, Data Quality Assessment and Risk Definition and Extraction</span></td><td rowspan="4"><span>Metadata extractor tool</span><span>If relevant: configure the tool settings - syntax (XML, JSON, CSV, etc.),
+                            format (e.g., EBUCore, PBCore, in case of an AV File) and verbosity
+                            level.</span></td><td rowspan="4"></td></tr><tr><td rowspan="1">CPP-022 (Significant Properties Definition)</td><td rowspan="1"><span>Significant properties policy and detection method</span></td></tr><tr><td rowspan="1">CPP-023 (Risk Definition and Extraction)</td><td rowspan="1"><span>Risk properties policy and detection method</span></td></tr><tr><td rowspan="1">CPP-019 (Data Quality Assessment)</td><td rowspan="1"><span>Quality properties policy and detection method</span></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>File</em>
+                        </span></td><td class="stepsColumn" rowspan="2"><span>Applying one or sometimes several metadata extractor tool(s).</span></td><td rowspan="1"><span>Tool(s) output</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span><a href="https://coptr.digipres.org/index.php/Metadata_Extraction">Metadata
+                            extractor tool</a> configured according to selected settings</span></td><td rowspan="1"><span>Errors and warnings</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"><span>Errors and warnings</span></td><td class="stepsColumn" rowspan="1"><span>Analyse the errors and troubleshoot, e.g., by removing encryption</span></td></tr><tr></tr><tr><td rowspan="2">4</td><td rowspan="1"></td><td rowspan="1"><span>Tool(s) output</span></td><td class="stepsColumn" rowspan="2"><span>Map the extractor tool(s) output to metadata standard(s)</span><span>The output of the extractor tool may be recorded as-is in the Information
+                        package, or may be mapped into a technical metadata standard (e.g., MIX for
+                        still images).</span></td><td rowspan="2"><span>Tool output in standard format(s)</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Policy on metadata recording</span></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"><span>Tool output in a standard format</span></td><td class="stepsColumn" rowspan="1"><span>Recording the results in the Information Package (i.e. in practice, in the
+                        digital archive database and/or in the physical Information Package)</span></td><td rowspan="1"><span>Technical metadata, optionally other types of metadata, recorded in the
+                            Information Package</span></td><td rowspan="1">CPP-029 (Ingest)</td></tr><tr></tr><tr><td rowspan="1">6</td><td class="stepsColumn" rowspan="1"><span>Document the event and its datetime</span></td><td rowspan="1"><span>Provenance metadata</span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>All preservation actions beyond bit-level preservation are based on a
+                    comprehensive understanding of the File’s characteristics.</span></td><td><span>Files of poor quality may be unidentified.</span><span>Derivatives may be unadapted to the end users’ needs.</span><span>The result of a migration may be partial, as some parts of the source File may
+                    not have been identified, thus not been copied to the target File.</span></td></tr><tr><td><span>Metadata extraction involves accessing the contents of the File. Hence it is an
+                    essential means to detect problematic Files (including errors like: corrupted,
+                    non-conformant to format specification, encrypted or password protected, wrong
+                    file format identification etc.).</span></td><td><span>Problematic Files are not detected.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-002</td><td>Checksum Validation</td><td><span>CPP-002 relies on fixity information as produced and stored by CPP-001,
+                    when triggered by CPP-025 Enabling Access and CPP-006 AIP Batch Export. When
+                    triggered by CPP-029 Ingest CPP-002 rather relies on the fixity information
+                    supplied in the SIP.</span></td></tr><tr><td>Required by</td><td>CPP-008</td><td>File Format Identification</td><td><span>The selection of an appropriate extractor tool depends on file format
+                    information.</span></td></tr><tr><td>Required by</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span>The selection of an appropriate extractor tool depends on requirements from the
+                    Data Quality Assessment CPP.</span></td></tr><tr><td>Required by</td><td>CPP-022</td><td>Significant Properties Definition</td><td><span>The selection of an appropriate extractor tool depends on requirements from the
+                    Significant Properties Definition CPP.</span></td></tr><tr><td>Required by</td><td>CPP-023</td><td>Risk Definition and Extraction</td><td><span>The selection of an appropriate extractor tool depends on requirements from the
+                    Risk Definition and Extraction CPP.</span></td></tr><tr><td>Required by</td><td>CPP-012</td><td>Risk Mitigation</td><td><span>Preservation actions (i.e. migration, emulation) in the storage depend on the
+                    identification of Files that share the same properties.</span></td></tr><tr><td>Required by</td><td>CPP-014</td><td>File Migration</td><td><span>File format identification is generally limited to an indication of the container
+                    format, while migration can apply to any property of the Files. Technical
+                    metadata extraction is required to both assess the compliance of files format to
+                    the Archive’s format policy and control the outcome of the migration.</span></td></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Any metadata that was extracted from the File needs to be stored, searchable and
+                    retrievable</span></td></tr><tr><td>Required by</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span>Metadata extraction returns Metadata that are used to assess the File quality
+                    (e.g. for an audiovisual File quality assessment may rely on Metadata such as
+                    bit depth, sampling frequency, etc.).</span></td></tr><tr><td>Required by</td><td>CPP-023</td><td>Risk Definition and Extraction</td><td><span>Metadata extraction returns Metadata that are used to identify preservation
+                    threats (e.g. for a PDF, the presence of an open password).</span></td></tr><tr><td>Required by</td><td>CPP-024</td><td>Enabling Discovery</td><td><span>Some Metadata provided to the consumer must have been extracted from the Files.</span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>Metadata extraction is one of the core processes that must be performed as part
+                    of Ingest.</span></td></tr><tr><td>May be required by</td><td>CPP-010</td><td>File Format Validation</td><td><span>Depending on the precision of the format registry used in the format
+                    identification process, the resulting information may be insufficient for
+                    selecting the right validation tool.</span><span>In such cases, additional Metadata from an extraction tool may be required. For
+                    example, if an organisation uses Unix File as its identification tool, which
+                    does not distinguish between different PDF “flavours”, and wants to validate
+                    PDF/A against the PDF/A standard. </span><span>In that case, metadata extraction will be necessary to identify the conformance
+                    level and select veraPDF as the suitable validation tool</span></td></tr><tr><td>May be required by</td><td>CPP-021</td><td>AIP Versioning</td><td><span>The documented event, datetime, and Provenance metadata from the metadata
+                    extraction may be required by AIP Versioning.</span></td></tr><tr><td>May be required by</td><td>CPP-027</td><td>File Repair</td><td><span>Tools extracting properties of the File or Representation are useful (and
+                    sometimes even necessary) for identifying erroneous format structures. </span></td></tr><tr><td>Affected by</td><td>CPP-018</td><td>Community Watch</td><td><span>Either due to changing significant properties or due to updated tools, metadata
+                    extraction requirements can be affected.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                            </a></td><td><span>Quality control checks</span></td><td><span>Section R10 (Quality assurance) implicitly requires metadata extraction as one of
+                    the processes implementing “quality control checks in place [that] ensure the
+                    completeness and understandability of data and metadata”.</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                            </a></td><td><span>Technical metadata collect[ion]</span></td><td><span>C30 Technical metadata</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                            </a></td><td></td><td><span>/</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                Link
+                            </a></td><td></td><td><span>/</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                Link
+                            </a></td><td><span>Metadata extraction</span><span>Characterization</span></td><td><span>The PREMIS Data Dictionary mentions this operation as “characterization” (<a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf#page=259">p.
+                    249,
+                        section Special Topics / Format information</a>), but the event type
+                    vocabulary maintained by the PREMIS Editorial Committee at <a href="http://id.loc.gov">id.loc.gov</a> uses the term <a href="https://id.loc.gov/vocabulary/preservation/eventType/mee.html">“metadata
+                    extraction”</a>.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Metadata Extraction from AV material</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France, FR</td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>AV material must be analysed by proper tools, beyond format identification,
+                        in particular because format identification generally returns information
+                        about the container, while AV Files are wrapping streams of different nature
+                        and format</span></td></tr><tr><td>Problem statement</td><td><span>Discussion with AV experts required that several quality properties be
+                        extracted, in particular properties related to the <a href="https://en.wikipedia.org/wiki/Group_of_pictures">group of pictures</a>
+                        .</span><span>XML was the preferred syntax for the extractor tool output, as it could be
+                        easily wrapped in METS Files.</span></td></tr><tr><td>Proposed solution</td><td><span>BnF has selected the tool MediaInfo as its extractor tool for AV Files,
+                        according to requirements collected by BnF. MPEG-7, one of its output
+                        formats, being standardised and expressed in XML, was selected as the format
+                        for Metadata to be stored in Archival Information Packages. As MediaInfo
+                        provides natively MPEG-7 as one of its output formats, no mapping from the
+                        tool output to a standard metadata format was required.</span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest">https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2020100578096">https://urn.fi/urn:nbn:fi-fe2020100578096</a><div>(section 5)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization">
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#characterization</a></td></tr></table></div></div></body></html>

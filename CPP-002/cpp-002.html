@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-002_Checksum_Validation</title></head><body><div class="introSection"><div class="title"><h1>Checksum Validation (CPP-002)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-002</td></tr><tr><td>CPP-Label</td><td>Checksum Validation</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Laura Molloy</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-10-16</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
+        The TDA validates checksums against those stored in the Information Package at Ingest or Access. 
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>File</td></tr><tr><td rowspan="1">Metadata</td><td>Fixity metadata</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Metadata</td><td>Provenance metadata (the checksum validation event, including the datetime)</td></tr><tr><td rowspan="2">Alerts</td><td>File corruption alert for each File that fails the check</td></tr><tr><td>Unsupported checksum algorithm alert for each algorithm that is not supported by the system</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>
+            The Checksum Validation process compares the checksums that come with the <em>Information
+            Package</em>, with checksums based on the current state of the <em>File</em>'s data.
+            Checksums of <em>Files</em> are validated at <em>Ingest</em> or <em>Access</em> to a
+            TDA. The checksums may be either part of 1) a <em>SIP</em>; 2) an imported 
+            <em>AIP</em>; or 3) an <em>AIP</em> stored in the <em>TDA</em>. 
+        </p><p>
+            A misalignment between the checksum algorithms used in the <em>Information
+            Package</em> and the TDA's checksum policy's list of algorithms may occur. For
+            example, incoming <em>Information Packages</em> (<em>SIPs</em> and <em>AIPs</em>) may
+            include a checksum with a different algorithm created by the producer. In the case of <em>
+            AIPs</em>, the checksum policy might have been updated during the lifecycle of the TDA,
+            resulting in the removal and/or addition of algorithms. In such cases, the process
+            should use whatever algorithm is associated with a given checksum to the best of its
+            potential.
+        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>
+                        <em>SIP</em> or <em>AIP</em> import
+                    </span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>
+                        <em>DIP</em> generation
+                    </span></td><td>CPP-025 (Enabling Access)</td></tr><tr><td><span>
+                        <em>AIP</em> export
+                    </span></td><td>CPP-006 (AIP Batch Export)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="2">1</td><td rowspan="1">CPP-001 (Checksum Generation and Recording)</td><td rowspan="1"><span>Fixity information</span></td><td class="stepsColumn" rowspan="2"><span>Get the list of pre-calculated checksums with their respective algorithms</span></td><td rowspan="2"><span>List of checksums and algorithms</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            Fixity information from <em>SIP</em>
+                        </span></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>List of checksums and algorithms</span></td><td class="stepsColumn" rowspan="2"><span>Evaluate for each algorithm individually if it is supported by the system.</span></td><td rowspan="1"><span>Algorithm supported (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Digital archive system configuration</span></td><td rowspan="1"><span>Algorithm not supported:</span><ol>
+                            <li>
+                                examine further procedure (e.g. based on legal agreements;
+                                submission policies; communication with producer, if possible)
+                            </li>
+                            <li>Process completed</li>
+                        </ol></td><td rowspan="1">UNKNOWN CPP IDENTIFIER: CPP-000.</td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>File</em>
+                        </span></td><td class="stepsColumn" rowspan="2"><span>For each algorithm, recalculate the checksum of the <em>File</em> and match
+                        it with the given checksum</span></td><td rowspan="1"><span>All <em>File</em> checksums match (step 5)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>List of checksums and algorithms</span></td><td rowspan="1"><span>Alert that any of the <em>File</em> checksums does not match:</span><ol>
+                            <li>Examine further procedure</li>
+                            <li>Process completed</li>
+                        </ol></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"><span>All <em>File</em> checksums match</span></td><td class="stepsColumn" rowspan="1"><span>Document the event and its timestamp</span></td><td rowspan="1"><span>Datetime for the checksum generation in the Provenance metadata</span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Making sure the data content is still in the condition as intended </span></td><td><span>Data corruption during transfers into the system or during export could go
+                    unnoticed</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-001</td><td>Checksum Generation and Recording</td><td><span>CPP-002 relies on fixity information as produced and stored by CPP-001, but only
+                    during CPP-025 Enabling Access and
+                    CPP-006 AIP Batch Export. During CPP-029 Ingest, the fixity information supplied
+                    by the SIP will be used instead.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-006</td><td>AIP Batch Export</td><td><span>To ensure the integrity of the data during transport from the TDA storage the
+                    exported Files' checksums need to be verified.</span></td></tr><tr><td>Required by</td><td>CPP-025</td><td>Enabling Access</td><td><span>As the <em>DIP</em> is created, all <em>File</em> checksums need to be validated
+                    to ensure that the <em>DIP</em> is representative of the <em>AIP</em>.
+                </span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>For any <em>SIP</em> submitted to the TDA all included <em>File</em> checksums
+                    need to be checked to validate the integrity of the <em>Files</em>.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-004</td><td>Data Corruption Management</td><td><span>All new <em>AIP</em> copies must have their checksum validated to verify that the
+                    process was successful. However, the checksum validation is more mechanical in
+                    its nature, only aiming at verification of the copy process. The CPP-002
+                    checksum validation is more comprehensive (including negotiations with producers
+                    and validation of results).</span></td></tr><tr><td>Affinity with</td><td>CPP-030</td><td>Refreshment</td><td><span>All new <em>AIP</em> copies must have their checksum validated to verify that the
+                    process was successful. However, the checksum validation is more mechanical in
+                    its nature, only aiming at verification of the copy process. The CPP-002
+                    checksum validation is more comprehensive (including negotiations with producers
+                    and validation of results).</span></td></tr><tr><td>Affinity with</td><td>CPP-011</td><td>Replication</td><td><span>When <em>Files</em> are replicated, successful replication is validated by
+                    comparing the replicated <em>Files'</em> checksums against the original <em>
+                    Files'</em> checksums</span></td></tr><tr><td>Not to be confused with</td><td>CPP-003</td><td>Integrity Checking</td><td><span>Both CPPs get input from CPP-001, and both calculate a checksum from an <em>Information
+                    package</em> and compare it to a given checksum. The difference is that CPP-002
+                    is done during the <em>Ingest</em> or <em>Access</em> phases (relating to
+                    transfer of content, changes in space), while CPP-003 is done periodically
+                    during the preservation of the contents in the archival storage (relating to
+                    changes over time). Thus, CPP-002 and CPP-003 are not only triggered by
+                    different processes, but also trigger different responses.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                            </a></td><td><span>Checksum (cf <a href="https://zenodo.org/records/7051096">Extended Guidance
+                    documentation</a>)
+                </span></td><td><span>Information Technology and Security/Storage &amp; Integrity (R14)</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                Link
+                            </a></td><td><span>Quality assurance</span></td><td><span>4.2.3.3 (Ingest)</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB - Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines">https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</a></td></tr><tr><td rowspan="1">CSC - IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(Annex 3, section 2.1.1)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums</a></td></tr></table></div></div></body></html>

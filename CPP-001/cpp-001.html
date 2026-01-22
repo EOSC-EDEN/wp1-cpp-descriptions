@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-001_Checksum_Generation_and_Recording</title></head><body><div class="introSection"><div class="title"><h1>Checksum Generation and Recording (CPP-001)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-001</td></tr><tr><td>CPP-Label</td><td>Checksum Generation and Recording</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Johan Kylander, Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Fen Zhang</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-10-16</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA (Trustworthy Digital Archive) records checksums for every File.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>File</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Storage management policy - Checksum algorithms</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Metadata</td><td>Fixity metadata (one or multiple checksum(s) for the File as well
+                    as their associated algorithms)</td></tr><tr><td>Provenance metadata (a timestamp or event that describes the
+                    checksum calculation)</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>A checksum or message digest is a fixed size stream of data generated by a
+            transformation of the <em>File</em> data by means of an algorithm. Any
+            change to the data would result in a change to the calculated digest. The algorithm can
+            be a cyclic redundancy check or a cryptographic hash function.</p><p>The <em>File</em> checksums form an important part of the fixity
+            information which is the cornerstone for performing bit-level digital preservation. The
+            system must keep track of this message digest for each <em>File</em>. Due to
+            the possibility of collisions (multiple data streams having the same checksum), storing
+            multiple message digests generated by different algorithms is recommended. The TDA
+            policy should define a list of required algorithms.</p><p>The Checksum Generation and Recording process is the action of acquiring and
+            storing the message digests associated with any <em>File</em> that the
+            system needs to keep track of. Files should come with any number of checksums generated
+            prior to their submission. In that case, the system should store those checksums and use
+            them as-is and new checksums should be generated for those algorithms that are missing.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>A new <em>SIP</em> is submitted and processed</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span><em>File</em> update or replacement due to Preservation
+                        Action (e.g. migration)</span></td><td>CPP-014 (File Migration)</td></tr><tr><td><span>Any other action that results in a new or updated <em>File</em>
+                        being added to the system</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1"></td><td rowspan="1"><span>Storage management policy - Checksum algorithms</span></td><td class="stepsColumn" rowspan="1"><span>Get the list of accepted checksum algorithms</span></td><td rowspan="1"><span>List of accepted checksum algorithms</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>File</em>
+                        </span></td><td class="stepsColumn" rowspan="2"><span>Calculate the checksum for each algorithm</span></td><td rowspan="2"><span>List of checksums for the <em>File</em> based on
+                            different algorithms</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>List of checksum algorithms</em>
+                        </span></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"><span>List of checksums for the <em>File</em> based on
+                            different algorithms</span></td><td class="stepsColumn" rowspan="1"><span>Store the checksums in the <em>Fixity metadata</em> for the <em>
+                        File</em></span></td><td rowspan="1"><span>Updated <em>Fixity metadata</em> of the <em>
+                                File</em> in the TDA database</span></td><td rowspan="1">CPP-002 (Checksum Validation)<hr></hr>CPP-003 (Integrity Checking)</td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>File</em>
+                        </span></td><td class="stepsColumn" rowspan="1"><span>Document the event and its datetime</span></td><td rowspan="1"><span>Datetime for the checksum generation and other related <em>Provenance
+                            metadata</em></span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Keeping track of the fixity information of each <em>File</em></span></td><td><span>Corrupted data can get undetected or be detected when it is too
+                    late to take corrective action</span></td></tr><tr><td><span>Event datetime for checksum generation</span></td><td><span>No starting point from when the fixity can be checked (and
+                    guaranteed)</span></td></tr><tr><td><span>Multiple checksums for each <em>File</em></span></td><td><span>Collisions where changes to a <em>File</em> produce the same
+                    checksum, are more likely with a single checksum algorithm than with multiple
+                    checksum algorithms</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-002</td><td>Checksum Validation</td><td><span>CPP-002 relies on fixity information as produced and stored by CPP-001,
+                    when triggered by CPP-025 Enabling Access and CPP-006 AIP Batch Export. When
+                    triggered by CPP-029 Ingest CPP-002 rather relies on the fixity information
+                    supplied in the SIP.</span></td></tr><tr><td>Required by</td><td>CPP-003</td><td>Integrity Checking</td><td><span>The integrity checking process relies on the fixity information as produced
+                    and stored by CPP-001.</span></td></tr><tr><td>Required by</td><td>CPP-006</td><td>AIP Batch Export</td><td><span><em>Fixity metadata</em> is used to verify the integrity of
+                    data written into the exported AIP.</span></td></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>The checksums and associated algorithms need to be stored in the <em>
+                    File</em>’s <em>Fixity metadata</em> is used to verify the
+                    integrity of data written into the exported AIP.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                            </a></td><td><span>Checksum (cf <a href="https://doi.org/10.5281/zenodo.7051096">Extended
+                    Guidance documentation</a>)</span></td><td><span>Information Technology &amp; Security/Storage &amp; Integrity (R14)</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                            </a></td><td><span>Integrity</span></td><td><span>C14 Integrity: Ingest Interface</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                            </a></td><td><span>integrity measurements</span></td><td><span>Checksum Generation: 3.3.5 The repository shall define, collect, track, and
+                    appropriately provide its information integrity measurements.</span><span>Recording: 4.1.6 The repository shall obtain sufficient control over the
+                    Digital Objects to preserve them.</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                Link
+                            </a></td><td></td><td><span>OAIS does not describe the process of checksum generation and recording in
+                    its functional model but defines fixity information as part of Administrative
+                    metadata, which is “necessary for adequate preservation of the Content Data
+                    Object”.</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                Link
+                            </a></td><td><span>Message digest calculation</span></td><td><span>The term “message digest calculation” is referenced in the glossary.</span><span>The general topic of fixity is addressed in section Fixity, Integrity,
+                    Authenticity, p. 258.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata">
+                    //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata</a><div>(section 2.4.4.2)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices">
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices</a></td></tr></table></div></div></body></html>
