@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpps>
+    <cpp identifier="CPP-001">
+         <label>Checksum Generation and Recording</label>
+    </cpp>
+    <cpp identifier="CPP-002">
+         <label>Checksum Validation</label>
+    </cpp>
+    <cpp identifier="CPP-003">
+         <label>Integrity Checking</label>
+    </cpp>
+    <cpp identifier="CPP-004">
+         <label>Data Corruption Management</label>
+    </cpp>
+    <cpp identifier="CPP-005">
+         <label>Identifier Management</label>
+    </cpp>
+    <cpp identifier="CPP-006">
+         <label>AIP Batch Export</label>
+    </cpp>
+    <cpp identifier="CPP-007">
+         <label>Virus Scanning</label>
+    </cpp>
+    <cpp identifier="CPP-008">
+         <label>File Format Identification</label>
+    </cpp>
+    <cpp identifier="CPP-009">
+         <label>Metadata Extraction</label>
+    </cpp>
+    <cpp identifier="CPP-010">
+         <label>File Format Validation</label>
+    </cpp>
+    <cpp identifier="CPP-011">
+         <label>Replication</label>
+    </cpp>
+    <cpp identifier="CPP-012">
+         <label>Risk Mitigation</label>
+    </cpp>
+    <cpp identifier="CPP-013">
+         <label>Object Management Reporting</label>
+    </cpp>
+    <cpp identifier="CPP-014">
+         <label>File Migration</label>
+    </cpp>
+    <cpp identifier="CPP-015">
+         <label>Emulation and Rendering Tools</label>
+    </cpp>
+    <cpp identifier="CPP-016">
+         <label>Metadata Ingest and Management</label>
+    </cpp>
+    <cpp identifier="CPP-017">
+         <label>Disposal</label>
+    </cpp>
+    <cpp identifier="CPP-018">
+         <label>Community Watch</label>
+    </cpp>
+    <cpp identifier="CPP-019">
+         <label>Data Quality Assessment</label>
+    </cpp>
+    <cpp identifier="CPP-020">
+         <label>Rights Management</label>
+    </cpp>
+   <cpp identifier="CPP-021">
+         <label>AIP Versioning</label>
+    </cpp>
+   <cpp identifier="CPP-022">
+         <label>Significant Properties Definition</label>
+    </cpp>
+   <cpp identifier="CPP-023">
+         <label>Risk Definition and Extraction</label>
+    </cpp>
+   <cpp identifier="CPP-024">
+         <label>Enabling Discovery</label>
+    </cpp>
+   <cpp identifier="CPP-025">
+         <label>Enabling Access</label>
+    </cpp>
+   <cpp identifier="CPP-026">
+         <label>File Normalisation</label>
+    </cpp>
+   <cpp identifier="CPP-027">
+         <label>File Repair</label>
+    </cpp>
+   <cpp identifier="CPP-028">
+         <label>Creation of Derivatives</label>
+    </cpp>
+   <cpp identifier="CPP-029">
+         <label>Ingest</label>
+    </cpp>
+   <cpp identifier="CPP-030">
+         <label>Refreshment</label>
+    </cpp>
+</cpps>
