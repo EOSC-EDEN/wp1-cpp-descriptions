@@ -7,6 +7,7 @@ on:
     paths:
       - 'cpp2html.xsl'
       - 'frameworks.xml'
+      - 'cpps.xml'
       - 'CPP-*/cpp-*.xml'
 
 permissions:
@@ -108,4 +109,4 @@ jobs:
           # Push back to the branch that triggered the workflow
           BRANCH="${GITHUB_REF#refs/heads/}"
           echo "Pushing commit to branch: ${BRANCH}"
-          git push https://x-access-token:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git origin "HEAD:${BRANCH}"
+          git push origin ${{ github.ref }}

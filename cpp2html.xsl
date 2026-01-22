@@ -14,11 +14,12 @@
     <xsl:variable name="frameworks" select="document('frameworks.xml')" />
 
     <xsl:variable name="languages" select="document('languages.xml')" />
+    <xsl:variable name="cpps" select="document('cpps.xml')" />
 
     <xsl:template match="/cpp:cpp">
 
         <xsl:variable name="CPP" select="@ID"></xsl:variable>
-        <xsl:variable name="LABEL" select="cpp:header/cpp:label"></xsl:variable>
+        <xsl:variable name="LABEL" select="$cpps//cpp[@identifier=$CPP]/label"></xsl:variable>
 
         <html>
             <head>
@@ -481,7 +482,9 @@
                         </xsl:call-template>
                     </td>
                     <td>
-                        <xsl:value-of select="./cpp:correspondingCPP" />
+                        <xsl:call-template name="cppIdLabel">
+                            <xsl:with-param name="cpp_identifier" select="./cpp:correspondingCPP" />
+                        </xsl:call-template>
                     </td>
                 </tr>
             </xsl:for-each>
@@ -560,7 +563,11 @@
                     <td>
                         <xsl:value-of select="cpp:relatedCPP" />
                     </td>
-                    <td></td>
+                    <td>
+                        <xsl:call-template name="cppLabelFromId">
+                            <xsl:with-param name="cpp_identifier" select="cpp:relatedCPP" />
+                        </xsl:call-template>
+                    </td>
                     <td>
                         <xsl:call-template name="copyContent">
                             <xsl:with-param name="data" select="cpp:relationshipDescription" />
@@ -595,7 +602,11 @@
                     <td>
                         <xsl:value-of select="cpp:relatedCPP" />
                     </td>
-                    <td></td>
+                    <td>
+                        <xsl:call-template name="cppLabelFromId">
+                            <xsl:with-param name="cpp_identifier" select="cpp:relatedCPP" />
+                        </xsl:call-template>
+                    </td>
                     <td>
                         <xsl:call-template name="copyContent">
                             <xsl:with-param name="data" select="cpp:relationshipDescription" />
@@ -1064,7 +1075,9 @@
                 <xsl:if test="position()!=1">
                     <hr/>
                 </xsl:if>
-                <xsl:value-of select="." />
+                <xsl:call-template name="cppIdLabel">
+                    <xsl:with-param name="cpp_identifier" select="." />
+                </xsl:call-template>
             </xsl:for-each>
         </xsl:element>
         <xsl:element name="td">
@@ -1111,7 +1124,9 @@
                 <xsl:if test="position()!=1">
                     <hr/>
                 </xsl:if>
-                <xsl:value-of select="." />
+                <xsl:call-template name="cppIdLabel">
+                    <xsl:with-param name="cpp_identifier" select="." />
+                </xsl:call-template>
             </xsl:for-each>
         </xsl:element>
     </xsl:template>
@@ -1123,6 +1138,56 @@
         <xsl:for-each select="$data/*">
             <xsl:copy-of select="."></xsl:copy-of>
         </xsl:for-each>
+    </xsl:template>
+
+    <!-- CPP label from identifier -->
+
+    <xsl:template name="cppLabelFromId">
+        <xsl:param name="cpp_identifier" />
+
+        <xsl:choose>
+            <xsl:when test="string-length($cpp_identifier)=0">
+                <!-- <xsl:text>NO CPP IDENTIFIER PROVIDED.</xsl:text> -->
+            </xsl:when>
+            <xsl:when test="not($cpps//cpp[@identifier=$cpp_identifier])">
+                <xsl:text>UNKNOWN CPP IDENTIFIER: </xsl:text>
+                <xsl:value-of select="$cpp_identifier" />
+                <xsl:text>.</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="cpp_label" select="$cpps//cpp[@identifier=$cpp_identifier]/label" />
+                <xsl:value-of select="$cpp_label" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <!-- CPP identifier and label between brackets -->
+
+    <xsl:template name="cppIdLabel">
+        <xsl:param name="cpp_identifier" />
+
+        <xsl:choose>
+            <xsl:when test="string-length($cpp_identifier)=0">
+                <!-- <xsl:text>NO CPP IDENTIFIER PROVIDED.</xsl:text> -->
+            </xsl:when>
+            <xsl:when test="not($cpps//cpp[@identifier=$cpp_identifier])">
+                <xsl:text>UNKNOWN CPP IDENTIFIER: </xsl:text>
+                <xsl:value-of select="$cpp_identifier" />
+                <xsl:text>.</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="cpp_label">
+                    <xsl:call-template name="cppLabelFromId">
+                        <xsl:with-param name="cpp_identifier" select="$cpp_identifier" />
+                    </xsl:call-template>
+                </xsl:variable>
+
+                <xsl:value-of select="$cpp_identifier" />
+                <xsl:text> &#40;</xsl:text>
+                <xsl:value-of select="$cpp_label" />
+                <xsl:text>&#41;</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!-- debug -->
