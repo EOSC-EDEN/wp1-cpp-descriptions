@@ -13,6 +13,7 @@
 
     <xsl:variable name="frameworks" select="document('frameworks.xml')" />
 
+    <xsl:variable name="languages" select="document('languages.xml')" />
     <xsl:variable name="cpps" select="document('cpps.xml')" />
 
     <xsl:template match="/cpp:cpp">
@@ -831,32 +832,32 @@
 
     <xsl:template match="cpp:publicDocumentation">
 
-        <xsl:variable name="cnt" select="count(cpp:institution/cpp:institutionType)"></xsl:variable>
+        <xsl:variable name="cnt" select="count(cpp:linkToDocumentation)"></xsl:variable>
         <xsl:variable name="institution">
             <xsl:value-of select="cpp:institution/cpp:institutionLabel" />
             <xsl:text>, </xsl:text>
             <xsl:value-of select="cpp:institution/cpp:institutionCountry" />
         </xsl:variable>
-        <xsl:variable name="language">
-            <xsl:value-of select="cpp:linkToDocumentation/@xml:lang" />
-        </xsl:variable>
-        <xsl:variable name="hyperlink">
-            <xsl:element name="a">
-                <xsl:attribute name="href">
-                    <xsl:value-of select="cpp:linkToDocumentation/cpp:hyperlink" />
-                </xsl:attribute>
-                <xsl:value-of select="cpp:linkToDocumentation/cpp:hyperlink"/>
-            </xsl:element>
-            <xsl:if test="cpp:linkToDocumentation/cpp:comment">
-                <xsl:element name="div">
-                    <xsl:text>&#40;</xsl:text>
-                    <xsl:value-of select="cpp:linkToDocumentation/cpp:comment" />
-                    <xsl:text>&#41;</xsl:text>
-                </xsl:element>
-            </xsl:if>
-        </xsl:variable>
+        <xsl:variable name="institutionTypes" select="cpp:institution/cpp:institutionType/text()"/>
 
-        <xsl:for-each select="cpp:institution/cpp:institutionType">
+        <xsl:for-each select="cpp:linkToDocumentation">
+            <xsl:variable name="langcode" select="./@xml:lang" />
+            <xsl:variable name="hyperlink">
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="./cpp:hyperlink" />
+                    </xsl:attribute>
+                    <xsl:value-of select="./cpp:hyperlink"/>
+                </xsl:element>
+                <xsl:if test="./cpp:comment">
+                    <xsl:element name="div">
+                        <xsl:text>&#40;</xsl:text>
+                        <xsl:value-of select="./cpp:comment" />
+                        <xsl:text>&#41;</xsl:text>
+                    </xsl:element>
+                </xsl:if>
+            </xsl:variable>
+
             <tr>
                 <xsl:if test="position()=1">
                     <xsl:element name="td">
@@ -865,24 +866,26 @@
                         </xsl:attribute>
                         <xsl:value-of select="$institution" />
                     </xsl:element>
+                    <xsl:element name="td">
+                        <xsl:attribute name="rowspan">
+                            <xsl:value-of select="$cnt" />
+                        </xsl:attribute>
+                        <xsl:for-each select="$institutionTypes">
+                            <xsl:value-of select="." />
+                            <xsl:if test="position() != last()">
+                                <hr />
+                            </xsl:if>
+                        </xsl:for-each>
+                    </xsl:element>
                 </xsl:if>
+
                 <td>
-                    <xsl:value-of select="." />
+                    <xsl:value-of select="$languages//language[@code=$langcode]/label" />
                 </td>
-                <xsl:if test="position()=1">
-                    <xsl:element name="td">
-                        <xsl:attribute name="rowspan">
-                            <xsl:value-of select="$cnt" />
-                        </xsl:attribute>
-                        <xsl:value-of select="$language" />
-                    </xsl:element>
-                    <xsl:element name="td">
-                        <xsl:attribute name="rowspan">
-                            <xsl:value-of select="$cnt" />
-                        </xsl:attribute>
-                        <xsl:copy-of select="$hyperlink" />
-                    </xsl:element>
-                </xsl:if>
+
+                <td>
+                    <xsl:copy-of select="$hyperlink" />
+                </td>
             </tr>
         </xsl:for-each>
     </xsl:template>

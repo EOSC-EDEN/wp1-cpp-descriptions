@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages>
+    <language code="en">
+        <label>English</label>
+    </language>
+    <language code="fi">
+        <label>Finnish</label>
+    </language>
+    <language code="es">
+        <label>Spanish</label>
+    </language>
+    <language code="fr">
+        <label>French</label>
+    </language>
+    <language code="de">
+        <label>German</label>
+    </language>
+    <language code="it">
+        <label>Italian</label>
+    </language>
+    <language code="pt">
+        <label>Portuguese</label>
+    </language>
+    <language code="ja">
+        <label>Japanese</label>
+    </language>
+    <language code="zh">
+        <label>Chinese</label>
+    </language>
+    <language code="ru">
+        <label>Russian</label>
+    </language>
+    <language code="ar">
+        <label>Arabic</label>
+    </language>
+</languages>
