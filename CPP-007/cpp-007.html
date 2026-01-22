@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-007_Virus_Scanning</title></head><body><div class="introSection"><div class="title"><h1>Virus Scanning (CPP-007)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-007</td></tr><tr><td>CPP-Label</td><td>Virus Scanning</td></tr><tr><td>Author</td><td>Mattias Levlin, Johan Kylander</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Fen Zhang</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-10-16</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>Information packages are virus checked, with appropriate
+        facilities for quarantine.
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Information package(s)</td></tr><tr><td rowspan="2">Documentation/guidance</td><td>Malware signature database(s)</td></tr><tr><td>Guidelines for managing detected threats</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Metadata</td><td>Provenance metadata</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Scan report</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Virus scanning is the process of examining <em>Files</em> as proposed 
+            for ingestion into an archive for the presence of malicious software 
+            (i.e. malware) such as viruses, trojans, worms, spyware, and 
+            ransomware etc. The primary goal of virus scanning is to detect and 
+            prevent such harmful code from entering the digital archive to 
+            safeguard the integrity and trustworthiness of the preserved content. 
+            This security measure protects not only the archival system itself, 
+            but also users or other connected systems that access or receive 
+            content from the archive. Effective virus scanning is a core step 
+            of the ingest process and an essential strategic component in 
+            <b>Risk Mitigation</b> (CPP-012), ensuring that the archive remains 
+            a secure and reliable repository for digital assets. It is a means 
+            to mitigate deliberate, human-made threats to digital preservation.
+        </p><p>Virus scanning is first and foremost applied during ingest, acting 
+            as a checkpoint before <em>Files</em> are fully accepted and 
+            integrated into a TDA's holdings. In addition, it may be triggered 
+            during preservation (archival storage) or dissemination. This may 
+            be done either to ensure that no viruses have infected the content 
+            after ingest, or to make sure that disseminated content has been 
+            checked using up-to-date signature databases.
+        </p><p>A TDA must employ virus scanning tools and malware signature 
+            databases to ensure effective and up-to-date threat detection. This 
+            includes a process to maintain and frequently update a malware 
+            signature database that is used by the virus scanning tools. The 
+            system must provide secure workspaces and guidelines for managing 
+            detected threats, which typically involves isolating suspicious 
+            <em>Files</em> in a staging or quarantine area to prevent potential 
+            harm to the storage. The TDA can reject and remove the contaminated 
+            <em>Files</em> or <em>Information packages</em> during ingest in 
+            cases where decontamination is not a viable option.
+        </p><p>All scanning activities, detected threats, and subsequent actions 
+            (i.e. quarantine, rejection, deletion) must be documented as part of 
+            the ingest record and preservation actions as <em>Provenance metadata</em>. 
+            This documentation contributes to the audit trail of the ingested <em>Files</em> 
+            and should be incorporated into broader <b>Object Management Reporting</b> (CPP-013).
+        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Periodic quality check of <em>Files</em></span></td><td>CPP-019 (Data Quality Assessment)</td></tr><tr><td><span>Pre-access check of DIPs</span></td><td>CPP-025 (Enabling Access)</td></tr><tr><td><span>Ingest</span></td><td>CPP-029 (Ingest)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1">CPP-029 (Ingest)</td><td rowspan="1"><span>
+                            <em>SIP(s)</em>
+                        </span></td><td class="stepsColumn" rowspan="1"><span>Receive and Stage Content: Content arrives and is placed 
+                        in a temporary, isolated staging area designated for 
+                        pre-ingest checks</span></td><td rowspan="1"><span><em>SIP(s)</em> in the staging area</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1">CPP-019 (Data Quality Assessment)<hr></hr>CPP-025 (Enabling Access)</td><td rowspan="1"><span>
+                            <em>AIP(s)</em>
+                        </span></td><td class="stepsColumn" rowspan="1"><span>Select <em>AIP(s)</em> for virus scan 
+                        and copy their <em>Files</em> to the staging 
+                        area for checks</span></td><td rowspan="1"><span><em>AIP(s)</em> in the staging area</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span><em>File(s)</em> in staging area</span></td><td class="stepsColumn" rowspan="2"><span>Perform Scan: Initiate a comprehensive scan of all 
+                        <em>Files</em> within the staged <em>Information packages</em></span></td><td rowspan="2"><span>Scan report/log (indicating clean <em>Files</em>, 
+                            and any detected threats with file paths and malware names)</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Configured virus scanners</span></td></tr><tr></tr><tr><td rowspan="2">4</td><td rowspan="2"></td><td rowspan="2"><span>Scan report/log</span></td><td class="stepsColumn" rowspan="2"><span>Evaluate Scan Results</span></td><td rowspan="1"><span>All <em>Files</em> reported as clean (step 7)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Any <em>Files</em> reported as infected or suspicious (step 5)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">5</td><td rowspan="1"></td><td rowspan="1"><span>Infected/suspicious file(s)</span></td><td class="stepsColumn" rowspan="3"><span>Handling infected or suspicious <em>Files</em>, 
+                        the TDA conducts a first analysis</span></td><td rowspan="1"><span>Decontamination recommended:  Move the identified 
+                            <em>File(s)</em> to a secure quarantine area, 
+                            isolated from other systems and content for further 
+                            analysis and potential disinfection, and inform 
+                            dedicated staff members (step 6)</span></td><td rowspan="1">CPP-013 (Object Management Reporting)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Scan report</span></td><td rowspan="2"><span>Rejection recommended: Mark the <em>File(s)</em> (or 
+                            the entire <em>SIP(s)</em> (as in case of ingest) 
+                            for rejection. Notify the producer with reasons, if 
+                            appropriate and/or defined by policy (end of the 
+                            process)</span></td><td rowspan="2">CPP-013 (Object Management Reporting)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Guidelines for managing detected threats</span></td></tr><tr></tr><tr><td rowspan="3">6</td><td rowspan="1"></td><td rowspan="1"><span>Quarantined file(s)</span></td><td class="stepsColumn" rowspan="3"><span>In-Depth Analysis: The personnel analyses the threat, 
+                        leading to multiple potential outcomes</span></td><td rowspan="1"><span>False positive identified: the detected malware does 
+                            not pose a threat. Whitelist the threat and move 
+                            the <em>Files</em> from quarantine back to the 
+                            staging (loop back to step 1)</span></td><td rowspan="1"></td></tr><tr><td rowspan="2"></td><td rowspan="2"><span>Notification to staff</span></td><td rowspan="1"><span>Decontamination required and possible: The TDA 
+                            disinfects the <em>Files</em> and moves the 
+                            <em>Files</em> from quarantine back to the staging 
+                            (loop back to step 1)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Decontamination required but not possible: Notify 
+                            stakeholders: The TDA notifies the stakeholders 
+                            that their content is at risk and that it most 
+                            likely must be deleted and re-submitted. The 
+                            <em>Files</em> are not moved away from the 
+                            quarantine area. This is a more likely outcome for 
+                            AIP <em>Files</em> that are scanned during the 
+                            preservation (triggered by CPP-019). (step 7)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">7</td><td rowspan="1"></td><td rowspan="1"><span>Scan report</span></td><td class="stepsColumn" rowspan="2"><span>Record the virus scan and its Outcome as a Preservation Event<br></br>
+                        This documentation should include:
+                    </span><ul>
+                        <li>Datetime of scan</li>
+                        <li>Scanner software name</li>
+                        <li>Virus definition file version/date</li>
+                        <li>Files scanned</li>
+                        <li>Outcome for each file (e.g., 'clean', 'infected - [virus_name]', 'quarantined', 'rejected').</li>
+                        <li>Any additional actions taken</li>
+                    </ul></td><td rowspan="2"><span><em>Provenance metadata</em></span></td><td rowspan="2">CPP-016 (Metadata Ingest and Management)<hr></hr>CPP-013 (Object Management Reporting)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Actions taken (quarantine, disinfection, rejection)</span></td></tr><tr></tr><tr><td rowspan="2">8</td><td rowspan="1"></td><td rowspan="1"><span>Clean <em>File(s)</em></span></td><td class="stepsColumn" rowspan="2"><span>Proceed with Clean Content or finalise Rejection:</span><ul>
+                        <li>If content is clean: release Files from the staging area or proceed with ingest</li>
+                        <li>If any relevant content was rejected: Finalise the rejection process and archive the documentation</li>
+                    </ul></td><td rowspan="2"><span>Clean <em>File(s)</em> passed to the next ingest 
+                            stage, or rejection process completed</span></td><td rowspan="2">CPP-013 (Object Management Reporting)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Documentation of scan event</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Detection of malware in <em>SIP(s)</em></span></td><td><span>Ingest of contaminated <em>Files</em>, 
+                    risking destruction of the entire TDA.</span></td></tr><tr><td><span>Process to handle and potentially reject and delete infected 
+                    <em>SIP(s)</em></span></td><td><span>Ingest of contaminated <em>Files</em>, risking destruction 
+                    of the entire TDA</span></td></tr><tr><td><span>Processes to maintain up-to-date malware signature databases 
+                    and virus scanning tools</span></td><td><span>Ingest of contaminated <em>Files,</em> 
+                    risking destruction of the entire TDA</span></td></tr><tr><td><span>Detection of malware in AIP(s)</span></td><td><span>Risking destruction of the entire TDA.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-012</td><td>Risk Mitigation</td><td><span>Virus scanning is a direct risk mitigation activity against 
+                    threats to content integrity and system security triggered 
+                    by CPP-012.
+                </span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>Reports on virus scanning activities, frequency of threats, 
+                    and outcomes of the actions provide essential input for 
+                    operational management and risk assessment.
+                </span></td></tr><tr><td>Required by</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span>Virus scanning is performed as a step in the overall Data 
+                    Quality Assessment process.
+                </span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>Virus scanning is one of the core processes that must be 
+                    performed during ingest.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-003</td><td>Integrity Checking</td><td><span>Both processes aim to ensure the "health" of Files. However, 
+                    Integrity Checking focuses on detecting technical corruption 
+                    of Files (e.g. bit rot), whereas virus scanning looks to 
+                    mitigate human-made risks ( e.g. malicious code).
+                </span></td></tr><tr><td>Not to be confused with</td><td>CPP-004</td><td>Data Corruption Management</td><td><span>If a File is detected as infected and cannot be cleaned, it 
+                    might be considered "damaged." However, CPP-004 typically 
+                    applies to technical corruption or loss, rather than 
+                    deliberately human-made damage such as malware-infected 
+                    Files. In practice, infected Files are more likely to be 
+                    replaced (by the producer) or rejected.
+                </span></td></tr><tr><td>Not to be confused with</td><td>CPP-010</td><td>File Format Validation</td><td><span>Both processes scan the Files to ensure that they are 
+                    suitable for preservation. File Format Validation checks if 
+                    a file conforms to its purported format specification (e.g. 
+                    is this a valid PDF/A file?) while Virus Scanning checks for 
+                    malware, regardless of format validity.
+                </span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                            </a></td><td></td><td></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                            </a></td><td></td><td></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                            </a></td><td></td><td></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                Link
+                            </a></td><td><span>Quality Assurance (within Ingest), Security</span></td><td><span>4.2.3.3</span><span>4.3.4</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                Link
+                            </a></td><td><span>Event (with eventType 'virus check', Agent (the scanning software)</span></td><td><span>Event Entity</span><span>Agent Entity</span><span>eventType Controlled vocabulary (2.2)</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Virus Scan as Part of Ingest at CSC</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>CSC – IT Center for Science Ltd., Finland, FI</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="https://www.clamav.net/">https://www.clamav.net/</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>Ingest</span></td></tr><tr><td>Problem statement</td><td><span>Files must be scanned for viruses as part of the 
+                        ingest pipeline to protect the TDA from viruses
+                    </span></td></tr><tr><td>Proposed solution</td><td><span>Python script to detect viruses using ClamAv virus 
+                        scanner<br></br><br></br>
+                        def check_virus(path):<br></br>
+                        """Scan files in directory with ClamAV virus scanner.<br></br>
+                        ...
+                    </span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="
+                    https://digitalpreservation.fi/en/services/quality_reports/2024">
+                    https://digitalpreservation.fi/en/services/quality_reports/2024</a><div>(Monitoring of the Digital Preservation Services: 
+                    "Up-to-date status of the virus check database"
+                )</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://www.archivematica.org/en/docs/archivematica-1.14/user-manual/transfer/scan-for-viruses/#scan-for-viruses">
+                    https://www.archivematica.org/en/docs/archivematica-1.14/user-manual/transfer/scan-for-viruses/#scan-for-viruses</a></td></tr><tr><td rowspan="1">DANS (Data Archiving and Networked Services), Netherlands, NL</td><td rowspan="1">Commercial digital preservation service<hr></hr>Discipline-specific data repository<hr></hr>Discipline-agnostic data repository</td><td>English</td><td><a href="
+                    https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf">
+                    https://www.coretrustseal.org/wp-content/uploads/2018/04/DANS-Electronic-Archiving-SYstem-EASY-.pdf</a><div>("Virus-scans are performed periodically for ingest by 
+                    the web interface and standard for all other ingest ways 
+                    (like SWORD)."
+                )</div></td></tr></table></div></div></body></html>
