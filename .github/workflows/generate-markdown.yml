@@ -75,4 +75,4 @@ jobs:
           
           # Push back to the branch that triggered the workflow
           BRANCH="${GITHUB_REF#refs/heads/}"
-          git push origin "HEAD:${BRANCH}"
+          git push origin ${{ github.ref }}
