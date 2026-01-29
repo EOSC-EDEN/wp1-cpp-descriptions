@@ -678,35 +678,39 @@
                 <th>Section</th>
             </tr>
 
-            <xsl:for-each select="$data/cpp:mapping">
-                <xsl:variable name="frameworkName" select="cpp:frameworkName/text()" />
-                <xsl:variable name="frameworkDef" select="$frameworks//framework[@code=$frameworkName]" />
-                <xsl:if test="$frameworkDef/@type = 'certification'">
-                    <tr>
-                        <td>
-                            <xsl:value-of select="$frameworkDef/name" />
-                            <xsl:value-of select="$SPACE" />
-                            <xsl:element name="a">
-                                <xsl:attribute name="href">
-                                    <xsl:value-of select="$frameworkDef/link" />
-                                </xsl:attribute>
+            <xsl:for-each select="$frameworks//framework[@type='certification']">
+                <xsl:variable name="certData" select="$data/cpp:mapping[cpp:frameworkName = current()/@code]" />
+                <tr>
+                    <td>
+                        <xsl:value-of select="name" />
+                        <xsl:value-of select="$SPACE" />
+                        <xsl:element name="a">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="link" />
+                            </xsl:attribute>
                                 Link
-                            </xsl:element>
-                        </td>
-                        <td>
-                            <xsl:call-template name="copyContent">
-                                <xsl:with-param name="data" select="cpp:correspondingTerm" />
-                            </xsl:call-template>
-                        </td>
-                        <td>
-                            <xsl:call-template name="copyContent">
-                                <xsl:with-param name="data" select="cpp:correspondingSection" />
-                            </xsl:call-template>
-                        </td>
-                    </tr>
-                </xsl:if>
+                        </xsl:element>
+                    </td>
+                    <xsl:choose>
+                        <xsl:when test="not($certData)">
+                            <td>/</td>
+                            <td>/</td>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$certData/cpp:correspondingTerm" />
+                                </xsl:call-template>
+                            </td>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$certData/cpp:correspondingSection" />
+                                </xsl:call-template>
+                            </td>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </tr>
             </xsl:for-each>
-
         </table>
 
     </xsl:template>
@@ -724,36 +728,40 @@
                 <th>Section</th>
             </tr>
 
-            <xsl:for-each select="$data/cpp:mapping">   
-                <xsl:variable name="frameworkName" select="cpp:frameworkName">
-                </xsl:variable>
-                <xsl:variable name="frameworkDef" select="$frameworks//framework[@code=$frameworkName]" />
-                <xsl:if test="$frameworkDef/@type='other'">
-                    <tr>
-                        <td>
-                            <xsl:value-of select="$frameworkDef/name" />
-                            <xsl:value-of select="$SPACE" />
-                            <xsl:element name="a">
-                                <xsl:attribute name="href">
-                                    <xsl:value-of select="$frameworkDef/link" />
-                                </xsl:attribute>
-                                Link
-                            </xsl:element>
-                        </td>
-                        <td>
-                            <xsl:call-template name="copyContent">
-                                <xsl:with-param name="data" select="cpp:correspondingTerm" />
-                            </xsl:call-template>
-                        </td>
-                        <td>
-                            <xsl:call-template name="copyContent">
-                                <xsl:with-param name="data" select="cpp:correspondingSection" />
-                            </xsl:call-template>
-                        </td>
-                    </tr>
-                </xsl:if>
+            <xsl:for-each select="$frameworks//framework[@type='other']">
+                <xsl:variable name="frameworkData" select="$data/cpp:mapping[cpp:frameworkName = current()/@code]" />
+                <tr>
+                    <td>
+                        <xsl:value-of select="name" />
+                        <xsl:value-of select="$SPACE" />
+                        <xsl:element name="a">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="link" />
+                            </xsl:attribute>
+                                                Link
+                        </xsl:element>
+                    </td>
+                    <xsl:choose>
+                        <xsl:when test="not($frameworkData)">
+                            <td>/</td>
+                            <td>/</td>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$frameworkData/cpp:correspondingTerm" />
+                                </xsl:call-template>
+                            </td>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$frameworkData/cpp:correspondingSection" />
+                                </xsl:call-template>
+                            </td>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </tr>
             </xsl:for-each>
-
+            
         </table>
 
     </xsl:template>
