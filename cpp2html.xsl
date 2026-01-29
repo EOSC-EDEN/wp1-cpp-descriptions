@@ -1193,28 +1193,34 @@
     <xsl:template name="cppIdLabel">
         <xsl:param name="cpp_identifier" />
 
-        <xsl:choose>
-            <xsl:when test="string-length($cpp_identifier)=0">
-                <!-- <xsl:text>NO CPP IDENTIFIER PROVIDED.</xsl:text> -->
-            </xsl:when>
-            <xsl:when test="not($cpps//cpp[@identifier=$cpp_identifier])">
-                <xsl:text>UNKNOWN CPP IDENTIFIER: </xsl:text>
-                <xsl:value-of select="$cpp_identifier" />
-                <xsl:text>.</xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:variable name="cpp_label">
-                    <xsl:call-template name="cppLabelFromId">
-                        <xsl:with-param name="cpp_identifier" select="$cpp_identifier" />
-                    </xsl:call-template>
-                </xsl:variable>
+        <xsl:for-each select="$cpp_identifier">
+            <xsl:if test="position() &gt; 1">
+                <xsl:text>, </xsl:text>
+            </xsl:if>
+            <xsl:variable name="identifier" select="." />
+            <xsl:choose>
+                <xsl:when test="string-length($identifier)=0">
+                    <!-- <xsl:text>NO CPP IDENTIFIER PROVIDED.</xsl:text> -->
+                </xsl:when>
+                <xsl:when test="not($cpps//cpp[@identifier=$identifier])">
+                    <xsl:text>UNKNOWN CPP IDENTIFIER: </xsl:text>
+                    <xsl:value-of select="$identifier" />
+                    <xsl:text>.</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="cpp_label">
+                        <xsl:call-template name="cppLabelFromId">
+                            <xsl:with-param name="cpp_identifier" select="$identifier" />
+                        </xsl:call-template>
+                    </xsl:variable>
 
-                <xsl:value-of select="$cpp_identifier" />
-                <xsl:text> &#40;</xsl:text>
-                <xsl:value-of select="$cpp_label" />
-                <xsl:text>&#41;</xsl:text>
-            </xsl:otherwise>
-        </xsl:choose>
+                    <xsl:value-of select="$identifier" />
+                    <xsl:text> &#40;</xsl:text>
+                    <xsl:value-of select="$cpp_label" />
+                    <xsl:text>&#41;</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:for-each>
     </xsl:template>
 
     <!-- debug -->
