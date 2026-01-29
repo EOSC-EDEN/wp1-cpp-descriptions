@@ -969,13 +969,37 @@
 
         <xsl:variable name="cntInput" select="count($data/cpp:input)" />
         <xsl:variable name="cntOutput" select="count($data/cpp:output)" />
-        <xsl:variable name="cntMax">
+
+        <!-- make sure the value is at least 1 -->
+        <xsl:variable name="cntInputSafe">
             <xsl:choose>
-                <xsl:when test="$cntInput &lt; $cntOutput">
-                    <xsl:value-of select="$cntOutput" />
+                <xsl:when test="$cntInput &lt; 1">
+                    <xsl:value-of select="1" />
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="$cntInput"></xsl:value-of>
+                    <xsl:value-of select="$cntInput" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="cntOutputSafe">
+            <xsl:choose>
+                <xsl:when test="$cntOutput &lt; 1">
+                    <xsl:value-of select="1" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$cntOutput" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="cntMax">
+            <xsl:choose>
+                <xsl:when test="$cntInputSafe &lt; $cntOutputSafe">
+                    <xsl:value-of select="$cntOutputSafe" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$cntInputSafe" />
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -984,8 +1008,8 @@
             <xsl:with-param name="data" select="$data" />
             <xsl:with-param name="counter" select="1" />
             <xsl:with-param name="max" select="$cntMax" />
-            <xsl:with-param name="maxInput" select="$cntInput" />
-            <xsl:with-param name="maxOutput" select="$cntOutput" />
+            <xsl:with-param name="maxInput" select="$cntInputSafe" />
+            <xsl:with-param name="maxOutput" select="$cntOutputSafe" />
         </xsl:call-template>
 
     </xsl:template>
