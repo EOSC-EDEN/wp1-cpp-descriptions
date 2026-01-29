@@ -313,25 +313,29 @@
 
             <h2>4. Reference implementations</h2>
 
-            <div class="usecases">
-
-                <h3>Use cases</h3>
-
-                <xsl:call-template name="useCases">
-                    <xsl:with-param name="data" select="cpp:referenceImplementations/cpp:useCases" />
-                </xsl:call-template>
-
-            </div>
-
-            <div class="documenation">
-
-                <h3>Publicly available documentation</h3>
-
-                <xsl:call-template name="publicDocumentationTable">
-                    <xsl:with-param name="data" select="cpp:referenceImplementations" />
-                </xsl:call-template>
-
-            </div>
+            <xsl:if test="count(cpp:referenceImplementations/cpp:useCases/cpp:useCase) &gt; 0">
+                <div class="usecases">
+                    
+                    <h3>Use cases</h3>
+                    
+                    <xsl:call-template name="useCases">
+                        <xsl:with-param name="data" select="cpp:referenceImplementations/cpp:useCases" />
+                    </xsl:call-template>
+                    
+                </div>
+            </xsl:if>
+                
+            <xsl:if test="count(cpp:referenceImplementations/cpp:publicDocumentation) &gt; 0">
+                <div class="documenation">
+                    
+                    <h3>Publicly available documentation</h3>
+                    
+                    <xsl:call-template name="publicDocumentationTable">
+                        <xsl:with-param name="data" select="cpp:referenceImplementations" />
+                    </xsl:call-template>
+                    
+                </div>
+            </xsl:if>
         </div>
 
     </xsl:template>
@@ -761,7 +765,7 @@
                     </xsl:choose>
                 </tr>
             </xsl:for-each>
-            
+
         </table>
 
     </xsl:template>
