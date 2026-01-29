@@ -598,6 +598,14 @@
                 <th>Relationship description</th>
             </tr>
 
+            <xsl:if test="not($data)">
+                <tr>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>/</td>
+                </tr>
+            </xsl:if>
+
             <xsl:for-each select="$data">
                 <tr>
                     <td>
