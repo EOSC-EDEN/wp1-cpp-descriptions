@@ -505,6 +505,7 @@
 
     </xsl:template>
 
+    <!-- Step-by-step description table -->
     <xsl:template name="stepTable">
         <xsl:param name="data" />
 
@@ -523,7 +524,33 @@
                     <xsl:with-param name="data" select="." />
                 </xsl:call-template>
             </xsl:for-each>
-        
+
+        </table>
+
+    </xsl:template>
+
+    <!-- Step-by-step description table (HTML version) -->
+    <xsl:template name="stepTableHTML">
+        <xsl:param name="data" />
+
+        <table class="stepTable">
+            <tr>
+                <th rowspan="2" width="10%">No</th>
+                <th colspan="4" class="stepsColumnHeader">Step description</th>
+            </tr>
+            <tr>
+                <th width="20%">Supplier</th>
+                <th width="35%">Input</th>
+                <th width="35%">Output</th>
+                <th width="20%">Customer</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:step">
+                <xsl:call-template name="stepRowHTML">
+                    <xsl:with-param name="data" select="." />
+                </xsl:call-template>
+            </xsl:for-each>
+
         </table>
 
     </xsl:template>
@@ -1060,9 +1087,9 @@
             <xsl:with-param name="maxInput" select="$cntInputSafe" />
             <xsl:with-param name="maxOutput" select="$cntOutputSafe" />
         </xsl:call-template>
-
+        
     </xsl:template>
-
+    
     <!-- Generic template for single data in step row -->
     <xsl:template name="stepDataRow">
         <xsl:param name="data" />
@@ -1123,6 +1150,106 @@
 
     </xsl:template>
 
+    <!-- Generic template for a single step (HTML version) -->
+    <xsl:template name="stepRowHTML">
+        <xsl:param name="data" />
+        
+        <xsl:variable name="inputData" select="$data/cpp:input" />
+        <xsl:variable name="outputData" select="$data/cpp:output" />
+    
+        <xsl:variable name="cntInput" select="count($inputData)" />
+        <xsl:variable name="cntOutput" select="count($outputData)" />
+    
+        <xsl:variable name="maxCnt">
+            <xsl:choose>
+                <xsl:when test="$cntInput &lt; $cntOutput">
+                    <xsl:value-of select="$cntOutput" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$cntInput" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <tr>
+            <!-- step number -->
+            <xsl:element name="td">
+                <xsl:attribute name="rowspan">
+                    <xsl:value-of select="$maxCnt + 1" />
+                </xsl:attribute>
+                <xsl:value-of select="$data/@stepNumber"></xsl:value-of>
+            </xsl:element>
+
+            <!-- step description-->
+            <td colspan="4" class="stepsColumn">
+                <xsl:call-template name="copyContent">
+                    <xsl:with-param name="data" select="$data/cpp:stepDescription" />
+                </xsl:call-template>
+            </td>
+        </tr>
+
+        <xsl:call-template name="stepDataRowHTML">
+            <xsl:with-param name="inputData" select="$inputData" />
+            <xsl:with-param name="outputData" select="$outputData" />
+            <xsl:with-param name="counter" select="1" />
+            <xsl:with-param name="max" select="$maxCnt" />
+            <xsl:with-param name="maxInput" select="$cntInput" />
+            <xsl:with-param name="maxOutput" select="$cntOutput" />
+        </xsl:call-template>
+
+    </xsl:template>
+
+    <xsl:template name="stepDataRowHTML">
+        <xsl:param name="inputData" />
+        <xsl:param name="outputData" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="maxInput" />
+        <xsl:param name="maxOutput" />
+
+        <tr>
+            <!-- input columns -->
+            <xsl:if test="$counter = 1 and $maxInput = 0">
+                <td></td>
+                <td></td>
+            </xsl:if>
+            <xsl:if test="$counter &lt;= $maxInput">
+                <xsl:call-template name="stepInput">
+                    <xsl:with-param name="data" select="$inputData[$counter]" />
+                    <xsl:with-param name="counter" select="$counter" />
+                    <xsl:with-param name="max" select="$maxInput" />
+                    <xsl:with-param name="total" select="$max" />
+                </xsl:call-template>
+            </xsl:if>
+            <!-- output columns -->
+            <xsl:if test="$counter = 1 and $maxOutput = 0">
+                <td></td>
+                <td></td>
+            </xsl:if>
+            <xsl:if test="$counter &lt;= $maxOutput">
+                <xsl:call-template name="stepOutput">
+                    <xsl:with-param name="data" select="$outputData[$counter]" />
+                    <xsl:with-param name="counter" select="$counter" />
+                    <xsl:with-param name="max" select="$maxOutput" />
+                    <xsl:with-param name="total" select="$max" />
+                </xsl:call-template>
+            </xsl:if>
+        </tr>
+
+        <xsl:if test="$counter &lt; $max">
+            <xsl:call-template name="stepDataRowHTML">
+                <xsl:with-param name="inputData" select="$inputData" />
+                <xsl:with-param name="outputData" select="$outputData" />
+                <xsl:with-param name="counter" select="$counter + 1" />
+                <xsl:with-param name="max" select="$max" />
+                <xsl:with-param name="maxInput" select="$maxInput" />
+                <xsl:with-param name="maxOutput" select="$maxOutput" />
+            </xsl:call-template>
+        </xsl:if>
+
+    </xsl:template>
+
+    <!-- print input columns -->
     <xsl:template name="stepInput">
         <xsl:param name="data" />
         <xsl:param name="counter" />
@@ -1146,7 +1273,7 @@
             </xsl:attribute>
             <xsl:for-each select="$data/cpp:supplier">
                 <xsl:if test="position()!=1">
-                    <hr/>
+                    <hr />
                 </xsl:if>
                 <xsl:call-template name="cppIdLabel">
                     <xsl:with-param name="cpp_identifier" select="." />
@@ -1164,6 +1291,7 @@
 
     </xsl:template>
 
+    <!-- print output columns -->
     <xsl:template name="stepOutput">
         <xsl:param name="data" />
         <xsl:param name="counter" />
@@ -1195,7 +1323,7 @@
             </xsl:attribute>
             <xsl:for-each select="$data/cpp:customer">
                 <xsl:if test="position()!=1">
-                    <hr/>
+                    <hr />
                 </xsl:if>
                 <xsl:call-template name="cppIdLabel">
                     <xsl:with-param name="cpp_identifier" select="." />
