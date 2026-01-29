@@ -1210,7 +1210,7 @@
 
         <xsl:for-each select="$data/*">
             <xsl:if test="position() &gt; 1 and name()='span'">
-                <hr/>
+                <br/>
             </xsl:if>
             <xsl:copy-of select="."></xsl:copy-of>
         </xsl:for-each>
