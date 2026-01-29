@@ -237,8 +237,7 @@
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <span>The checksums and associated algorithms need to be stored in the <em>
-                    File</em>’s <em>Fixity metadata</em> is used to verify the
-                    integrity of data written into the exported AIP.</span>
+                    File</em>’s <em>Fixity metadata</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -307,7 +306,7 @@
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
-                    //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata</cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
         <cpp:publicDocumentation>
