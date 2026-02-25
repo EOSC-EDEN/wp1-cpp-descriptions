@@ -84,6 +84,19 @@
                         background-color: var(--main-background-color);
                     }
 
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
                     .stepsColumn {
                         background-color: #fce5cd;
                     }
@@ -212,17 +225,17 @@
                 unnecessary manipulation of stable data, which lowers the risk 
                 of inadvertent corruption, loss, or operational error.</li>
         </ul></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Updating request from the Producer in the form of an SIP ingest request</span></td><td></td></tr><tr><td><span>Data must be removed or redacted because of legal constraints</span></td><td>CPP-020 (Rights Management)</td></tr><tr><td><span>Re-run of a characterisation process (e.g. when a new 
-                        tool or new tool version is made available)</span></td><td>CPP-008 (File Format Identification)</td></tr><tr><td><span>New Representations created by the TDA need to be added 
-                        or should replace the original</span></td><td>CPP-014 (File Migration)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="0">1</td><td class="stepsColumn" rowspan="0"><span>Retrieve corresponding AIP Metadata</span></td></tr><tr><td rowspan="3">2</td><td class="stepsColumn" rowspan="3"><span>Identify the scope of versioning</span></td><td rowspan="1"><span>Update of Metadata (step 3a)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Addition or removal of Files (step 3b)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Replacement of an AIP (step 3c)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3a</td><td rowspan="1"></td><td rowspan="1"><span>Additional incoming Metadata</span></td><td class="stepsColumn" rowspan="2"><span>If the intended update concerns only Metadata, update 
+                        tool or new tool version is made available)</span></td><td>CPP-008 (File Format Identification), CPP-009 (Metadata Extraction), CPP-010 (File Format Validation)</td></tr><tr><td><span>New Representations created by the TDA need to be added 
+                        or should replace the original</span></td><td>CPP-014 (File Migration), CPP-027 (File Repair), CPP-028 (Creation of Derivatives)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Retrieve corresponding AIP Metadata</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">2</td><td rowspan="3"></td><td rowspan="3"></td><td class="stepsColumn" rowspan="3"><span>Identify the scope of versioning</span></td><td rowspan="1"><span>Update of Metadata (step 3a)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Addition or removal of Files (step 3b)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Replacement of an AIP (step 3c)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3a</td><td rowspan="1"></td><td rowspan="1"><span>Additional incoming Metadata</span></td><td class="stepsColumn" rowspan="2"><span>If the intended update concerns only Metadata, update 
                         the AIP Metadata</span></td><td rowspan="2"><span>Digital archive database update</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>AIP Metadata</span></td></tr><tr></tr><tr><td rowspan="4">3b</td><td rowspan="1"></td><td rowspan="1"><span>SIP (if relevant)</span></td><td class="stepsColumn" rowspan="4"><span>If the update involves the addition of Files, request 
                         corresponding physical AIP and perform merging with 
                         incoming data and Metadata</span></td><td rowspan="1"><span>Content of the new AIP version</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>AIP</span></td><td rowspan="3"><span>Digital archive database update</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>File(s) or Representation(s) that should replace 
                             existing File(s) or be added to the AIP</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Versioning policy</span></td></tr><tr></tr><tr><td rowspan="1">3c</td><td rowspan="1"></td><td rowspan="1"><span>Versioning policy</span></td><td class="stepsColumn" rowspan="1"><span>If the update is a “full update”, ingest data and 
                         Metadata as a complete replacement of the previous AIP 
-                        version</span></td><td rowspan="1"><span>Digital archive database update</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1">CPP-005 (Identifier Management)</td><td rowspan="1"><span>New PID for the new AIP version</span></td><td class="stepsColumn" rowspan="1"><span>Request new identifier for the new AIP version</span></td><td rowspan="1"><span>AIP version with PID assigned</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5</td><td class="stepsColumn" rowspan="1"><span>Document the date, requester, data or Metadata impacted, 
+                        version</span></td><td rowspan="1"><span>Digital archive database update</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1">CPP-005 (Identifier Management)</td><td rowspan="1"><span>New PID for the new AIP version</span></td><td class="stepsColumn" rowspan="1"><span>Request new identifier for the new AIP version</span></td><td rowspan="1"><span>AIP version with PID assigned</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Document the date, requester, data or Metadata impacted, 
                         and reason for the versioning</span></td><td rowspan="1"><span>Provenance metadata</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">6</td><td rowspan="1"></td><td rowspan="1"><span>Content of the new AIP version</span></td><td class="stepsColumn" rowspan="2"><span>Repackage the content of the new AIP according to the 
                         TDA’s current packaging standards</span></td><td rowspan="2"><span>New AIP</span></td><td rowspan="2">CPP-029 (Ingest)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>AIP packaging policy</span></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1">CPP-012 (Risk Mitigation)</td><td rowspan="1"><span>Versioning policy</span></td><td class="stepsColumn" rowspan="1"><span>Manage the retention of previous version(s) (i.e. partial, 
-                        total retainment or disposal)</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Digital Objects are dynamic and easy to modify, correct or 
+                        total retainment or disposal)</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Digital Objects are dynamic and easy to modify, correct or 
                     enrich. Producers generally use this particularity to update 
                     them for various reasons. A TDA should be able to manage 
                     versioning in order to identify and preserve successive AIP 
@@ -233,9 +246,9 @@
                     Policy for Legal Deposit of Born-digital Sound at the 
                     National Library of France. iPRES 2024 Papers - 
                     International Conference on Digital Preservation. Available 
-                    at</span><span>
+                    at</span><br></br><span>
                         <a href="https://ipres2024.pubpub.org/pub/6m5xlcii/release/1"></a>
-                    </span><span>.</span></td></tr><tr><td><span>Producers may want to perform complex updating operations 
+                    </span><br></br><span>.</span></td></tr><tr><td><span>Producers may want to perform complex updating operations 
                     involving several changes to different parts of an AIP and 
                     combine all changes into a single version. </span></td><td><span>Successive, incomplete changes performed by the Producer may 
                     lead to the TDA’s inability to identify stable and complete 
@@ -254,16 +267,16 @@
                     In addition a policy might determine if only the last or all 
                     versions should be exported.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
-                            </a></td><td><span>versions</span></td><td><span>Provenance and authenticity (R07) The repository guarantees 
+                        </a></td><td><span>versions</span></td><td><span>Provenance and authenticity (R07) The repository guarantees 
                     the authenticity of the digital objects and provides 
                     provenance information." includes "The repository approach 
                     to changing and versioning data and metadata. How the 
                     approach and records of changes are communicated to data 
                     depositors and users."</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
-                            </a></td><td><span>versions</span></td><td><span>Topic not addressed, but briefly mentioned in C27 Identification</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                        </a></td><td><span>versions</span></td><td><span>Topic not addressed, but briefly mentioned in C27 Identification</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link
-                            </a></td><td><span>versions</span></td><td><span>AIP Versions and Editions are essential notions of the OAIS 
+                        </a></td><td><span>versions</span></td><td><span>AIP Versions and Editions are essential notions of the OAIS 
                     / ISO 16363 model. No AIP versioning operation is described, 
                     but the notion of versions is touched upon in the following 
                     sections:</span><ul>
@@ -283,13 +296,13 @@
                         coordination, and location of copies of all digital 
                         objects.</li>
                 </ul></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
-                                Link
-                            </a></td><td><span>AIP Version</span><span>AIP Edition</span></td><td><span>Section 5.2.4.6 "Distinguishing AIP Versions, AIP Editions 
-                    and Derived AIPs"</span><span>OAIS distinguishes AIP Versions (triggered by migrations 
+                                                Link
+                        </a></td><td><span>AIP Version</span><br></br><span>AIP Edition</span></td><td><span>Section 5.2.4.6 "Distinguishing AIP Versions, AIP Editions 
+                    and Derived AIPs"</span><br></br><span>OAIS distinguishes AIP Versions (triggered by migrations 
                     performed by the Archive) and AIP Editions (triggered by 
                     update requests from the Producer).</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
-                                Link
-                            </a></td><td></td><td><span>PREMIS does not approach versioning. Nevertheless, the "1:1 
+                                                Link
+                        </a></td><td></td><td><span>PREMIS does not approach versioning. Nevertheless, the "1:1 
                     principle" implies that if an Object (Representation, File 
                     or Bitstream) is modified by the repository, this operation 
                     creates a new Object that is declared as being derived from 

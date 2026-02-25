@@ -84,6 +84,19 @@
                         background-color: var(--main-background-color);
                     }
 
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
                     .stepsColumn {
                         background-color: #fce5cd;
                     }
@@ -156,8 +169,14 @@
                     changes over time). Thus, CPP-002 and CPP-003 are not only triggered by
                     different processes, but also trigger different responses.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
-                            </a></td><td><span>Checksum (cf <a href="https://zenodo.org/records/7051096">Extended Guidance
+                        </a></td><td><span>Checksum (cf <a href="https://zenodo.org/records/7051096">Extended Guidance
                     documentation</a>)
-                </span></td><td><span>Information Technology and Security/Storage &amp; Integrity (R14)</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                </span></td><td><span>Information Technology and Security/Storage &amp; Integrity (R14)</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
-                            </a></td><td><span>Quality assurance</span></td><td><span>4.2.3.3 (Ingest)</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB - Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines">https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</a></td></tr><tr><td rowspan="1">CSC - IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(Annex 3, section 2.1.1)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums</a></td></tr></table></div></div></body></html>
+                        </a></td><td>/</td><td>/</td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td>/</td><td>/</td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Quality assurance</span></td><td><span>4.2.3.3 (Ingest)</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td>/</td><td>/</td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB - Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines">https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines</a></td></tr><tr><td rowspan="1">CSC - IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(Annex 3, section 2.1.1)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums</a></td></tr></table></div></div></body></html>
