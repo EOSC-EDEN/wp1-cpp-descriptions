@@ -84,6 +84,19 @@
                         background-color: var(--main-background-color);
                     }
 
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
                     .stepsColumn {
                         background-color: #fce5cd;
                     }
@@ -123,7 +136,7 @@
                     late to take corrective action</span></td></tr><tr><td><span>Event datetime for checksum generation</span></td><td><span>No starting point from when the fixity can be checked (and
                     guaranteed)</span></td></tr><tr><td><span>Multiple checksums for each <em>File</em></span></td><td><span>Collisions where changes to a <em>File</em> produce the same
                     checksum, are more likely with a single checksum algorithm than with multiple
-                    checksum algorithms</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-002</td><td>Checksum Validation</td><td><span>CPP-002 relies on fixity information as produced and stored by CPP-001,
+                    checksum algorithms</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>/</td><td>/</td><td>/</td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-002</td><td>Checksum Validation</td><td><span>CPP-002 relies on fixity information as produced and stored by CPP-001,
                     when triggered by CPP-025 Enabling Access and CPP-006 AIP Batch Export. When
                     triggered by CPP-029 Ingest CPP-002 rather relies on the fixity information
                     supplied in the SIP.</span></td></tr><tr><td>Required by</td><td>CPP-003</td><td>Integrity Checking</td><td><span>The integrity checking process relies on the fixity information as produced
@@ -132,22 +145,22 @@
                     File</em>’s <em>Fixity metadata</em> is used to verify the
                     integrity of data written into the exported AIP.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
-                            </a></td><td><span>Checksum (cf <a href="https://doi.org/10.5281/zenodo.7051096">Extended
+                        </a></td><td><span>Checksum (cf <a href="https://doi.org/10.5281/zenodo.7051096">Extended
                     Guidance documentation</a>)</span></td><td><span>Information Technology &amp; Security/Storage &amp; Integrity (R14)</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
-                            </a></td><td><span>Integrity</span></td><td><span>C14 Integrity: Ingest Interface</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                        </a></td><td><span>Integrity</span></td><td><span>C14 Integrity: Ingest Interface</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link
-                            </a></td><td><span>integrity measurements</span></td><td><span>Checksum Generation: 3.3.5 The repository shall define, collect, track, and
-                    appropriately provide its information integrity measurements.</span><span>Recording: 4.1.6 The repository shall obtain sufficient control over the
+                        </a></td><td><span>integrity measurements</span></td><td><span>Checksum Generation: 3.3.5 The repository shall define, collect, track, and
+                    appropriately provide its information integrity measurements.</span><br></br><span>Recording: 4.1.6 The repository shall obtain sufficient control over the
                     Digital Objects to preserve them.</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
-                                Link
-                            </a></td><td></td><td><span>OAIS does not describe the process of checksum generation and recording in
+                                                Link
+                        </a></td><td></td><td><span>OAIS does not describe the process of checksum generation and recording in
                     its functional model but defines fixity information as part of Administrative
                     metadata, which is “necessary for adequate preservation of the Content Data
                     Object”.</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
-                                Link
-                            </a></td><td><span>Message digest calculation</span></td><td><span>The term “message digest calculation” is referenced in the glossary.</span><span>The general topic of fixity is addressed in section Fixity, Integrity,
-                    Authenticity, p. 258.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                                                Link
+                        </a></td><td><span>Message digest calculation</span></td><td><span>The term “message digest calculation” is referenced in the glossary.</span><br></br><span>The general topic of fixity is addressed in section Fixity, Integrity,
+                    Authenticity, p. 258.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
                     //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata">
                     //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="
                     https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata">

@@ -84,6 +84,19 @@
                         background-color: var(--main-background-color);
                     }
 
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
                     .stepsColumn {
                         background-color: #fce5cd;
                     }
@@ -207,15 +220,15 @@
                     malware, regardless of format validity.
                 </span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
-                            </a></td><td></td><td></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                        </a></td><td></td><td></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
-                            </a></td><td></td><td></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                        </a></td><td></td><td></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link
-                            </a></td><td></td><td></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
-                                Link
-                            </a></td><td><span>Quality Assurance (within Ingest), Security</span></td><td><span>4.2.3.3</span><span>4.3.4</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
-                                Link
-                            </a></td><td><span>Event (with eventType 'virus check', Agent (the scanning software)</span></td><td><span>Event Entity</span><span>Agent Entity</span><span>eventType Controlled vocabulary (2.2)</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Virus Scan as Part of Ingest at CSC</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>CSC – IT Center for Science Ltd., Finland, FI</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="https://www.clamav.net/">https://www.clamav.net/</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>Ingest</span></td></tr><tr><td>Problem statement</td><td><span>Files must be scanned for viruses as part of the 
+                        </a></td><td></td><td></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Quality Assurance (within Ingest), Security</span></td><td><span>4.2.3.3</span><br></br><span>4.3.4</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Event (with eventType 'virus check', Agent (the scanning software)</span></td><td><span>Event Entity</span><br></br><span>Agent Entity</span><br></br><span>eventType Controlled vocabulary (2.2)</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Virus Scan as Part of Ingest at CSC</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>CSC – IT Center for Science Ltd., Finland, FI</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="https://www.clamav.net/">https://www.clamav.net/</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>Ingest</span></td></tr><tr><td>Problem statement</td><td><span>Files must be scanned for viruses as part of the 
                         ingest pipeline to protect the TDA from viruses
                     </span></td></tr><tr><td>Proposed solution</td><td><span>Python script to detect viruses using ClamAv virus 
                         scanner<br></br><br></br>
