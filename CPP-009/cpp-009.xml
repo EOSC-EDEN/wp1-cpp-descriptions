@@ -236,7 +236,7 @@
             <cpp:step stepNumber="5">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Tool output in a standard format</span>
+                        <span>Tool output (raw or in a standard format)</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
