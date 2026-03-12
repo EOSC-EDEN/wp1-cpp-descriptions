@@ -26,7 +26,7 @@
                 <cpp:versionDate>2025-08-29</cpp:versionDate>
                 <cpp:versionNotes>Milestone version</cpp:versionNotes>
             </cpp:version>
-                       <cpp:version>
+            <cpp:version>
                 <cpp:versionNumber>
                     <cpp:majorVersion>1</cpp:majorVersion>
                     <cpp:minorVersion>1</cpp:minorVersion>
@@ -35,9 +35,22 @@
                 <cpp:versionDate>2025-10-16</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+                        <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>2</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-09</cpp:versionDate>
+                <cpp:versionNotes>Fixed input of step 5</cpp:versionNotes>
+            </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA extracts characteristics (such as size, image dimensions, video codec, audio run time, creating application).</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Administration</cpp:oaisClassification>
+        <cpp:logicalClassification>Characterisation</cpp:logicalClassification>
+    </cpp:classification>
     <cpp:descriptionAndScope>
         <p>Metadata extraction is the process of analysing a File or a set of Files (i.e. a PREMIS
             Representation) by means of metadata extractor tools in order to retrieve its
@@ -159,14 +172,16 @@
                     <cpp:supplier>CPP-019</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Select a suitable metadata extractor tool for the File(s), depending on its
+                    <span>Select a suitable metadata extractor tool for the File(s), depending on
+                        its
                         format identifier and on requirements from Significant Properties
                         Definition, Data Quality Assessment and Risk Definition and Extraction</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
                         <span>Metadata extractor tool</span>
-                        <span>If relevant: configure the tool settings - syntax (XML, JSON, CSV, etc.),
+                        <span>If relevant: configure the tool settings - syntax (XML, JSON, CSV,
+                            etc.),
                             format (e.g., EBUCore, PBCore, in case of an AV File) and verbosity
                             level.</span>
                     </cpp:outputElement>
@@ -236,7 +251,7 @@
             <cpp:step stepNumber="5">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Tool output in a standard format</span>
+                        <span>Tool output (raw or in a standard format)</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
@@ -245,7 +260,8 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Technical metadata, optionally other types of metadata, recorded in the
+                        <span>Technical metadata, optionally other types of metadata, recorded in
+                            the
                             Information Package</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-029</cpp:customer>
@@ -278,7 +294,8 @@
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span>Metadata extraction involves accessing the contents of the File. Hence it is an
+                <span>Metadata extraction involves accessing the contents of the File. Hence it is
+                    an
                     essential means to detect problematic Files (including errors like: corrupted,
                     non-conformant to format specification, encrypted or password protected, wrong
                     file format identification etc.).</span>
@@ -311,7 +328,8 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The selection of an appropriate extractor tool depends on requirements from the
+                <span>The selection of an appropriate extractor tool depends on requirements from
+                    the
                     Data Quality Assessment CPP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -319,7 +337,8 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The selection of an appropriate extractor tool depends on requirements from the
+                <span>The selection of an appropriate extractor tool depends on requirements from
+                    the
                     Significant Properties Definition CPP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -327,7 +346,8 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The selection of an appropriate extractor tool depends on requirements from the
+                <span>The selection of an appropriate extractor tool depends on requirements from
+                    the
                     Risk Definition and Extraction CPP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -343,7 +363,8 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>File format identification is generally limited to an indication of the container
+                <span>File format identification is generally limited to an indication of the
+                    container
                     format, while migration can apply to any property of the Files. Technical
                     metadata extraction is required to both assess the compliance of files format to
                     the Archive’s format policy and control the outcome of the migration.</span>
@@ -353,7 +374,8 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Any metadata that was extracted from the File needs to be stored, searchable and
+                <span>Any metadata that was extracted from the File needs to be stored, searchable
+                    and
                     retrievable</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -378,14 +400,16 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-024</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Some Metadata provided to the consumer must have been extracted from the Files.</span>
+                <span>Some Metadata provided to the consumer must have been extracted from the
+                    Files.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Metadata extraction is one of the core processes that must be performed as part
+                <span>Metadata extraction is one of the core processes that must be performed as
+                    part
                     of Ingest.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -396,11 +420,13 @@
                 <span>Depending on the precision of the format registry used in the format
                     identification process, the resulting information may be insufficient for
                     selecting the right validation tool.</span>
-                <span>In such cases, additional Metadata from an extraction tool may be required. For
+                <span>In such cases, additional Metadata from an extraction tool may be required.
+                    For
                     example, if an organisation uses Unix File as its identification tool, which
                     does not distinguish between different PDF “flavours”, and wants to validate
                     PDF/A against the PDF/A standard. </span>
-                <span>In that case, metadata extraction will be necessary to identify the conformance
+                <span>In that case, metadata extraction will be necessary to identify the
+                    conformance
                     level and select veraPDF as the suitable validation tool</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -424,7 +450,8 @@
             <cpp:relationshipType>Affected by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Either due to changing significant properties or due to updated tools, metadata
+                <span>Either due to changing significant properties or due to updated tools,
+                    metadata
                     extraction requirements can be affected.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -436,7 +463,8 @@
                 <span>Quality control checks</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <span>Section R10 (Quality assurance) implicitly requires metadata extraction as one of
+                <span>Section R10 (Quality assurance) implicitly requires metadata extraction as one
+                    of
                     the processes implementing “quality control checks in place [that] ensure the
                     completeness and understandability of data and metadata”.</span>
             </cpp:correspondingSection>
@@ -491,7 +519,8 @@
                     <cpp:institutionCountry>FR</cpp:institutionCountry>
                 </cpp:institution>
                 <cpp:triggerEvent>
-                    <span>AV material must be analysed by proper tools, beyond format identification,
+                    <span>AV material must be analysed by proper tools, beyond format
+                        identification,
                         in particular because format identification generally returns information
                         about the container, while AV Files are wrapping streams of different nature
                         and format</span>

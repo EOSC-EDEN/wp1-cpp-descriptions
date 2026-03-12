@@ -135,6 +135,44 @@
 					<xsd:documentation xml:lang="en">A one-line definition of the CPP.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
+			<xsd:element name="classification">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="oaisClassification">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="en">Classification of the CPP according
+									to the OAIS functional model.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:enumeration value="Ingest"></xsd:enumeration>
+									<xsd:enumeration value="Data Management"></xsd:enumeration>
+									<xsd:enumeration value="Storage"></xsd:enumeration>
+									<xsd:enumeration value="Access"></xsd:enumeration>
+									<xsd:enumeration value="Preservation Planning"></xsd:enumeration>
+									<xsd:enumeration value="Administration"></xsd:enumeration>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="logicalClassification">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="en">Classification of the CPP according
+									to a logical EDEN classification.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:enumeration value="Bit-level Preservation"></xsd:enumeration>
+									<xsd:enumeration value="Dissemination"></xsd:enumeration>
+									<xsd:enumeration value="Preservation Planning"></xsd:enumeration>
+									<xsd:enumeration value="Generation of New Files"></xsd:enumeration>
+									<xsd:enumeration value="Characterisation"></xsd:enumeration>
+									<xsd:enumeration value="Lifecycle Management"></xsd:enumeration>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
 			<xsd:element name="descriptionAndScope" type="textSection" />
 			<xsd:element name="process">
 				<xsd:complexType>
@@ -353,7 +391,8 @@
 										</xsd:simpleType>
 									</xsd:element>
 									<xsd:element name="relatedCPP" type="cpp" />
-									<xsd:element name="relationshipDescription" type="tableCellContent" />
+									<xsd:element name="relationshipDescription"
+										type="tableCellContent" />
 								</xsd:sequence>
 							</xsd:complexType>
 						</xsd:element>
@@ -421,7 +460,8 @@
 												<xsd:element name="useCasetitle" type="xsd:string"></xsd:element>
 												<xsd:element name="institution" type="institution" />
 												<xsd:element name="linkToDocumentation"
-													type="hyperlinkPlus" minOccurs="0" maxOccurs="unbounded">
+													type="hyperlinkPlus" minOccurs="0"
+													maxOccurs="unbounded">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">A hyperlink
 															to a paper, blog post, report, etc.
@@ -429,7 +469,8 @@
 															details.</xsd:documentation>
 													</xsd:annotation>
 												</xsd:element>
-												<xsd:element name="triggerEvent" type="tableCellContent"
+												<xsd:element name="triggerEvent"
+													type="tableCellContent"
 													minOccurs="0">
 													<xsd:annotation>
 														<xsd:documentation xml:lang="en">Specific
@@ -463,7 +504,7 @@
 								<xsd:sequence>
 									<xsd:element name="institution" type="institution" />
 									<xsd:element name="linkToDocumentation"
-										type="hyperlinkPlus" maxOccurs="unbounded"/>
+										type="hyperlinkPlus" maxOccurs="unbounded" />
 								</xsd:sequence>
 							</xsd:complexType>
 						</xsd:element>
@@ -501,10 +542,10 @@
 			</xsd:choice>
 		</xsd:sequence>
 	</xsd:complexType>
-		<xsd:complexType name="tableCellContent">
+	<xsd:complexType name="tableCellContent">
 		<xsd:annotation>
-			<xsd:documentation xml:lang="en">Complex type for elements with textual
-				material within a table cell.</xsd:documentation>
+			<xsd:documentation xml:lang="en">Complex type for elements with textual material within
+				a table cell.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence maxOccurs="unbounded">
 			<xsd:choice>
@@ -561,9 +602,10 @@
 			<xsd:element name="alerts" minOccurs="0">
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:element name="alert" maxOccurs="unbounded" type="xsd:string"							>
+						<xsd:element name="alert" maxOccurs="unbounded" type="xsd:string">
 							<xsd:annotation>
-								<xsd:documentation xml:lang="en">Alert monitored (inputs) or raised (outputs) by the CPP.</xsd:documentation>
+								<xsd:documentation xml:lang="en">Alert monitored (inputs) or raised
+									(outputs) by the CPP.</xsd:documentation>
 							</xsd:annotation>
 						</xsd:element>
 					</xsd:sequence>
@@ -631,8 +673,8 @@
 		</xsd:sequence>
 		<xsd:attribute use="required" ref="xml:lang">
 			<xsd:annotation>
-				<xsd:documentation xml:lang="en">The language in which the documentation available at said link is
-					written.</xsd:documentation>
+				<xsd:documentation xml:lang="en">The language in which the documentation available
+					at said link is written.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:complexType>
