@@ -218,7 +218,8 @@
                 <cpp:input>
                     <cpp:inputElement>
                         <span>
-                            <em>File</em>> </span>
+                            <em>File</em>
+                        </span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>

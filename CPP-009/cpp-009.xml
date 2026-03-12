@@ -35,6 +35,15 @@
                 <cpp:versionDate>2025-10-16</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+                        <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>2</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-09</cpp:versionDate>
+                <cpp:versionNotes>Fixed input of step 5</cpp:versionNotes>
+            </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA extracts characteristics (such as size, image dimensions, video codec, audio run time, creating application).</cpp:shortDefinition>
@@ -242,7 +251,7 @@
             <cpp:step stepNumber="5">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Tool output in a standard format</span>
+                        <span>Tool output (raw or in a standard format)</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
