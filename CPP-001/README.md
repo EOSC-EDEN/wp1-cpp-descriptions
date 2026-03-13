@@ -64,12 +64,12 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 
 ## Relationships
 
-| Type        | Related CPP | Description                                                                                                                         |
-| :---------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| Type        | Related CPP | Description                                                                                      |
+| :---------- | :---------- | :----------------------------------------------------------------------------------------------- |
 | Required by | CPP-002     | CPP-002 relies on fixity information as produced and stored by CPP-001,<br>                    when triggered by CPP-025 Enabling Access and CPP-006 AIP Batch Export. When<br>                    triggered by CPP-029 Ingest CPP-002 rather relies on the fixity information<br>                    supplied in the SIP. |
-| Required by | CPP-003     | The integrity checking process relies on the fixity information as produced<br>                    and stored by CPP-001.           |
-| Required by | CPP-006     | *Fixity metadata* is used to verify the integrity of data written into<br>                    the exported AIP.                     |
-| Required by | CPP-016     | The checksums and associated algorithms need to be stored in the *File*’s *Fixity metadata* is used to verify the integrity of data<br>                    written into the exported AIP. |
+| Required by | CPP-003     | The integrity checking process relies on the fixity information as produced<br>                    and stored by CPP-001. |
+| Required by | CPP-006     | *Fixity metadata* is used to verify the integrity of data written into<br>                    the exported AIP. |
+| Required by | CPP-016     | The checksums and associated algorithms need to be stored in the *File*’s *Fixity metadata*.     |
 
 ## Framework Mappings
 
@@ -87,7 +87,7 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 
 | Institution                                                                        | Link                                                                                                               | Comment         |
 | :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- | :-------------- |
-| TIB – Leibniz Information Centre for Science and Technology and University Library | //wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                          |                 |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                    |                 |
 | CSC – IT Center for Science Ltd.                                                   | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                    | section 2.4.4.2 |
 | Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices |                 |
 
