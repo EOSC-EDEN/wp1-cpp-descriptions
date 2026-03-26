@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-014" xml:lang="en">
+    <cpp:header>
+        <cpp:label>File Migration</cpp:label>
+        <cpp:authors>
+            <cpp:author>Bertrand Caron</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Kris Dekeyser</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Matthew Addis</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-26</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA supports batch modifications of previously ingested Files to prevent a preservation or access-related risk.</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Preservation Planning</cpp:oaisClassification>
+        <cpp:logicalClassification>Generation of New Files</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>File migration is the production of one or several new Representation(s) in response to a risk assessment, with the goal of replacing the original File or Representation with an equivalent containing the same information and supporting the same features. The choice to actually retain the source Representation or not is then up to the Archive. Cf. OAIS v.3, p. 5-7 “At the Archive’s discretion, that first version may be retained for verification of information preservation”.</p> 
+        <p>File migration requires careful handling of both the main stream as well as additional content and internal Metadata. As many migration tools are only capable of converting the main stream, Metadata may need separate processing. For such cases, the use of additional tools for migrating Metadata (such as Exiftool) is required to ensure the completeness of the new Representation.</p> 
+        <p>Format Migration may target not only the (container) file format but also any property of the Files or Representations that were considered at risk by Risk Definition and Extraction (CPP-023). For example, a TDA may decide to perform Format migration to decrypt protected PDFs as encryption is identified as a preservation risk. For another example see the use case “4-channel JPEG” in CPP-023.</p>
+        <p>Format Migration differs from other processes that create new Files or Representations:</p>
+        <ul>
+            <li>Unlike Creation of Derivatives (CPP-028), Format migration reproduces the information and characteristics of the original to create a new Representation that will act as a new authoritative preservation copy. Thus, the output of format migration must contain all information from the original that is deemed significant by the TDA, and ideally most other information as well.</li> 
+            <li>Whereas Normalisation (CPP-026) is performed during Ingest and aims at reducing the number of formats by converting Files or Representations to preservation formats defined by the institutional formats policy, Format migration is performed after ingest to address a specific preservation risk.</li>
+        </ul>
+        <p>Despite its common usage, the term ‘migration' is labeled differently across established frameworks. The definition of “File Migration” used in this CPP is a close match to “Format / forward migration” as used in PREMIS. Its corresponding OAIS notion is “transformation”, defined as “a Digital Migration in which there is an alteration to the Content Information or PDI of an Archival Information Package”.</p> 
+        <p>According to current good practice in digital preservation, format migration after ingest is a much less common operation than anticipated in the early years of digital preservation. Notwithstanding this, it remains important to regard it as a core process as some special events might require its performance at scale.</p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Source File or [Representation](https://id.loc.gov/vocabulary/preservation/objectCategory/rep.html) whose property(ies) are(were) flagged as a risk that requires action.</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Technical Metadata (source File or Representation)</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Preservation action registry</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:data>
+                <cpp:dataElement>Target File or Representation which successfully passes the requirements of risk assessment.</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Technical Metadata (target File or Representation)</cpp:metadataElement>
+                <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Alert about risks to the readability, understandability or usability of Files - related to their format or to some other property they bear</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-023</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Properties to be changed and their current value</span>
+                        </cpp:inputElement>
+                    <cpp:supplier>CPP-023</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Digital Archive Database</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-023</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Identify Files or Representations that share these properties and should therefore be migrated</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Files or Representations with risk properties</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Preservation Action Plans</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Define target property(ies), based on input from CPP-012</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Aspired value of properties (after successful performance of the process)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Preservation action registry</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Properties to be changed and their current value</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Request a migration path</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Applicable migration path</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Files or Representations at risk</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Gather a representative test set</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Subset</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Subset</span></cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Applicable migration path</span></cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Perform the selected migration path</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Target File or Representation</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Target File or Representation</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-008</cpp:supplier>
+                    <cpp:supplier>CPP-009</cpp:supplier>
+                    <cpp:supplier>CPP-010</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Apply the characterisation processes against target File or Representation, optionally by running the ingest process and all its subprocesses (if necessary)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Target File or Representation properties</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Target File or Representation</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Significant properties</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-022</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Properties expected to change</span>
+                    </cpp:inputElement>
+                </cpp:input> 
+                <cpp:input>   
+                    <cpp:inputElement>
+                        <span>Target Files’ validity status</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-010</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Control the properties of the target File or Representation against the expected outcome of the process manually or in an automated way, in particular:</span>
+                    <ul>
+                        <li>Properties to be changed by the migration process have the expected value;</li>
+                        <li>Significant properties are maintained;</li> 
+                        <li>Target Files or Representations are valid.</li>
+                    </ul>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Decision whether the applicable migration path should be confirmed</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="8">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Files or Representations identified at step 2</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Confirmed migration path</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>If the applicable migration path is confirmed, resumption of steps 5 to 7 on the whole set of Files or Representations</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Decision whether the applicable migration path should be confirmed</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="9">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Confirmed migration path</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>If the applicable migration path is new to the TDA, record it in the preservation action registry</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Updated preservation action registry</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-012</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="10">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Target File or Representation properties</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Significant properties, properties expected to change</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Decide whether the source File or Representation should be retained</span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="11">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Target and source File/Representation OR target File/Representation only</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>File or Representation properties</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Provenance metadata</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Document in the Provenance Information the creation of a new Representation. Trigger new AIP Version.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Provenance metadata: Documentation of the performed migration date, agents, and properties changed</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>New AIP Version</span></cpp:outputElement>
+                    <cpp:customer>CPP-021</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>If Files or Representations are identified as at risk in their current format, and the threat is not mitigated through format migration, then the content of Files or Representations may become inaccessible and unusable over time. In the context of FAIR, not migrating to a format that is usable means that data may also lose Interoperability and Reusability, either directly or because DIPs can no longer be created easily for a designated community.</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>The contents of Files or Representations cannot be used either in whole or in part.</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Soft dependency (i.e. may require): During file migration, the migrated file format may be assigned a new identifier.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-008</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File format migration requires that the format of the Files is known with certainty.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File format identification is generally limited to an indication of the container format, while migration can apply to any property of the Files. Technical metadata extraction is required to both assess the compliance of files format to the Archive’s format policy and control the outcome of the migration.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Format Validation process should be undertaken after the Format Migration was performed to ensure that the target Files or Representation are valid.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risk Mitigation determines or selects migration paths.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Format migration, as it implies the production of a Representation supposed to act as a preservation copy, must rely on significant properties to determine its success or failure.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risk Definition and Extraction identifies risks related to file format that would trigger a File format migration and provides the method to detect these risks in Files.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File migration provides information on the outcome of the process, tools used.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Facilitates</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-015</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>May be needed to support rendering tools in the long term.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Normalisation is performed at Ingest and aims at reducing the number of formats preserved by converting Files or Representations to preservation formats defined by the institutional formats policy, while Format migration is performed after ingest to address a specific preservation risk.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File repair implies changing the File’s bitestream in order to correct structural issues that could affect reuse and rendering. CPP-027 and Format Migration have thus several steps in common (documentation, control, decision on whether to retain the source File, etc.).</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-028</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Creation of a derivative creates an additional Representation to be retained, while the outcome of migration and normalisation is supposed to replace its source.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Format migration</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>R09 “Preservation Plan”</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Migration</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>C24 Interpretability of the archival information</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Migration</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.3.1 The repository shall have documented preservation strategies relevant to its holdings.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Transformation</span>
+        </cpp:correspondingTerm>
+           <cpp:correspondingSection>
+            <span>Definitions in section 1.6.2. Stages when transformation is performed are described in the following sections:</span>
+            <ul>
+                <li>4.4.2: Transformation performed by the Producer (normalisation)</li>
+                <li>4.4.3: Transformation performed by the Archive by the Ingest functional entity (normalisation)</li>
+                <li>4.4.4: Transformation performed by the Archive by the Storage functional entity (migration) "Transformation" description in section 5.2.4.5</li>
+            </ul>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>(Format / Forward) migration</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>"Format migration" is defined by PREMIS as a transformation that is performed to address compatibility issues with newer software and hardware.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Discontinuation of Finale and Preservation Strategy for MUS(X) Files</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Bibliothèque nationale de France (BnF), France</cpp:institutionLabel>
+                    <cpp:institutionCountry>FR</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>/</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>In August 2024, the software company MakeMusic announced that its software Finale would be discontinued. The maintenance was to end one year after the announcement.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>The alternative to Finale that was suggested was <a href="https://en.wikipedia.org/wiki/Dorico">Dorico</a>, which does not support the native file formats produced by Finale, <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000632.shtml">MUS</a> and <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000631.shtml">MUSX</a>. The last version of Finale provided an export feature to <a href="https://en.wikipedia.org/wiki/MusicXML">MusicXML</a> version 4.0.</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>A risk assessment led <a href="https://en.wikipedia.org/wiki/Bibliothèque_nationale_de_France">BnF</a> to the conclusion that music scores in format MUS and MUSX should be migrated to MusicXML. Only one migration path was identified, as these proprietary formats were supported only by their creation software. 
+                    In addition to the MusicXML export, a PDF export was decided as another, complementary, Representation. After testing Finale’s PDF export, a visual observation showed that the dynamics and interpretation instructions were not printed at their expected location. The PDF export was thus discarded as not preserving this significant property, in favor of a JPEG export followed by a concatenation to PDF, deemed more faithful to the expected visual aspect of the musical score. The migration path was designed as a double export in two different formats, one of which was followed by another merging operation with <a href="https://manpages.ubuntu.com/manpages/trusty/man1/pdfunite.1.html">pdfunite</a>.
+                    In this case, the original MUS(X) Representation was retained along with the MusicXML and PDF Representations.</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+            <cpp:useCase>
+                <cpp:useCasetitle>Audio MP3 to WAV Migration and QA Workflow</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Statsbiblioteket, Denmark</cpp:institutionLabel>
+                    <cpp:institutionCountry>DK</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>https://web.archive.org/web/20130722233410/http://wiki.opf-labs.org/display/SP/SO4+Audio+mp3+to+wav+Migration+and+QA+Workflow</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>In 2013, according to its policy, Statsbiblioteket decided to migrate MP3 Files obtained by Danish radio broadcasts to its preferred format for digitised sound preservation, the WAVE uncompressed format. 
+                    Note that this operation should not be considered “recommended” by the authors of this document. Nevertheless, this use case illustrates clearly how a QA process can be applied to migrated Files.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>Controlling the outcome of the migration should be done by checking the validity of the Files, but also the following significant properties:</span>
+                    <ul>
+                        <li>Internal Metadata located in the header;</li>
+                        <li>Audio signal comparison by evaluating the waveforms similarity.</li>
+                    </ul>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>The migration was performed by ffmpeg, then the control step was performed in the following way:</span>
+                    <ul>
+                        <li>The validity of the target Files was controlled by JHOVE2;</li>
+                        <li>The AV Metadata extraction tool ffprobe was used to check the properties of the source and target Files;</li>
+                        <li>Finally, a tool called xCorrSound was used to compare the waveforms.</li>
+                    </ul>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608641/Preservation+Management#PreservationManagement-Migration</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+              <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608961/Significant+Properties</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://urn.fi/urn:nbn:fi-fe2025040925236</cpp:hyperlink>
+                <cpp:comment>Section 7</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
