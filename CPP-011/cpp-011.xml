@@ -40,7 +40,7 @@
     <cpp:shortDefinition>The TDA automatically manages the replication of Information Packages to multiple 
             storage locations (potentially in different geographical locations).</cpp:shortDefinition>
     <cpp:classification>
-        <cpp:oaisClassification>Ingest</cpp:oaisClassification>
+        <cpp:oaisClassification>Storage</cpp:oaisClassification>
         <cpp:logicalClassification>Bit-level Preservation</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
