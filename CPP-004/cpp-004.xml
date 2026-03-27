@@ -544,11 +544,11 @@
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports/2024</cpp:hyperlink>
-                <cpp:comment>(section Quality Deviations Relating to Preserved Content in 2024)</cpp:comment>
+                <cpp:comment>section Quality Deviations Relating to Preserved Content in 2024</cpp:comment>
             </cpp:linkToDocumentation>
             <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports/2022</cpp:hyperlink>
-                <cpp:comment>(Quality Deviations Related to the Data in Preservation in 2022)</cpp:comment>
+                <cpp:comment>Quality Deviations Related to the Data in Preservation in 2022</cpp:comment>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
         <cpp:publicDocumentation>
