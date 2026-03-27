@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-004_Data_Corruption_Management</title></head><body><div class="introSection"><div class="title"><h1>Data Corruption Management (CPP-004)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-004</td></tr><tr><td>CPP-Label</td><td>Data Corruption Management</td></tr><tr><td>Author</td><td>Johan Kylander</td></tr><tr><td>Contributors</td><td>Juha Lehtonen, Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML, addition of Copy Management Policy as input for step 2.</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA replaces damaged Files from replicated copies and reports on actions taken.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>AIP(s)</td></tr><tr><td rowspan="1">Metadata</td><td>Fixity metadata (checksums, algorithms and timestamps) </td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Copy management policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Data</td><td>AIP(s)</td></tr><tr><td rowspan="3">Metadata</td><td>Fixity metadata (checksums, algorithms and timestamps)</td></tr><tr><td>Provenance metadata (event date, details and agents involved)  </td></tr><tr><td>Storage Management information (storage location)</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Data Corruption Management is a process, where a TDA restores corrupted <em>AIPs</em>
+            from parallel copies. Corrupted <em>AIPs</em> are identified and flagged by the
+            Integrity Checking (CPP-003) process, which periodically scans the fixity of <em>AIPs</em>
+            .</p><p>When Integrity Checking (CPP-003) has flagged that an <em>AIP</em> is corrupted (i.e.
+            that it has been unintentionally altered), the TDA recovers an intact copy from another
+            storage medium in order to replace the corrupted <em>AIPs</em>. As part of the retrieval
+            process, the checksums of the copied data are validated to verify a) the integrity of
+            the data that is used as a source and, b) that the new target has been copied
+            successfully. This is similar to the process of Replication (CPP-011). Subsequently, <em>Provenance
+            metadata</em> is updated to maintain a record of the replacement procedure.</p><p>The replacing copy can be written to another storage medium than the corrupted one (e.g.
+            in the case of magnetic tapes, where read-write operations to a single tape are kept to
+            a minimum). In these cases, <em>Storage management information</em> must also be updated
+            to reflect the new location of the copy.</p><p>The TDA may choose to replace the whole storage medium's content, triggering a process
+            similar to Refreshment (CPP-030). This can be done when media-wide corruption or
+            read/write errors are detected. </p><p>TData Corruption Management relies on the TDA having several parallel copies, preferably
+            on different storage media and in different storage locations. The number of parallel
+            copies, and their storage conditions are defined in the TDA’s policies as maintained by Risk
+            Mitigation (CPP-012) and a copy management policy in particular. In accordance with
+            agreed on best-practices, at least three copies are recommended, as there should exist at least
+            two other valid copies in case one copy is corrupted or destroyed.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>An AIP or File that has been flagged as corrupt </span></td><td>CPP-003 (Integrity Checking)</td></tr><tr><td><span>Media-wide corruption or read/write errors are detected</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="2">1a</td><td rowspan="2">CPP-003 (Integrity Checking)</td><td rowspan="2"><span>Integrity checking report</span></td><td class="stepsColumn" rowspan="2"><span>Identify and locate corrupted <em>AIPs</em></span></td><td rowspan="1"><span>Inventory of corrupted <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Storage medium with broken <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">1b</td><td rowspan="2"></td><td rowspan="2"><span>Report of media-wide errors</span></td><td class="stepsColumn" rowspan="2"><span>Identify and locate the <em>AIPs</em> on the corrupted medium.</span></td><td rowspan="1"><span>Inventory of corrupted <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Storage medium with media-wide errors packages</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1">CPP-012 (Risk Mitigation)</td><td rowspan="1"><span>Copy Management Policy</span></td><td class="stepsColumn" rowspan="1"><span>Select source medium to copy the <em>AIPs</em> from</span></td><td rowspan="1"><span>Authoritative storage medium for replicating/copying the <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Select target storage medium (can, and often is, be same as the original
+                        storage medium identified in step 1a)</span></td><td rowspan="1"><span>Target storage medium</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3b</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>In case of media-wide errors: Provision of a fresh storage medium that
+                        will replace the old one.</span></td><td rowspan="1"><span>The fresh storage medium that will replace the old one</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">4</td><td rowspan="1"></td><td rowspan="1"><span>Source storage medium of <em>AIPs</em></span></td><td class="stepsColumn" rowspan="3"><span>For each AIP individually, start the copy process (steps 5 to 9):</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Target storage medium</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Inventory of <em>AIPs</em> involved in the process</span></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Retrieve the <em>AIP</em> from the source storage medium</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Copy the <em>AIP</em> to the target storage medium</span></td><td rowspan="1"><span>New copy of AIP</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">7</td><td rowspan="3"></td><td rowspan="3"><span>Existing Fixity metadata</span></td><td class="stepsColumn" rowspan="3"><span>Validate the fixity of the <em>AIP</em> on the fresh storage medium</span></td><td rowspan="1"><span>
+                            <em>Fixity Metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Valid status (step 8)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Invalid status (go back to step 5)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">8</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update the fixity for the new <em>AIP</em> copy </span></td><td rowspan="1"><span>
+                            <em>Fixity metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">9</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>If the target storage medium is different from the original storage medium
+                        with the broken <em>AIP</em>:</span><br></br><span>Update the storage location for the new <em>AIP</em> copy</span></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">10</td><td rowspan="2"></td><td rowspan="2"><span>Inventory of <em>AIPs</em> involved in the process</span></td><td class="stepsColumn" rowspan="2"><span>Check that all <em>AIPs</em> in the inventory have been successfully
+                        copied </span></td><td rowspan="1"><span>Confirm completeness of the copy process (step 11)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Error (go back to copy process loop)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">11</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>In case of media-wide errors:</span><br></br><span>Update information about the fresh storage medium (e.g. <em>File</em>
+                        locations, media identifiers) and mark the old medium and its contents as
+                        ready for deletion/decommissioning.</span></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">12</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Document the event and its timestamp</span></td><td rowspan="1"><span>
+                            <em>Provenance Metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">13</td><td rowspan="1"></td><td rowspan="1"><span>Original storage medium that has been refreshed</span></td><td class="stepsColumn" rowspan="1"><span>In case of media-wide errors</span><br></br><span>Ensure data security and that confidentiality is not compromised by making
+                        sure that data on the original storage medium is properly deleted.</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">14</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Decommission the old storage medium</span></td><td rowspan="1"><span>Record of decommissioning</span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Parallel copies of the data.</span></td><td><span>Corrupted data cannot be restored unless parallel copies exist.</span></td></tr><tr><td><span>
+                    <em>Fixity metadata</em>
+                </span></td><td><span>Data corruption cannot be detected, and replaced copies cannot be verified,
+                    without <em>Fixity metadata</em>.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-003</td><td>Integrity Checking</td><td><span>Corrupted data is detected by periodic integrity checking.</span></td></tr><tr><td>CPP-012</td><td>Risk Mitigation</td><td><span>The number of parallel copies and how they are stored (media, locations) are
+                    defined in a TDA’s policy that arises out of mitigating risks to preserved
+                    data..</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>May require</td><td>CPP-005</td><td>Identifier Management</td><td><span>If a <em>File</em> is corrupted, it may need to be repaired or replaced.
+                    During this process, a new <em>PID</em> may be created.</span></td></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>Fixing corrupted <em>AIPs</em> produces <em>Provenance metadata</em> and data
+                    for quality reporting to the stakeholders..</span></td></tr><tr><td>Affinity with</td><td>CPP-002</td><td>Checksum Validation</td><td><span>All new <em>AIP</em> copies must have their checksum validated to verify that
+                    the process was successful. The checksum validation is more mechanical in its
+                    nature in Data Corruption Management, only aiming at verification of the copy
+                    process. In contrast to CPP-002, it does not have to negotiate with producers or
+                    examine the results.</span></td></tr><tr><td>Affinity with</td><td>CPP-011</td><td>Replication</td><td><span>Corrupted copies are replaced by intact copies, effectively replicating the
+                    intact copy, but not creating a new parallel copy.</span></td></tr><tr><td>Not to be confused with</td><td>CPP-007</td><td>Virus Scanning</td><td><span>If a <em>File</em> is detected as infected and cannot be cleaned, it might be
+                    considered "damaged." However, CPP-004 typically applies to technical corruption
+                    or loss, rather than deliberately human-made damage such as malware-infected <em>
+                    Files</em> (CPP-007). In practice, infected <em>File</em> are more likely to be
+                    replaced (by the producer) or rejected.</span></td></tr><tr><td>Alternative to</td><td>CPP-027</td><td>File Repair</td><td><span>File Repair is an alternative (fallback) to Data Corruption Management in
+                    cases where no intact copy of corrupted or broken data is available, since
+                    repairing the structure of an altered copy is the only option.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>“For each storage location, measures should be in place to ensure that
+                    unintentional or unauthorised changes can be detected and correct versions of
+                    data and metadata recovered”</span></td><td><span>R14 Storage and Integrity</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>“restoration of the archival information packages”</span><br></br><span>“recovering archival information packages in the event of damage”</span></td><td><span>C15 Integrity: Functions of the archival storage</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>“Recovery actions”</span></td><td><span>5.1.1.3.1 The repository shall record and report to its administration all
+                    incidents of data corruption or loss, and steps shall be taken to repair/replace
+                    corrupt or lost data.</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Disaster Recovery</span></td><td><span>4.2.3.4</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td></td><td><span>/</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Summary between 2021-2024 at CSC</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>CSC – IT Center for Science Ltd., FI</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="https://digitalpreservation.fi/en/services/quality_reports">https://digitalpreservation.fi/en/services/quality_reports</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>2024a: Software error</span><br></br><span>2024b: Scheduled Integrity Checking</span><br></br><span>2022a: Human error</span><br></br><span>2022b: Scheduled Integrity Checking</span><br></br><span>2021: Scheduled Integrity Checking</span></td></tr><tr><td>Problem statement</td><td><span>2024a: Contents of one tape were lost</span><br></br><span>2024b: One corrupt AIP copy on a tape</span><br></br><span>2022a: One corrupt AIP copy on a disk</span><br></br><span>2022b: One corrupt AIP copy on a disk</span><br></br><span>2021: Ten corrupt AIP copies on a tape</span></td></tr><tr><td>Proposed solution</td><td><span>2024a: The tape was restored from other copies</span><br></br><span>2024b: A new copy was produced</span><br></br><span>2022a: A new copy was produced from the tape</span><br></br><span>2022b: The corrupted copy of the package had been unsuccessfully copied to
+                        storage during ingest earlier but had been later successfully copied to disk
+                        storage automatically.</span><br></br><span>2021: New copies were produced</span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Recovery">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Recovery</a></td></tr><tr><td rowspan="2">CSC – IT Center for Science Ltd., FI</td><td rowspan="2">Non-commercial digital preservation service</td><td>English</td><td><a href="https://digitalpreservation.fi/en/services/quality_reports/2024">https://digitalpreservation.fi/en/services/quality_reports/2024</a><div>(section Quality Deviations Relating to Preserved Content in 2024)</div></td></tr><tr><td>English</td><td><a href="https://digitalpreservation.fi/en/services/quality_reports/2022">https://digitalpreservation.fi/en/services/quality_reports/2022</a><div>(Quality Deviations Related to the Data in Preservation in 2022)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://www.archivematica.org/en/docs/storage-service-0.23/recovery/#recovery">
+                    https://www.archivematica.org/en/docs/storage-service-0.23/recovery/#recovery</a></td></tr></table></div></div></body></html>
