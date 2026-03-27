@@ -131,13 +131,8 @@
                         <span>Report of media-wide errors</span>
                     </cpp:inputElement>
                 </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Identify and locate the <em>AIPs</em> on the corrupted medium </span>
-                    </cpp:inputElement>
-                </cpp:input>
                 <cpp:stepDescription>
-                    <span>Applying one or sometimes several metadata extractor tool(s).</span>
+                    <span>Identify and locate the <em>AIPs</em> on the corrupted medium.</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
