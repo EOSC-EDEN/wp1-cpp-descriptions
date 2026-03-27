@@ -175,7 +175,7 @@
                 <cpp:description>
                     <span>
                         <em>Information packages</em> or <em>Files</em> are identified as corrupted and not
-                        recoverable. Data corruption management triggers the disposal. 
+                        recoverable. Data corruption management may trigger the disposal. 
                     </span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-004</cpp:correspondingCPP>
