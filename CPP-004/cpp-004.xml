@@ -38,6 +38,10 @@
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA replaces damaged Files from replicated copies and reports on actions taken.</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Storage</cpp:oaisClassification>
+        <cpp:logicalClassification>Bit-level Preservation</cpp:logicalClassification>
+    </cpp:classification>
     <cpp:descriptionAndScope>
         <p>Data Corruption Management is a process, where a TDA restores corrupted <em>AIPs</em>
             from parallel copies. Corrupted <em>AIPs</em> are identified and flagged by the
