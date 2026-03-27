@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-019" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Dataqualityassessment</cpp:label>
+        <cpp:authors>
+            <cpp:author>Mikko Laukkanen</cpp:author>
+            <cpp:author>JuhaLehtonen</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Bertrand Caron</cpp:contributor>
+            <cpp:contributor>Johan Kylander</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Franziska Schwab</cpp:evaluator>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-27</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA evaluates and re-evaluates the data quality of Information Objects</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Administration</cpp:oaisClassification>
+        <cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>
+            Data Quality Assessment refers to the systematic evaluation of <em>Objects</em> and their associated
+            <em>Metadata</em> against predefined measures to ensure they meet the standards necessary for
+            consumers' needs and continued access. The assessment typically covers several key
+            dimensions, some of these are for example:
+        </p>
+        <ul>
+            <li>
+                <em>Authenticity</em>: The <em>Object</em> is what it purports to be (i.e. it has been created, modified
+                and sent by the person purported to have done it at the date and time purported).
+                The designated community must be able to trust that the data is real and credible
+                and is managed by a trustworthy TDA. Sufficient information must exist to understand
+                the <em>Object's</em> creation circumstances, provenance, and relationship to other content. In
+                addition to integrity checks, the authenticity of the data is ensured by controlled
+                changes through preservation actions and the <em>Provenance metadata</em>.
+            </li>
+            <li>
+                <em>Completeness</em>: The <em>Object</em> and the <em>Metadata</em> are complete. They do not have
+                missing parts or links to targets outside the preserved <em>Object</em> which should remain
+                accessible.
+            </li>
+            <li>
+                <em>Consistency</em>: The <em>Object</em> is presented in applicable file formats or <em>Representations</em>
+                with applicable metadata formats. Conflicting values in the <em>Metadata</em> should be
+                avoided.
+            </li>
+            <li>
+                <em>Relevance</em>: The data preservation is based on a predefined collection development
+                policy (i.e. has a purpose of being preserved).
+            </li>
+            <li>
+                <em>Structured</em>: The structure of the <em>Object</em> is described in the <em>Metadata</em>. Complex 
+                <em>Objects</em> are organised, including relationships between <em>Files</em>, proper sequencing of 
+                multi-part <em>Objects</em>, and the integrity of any embedded <em>Metadata</em> or links.
+            </li>
+            <li>
+                <em>Understandability</em>: The information is understandable and meaningful for the
+                designated community.
+            </li>
+            <li>
+                <em>Validity</em>: The <em>Object</em> and <em>Metadata</em> are valid against the <em>File</em> and metadata format
+                specifications and standards, and comply with all other predefined profiles and rules.
+            </li>
+        </ul>
+        <p>
+            Data quality assessment may include various processes, repeated from time to time. A very
+            common phase to perform an assessment is in the <em>Ingest</em> phase, but the use case described
+            below demonstrates that such a process can also be performed at the access stage. The
+            data may be rejected from digital preservation, if it does not meet the criteria. An
+            assessment typically has the following steps, described on a very high level:
+        </p>
+        <ol>
+            <li>
+                Define the scope of the assessment;
+            </li>
+            <li>
+                Define data quality dimensions and metrics, including possible thresholds;
+            </li>
+            <li>
+                Gather and analyse data;
+            </li>
+            <li>
+                Create a quality report about all the findings;
+            </li>
+            <li>
+                If needed, update the data and <em>Metadata</em> to improve the quality.
+            </li>
+        </ol>
+        <p>
+            The step-by-step description below mainly concentrates on the technical aspects of the data
+            and <em>Metadata</em>, but the scope of this CPP is indeed covering a broader range of contextual
+            data quality properties.
+        </p>
+        <p>
+            The assessment process often employs both automated tools and manual review. For
+            example, automated tools can perform file format identification, validate <em>File</em> or <em>Information
+            package</em> structures, check for malware, verify checksums, or check for completeness of a
+            delivery against an inventory. Human reviewers, for example, may evaluate content
+            accuracy, <em>Metadata</em> completeness, and contextual adequacy. The processes should be
+            automated as much as possible for faster processing and to avoid human errors.
+        </p>
+        <p>
+            Results from Data Quality Assessment affect preservation planning decisions (e.g. what
+            additional <em>Metadata</em> needs to be captured). The assessment also establishes baseline
+            quality metrics that can be monitored over time to detect degradation or other changes that
+            might necessitate intervention.
+        </p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Information object</cpp:dataElement>
+                <cpp:dataElement>File</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Descriptive metadata</cpp:metadataElement>
+                <cpp:metadataElement>Technical metadata</cpp:metadataElement>
+                <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
+                <cpp:metadataElement>Rights metadata</cpp:metadataElement>
+                <cpp:metadataElement>Structural metadata</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Quality assessment policy</cpp:guidanceElement>
+                <cpp:guidanceElement>Format policy - preferred formats</cpp:guidanceElement>
+                <cpp:guidanceElement>Collection development policy</cpp:guidanceElement>
+                <cpp:guidanceElement>Metadata recording policy</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:guidance>
+                <cpp:guidanceElement>Quality assessment report</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Ingest</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Metadata ingest</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-016</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Mass export of <em>AIPs</em> from the TDA</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-006</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Periodic re-appraisal</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Preservation objectives</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-018</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Based on preservation intent as
+                        defined by Community Watch,
+                        derive quality properties that will
+                        be extracted by other CPPs
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Quality properties</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Quality properties</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        The TDA receives a defined set of quality properties and determines
+                        what data is required to create a quality assessment report. This
+                        triggers steps 3 to 8
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Specification of the data required for the assessment. </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Specification of the data required for the assessment</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>File</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>File format identifier</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-008</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Format policy - preferred formats</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>If quality properties concern file formats:</span>
+                    <span>Assess the file format against the preferred formats policy</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Technical quality report</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Specification of the data required for the assessment</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>File</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Validity status</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-010</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>If quality properties concern the validity of formats:</span>
+                    <span>Assess the validity status.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Technical quality report</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Specification of the data required for the assessment</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>File</em> /                            <em>Representation</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Quality properties</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Extracted <em>Metadata</em>
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-009</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        If quality properties concern technical qualities or
+                        completeness of <em>Files</em> or <em>Representations</em>:
+                    </span>
+                    <span>
+                        Assess the technical quality and completeness against quality properties
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Technical quality report</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Specification of the data required for the assessment</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Metadata recording policy</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Object</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Metadata</em>
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-016</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>If quality properties concern metadata quality:</span>
+                    <span>Assess the metadata quality.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Metadata ingest report</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Specification of the data required for the assessment</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>File</em>
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-007</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>If quality properties concern existence of malware:</span>
+                    <span>Scan for malware</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Virus scanning report</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="8">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Specification of the data required for the assessment</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Rights metadata</em>
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-020</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Object</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        If quality properties concern the legal status and authenticity of the 
+                        <em>Object</em>:
+                    </span>
+                    <span>Assess the legal status of the <em>Object</em>
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Legal status report</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="9">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>File format identifier</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Validity status</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Metadata ingest report</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Technical quality report</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Virus scanning report</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Legal status report</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Creation of quality assessment report from suppliers</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Quality assessment report</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="10">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Quality assessment report</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Assess the quality of an <em>Object</em> during specific stages (e.g. during ingest)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span></span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-029</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="11">
+                <cpp:stepDescription>
+                    <span>
+                        Optional: The quality of an <em>Object</em>,                        <em>AIP</em> or <em>Metadata</em>
+                        can be enhanced or modified based on the quality assessment report. It may run for
+                        example some of the following CPPs:
+                    </span>
+                    <ul>
+                        <li>
+                            <span>CPP-014 (File Migration)</span>
+                        </li>
+                        <li>
+                            <span>CPP-016 (Metadata Ingest and Management)</span>
+                        </li>
+                        <li>
+                            <span>CPP-017 (Disposal)</span>
+                        </li>
+                        <li>
+                            <span>CPP-026 (File Normalisation)</span>
+                        </li>
+                    </ul>
+                </cpp:stepDescription>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    Quality assessment identifies vulnerabilities before they result in
+                    data loss, allowing the TDA to take preventive action rather than reactive
+                    measures.
+                </span>
+                <span>
+                    As digital preservation spans decades or centuries during which
+                    technological environments will change completely multiple times, the
+                    data quality assessment evaluates whether current <em>Objects</em> contain
+                    sufficient technical and contextual information to remain interpretable by
+                    future systems and users.
+                </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Uncontrolled file format obsolescence, hardware failure or bit corruption.</span>
+                <span>Loss of content interpretability over time, authenticity and/or significant properties.</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    Data Quality Assessment helps the TDA to take informed preservation
+                    decisions regarding appraisal and re-appraisal based on quality metrics.
+                    Identification, automated extraction and correct interpretation of such
+                    metrics is fundamental to collection development.
+                </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    No knowledge or no capacity to assess the quality of the <em>Object</em> could lead to appraisal of
+                    <em>Representations</em> of poor quality despite <em>Representations</em> of better quality being available.
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-007</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Virus Scanning acts as a supplier since scanning for viruses is performed as a step
+                    in the overall Data Quality Assessment.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Metadata extraction returns <em>Metadata</em> that are used to assess the 
+                    <em>File</em> quality (e.g. for an audiovisual <em>File</em> quality assessment 
+                    may rely on <em>Metadata</em> such as bit depth, sampling frequency, etc.)
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The signals from the community may affect the Data Quality Assessment. For example,
+                    the Data Quality Assessment performed during Ingest may result in extraction of
+                    quality properties that are required by the Designated Community.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-020</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Soft dependency (i.e. may require): Assessing the legal status and authenticity
+                    of <em>Objects</em> requires <em>Rights metadata</em>.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Soft dependency (i.e. may require): Data Quality Assessment may include validating
+                    the PIDs and their linked resources.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The selection of an appropriate extractor tool depends on
+                    requirements as provided by Data Quality Assessment.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Ingest uses the Quality Assessment report as produced by Data Quality
+                    Assessment to accept or reject the <em>Object</em>.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May be required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The TDA may have quality requirements as produced by Data
+                    Quality Assessment that may be checked during ingest.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Object management reporting relates to re-evaluating quality dimensions.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    As Data Quality Assessment identifies quality properties whose value will
+                    determine whether the <em>Objects</em> are ingested or not, these quality
+                    properties will likely be also considered significant by the TDA.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Both CPP-019 and CPP-023 are defining properties that the TDA
+                    should consider and interpret against the result of CPP-009 (Metadata
+                    extraction).
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    <em>DIPs</em> should conform to the quality aspects as specified by the TDA.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Quality Assurance</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>R10 Quality Assurance</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Quality Assurance</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    The question of quality assurance is
+                    mentioned in
+                </span>
+                <ul>
+                    <li>
+                        C22 Transformation of the submission information packages 
+                        into archival information packages
+                    </li>
+                    <li>
+                        C23 Archival information packages
+                    </li>
+                    <li>
+                        C24 Interpretability of the archival information
+                    </li>
+                    <li>
+                        C25 Transformation of archival information packages into dissemination information packages
+                    </li>
+                    <li>
+                        C26 Dissemination information packages
+                    </li>
+                </ul>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Quality control</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    3.3.2.1 The repository shall have mechanisms for review, update, and
+                    ongoing development of its Preservation Policies as the repository grows and as
+                    technology and community practice evolve
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Quality Assurance</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <ul>
+                    <li>4.2.2 General</li>
+                    <li>4.2.3.3 Ingest</li>
+                    <li>Figure A-1: Composite of Functional Entities</li>
+                </ul>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Access Quality Metrics for Net Art</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Rhizome</cpp:institutionLabel>
+                    <cpp:institutionCountry>US</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>https://doi.org/10.17605/OSF.IO/6RNK4</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>
+                        Rhizome’s ArtBase faces significant challenges in providing
+                        high-quality, reliable access to their collections. Over time, the
+                        software, hardware, and file formats used to create and view
+                        these works become obsolete, leading to a degraded user
+                        experience or rendering the art inaccessible.
+                    </span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>
+                        The primary problem is the lack of a standardised method to
+                        help users of the ArtBase archive navigate the various versions
+                        and access methods of digital artworks. The archive holds
+                        multiple "variants" of each piece, which might include live
+                        versions from a web server, archived copies, or versions viewed
+                        through emulators. Each variant offers a different experience,
+                        and without a guide, users might unknowingly choose a version
+                        that is incomplete or partially non-functional. The paper notes
+                        that visitors need a way to make an informed choice between a
+                        version that is integrated into the modern internet landscape but
+                        potentially broken, and one that is more historically accurate but
+                        requires a special, emulated environment.
+                    </span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>
+                        The proposed solution is a system that calculates an "access
+                        quality score" for each variant of an artwork. This score is a
+                        single value, derived from a combination of <em>Technical metadata</em>
+                        and curatorial information, which indicates how complete and
+                        functional an artwork's performance is likely to be. The system
+                        uses a data model to define variants as a combination of
+                        archived <em>Files</em> ("artifacts") and the software environment
+                        ("machine") used to view them. The score is calculated by
+                        determining whether a machine's capabilities support the data
+                        formats within the artifact. This system aims to present a simple,
+                        three-level "stoplight" indicator (green, yellow, or red) that guides
+                        visitors to the best available version, manages their expectations
+                        for works with known issues, and ultimately improves the user
+                        experience of the ArtBase archive.
+                    </span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>
+                    TIB – Leibniz Information Centre for Science and Technology and University Library
+                </cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608984/Specifications</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://github.com/TIB-Digital-Preservation/pre-ingest-analyzer</cpp:hyperlink>
+                <cpp:comment>TIB Pre-Ingest Analyzer (PIA)</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://digitalpreservation.fi/en/specifications</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Achivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>US</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/appraisal/appraisal/</cpp:hyperlink>
+                <cpp:comment>Manual assessment can be done using the Appraisal Tab</cpp:comment>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices</cpp:hyperlink>
+                <cpp:comment>Some of the information needed for quality assessment (e.g. file format validation, 
+                    characterisation, virus scanning) is produced during the Transfer process</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
