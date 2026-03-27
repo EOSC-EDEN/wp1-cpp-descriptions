@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-004" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Data Corruption Management</cpp:label>
+        <cpp:authors>
+            <cpp:author>Johan Kylander</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Juha Lehtonen</cpp:contributor>
+            <cpp:contributor>Bertrand Caron</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-26</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML, addition of Copy Management Policy as input for step 2.</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA replaces damaged Files from replicated copies and reports on actions taken.</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Storage</cpp:oaisClassification>
+        <cpp:logicalClassification>Bit-level Preservation</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>Data Corruption Management is a process, where a TDA restores corrupted <em>AIPs</em>
+            from parallel copies. Corrupted <em>AIPs</em> are identified and flagged by the
+            Integrity Checking (CPP-003) process, which periodically scans the fixity of <em>AIPs</em>
+            .</p>
+        <p>When Integrity Checking (CPP-003) has flagged that an <em>AIP</em> is corrupted (i.e.
+            that it has been unintentionally altered), the TDA recovers an intact copy from another
+            storage medium in order to replace the corrupted <em>AIPs</em>. As part of the retrieval
+            process, the checksums of the copied data are validated to verify a) the integrity of
+            the data that is used as a source and, b) that the new target has been copied
+            successfully. This is similar to the process of Replication (CPP-011). Subsequently, <em>Provenance
+            metadata</em> is updated to maintain a record of the replacement procedure.</p>
+        <p>The replacing copy can be written to another storage medium than the corrupted one (e.g.
+            in the case of magnetic tapes, where read-write operations to a single tape are kept to
+            a minimum). In these cases, <em>Storage management information</em> must also be updated
+            to reflect the new location of the copy.</p>
+        <p>The TDA may choose to replace the whole storage medium's content, triggering a process
+            similar to Refreshment (CPP-030). This can be done when media-wide corruption or
+            read/write errors are detected. </p>
+        <p>TData Corruption Management relies on the TDA having several parallel copies, preferably
+            on different storage media and in different storage locations. The number of parallel
+            copies, and their storage conditions are defined in the TDA’s policies as maintained by Risk
+            Mitigation (CPP-012) and a copy management policy in particular. In accordance with
+            agreed on best-practices, at least three copies are recommended, as there should exist at least
+            two other valid copies in case one copy is corrupted or destroyed.</p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>AIP(s)</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Fixity metadata (checksums, algorithms and timestamps) </cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Copy management policy</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:data>
+                <cpp:dataElement>AIP(s)</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Fixity metadata (checksums, algorithms and timestamps)</cpp:metadataElement>
+                <cpp:metadataElement>Provenance metadata (event date, details and agents involved)  </cpp:metadataElement>
+                <cpp:metadataElement>Storage Management information (storage location)</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>An AIP or File that has been flagged as corrupt </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-003</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Media-wide corruption or read/write errors are detected</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1a">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Integrity checking report</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-003</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Identify and locate corrupted <em>AIPs</em></span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Inventory of corrupted <em>AIPs</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Storage medium with broken <em>AIPs</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="1b">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Report of media-wide errors</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Identify and locate the <em>AIPs</em> on the corrupted medium.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Inventory of corrupted <em>AIPs</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Storage medium with media-wide errors packages</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Copy Management Policy</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Select source medium to copy the <em>AIPs</em> from</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Authoritative storage medium for replicating/copying the <em>AIPs</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:stepDescription>
+                    <span>Select target storage medium (can, and often is, be same as the original
+                        storage medium identified in step 1a)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Target storage medium</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3b">
+                <cpp:stepDescription>
+                    <span>In case of media-wide errors: Provision of a fresh storage medium that
+                        will replace the old one.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>The fresh storage medium that will replace the old one</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Source storage medium of <em>AIPs</em></span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Target storage medium</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Inventory of <em>AIPs</em> involved in the process</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>For each AIP individually, start the copy process (steps 5 to 9):</span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:stepDescription>
+                    <span>Retrieve the <em>AIP</em> from the source storage medium</span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:stepDescription>
+                    <span>Copy the <em>AIP</em> to the target storage medium</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>New copy of AIP</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Existing Fixity metadata</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Validate the fixity of the <em>AIP</em> on the fresh storage medium</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Fixity Metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement optional="true">
+                        <span>Valid status (step 8)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement optional="true">
+                        <span>Invalid status (go back to step 5)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="8">
+                <cpp:stepDescription>
+                    <span>Update the fixity for the new <em>AIP</em> copy </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Fixity metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="9">
+                <cpp:stepDescription>
+                    <span>If the target storage medium is different from the original storage medium
+                        with the broken <em>AIP</em>:</span>
+                    <span>Update the storage location for the new <em>AIP</em> copy</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="10">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Inventory of <em>AIPs</em> involved in the process</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Check that all <em>AIPs</em> in the inventory have been successfully
+                        copied </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement optional="true">
+                        <span>Confirm completeness of the copy process (step 11)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement optional="true">
+                        <span>Error (go back to copy process loop)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="11">
+                <cpp:stepDescription>
+                    <span>In case of media-wide errors:</span>
+                    <span>Update information about the fresh storage medium (e.g. <em>File</em>
+                        locations, media identifiers) and mark the old medium and its contents as
+                        ready for deletion/decommissioning.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="12">
+                <cpp:stepDescription>
+                    <span>Document the event and its timestamp</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Provenance Metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="13">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Original storage medium that has been refreshed</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>In case of media-wide errors</span>
+                    <span>Ensure data security and that confidentiality is not compromised by making
+                        sure that data on the original storage medium is properly deleted.</span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="14">
+                <cpp:stepDescription>
+                    <span>Decommission the old storage medium</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Record of decommissioning</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Parallel copies of the data.</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Corrupted data cannot be restored unless parallel copies exist.</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    <em>Fixity metadata</em>
+                </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Data corruption cannot be detected, and replaced copies cannot be verified,
+                    without <em>Fixity metadata</em>.</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Corrupted data is detected by periodic integrity checking.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May require</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>If a <em>File</em> is corrupted, it may need to be repaired or replaced.
+                    During this process, a new <em>PID</em> may be created.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>The number of parallel copies and how they are stored (media, locations) are
+                    defined in a TDA’s policy that arises out of mitigating risks to preserved
+                    data..</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Fixing corrupted <em>AIPs</em> produces <em>Provenance metadata</em> and data
+                    for quality reporting to the stakeholders..</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>All new <em>AIP</em> copies must have their checksum validated to verify that
+                    the process was successful. The checksum validation is more mechanical in its
+                    nature in Data Corruption Management, only aiming at verification of the copy
+                    process. In contrast to CPP-002, it does not have to negotiate with producers or
+                    examine the results.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-011</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Corrupted copies are replaced by intact copies, effectively replicating the
+                    intact copy, but not creating a new parallel copy.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-007</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>If a <em>File</em> is detected as infected and cannot be cleaned, it might be
+                    considered "damaged." However, CPP-004 typically applies to technical corruption
+                    or loss, rather than deliberately human-made damage such as malware-infected <em>
+                    Files</em> (CPP-007). In practice, infected <em>File</em> are more likely to be
+                    replaced (by the producer) or rejected.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Alternative to</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File Repair is an alternative (fallback) to Data Corruption Management in
+                    cases where no intact copy of corrupted or broken data is available, since
+                    repairing the structure of an altered copy is the only option.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>“For each storage location, measures should be in place to ensure that
+                    unintentional or unauthorised changes can be detected and correct versions of
+                    data and metadata recovered”</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>R14 Storage and Integrity</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>“restoration of the archival information packages”</span>
+                <span>“recovering archival information packages in the event of damage”</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>C15 Integrity: Functions of the archival storage</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>“Recovery actions”</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>5.1.1.3.1 The repository shall record and report to its administration all
+                    incidents of data corruption or loss, and steps shall be taken to repair/replace
+                    corrupt or lost data.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Disaster Recovery</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.2.3.4</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingSection>
+                <span>/</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Summary between 2021-2024 at CSC</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                    <cpp:institutionCountry>FI</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="eng">
+                    <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>2024a: Software error</span>
+                    <span>2024b: Scheduled Integrity Checking</span>
+                    <span>2022a: Human error</span>
+                    <span>2022b: Scheduled Integrity Checking</span>
+                    <span>2021: Scheduled Integrity Checking</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>2024a: Contents of one tape were lost</span>
+                    <span>2024b: One corrupt AIP copy on a tape</span>
+                    <span>2022a: One corrupt AIP copy on a disk</span>
+                    <span>2022b: One corrupt AIP copy on a disk</span>
+                    <span>2021: Ten corrupt AIP copies on a tape</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>2024a: The tape was restored from other copies</span>
+                    <span>2024b: A new copy was produced</span>
+                    <span>2022a: A new copy was produced from the tape</span>
+                    <span>2022b: The corrupted copy of the package had been unsuccessfully copied to
+                        storage during ingest earlier but had been later successfully copied to disk
+                        storage automatically.</span>
+                    <span>2021: New copies were produced</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Recovery</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports/2024</cpp:hyperlink>
+                <cpp:comment>section Quality Deviations Relating to Preserved Content in 2024</cpp:comment>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://digitalpreservation.fi/en/services/quality_reports/2022</cpp:hyperlink>
+                <cpp:comment>Quality Deviations Related to the Data in Preservation in 2022</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/storage-service-0.23/recovery/#recovery</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
