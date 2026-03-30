@@ -167,6 +167,7 @@
 									<xsd:enumeration value="Generation of New Files"></xsd:enumeration>
 									<xsd:enumeration value="Characterisation"></xsd:enumeration>
 									<xsd:enumeration value="Lifecycle Management"></xsd:enumeration>
+									<xsd:enumeration value="Other Activities"></xsd:enumeration>
 								</xsd:restriction>
 							</xsd:simpleType>
 						</xsd:element>
