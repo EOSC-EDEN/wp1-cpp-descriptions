@@ -133,17 +133,18 @@
                         <span>Copy management policy</span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-012</cpp:supplier>
-                    <cpp:supplier>CPP-029</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
                         <span>Storage management information</span>
                     </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
                         <span><em>AIP</em></span>
                     </cpp:inputElement>
+                    <cpp:supplier>CPP-029</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
                     <span>Identify and locate <em>AIP</em> to be replicated</span>
