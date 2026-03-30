@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-011_Replication</title></head><body><div class="introSection"><div class="title"><h1>Replication (CPP-011)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-011</td></tr><tr><td>CPP-Label</td><td>Replication</td></tr><tr><td>Author</td><td>Johan Kylander</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Juha Lehtonen</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA automatically manages the replication of Information Packages 
+            to multiple storage locations (potentially in different geographical locations).
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>AIP</td></tr><tr><td rowspan="1">Metadata</td><td>Storage management information</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Storage management policy - Copies</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Data</td><td>AIP</td></tr><tr><td rowspan="1">Metadata</td><td>Storage management information</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>
+            Replication is the process of copying data to a new storage medium in order 
+            to create new identical copies of <em>AIP(s)</em>. All new copies created must have 
+            their fixity verified to ensure that the process was completed successfully. 
+            The process creates new parallel copies to achieve redundancy in the storage 
+            system. The process of replication makes no changes to the AIPs themselves 
+            but only operates on the storage layer to add storage locations for the new
+            copies.
+        </p><p>
+            Redundancy is required to mitigate risks such as data corruption and 
+            unintentional or unwarranted data destruction by creating a fault tolerance. 
+            The number of parallel copies and the choice of media types is determined by 
+            how a TDA implements <b>Risk Mitigation</b> (CPP-012). Typically, strategies for 
+            the following aspects of redundancy and replication should be covered in the 
+            TDA policy:
+        </p><ul>
+            <li>
+                <em>Creation of fault tolerance</em>: The creation of at least three parallel 
+                copies is recommended. In this way, the data is always stored on two 
+                other valid copies in cases where one copy is corrupted or destroyed;
+            </li>
+            <li>
+                <em>Use of diverse storage media</em>: Employing different storage media helps 
+                to avoid systematic errors and vulnerabilities and reduces the risk of 
+                vendor lock-in in a single storage solution;
+            </li>
+            <li>
+                <em>Geographical distribution of copies</em>: Storing the copies geographically 
+                dispersed reduces location based risks such as environmental disasters 
+                or political instability;
+            </li>
+            <li>
+                <em>Offline storage of copies</em>: Storing some copies offline reduces the risk 
+                of unwarranted tampering of the data by malicious users or software.
+            </li>
+        </ul></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>
+                        Ingest. New ingested data that needs to be replicated when accepted
+                        to preservation.
+                    </span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>
+                        Updates to a TDAs decisions on copy management as per its Risk
+                        Mitigation policies. The TDA defines how many copies are needed at
+                        all times and on what type of media. Changes to these policies can
+                        occur during preservation
+                    </span></td><td>CPP-012 (Risk Mitigation)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="3">1</td><td rowspan="1">CPP-012 (Risk Mitigation)</td><td rowspan="1"><span>Copy management policy</span></td><td class="stepsColumn" rowspan="3"><span>Identify and locate <em>AIP</em> to be replicated</span></td><td rowspan="1"><span>Inventory of <em>AIP</em> to be replicated</span></td><td rowspan="1"></td></tr><tr><td rowspan="1">CPP-012 (Risk Mitigation)</td><td rowspan="1"><span>Storage management information</span></td><td rowspan="2"><span>Source storage medium with <em>AIP</em></span></td><td rowspan="2"></td></tr><tr><td rowspan="1">CPP-029 (Ingest)</td><td rowspan="1"><span><em>AIP</em></span></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>Copy management policy</em>
+                        </span></td><td class="stepsColumn" rowspan="1"><span>Select target storage medium to copy the <em>AIP</em> to</span></td><td rowspan="1"><span>Target storage medium</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">3</td><td rowspan="1"></td><td rowspan="1"><span>Source storage medium with <em>AIP</em></span></td><td class="stepsColumn" rowspan="3"><span>Start the copy process (steps 4 to 8).</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Target storage medium</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span><em>AIP</em></span></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Retrieve the <em>AIP</em> from the source storage medium</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Copy the <em>AIP</em> to the new storage medium</span></td><td rowspan="1"><span>New copy of <em>AIP</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">6</td><td rowspan="2"></td><td rowspan="2"><span>Existing/previous Fixity metadata</span></td><td class="stepsColumn" rowspan="2"><span>Validate the fixity of the <em>AIP</em> on the target storage medium</span></td><td rowspan="1"><span>Valid status (step 7)</span><br></br><span><em>Fixity Metadata</em>&gt;</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Invalid status (go back to step 4)</span><br></br><span><em>Fixity Metadata</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update the fixity for the new <em>AIP</em> copy</span></td><td rowspan="1"><span><em>Fixity Metadata</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">8</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update the storage location for the new <em>AIP</em> copy</span></td><td rowspan="1"><span><em>Storage management information</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">9</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Create preservation <em>Event metadata</em> of the replication</span></td><td rowspan="1"><span><em>Provenance metadata</em></span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Have multiple copies of data</span></td><td><span>
+                    Handling data corruption or destruction requires intact copies to restore lost 
+                    data from.
+                </span></td></tr><tr><td><span>Copies in different storage locations with different location based risks</span></td><td><span>
+                    If data is not stored in different locations, any disaster to the location is a 
+                    single point of failure. The same applies to the type of risk associated with the 
+                    locations (e.g. political risk, risk of natural disasters etc.).
+                </span></td></tr><tr><td><span>Copies should exist on different type of storage media</span></td><td><span>
+                    Systematic errors in a storage media can affect all copies on the same type of 
+                    media.
+                </span></td></tr><tr><td><span>Offline copies that are not accessible by normal procedures</span></td><td><span>
+                    Offline copies are safe from malicious users or software, as they cannot be 
+                    accessed by normal means.
+                </span></td></tr><tr><td><span>Open source storage solutions</span></td><td><span>
+                    Vendor lock-in in storage solutions can pose a risk to the copies on those media 
+                    if they have a dependency to an outside partner.
+                </span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-012</td><td>Risk Mitigation</td><td><span>
+                    A TDAs storage policy, that defines how data is stored, the amount of parallel 
+                    copies etc, is based on a TDAs risk assessment and mitigation.
+                </span></td></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>
+                    Soft dependency (i.e. may require): When a <em>Digital Object</em> or <em>File</em> is 
+                    replicated, the replicant may be assigned a new PID.
+                </span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Not to be confused with</td><td>CPP-030</td><td>Refreshment</td><td><span>
+                    Replication creates new parallel copies of <em>AIPs</em>, while Refreshment replaces
+                    <em>AIPs</em> onto new storage media.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-002</td><td>Checksum Validation</td><td><span>
+                    All new <em>AIP</em> copies must have their checksum validated to verify that the
+                    process was successful. The checksum validation is more mechanical in its nature 
+                    in Replication, only aiming at verification of the copy process. In contrast to 
+                    CPP-002, it does not have to negotiate with producers or examine the results.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-004</td><td>Data Corruption Management</td><td><span>
+                    A replication-like process is performed in data corruption management, in which 
+                    <em>AIPs</em> must be replicated to replace corrupted <em>AIPs</em>.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-006</td><td>AIP Batch Export</td><td><span>
+                    Replication creates new parallel copies of <em>AIPs</em> within a TDAs archival 
+                    storage. AIP Batch Export exports <em>AIPs</em> to external locations.
+                </span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Multiple copies</span></td><td><span>R14 Storage and Integrity</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Selection of suitable storage media, redundancy, refreshing, media migration</span></td><td><span>C15 Integrity: Functions of the archival storage</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>
+                    Not explicitly mentioning the process of making copies, but section 5.1.2 comes 
+                    close, where it mentions managing copies: Repositories may require a different 
+                    number of copies for each class, or manage versions needed to meet access requirements
+                </span></td><td><span>5.1.2</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Replace Media</span><br></br><span>Replication</span><br></br><span>Refreshment</span></td><td><span>4.2.3.4</span><br></br><span>5.2.4.3</span><br></br><span>5.2.4.2</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Replication</span><br></br><span>Media Migration</span><br></br><span>Media Refreshment</span></td><td><span>Glossary</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="2">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="2">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Redundancy
+                ">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Redundancy
+                </a></td></tr><tr><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608943/Technical+infrastructure
+                ">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608943/Technical+infrastructure
+                </a></td></tr><tr><td rowspan="2">CSC – IT Center for Science Ltd., FI</td><td rowspan="2">Non-commercial digital preservation service</td><td>Finnish</td><td><a href="
+                    https://urn.fi/urn:nbn:fi-fe2023062157386
+                ">
+                    https://urn.fi/urn:nbn:fi-fe2023062157386
+                </a><div>(section 3.2.4)</div></td></tr><tr><td>Finnish</td><td><a href="
+                    https://urn.fi/urn:nbn:fi-fe2024051731943
+                ">
+                    https://urn.fi/urn:nbn:fi-fe2024051731943
+                </a><div>(Annex 3, section 2.1.1)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://archivematica.org/en/docs/archivematica-1.17/admin-manual/maintenance/maintenance/#data-backup
+                ">
+                    https://archivematica.org/en/docs/archivematica-1.17/admin-manual/maintenance/maintenance/#data-backup
+                </a></td></tr></table></div></div></body></html>
