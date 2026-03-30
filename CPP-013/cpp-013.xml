@@ -347,6 +347,11 @@
                     <span>Produce Report and deliver to Requestor.</span>
                     <span>If a report is produced regularly, then loop to Step 3a.</span>
                 </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Report</span>
+                    </cpp:outputElement>
+                </cpp:output>
             </cpp:step>
         </cpp:stepByStepDescription>
     </cpp:process>
@@ -464,7 +469,7 @@
             <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <span>
-                    Fixing corrupted<em>AIPs</em> produces<em>Provenance metadata</em>
+                    Fixing corrupted <em>AIPs</em> produces <em>Provenance metadata</em>
                     and data for quality reporting to the stakeholders.
                 </span>
             </cpp:relationshipDescription>
@@ -592,7 +597,7 @@
             <cpp:relationshipDescription>
                 <span>
                     Enabling Access of contents include
-                    providing<em>Provenance metadata</em>,
+                    providing <em>Provenance metadata</em>,
                     statistical data and quality reports to
                     the consumer.
                 </span>
@@ -745,7 +750,7 @@
         <cpp:publicDocumentation>
             <cpp:institution>
                 <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
-                <cpp:institutionCountry>US</cpp:institutionCountry>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
