@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-017" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Disposal</cpp:label>
+        <cpp:authors>
+            <cpp:author>Mikko Laukkanen</cpp:author>
+            <cpp:author>Juha Lehtonen</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Kris Dekeyser</cpp:contributor>
+            <cpp:contributor>Johan Kylander</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Matthew Addis</cpp:evaluator>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-27</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>
+        The TDA enables the managed disposal of Information Packages and permits the retention
+        and maintenance of Metadata even when the content of the Information Package has been
+        removed from the TDA.
+    </cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Administration</cpp:oaisClassification>
+        <cpp:logicalClassification>Lifecycle Management</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>
+            Disposal refers to the process of removing or decommissioning <em>Information objects</em> from a
+            TDA when its preservation is no longer needed or possible, or the <em>Object</em> has fulfilled its
+            short-term preservation requirements. The latter requires appraisal and scheduling, where
+            institutions establish clear policies defining how long different types of <em>Objects</em> should 
+            be preserved. Disposal is usually triggered on <em>AIP</em> level.
+        </p>
+        <p>
+            Disposal can be triggered by the following reasons:            
+        </p>
+        <ul>
+            <li>
+                The TDA no longer has a legal basis to retain data (e.g. there is no consent);
+            </li>
+            <li>
+                The TDA has been requested to remove data (e.g. there is a legitimate take down request);
+            </li>        
+            <li>
+                The TDA has transferred data to another TDA and no longer needs to retain the data;
+            </li>
+            <li>
+                The data is no longer usable by the designated community (e.g. because it has been
+                corrupted or damaged and is beyond repair, or because quality assessment shows
+                that it is no longer usable);
+            </li>       
+            <li>
+                The data is no longer being used by the designated community, there is no
+                expectation of future use, and organisation policy requires it to be disposed of (e.g. to
+                reduce operational costs);
+            </li>
+            <li>
+                The retention period for data has expired and the data should be disposed of (e.g. to
+                ensure regulatory or legislative compliance);
+            </li>
+            <li>
+                The TDA has alternative versions of the data that allow the original to be disposed of
+                (e.g. as a result of normalisation or migration, or because a depositor has provided a
+                superior version);
+            </li>
+            <li>
+                The funding bodies that support the TDA no longer require or fund retention of the
+                data (e.g. because the data no longer has funding body requirements for it to be
+                accessible);
+            </li>
+            <li>
+                The TDA elects to dispose of data (e.g. to help ensure its long-term sustainability in
+                economic or ecological terms).
+            </li>
+        </ul>
+        <p>
+            The TDA must have a disposal policy, that in addition to the disposal of <em>Objects</em> or
+            (derivative) <em>Files</em> includes related <em>Technical</em> and <em>Descriptive metadata</em>. 
+            This is especially important when the related <em>Metadata</em> contains sensitive or 
+            confidential information. The policy may state that all or most of the <em>Metadata</em> is 
+            retained, disposed, or something in between. However, at minimum, TDA must create and retain 
+            provenance <em>Metadata</em> about the disposal and provide (e.g. some “tombstone metadata” 
+            for keeping the PIDs resolvable).
+        </p>
+        <p>
+            The TDA must also consider the technical aspects of disposal, such as secure deletion
+            methods that prevent data recovery, and the potential impact on related <em>Objects</em> that 
+            may reference the disposed items.
+        </p>
+        <p>
+            As the <em>Objects</em> can be copied and distributed across multiple storage systems and different
+            storage media within a TDA, the complete physical removal of all copies might be complex
+            and needs a timeframe. For instance, whereas a <em>File</em> is quick and easy to remove from a
+            hard drive, it may be practically impossible to remove it from a magnetic tape. Thus, the
+            actual disposal of copies of <em>Files</em> on tapes may occur only at the time when the tape is
+            refreshed (i.e. the disposed <em>File</em> is then not included on the new tape). Therefore, the 
+            first step to do could be a “logical disposal” (i.e. preventing access to the <em>Object</em>, 
+            which gives time for the TDA to dispose of the physical copies). Sometimes this is referred to as
+            “Deaccessioning” where <em>Objects</em> are removed from the collections that an organisation holds
+            before the <em>Objects</em> are physically disposed of. The storage management information must be
+            updated accordingly.
+        </p>
+        <p>
+            Disposal decisions must be made carefully, as recovering disposed <em>Objects</em> may be
+            impossible after physical deletion has been performed. Thus, effective disposal requires
+            clear policies, robust documentation, secure technical procedures, and ongoing monitoring.
+            The disposal process must produce audit trails and other relevant documentation about the
+            disposal. An organisation may choose to implement additional safeguards as part of the
+            disposal process depending on the type of data they hold. For example, data may be moved
+            to a ‘trash bin’ for a period of time before permanent deletion takes place, which can be used
+            to provide a short-term recovery window to guard against unwanted deletion (accidental or
+            deliberate). Request, review or approval processes may also be employed. For example to
+            prevent permanent deletion of an <em>Object</em> without explicit and documented approval from a
+            requisite number of staff members who are authorised to approve disposal.
+        </p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Information objects</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Rights metadata</cpp:metadataElement>
+                <cpp:metadataElement>Technical metadata</cpp:metadataElement>
+                <cpp:metadataElement>Descriptive metadata</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Appraisal reports</cpp:guidanceElement>
+                <cpp:guidanceElement>Quality reports</cpp:guidanceElement>
+                <cpp:guidanceElement>Retention Policy</cpp:guidanceElement>
+                <cpp:guidanceElement>Policies</cpp:guidanceElement>
+                <cpp:guidanceElement>Legal aspects (e.g. licenses)</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:metadata>
+                <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
+                <cpp:metadataElement>Tombstone metadata</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Audit trails</cpp:guidanceElement>
+                <cpp:guidanceElement>
+                    Possible certificates/records of disposal (especially in the case of sensitive or
+                    confidential data)
+                </cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        <em>Information packages</em> or <em>Files</em> are identified as corrupted and not
+                        recoverable. Data corruption management may trigger the disposal. 
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-004</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Changes to community needs  
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-018</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        The data quality assessment tasks may discover intolerably low-quality issues 
+                        in a digital <em>Object</em> and provide a trigger for disposal
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-019</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Changes in legislature, rights, regulations, licenses, standards and alike  
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-020</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Detected risks   
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-023</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        The file repair process may end up with a situation where the <em>File</em>
+                        cannot be repaired. In such cases, disposal is required by the file
+                        repair process.   
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-027</cpp:correspondingCPP>
+            </cpp:triggerEvent>            
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1a">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Quality reports 
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-004</cpp:supplier>
+                    <cpp:supplier>CPP-027</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        TDA finds out, from management events or other triggering events,
+                        that an <em>AIP</em> or <em>File</em> is corrupted and is not recoverable. The TDA
+                        decides to dispose of it.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            Disposal request
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="1b">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Changes to the needs of the designated community
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-018</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        The designated community no longer has a need for the data, it is
+                        demonstrably not making any use of the data, and there is no expectation 
+                        that it will make any future use of the data. Therefore, the TDA decides to 
+                        dispose of the data.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            Disposal request
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="1c">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Quality reports
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-019</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        The quality of the data no longer meets the minimum requirements of the 
+                        designated community or the data is available in an alternative and higher quality
+                        version or format. Therefore, the TDA decides to dispose of the data.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            Disposal request
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="1d">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Quality reports
+                        </span>
+                    </cpp:inputElement>                    
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Intellectual property change
+                        </span>
+                    </cpp:inputElement>                    
+                    <cpp:supplier>CPP-020</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Risk detection
+                        </span>
+                    </cpp:inputElement>                    
+                    <cpp:supplier>CPP-023</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        TDA gets a trigger event indicating that an <em>AIP</em> or <em>File</em> needs 
+                        to be disposed of.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            Disposal request
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="1e">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Appraisal reports 
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        The retention period of the data has been fulfilled according to the
+                        appraisal or reappraisal of the data.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, 
+                            <em>Files</em>)
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Disposal request
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            TDAs policy on disposal
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Creation of a disposal plan for the data in question from the policy. It should 
+                        address the following issues:
+                    </span>
+                    <ul>
+                        <li>
+                            Creation of tombstone metadata for PIDs
+                        </li>
+                        <li>
+                            Defining the retention period between logical disposal and physical
+                            disposal
+                        </li>
+                        <li>
+                            Documenting the disposal request
+                        </li>
+                    </ul>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            Disposal plan
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Disposal request
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Document the disposal request (such as the reason), the affected
+                        <em>AIPs</em> or <em>Files</em>, timestamps
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Provenance metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Disposal plan
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Storage management information</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Implement deaccessioning/logical disposal. Prevent access to the
+                        <em>Object</em>, its discovery, and exclude it from any external reporting
+                        (such as statistical data generation).
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Provenance metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Disposal plan
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        If identifiers exist: the creation of tombstone metadata.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Tombstone metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Disposal plan
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Physical disposal of copies from primary random access media,
+                        such as hard disk drives. Update <em>storage management information</em>
+                        (removal of storage locations).
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Provenance metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Disposal plan
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Storage management information</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Physical disposal of copies from secondary sequential access media, such as 
+                        magnetic tapes and off-line copies. Usually done at later stages during (e.g.
+                        Refreshment). Update <em>storage management information</em> (removal
+                        of storage locations).
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Storage management information</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Provenance metadata</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="8">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            Disposal is complete
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        If evidence is required that disposal has been completed,
+                        then create a certification of destruction that confirms that all
+                        copies of the data have been permanently deleted.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            Destruction Certificate
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    Disposal could be legally mandatory in terms of privacy and retaining only
+                    necessary content.
+                 </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Legal consequences
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    Not disposing of data in a timely way results in unnecessary and irrelevant
+                    content being retained. This could worsen the consequences of cyber
+                    attacks (e.g. ransomware of data that should have been disposed of before
+                    the attack). Or if the data is compromised then it could result in
+                    privacy breaches.
+                 </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Exploitation of security vulnerabilities, more costly to recover from cyber 
+                    attacks, data privacy breaches
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    Retaining data that is no longer needed can impact on data quality
+                    and integrity. Removing outdated, duplicated, or corrupted <em>Objects</em> helps
+                    maintain the quality and usability of the TDA.
+                 </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Reduction in data quality and integrity
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+       <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    Removing data reduces the TDA’s storage and processing footprint.
+                 </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Increased costs data storage costs. Increased environmental footprint. Increased 
+                    time and effort for future preservation activities (e.g. re-appraisal)
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Identifiers must be taken care of during disposal
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Soft dependency (i.e. may require): Community watch treats Disposal as a customer in 
+                    cases where, for instance, a collection previously archived within the TDA has 
+                    been also added to a different TDA and will be preserved there. Required actions 
+                    downstream must be taken into account within the disposal process (e.g. notifying 
+                    stakeholders about the changed preservation location).
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Disposal prevents access to the <em>Objects</em>. Also, preventing access can be 
+                    considered as "logical disposal"
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    A tombstone consisting of only Metadata - without the actual data -
+                    has to be kept as a witness of the data’s former presence.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-006</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Disposal does not export the <em>Objects</em> from TDA.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+
+
+
+
+
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Deletion</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    R14 The repository applies documented processes to ensure data and <em>Metadata</em>
+                    storage and integrity.
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Disposal</span>
+                <span>Disposal records</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>3.3.3</span>
+                <span>4.2.3.3</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Deletion</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>3.3.6</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Deaccession </span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Glossary</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB - Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://knowledge.exlibrisgroup.com/Rosetta/Product_Documentation/Rosetta_Staff_Users_Guide/Data_Managers/005_Delete%2C_Restore%2C_Move%2C_and_Purge_IEs#About_Deleting.2C_Recovering.2C_and_Purging_an_IE
+                </cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>        
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#delete-aip
+                </cpp:hyperlink>
+                <cpp:comment>
+                    No explicit support for retention management, but there is a request/approve workflow 
+                    for AIP deletion
+                </cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
