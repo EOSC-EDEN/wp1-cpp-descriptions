@@ -99,7 +99,7 @@
             </li>
         </ul>
         <p>
-            The TDA must have a disposal policy, that in addition to the disposal of Objects or
+            The TDA must have a disposal policy, that in addition to the disposal of <em>Objects</em> or
             (derivative) <em>Files</em> includes related <em>Technical</em> and <em>Descriptive metadata</em>. 
             This is especially important when the related <em>Metadata</em> contains sensitive or 
             confidential information. The policy may state that all or most of the <em>Metadata</em> is 
@@ -216,7 +216,7 @@
             <cpp:triggerEvent>
                 <cpp:description>
                     <span>
-                        The file repair process may end up with a situation where the File
+                        The file repair process may end up with a situation where the <em>File</em>
                         cannot be repaired. In such cases, disposal is required by the file
                         repair process.   
                     </span>
@@ -277,7 +277,7 @@
                 <cpp:output>
                     <cpp:outputElement>
                         <span>
-                            Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
                         </span>
                     </cpp:outputElement>
                 </cpp:output>
@@ -308,7 +308,7 @@
                 <cpp:output>
                     <cpp:outputElement>
                         <span>
-                            Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
                         </span>
                     </cpp:outputElement>
                 </cpp:output>
@@ -327,8 +327,6 @@
                             Quality reports
                         </span>
                     </cpp:inputElement>                    
-                    <cpp:supplier>CPP-020</cpp:supplier>
-                    <cpp:supplier>CPP-023</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
@@ -336,6 +334,7 @@
                             Intellectual property change
                         </span>
                     </cpp:inputElement>                    
+                    <cpp:supplier>CPP-020</cpp:supplier>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
@@ -343,8 +342,8 @@
                             Risk detection
                         </span>
                     </cpp:inputElement>                    
+                    <cpp:supplier>CPP-023</cpp:supplier>
                 </cpp:input>
-
                 <cpp:stepDescription>
                     <span>
                         TDA gets a trigger event indicating that an <em>AIP</em> or <em>File</em> needs 
@@ -354,7 +353,7 @@
                 <cpp:output>
                     <cpp:outputElement>
                         <span>
-                            Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
                         </span>
                     </cpp:outputElement>
                 </cpp:output>
@@ -383,7 +382,7 @@
                 <cpp:output>
                     <cpp:outputElement>
                         <span>
-                            Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
                         </span>
                     </cpp:outputElement>
                 </cpp:output>
@@ -518,13 +517,6 @@
                         </span>
                     </cpp:inputElement>
                 </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Storage management information</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
                 <cpp:stepDescription>
                     <span>
                         Physical disposal of copies from primary random access media,
@@ -593,13 +585,6 @@
                         </span>
                     </cpp:inputElement>
                 </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Storage management information</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
                 <cpp:stepDescription>
                     <span>
                         If evidence is required that disposal has been completed,
@@ -610,7 +595,7 @@
                 <cpp:output>
                     <cpp:outputElement>
                         <span>
-                            <em>Destruction Certificate</em>
+                            Destruction Certificate
                         </span>
                     </cpp:outputElement>
                 </cpp:output>
@@ -652,7 +637,7 @@
             <cpp:purposeDescription>
                 <span>
                     Retaining data that is no longer needed can impact on data quality
-                    and integrity. Removing outdated, duplicated, or corrupted Objects helps
+                    and integrity. Removing outdated, duplicated, or corrupted <em>Objects</em> helps
                     maintain the quality and usability of the TDA.
                  </span>
             </cpp:purposeDescription>
