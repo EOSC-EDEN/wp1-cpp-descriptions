@@ -370,6 +370,7 @@ been extracted from the Files.</span>
         </cpp:linkToDocumentation>
         <cpp:linkToDocumentation xml:lang="en">
           <cpp:hyperlink>https://epadd-discovery.stanford.edu/epadd/collections</cpp:hyperlink>
+          <cpp:comment>Discovery module for Stanford’s email collections:</cpp:comment>
         </cpp:linkToDocumentation>
         <cpp:problemStatement>
           <span>Email collections are born-digital material that need and allow specific usages and
@@ -393,12 +394,15 @@ been extracted from the Files.</span>
         </cpp:institution>
         <cpp:linkToDocumentation xml:lang="en">
           <cpp:hyperlink>https://etsin.fairdata.fi/</cpp:hyperlink>
+          <cpp:comment>Main Discovery Service:</cpp:comment>
         </cpp:linkToDocumentation>
         <cpp:linkToDocumentation xml:lang="en">
           <cpp:hyperlink>https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405</cpp:hyperlink>
+          <cpp:comment>Example 1 (Direct Access via use-copy): FIRE Profile 3</cpp:comment>
         </cpp:linkToDocumentation>
         <cpp:linkToDocumentation xml:lang="en">
           <cpp:hyperlink>https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa</cpp:hyperlink>
+          <cpp:comment>Example 2 (Mediated Access): Drive-tested topsoil</cpp:comment>
         </cpp:linkToDocumentation>
         <cpp:problemStatement>
           <span>A TDA can host datasets with a wide variety of access conditions. Some may be open for
@@ -450,19 +454,24 @@ been extracted from the Files.</span>
       </cpp:institution>
       <cpp:linkToDocumentation xml:lang="en">
         <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata</cpp:hyperlink>
+        <cpp:comment>Internal use:</cpp:comment>
       </cpp:linkToDocumentation>
       <cpp:linkToDocumentation xml:lang="en">
         <cpp:hyperlink>https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
 </cpp:hyperlink>
+<cpp:comment>also see</cpp:comment>
       </cpp:linkToDocumentation>
       <cpp:linkToDocumentation xml:lang="en">
         <cpp:hyperlink>https://www.tib.eu/en/</cpp:hyperlink>
+        <cpp:comment>Use: TIB Portal:</cpp:comment>
       </cpp:linkToDocumentation>
       <cpp:linkToDocumentation xml:lang="en">
         <cpp:hyperlink>https://av.tib.eu/</cpp:hyperlink>
+        <cpp:comment>TIB AV Portal:</cpp:comment>
       </cpp:linkToDocumentation>
       <cpp:linkToDocumentation xml:lang="en">
         <cpp:hyperlink>https://gvk.k10plus.de/LNG=EN</cpp:hyperlink>
+        <cpp:comment>Library union catalogue k10plus:</cpp:comment>
       </cpp:linkToDocumentation>
     </cpp:publicDocumentation>
   </cpp:referenceImplementations>
