@@ -49,7 +49,7 @@
   <cpp:process>
     <cpp:inputs>
       <cpp:data>
-        <cpp:dataElement>Optional: Derivatives useful for the consumer to identify the content and scope of the <em>Object</em></cpp:dataElement>
+        <cpp:dataElement>Optional: Derivatives useful for the consumer to identify the content and scope of the Object</cpp:dataElement>
       </cpp:data>
       <cpp:metadata>
         <cpp:metadataElement>Digital Archive Database</cpp:metadataElement>
@@ -201,7 +201,6 @@
           <cpp:outputElement>
             <span>Entry in catalogue service</span>
           </cpp:outputElement>
-          <cpp:customer>Consumer</cpp:customer>
         </cpp:output>
       </cpp:step>
       <cpp:step stepNumber="5b">
@@ -217,7 +216,6 @@
           <cpp:outputElement>
             <span>PID</span>
           </cpp:outputElement>
-          <cpp:customer>Consumer</cpp:customer>
         </cpp:output>
       </cpp:step>
       <cpp:step stepNumber="5c">
@@ -368,13 +366,23 @@ been extracted from the Files.</span>
           <cpp:institutionCountry>US</cpp:institutionCountry>
         </cpp:institution>
         <cpp:linkToDocumentation xml:lang="en">
-          <cpp:hyperlink>https://www.epaddproject.org/using-epadd/discovery-module<br/>Discovery module for Stanford’s email collections: https://epadd-discovery.stanford.edu/epadd/collections</cpp:hyperlink>
+          <cpp:hyperlink>https://www.epaddproject.org/using-epadd/discovery-module</cpp:hyperlink>
+        </cpp:linkToDocumentation>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://epadd-discovery.stanford.edu/epadd/collections</cpp:hyperlink>
         </cpp:linkToDocumentation>
         <cpp:problemStatement>
-          <span>Email collections are born-digital material that need and allow specific usages and access. On the other hand, they raise privacy issues that force memory organisations to give access to these collections only in the organisation’s precinct. Consumers therefore need to identify the scope and content of the collection through remote queries before planning an on-site visit.</span>
+          <span>Email collections are born-digital material that need and allow specific usages and
+				access. On the other hand, they raise privacy issues that force memory organisations
+				to give access to these collections only in the organisation’s precinct. Consumers
+				therefore need to identify the scope and content of the collection through remote
+				queries before planning an on-site visit.</span>
         </cpp:problemStatement>
         <cpp:proposedSolution>
-          <span>Beyond the mails’ Metadata, the full text was indexed and is searchable, though not entirely readable - when accessing the mail, the full text is redacted, only the searched term and email Metadata are displayed. Access to the mails’ collections is possible only in the organisation’s precinct.</span>
+          <span>Beyond the mails’ Metadata, the full text was indexed and is searchable, though not
+				entirely readable - when accessing the mail, the full text is redacted, only the
+				searched term and email Metadata are displayed. Access to the mails’ collections is
+				possible only in the organisation’s precinct.</span>
         </cpp:proposedSolution>
       </cpp:useCase>
       <cpp:useCase>
@@ -384,15 +392,50 @@ been extracted from the Files.</span>
           <cpp:institutionCountry>FI</cpp:institutionCountry>
         </cpp:institution>
         <cpp:linkToDocumentation xml:lang="en">
-          <cpp:hyperlink>Main Discovery Service: https://etsin.fairdata.fi/<br/>Example 1 (Direct Access via use-copy): <a href="https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405">FIRE Profile 3</a>
-Example 2 (Mediated Access): <a href="https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa">Drive-tested topsoil</a></cpp:hyperlink>
+          <cpp:hyperlink>https://etsin.fairdata.fi/</cpp:hyperlink>
+        </cpp:linkToDocumentation>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405</cpp:hyperlink>
+        </cpp:linkToDocumentation>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa</cpp:hyperlink>
         </cpp:linkToDocumentation>
         <cpp:problemStatement>
-          <span>A TDA can host datasets with a wide variety of access conditions. Some may be open for immediate download (e.g. via a use copy), while others may require human-mediated access (even if their ultimate license is open). The challenge for a discovery service is to represent a) these different states, b) providing access pathways for each dataset without compromising the specific rights management and c) providing access policies defined by the data owner.<br/>The Finnish discovery portal etsin.fairdata.fi (CSC) hosts <em>Metadata</em> for both active research data outside of the <em>AIP</em> context and for formally preserved assets (AIPs). The first challenge is to provide a clear and reliable method for users to discover <em>only</em> the preserved assets (with associated AIPs); and second, to represent the specific access conditions for each of those preserved AIPs.</span>
+          <span>A TDA can host datasets with a wide variety of access conditions. Some may be open for
+					immediate download (e.g. via a use copy), while others may require human-mediated
+					access (even if their ultimate license is open). The challenge for a discovery service
+					is to represent a) these different states, b) providing access pathways for each
+					dataset without compromising the specific rights management and c) providing access
+					policies defined by the data owner.<span>
+			</span>The Finnish discovery portal etsin.fairdata.fi (CSC) hosts <em>Metadata</em> for both
+					active research data outside of the <em>AIP</em> context and for formally preserved
+					assets (AIPs). The first challenge is to provide a clear and reliable method for
+					users to discover <em>only</em> the preserved assets (with associated AIPs); and
+					second, to represent the specific access conditions for each of those preserved AIPs.</span>
         </cpp:problemStatement>
         <cpp:proposedSolution>
-          <span>The Fairdata services solve this by addressing the discovery of preserved assets by providing a specific, filterable view of its catalogue. The URL parameter ?data_catalog__title=Fairdata+PAS+datasets in https://etsin.fairdata.fi/ creates a dedicated view within Etsin that exclusively lists datasets corresponding to verified <em>AIPs</em> in the long-term Digital Preservation Service (the filter is also selectable via the Etsin user interface).<br/>Within this view where only datasets with an associated <em>AIP</em> are visible, the system handles varied access policies, as defined by the data owners. It can enforce a spectrum of access conditions:<br/>Example 1 (Direct Access): For some <em>AIPs</em>, a "use copy" is made available for immediate download. Etsin provides a direct link to this copy while also linking to the canonical <em>AIP</em> record (which is not available via Etsin), separating simple use from the formal preservation record.<br/>Example 2 (Mediated Access): For other <em>AIPs</em>, access is controlled. Etsin displays a record that might offer a link to a "preview dataset" but withholds the full data. It then provides explicit instructions on the required procedure, such as "To get this dataset, please contact [email address]."<br/>Example 3 (Fully Mediated Access): The system can also handle cases where no preview or data is available, and the only option for a user is to follow the human-mediated contact i structions provided in the Metadata.</span>
-          <span>These examples demonstrate how a discovery service can provide a dedicated view for preserved <em>AIPs</em> (CPP-024) while interpreting and enforcing a range of different access rules—from fully open to fully mediated—as defined by rights and access policies (CPP-020) and taken into account during the access process (CPP-025).</span>
+          <span>The Fairdata services solve this by addressing the discovery of preserved assets by providing
+				a specific, filterable view of its catalogue. The URL parameter
+				?data_catalog__title=Fairdata+PAS+datasets in https://etsin.fairdata.fi/ creates a dedicated
+				view within Etsin that exclusively lists datasets corresponding to verified <em>AIPs</em> in
+				the long-term Digital Preservation Service (the filter is also selectable via the Etsin user
+				interface).<br/>Within this view where only datasets with an associated <em>AIP</em> are
+				visible, the system handles varied access policies, as defined by the data owners. It can
+				enforce a spectrum of access conditions:<br/>Example 1 (Direct Access): For some <em>AIPs</em>,
+				a "use copy" is made available for immediate download. Etsin provides a direct link to this
+				copy while also linking to the canonical <em>AIP</em> record (which is not available via
+				Etsin), separating simple use from the formal preservation record.<br/>Example 2 (Mediated
+				Access): For other <em>AIPs</em>, access is controlled. Etsin displays a record that might
+				offer a link to a "preview dataset" but withholds the full data. It then provides explicit
+				instructions on the required procedure, such as "To get this dataset, please contact [email
+				address]."<span>
+			</span>Example 3 (Fully Mediated Access): The system can also handle cases where no preview or
+				data is available, and the only option for a user is to follow the human-mediated contact
+				instructions provided in the Metadata.</span>
+          <span>These examples demonstrate how a discovery service can provide a dedicated view for preserved
+				<em>AIPs</em> (CPP-024) while interpreting and enforcing a range of different access rules—from
+				fully open to fully mediated—as defined by rights and access policies (CPP-020) and taken
+				into account during the access process (CPP-025).</span>
         </cpp:proposedSolution>
       </cpp:useCase>
     </cpp:useCases>
@@ -406,7 +449,20 @@ Example 2 (Mediated Access): <a href="https://etsin.fairdata.fi/dataset/f59349c4
         <cpp:institutionType>Research performing organisation</cpp:institutionType>
       </cpp:institution>
       <cpp:linkToDocumentation xml:lang="en">
-        <cpp:hyperlink>Internal use: https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata, also see https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository<br/>External Use: TIB Portal: https://www.tib.eu/en/, TIB AV Portal: https://av.tib.eu/, Library union catalogue k10plus: https://gvk.k10plus.de/LNG=EN</cpp:hyperlink>
+        <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata</cpp:hyperlink>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+</cpp:hyperlink>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://www.tib.eu/en/</cpp:hyperlink>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://av.tib.eu/</cpp:hyperlink>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://gvk.k10plus.de/LNG=EN</cpp:hyperlink>
       </cpp:linkToDocumentation>
     </cpp:publicDocumentation>
   </cpp:referenceImplementations>
