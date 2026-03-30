@@ -45,30 +45,32 @@
     </cpp:classification>
     <cpp:descriptionAndScope>
         <p>The TDA must monitor its <em>Designated Community</em> in order to identify its evolving needs and knowledge.</p>
-        <p><em>Information packages</em> within a TDA are stored for a group of current and future users (i.e. the Designated). A <em>Designated 
-            Community</em> is always specific to a TDA and it may change over time (e.g. as data from a different sub-discipline are being deposited 
-            or the method of intended access or interaction to data changes over time). In addition to the <em>Designated Community</em> itself, the 
-            TDA should define what can be assumed as knowledge within the <em>Designated Community</em> (e.g. what language they speak, what 
+        <p><em>Information packages</em> within a TDA are stored for a group of current and future users (i.e. the <em>Designated Community</em>).
+            A <em>Designated Community</em> is always specific to a TDA and it may change over time (e.g. as data from a different sub-discipline are
+            being deposited or the method of intended access or interaction to data changes over time). In addition to the <em>Designated Community</em>
+            itself, the TDA should define what can be assumed as knowledge within the <em>Designated Community</em> (e.g. what language they speak, what 
             scientific methods they understand and what file formats or metadata standards they can interact with). This is referred to as the <em>
             Designated Community</em>’s Knowledge Base. Lastly, the TDA must plan for the Preservation Objective, meaning how the <em>Designated 
             Community</em> can use the data. A Preservation Objective should be specific, actionable and measurable. While the <em>Designated 
             Community</em> is the “who” and “with what knowledge or skills”, the Preservation Objective is the “how”.</p>
         <p>For example, see these two fictive TDAs:</p>
-        <p>TDA1 preserves civil engineering data for research and practice within Germany. The data preserved is currently 3D point-cloud scans in 
-            file formats LAS/LAZ and e57. Based on the content they currently preserve, they define their <em>Designated Community</em> as researchers 
-            from the discipline of civil engineering including all subdisciplines as well as specialists working in these fields (e.g. as urban engineers 
-            within Germany). The <em>Designated Community</em>’s knowledge base is built on the German language; includes principles such as mechanics 
-            and materials science; methods such as simulation and surveying as well as tools such as Computer-Aided Design; and 3D point-cloud scanning. 
-            One of the <em>Preservation Objectives</em> is for the <em>Designated Community</em> to be able to render separate point-cloud scans of the 
-            same location on their own systems and to perform tasks including deformation monitoring on the data.</p>
-        <p>TDA2 preserves oral history data in a university located in Spain. The data preserved is from a long-term collaborative research project 
-            between the institutes for political science and for recent Spanish history and contains interviews with contemporary witnesses on the 
-            Spanish Transformation to Democracy (La Transición Española). The data can currently only be accessed by staff from the two affiliated 
-            institutes. In 2040, access to the data will be opened to the wider research community. The TDA defines its <em>Designated Community</em> as 
-            the researchers from the two affiliated institutes as well as researchers for those disciplines throughout Spain. The <em>Designated Community
-            </em>’s knowledge base is built on the Spanish, Catalan, Galician and Basque languages; includes the historical context of the data; 
-            political science concepts; and oral history and testimonial methods. One of the <em>Preservation Objectives</em> is for the <em>Designated 
-            Community</em> to be able to load the original data into their qualitative data software for coding and thematic analysis.</p>
+        <ul>
+            <li>TDA1 preserves civil engineering data for research and practice within Germany. The data preserved is currently 3D point-cloud scans in 
+                file formats LAS/LAZ and e57. Based on the content they currently preserve, they define their <em>Designated Community</em> as researchers 
+                from the discipline of civil engineering including all subdisciplines as well as specialists working in these fields (e.g. as urban engineers 
+                within Germany). The <em>Designated Community</em>’s knowledge base is built on the German language; includes principles such as mechanics 
+                and materials science; methods such as simulation and surveying as well as tools such as Computer-Aided Design; and 3D point-cloud scanning. 
+                One of the <em>Preservation Objectives</em> is for the <em>Designated Community</em> to be able to render separate point-cloud scans of the 
+                same location on their own systems and to perform tasks including deformation monitoring on the data.</li>
+            <li>TDA2 preserves oral history data in a university located in Spain. The data preserved is from a long-term collaborative research project 
+                between the institutes for political science and for recent Spanish history and contains interviews with contemporary witnesses on the 
+                Spanish Transformation to Democracy (La Transición Española). The data can currently only be accessed by staff from the two affiliated 
+                institutes. In 2040, access to the data will be opened to the wider research community. The TDA defines its <em>Designated Community</em> as 
+                the researchers from the two affiliated institutes as well as researchers for those disciplines throughout Spain. The <em>Designated Community
+                </em>’s knowledge base is built on the Spanish, Catalan, Galician and Basque languages; includes the historical context of the data; 
+                political science concepts; and oral history and testimonial methods. One of the <em>Preservation Objectives</em> is for the <em>Designated 
+                Community</em> to be able to load the original data into their qualitative data software for coding and thematic analysis.</li>
+        </ul>
         <p>The CPPs assume that the TDA’s <em>Designated Community</em> including its knowledge base and the <em>Preservation Objective</em> have 
             been defined and are available in guiding documentation such as a mission statement, a preservation policy or preservation action plan(s). 
             Such a <em>Designated Community</em> definition typically includes current depositors or data producers and current consumers of the data, 
@@ -131,7 +133,7 @@
                 <cpp:guidanceElement>Report on software changes</cpp:guidanceElement>
                 <cpp:guidanceElement>Report on updates to file format identification and validation</cpp:guidanceElement>
                 <cpp:guidanceElement>Report on changes to migration tools</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on changes to Metadata generation and handling tools tools</cpp:guidanceElement>
+                <cpp:guidanceElement>Report on changes to Metadata generation and handling tools</cpp:guidanceElement>
             </cpp:guidance>
         </cpp:outputs>
         <cpp:triggerEvents>
