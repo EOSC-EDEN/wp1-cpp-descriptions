@@ -387,6 +387,7 @@
 												<xsd:enumeration value="Affinity with"></xsd:enumeration>
 												<xsd:enumeration value="Not to be confused with"></xsd:enumeration>
 												<xsd:enumeration value="Alternative to"></xsd:enumeration>
+												<xsd:enumeration value="Triggers"></xsd:enumeration>
 											</xsd:restriction>
 										</xsd:simpleType>
 									</xsd:element>
