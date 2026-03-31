@@ -572,22 +572,17 @@
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
-            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-020</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Soft dependency (i.e. may require): Assessing the legal status and authenticity
-                    of <em>Objects</em> requires <em>Rights metadata</em>.
-                </span>
+                <span>Assessing the legal status and authenticity of <em>Objects</em> requires <em>Rights metadata</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
-            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Soft dependency (i.e. may require): Data Quality Assessment may include validating
-                    the PIDs and their linked resources.
+                <span>Soft dependency (i.e. may require): Data Quality Assessment may include validating the PIDs and their linked resources.
                 </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
