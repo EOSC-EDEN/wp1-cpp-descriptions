@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-024" xml:lang="en">
+  <cpp:header>
+    <cpp:label>Enabling Discovery</cpp:label>
+    <cpp:authors>
+      <cpp:author>Bertrand Caron</cpp:author>
+    </cpp:authors>
+    <cpp:contributors>
+      <cpp:contributor>Mattias Levlin</cpp:contributor>
+    </cpp:contributors>
+    <cpp:evaluators>
+      <cpp:evaluator>Matthew Addis</cpp:evaluator>
+      <cpp:evaluator>Felix Burger</cpp:evaluator>
+      <cpp:evaluator>Maria Benauer</cpp:evaluator>
+    </cpp:evaluators>
+    <cpp:history>
+      <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>0</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2025-08-29</cpp:versionDate>
+        <cpp:versionNotes>Milestone version</cpp:versionNotes>
+      </cpp:version>
+      <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>1</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-03-27</cpp:versionDate>
+        <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+      </cpp:version>
+    </cpp:history>
+  </cpp:header>
+  <cpp:shortDefinition>The TDA provides catalogue services to its consumers to help them identify Objects that they may be interested in.</cpp:shortDefinition>
+  <cpp:classification>
+    <cpp:oaisClassification>Data Management</cpp:oaisClassification>
+    <cpp:logicalClassification>Dissemination</cpp:logicalClassification>
+  </cpp:classification>
+  <cpp:descriptionAndScope>
+    <p>Enabling Discovery covers the extraction of the subset of <em>Metadata</em>
+		from the digital archive database to enable consumers to identify which
+		<em>Objects</em> they may be interested in. In OAIS, this subset is called
+		"Descriptive Information".</p>
+    <p>Discovery relies on CPP-018 (<b>Community Watch</b>) to study consumers’ 
+		needs regarding searches and elaborate query scenarios. Query scenarios are
+		use cases where the consumers identify a subset of the TDA holdings’ that
+		addresses their needs. Discovery is in charge of providing <em>Metadata</em>,
+		query and retrieval features that support these query scenarios in an
+		efficient way. If the TDA wants its Objects to be discoverable in third-party
+		catalogues (e.g. federated catalogues, portals etc.), it must perform this
+		process for each service in order to ensure that <em>Metadata</em> and
+		derivatives conform to the specifications of the third-party catalogue(s).</p>
+    <p>If the TDA provides direct access to its holdings for end users, then it may
+		also generate a <em>PID</em> (e.g. a DOI) for each accessible <em>Object</em>
+		so that it is referencable and locatable using third-party discovery services.
+		However, this CPP only focuses on the generation of <em>Metadata</em> that is
+		subsequently used for discovery (rather than the discovery process and the use 
+		of discovery services such as portals and catalogues). The details of registering
+		PIDs, publishing <em>Metadata</em> and/or data with third-party catalogues and
+		discovery services, as well as the access to <em>Objects</em> via PID resolution
+		and TDA services are beyond the scope of this CPP.</p>
+    <p>Enabling Discovery is also in charge of verifying the legal status of
+		<em>Metadata</em> based on rights assessment as issued by CPP-020 (<b>Rights
+		Management</b>). <em>Metadata</em> access might indeed need to be restricted,
+		so Discovery must ensure it disseminates these only to authorised users. </p>
+    <p>In addition to <em>Metadata</em>, discovery might provide derivative copies
+		(e.g. thumbnails, textual transcription, redacted copy, etc.) that would help
+		consumers in identifying the content and scope of the relevant <em>Objects</em>.
+		Indeed, access to the preservation copies or to a sufficiently complete
+		derivative is often limited to the TDA’s precinct.</p>
+  </cpp:descriptionAndScope>
+  <cpp:process>
+    <cpp:inputs>
+      <cpp:data>
+        <cpp:dataElement>Optional: Derivatives useful for the consumer to identify the content and scope of the Object</cpp:dataElement>
+      </cpp:data>
+      <cpp:metadata>
+        <cpp:metadataElement>Digital Archive Database</cpp:metadataElement>
+      </cpp:metadata>
+      <cpp:guidance>
+        <cpp:guidanceElement>Query scenarios</cpp:guidanceElement>
+        <cpp:guidanceElement>Metadata mapping specifications</cpp:guidanceElement>
+      </cpp:guidance>
+    </cpp:inputs>
+    <cpp:outputs>
+      <cpp:metadata>
+        <cpp:metadataElement>Catalogue service</cpp:metadataElement>
+        <cpp:metadataElement>Process execution report</cpp:metadataElement>
+      </cpp:metadata>
+    </cpp:outputs>
+    <cpp:triggerEvents>
+      <cpp:triggerEvent>
+        <cpp:description>
+          <span>New <em>Object</em> or new <em>Object</em> version ingested</span>
+        </cpp:description>
+        <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+        <cpp:correspondingCPP>CPP-021</cpp:correspondingCPP>
+      </cpp:triggerEvent>
+    </cpp:triggerEvents>
+    <cpp:stepByStepDescription>
+      <cpp:step stepNumber="1">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Query scenarios</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-018</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Select the relevant <em>Metadata</em> (and possibly data) useful to the consumer</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Subset of <em>Metadata</em> to be exposed in the catalogue</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="2">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Query scenarios</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-018</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Select the syntax or serialisations useful to the consumer</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Syntax of <em>Metadata</em> to be exposed in the catalogue</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="3a">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>New <em>AIP</em> or <em>AIP</em> version</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Subset of <em>Metadata</em> to be exposed in the catalogue</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Syntax of <em>Metadata</em> to be exposed in the catalogue</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Extraction: Extract the required subset of <em>Metadata</em> from the new <em>AIP</em> or <em>AIP</em> version</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Extracted discovery <em>Metadata</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="3b">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Extracted discovery <em>Metadata</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Mapping &amp; transformation: Map and transform the <em>Metadata</em>
+				according to the required format of the discovery catalogue</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Transformed discovery <em>Metadata</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="3c">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Transformed discovery <em>Metadata</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Validation: Validate the resulting subset of <em>Metadata</em> against the target catalogue's schema</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Validation successful: Validated discovery <em>Metadata</em> (step 4)</span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Validation failed: Log the error and flag the record for review.
+					The record must not proceed to the discovery catalogue until corrected</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="4">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Validated discovery <em>Metadata</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Rights statement</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-020</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Check rights status of discovery <em>Metadata</em></span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Validated discovery <em>Metadata</em> with cleared rights</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="5a">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Validated discovery <em>Metadata</em> with cleared rights</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Add discovery <em>Metadata</em> for the <em>Object(s)</em> to the catalogue service.
+				The catalogue service may be provided by the TDA, by a third-party (e.g.
+				a federated catalogue), or by a combination of the two.</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Entry in catalogue service</span>
+          </cpp:outputElement>
+          <!--><cpp:customer>Consumer</cpp:customer>-->
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="5b">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Validated discovery <em>Metadata</em> with cleared rights</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Optional: If the TDA requires a PID (e.g. DOI), because the <em>Object</em>
+				or <em>Metadata</em> about the <em>Object</em> will be publicly accessible
+				(e.g. open access), the TDA may request a PID from an appropriate registration
+				agency. The TDA may also add the PID to the <em>Metadata</em> in the
+				catalogue service.</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>PID</span>
+          </cpp:outputElement>
+          <!--><cpp:customer>Consumer</cpp:customer>-->
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="5c">
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>DIP</em> or Derivatives</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-025</cpp:supplier>
+          <cpp:supplier>CPP-028</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Optional: The TDA may provide versions of its <em>Objects</em> for inclusion
+				in the catalogue service (for example, thumbnails, preview versions, redacted
+				documents etc.). These are added to the catalogue entry for the
+				<em>Object</em>.</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Entry in catalogue service</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="6">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Query scenarions</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Catalogue service</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Verification: Using the defined query scenarions, perform a test query to confirm
+				that the new or updated <em>Object</em> is discoverable in the catalogue service.</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Verification successful: Verification confirmation in the process execution report</span>
+          </cpp:outputElement>
+          <cpp:customer>CPP-013</cpp:customer>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Verification failed: If the <em>Object</em> is not found, log the failure as an incident to investigate the ingest and indexing chain</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+    </cpp:stepByStepDescription>
+  </cpp:process>
+  <cpp:rationaleWorstCase>
+    <cpp:purpose>
+      <cpp:purposeDescription>
+        <span>If the TDA is providing access to its holdings to consumers, ensuring
+				query services that suit the consumers’ needs is mandatory.</span>
+      </cpp:purposeDescription>
+      <cpp:worstCase>
+        <span>If the catalogue service does not allow query scenarios useful to
+				the consumers, discoverability and usage of the TDA holdings is compromised.</span>
+      </cpp:worstCase>
+    </cpp:purpose>
+  </cpp:rationaleWorstCase>
+  <cpp:cppRelationships>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Enabling Discovery should make use of PIDs.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Some Metadata provided to the consumer must have
+been extracted from the Files.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Enabling Discovery relies on a correct metadata management process.
+				In particular, <em>Metadata</em> created by and within the TDA is
+				of particular interest to the consumer in order to understand
+				preservation actions that could have affected the <em>Object</em></span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>The TDA must have identified the needs of its designated community in
+				order to enable queries that support the community's defined query scenarios.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Affinity with</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>The distinction between <b>Enabling Discovery and Enabling Access</b> may
+				be blurred as derivative copies may be indexed and searched in the same
+				way as <em>Metadata</em>. In addition, these derivative copies may be
+				sufficient to address some consumers’ needs. Nevertheless, the distinction
+				is still useful as giving access to the original data is often governed
+				by specific legal constraints, and requires specific hardware
+				and software tools.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+  </cpp:cppRelationships>
+  <cpp:frameworkMappings>
+    <cpp:mapping>
+      <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Discovery</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>R12 Discovery and Identification</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Research (options)</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>C4 Access</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Discovery</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>4.5.1 The repository shall specify minimum information requirements to
+				enable the Designated Community to discover and identify material of interest.</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>OAIS</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>No exact term is available in OAIS for Discovery, but the topic is approached through the Package Description notion</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>4.3.3.7 Unit Description</span>
+		<span>4.3.3.9 Collection Descriptions</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>PREMIS</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Discovery</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>Section "More on Objects", subsection "Intellectual Entities", p. 8.</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+  </cpp:frameworkMappings>
+  <cpp:referenceImplementations>
+    <cpp:useCases>
+      <cpp:useCase>
+        <cpp:useCasetitle>ePADD Discovery module</cpp:useCasetitle>
+        <cpp:institution>
+          <cpp:institutionLabel>Stanford University's Special Collections &amp; University Archives, USA</cpp:institutionLabel>
+          <cpp:institutionCountry>US</cpp:institutionCountry>
+        </cpp:institution>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://www.epaddproject.org/using-epadd/discovery-module</cpp:hyperlink>
+        </cpp:linkToDocumentation>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://epadd-discovery.stanford.edu/epadd/collections</cpp:hyperlink>
+          <cpp:comment>Discovery module for Stanford’s email collections:</cpp:comment>
+        </cpp:linkToDocumentation>
+        <cpp:problemStatement>
+          <span>Email collections are born-digital material that need and allow specific usages and
+				access. On the other hand, they raise privacy issues that force memory organisations
+				to give access to these collections only in the organisation’s precinct. Consumers
+				therefore need to identify the scope and content of the collection through remote
+				queries before planning an on-site visit.</span>
+        </cpp:problemStatement>
+        <cpp:proposedSolution>
+          <span>Beyond the mails’ Metadata, the full text was indexed and is searchable, though not
+				entirely readable - when accessing the mail, the full text is redacted, only the
+				searched term and email Metadata are displayed. Access to the mails’ collections is
+				possible only in the organisation’s precinct.</span>
+        </cpp:proposedSolution>
+      </cpp:useCase>
+      <cpp:useCase>
+        <cpp:useCasetitle>etsin.fairdata.fi (CSC): Open discovery for datasets with varied access conditions</cpp:useCasetitle>
+        <cpp:institution>
+          <cpp:institutionLabel>CSC - IT Center for Science, Finland</cpp:institutionLabel>
+          <cpp:institutionCountry>FI</cpp:institutionCountry>
+        </cpp:institution>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://etsin.fairdata.fi/</cpp:hyperlink>
+          <cpp:comment>Main Discovery Service:</cpp:comment>
+        </cpp:linkToDocumentation>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405</cpp:hyperlink>
+          <cpp:comment>Example 1 (Direct Access via use-copy): FIRE Profile 3</cpp:comment>
+        </cpp:linkToDocumentation>
+        <cpp:linkToDocumentation xml:lang="en">
+          <cpp:hyperlink>https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa</cpp:hyperlink>
+          <cpp:comment>Example 2 (Mediated Access): Drive-tested topsoil</cpp:comment>
+        </cpp:linkToDocumentation>
+        <cpp:problemStatement>
+          <span>A TDA can host datasets with a wide variety of access conditions. Some may be open for
+					immediate download (e.g. via a use copy), while others may require human-mediated
+					access (even if their ultimate license is open). The challenge for a discovery service
+					is to represent a) these different states, b) providing access pathways for each
+					dataset without compromising the specific rights management and c) providing access
+					policies defined by the data owner.</span>
+          <span>The Finnish discovery portal etsin.fairdata.fi (CSC) hosts <em>Metadata</em> for both
+					active research data outside of the AIP context and for formally preserved
+					assets (<em>AIPs</em>). The first challenge is to provide a clear and reliable method for
+					users to discover <em>only</em> the preserved assets (with associated AIPs); and
+					second, to represent the specific access conditions for each of those preserved <em>AIPs</em>.</span>
+        </cpp:problemStatement>
+        <cpp:proposedSolution>
+          <span>The Fairdata services solve this by addressing the discovery of preserved assets by providing
+				a specific, filterable view of its catalogue. The URL parameter
+				?data_catalog__title=Fairdata+PAS+datasets in https://etsin.fairdata.fi/ creates a dedicated
+				view within Etsin that exclusively lists datasets corresponding to verified AIPs in
+				the long-term Digital Preservation Service (the filter is also selectable via the Etsin user
+				interface).</span>
+		  <span>Within this view where only datasets with an associated AIP are
+				visible, the system handles varied access policies, as defined by the data owners. It can
+				enforce a spectrum of access conditions&gt;Example 1 (Direct Access): For some <em>AIPs</em>,
+				a "use copy" is made available for immediate download. Etsin provides a direct link to this
+				copy while also linking to the canonical AIP record (which is not available via
+				Etsin), separating simple use from the formal preservation record.</span>
+		  <span>Example 2 (Mediated
+				Access): For other <em>AIPs</em>, access is controlled. Etsin displays a record that might
+				offer a link to a "preview dataset" but withholds the full data. It then provides explicit
+				instructions on the required procedure, such as "To get this dataset, please contact [email
+				address]."<span>
+			</span>Example 3 (Fully Mediated Access): The system can also handle cases where no preview or
+				data is available, and the only option for a user is to follow the human-mediated contact
+				instructions provided in the <em>Metadata</em>.</span>
+          <span>These examples demonstrate how a discovery service can provide a dedicated view for preserved
+				<em>AIPs</em> (CPP-024) while interpreting and enforcing a range of different access rules—from
+				fully open to fully mediated—as defined by rights and access policies (CPP-020) and taken
+				into account during the access process (CPP-025).</span>
+        </cpp:proposedSolution>
+      </cpp:useCase>
+    </cpp:useCases>
+    <cpp:publicDocumentation>
+      <cpp:institution>
+        <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+        <cpp:institutionCountry>DE</cpp:institutionCountry>
+        <cpp:institutionType>National library</cpp:institutionType>
+        <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+        <cpp:institutionType>Research infrastructure</cpp:institutionType>
+        <cpp:institutionType>Research performing organisation</cpp:institutionType>
+      </cpp:institution>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata</cpp:hyperlink>
+        <cpp:comment>Internal use:</cpp:comment>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+</cpp:hyperlink>
+        <cpp:comment>also see</cpp:comment>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://www.tib.eu/en/</cpp:hyperlink>
+        <cpp:comment>External Use: TIB Portal:</cpp:comment>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://av.tib.eu/</cpp:hyperlink>
+        <cpp:comment>TIB AV Portal:</cpp:comment>
+      </cpp:linkToDocumentation>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://gvk.k10plus.de/LNG=EN</cpp:hyperlink>
+        <cpp:comment>Library union catalogue k10plus:</cpp:comment>
+      </cpp:linkToDocumentation>
+    </cpp:publicDocumentation>
+  </cpp:referenceImplementations>
+</cpp:cpp>
