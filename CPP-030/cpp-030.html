@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-030_Refreshment</title></head><body><div class="introSection"><div class="title"><h1>Refreshment (CPP-030)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-030</td></tr><tr><td>CPP-Label</td><td>Refreshment</td></tr><tr><td>Author</td><td>Johan Kylander</td></tr><tr><td>Contributors</td><td>Matthew Addis</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-25</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA replaces the Information Packages on a storage medium, copying them to a new medium and 
+        discarding the old one at the end of a storage medium's life cycle.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>AIP</td></tr><tr><td rowspan="1">Metadata</td><td>Storage management information</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Storage management policy - Media</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Data</td><td>AIP</td></tr><tr><td rowspan="2">Metadata</td><td>Storage management information</td></tr><tr><td>Record of decommissioning</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Refreshment is the process of anticipating the end of life of a storage medium and copying data to a new storage 
+            medium in order to safeguard <em>AIP</em>s on viable storage media at all times. It is a vital part of storage 
+            life-cycle management, and minimises the risk of data corruption.</p><p>A TDA may also decide to refresh a storage medium for various reasons such as:</p><ul>
+            <li>Mitigate corruption: Large, media-wide errors or corruption are detected (e.g. a magnetic tape has become 
+                unreadable) by CPP-004 (<b>Data Corruption Management</b>).</li>
+            <li>Mitigate costs and risks: A storage medium (e.g. a server) reaches the end of its life and is no longer 
+                being supported by the vendor, potentially resulting in increased support costs or risks of unpatched security 
+                vulnerabilities.</li>
+            <li>Reduce costs and/or improve efficiency: For example, refreshing storage to take advantage of new generations 
+                of data tape and increase read/write speed, or to reduce physical footprint, power consumption etc.</li>
+        </ul><p>The process of refreshment makes no changes to the <em>AIP</em>s themselves but only operates on the storage 
+                layer. A TDA may decide to physically replace the medium with an identical medium (e.g. replace an old magnetic tape 
+                by a new similar one), or choose a new medium (e.g. replace magnetic tapes with a new generation of tapes or a 
+                completely different type of storage medium). During refreshment, all <em>AIP</em>s on an old storage medium are 
+                copied onto a new storage medium and their fixity is verified. It is important to note that the medium undergoing 
+                refreshment is not always the source for replicating the data (e.g. copies on offline storage media or corrupted 
+                storage media are typically refreshed from an available storage medium). The old storage medium (including all data 
+                on it) then is removed from use and is either destroyed, recycled or repurposed (depending on its type).</p><p>A TDA may use a wide range of storage mediums to achieve data replication and storage diversity. Examples of a 
+            storage medium include discrete physical media (e.g. data tapes or archival storage discs), storage servers (e.g. 
+            online storage provided as NAS, SAN, DAS etc.) or any combination of these (e.g. tiered storage that combines files 
+            servers and tape libraries). This is not an exhaustive list. Each copy of a TDA’s data can be on a storage medium 
+            that consists of software, hardware and media.</p><p>The choice of storage types and their longevity is determined by <b>Risk Mitigation</b> (CPP-012). The TDA must 
+            have a strategy and a plan in place for:</p><ul>
+            <li>Managing its storage hardware, software and media</li>
+            <li>Defining intervals of regular replacement for different storage</li>
+            <li>Procedures for the refreshment of the storage medium before it reaches the end of its life cycle</li>
+        </ul></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>A storage medium is near the end of its life cycle and must be replaced by a new storage medium</span></td><td></td></tr><tr><td><span>Detection of corruption or errors in a storage medium</span></td><td>CPP-004 (Data Corruption Management)</td></tr><tr><td><span>Potentials for reducing costs or improving efficiency by benefiting from storage medium 
+                        technologies are identified</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="3">1</td><td rowspan="1">CPP-012 (Risk Mitigation)</td><td rowspan="1"><span>Storage management policy - Media, flagging a storage medium that must be refreshed</span></td><td class="stepsColumn" rowspan="3"><span>Identify and locate the storage medium to be refreshed</span></td><td rowspan="3"><span>The old storage medium that is to be refreshed</span></td><td rowspan="3"></td></tr><tr><td rowspan="1">CPP-004 (Data Corruption Management)</td><td rowspan="1"><span>Detection of a faulty storage medium</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Refreshment is identified as a way to reduce costs, increase efficiency, or improve 
+                            environmental sustainability</span></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td class="stepsColumn" rowspan="1"><span>List all <em>AIP</em>s on the old storage medium</span></td><td rowspan="1"><span>Inventory of <em>AIP</em>s involved in the refreshment</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"><span>Storage management policy - Media</span></td><td class="stepsColumn" rowspan="1"><span>Select source medium to copy the <em>AIP</em>s from (can be from storage other than the medium to 
+                        be replaced)</span></td><td rowspan="1"><span>Authoritative storage medium for replicating/copying the <em>AIP</em>s</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Provision of a fresh storage medium that will replace the old one</span></td><td rowspan="1"><span>The fresh storage medium that will replace the old one</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">5</td><td rowspan="1"></td><td rowspan="1"><span>Source storage medium of <em>AIP</em>s</span></td><td class="stepsColumn" rowspan="3"><span>For each <em>AIP</em> individually, start the copy process (steps 6 to 10):</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Fresh storage medium</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Inventory of <em>AIP</em>s involved in the refreshment</span></td></tr><tr></tr><tr><td rowspan="1">6</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Retrieve the <em>AIP</em> from the source storage medium</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Copy the <em>AIP</em> to the fresh storage medium</span></td><td rowspan="1"><span>New copy of <em>AIP</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">8</td><td rowspan="2"></td><td rowspan="2"><span>Existing/previous <em>Fixity metadata</em>
+                        </span></td><td class="stepsColumn" rowspan="2"><span>Validate the fixity of the <em>AIP</em> on the fresh storage medium</span></td><td rowspan="1"><span>Valid status (9) - <em>Fixity metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Invalid status (go back to 6) - <em>Fixity metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">9</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Record the fixity for the new <em>AIP</em> copy</span></td><td rowspan="1"><span>
+                            <em>Fixity metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">10</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update the storage location for the new <em>AIP</em> copy</span></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">11</td><td rowspan="2"></td><td rowspan="2"><span>Inventory of <em>AIP</em>s involved in the refreshment</span></td><td class="stepsColumn" rowspan="2"><span>Check that all <em>AIP</em>s in the inventory have been successfully copied</span></td><td rowspan="1"><span>Confirm completeness of the copy process (12)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Error (go back to copy process loop)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">12</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update information about the fresh storage medium (e.g. <em>File</em> locations, media 
+                        identifiers) and mark the old medium and its contents as ready for deletion/decommissioning</span></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">13</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Create a preservation event for the refreshment</span></td><td rowspan="1"><span>
+                            <em>Provenance metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">14</td><td rowspan="1"></td><td rowspan="1"><span>Old storage medium that has been refreshed</span></td><td class="stepsColumn" rowspan="1"><span>Ensure data security and that confidentiality is not compromised by making sure that data on the 
+                        old storage medium is properly deleted</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">15</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Decommission the old storage medium</span></td><td rowspan="1"><span>Record of decommissioning</span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Manage the storage infrastructure life cycle</span></td><td><span>Storage medium deteriorates/ degrades/ becomes faulty over time, which increases the risk of data 
+                    corruption.</span><br></br><span>Storage medium is no longer supported by the vendor, which increases risks to data due to lack of 
+                    maintenance or unpatched security vulnerabilities.</span></td></tr><tr><td><span>Have multiple copies of data on multiple viable storage media</span></td><td><span>In cases of data corruption or destruction, recovery depends on having other intact copies</span></td></tr><tr><td><span>The TDA should achieve sustainability</span></td><td><span>Using old or obsolete storage media results in higher costs, lower operational efficiency, or higher 
+                    environmental impact (compared to latest storage medium technologies).</span></td></tr><tr><td><span>Open source storage solutions</span></td><td><span>Vendor lock-in in storage solutions pose a risk of a strong dependency to an external partner.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-012</td><td>Risk Mitigation</td><td><span>The strategy for data storage and storage infrastructure management is defined in a storage management 
+                    policy which is based on a TDAs risk assessment and mitigation.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Not to be confused with</td><td>CPP-011</td><td>Replication</td><td><span>Replication creates new parallel copies of individual <em>AIP</em>s, refreshment creates new copies 
+                    that replace the old ones. Moreover, CPP-011 aims for redundancy on an IP level, whereas Refreshment 
+                    operates on a storage medium level.</span></td></tr><tr><td>Affinity with</td><td>CPP-002</td><td>Checksum Validation</td><td><span>All new <em>AIP</em> copies must have their checksum validated to verify that the process was 
+                    successful. The checksum validation is more mechanical in its nature in Refreshment, only aiming at 
+                    verification of the copy process. In contrast to CPP-002, it does not have to negotiate with producers or 
+                    examine the results.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>procedures for handling and monitoring deterioration of storage media</span></td><td><span>R14 Storage &amp; Integrity</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>selection of suitable storage media</span><br></br><span>redundancy</span><br></br><span>refreshing</span><br></br><span>media migration</span></td><td><span>C15 Integrity: Functions of the archival storage</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>refreshing</span><br></br><span>migration</span></td><td><span>5.1.1.5 The repository shall have defined processes for storage media and/or hardware change (e.g., 
+                    refreshing, migration)</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Replace Media</span><br></br><span>Refreshment</span></td><td><span>4.2.3.4</span><br></br><span>5.2.4.2</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Replication,</span><br></br><span>Media Migration</span><br></br><span>Media Refreshment</span></td><td><span>Glossary</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Mediamigration">https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Mediamigration</a></td></tr><tr><td rowspan="2">CSC – IT Center for Science Ltd., FI</td><td rowspan="2">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2023062157386">https://urn.fi/urn:nbn:fi-fe2023062157386</a><div>(Section 3.2.4)</div></td></tr><tr><td>Finnish</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(Annex 3, section 2.1.1)</div></td></tr></table></div></div></body></html>
