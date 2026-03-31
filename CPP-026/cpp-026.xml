@@ -237,6 +237,11 @@
                         <em>SIP</em> or <em>AIP</em> and adapt the <em>Fixity metadata</em> and <em>Technical metadata</em>
                     </span>
                 </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>updated <em>SIP</em> or <em>AIP</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="5b">
                 <cpp:input>
@@ -278,7 +283,7 @@
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span></span>
+                <span>Anticipate on formats becoming less popular</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
                 <span>Attempt to migrate data when the tools to do so are no longer available or knowledge about the format is lost</span>
