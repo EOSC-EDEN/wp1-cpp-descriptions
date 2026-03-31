@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-011" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Replication</cpp:label>
+        <cpp:authors>
+            <cpp:author>Johan Kylander</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Bertrand Caron</cpp:contributor>
+            <cpp:contributor>Juha Lehtonen</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-27</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA automatically manages the replication of Information Packages 
+            to multiple storage locations (potentially in different geographical locations).
+    </cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Storage</cpp:oaisClassification>
+        <cpp:logicalClassification>Bit-level Preservation</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>
+            Replication is the process of copying data to a new storage medium in order 
+            to create new identical copies of <em>AIP(s)</em>. All new copies created must have 
+            their fixity verified to ensure that the process was completed successfully. 
+            The process creates new parallel copies to achieve redundancy in the storage 
+            system. The process of replication makes no changes to the AIPs themselves 
+            but only operates on the storage layer to add storage locations for the new
+            copies.
+        </p>
+        <p>
+            Redundancy is required to mitigate risks such as data corruption and 
+            unintentional or unwarranted data destruction by creating a fault tolerance. 
+            The number of parallel copies and the choice of media types is determined by 
+            how a TDA implements <b>Risk Mitigation</b> (CPP-012). Typically, strategies for 
+            the following aspects of redundancy and replication should be covered in the 
+            TDA policy:
+        </p>
+        <ul>
+            <li>
+                <em>Creation of fault tolerance</em>: The creation of at least three parallel 
+                copies is recommended. In this way, the data is always stored on two 
+                other valid copies in cases where one copy is corrupted or destroyed;
+            </li>
+            <li>
+                <em>Use of diverse storage media</em>: Employing different storage media helps 
+                to avoid systematic errors and vulnerabilities and reduces the risk of 
+                vendor lock-in in a single storage solution;
+            </li>
+            <li>
+                <em>Geographical distribution of copies</em>: Storing the copies geographically 
+                dispersed reduces location based risks such as environmental disasters 
+                or political instability;
+            </li>
+            <li>
+                <em>Offline storage of copies</em>: Storing some copies offline reduces the risk 
+                of unwarranted tampering of the data by malicious users or software.
+            </li>
+        </ul>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>AIP</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Storage management information</cpp:metadataElement>
+            </cpp:metadata>            
+            <cpp:guidance>
+                <cpp:guidanceElement>Storage management policy - Copies</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:data>
+                <cpp:dataElement>AIP</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Storage management information</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Ingest. New ingested data that needs to be replicated when accepted
+                        to preservation.
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Updates to a TDAs decisions on copy management as per its Risk
+                        Mitigation policies. The TDA defines how many copies are needed at
+                        all times and on what type of media. Changes to these policies can
+                        occur during preservation
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-012</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Copy management policy</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Storage management information</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span><em>AIP</em></span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-029</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Identify and locate <em>AIP</em> to be replicated</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Inventory of <em>AIP</em> to be replicated</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Source storage medium with <em>AIP</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>
+                            <em>Copy management policy</em>
+                        </span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Select target storage medium to copy the <em>AIP</em> to</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Target storage medium</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Source storage medium with <em>AIP</em></span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Target storage medium</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span><em>AIP</em></span>
+                    </cpp:inputElement>
+                </cpp:input>                
+                <cpp:stepDescription>
+                    <span>Start the copy process (steps 4 to 8).</span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:stepDescription>
+                    <span>Retrieve the <em>AIP</em> from the source storage medium</span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:stepDescription>
+                    <span>Copy the <em>AIP</em> to the new storage medium</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>New copy of <em>AIP</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Existing/previous Fixity metadata</span>
+                    </cpp:inputElement>
+                </cpp:input>                
+                <cpp:stepDescription>
+                    <span>Validate the fixity of the <em>AIP</em> on the target storage medium</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Valid status (step 7)</span>
+                        <span><em>Fixity Metadata</em>></span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Invalid status (go back to step 4)</span>
+                        <span><em>Fixity Metadata</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:stepDescription>
+                    <span>Update the fixity for the new <em>AIP</em> copy</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Fixity Metadata</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="8">
+                <cpp:stepDescription>
+                    <span>Update the storage location for the new <em>AIP</em> copy</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Storage management information</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="9">
+                <cpp:stepDescription>
+                    <span>Create preservation <em>Event metadata</em> of the replication</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span><em>Provenance metadata</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Have multiple copies of data</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Handling data corruption or destruction requires intact copies to restore lost 
+                    data from.
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Copies in different storage locations with different location based risks</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    If data is not stored in different locations, any disaster to the location is a 
+                    single point of failure. The same applies to the type of risk associated with the 
+                    locations (e.g. political risk, risk of natural disasters etc.).
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Copies should exist on different type of storage media</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Systematic errors in a storage media can affect all copies on the same type of 
+                    media.
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Offline copies that are not accessible by normal procedures</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Offline copies are safe from malicious users or software, as they cannot be 
+                    accessed by normal means.
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Open source storage solutions</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Vendor lock-in in storage solutions can pose a risk to the copies on those media 
+                    if they have a dependency to an outside partner.
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    A TDAs storage policy, that defines how data is stored, the amount of parallel 
+                    copies etc, is based on a TDAs risk assessment and mitigation.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Soft dependency (i.e. may require): When a <em>Digital Object</em> or <em>File</em> is 
+                    replicated, the replicant may be assigned a new PID.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-030</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Replication creates new parallel copies of <em>AIPs</em>, while Refreshment replaces
+                    <em>AIPs</em> onto new storage media.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    All new <em>AIP</em> copies must have their checksum validated to verify that the
+                    process was successful. The checksum validation is more mechanical in its nature 
+                    in Replication, only aiming at verification of the copy process. In contrast to 
+                    CPP-002, it does not have to negotiate with producers or examine the results.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    A replication-like process is performed in data corruption management, in which 
+                    <em>AIPs</em> must be replicated to replace corrupted <em>AIPs</em>.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-006</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Replication creates new parallel copies of <em>AIPs</em> within a TDAs archival 
+                    storage. AIP Batch Export exports <em>AIPs</em> to external locations.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Multiple copies</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>R14 Storage and Integrity</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Selection of suitable storage media, redundancy, refreshing, media migration</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>C15 Integrity: Functions of the archival storage</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>
+                    Not explicitly mentioning the process of making copies, but section 5.1.2 comes 
+                    close, where it mentions managing copies: Repositories may require a different 
+                    number of copies for each class, or manage versions needed to meet access requirements
+                </span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>5.1.2</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Replace Media</span>
+                <span>Replication</span>
+                <span>Refreshment</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.2.3.4</span>
+                <span>5.2.4.3</span>
+                <span>5.2.4.2</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Replication</span>
+                <span>Media Migration</span>
+                <span>Media Refreshment</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Glossary</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Redundancy
+                </cpp:hyperlink>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608943/Technical+infrastructure
+                </cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="fi">
+                <cpp:hyperlink>
+                    https://urn.fi/urn:nbn:fi-fe2023062157386
+                </cpp:hyperlink>
+                <cpp:comment>section 3.2.4</cpp:comment>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="fi">
+                <cpp:hyperlink>
+                    https://urn.fi/urn:nbn:fi-fe2024051731943
+                </cpp:hyperlink>
+                <cpp:comment>Annex 3, section 2.1.1</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://archivematica.org/en/docs/archivematica-1.17/admin-manual/maintenance/maintenance/#data-backup
+                </cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
