@@ -4,7 +4,7 @@
         <cpp:label>Dataqualityassessment</cpp:label>
         <cpp:authors>
             <cpp:author>Mikko Laukkanen</cpp:author>
-            <cpp:author>JuhaLehtonen</cpp:author>
+            <cpp:author>Juha Lehtonen</cpp:author>
         </cpp:authors>
         <cpp:contributors>
             <cpp:contributor>Bertrand Caron</cpp:contributor>
@@ -814,7 +814,7 @@
         <cpp:publicDocumentation>
             <cpp:institution>
                 <cpp:institutionLabel>Achivematica</cpp:institutionLabel>
-                <cpp:institutionCountry>US</cpp:institutionCountry>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
                 <cpp:institutionType>Digital preservation system</cpp:institutionType>
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
