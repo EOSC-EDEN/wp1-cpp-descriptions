@@ -347,13 +347,10 @@
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
-            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Soft dependency (i.e. may require): A normalised file
-                    format may be assigned with a new PID.
-                </span>
+                <span>A normalised file format may be assigned with a new PID.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
