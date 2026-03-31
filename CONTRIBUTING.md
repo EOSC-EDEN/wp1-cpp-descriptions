@@ -45,6 +45,11 @@ If you are inclined to do so, you can suggest changes to the content of this rep
 - Clone your fork locally;
 - Create a feature branch for your changes based on the `dev` branch.
 
+### Updating the CPP Descriptions
+
+- Mind the italics in the original text: they indicate terms that are defined in the [glossary](03_Glossary.pdf). Enclose these terms in `<em>` elements.
+- Do not forget to add a `<version>` element to the `<history>` container, incrementing the version number and describing briefly the nature of your modification.
+
 ### Pull Request Process
 
 - Provide context for your changes in the pull request description;
