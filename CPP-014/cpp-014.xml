@@ -35,6 +35,15 @@
                 <cpp:versionDate>2026-03-26</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>1</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-04-01</cpp:versionDate>
+                <cpp:versionNotes>Correction of "Format Migration" to "File Migration"</cpp:versionNotes>
+            </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA supports batch modifications of previously ingested Files to prevent a preservation or access-related risk.</cpp:shortDefinition>
