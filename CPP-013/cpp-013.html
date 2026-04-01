@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-013_Object_Management_Reporting</title></head><body><div class="introSection"><div class="title"><h1>Object Management Reporting (CPP-013)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-013</td></tr><tr><td>CPP-Label</td><td>Object Management Reporting</td></tr><tr><td>Author</td><td>Johan Kylander</td></tr><tr><td>Contributors</td><td>Matthew Addis</td></tr><tr><td>Evaluators</td><td>Franziska Schwab, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
+        The TDA delivers reporting to enable the effective management of Objects. This must include
+        a wide range of functional, operational, and statistical reports and analytics.
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="4">Metadata</td><td>Provenance metadata</td></tr><tr><td>Technical metadata</td></tr><tr><td>Rights data</td></tr><tr><td>Errors and Warnings</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Metadata</td><td>Provenance metadata</td></tr><tr><td rowspan="2">Documentation/guidance</td><td>Reports</td></tr><tr><td>Statistical data</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>
+            Object management reporting is a process in which the TDA creates reports; outputs
+            <em>Provenance metadata</em>; and produces statistical data on the content it preserves. The
+            reporting is needed to enable effective management of <em>Objects</em>. Reporting is done for both
+            the TDA itself, helping it in its preservation planning and as input for <b>Risk Mitigation</b>
+            (CPP-012), and for the designated communities and stakeholders that produce and
+            consume the data. Effective reporting enables a TDA to conduct digital preservation and to
+            select the <em>Information packages</em> or <em>Objects</em> when performing preservation actions.
+        </p><p>
+            Reporting on the content includes reports and <em>Provenance metadata</em> from other CPPs that
+            perform actions on digital content. For example, this includes processes that periodically
+            check the quality of the data in <b>Data Quality Assessment</b> (CPP-019) or during triggered
+            events such as <b>Ingest</b> (CPP-029) and <b>Enabling Access</b> (CPP-025):
+        </p><ul>
+            <li>Reports from periodic <b>Integrity Checking</b> (CPP-003);</li>
+            <li>Preservation actions taken and documented in <b>Data Corruption Management</b> (CPP-004);</li>
+            <li><b>Virus Scanning</b> reports (CPP-007);</li>
+            <li><b>File Format Identification</b> (CPP-008) reports;</li>
+            <li><b>File Format Validation</b> (CPP-010) reports;</li>
+            <li><b>File Migration</b> (CPP-014);</li>
+            <li>Data on <b>Emulation and Rendering Tools</b> (CPP-015);</li>
+            <li><em>Metadata</em> from <b>Metadata Ingest and Management</b> (CPP-016);</li>
+            <li><em>Metadata</em> from <b>Rights Management</b> (CPP-020);</li>
+            <li><em>Metadata</em> from <b>Significant Properties Definition</b> (CPP-022);</li>
+            <li>Preservation actions taken and documented in <b>File Repair</b> (CPP-027);</li>
+            <li>Data from the <b>Creation of Derivatives</b> (CPP-028) process;</li>
+            <li><em>Metadata</em> from the access and use of <em>Objects</em> in TDA by the designated community;</li>
+            <li><em>Metadata</em> on the data volumes and growth rates of the <em>Objects</em> held by the TDA.</li>
+        </ul><p>
+            As the purpose of reporting is to enable the preservation and the management of digital
+            <em>Objects</em>, the reports usually cover the main types of data that a TDA operates with. This may
+            include data on:
+        </p><ul>
+            <li>File formats;</li>
+            <li><em>Technical metadata</em> and significant properties of <em>Objects</em>;</li>
+            <li>Tools and software needed to manage the content;</li>
+            <li>The health of <em>Objects</em> and actions taken to remedy errors;</li>
+            <li>The hardware infrastructure;</li>
+            <li><em>Metadata</em> and metadata standards;</li>
+            <li>The provenance of the <em>Objects</em>;</li>
+            <li>The licenses and rights to retain, preserve and provide access to <em>Objects</em>;</li>
+            <li>The level of usage of <em>Objects</em> in the TDA;</li>
+        </ul><p>
+            The report types produced in the reporting process can be categorised as follows:
+        </p><ul>
+            <li><em>Statistical data</em> (e.g. number of <em>Objects</em>, file sizes etc.): Used for helping a TDA or
+                stakeholder assess the scope of preservation actions;</li>
+            <li><em>Provenance metadata</em> (i.e. documented preservation actions by the TDA): Used for
+                assessing the state of <em>Objects</em>, the so called "health" of the <em>Files</em>, and to add
+                authenticity by documenting the life-cycle of all digital content in a TDA;</li>
+            <li><em>In depth machine-actionable reports</em> (usually produced by tools): These are used as
+                input in other processes conducted by the TDA;</li>
+            <li><em>Links to knowledge base resources</em> (e.g. file format registries): These are used to
+                help a TDA in preservation planning.</li>
+        </ul><p>
+            Reporting activities as well as the report types listed above feed into a wide range of
+            management processes and decision making. Some examples include:
+        </p><ul>
+            <li>Risk assessment and preservation planning (e.g. using reports on file formats);</li>
+            <li>Reporting to funders and stakeholders (e.g. by providing usage statistics);</li>
+            <li>Capacity planning and purchasing decisions (e.g. purchasing and refreshment of
+                storage infrastructure based on statistics on data volumes and growth rates);</li>
+            <li>Compliance assessments (e.g. using reports on rights and participant consent to
+                check that personal data is retained in compliance with GDPR);</li>
+            <li>Optimisation and cost management (e.g. identification of expensive or inefficient
+                processes based on execution time and steps required, or optimising the use of
+                different storage classes for frequently or infrequently accessed data based on usage
+                statistics);</li>
+            <li>Identification of anomalies in error rates or failures (e.g. unusually problematic
+                content from specific depositors);</li>
+            <li>Deaccessioning of <em>Objects</em> (e.g. reports on <em>Objects</em> that no longer need to be
+                retained because their retention schedules are about to expire, or reports on quality
+                assessment that mean <em>Objects</em> no longer meet the needs of a designated 
+                community);</li>
+            <li>Environmental sustainability (e.g. use of storage, processing and access statistics as
+                an input to calculating carbon footprint).</li>
+        </ul><p>
+            When the process description uses the term <em>report</em>, it can be any of the above.
+        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Ingest</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Enabling Access</span></td><td>CPP-025 (Enabling Access)</td></tr><tr><td><span>Risk Mitigation</span></td><td>CPP-012 (Risk Mitigation)</td></tr><tr><td><span>Data Quality Assessment</span></td><td>CPP-019 (Data Quality Assessment)</td></tr><tr><td><span>Reporting needs from the stakeholders or designated communities</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1a</td><td rowspan="1">CPP-029 (Ingest)<hr></hr>CPP-025 (Enabling Access)<hr></hr>CPP-012 (Risk Mitigation)<hr></hr>CPP-019 (Data Quality Assessment)</td><td rowspan="1"><span>
+                            Reporting request (from CPPs, stakeholders or the consumers) in the form of a Report Specification
+                        </span></td><td class="stepsColumn" rowspan="1"><span>
+                        The TDA receives the request and determines what data is required to provide the requested report
+                    </span></td><td rowspan="1"><span>
+                            Specification of the data required for the report
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">1b</td><td rowspan="1"></td><td rowspan="1"><span>Specification of the data required for the report</span></td><td class="stepsColumn" rowspan="1"><span>
+                        Determine if reporting data is available 
+                        (e.g. is it already an output of other CPPs)
+                    </span></td><td rowspan="1"><span>Availability of data required for the report</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">1c</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Availability of data required for the report.
+                        </span></td><td class="stepsColumn" rowspan="1"><span>
+                        If the reporting data is not available:
+                    </span><ol>
+                        <li>Determine the steps that would be needed in order to capture it</li>
+                        <li>Discuss reporting requirements with the requestor and agree revisions to report</li>
+                    </ol></td><td rowspan="1"><span>
+                            Modifications to (i) Report Specification and 
+                            (ii) Specification of data required for the report
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2a</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Specification of data required for the report (from 1a or 1c)
+                        </span></td><td class="stepsColumn" rowspan="1"><span>
+                        If needed, CPPs that produce the required data are revised so that the necessary 
+                        data is produced and compiles the report (as provided by other CPPs)
+                    </span><br></br><span>
+                        The TDA gathers and aggregates the data needed for the report.
+                    </span></td><td rowspan="1"><span>
+                            Data required for report
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2b</td><td rowspan="1"></td><td rowspan="1"><span>Data required for report</span></td><td class="stepsColumn" rowspan="2"><span>
+                        The report is compiled and reviewed with the requestor..
+                    </span><br></br><span>
+                        If further modifications are needed to the data 
+                        and data collection, then go to step 2a.
+                    </span></td><td rowspan="2"><span>
+                            Finalised Specification of Report
+                        </span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Report Specification</span></td></tr><tr></tr><tr><td rowspan="1">3a</td><td rowspan="1"></td><td rowspan="1"><span>Reporting schedule</span></td><td class="stepsColumn" rowspan="1"><span>
+                        If the report is required on a regular basis, 
+                        e.g. monthly,   then a reporting schedule is set 
+                        and data is collected on a regular basis
+                    </span></td><td rowspan="1"><span>Data required for report</span></td><td rowspan="1">CPP-029 (Ingest)<hr></hr>CPP-025 (Enabling Access)<hr></hr>CPP-012 (Risk Mitigation)<hr></hr>CPP-019 (Data Quality Assessment)</td></tr><tr></tr><tr><td rowspan="1">3b</td><td rowspan="1"></td><td rowspan="1"><span>Data required for report (from 3a)</span></td><td class="stepsColumn" rowspan="1"><span>Gather and aggregate data for report</span></td><td rowspan="1"><span>Data for report.</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3c</td><td rowspan="1"></td><td rowspan="1"><span>Data for report (from 3b)</span></td><td class="stepsColumn" rowspan="2"><span>Produce Report and deliver to Requestor.</span><br></br><span>If a report is produced regularly, then loop to Step 3a.</span></td><td rowspan="2"><span>Report</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Finalised Report Specification (from 2b)</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rational</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>
+                    The TDA knows what <em>Information packages</em> it preserves 
+                    and what they contain
+                </span></td><td><span>
+                    Without being able to locate and report the data it holds, the 
+                    TDA cannot perform any preservation actions or provide (e.g. 
+                    searching by <em>Rights</em>, <em>Provenance</em> and 
+                    <em>Descriptive metadata</em> within the <em>Information packages</em>).
+                </span></td></tr><tr><td><span>
+                    The TDA knows which file formats it holds and can locate these
+                    <em>Objects</em> within <em>Information packages</em>
+                </span></td><td><span>
+                    Without knowing in what format the <em>Objects</em> it holds are, 
+                    the TDA cannot plan preservation actions or inform the designated 
+                    communities about preservation strategies.
+                </span></td></tr><tr><td><span>
+                    The TDA knows what metadata standards it holds and which 
+                    standards apply to which <em>Objects</em>
+                </span></td><td><span>
+                    Without being able to analyse the <em>Objects</em> and their 
+                    significant properties, the TDA cannot plan preservation actions, 
+                    provide discovery or access.
+                </span></td></tr><tr><td><span>
+                    The TDA maintains and generates <em>Provenance metadata</em> 
+                    during preservation
+                </span></td><td><span>
+                    Processes that produce reports and <em>provenance data</em> must 
+                    have their output stored. This information is needed to analyse 
+                    the <em>Objects</em> in a TDA, create quality reports, provide 
+                    designated communities with assurance of a high quality digital 
+                    preservation
+                </span></td></tr><tr><td><span>
+                    The TDA knows its hardware infrastructure and 
+                    has a plan for its management
+                </span></td><td><span>
+                    Without knowledge on the hardware infrastructure, the TDA 
+                    cannot maintain high-quality bit-level preservation and 
+                    report to the stakeholders.
+                </span></td></tr><tr><td><span>
+                    The TDA knows the rights it has to preserve and
+                    provide access to its holdings.
+                </span></td><td><span>
+                    Without knowledge of rights and
+                    retention schedules, the TDA cannot
+                    know with confidence that it has the
+                    permission to preserve its holdings or
+                    whether it is holding content that should
+                    be deaccessioned.
+                </span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-003</td><td>Integrity Checking</td><td><span>
+                    Periodic integrity checking provides reports on the
+                    integrity of data and reports corrupted <em>AIPs</em>.
+                </span></td></tr><tr><td>CPP-004</td><td>Data Corruption Management</td><td><span>
+                    Fixing corrupted <em>AIPs</em> produces <em>Provenance metadata</em>
+                    and data for quality reporting to the stakeholders.
+                </span></td></tr><tr><td>CPP-007</td><td>Virus Scanning</td><td><span>
+                    Reports on virus scanning activities, frequency of threats,
+                    and outcomes of the actions provide essential input for
+                    operational management and risk assessment.
+                </span></td></tr><tr><td>CPP-008</td><td>File Format Identification</td><td><span>
+                    File format identification reports are required for a TDA to
+                    enable it to manage its content.
+                </span></td></tr><tr><td>CPP-010</td><td>File Format Validation</td><td><span>
+                    File format validation provide essential information on the
+                    well-formedness and validity of the <em>Objects</em>; validation
+                    errors; and data on the tools used in the process.
+                </span></td></tr><tr><td>CPP-014</td><td>File Migration</td><td><span>
+                    File migration provides information on the outcome of the
+                    process as well as tools used.
+                </span></td></tr><tr><td>CPP-015</td><td>Emulation and Rendering Tools</td><td><span>
+                    The process of selecting tools for emulation and rendering
+                    provides data to the TDA for reporting to the designated
+                    communities.
+                </span></td></tr><tr><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>
+                    Metadata ingest provides new <em>Provenance metadata</em>.
+                </span></td></tr><tr><td>CPP-022</td><td>Significant Properties Definition</td><td><span>
+                    To report on the characteristics of <em>Objects</em> for deeper
+                    analysis, the significant properties must have been
+                    defined.
+                </span></td></tr><tr><td>CPP-027</td><td>File Repair</td><td><span>
+                    Fixing invalid <em>Files</em> produces <em>Provenance metadata</em> and
+                    data for quality reporting to the stakeholders.
+                </span></td></tr><tr><td>CPP-028</td><td>Creation of Derivatives</td><td><span>
+                    Creation of new <em>Objects</em> provides data for statistical
+                    reporting.
+                </span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>May require</td><td>CPP-005</td><td>Identifier Management</td><td><span>
+                    The management and reporting should require that the data 
+                    is identified with PIDs.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-029</td><td>Ingest</td><td><span>
+                    Ingest is both an important provider of
+                    reporting data to the TDA (via other
+                    CPPs) as well as a customer, as the
+                    ingest checks and outcomes must be
+                    reported to the producer.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-025</td><td>Enabling Access</td><td><span>
+                    Enabling Access of contents include
+                    providing <em>Provenance metadata</em>,
+                    statistical data and quality reports to
+                    the consumer.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-012</td><td>Risk Mitigation</td><td><span>
+                    To plan and mitigate risks in
+                    preservation, a TDA needs to provide
+                    input on the preservation system, the
+                    quality of the data, significant
+                    properties in <em>Objects</em>, storage
+                    management <em>Metadata</em> etc.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span>
+                    To evaluate the quality of the data, the
+                    process needs input in the form of
+                    various <em>Metadata</em>.
+                </span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td></td><td><span>
+                    Reporting is not defined directly as a
+                    requirement, but as the category “Digital
+                    Object Management”, which contains the
+                    following requirements:
+                </span><ul>
+                    <li>Provenance and authenticity (R07)</li>
+                    <li>Deposit &amp; Appraisal (R08)</li>
+                    <li>Preservation plan (R09)</li>
+                    <li>Quality Assurance (R10)</li>
+                    <li>Workflows (R11)</li>
+                    <li>Discovery and Identification (R12)</li>
+                    <li>Reuse (R13)</li>
+                </ul></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td></td><td><span>
+                    Reporting is not defined directly as a
+                    requirement, but there are specific
+                    requirements for various metadata
+                    categories, which are specified with
+                    reporting in mind:
+                </span><ul>
+                    <li>C27 Identification</li>
+                    <li>C28 Descriptive metadata</li>
+                    <li>C29 Structural metadata</li>
+                    <li>C30 Technical metadata</li>
+                    <li>C31 Logging the preservation measures</li>
+                    <li>C32 Administrative metadata</li>
+                </ul></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td></td><td><span>
+                    Reporting as such is not described, but
+                    referenced multiple times as a way for
+                    the TDA to demonstrate that it is meeting
+                    a requirement. See 3.2.1.3, 3.3.4, 3.5.1,
+                    4.1.7, 4.6.2.1, 5.1.1.1, 5.1.1.3 and
+                    5.1.1.3.1
+                </span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Generate Report</span></td><td><span>4.2.3.5</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td></td><td><span>
+                    PREMIS does not dedicate any
+                    documentation to reporting, but it
+                    mentions reporting when highlighting the
+                    importance of storing events and
+                    metadata.
+                </span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="3">
+                    TIB - Leibniz Information Centre
+                    for Science and Technology and
+                    University Library
+                , DE</td><td rowspan="3">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+                ">
+                    https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+                </a></td></tr><tr><td>English</td><td><a href="
+                    https://knowledge.exlibrisgroup.com/Rosetta/Knowledge_Articles/Is_there_a_list_of_all_of_the_SOLR_search_fields_in_Rosetta%3F
+                ">
+                    https://knowledge.exlibrisgroup.com/Rosetta/Knowledge_Articles/Is_there_a_list_of_all_of_the_SOLR_search_fields_in_Rosetta%3F
+                </a></td></tr><tr><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata
+                ">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata
+                </a></td></tr><tr><td rowspan="1">CSC - IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="
+                    https://digitalpreservation.fi/en/services/quality_reports/2024
+                ">
+                    https://digitalpreservation.fi/en/services/quality_reports/2024
+                </a></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://www.archivematica.org/en/docs/archivematica-1.18
+                ">
+                    https://www.archivematica.org/en/docs/archivematica-1.18
+                </a><div>(
+                    Limited reporting. However, Archivematica is built on
+                    MySQL and ElasticSearch so there is the potential to
+                    generate more reports by directly accessing the
+                    databases/indexes.
+                )</div></td></tr><tr><td rowspan="2">Rosetta, UK</td><td rowspan="2">Digital preservation system</td><td>English</td><td><a href="
+                    https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+                ">
+                    https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+                </a></td></tr><tr><td>English</td><td><a href="
+                    https://knowledge.exlibrisgroup.com/Rosetta/Knowledge_Articles/Is_there_a_list_of_all_of_the_SOLR_search_fields_in_Rosetta%3F
+                ">
+                    https://knowledge.exlibrisgroup.com/Rosetta/Knowledge_Articles/Is_there_a_list_of_all_of_the_SOLR_search_fields_in_Rosetta%3F
+                </a></td></tr></table></div></div></body></html>
