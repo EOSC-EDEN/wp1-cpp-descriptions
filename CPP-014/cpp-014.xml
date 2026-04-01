@@ -57,7 +57,7 @@
     <cpp:process>
         <cpp:inputs>
             <cpp:data>
-                <cpp:dataElement>Source File or [Representation](https://id.loc.gov/vocabulary/preservation/objectCategory/rep.html) whose property(ies) are(were) flagged as a risk that requires action.</cpp:dataElement>
+                <cpp:dataElement>Source File or Representation (https://id.loc.gov/vocabulary/preservation/objectCategory/rep.html) whose property(ies) are(were) flagged as a risk that requires action.</cpp:dataElement>
             </cpp:data>
             <cpp:metadata>
                 <cpp:metadataElement>Technical Metadata (source File or Representation)</cpp:metadataElement>
@@ -95,7 +95,6 @@
                     <cpp:inputElement>
                         <span>Digital Archive Database</span>
                     </cpp:inputElement>
-                    <cpp:supplier>CPP-023</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
                     <span>Identify Files or Representations that share these properties and should therefore be migrated</span>
@@ -284,6 +283,16 @@
                 </cpp:stepDescription>
             </cpp:step>
             <cpp:step stepNumber="11">
+                <cpp:stepDescription>
+                    <span>Document in the Provenance Information the creation of a new Representation.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Provenance metadata: Documentation of the performed migration date, agents, and properties changed</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="12">
                 <cpp:input>
                     <cpp:inputElement>
                         <span>Target and source File/Representation OR target File/Representation only</span>
@@ -300,16 +309,12 @@
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Document in the Provenance Information the creation of a new Representation. Trigger new AIP Version.</span>
+                    <span>Trigger new AIP Version.</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Provenance metadata: Documentation of the performed migration date, agents, and properties changed</span>
+                        <span>New AIP Version</span>
                     </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>New AIP Version</span></cpp:outputElement>
                     <cpp:customer>CPP-021</cpp:customer>
                 </cpp:output>
             </cpp:step>
@@ -471,9 +476,6 @@
                     <cpp:institutionLabel>Bibliothèque nationale de France (BnF), France</cpp:institutionLabel>
                     <cpp:institutionCountry>FR</cpp:institutionCountry>
                 </cpp:institution>
-                <cpp:linkToDocumentation xml:lang="en">
-                    <cpp:hyperlink>/</cpp:hyperlink>
-                </cpp:linkToDocumentation>
                 <cpp:triggerEvent>
                     <span>In August 2024, the software company MakeMusic announced that its software Finale would be discontinued. The maintenance was to end one year after the announcement.</span>
                 </cpp:triggerEvent>
