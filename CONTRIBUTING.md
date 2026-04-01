@@ -48,7 +48,22 @@ If you are inclined to do so, you can suggest changes to the content of this rep
 ### Updating the CPP Descriptions
 
 - Mind the italics in the original text: they indicate terms that are defined in the [glossary](03_Glossary.pdf). Enclose these terms in `<em>` elements.
-- Do not forget to add a `<version>` element to the `<history>` container, incrementing the version number and describing briefly the nature of your modification.
+- Do not forget to add a `<version>` element to the `<history>` container, incrementing the version number and describing briefly the nature of your modification. The nature of your modification will condition the version number in the following way:
+   * **Major version**  
+      * Significant changes to inputs, outputs, or relationships  
+      * Significant changes to the overall scope or high-level description  
+      * Significant changes to the step-by-step process  
+   * **Minor version**  
+      * Minor change to the high-level description  
+      * Migration from the editing environment to a structured XML-based expression  
+      * Addition of a BPMN diagram without major semantic changes to the step-by-step description  
+      * Addition of a use case, reference implementation, or rationale  
+      * Addition to the scope and description section to facilitate understandability  
+   * **Patch version**  
+      * Linguistic revision to enhance understandability  
+      * Format and layout changes  
+      * Typographical or spelling corrections  
+      * Minor editorial adjustments (punctuation, line breaks, headings)
 
 ### Pull Request Process
 
