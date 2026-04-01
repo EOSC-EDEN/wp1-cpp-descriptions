@@ -85,7 +85,7 @@ When the process description uses the term *report*, it can be any of the above.
 | :------------ | :---------- | :---------------------------------------------------------------------------- |
 | Requires      | CPP-003     | Periodic integrity checking provides reports on the<br>                    integrity of data and reports corrupted *AIPs*. |
 | Requires      | CPP-004     | Fixing corrupted *AIPs* produces *Provenance metadata*<br>                    and data for quality reporting to the stakeholders. |
-| Requires      | CPP-005     | Soft dependency (i.e. may require): The management and<br>                    reporting should require that the data is identified with<br>                    PIDs. |
+| May require   | CPP-005     | The management and reporting should require that the data <br>                    is identified with PIDs. |
 | Requires      | CPP-007     | Reports on virus scanning activities, frequency of threats,<br>                    and outcomes of the actions provide essential input for<br>                    operational management and risk assessment. |
 | Requires      | CPP-008     | File format identification reports are required for a TDA to<br>                    enable it to manage its content. |
 | Requires      | CPP-010     | File format validation provide essential information on the<br>                    well-formedness and validity of the *Objects*; validation<br>                    errors; and data on the tools used in the process. |
