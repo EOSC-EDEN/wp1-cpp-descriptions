@@ -566,7 +566,7 @@
 
         <table class="rationaleAndWorstCases">
             <tr>
-                <th>Rational</th>
+                <th>Rationale</th>
                 <th>Impact of inaction or failure of the process</th>
             </tr>
 
