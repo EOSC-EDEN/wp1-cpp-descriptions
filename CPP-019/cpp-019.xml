@@ -582,8 +582,7 @@
             <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Soft dependency (i.e. may require): Data Quality Assessment may include validating the PIDs and their linked resources.
-                </span>
+                <span>Data Quality Assessment may include validating the PIDs and their linked resources.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
