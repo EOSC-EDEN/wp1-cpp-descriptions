@@ -475,13 +475,12 @@
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
-            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <span>
-                    Soft dependency (i.e. may require): The management and
-                    reporting should require that the data is identified with
-                    PIDs.
+                    The management and reporting should require that the data 
+                    is identified with PIDs.
                 </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
