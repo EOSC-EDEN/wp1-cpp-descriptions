@@ -21,7 +21,7 @@
             <cpp:version>
                 <cpp:versionNumber>
                     <cpp:majorVersion>1</cpp:majorVersion>
-                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
                     <cpp:patchVersion>0</cpp:patchVersion>
                 </cpp:versionNumber>
                 <cpp:versionDate>2025-08-29</cpp:versionDate>
@@ -42,8 +42,8 @@
         and/or Metadata, and managed along to their life cycle.
     </cpp:shortDefinition>
     <cpp:classification>
-        <cpp:oaisClassification>Ingest</cpp:oaisClassification>
-        <cpp:logicalClassification>Bit-level Preservation</cpp:logicalClassification>
+        <cpp:oaisClassification>Data Management</cpp:oaisClassification>
+        <cpp:logicalClassification>Dissemination</cpp:logicalClassification>
     </cpp:classification>
 
     <cpp:descriptionAndScope>
