@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-006" xml:lang="en">
+  <cpp:header>
+    <cpp:label>AIP Batch Export</cpp:label>
+    <cpp:authors>
+      <cpp:author>Micky Lindlar</cpp:author>
+    </cpp:authors>
+    <cpp:contributors>
+      <cpp:contributor>Bertrand Caron</cpp:contributor>
+      <cpp:contributor>Juha Lehtonen</cpp:contributor>
+      <cpp:contributor>Mikko Laukkanen</cpp:contributor>
+    </cpp:contributors>
+    <cpp:evaluators>
+      <cpp:evaluator>Matthew Addis</cpp:evaluator>
+      <cpp:evaluator>Maria Benauer</cpp:evaluator>
+    </cpp:evaluators>
+    <cpp:history>
+      <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>0</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2025-08-29</cpp:versionDate>
+        <cpp:versionNotes>Milestone version</cpp:versionNotes>
+      </cpp:version>
+      <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>1</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-03-26</cpp:versionDate>
+        <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+      </cpp:version>
+    </cpp:history>
+  </cpp:header>
+  <cpp:shortDefinition>As part of an exit strategy, the TDA batch exports Information
+						packages and all associated Metadata in a manageable format/structure
+						for Ingest into another TDA.
+    </cpp:shortDefinition>
+  <cpp:classification>
+    <cpp:oaisClassification>Storage</cpp:oaisClassification>
+    <cpp:logicalClassification>Bit-level Preservation</cpp:logicalClassification>
+  </cpp:classification>
+  <cpp:descriptionAndScope>
+    <p>While the TDA manages <em>Information packages</em> across their life cycle, stores them
+		as <em>AIPs</em>, and delivers them as <em>DIPs</em> to its consumer, it also needs to
+		plan for situations in which an export of <em>AIPs</em> becomes necessary.</p>
+    <p>Scenarios that require an AIP Batch Export include, but are not limited to:</p>
+    <ul>
+      <li>
+        <p><em>Exit Scenario</em>: The TDA changes a major part of its system infrastructure,
+			such as the digital preservation workflow software or the database.</p>
+      </li>
+      <li>
+        <p><em>Succession Planning</em>: The TDA ceases to exist and needs to hand over its
+			archival holdings to a successor.</p>
+      </li>
+      <li>
+        <p><em>Additional External Storage</em>: The TDA wants to store additional offline copies
+			of their <em>AIPs</em>. The <em>AIP</em> export will create a <em>physical</em>
+			<em>AIP</em> as opposed to a logical one. This includes e.g. <em>Metadata</em> which
+			might be kept in a database to be written into an XML or JSON <em>File</em>.</p>
+      </li>
+      <li>
+        <p><em>Disposal</em>: If the TDA decides to dispose data (e.g. as part of Re-Appraisal)
+			the data might be handed over to an external entity such as a different TDA that
+			wants to preserve it. The <em>AIP</em> likely contains a level of information richness
+			(e.g. in form of versions and full audit trails) that the <em>DIP</em> format of the
+			TDA does not offer.</p>
+      </li>
+      <li>
+        <p><em>External Request for Export</em>: An external entity (e.g. a customer for a digital
+			preservation service) might request the data preserved by the TDA for use cases such
+			as verification of provenance information.</p>
+      </li>
+    </ul>
+    <p>This CPP may export 1-n <em>AIPs</em> including all <em>AIP</em> versions from the TDA to a
+		storage location external to the archival storage. The target location can be located externally
+		(e.g. an external SFTP server) or internally (e.g. to a different network share). The process
+		makes no assumption as to the type of storage exported to (e.g. disk, tape).</p>
+    <p>The exported <em>AIP</em> should include all available information where possible (i.e. contain
+		all <em>Files</em> and all accompanying <em>Metadata</em>). In addition to <em>Descriptive</em>,
+		<em>Structural</em>, <em>Administrative</em> and <em>Technical Metadata</em>, this includes any
+		<em>Provenance metadata</em> which might exist and describes any events undertaken on the
+		<em>Object</em> during its lifespan within the TDA.</p>
+    <p>The format and structure of the exported <em>AIP</em> should be documented including an explanation
+		of all internal identifiers or schemas that might be used within. This documentation needs to be
+		provided as a sidecar <em>File</em> with the AIP Batch Export.</p>
+  </cpp:descriptionAndScope>
+  <cpp:process>
+    <cpp:inputs>
+      <cpp:data>
+        <cpp:dataElement>
+          AIP(s)
+        </cpp:dataElement>
+        <cpp:dataElement>
+          File(s)
+        </cpp:dataElement>
+      </cpp:data>
+      <cpp:metadata>
+        <cpp:metadataElement>Storage Metadata Information (Identifier of AIP to be exported, including to AIP versions)</cpp:metadataElement>
+        <cpp:metadataElement>Target location for export</cpp:metadataElement>
+      </cpp:metadata>
+      <cpp:guidance>
+        <cpp:guidanceElement>Contractual Documentation for batch export (for service providers, if applicable)</cpp:guidanceElement>
+        <cpp:guidanceElement>AIP specification</cpp:guidanceElement>
+        <cpp:guidanceElement>Exit Scenario Plan</cpp:guidanceElement>
+        <cpp:guidanceElement>Documentation of Export AIP (supported target structure and format)</cpp:guidanceElement>
+      </cpp:guidance>
+    </cpp:inputs>
+    <cpp:outputs>
+      <cpp:data>
+        <cpp:dataElement>External copies of one or several complete AIPs</cpp:dataElement>
+      </cpp:data>
+      <cpp:metadata>
+        <cpp:metadataElement>Only Metadata contained in AIPs</cpp:metadataElement>
+      </cpp:metadata>
+    </cpp:outputs>
+    <cpp:triggerEvents>
+      <cpp:triggerEvent>
+        <cpp:description>
+          <span><em>AIP</em> is requested from external entity (e.g. customer for digital preservation service)</span>
+        </cpp:description>
+      </cpp:triggerEvent>
+      <cpp:triggerEvent>
+        <cpp:description>
+          <span>Succession plans are applied to transfer custody of <em>Objects</em> to another TDA</span>
+        </cpp:description>
+      </cpp:triggerEvent>
+      <cpp:triggerEvent>
+        <cpp:description>
+          <span>The TDA extends bit-level preservation capabilities and creates new (internal or outsourced)
+				copies of <em>AIPs</em> (e.g. to implement geographically distributed storage or to copy
+				<em>AIPs</em> to an offline storage system)</span>
+        </cpp:description>
+      </cpp:triggerEvent>
+      <cpp:triggerEvent>
+        <cpp:description>
+          <span>The TDA changes its system and all <em>Information packages</em> need to be exported (i.e. Exit scenario)</span>
+        </cpp:description>
+      </cpp:triggerEvent>
+      <cpp:triggerEvent>
+        <cpp:description>
+          <span>The TDA has flagged data for disposal and the <em>AIPs</em> are to be handed over to an external entity</span>
+        </cpp:description>
+      </cpp:triggerEvent>
+    </cpp:triggerEvents>
+    <cpp:stepByStepDescription>
+      <cpp:step stepNumber="1">
+        <cpp:stepDescription>
+          <span>Receive list of <em>AIPs</em> to be exported</span>
+        </cpp:stepDescription>
+      </cpp:step>
+      <cpp:step stepNumber="2">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Target structure and format of exported <em>AIP</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Optional (if multiple target structures and formats are supported):<br/>Set export to transform
+				exported <em>AIP</em> to desired structure and format</span>
+        </cpp:stepDescription>
+      </cpp:step>
+      <cpp:step stepNumber="3">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>List of <em>AIPs</em> to be exported</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Select <em>AIPs</em> to be exported in TDA (e.g. by creating a set based on AIP identifiers
+				and <em>AIP</em> version identifiers, if applicable)</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Inventory of <em>AIPs</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Inventory of <em>AIP</em> versions</span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Location of information belonging to <em>AIPs</em> and <em>AIP</em> versions</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="4">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Inventory of <em>AIPs</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Inventory of <em>AIPs</em> versions</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Optional (depending on handling method for updates in TDA) for each <em>AIP</em>:</span>
+		  <span>Lock AIP to avoid it being updated during export</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Locked location of source <em>AIP</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="5">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Inventory of AIPs</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Inventory of AIPs versions</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>
+              <em>Storage Metadata Information</em>
+            </span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>For each <em>AIP</em> in inventory list:<br/>Create logical structure for <em>AIP</em></span>
+        </cpp:stepDescription>
+      </cpp:step>
+      <cpp:step stepNumber="6">
+        <cpp:stepDescription>
+          <span>For each <em>AIP</em> in inventory list:<br/>Write logical structure to target location</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Logical structure tree of exported <em>AIPs</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="7">
+        <cpp:stepDescription>
+          <span>For each <em>AIP</em> in inventory list:<br/>Copy <em>Files</em> to target location</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Files in logical structure tree of exported <em>AIPs</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="8">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Database query for <em>AIP</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>For each <em>AIP</em> in inventory list:</span>
+		  <span>If (additional) <em>Metadata</em> is stored in other place tha <em>AIP</em> (e.g., database):
+					collect all other information belonging to <em>AIP</em> (<em>Metadata</em>)</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>All information belonging to <em>AIP</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="9">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Result of Database query for <em>AIP</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Maping for export of selected <em>Metadata</em> from database to flat <em>Metadata</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>For each <em>AIP</em> in inventory list:</span>
+		  <span>If (additional) <em>Metadata</em> is stored in database, transform <em>Metadata</em> into target
+				format and write to target location, add export as provenance information into Metadata
+				<em>File</em> during transformation</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Metadata <em>File(s)</em> in target location</span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Provenance information in metadata <em>File(s)</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="10">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Inventory of <em>AIPs</em>
+</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Inventory of <em>AIP</em> versions
+</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>List of <em>Files</em> (excluding <em>Metadata</em> files) at target location</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>Fixity Metadata</em> from source <em>AIP</em>
+</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>For each <em>AIP</em> in inventory list: The <em>AIP</em> in the target should be verified,
+				including <em>Files</em> and <em>Metadata</em> to ensure it is complete and correct
+´				(e.g. using checksums)</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Number of <em>Files</em> matches (step 12)
+</span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>All checksums match (step 12)
+</span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Alert that number of <em>Files</em> do not match
+</span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Alert that any of the <em>File</em>  checksums does not match
+</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="11">
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>AIP</em> ID</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Optional (depending on handling method for updates in TDA):</span>
+		  <span>for each <em>AIP</em>: Release lock on <em>AIP</em></span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Released lock</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="12">
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>Files</em> in target location</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Target structure and format of exported <em>AIP</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>If required: perform additional repacking of <em>Files</em> at target location to meet
+				target structure and format of exported <em>AIP</em> (e.g., tarball)</span>
+        </cpp:stepDescription>
+      </cpp:step>
+      <cpp:step stepNumber="13">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>List of <em>AIPs</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Repeat steps 5-12 for each <em>AIP</em> to be exported</span>
+        </cpp:stepDescription>
+      </cpp:step>
+      <cpp:step stepNumber="14">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Documentation of Export <em>AIP</em> (supported target structure and format of exported <em>AIP</em>)</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Add documentation to target location</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Documentation of Export <em>AIP</em> (supported target structure and format of exported <em>AIP</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="15">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Inventory of <em>AIPs</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Document export in audit trail</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Audit trail for export</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+    </cpp:stepByStepDescription>
+  </cpp:process>
+  <cpp:rationaleWorstCase>
+    <cpp:purpose>
+      <cpp:purposeDescription>
+        <span>When a TDA is closed down, it will have to pass data on to another TDA as part of succession planning.
+				This might have to happen on short notice.</span>
+      </cpp:purposeDescription>
+      <cpp:worstCase>
+        <span>Data is lost.</span>
+      </cpp:worstCase>
+    </cpp:purpose>
+    <cpp:purpose>
+      <cpp:purposeDescription>
+        <span>When a TDA acts as a service provider, data will have to be exported in bulk to those who
+				are subscribing to the service.</span>
+      </cpp:purposeDescription>
+      <cpp:worstCase>
+        <span>Data owner potentially loses control over data.</span>
+      </cpp:worstCase>
+    </cpp:purpose>
+    <cpp:purpose>
+      <cpp:purposeDescription>
+        <span>If a TDA is using external services and systems, e.g. for storing and preserving
+				its <em>AIPs</em>, then it may need to exchange or transfer <em>AIPs</em> to
+				or from third-party services and systems.</span>
+      </cpp:purposeDescription>
+      <cpp:worstCase>
+        <span>Data is lost, data can't be efficiently transferred between TDAs and preservation services.</span>
+      </cpp:worstCase>
+    </cpp:purpose>
+  </cpp:rationaleWorstCase>
+  <cpp:cppRelationships>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-001</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span><em>Fixity metadata</em> is used to verify the integrity of data written into the exported <em>AIP</em>.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>To ensure the integrity of the data during transport from the TDA
+				storage, the exported <em>Files'</em> checksums need to be
+				verified.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <!--<cpp:relationship>
+      <cpp:relationshipType>Triggers</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Checksum validation is one of the methods used to verify the integrity
+				and completeness of the data written into the exported <em>AIP</em>.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>-->
+    <cpp:relationship>
+      <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-017</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>By default, batch export does not remove the content from the TDA.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Access is typically granted to the <em>DIP</em> which may be different from
+				the <em>AIP</em> (e.g. the <em>DIP</em> <em>may</em> only present the last version
+				or one of several <em>Representations</em>). The <em>AIP</em> contains all
+				preservation <em>Metadata</em> which a <em>DIP</em> may not.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Affected by</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-021</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Versioning impacts how the export will have to be run and where and how
+				information about the versions may be found. In addition a policy might
+				determine if only the last or all versions should be exported.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Affinity with</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-011</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Replication creates new parallel copies of <em>AIPs</em> within a TDAs
+				archival storage. AIP Batch Export exports <em>AIPs</em> to external
+				locations.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+  </cpp:cppRelationships>
+  <cpp:frameworkMappings>
+    <cpp:mapping>
+      <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>"Technical aspects of business continuity, disaster recovery and succession planning"</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>R15 Technical Infrastructure</span>
+        <span>Organisational aspects are covered in R03 Continuity of Service</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Export</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>C12 Crisis / successorship management</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Export</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>4.3.5</span>
+        <span>Also touched in 3.1.2.2 "The repository shall monitor its organizational environment
+				to determine when to execute its succession plan, contingency plans, and/or
+				escrow arrangements."</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>OAIS</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>/</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>The process is not described in OAIS but one of its purposes,
+				Succession Planning, is briefly mentioned in 3.3.6 "Follows
+				establised preservation policies and procedures".</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>PREMIS</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>/</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>/</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+  </cpp:frameworkMappings>
+  <cpp:referenceImplementations>
+    <cpp:publicDocumentation>
+      <cpp:institution>
+        <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+        <cpp:institutionCountry>DE</cpp:institutionCountry>
+        <cpp:institutionType>National library</cpp:institutionType>
+        <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+        <cpp:institutionType>Research infrastructure</cpp:institutionType>
+        <cpp:institutionType>Research performing organisation</cpp:institutionType>
+      </cpp:institution>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608980/Export+and+exit+scenario</cpp:hyperlink>
+      </cpp:linkToDocumentation>
+    </cpp:publicDocumentation>
+    <cpp:publicDocumentation>
+      <cpp:institution>
+        <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+        <cpp:institutionCountry>FI</cpp:institutionCountry>
+        <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+      </cpp:institution>
+      <cpp:linkToDocumentation xml:lang="fi">
+        <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943</cpp:hyperlink>
+        <cpp:comment>section 13</cpp:comment>
+      </cpp:linkToDocumentation>
+    </cpp:publicDocumentation>
+    <cpp:publicDocumentation>
+      <cpp:institution>
+        <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+        <cpp:institutionCountry>CA</cpp:institutionCountry>
+        <cpp:institutionType>Digital preservation system</cpp:institutionType>
+      </cpp:institution>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>ihttps://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#downloading-an-aip</cpp:hyperlink>
+      </cpp:linkToDocumentation>
+    </cpp:publicDocumentation>
+  </cpp:referenceImplementations>
+</cpp:cpp>
