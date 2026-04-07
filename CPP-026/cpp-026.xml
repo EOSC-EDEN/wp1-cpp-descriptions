@@ -33,6 +33,15 @@
                 <cpp:versionDate>2026-03-30</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>2</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-04-07</cpp:versionDate>
+                <cpp:versionNotes>Version updated</cpp:versionNotes>
+            </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA performs operations on the data Objects prior to ingest 
