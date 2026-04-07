@@ -225,6 +225,8 @@
             </cpp:triggerEvent>            
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
+            <cpp:stepGroup type="sequence">
+                <cpp:stepGroup type="alternative" label="Alternative triggers">
             <cpp:step stepNumber="1a">
                 <cpp:input>
                     <cpp:inputElement>
@@ -387,6 +389,7 @@
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
+            </cpp:stepGroup>
             <cpp:step stepNumber="2">
                 <cpp:input>
                     <cpp:inputElement>
@@ -600,6 +603,7 @@
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
