@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-019_Data_Quality_Assessment</title></head><body><div class="introSection"><div class="title"><h1>Data Quality Assessment (CPP-019)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-019</td></tr><tr><td>CPP-Label</td><td>Data Quality Assessment</td></tr><tr><td>Author</td><td>Mikko Laukkanen, Juha Lehtonen</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Franziska Schwab, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA evaluates and re-evaluates the data quality of Information Objects</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="2">Data</td><td>Information object</td></tr><tr><td>File</td></tr><tr><td rowspan="5">Metadata</td><td>Descriptive metadata</td></tr><tr><td>Technical metadata</td></tr><tr><td>Provenance metadata</td></tr><tr><td>Rights metadata</td></tr><tr><td>Structural metadata</td></tr><tr><td rowspan="4">Documentation/guidance</td><td>Quality assessment policy</td></tr><tr><td>Format policy - preferred formats</td></tr><tr><td>Collection development policy</td></tr><tr><td>Metadata recording policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Documentation/guidance</td><td>Quality assessment report</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>
+            Data Quality Assessment refers to the systematic evaluation of <em>Objects</em> and their associated
+            <em>Metadata</em> against predefined measures to ensure they meet the standards necessary for
+            consumers' needs and continued access. The assessment typically covers several key
+            dimensions, some of these are for example:
+        </p><ul>
+            <li>
+                <em>Authenticity</em>: The <em>Object</em> is what it purports to be (i.e. it has been created, modified
+                and sent by the person purported to have done it at the date and time purported).
+                The designated community must be able to trust that the data is real and credible
+                and is managed by a trustworthy TDA. Sufficient information must exist to understand
+                the <em>Object's</em> creation circumstances, provenance, and relationship to other content. In
+                addition to integrity checks, the authenticity of the data is ensured by controlled
+                changes through preservation actions and the <em>Provenance metadata</em>.
+            </li>
+            <li>
+                <em>Completeness</em>: The <em>Object</em> and the <em>Metadata</em> are complete. They do not have
+                missing parts or links to targets outside the preserved <em>Object</em> which should remain
+                accessible.
+            </li>
+            <li>
+                <em>Consistency</em>: The <em>Object</em> is presented in applicable file formats or <em>Representations</em>
+                with applicable metadata formats. Conflicting values in the <em>Metadata</em> should be
+                avoided.
+            </li>
+            <li>
+                <em>Relevance</em>: The data preservation is based on a predefined collection development
+                policy (i.e. has a purpose of being preserved).
+            </li>
+            <li>
+                <em>Structured</em>: The structure of the <em>Object</em> is described in the <em>Metadata</em>. Complex 
+                <em>Objects</em> are organised, including relationships between <em>Files</em>, proper sequencing of 
+                multi-part <em>Objects</em>, and the integrity of any embedded <em>Metadata</em> or links.
+            </li>
+            <li>
+                <em>Understandability</em>: The information is understandable and meaningful for the
+                designated community.
+            </li>
+            <li>
+                <em>Validity</em>: The <em>Object</em> and <em>Metadata</em> are valid against the <em>File</em> and metadata format
+                specifications and standards, and comply with all other predefined profiles and rules.
+            </li>
+        </ul><p>
+            Data quality assessment may include various processes, repeated from time to time. A very
+            common phase to perform an assessment is in the <em>Ingest</em> phase, but the use case described
+            below demonstrates that such a process can also be performed at the access stage. The
+            data may be rejected from digital preservation, if it does not meet the criteria. An
+            assessment typically has the following steps, described on a very high level:
+        </p><ol>
+            <li>
+                Define the scope of the assessment;
+            </li>
+            <li>
+                Define data quality dimensions and metrics, including possible thresholds;
+            </li>
+            <li>
+                Gather and analyse data;
+            </li>
+            <li>
+                Create a quality report about all the findings;
+            </li>
+            <li>
+                If needed, update the data and <em>Metadata</em> to improve the quality.
+            </li>
+        </ol><p>
+            The step-by-step description below mainly concentrates on the technical aspects of the data
+            and <em>Metadata</em>, but the scope of this CPP is indeed covering a broader range of contextual
+            data quality properties.
+        </p><p>
+            The assessment process often employs both automated tools and manual review. For
+            example, automated tools can perform file format identification, validate <em>File</em> or <em>Information
+            package</em> structures, check for malware, verify checksums, or check for completeness of a
+            delivery against an inventory. Human reviewers, for example, may evaluate content
+            accuracy, <em>Metadata</em> completeness, and contextual adequacy. The processes should be
+            automated as much as possible for faster processing and to avoid human errors.
+        </p><p>
+            Results from Data Quality Assessment affect preservation planning decisions (e.g. what
+            additional <em>Metadata</em> needs to be captured). The assessment also establishes baseline
+            quality metrics that can be monitored over time to detect degradation or other changes that
+            might necessitate intervention.
+        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Ingest</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Metadata ingest</span></td><td>CPP-016 (Metadata Ingest and Management)</td></tr><tr><td><span>Mass export of <em>AIPs</em> from the TDA</span></td><td>CPP-006 (AIP Batch Export)</td></tr><tr><td><span>Periodic re-appraisal</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Preservation objectives</span></td><td class="stepsColumn" rowspan="1"><span>
+                        Based on preservation intent as
+                        defined by Community Watch,
+                        derive quality properties that will
+                        be extracted by other CPPs
+                    </span></td><td rowspan="1"><span>Quality properties</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1"></td><td rowspan="1"><span>Quality properties</span></td><td class="stepsColumn" rowspan="1"><span>
+                        The TDA receives a defined set of quality properties and determines
+                        what data is required to create a quality assessment report. This
+                        triggers steps 3 to 8
+                    </span></td><td rowspan="1"><span>Specification of the data required for the assessment. </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="4">3</td><td rowspan="1"></td><td rowspan="1"><span>Specification of the data required for the assessment</span></td><td class="stepsColumn" rowspan="4"><span>If quality properties concern file formats:</span><br></br><span>Assess the file format against the preferred formats policy</span></td><td rowspan="4"><span>Technical quality report</span></td><td rowspan="4"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>File</em>
+                        </span></td></tr><tr><td rowspan="1">CPP-008 (File Format Identification)</td><td rowspan="1"><span>File format identifier</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Format policy - preferred formats</span></td></tr><tr></tr><tr><td rowspan="3">4</td><td rowspan="1"></td><td rowspan="1"><span>Specification of the data required for the assessment</span></td><td class="stepsColumn" rowspan="3"><span>If quality properties concern the validity of formats:</span><br></br><span>Assess the validity status.</span></td><td rowspan="3"><span>Technical quality report</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>File</em>
+                        </span></td></tr><tr><td rowspan="1">CPP-010 (File Format Validation)</td><td rowspan="1"><span>Validity status</span></td></tr><tr></tr><tr><td rowspan="4">5</td><td rowspan="1"></td><td rowspan="1"><span>Specification of the data required for the assessment</span></td><td class="stepsColumn" rowspan="4"><span>
+                        If quality properties concern technical qualities or
+                        completeness of <em>Files</em> or <em>Representations</em>:
+                    </span><br></br><span>
+                        Assess the technical quality and completeness against quality properties
+                    </span></td><td rowspan="4"><span>Technical quality report</span></td><td rowspan="4"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>File</em> /                            <em>Representation</em>
+                        </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Quality properties</span></td></tr><tr><td rowspan="1">CPP-009 (Metadata Extraction)</td><td rowspan="1"><span>Extracted <em>Metadata</em>
+                        </span></td></tr><tr></tr><tr><td rowspan="4">6</td><td rowspan="1"></td><td rowspan="1"><span>Specification of the data required for the assessment</span></td><td class="stepsColumn" rowspan="4"><span>If quality properties concern metadata quality:</span><br></br><span>Assess the metadata quality.</span></td><td rowspan="4"><span>Metadata ingest report</span></td><td rowspan="4"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Metadata recording policy</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>Object</em>
+                        </span></td></tr><tr><td rowspan="1">CPP-016 (Metadata Ingest and Management)</td><td rowspan="1"><span>
+                            <em>Metadata</em>
+                        </span></td></tr><tr></tr><tr><td rowspan="2">7</td><td rowspan="1"></td><td rowspan="1"><span>Specification of the data required for the assessment</span></td><td class="stepsColumn" rowspan="2"><span>If quality properties concern existence of malware:</span><br></br><span>Scan for malware</span></td><td rowspan="2"><span>Virus scanning report</span></td><td rowspan="2"></td></tr><tr><td rowspan="1">CPP-007 (Virus Scanning)</td><td rowspan="1"><span>
+                            <em>File</em>
+                        </span></td></tr><tr></tr><tr><td rowspan="3">8</td><td rowspan="1"></td><td rowspan="1"><span>Specification of the data required for the assessment</span></td><td class="stepsColumn" rowspan="3"><span>
+                        If quality properties concern the legal status and authenticity of the 
+                        <em>Object</em>:
+                    </span><br></br><span>Assess the legal status of the <em>Object</em>
+                    </span></td><td rowspan="3"><span>Legal status report</span></td><td rowspan="3"></td></tr><tr><td rowspan="1">CPP-020 (Rights Management)</td><td rowspan="1"><span>
+                            <em>Rights metadata</em>
+                        </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>Object</em>
+                        </span></td></tr><tr></tr><tr><td rowspan="6">9</td><td rowspan="1"></td><td rowspan="1"><span>File format identifier</span></td><td class="stepsColumn" rowspan="6"><span>Creation of quality assessment report from suppliers</span></td><td rowspan="6"><span>Quality assessment report</span></td><td rowspan="6"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Validity status</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Metadata ingest report</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Technical quality report</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Virus scanning report</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Legal status report</span></td></tr><tr></tr><tr><td rowspan="1">10</td><td rowspan="1"></td><td rowspan="1"><span>Quality assessment report</span></td><td class="stepsColumn" rowspan="1"><span>Assess the quality of an <em>Object</em> during specific stages (e.g. during ingest)</span></td><td rowspan="1"><span></span></td><td rowspan="1">CPP-029 (Ingest)</td></tr><tr></tr><tr><td rowspan="1">11</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>
+                        Optional: The quality of an <em>Object</em>,                        <em>AIP</em> or <em>Metadata</em>
+                        can be enhanced or modified based on the quality assessment report. It may run for
+                        example some of the following CPPs:
+                    </span><ul>
+                        <li>
+                            <span>CPP-014 (File Migration)</span>
+                        </li>
+                        <li>
+                            <span>CPP-016 (Metadata Ingest and Management)</span>
+                        </li>
+                        <li>
+                            <span>CPP-017 (Disposal)</span>
+                        </li>
+                        <li>
+                            <span>CPP-026 (File Normalisation)</span>
+                        </li>
+                    </ul></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>
+                    Quality assessment identifies vulnerabilities before they result in
+                    data loss, allowing the TDA to take preventive action rather than reactive
+                    measures.
+                </span><br></br><span>
+                    As digital preservation spans decades or centuries during which
+                    technological environments will change completely multiple times, the
+                    data quality assessment evaluates whether current <em>Objects</em> contain
+                    sufficient technical and contextual information to remain interpretable by
+                    future systems and users.
+                </span></td><td><span>Uncontrolled file format obsolescence, hardware failure or bit corruption.</span><br></br><span>Loss of content interpretability over time, authenticity and/or significant properties.</span></td></tr><tr><td><span>
+                    Data Quality Assessment helps the TDA to take informed preservation
+                    decisions regarding appraisal and re-appraisal based on quality metrics.
+                    Identification, automated extraction and correct interpretation of such
+                    metrics is fundamental to collection development.
+                </span></td><td><span>
+                    No knowledge or no capacity to assess the quality of the <em>Object</em> could lead to appraisal of
+                    <em>Representations</em> of poor quality despite <em>Representations</em> of better quality being available.
+                </span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-007</td><td>Virus Scanning</td><td><span>
+                    Virus Scanning acts as a supplier since scanning for viruses is performed as a step
+                    in the overall Data Quality Assessment.
+                </span></td></tr><tr><td>CPP-009</td><td>Metadata Extraction</td><td><span>
+                    Metadata extraction returns <em>Metadata</em> that are used to assess the 
+                    <em>File</em> quality (e.g. for an audiovisual <em>File</em> quality assessment 
+                    may rely on <em>Metadata</em> such as bit depth, sampling frequency, etc.)
+                </span></td></tr><tr><td>CPP-018</td><td>Community Watch</td><td><span>
+                    The signals from the community may affect the Data Quality Assessment. For example,
+                    the Data Quality Assessment performed during Ingest may result in extraction of
+                    quality properties that are required by the Designated Community.
+                </span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>May require</td><td>CPP-020</td><td>Rights Management</td><td><span>Assessing the legal status and authenticity of <em>Objects</em> requires <em>Rights metadata</em>.</span></td></tr><tr><td>May require</td><td>CPP-005</td><td>Identifier Management</td><td><span>Data Quality Assessment may include validating the PIDs and their linked resources.</span></td></tr><tr><td>Required by</td><td>CPP-009</td><td>Metadata Extraction</td><td><span>
+                    The selection of an appropriate extractor tool depends on
+                    requirements as provided by Data Quality Assessment.
+                </span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>
+                    Ingest uses the Quality Assessment report as produced by Data Quality
+                    Assessment to accept or reject the <em>Object</em>.
+                </span></td></tr><tr><td>May be required by</td><td>CPP-029</td><td>Ingest</td><td><span>
+                    The TDA may have quality requirements as produced by Data
+                    Quality Assessment that may be checked during ingest.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>Object management reporting relates to re-evaluating quality dimensions.</span></td></tr><tr><td>Affinity with</td><td>CPP-022</td><td>Significant Properties Definition</td><td><span>
+                    As Data Quality Assessment identifies quality properties whose value will
+                    determine whether the <em>Objects</em> are ingested or not, these quality
+                    properties will likely be also considered significant by the TDA.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-023</td><td>Risk Definition and Extraction</td><td><span>
+                    Both CPP-019 and CPP-023 are defining properties that the TDA
+                    should consider and interpret against the result of CPP-009 (Metadata
+                    extraction).
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-025</td><td>Enabling Access</td><td><span>
+                    <em>DIPs</em> should conform to the quality aspects as specified by the TDA.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Quality Assurance</span></td><td><span>R10 Quality Assurance</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Quality Assurance</span></td><td><span>
+                    The question of quality assurance is
+                    mentioned in
+                </span><ul>
+                    <li>
+                        C22 Transformation of the submission information packages 
+                        into archival information packages
+                    </li>
+                    <li>
+                        C23 Archival information packages
+                    </li>
+                    <li>
+                        C24 Interpretability of the archival information
+                    </li>
+                    <li>
+                        C25 Transformation of archival information packages into dissemination information packages
+                    </li>
+                    <li>
+                        C26 Dissemination information packages
+                    </li>
+                </ul></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>Quality control</span></td><td><span>
+                    3.3.2.1 The repository shall have mechanisms for review, update, and
+                    ongoing development of its Preservation Policies as the repository grows and as
+                    technology and community practice evolve
+                </span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Quality Assurance</span></td><td><ul>
+                    <li>4.2.2 General</li>
+                    <li>4.2.3.3 Ingest</li>
+                    <li>Figure A-1: Composite of Functional Entities</li>
+                </ul></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td>/</td><td>/</td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Access Quality Metrics for Net Art</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Rhizome, US</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="https://doi.org/10.17605/OSF.IO/6RNK4">https://doi.org/10.17605/OSF.IO/6RNK4</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>
+                        Rhizome’s ArtBase faces significant challenges in providing
+                        high-quality, reliable access to their collections. Over time, the
+                        software, hardware, and file formats used to create and view
+                        these works become obsolete, leading to a degraded user
+                        experience or rendering the art inaccessible.
+                    </span></td></tr><tr><td>Problem statement</td><td><span>
+                        The primary problem is the lack of a standardised method to
+                        help users of the ArtBase archive navigate the various versions
+                        and access methods of digital artworks. The archive holds
+                        multiple "variants" of each piece, which might include live
+                        versions from a web server, archived copies, or versions viewed
+                        through emulators. Each variant offers a different experience,
+                        and without a guide, users might unknowingly choose a version
+                        that is incomplete or partially non-functional. The paper notes
+                        that visitors need a way to make an informed choice between a
+                        version that is integrated into the modern internet landscape but
+                        potentially broken, and one that is more historically accurate but
+                        requires a special, emulated environment.
+                    </span></td></tr><tr><td>Proposed solution</td><td><span>
+                        The proposed solution is a system that calculates an "access
+                        quality score" for each variant of an artwork. This score is a
+                        single value, derived from a combination of <em>Technical metadata</em>
+                        and curatorial information, which indicates how complete and
+                        functional an artwork's performance is likely to be. The system
+                        uses a data model to define variants as a combination of
+                        archived <em>Files</em> ("artifacts") and the software environment
+                        ("machine") used to view them. The score is calculated by
+                        determining whether a machine's capabilities support the data
+                        formats within the artifact. This system aims to present a simple,
+                        three-level "stoplight" indicator (green, yellow, or red) that guides
+                        visitors to the best available version, manages their expectations
+                        for works with known issues, and ultimately improves the user
+                        experience of the ArtBase archive.
+                    </span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="2">
+                    TIB – Leibniz Information Centre for Science and Technology and University Library
+                , DE</td><td rowspan="2">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608984/Specifications">https://wiki.tib.eu/confluence/spaces/lza/pages/93608984/Specifications</a></td></tr><tr><td>English</td><td><a href="https://github.com/TIB-Digital-Preservation/pre-ingest-analyzer">https://github.com/TIB-Digital-Preservation/pre-ingest-analyzer</a><div>(TIB Pre-Ingest Analyzer (PIA))</div></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://digitalpreservation.fi/en/specifications">https://digitalpreservation.fi/en/specifications</a></td></tr><tr><td rowspan="2">Achivematica, CA</td><td rowspan="2">Digital preservation system</td><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/appraisal/appraisal/">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/appraisal/appraisal/</a><div>(Manual assessment can be done using the Appraisal Tab)</div></td></tr><tr><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices</a><div>(Some of the information needed for quality assessment (e.g. file format validation, 
+                    characterisation, virus scanning) is produced during the Transfer process)</div></td></tr></table></div></div></body></html>
