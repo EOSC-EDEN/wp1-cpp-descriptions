@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-025_Enabling_Access</title></head><body><div class="introSection"><div class="title"><h1>Enabling Access (CPP-025)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-025</td></tr><tr><td>CPP-Label</td><td>Enabling Access</td></tr><tr><td>Author</td><td>Mikko Laukkanen, Johan Kylander</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA gives access to its Information Objects to authorised internal users or end users.
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Request for a DIP</td></tr><tr><td rowspan="1">Metadata</td><td>Request Metadata specifying the kind of
+							 digital Objects to be accessed (master Files
+							 or derivatives)</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Access policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Data</td><td>
+          DIP
+        </td></tr><tr><td rowspan="1">Metadata</td><td>
+          Technical metadata
+        </td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Data access in digital preservation refers to the ability to retrieve, view, and use preserved
+		digital materials in meaningful ways over extended periods of time. The access as a whole
+		involves several aspects. This CPP concentrates on the aspects within technical
+		accessibility, and leaves out aspects like <b>Enabling Discovery</b> (CPP-024) and delivery
+		methods (e.g. user interfaces and APIs). A TDA must implement access to the data it
+		preserves to consumers that are authorised to access the data in question.</p><p>Technical accessibility means ensuring that digital <em>Files</em> remain readable and usable despite
+		technological change. This requires maintaining compatibility with current systems through
+		<b>File Migration</b> (CPP-014), emulation strategies (CPP-015 <b>Emulation and Rendering
+		Tools</b>), or preservation of legacy hardware and software environments. The preserved data
+		must be retrievable from storage systems and renderable in forms that users can actually
+		engage with.</p><p>From a technical point of view, <b>Enabling Access</b> is about providing <em>DIPs</em> containing the
+		requested data in appropriate <em>Representations</em>. The TDA, upon receiving a request, creates
+		and provides a <em>DIP</em> from one or more <em>AIPs</em> stored in the TDA. The TDA also, if it supports
+		this, provides access to derivatives that are <em>Representations</em> of the preserved data that are
+		specifically created for use, viewing, or interaction, rather than giving them access to the
+		master data. The derivatives can be created at different stages of digital preservation: in
+		pre-ingest phase, during ingest, within the preservation lifespan, or on the fly when the
+		derivative is needed. This approach is TDA-dependent and can be enforced by a policy. In
+		any of these cases, however, the access process should always provide the data in the form
+		of a <em>DIP</em> by a TDA to a consumer (e.g. end user; portal or aggregator; data publication
+		platform or some other service or system communicating with the TDA).</p><p>The accessed data may include restrictions or sensitive, confidential or rights-protected parts
+		(CPP-020 <b>Rights Management</b>). Also, an organisation’s data can be non-public, and/or
+		non-accessible for other organisations. Therefore, access should incorporate authentication
+		and authorisation functions to control who can access what data, implementing necessary
+		restrictions while enabling legitimate use. Restrictions on accessing data (particularly digital
+		<em>Objects</em>) are usually different from restrictions to find and discover data (CPP-024 <b>Enabling
+		Discovery</b>).</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Request for a <em>DIP</em></span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1"></td><td rowspan="1"><span><em>DIP</em> request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA receives a <em>DIP</em> request specifying the type of data to be accessed</span></td><td rowspan="1"><span>Requester info from the request</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="2"></td><td rowspan="2"><span>Requester info from the request</span></td><td class="stepsColumn" rowspan="2"><span>The TDA authenticates the request</span></td><td rowspan="1"><span>Authenticated request (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Rejected request (return rejection message to requester, got to step 4 and then
+					end the process after logging it)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>Requester info from the request</span></td><td class="stepsColumn" rowspan="2"><span>The TDA authorises the request</span></td><td rowspan="1"><span>Authorised request (step4)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1">CPP-020 (Rights Management)</td><td rowspan="1"><span>Rights statement</span></td><td rowspan="1"><span>Rejected request (return rejection message to requester, got to step 4 and then
+					end the process after logging it)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span><em>DIP</em> request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA logs the request for statistical reporting and auditing</span></td><td rowspan="1"><span>Access log</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5a</td><td rowspan="1"></td><td rowspan="1"><span>Authenticated and authorised request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA locates the <em>AIP</em> or set of <em>AIPs</em>, from which the <em>DIP</em> is created</span></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5b</td><td rowspan="1"></td><td rowspan="1"><span>Non-authenticated or unauthorised request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA responds with error</span></td><td rowspan="1"><span>Error response</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6a</td><td rowspan="1"></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td class="stepsColumn" rowspan="1"><span>The TDA ensures that the selected <em>AIP</em> or set of <em>AIPs</em> is valid and intact (e.g. performs checksum validation and other potential checks)</span></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6b</td><td rowspan="1">CPP-020 (Rights Management)</td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td class="stepsColumn" rowspan="1"><span>If the request includes derivatives that should be created, the TDA uses CPP-028 (<b>Creation of Derivatives</b>) to create the copies on the fly (if the TDA supports this)</span></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6c</td><td rowspan="1"></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td class="stepsColumn" rowspan="1"><span>The TDA creates a <em>DIP</em> from the <em>AIP</em> or set of <em>AIPs</em> (<em>AIP</em> to DIP transformation) and the potential derivatives</span></td><td rowspan="1"><span>
+              <em>DIP</em>
+            </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6d</td><td rowspan="1"></td><td rowspan="1"><span>
+              <em>DIP</em>
+            </span></td><td class="stepsColumn" rowspan="1"><span>The TDA checks that the created <em>DIP</em> is valid according to its specifications before making it available</span></td><td rowspan="1"><span>
+              <em>DIP</em>
+            </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"><span>
+              <em>DIP</em>
+            </span></td><td class="stepsColumn" rowspan="1"><span>The TDA makes the <em>DIP</em> available to the requester or consumer</span></td><td rowspan="1"><span>Delivered <em>DIP</em></span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Data access is an essential functionality of a TDA, because of
+				its purpose to maintain	the long-term availability of the
+				preserved information. Preservation aims to ensure that information
+				remains discoverable, accessible and usable.</span></td><td><span>Without access, digital preservation becomes just an expensive storage.
+				Thus, the TDA fails to fulfill its purpose to maintain the long-term
+				availability of digital <em>Objects</em> over time.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-002</td><td>Checksum Validation</td><td><span>During the access process, the fixity of the provided digital
+				<em>Object</em> is validated.</span></td></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>Accessing digital <em>Objects</em>, <em>Files</em> or <em>Metadata</em> should be
+				based on identifiers as parameters.</span></td></tr><tr><td>CPP-020</td><td>Rights Management</td><td><span>The TDA must assess access rights to check it is
+				authorised to provide access to the requester.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-015</td><td>Emulation and Rendering Tools</td><td><span>The access request is the trigger to invoke the rendering process or start up
+				the emulated environment.</span></td></tr><tr><td>Required by</td><td>CPP-017</td><td>Disposal</td><td><span>Disposal prevents access to the <em>Objects</em>. Also, preventing access can be
+				considered as "logical disposal".</span></td></tr><tr><td>Required by</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>The request for access can trigger the creation of a derivative
+				for rendering purposes (e.g. derivatives may be created on
+				the fly if Access cannot rely on an existing derivative).</span></td></tr><tr><td>Affinity with</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>Access of contents includes providing <em>Provenance</em> metadata, statistical
+				data and quality reports to the consumer.</span></td></tr><tr><td>Affinity with</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span><em>DIPs</em> should conform to the quality aspects specified by the TDA.</span></td></tr><tr><td>Affinity with</td><td>CPP-024</td><td>Enabling Discovery</td><td><span>Enabling Discovery is about making data findable, while Enabling Access
+				is about providing the data to a consumer. Data may have different
+				restrictions for discovery and access.</span></td></tr><tr><td>Not to be confused with</td><td>CPP-006</td><td>AIP Batch Export</td><td><span>Enabling Access does not export the data from TDA.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Access</span></td><td><span>R01 The repository has an explicit mission to provide access to and preserve digital objects.</span><br></br><span>R03 The Repository has a plan to ensure ongoing access to and preservation of its data and metadata.</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Access</span></td><td><span>C4 Access</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>Access</span><br></br><span>Access management</span></td><td><span>3.1.1</span><br></br><span>4.6</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Access</span></td><td><span>4.2.3.8. Access</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Dissemination</span></td><td><span>Glossary</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608366/Access">https://wiki.tib.eu/confluence/spaces/lza/pages/93608366/Access</a></td></tr><tr><td rowspan="1">CSC - IT Center for Science Ltd., Finland, FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2023062157386">https://urn.fi/urn:nbn:fi-fe2023062157386</a><div>(section 2.2, Principles 3 and 5)</div></td></tr></table></div></div></body></html>
