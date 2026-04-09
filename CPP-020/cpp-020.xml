@@ -41,12 +41,12 @@
 (access, migrate, etc.) and for end users (access, reuse, etc.)</cpp:shortDefinition>
     <cpp:classification>
         <cpp:oaisClassification>Administration</cpp:oaisClassification>
-        <cpp:logicalClassification>Lifecycle Management</cpp:logicalClassification>
+        <cpp:logicalClassification>Other Activities</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
-        <p>Rights Management is the process of performing rights assessments for Objects and Metadata preserved by the TDA, and managing a rights registry that describes rights basis applicable to these. The rights assessment process must investigate and, if possible, obtain rights applying to both the TDA for retaining and performing its preservation activities, and the consumer for accessing and reusing the Objects.</p> 
+        <p>Rights Management is the process of performing rights assessments for <em>Objects</em> and <em>Metadata</em> preserved by the TDA, and managing a rights registry that describes rights basis applicable to these. The rights assessment process must investigate and, if possible, obtain rights applying to both the TDA for retaining and performing its preservation activities, and the consumer for accessing and reusing the <em>Objects</em>.</p> 
         <p>The entity responsible for creating rights statements is the TDA, based on input from the rights stakeholders. Managing rights can be complex and involve multiple and conflicting perspectives. For example, a TDA will typically seek the rights to preserve its holdings and provide open access to the widest possible community, but it also needs to respect rights that limit what it can do and what access it can provide (e.g. data privacy under GDPR). This adds extra complexity, for example a TDA will often be a data processor for the data it is holding and providing access to on behalf of others, but it may also be a data controller if ownership has been assigned to it or if it is directly involved in data collection. Furthermore, in order to perform its mission, it may collect further data about its users (e.g. to allow it to better understand and meet the needs of its designated community) and this usage data also has rights associated with it.</p> 
-        <p>The process of rights assessment consists in determining the rights status of a specific Object or Metadata regarding different rights basis. Rights basis, as defined as PREMIS, are of different types:</p>
+        <p>The process of rights assessment consists in determining the rights status of a specific <em>Object</em> or <em>Metadata</em> regarding different rights basis. Rights basis, as defined as PREMIS, are of different types:</p>
         <ul>
             <li>Copyright and intellectual property</li>
             <li>Laws</li> 
@@ -58,15 +58,15 @@
         </ul>
         <p>The output of rights assessment is a rights statement that defines:</p> 
         <ul>
-            <li>The rights basis applicable to the Object and Metadata;</li>
-            <li>The period of time during which the Object is governed by said rights basis;</li> 
+            <li>The rights basis applicable to the <em>Object</em> and <em>Metadata</em>;</li>
+            <li>The period of time during which the <em>Object</em> is governed by said rights basis;</li> 
             <li>The rules these rights basis prescribe.</li>
         </ul>
-        <p>Rules are actions (e.g. migrate, give access to, reuse, share, etc.) allowed, prohibited or required by a certain agent (e.g. rights holder, grantor, data controller etc.) to a certain agent (i.e. assignee), and conditions or restrictions limiting the scope of such rules. Among these actions, retention is a crucial one that might be limited in time as Objects may be subject to a retention schedule. After that time they can become a liability and may be deleted.</p>
-        <p>The output of Rights Management is used to define the rights of the TDA to perform several other processes. Only the most obvious ones are mentioned as direct customers for the rights statement: Ingest, Enabling Access, Format Migration, Normalisation, File Repair, Enabling Discovery, and Disposal. In other words, TDAs must ensure to obtain the right to perform preservation actions from laws, licenses or explicit rights assignment from rights stakeholders (i.e. rights holders, data subjects, data controllers, regulators, funding bodies, etc.). They should also clarify to their consumers the actions they are allowed to perform with the Objects. This implies that TDAs must provide rights statements to the consumers.</p>
-        <p>Although Rights statements are commonly attached to Intellectual Entities (IE), they may also apply to specific Representations of such IEs. They should also apply to all Metadata provided to internal users or consumers, in particular to discovery Metadata. This is especially important in cases where the Metadata contains personal data. Complying with the restrictions set in rights statements forms a part of how a TDA manages information security.</p>
-        <p>Rights management, as the production of rights statements, is a recurrent activity. A minimal rights assessment must be performed at the ingest phase, but a more comprehensive assessment may be postponed to a later time in the Object’s life cycle, in particular, when a request for access is made to the TDA. In some cases the outcome of a rights assessment process triggers a TDA to facilitate the update and management of Metadata (e.g. cases where data must be pseudonymised or anonymised) or even disposal, if the legal basis for preserving the data has changed. External events can also trigger rights re-assessment activities (e.g. legislative holds for compliance reasons, changes in consent, or notifications of possible infringement for example copyright). In other cases, rights management can trigger or schedule changes in access given to Objects for a designated community (e.g. embargoes and leases on research data). A lease is the opposite of an embargo. An embargo restricts access until a given time, for example a dataset can be publicly accessible but only after a given date. A lease says that a dataset can be made accessible but only before a given date and afterwards access is restricted or removed. Likewise, rights may inform retention schedules that trigger future events such as transfer or disposal. Therefore, it is important that the temporal aspect of rights are properly tracked and managed.</p>
-        <p>A single rights basis usually applies to several Objects or Metadata (e.g. a Creative Commons license). Thus, the Rights Management process also consists in managing a rights basis registry.</p>
+        <p>Rules are actions (e.g. migrate, give access to, reuse, share, etc.) allowed, prohibited or required by a certain agent (e.g. rights holder, grantor, data controller etc.) to a certain agent (i.e. assignee), and conditions or restrictions limiting the scope of such rules. Among these actions, retention is a crucial one that might be limited in time as <em>Objects</em> may be subject to a retention schedule. After that time they can become a liability and may be deleted.</p>
+        <p>The output of Rights Management is used to define the rights of the TDA to perform several other processes. Only the most obvious ones are mentioned as direct customers for the rights statement: Ingest, Enabling Access, Format Migration, Normalisation, File Repair, Enabling Discovery, and Disposal. In other words, TDAs must ensure to obtain the right to perform preservation actions from laws, licenses or explicit rights assignment from rights stakeholders (i.e. rights holders, data subjects, data controllers, regulators, funding bodies, etc.). They should also clarify to their consumers the actions they are allowed to perform with the <em>Objects</em>. This implies that TDAs must provide rights statements to the consumers.</p>
+        <p>Although Rights statements are commonly attached to Intellectual Entities (IE), they may also apply to specific Representations of such IEs. They should also apply to all <em>Metadata</em> provided to internal users or consumers, in particular to discovery <em>Metadata</em>. This is especially important in cases where the <em>Metadata</em> contains personal data. Complying with the restrictions set in rights statements forms a part of how a TDA manages information security.</p>
+        <p>Rights management, as the production of rights statements, is a recurrent activity. A minimal rights assessment must be performed at the ingest phase, but a more comprehensive assessment may be postponed to a later time in the <em>Object</em>’s life cycle, in particular, when a request for access is made to the TDA. In some cases the outcome of a rights assessment process triggers a TDA to facilitate the update and management of <em>Metadata</em> (e.g. cases where data must be pseudonymised or anonymised) or even disposal, if the legal basis for preserving the data has changed. External events can also trigger rights re-assessment activities (e.g. legislative holds for compliance reasons, changes in consent, or notifications of possible infringement for example copyright). In other cases, rights management can trigger or schedule changes in access given to <em>Objects</em> for a designated community (e.g. embargoes and leases on research data). A lease is the opposite of an embargo. An embargo restricts access until a given time, for example a dataset can be publicly accessible but only after a given date. A lease says that a dataset can be made accessible but only before a given date and afterwards access is restricted or removed. Likewise, rights may inform retention schedules that trigger future events such as transfer or disposal. Therefore, it is important that the temporal aspect of rights are properly tracked and managed.</p>
+        <p>A single rights basis usually applies to several <em>Objects</em> or <em>Metadata</em> (e.g. a Creative Commons license). Thus, the Rights Management process also consists in managing a rights basis registry.</p>
     </cpp:descriptionAndScope>
     <cpp:process>
         <cpp:inputs>
@@ -94,7 +94,7 @@
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Any process that requires rights clearance to act upon an Object, if a
+                    <span>Any process that requires rights clearance to act upon an <em>Object</em>, if a
 comprehensive rights assessment was not performed at ingest</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
@@ -126,12 +126,12 @@ comprehensive rights assessment was not performed at ingest</span>
             <cpp:step stepNumber="1">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Object</span>
+                        <span><em>Object</em></span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Metadata</span>
+                        <span><em>Metadata</em></span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
@@ -140,7 +140,7 @@ comprehensive rights assessment was not performed at ingest</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Determine which rights basis apply to the Object or Metadata</span>
+                    <span>Determine which rights basis apply to the <em>Object</em> or <em>Metadata</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
@@ -188,7 +188,7 @@ comprehensive rights assessment was not performed at ingest</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="4">
+            <cpp:step stepNumber="4" optional="true">
                 <cpp:input>
                     <cpp:inputElement>
                         <span>Applicable rights basis</span>
@@ -205,7 +205,7 @@ comprehensive rights assessment was not performed at ingest</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>I needed (depending on the the existing status of the Object and the applicable rights basis and rules) negotiate with the producer new rights assignment</span>
+                    <span>If needed (depending on the the existing status of the <em>Object</em> and the applicable rights basis and rules) negotiate with the producer new rights assignment</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
@@ -213,7 +213,7 @@ comprehensive rights assessment was not performed at ingest</span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="5">
+            <cpp:step stepNumber="5" optional="true">
                 <cpp:input>
                     <cpp:inputElement>
                         <span>New rights basis (e.g. contract, license, etc.)</span>
@@ -231,7 +231,7 @@ comprehensive rights assessment was not performed at ingest</span>
             <cpp:step stepNumber="6">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Object</span>
+                        <span><em>Object</em></span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
@@ -250,7 +250,7 @@ comprehensive rights assessment was not performed at ingest</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Associate the Object with the rights statement</span>
+                    <span>Associate the <em>Object</em> with the rights statement</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
@@ -265,7 +265,7 @@ comprehensive rights assessment was not performed at ingest</span>
                     <cpp:customer>CPP-017</cpp:customer>
                 </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="7">
+            <cpp:step stepNumber="7" optional="true">
                 <cpp:input>
                     <cpp:inputElement>
                         <span>Rights statement</span>
@@ -281,10 +281,10 @@ comprehensive rights assessment was not performed at ingest</span>
                     <cpp:customer>CPP-016</cpp:customer>
                 </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="8">
+            <cpp:step stepNumber="8" optional="true">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Metadata</span>
+                        <span><em>Metadata</em></span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:input>
@@ -295,7 +295,7 @@ comprehensive rights assessment was not performed at ingest</span>
                 <cpp:stepDescription>
                     <span>If the updated rights statement requires, trigger one of the following processes:</span>
                     <ul>
-                        <li>Metadata must be anonymised (or pseudonymised)</li>
+                        <li><em>Metadata</em> must be anonymised (or pseudonymised)</li>
                         <li>Disposal of Information packages</li> 
                         <li>Grant / deny access to a specific community.</li>
                     </ul>
@@ -314,10 +314,13 @@ comprehensive rights assessment was not performed at ingest</span>
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span>A minimal rights assessment at the ingest phase is required, although a more comprehensive process may be carried out at a later time in the Object life cycle.</span>
+                <span>A minimal rights assessment at the ingest phase is required, although a more comprehensive process may be carried out at a later time in the <em>Object</em> life cycle.</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Without rights assessment, a TDA might be incapable of performing preservation actions. Its consumers might be discouraged to use the Object if no explicit rights statement is provided by the TDA. The TDA might be exposed to liability or legal and financial harm. The TDA may end up retaining data for longer than needed or allowed, which can increase costs (e.g. storage).</span>
+                <span>Without rights assessment, a TDA might be incapable of performing preservation actions.</span>
+                <span>Its consumers might be discouraged to use the <em>Object</em> if no explicit rights statement is provided by the TDA.</span>
+                <span>The TDA might be exposed to liability or legal and financial harm.</span>
+                <span>The TDA may end up retaining data for longer than needed or allowed, which can increase costs (e.g. storage).</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -403,10 +406,10 @@ comprehensive rights assessment was not performed at ingest</span>
                     <cpp:hyperlink>/</cpp:hyperlink>
                 </cpp:linkToDocumentation>
                 <cpp:triggerEvent>
-                    <span>The born-digital acquisitions and donations process at the National Library of France collects Objects from creators (filmmakers, graphic designers, photographs, etc.). The Objects aim to document the creative processes that eventually produced a work of art, some of which being collective. Rights of different nature may apply to these archives. Therefore, the process includes a mandatory step consisting in assessing rights applicable to the collected Objects.</span>
+                    <span>The born-digital acquisitions and donations process at the National Library of France collects <em>Objects</em> from creators (filmmakers, graphic designers, photographs, etc.). The <em>Objects</em> aim to document the creative processes that eventually produced a work of art, some of which being collective. Rights of different nature may apply to these archives. Therefore, the process includes a mandatory step consisting in assessing rights applicable to the collected <em>Objects</em>.</span>
                 </cpp:triggerEvent>
                 <cpp:problemStatement>
-                    <span>The assessment usually leads to the signature of a contract which allows BnF to collect, copy, give access, migrate and exhibit Objects. In the case where the producer released the Object under an open license, it may allow BnF to perform such actions on the content without negotiating an explicit contract with the rights holder(s).</span>
+                    <span>The assessment usually leads to the signature of a contract which allows BnF to collect, copy, give access, migrate and exhibit <em>Objects</em>. In the case where the producer released the <em>Object</em> under an open license, it may allow BnF to perform such actions on the content without negotiating an explicit contract with the rights holder(s).</span>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
                     <span>Rights negotiations cover primarily access rights (remotely and without any restriction via the digital library Gallica, on-premise via Gallica Intra Muros or on the library’s public workstations via an access request), retrieval (download) and reuse rights.</span>
