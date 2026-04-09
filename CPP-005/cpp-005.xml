@@ -48,23 +48,23 @@
 
     <cpp:descriptionAndScope>
         <p>Identifier management is the process of creating and updating identifiers 
-            and assigning them to Objects, Metadata or Information packages. Identifiers 
+            and assigning them to <em>Object</em>s, <em>Metadata</em> or <em>Information package</em>s. Identifiers 
             are essential components of digital preservation systems, serving as stable, 
-            long-term references to Digital Objects that can remain valid even when the 
-            Objects themselves are moved, renamed, or migrated to new systems.
+            long-term references to Digital <em>Object</em>s that can remain valid even when the 
+            <em>Object</em>s themselves are moved, renamed, or migrated to new systems.
         </p>
         <p>Identifiers must be managed throughout the entire life cycle, taking into 
-            account any changes to their associated Objects, Metadata or Information packages. 
+            account any changes to their associated <em>Object</em>s, <em>Metadata</em> or <em>Information package</em>s. 
             It is important to consider that not all types of identifiers are globally unique, 
             some are unique only within their own identifier system.
         </p>
         <p>A Persistent Identifier (PID) system can be used to generate unequivocal [1]
-             identifiers to ensure that Objects can be precisely 
+             identifiers to ensure that <em>Object</em>s can be precisely 
             identified worldwide. PIDs are machine-readable strings of characters that 
             conform to a defined scheme. Through providing and updating the reference link 
-            in the Metadata, these identifiers prevent the fundamental problem of "link rot" 
-            and ensure reliable access to preserved Digital Objects over time. However, 
-            this requires continuous maintenance of the identifiers to keep the Metadata 
+            in the <em>Metadata</em>, these identifiers prevent the fundamental problem of "link rot" 
+            and ensure reliable access to preserved Digital <em>Object</em>s over time. However, 
+            this requires continuous maintenance of the identifiers to keep the <em>Metadata</em> 
             up-to-date. Depending on the use case, it may be useful to assign multiple 
             identifiers from different systems to an entity. To be able to provide user-facing 
             PIDs, a TDA must manage local identifiers which provide the minimal baseline for 
@@ -72,41 +72,41 @@
         </p>
         <p>Common examples of PIDs are Digital Object Identifier (DOI), Uniform Resource 
             Name (URN), handles and Archival Resource Key (ARK). One advantage of using PIDs is 
-            that their Metadata can be used to not only provide information about the Object 
+            that their <em>Metadata</em> can be used to not only provide information about the <em>Object</em> 
             itself, but also about its status, access conditions, and storage location. Even 
-            Objects which are not publicly accessible or have been disposed, can be identified 
+            <em>Object</em>s which are not publicly accessible or have been disposed, can be identified 
             and described by a PID. PIDs can also be moved from one organisation’s administration 
             to another.
         </p>
         <p>All types of identifiers can be assigned to multiple levels of entities, 
             creating a hierarchical identification structure that reflects the complex nature 
             of digital collections and their preservation requirements. Identifiers are usually 
-            assigned on the level of a) Objects, b) collections and aggregations, and c) 
-            Information Packages (AIPs and DIPs). In addition, identifiers can be assigned to 
-            Metadata entities, collections of other related entities, and even institutions or 
+            assigned on the level of a) <em>Object</em>s, b) collections and aggregations, and c) 
+            Information Packages (<em>AIP</em>s and <em>DIP</em>s). In addition, identifiers can be assigned to 
+            <em>Metadata</em> entities, collections of other related entities, and even institutions or 
             persons.
         </p>
-        <p>Identifiers and their Metadata should be updated according to the entity’s 
+        <p>Identifiers and their <em>Metadata</em> should be updated according to the entity’s 
             life cycle. In particular, when an entity may be deleted, merged, split or become 
             partially unavailable, its identifier should be preserved. Moreover, its Provenance 
             metadata should be updated in order to provide proper detail of information to the 
             end users about its initial entity as well as the relationships to potential new 
             entities that were created from the initial one. When using PIDs, some changes 
             (e.g. the creation of identical parallel copies of the data that create new internal 
-            identifiers for each copy) can be documented in the PID version Metadata without 
+            identifiers for each copy) can be documented in the PID version <em>Metadata</em> without 
             creating a new PID.
         </p>
         <p>Identifiers in a TDA are created at specific strategic points throughout the 
             preservation life cycle, with timing and methods varying based on institutional 
             policies and system architectures. Identifiers are typically assigned during Ingest 
-            as part of the packaging process, ensuring that every preserved Object has a 
+            as part of the packaging process, ensuring that every preserved <em>Object</em> has a 
             persistent reference from the moment it enters the system. However, some institutions 
             create identifiers earlier in the workflow (e.g. during acquisition planning or 
             transfer preparation). This is especially useful when using PIDs, since it allows 
-            for early referencing and tracking of Objects before they undergo preservation 
+            for early referencing and tracking of <em>Object</em>s before they undergo preservation 
             processing. Identifiers can also be created after the initial preservation 
             processing is complete, particularly when the final preserved format and structure 
-            have been determined. Identifiers can be also assigned to services or Objects which 
+            have been determined. Identifiers can be also assigned to services or <em>Object</em>s which 
             are not stored in the TDA but only generated on the fly based on user requests.
         </p>
         <p>Identifiers may reveal the hierarchical relationships in the identifier string 
@@ -166,13 +166,13 @@ first component or file.
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Creation of new Files or Representations</span>
+                    <span>Creation of new <em>File</em>s or Representations</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-028</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Replacement of corrupted Files</span>
+                    <span>Replacement of corrupted <em>File</em>s</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-004</cpp:correspondingCPP>
             </cpp:triggerEvent>
@@ -202,7 +202,7 @@ first component or file.
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Metadata ingest and creation</span>
+                    <span><em>Metadata</em> ingest and creation</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-016</cpp:correspondingCPP>
             </cpp:triggerEvent>
@@ -214,13 +214,13 @@ first component or file.
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Broken File needs a new identifier</span>
+                    <span>Broken <em>File</em> needs a new identifier</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-027</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Information package, File or Metadata is removed from the TDA holdings</span>
+                    <span><em>Information package</em>, <em>File</em> or <em>Metadata</em> is removed from the TDA holdings</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-017</cpp:correspondingCPP>
             </cpp:triggerEvent>
@@ -367,12 +367,12 @@ first component or file.
                 </cpp:input>
                 <cpp:stepDescription>
                     <span>Assign the new identifier to the entity and add it as a part of 
-                        the entity’s Metadata
+                        the entity’s <em>Metadata</em>
                     </span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Metadata</span>
+                        <span><em>Metadata</em></span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-004</cpp:customer>
                     <cpp:customer>CPP-011</cpp:customer>
@@ -415,17 +415,17 @@ first component or file.
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Metadata</span>
+                        <span><em>Metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="6">
                 <cpp:stepDescription>
-                    <span>Update Provenance metadata for the entity so that identifiers have a history</span>
+                    <span>Update <em>Provenance metadata</em> for the entity so that identifiers have a history</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Provenance metadata</span>
+                        <span><em>Provenance metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -468,8 +468,8 @@ first component or file.
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>While ingesting into a TDA, the Metadata should be assigned an identifier. 
-                    Also, the management functions of the Metadata may require replacing and/or 
+                <span>While ingesting into a TDA, the <em>Metadata</em> should be assigned an identifier. 
+                    Also, the management functions of the <em>Metadata</em> may require replacing and/or 
                     updating identifiers.
                 </span>
             </cpp:relationshipDescription>
@@ -478,7 +478,7 @@ first component or file.
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-017</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>When the life cycle of the Digital Object or File ends, the identifier 
+                <span>When the life cycle of the Digital <em>Object</em> or <em>File</em> ends, the identifier 
                     should be updated to “retired” status.
                 </span>
             </cpp:relationshipDescription>
@@ -487,7 +487,7 @@ first component or file.
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-021</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>When an AIP gets a new version, the new AIP version must also 
+                <span>When an <em>AIP</em> gets a new version, the new <em>AIP</em> version must also 
                     be assigned a new identifier.
                 </span>
             </cpp:relationshipDescription>
@@ -503,7 +503,7 @@ first component or file.
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Accessing Digital Object, File(s) or Metadata should be based on 
+                <span>Accessing Digital <em>Object</em>, <em>File</em>(s) or <em>Metadata</em> should be based on 
                     identifiers as parameters.
                 </span>
             </cpp:relationshipDescription>
@@ -513,7 +513,7 @@ first component or file.
             <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <span>The ingestion workflow is responsible for assigning identifiers 
-                    to various entities in TDA, such as Files and Metadata.
+                    to various entities in TDA, such as <em>File</em>s and <em>Metadata</em>.
                 </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -521,7 +521,7 @@ first component or file.
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>If a File is corrupted, it may need to be repaired or replaced. 
+                <span>If a <em>File</em> is corrupted, it may need to be repaired or replaced. 
                     During this process, a new identifier may be created.
                 </span>
             </cpp:relationshipDescription>
@@ -530,7 +530,7 @@ first component or file.
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-011</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>When a Digital Object or File is replicated, the replicant may 
+                <span>When a Digital <em>Object</em> or <em>File</em> is replicated, the replicant may 
                     be assigned a new identifier.
                 </span>
             </cpp:relationshipDescription>
@@ -548,7 +548,7 @@ first component or file.
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>During format migration, the migrated File format may be 
+                <span>During format migration, the migrated <em>File</em> format may be 
                     assigned a new identifier.
                 </span>
             </cpp:relationshipDescription>
@@ -566,7 +566,7 @@ first component or file.
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>A normalised File format may be assigned with a new identifier.
+                <span>A normalised <em>File</em> format may be assigned with a new identifier.
                 </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -574,14 +574,14 @@ first component or file.
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>A repaired File may get a new identifier.</span>
+                <span>A repaired <em>File</em> may get a new identifier.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-028</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>A derivative of a File may get its own identifier.</span>
+                <span>A derivative of a <em>File</em> may get its own identifier.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -657,7 +657,7 @@ first component or file.
                     <span>Before submitting a dataset to TDA (DPS in Finland), the user describes the dataset 
                     via a description tool or via a metadata API. When a dataset has been submitted, TDA 
                     automatically creates a DataCite description including a new DOI, and eventually it 
-                    creates a corresponding publicly available website for the dataset Metadata.</span>
+                    creates a corresponding publicly available website for the dataset <em>Metadata</em>.</span>
                 </cpp:proposedSolution>
             </cpp:useCase>
         </cpp:useCases>
