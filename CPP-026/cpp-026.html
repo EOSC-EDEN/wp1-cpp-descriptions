@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-026_File_Normalisation</title></head><body><div class="introSection"><div class="title"><h1>File Normalisation (CPP-026)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-026</td></tr><tr><td>CPP-Label</td><td>File Normalisation</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Mikko Laukkanen, Juha Lehtonen</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-30</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA performs operations on the data Objects prior to ingest 
+        in order to comply with its format requirements.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="2">Data</td><td>Submission Information Package</td></tr><tr><td>File</td></tr><tr><td rowspan="1">Metadata</td><td>Technical Metadata (Format identifier)</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>File format policy - Preferred formats</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Data</td><td>New File</td></tr><tr><td>Updated Submission Information Package</td></tr><tr><td rowspan="1">Metadata</td><td>Provenance metadata (Normalisation events, original and normalised formats, timestamp)</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>
+            In the context of digital preservation, File Normalisation refers to the process of converting
+            incoming <em>Files</em> into standardised, well-supported formats that are more likely to be usable
+            and accessible in the long term. These formats are captured in the preferred preservation
+            formats policy of the TDA. The goal is to ensure the long-term usability, accessibility, and
+            intelligibility of digital content by avoiding dependence on obsolete or proprietary formats and
+            start the repository with a consistent, manageable and sustainable set of formats from the
+            start.
+        </p><p>
+            File Normalisation can be driven by an identified risk, in which case it requires that some
+            formats have been assessed a format risk. For each of these formats at risk an alternative
+            format should be available as well as the necessary tools to convert <em>Files</em> from the format at
+            risk to its alternative format.
+        </p><p>
+            <em>File</em> normalisation policy can also be driven by specific organisational requirements like the
+            availability of specialised applications, viewer preferences (e.g. JPEG2000 for IIIF), or the
+            ability to make subsequent processes easier and more efficient such as creating derivatives,
+            tracking and managing risks and obsolescence, and monitoring and reporting of formats in
+            the archive.
+        </p><p>
+            If <em>Files</em> are submitted in a format not part of the list of preferred preservation formats and
+            there is no normalisation path available to convert them to a supported format, the outcome
+            is undefined. It is up to the TDA to decide what happens.
+        </p><p>
+            It may be that the original <em>File</em> is submitted in the <em>SIP</em> along with the normalised <em>File</em> . In this
+            case, the original <em>File</em> can only be in bit-level preservation. Reasons for this may be, for
+            example, to ensure the authenticity of the digital <em>Object</em>, because it is anticipated that the
+            original <em>File</em> format is expected to be useful for the designated community for a reasonable
+            time.
+        </p><p>
+            Normalisation differs from other processes that create new <em>Files</em> or <em>Representations</em>:
+        </p><ul>
+            <li>
+                Unlike Normalisation, <b>Creation of Derivatives</b> reproduces only the information and
+                significant properties of the original that are useful to address specific needs of the
+                designated community. Thus, the output of <b>Creation of Derivatives</b> may lack part of
+                the information that is not required to satisfy said needs.
+            </li>
+            <li>
+                Whereas Normalisation aims at reducing the number of formats by converting <em>Files</em>
+                or <em>Representations</em> to preservation formats defined by the institutional formats policy,
+                <b>File Migration</b> is performed to address a specific preservation risk.
+            </li>
+        </ul></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Submission of an <em>Information Package</em>
+                    </span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Change in file format policy - Preferred formats</span></td><td>CPP-018 (Community Watch)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1a</td><td rowspan="1">CPP-029 (Ingest)</td><td rowspan="1"><span>Each <em>File</em> in the <em>Information Package</em>
+                        </span></td><td class="stepsColumn" rowspan="1"><span>Perform the Format Identification process on the <em>File</em>(s)</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">1b</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Change in file format policy - Preferred formats</span></td><td class="stepsColumn" rowspan="1"><span>
+                        Find <em>Files</em> that require change of normalisation by format, then
+                    process each one
+                    </span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1">CPP-008 (File Format Identification)</td><td rowspan="1"><span>Detected format(s)</span></td><td class="stepsColumn" rowspan="2"><span>Compare the detected format with the list of preferred formats</span></td><td rowspan="1"><span>Complete match: Process completed (step 6)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>File format policy - Preferred formats</span></td><td rowspan="1"><span>Deviation: Determine if the policy provides a normalisation plan (i.e.
+                            sequence of tools and configuration parameters to use on the <em>File</em>) (step 3)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1">CPP-012 (Risk Mitigation)</td><td rowspan="1"><span>Normalisation path</span></td><td class="stepsColumn" rowspan="1"><span>Execute the normalisation plan</span></td><td rowspan="1"><span>Normalised <em>File</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">4</td><td rowspan="2"></td><td rowspan="2"><span>Validation plan</span></td><td class="stepsColumn" rowspan="2"><span>
+                        If present, run the validation plan to determine if the normalised <em>File</em>
+                        provides a similar rendition like the original <em>File</em>. If no validation plan is
+                        available, it is up to the TDA’s policy to decide if manual inspection is needed.
+                    </span></td><td rowspan="1"><span>Validation result: OK (step 5a)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Validation result: Error (5b)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5a</td><td rowspan="1"></td><td rowspan="1"><span>OK</span></td><td class="stepsColumn" rowspan="1"><span>
+                        Replace the original <em>File</em> with the normalised <em>File</em> (or add it) in the
+                        <em>SIP</em> or <em>AIP</em> and adapt the <em>Fixity metadata</em> and <em>Technical metadata</em>
+                    </span></td><td rowspan="1"><span>updated <em>SIP</em> or <em>AIP</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5b</td><td rowspan="1"></td><td rowspan="1"><span>Error</span></td><td class="stepsColumn" rowspan="1"><span>Report the error for the system or operator to decide further action</span></td><td rowspan="1"><span>Stop the process</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Log the normalisation event and its outcome</span></td><td rowspan="1"><span>
+                            <em>Provenance metadata</em> in the <em>SIP</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Store information in supported formats</span></td><td><span>Format migration at a later point could be impossible</span></td></tr><tr><td><span>Anticipate on formats becoming less popular</span></td><td><span>Attempt to migrate data when the tools to do so are no longer available or knowledge about the format is lost</span></td></tr><tr><td><span>
+                    Reducing complexity and risk by normalising to a smaller set of well-chosen formats, TDAs
+                    significantly reduce the technical overhead and resources needed for preservation activities.
+                </span></td><td><span>
+                    TDA must maintain too many file formats, which each in turn needs specific 
+                    knowledge, tools and ongoing maintenance to ensure continued access
+                </span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-008</td><td>File Format Identification</td><td><span>
+                    The format information of the <em>File</em> in question is one of the
+                    deciding input parameters when considering File normalisation.
+                </span></td></tr><tr><td>CPP-012</td><td>Risk Mitigation</td><td><span>
+                    CPP-012 is in charge of designing normalisation paths
+                    whose output would retain all significant properties.
+                </span></td></tr><tr><td>CPP-022</td><td>Significant Properties Definition</td><td><span>
+                    Like Format migration, File Normalisation should be 
+                    evaluated based on significant properties.
+                </span></td></tr><tr><td>CPP-023</td><td>Risk Definition and Extraction</td><td><span>
+                    The level of risk of the detected format is one of the
+                    factors that drives the preferred preservation formats
+                    policy.
+                </span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>May require</td><td>CPP-005</td><td>Identifier Management</td><td><span>A normalised file format may be assigned with a new PID.</span></td></tr><tr><td>May be required by</td><td>CPP-029</td><td>Ingest</td><td><span>
+                    The ingest may require that the digital 
+                    <em>Objects</em> are first normalised before
+                    ingestion.
+                </span></td></tr><tr><td>Facilitates</td><td>CPP-015</td><td>Emulation and Rendering Tools</td><td><span>
+                    Restricting the formats to those that are well supported by the tools
+                    improves the success of this process.
+                </span></td></tr><tr><td>Affinity with</td><td>CPP-014</td><td>File Migration</td><td><span>
+                    Normalisation is performed at Ingest and aims at reducing the number of
+                    formats preserved by converting <em>Files</em> or <em>Representations</em> to preservation
+                    formats defined by the institutional formats policy, while Format migration
+                    is performed after ingest to address a specific preservation risk.
+                </span></td></tr><tr><td>Not to be confused with</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>
+                    Unlike Normalisation, Creation of Derivatives reproduces only the
+                    information and significant properties of the original that is useful to address
+                    specific needs of the Designated Community. Thus, the output of
+                    Creation of Derivatives may lack part of the information that is not required
+                    to satisfy said needs. Normalisation aims to maintain all the significant
+                    properties of the original.
+                </span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>normalising</span></td><td><span>
+                    page 7 of 19 - Levels of Curation: it regards normalisation a requirement to achieve
+                    Curation Levels above B.
+                </span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>normalisation</span></td><td><span>
+                    page 34:  normalisation mentioned as required to document for c17 Authenticity: Ingest
+                </span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>normalisation mentioned in examples</span></td><td><span>4.1.1 - preservation objectives</span><br></br><span>4.2.2 - describing transformations</span><br></br><span>4.2.3.3 - provenance information</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>file format conversion</span></td><td><span>
+                    OAIS mentions in the Generate AIP function of the Ingest Functional Entity:
+                    ‘may involve file format conversions’ (page 4-7)
+                </span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Normalization</span></td><td><span>Glossary, page 271:</span><br></br><span>
+                    Normalization: Form of Migration in which a version of a Digital Object is
+                    created in a new Format with properties more conducive to preservation
+                    treatment. Normalization is oftenimplemented as part of the Ingest process.
+                </span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">CSC - IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2025040925236">https://urn.fi/urn:nbn:fi-fe2025040925236</a><div>(section 7.7)</div></td></tr><tr><td rowspan="2">Archivematica, CA</td><td rowspan="2">Digital preservation system</td><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#normalize">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#normalize</a></td></tr><tr><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization</a><div>(Tableau1_3)</div></td></tr></table></div></div></body></html>

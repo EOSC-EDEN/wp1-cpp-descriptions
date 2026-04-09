@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-026" xml:lang="en">
+    <cpp:header>
+        <cpp:label>File Normalisation</cpp:label>
+        <cpp:authors>
+            <cpp:author>Kris Dekeyser</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Mikko Laukkanen</cpp:contributor>
+            <cpp:contributor>Juha Lehtonen</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Matthew Addis</cpp:evaluator>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-30</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA performs operations on the data Objects prior to ingest 
+        in order to comply with its format requirements.</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Ingest</cpp:oaisClassification>
+        <cpp:logicalClassification>Generation of New Files</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>
+            In the context of digital preservation, File Normalisation refers to the process of converting
+            incoming <em>Files</em> into standardised, well-supported formats that are more likely to be usable
+            and accessible in the long term. These formats are captured in the preferred preservation
+            formats policy of the TDA. The goal is to ensure the long-term usability, accessibility, and
+            intelligibility of digital content by avoiding dependence on obsolete or proprietary formats and
+            start the repository with a consistent, manageable and sustainable set of formats from the
+            start.
+        </p>
+        <p>
+            File Normalisation can be driven by an identified risk, in which case it requires that some
+            formats have been assessed a format risk. For each of these formats at risk an alternative
+            format should be available as well as the necessary tools to convert <em>Files</em> from the format at
+            risk to its alternative format.
+        </p>
+        <p>
+            <em>File</em> normalisation policy can also be driven by specific organisational requirements like the
+            availability of specialised applications, viewer preferences (e.g. JPEG2000 for IIIF), or the
+            ability to make subsequent processes easier and more efficient such as creating derivatives,
+            tracking and managing risks and obsolescence, and monitoring and reporting of formats in
+            the archive.
+        </p>
+        <p>
+            If <em>Files</em> are submitted in a format not part of the list of preferred preservation formats and
+            there is no normalisation path available to convert them to a supported format, the outcome
+            is undefined. It is up to the TDA to decide what happens.
+        </p>
+        <p>
+            It may be that the original <em>File</em> is submitted in the <em>SIP</em> along with the normalised <em>File</em> . In this
+            case, the original <em>File</em> can only be in bit-level preservation. Reasons for this may be, for
+            example, to ensure the authenticity of the digital <em>Object</em>, because it is anticipated that the
+            original <em>File</em> format is expected to be useful for the designated community for a reasonable
+            time.
+        </p>
+        <p>
+            Normalisation differs from other processes that create new <em>Files</em> or <em>Representations</em>:
+        </p>
+        <ul>
+            <li>
+                Unlike Normalisation, <b>Creation of Derivatives</b> reproduces only the information and
+                significant properties of the original that are useful to address specific needs of the
+                designated community. Thus, the output of <b>Creation of Derivatives</b> may lack part of
+                the information that is not required to satisfy said needs.
+            </li>
+            <li>
+                Whereas Normalisation aims at reducing the number of formats by converting <em>Files</em>
+                or <em>Representations</em> to preservation formats defined by the institutional formats policy,
+                <b>File Migration</b> is performed to address a specific preservation risk.
+            </li>
+        </ul>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Submission Information Package</cpp:dataElement>
+                <cpp:dataElement>File</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Technical Metadata (Format identifier)</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>File format policy - Preferred formats</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:data>
+                <cpp:dataElement>New File</cpp:dataElement>
+                <cpp:dataElement>Updated Submission Information Package</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Provenance metadata (Normalisation events, original and normalised formats, timestamp)</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Submission of an <em>Information Package</em>
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Change in file format policy - Preferred formats</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-018</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1a">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Each <em>File</em> in the <em>Information Package</em>
+                        </span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-029</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Perform the Format Identification process on the <em>File</em>(s)</span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="1b">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Change in file format policy - Preferred formats</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-018</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Find <em>Files</em> that require change of normalisation by format, then
+                    process each one
+                    </span>
+                </cpp:stepDescription>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Detected format(s)</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-008</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>File format policy - Preferred formats</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Compare the detected format with the list of preferred formats</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Complete match: Process completed (step 6)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Deviation: Determine if the policy provides a normalisation plan (i.e.
+                            sequence of tools and configuration parameters to use on the <em>File</em>) (step 3)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Normalisation path</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-012</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Execute the normalisation plan</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Normalised <em>File</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Validation plan</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        If present, run the validation plan to determine if the normalised <em>File</em>
+                        provides a similar rendition like the original <em>File</em>. If no validation plan is
+                        available, it is up to the TDA’s policy to decide if manual inspection is needed.
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Validation result: OK (step 5a)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Validation result: Error (5b)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5a">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>OK</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>
+                        Replace the original <em>File</em> with the normalised <em>File</em> (or add it) in the
+                        <em>SIP</em> or <em>AIP</em> and adapt the <em>Fixity metadata</em> and <em>Technical metadata</em>
+                    </span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>updated <em>SIP</em> or <em>AIP</em></span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5b">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Error</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Report the error for the system or operator to decide further action</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Stop the process</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:stepDescription>
+                    <span>Log the normalisation event and its outcome</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>
+                            <em>Provenance metadata</em> in the <em>SIP</em>
+                        </span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Store information in supported formats</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Format migration at a later point could be impossible</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Anticipate on formats becoming less popular</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Attempt to migrate data when the tools to do so are no longer available or knowledge about the format is lost</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    Reducing complexity and risk by normalising to a smaller set of well-chosen formats, TDAs
+                    significantly reduce the technical overhead and resources needed for preservation activities.
+                </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    TDA must maintain too many file formats, which each in turn needs specific 
+                    knowledge, tools and ongoing maintenance to ensure continued access
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-008</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The format information of the <em>File</em> in question is one of the
+                    deciding input parameters when considering File normalisation.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    CPP-012 is in charge of designing normalisation paths
+                    whose output would retain all significant properties.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Like Format migration, File Normalisation should be 
+                    evaluated based on significant properties.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The level of risk of the detected format is one of the
+                    factors that drives the preferred preservation formats
+                    policy.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May require</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>A normalised file format may be assigned with a new PID.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May be required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The ingest may require that the digital 
+                    <em>Objects</em> are first normalised before
+                    ingestion.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Facilitates</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-015</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Restricting the formats to those that are well supported by the tools
+                    improves the success of this process.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Normalisation is performed at Ingest and aims at reducing the number of
+                    formats preserved by converting <em>Files</em> or <em>Representations</em> to preservation
+                    formats defined by the institutional formats policy, while Format migration
+                    is performed after ingest to address a specific preservation risk.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-028</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Unlike Normalisation, Creation of Derivatives reproduces only the
+                    information and significant properties of the original that is useful to address
+                    specific needs of the Designated Community. Thus, the output of
+                    Creation of Derivatives may lack part of the information that is not required
+                    to satisfy said needs. Normalisation aims to maintain all the significant
+                    properties of the original.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>normalising</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    page 7 of 19 - Levels of Curation: it regards normalisation a requirement to achieve
+                    Curation Levels above B.
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>normalisation</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    page 34:  normalisation mentioned as required to document for c17 Authenticity: Ingest
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>normalisation mentioned in examples</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.1.1 - preservation objectives</span>
+                <span>4.2.2 - describing transformations</span>
+                <span>4.2.3.3 - provenance information</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>file format conversion</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    OAIS mentions in the Generate AIP function of the Ingest Functional Entity:
+                    ‘may involve file format conversions’ (page 4-7)
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Normalization</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Glossary, page 271:</span>
+                <span>
+                    Normalization: Form of Migration in which a version of a Digital Object is
+                    created in a new Format with properties more conducive to preservation
+                    treatment. Normalization is oftenimplemented as part of the Ingest process.
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC - IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2025040925236</cpp:hyperlink>
+                <cpp:comment>section 7.7</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#normalize</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization</cpp:hyperlink>
+                <cpp:comment>Tableau1_3</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>

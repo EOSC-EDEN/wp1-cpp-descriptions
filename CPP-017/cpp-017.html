@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-017_Disposal</title></head><body><div class="introSection"><div class="title"><h1>Disposal (CPP-017)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-017</td></tr><tr><td>CPP-Label</td><td>Disposal</td></tr><tr><td>Author</td><td>Mikko Laukkanen, Juha Lehtonen</td></tr><tr><td>Contributors</td><td>Kris Dekeyser, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
+        The TDA enables the managed disposal of Information Packages and permits the retention
+        and maintenance of Metadata even when the content of the Information Package has been
+        removed from the TDA.
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Information objects</td></tr><tr><td rowspan="3">Metadata</td><td>Rights metadata</td></tr><tr><td>Technical metadata</td></tr><tr><td>Descriptive metadata</td></tr><tr><td rowspan="5">Documentation/guidance</td><td>Appraisal reports</td></tr><tr><td>Quality reports</td></tr><tr><td>Retention Policy</td></tr><tr><td>Policies</td></tr><tr><td>Legal aspects (e.g. licenses)</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Metadata</td><td>Provenance metadata</td></tr><tr><td>Tombstone metadata</td></tr><tr><td rowspan="2">Documentation/guidance</td><td>Audit trails</td></tr><tr><td>
+                    Possible certificates/records of disposal (especially in the case of sensitive or
+                    confidential data)
+                </td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>
+            Disposal refers to the process of removing or decommissioning <em>Information objects</em> from a
+            TDA when its preservation is no longer needed or possible, or the <em>Object</em> has fulfilled its
+            short-term preservation requirements. The latter requires appraisal and scheduling, where
+            institutions establish clear policies defining how long different types of <em>Objects</em> should 
+            be preserved. Disposal is usually triggered on <em>AIP</em> level.
+        </p><p>
+            Disposal can be triggered by the following reasons:            
+        </p><ul>
+            <li>
+                The TDA no longer has a legal basis to retain data (e.g. there is no consent);
+            </li>
+            <li>
+                The TDA has been requested to remove data (e.g. there is a legitimate take down request);
+            </li>        
+            <li>
+                The TDA has transferred data to another TDA and no longer needs to retain the data;
+            </li>
+            <li>
+                The data is no longer usable by the designated community (e.g. because it has been
+                corrupted or damaged and is beyond repair, or because quality assessment shows
+                that it is no longer usable);
+            </li>       
+            <li>
+                The data is no longer being used by the designated community, there is no
+                expectation of future use, and organisation policy requires it to be disposed of (e.g. to
+                reduce operational costs);
+            </li>
+            <li>
+                The retention period for data has expired and the data should be disposed of (e.g. to
+                ensure regulatory or legislative compliance);
+            </li>
+            <li>
+                The TDA has alternative versions of the data that allow the original to be disposed of
+                (e.g. as a result of normalisation or migration, or because a depositor has provided a
+                superior version);
+            </li>
+            <li>
+                The funding bodies that support the TDA no longer require or fund retention of the
+                data (e.g. because the data no longer has funding body requirements for it to be
+                accessible);
+            </li>
+            <li>
+                The TDA elects to dispose of data (e.g. to help ensure its long-term sustainability in
+                economic or ecological terms).
+            </li>
+        </ul><p>
+            The TDA must have a disposal policy, that in addition to the disposal of <em>Objects</em> or
+            (derivative) <em>Files</em> includes related <em>Technical</em> and <em>Descriptive metadata</em>. 
+            This is especially important when the related <em>Metadata</em> contains sensitive or 
+            confidential information. The policy may state that all or most of the <em>Metadata</em> is 
+            retained, disposed, or something in between. However, at minimum, TDA must create and retain 
+            provenance <em>Metadata</em> about the disposal and provide (e.g. some “tombstone metadata” 
+            for keeping the PIDs resolvable).
+        </p><p>
+            The TDA must also consider the technical aspects of disposal, such as secure deletion
+            methods that prevent data recovery, and the potential impact on related <em>Objects</em> that 
+            may reference the disposed items.
+        </p><p>
+            As the <em>Objects</em> can be copied and distributed across multiple storage systems and different
+            storage media within a TDA, the complete physical removal of all copies might be complex
+            and needs a timeframe. For instance, whereas a <em>File</em> is quick and easy to remove from a
+            hard drive, it may be practically impossible to remove it from a magnetic tape. Thus, the
+            actual disposal of copies of <em>Files</em> on tapes may occur only at the time when the tape is
+            refreshed (i.e. the disposed <em>File</em> is then not included on the new tape). Therefore, the 
+            first step to do could be a “logical disposal” (i.e. preventing access to the <em>Object</em>, 
+            which gives time for the TDA to dispose of the physical copies). Sometimes this is referred to as
+            “Deaccessioning” where <em>Objects</em> are removed from the collections that an organisation holds
+            before the <em>Objects</em> are physically disposed of. The storage management information must be
+            updated accordingly.
+        </p><p>
+            Disposal decisions must be made carefully, as recovering disposed <em>Objects</em> may be
+            impossible after physical deletion has been performed. Thus, effective disposal requires
+            clear policies, robust documentation, secure technical procedures, and ongoing monitoring.
+            The disposal process must produce audit trails and other relevant documentation about the
+            disposal. An organisation may choose to implement additional safeguards as part of the
+            disposal process depending on the type of data they hold. For example, data may be moved
+            to a ‘trash bin’ for a period of time before permanent deletion takes place, which can be used
+            to provide a short-term recovery window to guard against unwanted deletion (accidental or
+            deliberate). Request, review or approval processes may also be employed. For example to
+            prevent permanent deletion of an <em>Object</em> without explicit and documented approval from a
+            requisite number of staff members who are authorised to approve disposal.
+        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>
+                        <em>Information packages</em> or <em>Files</em> are identified as corrupted and not
+                        recoverable. Data corruption management may trigger the disposal. 
+                    </span></td><td>CPP-004 (Data Corruption Management)</td></tr><tr><td><span>
+                        Changes to community needs  
+                    </span></td><td>CPP-018 (Community Watch)</td></tr><tr><td><span>
+                        The data quality assessment tasks may discover intolerably low-quality issues 
+                        in a digital <em>Object</em> and provide a trigger for disposal
+                    </span></td><td>CPP-019 (Data Quality Assessment)</td></tr><tr><td><span>
+                        Changes in legislature, rights, regulations, licenses, standards and alike  
+                    </span></td><td>CPP-020 (Rights Management)</td></tr><tr><td><span>
+                        Detected risks   
+                    </span></td><td>CPP-023 (Risk Definition and Extraction)</td></tr><tr><td><span>
+                        The file repair process may end up with a situation where the <em>File</em>
+                        cannot be repaired. In such cases, disposal is required by the file
+                        repair process.   
+                    </span></td><td>CPP-027 (File Repair)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="2">1a</td><td rowspan="2">CPP-004 (Data Corruption Management)<hr></hr>CPP-027 (File Repair)</td><td rowspan="2"><span>
+                            Quality reports 
+                        </span></td><td class="stepsColumn" rowspan="2"><span>
+                        TDA finds out, from management events or other triggering events,
+                        that an <em>AIP</em> or <em>File</em> is corrupted and is not recoverable. The TDA
+                        decides to dispose of it.
+                    </span></td><td rowspan="1"><span>
+                            Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>
+                            Disposal request
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">1b</td><td rowspan="2">CPP-018 (Community Watch)</td><td rowspan="2"><span>
+                            Changes to the needs of the designated community
+                        </span></td><td class="stepsColumn" rowspan="2"><span>
+                        The designated community no longer has a need for the data, it is
+                        demonstrably not making any use of the data, and there is no expectation 
+                        that it will make any future use of the data. Therefore, the TDA decides to 
+                        dispose of the data.
+                    </span></td><td rowspan="1"><span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>
+                            Disposal request
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">1c</td><td rowspan="2">CPP-019 (Data Quality Assessment)</td><td rowspan="2"><span>
+                            Quality reports
+                        </span></td><td class="stepsColumn" rowspan="2"><span>
+                        The quality of the data no longer meets the minimum requirements of the 
+                        designated community or the data is available in an alternative and higher quality
+                        version or format. Therefore, the TDA decides to dispose of the data.
+                    </span></td><td rowspan="1"><span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>
+                            Disposal request
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">1d</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Quality reports
+                        </span></td><td class="stepsColumn" rowspan="3"><span>
+                        TDA gets a trigger event indicating that an <em>AIP</em> or <em>File</em> needs 
+                        to be disposed of.
+                    </span></td><td rowspan="1"><span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1">CPP-020 (Rights Management)</td><td rowspan="1"><span>
+                            Intellectual property change
+                        </span></td><td rowspan="2"><span>
+                            Disposal request
+                        </span></td><td rowspan="2"></td></tr><tr><td rowspan="1">CPP-023 (Risk Definition and Extraction)</td><td rowspan="1"><span>
+                            Risk detection
+                        </span></td></tr><tr></tr><tr><td rowspan="1">1e</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Appraisal reports 
+                        </span></td><td class="stepsColumn" rowspan="1"><span>
+                        The retention period of the data has been fulfilled according to the
+                        appraisal or reappraisal of the data.
+                    </span></td><td rowspan="1"><span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>Storage management information</em> (list of affected <em>AIPs</em>, 
+                            <em>Files</em>)
+                        </span></td><td class="stepsColumn" rowspan="3"><span>
+                        Creation of a disposal plan for the data in question from the policy. It should 
+                        address the following issues:
+                    </span><ul>
+                        <li>
+                            Creation of tombstone metadata for PIDs
+                        </li>
+                        <li>
+                            Defining the retention period between logical disposal and physical
+                            disposal
+                        </li>
+                        <li>
+                            Documenting the disposal request
+                        </li>
+                    </ul></td><td rowspan="3"><span>
+                            Disposal plan
+                        </span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            Disposal request
+                        </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            TDAs policy on disposal
+                        </span></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Disposal request
+                        </span></td><td class="stepsColumn" rowspan="1"><span>
+                        Document the disposal request (such as the reason), the affected
+                        <em>AIPs</em> or <em>Files</em>, timestamps
+                    </span></td><td rowspan="1"><span>
+                            <em>Provenance metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">4</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Disposal plan
+                        </span></td><td class="stepsColumn" rowspan="2"><span>
+                        Implement deaccessioning/logical disposal. Prevent access to the
+                        <em>Object</em>, its discovery, and exclude it from any external reporting
+                        (such as statistical data generation).
+                    </span></td><td rowspan="2"><span>
+                            <em>Provenance metadata</em>
+                        </span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Disposal plan
+                        </span></td><td class="stepsColumn" rowspan="1"><span>
+                        If identifiers exist: the creation of tombstone metadata.
+                    </span></td><td rowspan="1"><span>
+                            <em>Tombstone metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">6</td><td rowspan="2"></td><td rowspan="2"><span>
+                            Disposal plan
+                        </span></td><td class="stepsColumn" rowspan="2"><span>
+                        Physical disposal of copies from primary random access media,
+                        such as hard disk drives. Update <em>storage management information</em>
+                        (removal of storage locations).
+                    </span></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>
+                            <em>Provenance metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">7</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Disposal plan
+                        </span></td><td class="stepsColumn" rowspan="2"><span>
+                        Physical disposal of copies from secondary sequential access media, such as 
+                        magnetic tapes and off-line copies. Usually done at later stages during (e.g.
+                        Refreshment). Update <em>storage management information</em> (removal
+                        of storage locations).
+                    </span></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                            <em>Storage management information</em>
+                        </span></td><td rowspan="1"><span>
+                            <em>Provenance metadata</em>
+                        </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">8</td><td rowspan="1"></td><td rowspan="1"><span>
+                            Disposal is complete
+                        </span></td><td class="stepsColumn" rowspan="1"><span>
+                        If evidence is required that disposal has been completed,
+                        then create a certification of destruction that confirms that all
+                        copies of the data have been permanently deleted.
+                    </span></td><td rowspan="1"><span>
+                            Destruction Certificate
+                        </span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>
+                    Disposal could be legally mandatory in terms of privacy and retaining only
+                    necessary content.
+                 </span></td><td><span>
+                    Legal consequences
+                </span></td></tr><tr><td><span>
+                    Not disposing of data in a timely way results in unnecessary and irrelevant
+                    content being retained. This could worsen the consequences of cyber
+                    attacks (e.g. ransomware of data that should have been disposed of before
+                    the attack). Or if the data is compromised then it could result in
+                    privacy breaches.
+                 </span></td><td><span>
+                    Exploitation of security vulnerabilities, more costly to recover from cyber 
+                    attacks, data privacy breaches
+                </span></td></tr><tr><td><span>
+                    Retaining data that is no longer needed can impact on data quality
+                    and integrity. Removing outdated, duplicated, or corrupted <em>Objects</em> helps
+                    maintain the quality and usability of the TDA.
+                 </span></td><td><span>
+                    Reduction in data quality and integrity
+                </span></td></tr><tr><td><span>
+                    Removing data reduces the TDA’s storage and processing footprint.
+                 </span></td><td><span>
+                    Increased costs data storage costs. Increased environmental footprint. Increased 
+                    time and effort for future preservation activities (e.g. re-appraisal)
+                </span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>
+                    Identifiers must be taken care of during disposal
+                </span></td></tr><tr><td>CPP-018</td><td>Community Watch</td><td><span>
+                    Soft dependency (i.e. may require): Community watch treats Disposal as a customer in 
+                    cases where, for instance, a collection previously archived within the TDA has 
+                    been also added to a different TDA and will be preserved there. Required actions 
+                    downstream must be taken into account within the disposal process (e.g. notifying 
+                    stakeholders about the changed preservation location).
+                </span></td></tr><tr><td>CPP-025</td><td>Enabling Access</td><td><span>
+                    Disposal prevents access to the <em>Objects</em>. Also, preventing access can be 
+                    considered as "logical disposal"
+                </span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>
+                    A tombstone consisting of only Metadata - without the actual data -
+                    has to be kept as a witness of the data’s former presence.
+                </span></td></tr><tr><td>Not to be confused with</td><td>CPP-006</td><td>AIP Batch Export</td><td><span>
+                    Disposal does not export the <em>Objects</em> from TDA.
+                </span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Deletion</span></td><td><span>
+                    R14 The repository applies documented processes to ensure data and <em>Metadata</em>
+                    storage and integrity.
+                </span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td>/</td><td>/</td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>Disposal</span><br></br><span>Disposal records</span></td><td><span>3.3.3</span><br></br><span>4.2.3.3</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Deletion</span></td><td><span>3.3.6</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Deaccession </span></td><td><span>Glossary</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB - Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    https://knowledge.exlibrisgroup.com/Rosetta/Product_Documentation/Rosetta_Staff_Users_Guide/Data_Managers/005_Delete%2C_Restore%2C_Move%2C_and_Purge_IEs#About_Deleting.2C_Recovering.2C_and_Purging_an_IE
+                ">
+                    https://knowledge.exlibrisgroup.com/Rosetta/Product_Documentation/Rosetta_Staff_Users_Guide/Data_Managers/005_Delete%2C_Restore%2C_Move%2C_and_Purge_IEs#About_Deleting.2C_Recovering.2C_and_Purging_an_IE
+                </a></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#delete-aip
+                ">
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#delete-aip
+                </a><div>(
+                    No explicit support for retention management, but there is a request/approve workflow 
+                    for AIP deletion
+                )</div></td></tr></table></div></div></body></html>
