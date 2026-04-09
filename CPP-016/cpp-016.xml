@@ -31,7 +31,7 @@
                     <cpp:minorVersion>1</cpp:minorVersion>
                     <cpp:patchVersion>0</cpp:patchVersion>
                 </cpp:versionNumber>
-                <cpp:versionDate>2026-04-01</cpp:versionDate>
+                <cpp:versionDate>2026-04-09</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
         </cpp:history>
@@ -44,14 +44,14 @@
         <cpp:logicalClassification>Other Activities</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
-        <p>Metadata Ingest and Management is about ingesting, storing and maintaining <em>Metadata</em> to ensure the long-term preservation of the digital content. This <em>Metadata</em> (i.e. “data about the data”) provides contextual information about the Object and describes what the Object is; how it was created or acquired; how it should be managed and preserved; and how it can be
+        <p><em>Metadata</em> Ingest and Management is about ingesting, storing and maintaining <em>Metadata</em> to ensure the long-term preservation of the digital content. This <em>Metadata</em> (i.e. “data about the data”) provides contextual information about the <em>Object</em> and describes what the <em>Object</em> is; how it was created or acquired; how it should be managed and preserved; and how it can be
         accessed and used in the future. There are different categories of <em>Metadata</em> relevant for
         preservation:</p>
         <ul>
             <li><em>Descriptive metadata</em>: identifies the content, provides contextual information and serves as finding aid;</li>
             <li><em>Technical metadata</em>: contains details on the file formats, features and hard-/software used, compression, etc.;</li>
             <li><em>Fixity metadata</em>: stores information regarding the bitwise state of a <em>File</em>. It is used to help to detect any changes made to the <em>File’s</em> data;</li>
-            <li><em>Provenance metadata</em>: records the origin of the data and keeps track of anyprocesses performed on the data;</li>
+            <li><em>Provenance metadata</em>: records the origin of the data and keeps track of any processes performed on the data;</li>
             <li><em>Structural metadata</em>: stores the relationships between <em>Files</em> and logical parts.</li>
             <li><em>Rights metadata</em>: contains all relevant information about the rights to retain, manipulate and reproduce the data.</li>
         </ul>
@@ -65,17 +65,17 @@
 
         <p>The <em>Metadata</em> can be assigned to <em>Objects</em> or <em>Files</em> and it must at all times be clear to what <em>Object</em> or <em>File</em> it is assigned. Some parts of the <em>Metadata</em> will be static (e.g. checksums and <em>File</em> size) while others will be dynamic and continue to be enhanced or updated during the life cycle of the <em>Object</em> in the TDA. It is important for the TDA to keep the <em>Metadata</em> safe at all times. No matter how well the data is protected by redundant copies and off-site backups, if <em>Metadata</em> is missing the data can no longer be identified and loses its context and thus most of its value.</p>
 
-        <p>New <em>Metadata</em> is usually created and added during the ingest phase, alongside the <em>Objects</em> it relates to. Several processes can and will update <em>Metadata</em> during the preservation. If the <em>Metadata</em> changes in a way that alters the understanding or interpretation of the <em>Objects</em> it preserves, the TDA creates new AIP versions that include the updated Metadata.</p>
+        <p>New <em>Metadata</em> is usually created and added during the ingest phase, alongside the <em>Objects</em> it relates to. Several processes can and will update <em>Metadata</em> during the preservation. If the <em>Metadata</em> changes in a way that alters the understanding or interpretation of the <em>Objects</em> it preserves, the TDA creates new <em>AIP</em> versions that include the updated <em>Metadata</em>.</p>
 
         <p>In the <em>Provenance metadata</em>, event <em>Metadata</em> serves as witness of the execution of the processes performed on the data. A TDA typically documents the preservation actions it performs as <em>Provenance metadata</em>, thus serving as an audit trail of the <em>Objects</em>. Such event <em>Metadata</em> contains:</p>
 
         <ul>
             <li>An identifier and description of the process;</li>
             <li>A timestamp indicating when the process execution happened;</li>
-            <li>Optionally extra Metadata associated to the event:
+            <li>Optionally extra <em>Metadata</em> associated to the event:
                 <ul>
                     <li>Event outcome: Single value data that documents the result of the process. (e.g. ‘Success’, ‘OK’, ‘Virus free”). The value is typically limited by a controlled vocabulary;</li>
-                    <li>Process information: Metadata set that documents the tool and environment that was used to perform the process. It will include the tool’s name, its version and any configuration parameters that can influence its outcome like virus database version, plugin version, execution parameters, etc.</li>
+                    <li>Process information: <em>Metadata</em> set that documents the tool and environment that was used to perform the process. It will include the tool’s name, its version and any configuration parameters that can influence its outcome like virus database version, plugin version, execution parameters, etc.</li>
                     <li>More detailed event result information like ignored warnings, multiple results outcomes, etc.</li>
                 </ul>
             </li>
@@ -130,43 +130,43 @@
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>A new identifier was generated and attached to an Object</span>
+                    <span>A new identifier was generated and attached to an <em>Object</em></span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-005</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>A format was assigned to a File </span>
+                    <span>A format was assigned to a <em>File</em> </span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-008</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Metadata was extracted from a File</span>
+                    <span><em>Metadata</em> was extracted from a <em>File</em></span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-009</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Missing Metadata has been identified, or used metadata standards have become obsolete</span>
+                    <span>Missing <em>Metadata</em> has been identified, or used metadata standards have become obsolete</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-012</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Object is removed</span>
+                    <span><em>Object</em> is removed</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-017</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Object rights changed</span>
+                    <span><em>Object</em> rights changed</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-020</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Descriptive metadata must be pseudonymised/anonymised</span>
+                    <span><em>Descriptive metadata</em> must be pseudonymised/anonymised</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-020</cpp:correspondingCPP>
             </cpp:triggerEvent>
@@ -184,7 +184,7 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Provenance metadata</span>
+                        <span><em>Provenance metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -196,11 +196,11 @@
                     <cpp:supplier>CPP-001</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Store checksums with their respective algorithms and assign it to the given File</span>
+                    <span>Store checksums with their respective algorithms and assign it to the given <em>File</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Fixity metadata</span>
+                        <span><em>Fixity metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -216,7 +216,7 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Fixity metadata</span>
+                        <span><em>Fixity metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -228,11 +228,11 @@
                     <cpp:supplier>CPP-005</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Store the identifier and assign to the Object or File</span>
+                    <span>Store the identifier and assign to the <em>Object</em> or <em>File</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Descriptive metadata</span>
+                        <span><em>Descriptive metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -244,63 +244,63 @@
                     <cpp:supplier>CPP-008</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Store the format information and assign to the File</span>
+                    <span>Store the format information and assign to the <em>File</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Technical metadata</span>
+                        <span><em>Technical metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="6">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Any Metadata extracted from the File</span>
+                        <span>Any <em>Metadata</em> extracted from the <em>File</em></span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-009</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Store the Metadata and assign to the File</span>
+                    <span>Store the <em>Metadata</em> and assign to the <em>File</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Technical metadata</span>
+                        <span><em>Technical metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Provenance metadata</span>
+                        <span><em>Provenance metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Descriptive metadata</span>
+                        <span><em>Descriptive metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Structural metadata</span>
+                        <span><em>Structural metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Rights metadata</span>
+                        <span><em>Rights metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="7">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Set of Metadata</span>
+                        <span>Set of <em>Metadata</em></span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-017</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Replace the Object or File Metadata with the minimal set and remove all references to the Object and Files</span>
+                    <span>Replace the <em>Object</em> or <em>File</em> metadata with the minimal set and remove all references to the <em>Object</em> and <em>Files</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Any Metadata</span>
+                        <span>Any <em>Metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -312,11 +312,11 @@
                     <cpp:supplier>CPP-020</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Store the rights information and assign to the Object or File</span>
+                    <span>Store the rights information and assign to the <em>Object</em> or <em>File</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Rights metadata</span>
+                        <span><em>Rights metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
@@ -328,18 +328,18 @@
                     <cpp:supplier>CPP-020</cpp:supplier>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>Update Descriptive metadata and create new AIP version</span>
+                    <span>Update <em>Descriptive metadata</em> and create new <em>AIP</em> version</span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Descriptive metadata</span>
+                        <span><em>descriptive metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="10">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Set of Metadata</span>
+                        <span>Set of <em>Metadata</em></span>
                     </cpp:inputElement>
                     <cpp:supplier>CPP-012</cpp:supplier>
                 </cpp:input>
@@ -348,22 +348,22 @@
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>Any Metadata</span>
+                        <span>Any <em>Metadata</em></span>
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
             <cpp:step stepNumber="11">
                 <cpp:input>
                     <cpp:inputElement>
-                        <span>Set of Metadata Information Packages</span>
+                        <span>Set of <em>Metadata</em> Information Packages</span>
                     </cpp:inputElement>
                 </cpp:input>
                 <cpp:stepDescription>
-                    <span>If needed (after updating the Metadata): The TDA creates a new version of an AIP to store the new or updated Metadata</span>
+                    <span>If needed (after updating the <em>Metadata</em>): The TDA creates a new version of an <em>AIP</em> to store the new or updated <em>Metadata</em></span>
                 </cpp:stepDescription>
                 <cpp:output>
                     <cpp:outputElement>
-                        <span>AIP version</span>
+                        <span><em>AIP</em> version</span>
                     </cpp:outputElement>
                     <cpp:customer>CPP-021</cpp:customer>
                 </cpp:output>
@@ -374,10 +374,10 @@
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span><a href="https://www.go-fair.org/fair-principles/f3-metadata-clearly-explicitly-include-identifier-data-describe">FAIR F3</a> Metadata clearly and explicitly include the identifier of the data they describe</span>
+                <span><a href="https://www.go-fair.org/fair-principles/f3-metadata-clearly-explicitly-include-identifier-data-describe">FAIR F3</a> <em>Metadata</em> clearly and explicitly include the identifier of the data they describe</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>If the connection between Metadata and the Object’s data is lost, Objects can no longer be found by searching the Metadata.</span>
+                <span>If the connection between <em>Metadata</em> and the <em>Object</em>’s data is lost, <em>Object</em>s can no longer be found by searching the <em>Metadata</em>.</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
@@ -385,12 +385,12 @@
                 <span><a href="https://www.go-fair.org/fair-principles/f4-metadata-registered-indexed-searchable-resource">FAIR F4 </a>(Meta)data are registered or indexed in a searchable resource</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Without searchability it is not possible to retrieve sets of relevant data based on characteristics described in the Metadata.</span>
+                <span>Without searchability it is not possible to retrieve sets of relevant data based on characteristics described in the <em>Metadata</em>.</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span><a href="https://www.go-fair.org/fair-principles/a2-metadata-accessible-even-data-no-longer-available">FAIR A2 </a>Metadata should be accessible even when the data is no longer available</span>
+                <span><a href="https://www.go-fair.org/fair-principles/a2-metadata-accessible-even-data-no-longer-available">FAIR A2 </a><em>Metadata</em> should be accessible even when the data is no longer available</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
                 <span>Storing a tombstone metadata for disposed content serves as a witness of the data’s existence beyond its disposal.</span>
@@ -401,7 +401,7 @@
                 <span><a href="https://www.go-fair.org/fair-principles/i1-metadata-use-formal-accessible-shared-broadly-applicable-language-knowledge-representation">FAIR I1</a>(Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Lack of understanding the language in which the Metadata is expressed leads to misinterpretation or even loss of information.</span>
+                <span>Lack of understanding the language in which the <em>Metadata</em> is expressed leads to misinterpretation or even loss of information.</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
@@ -409,7 +409,7 @@
                 <span><a href="https://www.go-fair.org/fair-principles/r1-3-metadata-meet-domain-relevant-community-standards">FAIR R1.3 </a>(Meta)data meet domain-relevant community standards</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Lack of understanding the language in which the Metadata is expressed leads to misinterpretation or even loss of information.</span>
+                <span>Lack of understanding the language in which the <em>Metadata</em> is expressed leads to misinterpretation or even loss of information.</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -421,7 +421,7 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>Many CPPs</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Many CPPs generate events and related data that needs to be stored safely as Provenance metadata and linked to the Object or File.</span>
+                <span>Many CPPs generate events and related data that needs to be stored safely as <em>Provenance metadata</em> and linked to the <em>Object</em> or <em>File</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         -->
@@ -429,42 +429,42 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-001</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The checksums and associated algorithms need to be stored in the File’s Fixity metadata.</span>
+                <span>The checksums and associated algorithms need to be stored in the <em>File</em>’s <em>Fixity metadata</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The timestamp of the File’s checksum needs to be updated to keep track of the last successful check.</span>
+                <span>The timestamp of the <em>File</em>’s checksum needs to be updated to keep track of the last successful check.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The TDA must store the Persistent Identifier and link it to the Object or File.</span>
+                <span>The TDA must store the Persistent Identifier and link it to the <em>Object</em> or <em>File</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-008</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Format information needs to be stored with the File’s Technical metadata.</span>
+                <span>Format information needs to be stored with the <em>File</em>’s <em>Technical metadata</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Any Metadata that was extracted from the File needs to be stored, searchable and retrievable.</span>
+                <span>Any <em>Metadata</em> that was extracted from the <em>File</em> needs to be stored, searchable and retrievable.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-017</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>A tombstone consisting of Metadata only - without the actual data - has to be kept as a witness of the data’s former presence.</span>
+                <span>A tombstone consisting of <em>Metadata</em> only - without the actual data - has to be kept as a witness of the data’s former presence.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
@@ -480,28 +480,28 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Metadata ingest provides new Provenance metadata.</span>
+                <span><em>Metadata</em> ingest provides new <em>Provenance metadata</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-024</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Enabling Discovery relies on a correct Metadata management process. In particular, Metadata created by and within the TDA is of particular interest to the consumer in order to understand preservation actions that could have affected the Object.</span>
+                <span>Enabling Discovery relies on a correct <em>Metadata</em> management process. In particular, <em>Metadata</em> created by and within the TDA is of particular interest to the consumer in order to understand preservation actions that could have affected the <em>Object</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The ingest process produces Technical, Rights and Provenance metadata that are recorded in the Information package and digital archive database by Metadata Ingest and Management.</span>
+                <span>The ingest process produces <em>Technical, Rights and Provenance metadata</em> that are recorded in the Information package and digital archive database by <em>Metadata</em> Ingest and Management.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>A TDA defines significant properties for digital Objects. These are then translated to Technical metadata that is ingested. The significant properties definition process also influences which technical metadata standards are applied.</span>
+                <span>A TDA defines significant properties for digital <em>Object</em>s. These are then translated to <em>Technical metadata</em> that is ingested. The significant properties definition process also influences which <em>Technical metadata</em> standards are applied.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -549,7 +549,7 @@
         <cpp:mapping>
             <cpp:frameworkName>OAIS</cpp:frameworkName>
             <cpp:correspondingSection>
-                <span>OAIS mentions Metadata, but does not discuss metadata ingest or metadata management</span>
+                <span>OAIS mentions <em>Metadata</em>, but does not discuss metadata ingest or metadata management</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
@@ -585,11 +585,11 @@
                 <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943</cpp:hyperlink>
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2020100578094</cpp:hyperlink>
                 <cpp:comment>Annex 4, section 2.2.1</cpp:comment>
             </cpp:linkToDocumentation>
             <cpp:linkToDocumentation xml:lang="fi">
-                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2020100578094</cpp:hyperlink>
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943</cpp:hyperlink>
                 <cpp:comment>section 2.4.4. and 3.3.</cpp:comment>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
