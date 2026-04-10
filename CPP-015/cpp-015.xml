@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-006" xml:lang="en">
+  <cpp:header>
+    <cpp:label>Emulation and Rendering Tools</cpp:label>
+    <cpp:authors>
+      <cpp:author>Kris Dekeyser</cpp:author>
+    </cpp:authors>
+    <cpp:contributors>
+      <cpp:contributor>Bertrand Caron</cpp:contributor>
+      <cpp:contributor>Johan Kylander</cpp:contributor>
+    </cpp:contributors>
+    <cpp:evaluators>
+      <cpp:evaluator>Felix Burer</cpp:evaluator>
+      <cpp:evaluator>Maria Benauer</cpp:evaluator>
+    </cpp:evaluators>
+    <cpp:history>
+      <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>0</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2025-08-29</cpp:versionDate>
+        <cpp:versionNotes>Milestone version</cpp:versionNotes>
+      </cpp:version>
+      <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>1</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-04-10</cpp:versionDate>
+        <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+      </cpp:version>
+    </cpp:history>
+  </cpp:header>
+  <cpp:shortDefinition>The TDA enables the rendering of Objects via the application of emulation and/or other
+                        specialist tools.</cpp:shortDefinition>
+  <cpp:classification>
+    <cpp:oaisClassification>Access</cpp:oaisClassification>
+    <cpp:logicalClassification>Dissemination</cpp:logicalClassification>
+  </cpp:classification>
+  <cpp:descriptionAndScope>
+    <p>Digital preservation is all about ensuring long-term access to digital content despite the
+        challenges of obsolescence, degradation, and technological change. Emulation and
+        Rendering tools are important strategies in achieving that goal, and together with <em>File</em>
+        migration ensure that digital content remains usable to the designated community.</p>
+    <p>Emulation attempts to recreate the original habitat - both hardware and software - of the
+        digital <em>Object</em> in order to interact with it in the way it was intended. This is achieved by
+        preserving both the content and the experience of the original environment. The purpose of
+        emulation is to simulate the original operating system and the tools that are needed to
+        interact with the <em>Object</em>.</p>
+    <p>Rendering tools interpret and display the digital <em>Objects</em> in the current environment using
+        viewers based on modern technology. It is not uncommon for rendering tools to convert the
+        digital <em>Object</em> into a more accessible form before displaying it. In such cases, viewers and
+        converters collaborate to achieve the required result.</p>
+    <p>In addition to maintaining the Bitstream integrity of its holdings, semantic digital preservation
+        entails ensuring their continued readability and usability. This necessitates that the TDA
+        identifies the required environments and tools to support the actions its Designated
+        Community is authorised to perform, regardless of whether direct access to the holdings is
+        currently being provided.</p>
+    <p>In addition to maintaining the Bitstream integrity of its holdings, semantic digital preservation
+        entails ensuring their continued readability and usability. This necessitates that the TDA
+        identifies the required environments and tools to support the actions its Designated
+        Community is authorised to perform, regardless of whether direct access to the holdings is
+        currently being provided.</p>
+    <ul>
+      <li>
+        <p><em>Authenticity</em>: Emulation aims for the best authenticity by reproducing the entire look
+            and feel of the original environment. The output of the rendering process may do a
+            pretty decent job in reproducing the original <em>Representation</em> of the <em>Object</em>, but the
+            interaction will be simulated at best. The rendering’s conversion operation can be
+            lossy and generate a less accurate result. Rendering is also more vulnerable to slight
+            format changes and thus requires Format Validation.</p>
+      </li>
+      <li>
+        <p><em>User Experience</em>: Again, Emulation obtains the highest score as it will reinstate the
+            original hard- and software as good as possible and allows the user to interact with
+            Page 2 of 10
+            the <em>Object</em> to its full potential. Rendering will typically reduce the experience to a
+            read-only view of the data with a limited set of operations available.</p>
+      </li>
+      <li>
+        <p><em>Preservation Scope</em>: In order to render the <em>Object</em>, only the content needs to be
+            preserved. For emulation, however, both content and its environment need to be
+            preserved.</p>
+      </li>
+      <li>
+        <p><em>Technical Overhead</em>: The requirements for Emulation are very high. A lot of
+            resources (e.g. CPU and memory) are required to fire up the emulation. Moreover,
+            the configuration and maintenance of an emulation environment is complex and time
+            consuming. Performance may suffer and emulation does not scale easily. Rendering
+            on the other hand, is relatively simple to set up, especially when no conversion is
+            required or the conversion is done beforehand. Performance is mostly great, unless
+            the <em>Object</em> is stored in slow off-line storage. The technique causes little problems for
+            scaling.</p>
+      </li>
+      <li>
+        <p><em>Licensing</em>: Licensing of the operating system and software interacting with the <em>Object</em>
+            may be a concern for emulation. For rendering of most common file formats, open
+            source libraries and tools are available and licensing is less of a concern.</p>
+      </li>
+    </ul>
+    <p>The choice for emulation versus rendering is captured in the Emulation and Rendering
+        Policy. There are many possible decision factors and strategies for choosing emulation over
+        rendering. For example:</p>
+    <ul>
+      <li>Manual configuration by archive maintainer;</li>
+      <li>Requested by consumer;</li>
+      <li>Decision based on format;</li>
+      <li>Decision based on <em>Technical metadata</em>;</li>
+      <li>Decision based on collection preferences, policies, agreements with producer, etc.</li>
+    </ul>
+  </cpp:descriptionAndScope>
+  <cpp:process>
+    <cpp:inputs>
+      <cpp:data>
+        <cpp:dataElement>
+          Representation
+        </cpp:dataElement>
+      </cpp:data>
+      <cpp:guidance>
+        <cpp:guidanceElement>Emulation and rendering policy</cpp:guidanceElement>
+      </cpp:guidance>
+    </cpp:inputs>
+    <cpp:outputs>
+      <cpp:data>
+        <cpp:dataElement>Representation rendered in a suitable envoronment</cpp:dataElement>
+      </cpp:data>
+    </cpp:outputs>
+    <cpp:triggerEvents>
+      <cpp:triggerEvent>
+        <cpp:description>
+          <span>Access requested to a given <em>Object</em></span>
+        </cpp:description>
+        <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
+      </cpp:triggerEvent>
+    </cpp:triggerEvents>
+    <cpp:stepByStepDescription>
+      <cpp:step stepNumber="1">
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>Representation</em> identifier</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-025</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Collect <em>the Object's</em> <em>Representation</em></span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>
+              <em>Representation</em>
+            </span>
+            <span>
+              <em>Technical metadata</em>
+            </span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="2">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>
+              <em>Representation</em>
+            </span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>
+              <em>Technical metadata</em>
+            </span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Collect the Environment <em>Objects</em> associated with the <em>Representation</em> (if present)</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Environment <em>Objects</em></span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="3">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>
+              <em>Representation</em>
+            </span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>
+              <em>Technical metadata</em>
+            </span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Environment <em>Object</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Emulation and rendering policy</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-012</cpp:supplier>
+          <cpp:supplier>CPP-018</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Decide on strategy</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Emulation (proceed to "Emulation")</span>
+          </cpp:outputElement>
+        </cpp:output>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Rendering (proceed to "Rendering")</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="E1">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Environment <em>Object</em></span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Retrieve the emulation properties from the Environment:</span>
+          <span>-Hardware to be emulated</span>
+          <span>-Operation System type and version</span>
+          <span>-Tools to be installed in the OS</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Emulation information</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="E2">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Emulation information</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Prepare Emulation environment:</span>
+          <span>-initialise the virtual machine based on operating system requirement</span>
+          <span>-install the software requirements</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Initialised emulated environment</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="E3">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Emulated environment</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>Representation</em> information</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Inject or copy the <em>Representation</em> content in the emulated environment</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Complete emulated environment</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="E4">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Complete emulated environment</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Start the emulated environment and redirect input and output to the consumer</span>
+        </cpp:stepDescription>
+      </cpp:step>
+      <cpp:step stepNumber="R1">
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>Representation</em> identifier</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-025</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Get the <em>Object</em>'s <em>representation</em></span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>
+              <em>Representation</em>
+            </span>
+            <span>
+              <em>Technical metadata</em>
+            </span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="R2">
+        <cpp:input>
+          <cpp:inputElement>
+            <span>
+              <em>Representation</em>
+            </span>
+            <span>
+              <em>Technical metadata</em>
+            </span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Retrieve the <em>Representation</em> content</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span><em>Representation</em> content</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="R3">
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>Representation</em> Information</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Emulation and rendering policy</span>
+          </cpp:inputElement>
+          <cpp:supplier>CPP-012</cpp:supplier>
+          <cpp:supplier>CPP-018</cpp:supplier>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Make a choice of rendering tool</span>
+        </cpp:stepDescription>
+        <cpp:output>
+          <cpp:outputElement>
+            <span>Rendering tool</span>
+          </cpp:outputElement>
+        </cpp:output>
+      </cpp:step>
+      <cpp:step stepNumber="R4">
+        <cpp:input>
+          <cpp:inputElement>
+            <span><em>Representation</em> content</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:input>
+          <cpp:inputElement>
+            <span>Rendering tool</span>
+          </cpp:inputElement>
+        </cpp:input>
+        <cpp:stepDescription>
+          <span>Execute the Rendering tool and hand over the <em>Representation</em>
+                content</span>
+        </cpp:stepDescription>
+      </cpp:step>
+    </cpp:stepByStepDescription>
+  </cpp:process>
+  <cpp:rationaleWorstCase>
+    <cpp:purpose>
+      <cpp:purposeDescription>
+        <span>It is good practice to provide the tools to let the consumer
+                interact with the data (Except in the case of dark
+                archives).</span>
+      </cpp:purposeDescription>
+      <cpp:worstCase>
+        <span/>
+      </cpp:worstCase>
+    </cpp:purpose>
+  </cpp:rationaleWorstCase>
+  <cpp:cppRelationships>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>The access request is the trigger to invoke the rendering process
+                or start up the emulated environment.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>In order to have a decent level of confidence in the rendering 
+                process, the <em>File</em>’s format needs to be validated.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Risk Mitigation is in charge of defining the emulation and
+                rendering policy that is meant to be applied by this CPP.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Requires</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Rendering should be evaluated based on significant properties.
+                The faulty rendering of an <em>Object</em> because of unsuitable hardware
+                or software may go unnoticed and produce wrong interpretations
+                from the TDA’s community.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Required by</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>The process of selecting tools for emulation and rendering
+                provides data to the TDA for reporting to the designated
+                communities.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Facilitated by</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>May be needed to support rendering tools in the long term.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Facilitated by</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Normalisation of the file formats can reduce the effort and
+                complexity for rendering and emulation significantly.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+    <cpp:relationship>
+      <cpp:relationshipType>Facilitated by</cpp:relationshipType>
+      <cpp:relatedCPP>CPP-028</cpp:relatedCPP>
+      <cpp:relationshipDescription>
+        <span>Derivatives in formats and/or structures that are easier to render
+                can be created prior to the rendering process to avoid time and
+                resource consuming conversion processes.</span>
+      </cpp:relationshipDescription>
+    </cpp:relationship>
+  </cpp:cppRelationships>
+  <cpp:frameworkMappings>
+    <cpp:mapping>
+      <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Preservation Plan</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>R09 - Preservation Plan refers to emulation as a possible
+                preservation strategy</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Emulation strategy</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>C24 Interpretability of the archival information</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>/</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>In scope of 3.3.1 “The repository shall have defined its
+                Designated Community and associated knowledge base(s) and shall
+                have these definitions appropriately accessible.”</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>OAIS</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Representation Information Rendering Software and Access
+                Software</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>4.3.2.3.3 Representation Information Networks</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+    <cpp:mapping>
+      <cpp:frameworkName>PREMIS</cpp:frameworkName>
+      <cpp:correspondingTerm>
+        <span>Emulation Render</span>
+      </cpp:correspondingTerm>
+      <cpp:correspondingSection>
+        <span>Emulation is mentioned several times w.r.t. PreservationLevel and
+                Environment Objects. Rendering is mentioned in sections
+                discussing Representations, Relations and Environment objects.
+                Both processes are also described in the glossary.</span>
+      </cpp:correspondingSection>
+    </cpp:mapping>
+  </cpp:frameworkMappings>
+  <cpp:referenceImplementations>
+    <cpp:useCases>
+      <cpp:useCase>
+        <cpp:useCasetitle>Rendering images with ICC profile embedded</cpp:useCasetitle>
+        <cpp:institution>
+          <cpp:institutionLabel>Bibliothèque nationale de France</cpp:institutionLabel>
+          <cpp:institutionCountry>FR</cpp:institutionCountry>
+        </cpp:institution>
+        <cpp:triggerEvent>
+          <span>In addition to its digital library, Gallica, BnF might provide
+                access to its digital images with embedded ICC profiles on its
+                public computer stations.</span>
+        </cpp:triggerEvent>
+        <cpp:problemStatement>
+          <span>The diversity of born-digital images collected by BnF requires
+                rendering software aware of its complexity. The rendering tool
+                should be able to handle several file formats, different colour
+                models, and many other more or less common characteristics of
+                image Files: multi-image TIFFs, orientation indicated by an EXIF
+                tag, etc. In particular, it should use the embedded ICC profile
+                to enable proper colour management.</span>
+        </cpp:problemStatement>
+        <cpp:proposedSolution>
+          <span>BnF selected the XnView freeware as its solution for displaying
+                images to its Designated Community. Though the software was
+                natively supporting embedded ICC profiles, the setting was not
+                activated by default, which illustrates the importance of
+                adjusting the tool settings to ensure faithful rendering of
+                digital <em>Objects</em>.</span>
+        </cpp:proposedSolution>
+      </cpp:useCase>
+    </cpp:useCases>
+    <cpp:publicDocumentation>
+      <cpp:institution>
+        <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+        <cpp:institutionCountry>DE</cpp:institutionCountry>
+        <cpp:institutionType>National library</cpp:institutionType>
+        <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+        <cpp:institutionType>Research infrastructure</cpp:institutionType>
+        <cpp:institutionType>Research performing organisation</cpp:institutionType>
+      </cpp:institution>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608641/Preservation+Management#PreservationManagement-Emulation</cpp:hyperlink>
+      </cpp:linkToDocumentation>
+    </cpp:publicDocumentation>
+    <cpp:publicDocumentation>
+      <cpp:institution>
+        <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+        <cpp:institutionCountry>FI</cpp:institutionCountry>
+        <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+      </cpp:institution>
+      <cpp:linkToDocumentation xml:lang="en">
+        <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2025040925236</cpp:hyperlink>
+        <cpp:comment>section 8</cpp:comment>
+      </cpp:linkToDocumentation>
+    </cpp:publicDocumentation>
+  </cpp:referenceImplementations>
+</cpp:cpp>
