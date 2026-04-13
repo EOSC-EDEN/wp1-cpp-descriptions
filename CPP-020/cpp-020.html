@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-020_Rights_Management</title></head><body><div class="introSection"><div class="title"><h1>Rights Management (CPP-020)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-020</td></tr><tr><td>CPP-Label</td><td>Rights Management</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Matthew Addis</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA manages rights related to the Information Objects, both for agents inside its scope
+(access, migrate, etc.) and for end users (access, reuse, etc.)</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Object</td></tr><tr><td rowspan="2">Metadata</td><td>Descriptive metadata</td></tr><tr><td>Provenance metadata</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Metadata</td><td>Optional: Rights metadata</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Rights statement</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Rights Management is the process of performing rights assessments for <em>Objects</em> and <em>Metadata</em> preserved by the TDA, and managing a rights registry that describes rights basis applicable to these. The rights assessment process must investigate and, if possible, obtain rights applying to both the TDA for retaining and performing its preservation activities, and the consumer for accessing and reusing the <em>Objects</em>.</p><p>The entity responsible for creating rights statements is the TDA, based on input from the rights stakeholders. Managing rights can be complex and involve multiple and conflicting perspectives. For example, a TDA will typically seek the rights to preserve its holdings and provide open access to the widest possible community, but it also needs to respect rights that limit what it can do and what access it can provide (e.g. data privacy under GDPR). This adds extra complexity, for example a TDA will often be a data processor for the data it is holding and providing access to on behalf of others, but it may also be a data controller if ownership has been assigned to it or if it is directly involved in data collection. Furthermore, in order to perform its mission, it may collect further data about its users (e.g. to allow it to better understand and meet the needs of its designated community) and this usage data also has rights associated with it.</p><p>The process of rights assessment consists in determining the rights status of a specific <em>Object</em> or <em>Metadata</em> regarding different rights basis. Rights basis, as defined as PREMIS, are of different types:</p><ul>
+            <li>Copyright and intellectual property</li>
+            <li>Laws</li> 
+            <li>Licenses</li>
+            <li>Patents</li> 
+            <li>TDA institutional policies</li>
+            <li>Contracts and service level agreements with the TDA partners</li> 
+            <li>Etc.</li>
+        </ul><p>The output of rights assessment is a rights statement that defines:</p><ul>
+            <li>The rights basis applicable to the <em>Object</em> and <em>Metadata</em>;</li>
+            <li>The period of time during which the <em>Object</em> is governed by said rights basis;</li> 
+            <li>The rules these rights basis prescribe.</li>
+        </ul><p>Rules are actions (e.g. migrate, give access to, reuse, share, etc.) allowed, prohibited or required by a certain agent (e.g. rights holder, grantor, data controller etc.) to a certain agent (i.e. assignee), and conditions or restrictions limiting the scope of such rules. Among these actions, retention is a crucial one that might be limited in time as <em>Objects</em> may be subject to a retention schedule. After that time they can become a liability and may be deleted.</p><p>The output of Rights Management is used to define the rights of the TDA to perform several other processes. Only the most obvious ones are mentioned as direct customers for the rights statement: Ingest, Enabling Access, Format Migration, Normalisation, File Repair, Enabling Discovery, and Disposal. In other words, TDAs must ensure to obtain the right to perform preservation actions from laws, licenses or explicit rights assignment from rights stakeholders (i.e. rights holders, data subjects, data controllers, regulators, funding bodies, etc.). They should also clarify to their consumers the actions they are allowed to perform with the <em>Objects</em>. This implies that TDAs must provide rights statements to the consumers.</p><p>Although Rights statements are commonly attached to Intellectual Entities (IE), they may also apply to specific Representations of such IEs. They should also apply to all <em>Metadata</em> provided to internal users or consumers, in particular to discovery <em>Metadata</em>. This is especially important in cases where the <em>Metadata</em> contains personal data. Complying with the restrictions set in rights statements forms a part of how a TDA manages information security.</p><p>Rights management, as the production of rights statements, is a recurrent activity. A minimal rights assessment must be performed at the ingest phase, but a more comprehensive assessment may be postponed to a later time in the <em>Object</em>’s life cycle, in particular, when a request for access is made to the TDA. In some cases the outcome of a rights assessment process triggers a TDA to facilitate the update and management of <em>Metadata</em> (e.g. cases where data must be pseudonymised or anonymised) or even disposal, if the legal basis for preserving the data has changed. External events can also trigger rights re-assessment activities (e.g. legislative holds for compliance reasons, changes in consent, or notifications of possible infringement for example copyright). In other cases, rights management can trigger or schedule changes in access given to <em>Objects</em> for a designated community (e.g. embargoes and leases on research data). A lease is the opposite of an embargo. An embargo restricts access until a given time, for example a dataset can be publicly accessible but only after a given date. A lease says that a dataset can be made accessible but only before a given date and afterwards access is restricted or removed. Likewise, rights may inform retention schedules that trigger future events such as transfer or disposal. Therefore, it is important that the temporal aspect of rights are properly tracked and managed.</p><p>A single rights basis usually applies to several <em>Objects</em> or <em>Metadata</em> (e.g. a Creative Commons license). Thus, the Rights Management process also consists in managing a rights basis registry.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Appraisal or re-appraisal</span></td><td></td></tr><tr><td><span>Any process that requires rights clearance to act upon an <em>Object</em>, if a
+comprehensive rights assessment was not performed at ingest</span></td><td>CPP-025 (Enabling Access), CPP-029 (Ingest), CPP-014 (File Migration), CPP-026 (File Normalisation), CPP-027 (File Repair), CPP-024 (Enabling Discovery), CPP-017 (Disposal)</td></tr><tr><td><span>In particular, access request </span></td><td>CPP-025 (Enabling Access)</td></tr><tr><td><span>Revision after the end of a fixed-term rule (e.g. embargo, lease, etc.)</span></td><td></td></tr><tr><td><span>Changes in legislation, changes in consent, infringement or take down requests, etc.</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="3">1</td><td rowspan="1"></td><td rowspan="1"><span><em>Object</em></span></td><td class="stepsColumn" rowspan="3"><span>Determine which rights basis apply to the <em>Object</em> or <em>Metadata</em></span></td><td rowspan="3"><span>Applicable rights basis</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span><em>Metadata</em></span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="2"><span>Determine (if possible by negotiation with producer, rights holder and data controller) the rules implied by the rights basis (action, assignee, duration, restrictions or conditions)</span></td><td rowspan="2"><span>Applicable rules</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="2"><span>Determine (if possible by negotiation with producer, rights holder and data controller) the applicable dates of the rights basis (start and end date)</span></td><td rowspan="2"><span>Time-delimited status</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr></tr><tr><td rowspan="3">4</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="3"><span>If needed (depending on the the existing status of the <em>Object</em> and the applicable rights basis and rules) negotiate with the producer new rights assignment</span></td><td rowspan="3"><span>New rights basis (e.g. contract, license, etc.)</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rules</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Time-delimited status</span></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"><span>New rights basis (e.g. contract, license, etc.)</span></td><td class="stepsColumn" rowspan="1"><span>If a new rights basis had to be created (e.g. a new contract, new license, etc.), preserve its complete documentation</span></td><td rowspan="1"><span>Rights basis documentation</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="4">6</td><td rowspan="1"></td><td rowspan="1"><span><em>Object</em></span></td><td class="stepsColumn" rowspan="4"><span>Associate the <em>Object</em> with the rights statement</span></td><td rowspan="4"><span>Rights statement</span></td><td rowspan="4">CPP-025 (Enabling Access)<hr></hr>CPP-029 (Ingest)<hr></hr>CPP-014 (File Migration)<hr></hr>CPP-026 (File Normalisation)<hr></hr>CPP-027 (File Repair)<hr></hr>CPP-024 (Enabling Discovery)<hr></hr>CPP-017 (Disposal)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rules</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Time-delimited status</span></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"><span>Rights statement</span></td><td class="stepsColumn" rowspan="1"><span>Optionally, encode / map rights statement into machine-actionable form and record it as Rights metadata</span></td><td rowspan="1"><span>Rights metadata</span></td><td rowspan="1">CPP-016 (Metadata Ingest and Management)</td></tr><tr></tr><tr><td rowspan="2">8</td><td rowspan="1"></td><td rowspan="1"><span><em>Metadata</em></span></td><td class="stepsColumn" rowspan="2"><span>If the updated rights statement requires, trigger one of the following processes:</span><ul>
+                        <li><em>Metadata</em> must be anonymised (or pseudonymised)</li>
+                        <li>Disposal of Information packages</li> 
+                        <li>Grant / deny access to a specific community.</li>
+                    </ul></td><td rowspan="2"><span></span></td><td rowspan="2">CPP-016 (Metadata Ingest and Management)<hr></hr>CPP-017 (Disposal)<hr></hr>CPP-025 (Enabling Access)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Information Packages</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>A minimal rights assessment at the ingest phase is required, although a more comprehensive process may be carried out at a later time in the <em>Object</em> life cycle.</span></td><td><span>Without rights assessment, a TDA might be incapable of performing preservation actions.</span><br></br><span>Its consumers might be discouraged to use the <em>Object</em> if no explicit rights statement is provided by the TDA.</span><br></br><span>The TDA might be exposed to liability or legal and financial harm.</span><br></br><span>The TDA may end up retaining data for longer than needed or allowed, which can increase costs (e.g. storage).</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>/</td><td>/</td><td>/</td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Any information regarding the rights for the TDA and the end users needs to be stored and should be searchable and retrievable for all data.</span></td></tr><tr><td>Required by</td><td>CPP-025</td><td>Enabling Access</td><td><span>The TDA must assess access rights to check if it is authorised to provide access to the requester.</span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>Some minimal rights assessment must be performed during ingest to verify that the TDA should be in charge of preserving the content of the SIP.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Rights management</span></td><td><span>R02. The repository maintains all applicable rights and monitors compliance</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Monitor[ing] and document[ing] conformity with relevant regulations</span></td><td><span>C7 Legal conformity</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>/</span></td><td><span>3.5.1.1 The repository shall have contracts or deposit agreements which specify and transfer to it all necessary preservation rights, and those rights transferred shall be documented.</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>No exact matching term exists in the OAIS functional model.</span></td><td><span>Among many rights considerations, OAIS reserves a specific treatment to Access RIghts Information in its informational model (section 4.3.2.4.3 “Preservation Description Information”). In addition, the section 3.3.3 “Obtains sufficient control for long term preservation” describes one of the OAIS’ responsibilities, providing some insights into the rights management process for the TDA internal needs.</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>No exact matching term exists in PREMIS</span></td><td><span>PREMIS describes all metadata elements required to describe a comprehensive rights statement in its section on the Rights Entity. The topic of rights management is also covered in another section, “More on Rights”.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Negotiating Rights for Born-Digitals at the National Library of France</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France (BnF), France, FR</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="/">/</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>The born-digital acquisitions and donations process at the National Library of France collects <em>Objects</em> from creators (filmmakers, graphic designers, photographs, etc.). The <em>Objects</em> aim to document the creative processes that eventually produced a work of art, some of which being collective. Rights of different nature may apply to these archives. Therefore, the process includes a mandatory step consisting in assessing rights applicable to the collected <em>Objects</em>.</span></td></tr><tr><td>Problem statement</td><td><span>The assessment usually leads to the signature of a contract which allows BnF to collect, copy, give access, migrate and exhibit <em>Objects</em>. In the case where the producer released the <em>Object</em> under an open license, it may allow BnF to perform such actions on the content without negotiating an explicit contract with the rights holder(s).</span></td></tr><tr><td>Proposed solution</td><td><span>Rights negotiations cover primarily access rights (remotely and without any restriction via the digital library Gallica, on-premise via Gallica Intra Muros or on the library’s public workstations via an access request), retrieval (download) and reuse rights.</span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href='https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-ADMAdministrativemetadata"'>https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-ADMAdministrativemetadata"</a><div>(Rights metadata)</div></td></tr><tr><td rowspan="2">CSC – IT Center for Science Ltd., FI</td><td rowspan="2">Non-commercial digital preservation service</td><td>Finnish</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(Service contracts)</div></td></tr><tr><td>English</td><td><a href="https://digitalpreservation.fi/en/toms">https://digitalpreservation.fi/en/toms</a><div>(Technical and Organisational Measures in the Digital Preservation Services)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights</a><div>(Rights statements)</div></td></tr><tr><td rowspan="1">Rosetta, IL</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights">https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights</a><div>(Acess rights)</div></td></tr></table></div></div></body></html>
