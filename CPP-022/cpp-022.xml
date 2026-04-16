@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-022" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Significant Properties Definition</cpp:label>
+        <cpp:authors>
+            <cpp:author>Bertrand Caron</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Kris Dekeyser</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Franziska Schwab</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-04-10</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA defines significant properties for sets of Information Objects (i.e., properties that it commits to preserve over the long term through preservation actions and rendition).
+    </cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Preservation Planning</cpp:oaisClassification>
+        <cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+
+        <p>Significant properties is a widely-adopted concept in the analog and digital preservation
+            sectors that can be defined as <em>“essential characteristics of a digital object which
+            must be preserved over time for the digital object to remain accessible and meaningful”</em>
+            (definition taken from the <a
+                href="https://web.archive.org/web/20100504081357/http://www.dpconline.org/events/significant-properties.html">Digital
+            Preservation Coalition, British Library, and JISC joint workshop, “What to preserve?
+            Significant Properties of Digital Objects”</a>). It acknowledges that digital <em>Object</em>s
+            - just like analog Objects - are subject to intentional or unintentional changes and
+            that memory organisations should identify which of their properties are significant, and
+            should therefore be preserved by committing efforts and means. For a more in-depth
+            presentation of the concept of significant properties, see Montague, Lynne, and Eleonora
+            Nicchiarelli. “The Concept of Significant Properties.” The National Archives,
+            Österreichischen Nationalbibliothek, May 26, 2010. Available at <a
+                href="https://www.planets-project.eu/docs/reports/Planets_PC3-D23A_TheConceptOfSignificantProperties.pdf">
+            https://www.planets-project.eu/docs/reports/Planets_PC3-D23A_TheConceptOfSignificantProperties.pdf</a>
+            .</p>
+
+        <p>Significant properties are declared for a certain <em>Object</em> type, although this
+            categorisation will vary. For example, one organisation can declare significant
+            properties for all its still images, while another will specify different significant
+            properties for digital photographs, graphic design works and screenshots. Significant
+            properties are generally classified into five top-level categories:</p>
+
+        <ul>
+            <li><em>Content</em>: the main signal(s) conveyed by the <em>Object</em> (e.g. textual,
+                visual, audiovisual, etc.);</li>
+            <li><em>Context</em>: the information documenting the circumstances of creation and
+                history of the <em>Object</em>;</li>
+            <li><em>Appearance</em>: the visual aspects of the <em>Object</em> (e.g. fonts, layouts,
+                colours, etc.);</li>
+            <li><em>Structure</em>: the organisation of the content (e.g. pages, sections, ordering,
+                etc.);</li>
+            <li><em>Behaviour</em>: all features beyond simple displaying (e.g. links, actions,
+                navigation, etc.)</li>
+        </ul>
+
+        <p>In addition to these categories, significant properties may be qualified by the
+            possibility to be determined in an automated way, or only by manual observation.
+            Significant properties that can be determined in an automated way are called
+            “extractable”. For example, the visual aspect of source and target PDFs can be easily
+            compared by means of tools like <a
+                href="https://mark-summerfield.github.io/diffpdf.html">diffpdf</a>. On the other
+            hand, those significant properties that only a human action can assess are called
+            “observational”. The step-by-step description below focuses on extractable properties.
+            In cases where observational properties are considered significant by the TDA, it must
+            define a manual determination method that is incorporated in its processes.</p>
+
+        <p>Guidance can be provided to memory organisations on which properties of certain <em>
+            Object</em>s are generally considered significant, but the final decision of adopting
+            these or not is still the responsibility of the TDA. Thus, the definition of significant
+            properties is an institutional policy. Significant properties might even vary within the
+            same organisation from one project to another. For example, the history of changes
+            recorded as XMP internal <em>Metadata</em> in field xmpMM:History may be considered
+            crucial for born-digital digital photographs, but negligible for album thumbnails. </p>
+
+        <p>The significant properties policy should be produced or at least confirmed by the TDA
+            management, since it will influence the usability that the <em>Object</em>s will
+            support. For this reason, significant properties are likely to be more high-level,
+            organisational properties that will need to be mapped to technical extractable
+            properties. For example, for a significant property “audio signal quality”, the
+            technical properties associated will be sampling frequency, bit depth, etc. These
+            properties might change (e.g. if a conversion from audio signal in DSD64 1 bit / 2.8224
+            MHz is made to PCM 24 bits / 96kHz) but their evolution should be controlled to ensure
+            the audio signal quality is preserved.</p>
+
+        <p>In some cases, significant properties will be dictated by stakeholders (e.g. Producer,
+            Consumer, etc.) - see the use case “Page Layout as Significant Property of Reflowable
+            EPUBs” below. <b>Community Watch</b> (CPP-018) must therefore ensure that its
+            significant properties policy is aligned with the needs of its designated community.</p>
+
+    </cpp:descriptionAndScope>
+
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:guidance>
+                <cpp:guidanceElement>Significant properties policy from equivalent TDAs</cpp:guidanceElement>
+                <cpp:guidanceElement>Community and stakeholders needs</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+
+        <cpp:outputs>
+            <cpp:guidance>
+                <cpp:guidanceElement>Significant properties policy for a given Object type</cpp:guidanceElement>
+                <cpp:guidanceElement>Significant properties detection method</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:outputs>
+
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>A new <em>Object</em> type is planned to be ingested by the TDA</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Community needs</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-018</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Study Community needs and derive required <em>Object</em> property</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Organisational high-level property</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+
+
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Organisational high-level property</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Map the organisational high-level property to one or several concrete
+                        extractable property(ies)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Associated concrete extractable property(ies)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span></span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Gather a test set of a given <em>Object</em> type</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Test set</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Associated concrete extractable property(ies)</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Select a tool capable of extracting the concrete property(ies)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Extractor tool</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+
+            <cpp:step stepNumber="5">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Test set</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Candidate extractor tool</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Run the candidate extractor tool on the test set</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Candidate extractor tool output</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Candidate extractor tool output</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Determine whether the significant property is identifiable in the
+                        candidate extractor tool output</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Significant properties detection method confirmed: extractor tool
+                            chosen (step 7)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>No detection method confirmed (resume steps 4-6)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Chosen extractor tool output</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Determine the interpretation of the extractor tool output (path to the
+                        property, error tolerance, etc.)</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Significant properties detection method: path or expression to extract
+                            the significant properties from the tool’s output</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-009</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+
+        </cpp:stepByStepDescription>
+    </cpp:process>
+
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>If the TDA aims to do semantic / logical preservation, give access to its
+                    holdings to end users and create copies out of the original <em>Object</em>s,
+                    defining the significant properties of its <em>Object</em>s to be able to assess
+                    the success or failure of all preservation and access actions is required.</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Without a significant properties policy and methods to detect that they are
+                    maintained in any modified preservation or derivative copy, the TDA may produce
+                    unnoticed faulty copies or render the <em>Object</em>s incorrectly.</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+
+    <cpp:cppRelationships>
+        <!--Dependencies-->
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>The Significant Properties Definition is fundamental to ensure that
+                    information and features supported by the <em>Object</em>s are those that the
+                    TDA’s designated community is expecting.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+
+        <!--other
+        relations-->
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>As Data Quality Assessment identifies quality properties whose value will
+                    determine whether the <em>Object</em>s are ingested or not, these quality
+                    properties will likely be also considered significant by the TDA.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>A TDA defines significant properties for digital <em>Object</em>s. These are
+                    then translated to Technical metadata that is ingested. The significant
+                    properties definition process also influences which Technical metadata standards
+                    are applied.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>To report on the characteristics of <em>Object</em>s for deeper analysis, the
+                    significant properties must have been defined in the first place.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>File Migration implies the production of a <em>Representation</em> supposed
+                    to act as a preservation copy and must rely on significant properties to
+                    determine its success or failure.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-015</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Rendering should be evaluated based on significant properties. The faulty
+                    rendering of an <em>Object</em> because of unsuitable hardware or software may
+                    go unnoticed and produce wrong interpretations from the TDA’s community.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Like Format migration, Normalisation should be evaluated based on significant
+                    propertie</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Modifying the <em>File</em>’s <em>Bitstream</em> in order to correct faulty
+                    structures can cause unexpected changes to the rendering and behaviour of an <em>
+                    Object</em>. Thus, file repair should also be evaluated based on significant
+                    properties.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-028</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Although derivatives may not be subject to the same requirements as
+                    preservation <em>Representation</em>s, a TDA might consider providing access
+                    through copies that do not convey significant properties as a failure.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+
+    <cpp:frameworkMappings>
+        <!-- certification -->
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Compar[ing] the essential properties</span>
+                <span>Storage and Integrity</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>R07 Provenance and Authenticity</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Identification and documentation of significant properties</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>C13 Significant properties</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Identification of transformational information properties</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.1.1 “The repository shall identify the Content Information and associated
+                    Preservation Objectives and the Transformational Information Properties that the
+                    repository will preserve.”</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+
+        <!-- other frameworks and reference documents -->
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Transformational information properties</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>5.2.4.5 “Transformation” and 5.3.4.2 Preservation of Access and Use Services</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Significant properties</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span><em>significantProperties</em> semantic unit p. 50</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+
+    <cpp:referenceImplementations>
+        <!-- example use cases -->
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Page Layout as Significant Property of Reflowable EPUBs</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Ebooks publishers / digital books service provider</cpp:institutionLabel>
+                    <cpp:institutionCountry>FR</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="eng">
+                    <cpp:hyperlink></cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>Users of reflowable EPUBs may change their visual aspect by zooming or
+                        switching to another font.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>In 2009-2010, French publishers were implementing workflows to produce
+                        digital books. Initially, they were concerned by the users’ ability to
+                        change the digital books’ visual aspect and page layout. They were tempted
+                        to use exclusively the EPUB 3 fixed-layout format to prevent users from
+                        doing so.</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>An EPUB production service provider had to convince publishers of the
+                        benefits of reflowable EPUBs. The publishers had to accept that reflowable
+                        ebooks' visual aspect and page layout were not significant.</span>
+                    <span>In this example, a stakeholder - a service provider, followed by an industry sector -
+                        determined explicitly that a property of a specific <em>Object</em> (digital
+                        books in reflowable EPUB format) should not be considered significant. TDAs
+                        should then acknowledge this and make no attempt at preserving this
+                        property.</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+
+        <!-- Documentatoion -->
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608961/Significant+Properties
+                </cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2025040925236</cpp:hyperlink>
+                <cpp:comment>section 6.2.1</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Bibliothèque nationale de France</cpp:institutionLabel>
+                <cpp:institutionCountry>FR</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="fr">
+                <cpp:hyperlink>https://bnf.hal.science/hal-03374030v2</cpp:hyperlink>
+                <cpp:comment>sections titled “Propriétés…”</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>National Archives and Records Administration</cpp:institutionLabel>
+                <cpp:institutionCountry>US</cpp:institutionCountry>
+                <cpp:institutionType>National archive</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://github.com/usnationalarchives/digital-preservation/tree/master/Digital_Preservation_Record_Categories</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+
+
+    </cpp:referenceImplementations>
+</cpp:cpp>
