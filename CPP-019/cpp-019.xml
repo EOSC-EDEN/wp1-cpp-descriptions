@@ -213,7 +213,7 @@
                 </cpp:step>
                 <cpp:stepGroup type="alternative"
                     label="Different handling based on nature of quality properties">
-                    <cpp:step stepNumber="3">
+                    <cpp:step stepNumber="3a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -247,7 +247,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="4">
+                    <cpp:step stepNumber="3b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -276,7 +276,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="5">
+                    <cpp:step stepNumber="3c">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -315,7 +315,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="6">
+                    <cpp:step stepNumber="3d">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -351,7 +351,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="7">
+                    <cpp:step stepNumber="3e">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -375,7 +375,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="8">
+                    <cpp:step stepNumber="3f">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -409,7 +409,7 @@
                         </cpp:output>
                     </cpp:step>
                 </cpp:stepGroup>
-                <cpp:step stepNumber="9">
+                <cpp:step stepNumber="4">
                     <cpp:input>
                         <cpp:inputElement optional="true">
                             <span>File format identifier</span>
@@ -449,7 +449,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="10">
+                <cpp:step stepNumber="5">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Quality assessment report</span>
@@ -466,7 +466,7 @@
                         <cpp:customer>CPP-029</cpp:customer>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="11" optional="true">
+                <cpp:step stepNumber="6" optional="true">
                     <cpp:stepDescription>
                         <span> Optional: The quality of an <em>Object</em>, <em>AIP</em> or <em>
                             Metadata</em> can be enhanced or modified based on the quality
