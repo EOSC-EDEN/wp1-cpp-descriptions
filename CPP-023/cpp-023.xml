@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-023" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Risk Properties Definition and Extraction</cpp:label>
+        <cpp:authors>
+            <cpp:author>Bertrand Caron</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Kris Dekeyser</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Franziska Schwab</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>2</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-04-21</cpp:versionDate>
+                <cpp:versionNotes>Substantial revision of the description section and the process description to align interdependencies with CPP-012: Short definition and label modified - Revision of the global outputs and the structure of the Definition and scope section - Separation of the step-by-step description into Assessment and Extraction - Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA monitors preservation risks and defines detection methods for determining whether the deposited digital objects are subject to these risks.</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Preservation Planning</cpp:oaisClassification>
+        <cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>Risk Definition and Extraction is a multi-tiered process that a) identifies risks caused by the specific properties and content of a file, b) defines methods to detect these risks based on file analysis (i.e. format identification, metadata extraction and format validation), and c) holds responsibility for performing technology watch. Together with CPP-012 Risk Mitigation, which defines which actions can be undertaken to reduce the likelihood or impact of the risk, CPP-023 Risk Definition and Extraction is an essential process in the scope of the broader, on-going “risk management” activity.</p>
+        <p>Risk Definition and Extraction is also the process responsible for technology watch. It receives updates from Community Watch (CPP-018), such as conference papers, specialised literature and journals, vendor announcements, etc. Based on that, it  evaluates the impact of the risk with regard to the skills, objectives and means of the Designated Community. In particular, the two following activities are in scope of this CPP:</p>
+        <ul>
+            <li>Risk Identification involves cataloging potential threats to digital materials, including technological obsolescence (e.g. hardware or software becoming unavailable), media degradation (e.g. physical deterioration of storage devices), format obsolescence ( e.g. file formats being no longer supported), organisational risks (e.g. loss of institutional knowledge or funding), and environmental hazards (e.g. human failure and disasters such as power failures or security breaches).</li>
+            <li>Risk Assessment evaluates the likelihood and potential impact of identified risks. This typically involves analysing object- and organisation-related factors like the criticality of the digital materials; the object’s primary and secondary value; the stability of their formats; and the resources available for preservation activities.</li>
+            </ul>
+        <p>Problems in the rendering or reuse of <em>Files</em> by the TDA’s end users may stem from several reasons. For example, one common reason is the use of certain file format features, that rendering tools may misinterpret. To mitigate such misinterpretation, preservation actions (e.g. CPP-014 File Migration, CPP-027 File Repair, CPP-015 Emulation and Rendering Tools, etc.) should go beyond file format or validity status and consider risk properties. Risk properties are <em>File</em> or <em>Representation</em> properties that help identify whether a <em>File</em> is subject to a specific risk. Some examples of risk properties are:</p>
+        <ul>
+            <li>Discontinued support of file format;</li>
+            <li>Erroneous file format structures;</li>
+            <li>Encryption;</li>
+            <li>External dependencies (e.g. non-embedded fonts);</li>
+            <li>Embedded <em>Files</em>;</li>
+            <li>Advanced multimedia features;</li>
+            <li>Specific creating application, when said application is known to have created faulty <em>Files</em>;</li>
+            <li>etc.</li>
+        </ul>
+        <p>It is important to note that risk properties, in some cases, may be also considered significant properties, however, this is not necessarily the case  For example, a valid PDF may be encrypted with an <a href="https://qpdf.readthedocs.io/en/stable/encryption.html#user-and-owner-passwords">empty password</a>. This is a risk property (it may endanger the following preservation processes) but it may not be considered a significant property (the TDA may decide to decrypt the PDF and keep it decrypted). Risk properties are typically defined by digital preservation analysts, while significant properties should be defined by the TDA management and stakeholders.</p>
+        <p>The step-by-step description below focuses more specifically on the risk extraction part of the process. Like Risk Mitigation, Risk Definition and Extraction focuses on a specific subset of risks - in this case, risks related to inherent properties of <em>Files</em>. Although of major impact, the definition and detection of risks caused by organisational, financial or security issues are not described.</p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:alerts>
+                <cpp:alert>Technology alerts</cpp:alert>
+                <cpp:alert>Community alerts</cpp:alert>
+            </cpp:alerts>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:guidance>
+                <cpp:guidanceElement>Risk property</cpp:guidanceElement>
+                <cpp:guidanceElement>Risk property detection method</cpp:guidanceElement>
+                <cpp:guidanceElement>Updated risk inventory</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Community alerts</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-018</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Technology alerts</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:step stepNumber="1">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Information sources for digital preservation</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-018</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>New findings gained through technical analysis</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-010</cpp:supplier>
+                    <cpp:supplier>CPP-027</cpp:supplier>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Risk properties policy and detection method</span>
+                    </cpp:inputElement>
+                    <cpp:supplier>CPP-023</cpp:supplier>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Receive community and technology alerts</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Risk</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="2">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Risk</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Evaluate the risk likelihood and impact.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Assessment of risk likelihood and impact</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="3">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Risk</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Gather a test set of <em>Files</em> (compiled of both files that are subject to this risk and a control group).</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Test set</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="4">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Risk</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Select a candidate tool for identifying the risk</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Candidate extractor tool</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="5">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Test set</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Candidate extractor tool</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Run the candidate extractor tool on the test set</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Candidate extractor tool output</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="6">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Candidate extractor tool output</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Determine which property in the candidate extractor tool output helps distinguish those <em>Files</em> that are affected by the risk and those that are not.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Successful identification of a risk property detection method (extractor tool) (step 7)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>No method identified: resume steps 3-5</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="7">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Chosen extractor tool output</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Determine the interpretation of the extractor tool output</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Risk property detection method: path / expression to extract the risk property from the tool’s output.</span>
+                        <span>(This interpretation should resolve to a true/false statement about the file being subject to the risk or not. It can be simple (an XPATH to the textual content of an element in an XML output) or more complex. See, about this, the use case about multipage TIFFs below.)</span>
+                    </cpp:outputElement>
+                </cpp:output>
+            </cpp:step>
+            <cpp:step stepNumber="8">
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Risk</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Risk property</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:input>
+                    <cpp:inputElement>
+                        <span>Risk property detection method: path / expression to extract the risk property from the tool’s output</span>
+                    </cpp:inputElement>
+                </cpp:input>
+                <cpp:stepDescription>
+                    <span>Update the risk inventory with the risk, risk property and risk property detection method.</span>
+                </cpp:stepDescription>
+                <cpp:output>
+                    <cpp:outputElement>
+                        <span>Updated risk inventory</span>
+                    </cpp:outputElement>
+                    <cpp:customer>CPP-009</cpp:customer>
+                </cpp:output>
+            </cpp:step>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>Risk assessment is critical for digital preservation activities because identifying risks related to the inherent characteristics of <em>Files</em> is required for a semantic / logical preservation approach.</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>The impact of the absence of risk assessment on <em>Files</em>’ characteristics may lead to different problems:</span>
+                <ul>
+                    <li>Broken, undetected dependencies;</li>
+                    <li>Unusual features badly supported by rendering tools;</li>
+                    <li>etc.</li>
+                </ul>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-008</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risks can be related to file format generic properties and concern all instances of it. In such a case, File Format Identification is sufficient to determine whether the file is affected by the risk. For example, Microsoft announced the discontinuation of its software product Publisher. As a consequence, all .pub files are now affected by the absence of a suitable software environment.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risks can be related to properties common to one or several file formats. In such a case, Metadata Extraction is required to determine whether the file is affected by the risk. For example, running a metadata extractor like Apache Tika is required to check whether a PDF is encrypted or not.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risk is measured against the skills and tools available in the Designated Community.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risk Properties Definition and Extraction and CPP-019 both define properties that the TDA should consider and assess against the result of CPP-009 (Metadata extraction).</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risk Properties Definition and Extraction provides the requirements for the selection of an appropriate extractor tool.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risk Properties Properties Definition and Extraction maintains a risk inventory that guides the Risk mitigation process.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Risk Properites Definition and Extraction identifies risks related to file format that would trigger File Migration and provides the method for their detection.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingSection>
+                <span>CTS does not explicitly mention Risk definition and extraction, although it is within the scope of R09 (Preservation planning).</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingSection>
+                <span>Nestor Seal does not explicitly mention Risk definition and extraction, although C11 Preservation measures are based on a risk definition process as described in this CPP.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>“identifying each preservation risk”</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>ISO 16363 mentions Risk definition and extraction in section 4.3.1: “The repository shall have documented preservation strategies relevant to its holdings.”</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Preservation watch</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Risk Definition and Extraction is covered by both Monitor Technology and Preservation Watch functions.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingSection>
+                <span>/</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Identification of PDF preservation risks</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Koninklijke Bibliotheek</cpp:institutionLabel>
+                    <cpp:institutionCountry>NL</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>https://bitsgalore.org/2023/05/25/identification-of-pdf-preservation-risks-with-verapdf-and-jhove.html</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>In this blog post, Johan van der Knijff lists a number of PDF features that represent a risk for the rendering or reuse of the content of <em>Files</em>. Van der Knijff also demonstrates how to detect them, using JHOVE and veraPDF (i.e. two of the most widely used PDF metadata extractors among the digital preservation community).</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>Encryption or password-protection, multimedia content or external dependencies can prevent TDAs from making the content of <em>Files</em> accessible  to its end users. File Format Identification and File Format Validation are not sufficient to identify these risks, because these features are used by only some instances of the file format and because encryption and multimedia objects are perfectly valid and standard PDF features.</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>Van der Knijff provides the reader with a method to determine whether a File is using such features, and therefore has to be flagged at risk.</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+            <cpp:useCase>
+                <cpp:useCasetitle>Multi-page TIFFs</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Rosetta Users Group</cpp:institutionLabel>
+                    <cpp:institutionCountry>XX</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>https://docs.google.com/spreadsheets/d/1tSpS_1rCeVgOI0dEkmRu8cR9VjlLlYj_CnehswD1aM0/edit?gid=0#gid=0</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>Although TIFF files may contain multiple images, this is not a common feature. As a result, some rendering tools cannot handle images beyond the first one properly, as they only take into account the “baseline” features described in the TIFF specification but ignore its extensions.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>The preservation software Rosetta has a functionality for providing risk reports that help users to monitor risks and identify <em>Files</em> or <em>Representations</em> that are at risk in order to take batch action on all previously ingested Objects. Triggers for such risk reports include: Certificate, Encryption, End of life, Non-Standard, Obsolete, Outdated, Propriety.</span>
+                    <span>This spreadsheet was elaborated by the Rosetta Users Group as a risk inventory that provides a list of risks and methods for their detection The detection can be based on the file format identifier (PUID, in this case) or on a file property.</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>The line titled “TIFF with multiple pages” is a risk property, identified based on technology and community alerts. Multiple tools can detect this risk but JHOVE was preferred as most of the Rosetta implementations use it for both file format validation and metadata extraction of TIFFs. The interpretation of JHOVE’s output being complex, the extraction of the risk property relies on the analysis of several elements in JHOVE’s output. Those are described in column D as a set of conditions resolving to TRUE or FALSE.</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+            <cpp:useCase>
+                <cpp:useCasetitle>4-channel JPEGs</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>KU Leuven</cpp:institutionLabel>
+                    <cpp:institutionCountry>BE</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:triggerEvent>
+                    <span>Multiple end users reported that some ingested JPEGs did not display correctly, being rendered as a black rectangle. A number of reports had entered, but without a reference to the faulty JPEGs. At last a report was filed with a PID that contained 4 JPEGs, of which 1 did not render.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>By comparing the <em>Technical metadata</em> of the correct and misrendered JPEG, it was noticed that the misrendered JPEG had four samples per pixel instead of three, as it happens with most RGB images. Since color space information was missing, it was first assumed that there was an alpha channel added for transparency.</span>
+                    <span>However, further investigation into the specification and internet articles revealed that an alpha channel was highly unlikely. In a next step, the TDA therefore downloaded the files and ran more tools against the JPEGs. Exiftool listed a Color Transform value of YCCK, which was confirmed by checking the file’s APP14 block data.</span>
+                    <span>Closer visual inspection of the web viewer revealed indeed small variations of different shadings of black in places where there was a lot of contrast in the original image. This pattern also seemed consistent with a YCbCr interpretation of the YCCK data. An investigation of all the JPEG files with 4-channel images and all of them turned out to be indeed in the YCCK colorspace.</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>The TDA at KU Leuven decided to convert all JPEG files to YCbCr. However, all employed tools still seem to result in a file with colors slightly different from the originals, leading to on-going discussions with the producer on the conversion process.</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608641/Preservation+Management#PreservationManagement-Riskmanagement</cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2023062157386</cpp:hyperlink>
+                <cpp:comment>section 2.1</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices</cpp:hyperlink>
+                <cpp:comment>Archivematica can provide some of the information needed to support risk assessment as part of its Transfer process.</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
