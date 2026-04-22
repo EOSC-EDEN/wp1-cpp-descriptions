@@ -43,38 +43,74 @@
         <cpp:logicalClassification>Generation of New Files</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
-        <p>File Repair is an operation performed to correct erroneous format structures that could prevent the expected use or rendering of the File by the repository or the user. For additional considerations on the topic, see this <a href="https://hdl.handle.net/2142/121092">conference paper</a>. In addition, erroneous format structures can potentially hinder preservation actions, such as file format migration, as tools developed to process the Files expect the Files to have a defined structure. </p> 
-        <p>Erroneous format structures have many different causes. Some examples are listed below:</p> 
+        <p>File Repair is an operation performed to correct erroneous format structures that could
+            prevent the expected use or rendering of the File by the repository or the user. For
+            additional considerations on the topic, see this <a
+                href="https://hdl.handle.net/2142/121092">conference paper</a>. In addition,
+            erroneous format structures can potentially hinder preservation actions, such as file
+            format migration, as tools developed to process the Files expect the Files to have a
+            defined structure. </p>
+        <p>Erroneous format structures have many different causes. Some examples are listed below:</p>
         <ul>
-            <li>Improper behaviours of creation software (e.g. InDesign, in some previous versions, was known to export corrupted PDFs);</li> 
-            <li>Partial or failed transfers (e.g. digital photographs transferred through an unstable bluetooth connection);</li>
-            <li>Corruption or loss when data is transferred to a TDA or is processed within a TDA where there are no ‘good’ copies of the data that can be recovered from and hence file repair is necessary (e.g. a <em>File</em> is corrupted during transfer to a TDA which goes undetected or a <em>File</em> is corrupted during ingest and is then replicated across all copies held by the TDA).</li>
-            <li>Edition with a different software than the creation tool (e.g. PDFs produced with pdfTeX, then edited with Quark XPress);</li>
+            <li>Improper behaviours of creation software (e.g. InDesign, in some previous versions,
+                was known to export corrupted PDFs);</li>
+            <li>Partial or failed transfers (e.g. digital photographs transferred through an
+                unstable bluetooth connection);</li>
+            <li>Corruption or loss when data is transferred to a TDA or is processed within a TDA
+                where there are no ‘good’ copies of the data that can be recovered from and hence
+                file repair is necessary (e.g. a <em>File</em> is corrupted during transfer to a TDA
+                which goes undetected or a <em>File</em> is corrupted during ingest and is then
+                replicated across all copies held by the TDA).</li>
+            <li>Edition with a different software than the creation tool (e.g. PDFs produced with
+                pdfTeX, then edited with Quark XPress);</li>
             <li>etc.</li>
         </ul>
-        <p>The impact of the erroneous format structures should be assessed as “low”, “medium” or, “high” according to the following criticality / severity criteria:</p>
+        <p>The impact of the erroneous format structures should be assessed as “low”, “medium” or,
+            “high” according to the following criticality / severity criteria:</p>
         <ul>
-            <li>Impact is considered “High” when important parts of the <em>File</em>’s or <em>Representation</em>’s content are not accessible;</li> 
-            <li>Impact is considered “Medium” when a regular feature of the <em>File</em> or <em>Representation</em> is not supported, either for the consumer or the TDA (e.g. if metadata extraction cannot be performed);</li>
-            <li>Impact is considered “Low” when no effect can be detected on the <em>File</em>’s or <em>Representation</em>’s content or features.</li>
+            <li>Impact is considered “High” when important parts of the <em>File</em>’s or <em>
+                Representation</em>’s content are not accessible;</li>
+            <li>Impact is considered “Medium” when a regular feature of the <em>File</em> or <em>
+                Representation</em> is not supported, either for the consumer or the TDA (e.g. if
+                metadata extraction cannot be performed);</li>
+            <li>Impact is considered “Low” when no effect can be detected on the <em>File</em>’s or <em>
+                Representation</em>’s content or features.</li>
         </ul>
-        <p>A <em>File</em> or <em>Representation</em> might be affected by several deviations from the standard. In that case, the impact should be assessed for each identified deviation. The process should then try to address issues from the most to the least impactful. One should keep in mind that errors might be related, so that one repairing operations might affect several errors returned by a validation tool. In addition, some tools would stop the validation process at the first error, so that repairing the initial error returned by the tool would lead to a still invalid <em>File</em> for another reason.</p> 
+        <p>A <em>File</em> or <em>Representation</em> might be affected by several deviations from
+            the standard. In that case, the impact should be assessed for each identified deviation.
+            The process should then try to address issues from the most to the least impactful. One
+            should keep in mind that errors might be related, so that one repairing operations might
+            affect several errors returned by a validation tool. In addition, some tools would stop
+            the validation process at the first error, so that repairing the initial error returned
+            by the tool would lead to a still invalid <em>File</em> for another reason.</p>
         <p>This CPP covers the following steps:</p>
         <ul>
-            <li>The initial analysis step that first determines precisely which erroneous format structure is responsible for the failure using validation tools and metadata extractors, and then evaluates the risk that these structures pose for current and future users;</li> 
+            <li>The initial analysis step that first determines precisely which erroneous format
+                structure is responsible for the failure using validation tools and metadata
+                extractors, and then evaluates the risk that these structures pose for current and
+                future users;</li>
             <li>The intervention on the <em>File</em> itself;</li>
-            <li>The control step that measures the impact of repair, and controls that no significant properties were affected in the process;</li>
+            <li>The control step that measures the impact of repair, and controls that no
+                significant properties were affected in the process;</li>
             <li>The documentation step that records the details of the process;</li>
-            <li>The handling of false positives and identification of gaps in the tools producing the false positive warnings / errors.</li>
+            <li>The handling of false positives and identification of gaps in the tools producing
+                the false positive warnings / errors.</li>
         </ul>
-        <p>Many reasons could cause the process not to be effectively performed. In the description below, three are mentioned:</p>
+        <p>Many reasons could cause the process not to be effectively performed. In the description
+            below, three are mentioned:</p>
         <ul>
-            <li>The impact of erroneous structures is deemed low compared to the <em>Object</em> value and the operation’s complexity;</li> 
+            <li>The impact of erroneous structures is deemed low compared to the <em>Object</em>
+                value and the operation’s complexity;</li>
             <li>The deviation from the standard could not be assessed;</li>
             <li>A repair method could not be provided by CPP-012 (Risk Mitigation).</li>
         </ul>
-        <p>In any of these cases, the file repair process would end and another error-handling option among the ones suggested in CPP-010 (<em>File</em> Format Validation) should be considered.</p>
-        <p><em>File</em> repair is a manual and investigative process that requires in-depth knowledge of format structures. Therefore, its performance requires a high level of institutional maturity and organisational resources in digital preservation and is recommended only for mature TDAs.</p>
+        <p>In any of these cases, the file repair process would end and another error-handling
+            option among the ones suggested in CPP-010 (<em>File</em> Format Validation) should be
+            considered.</p>
+        <p><em>File</em> repair is a manual and investigative process that requires in-depth
+            knowledge of format structures. Therefore, its performance requires a high level of
+            institutional maturity and organisational resources in digital preservation and is
+            recommended only for mature TDAs.</p>
     </cpp:descriptionAndScope>
     <cpp:process>
         <cpp:inputs>
@@ -118,323 +154,379 @@
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Corrupted <em>File</em> or <em>Representation</em>, no intact copy available</span>
+                    <span>Corrupted <em>File</em> or <em>Representation</em>, no intact copy
+                        available</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-004</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>The file repair process may end up with a situation where the <em>File</em> cannot be repaired. In such cases, disposal is required by the file repair process.</span>
+                    <span>The file repair process may end up with a situation where the <em>File</em>
+                        cannot be repaired. In such cases, disposal is required by the file repair
+                        process.</span>
                 </cpp:description>
                 <cpp:correspondingCPP>CPP-017</cpp:correspondingCPP>
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Observation of failure to render or use a <em>File</em> or <em>Representation</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Source <em>File</em> or <em>Representation</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Any software that takes the format as input, in particular <a href="https://coptr.digipres.org/index.php/Rendering">rendering tools</a></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Use rendering tools and edition tools to check whether the erroneous format structures impact the <em>File</em>’s content and features</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Effect on the <em>File</em>’s content and features</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Error message</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Literature or knowledge bases on validation errors. An example of such a knowledge base is the <a href="https://github.com/openpreserve/jhove/wiki">JHOVE wiki</a> that associates an impact assessment and remediation suggestion.</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If Format validation has returned that the <em>File</em> is invalid, check whether knowledge bases on validation errors already have assessed the erroneous format structures’ impact</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Impact as assessed by external resources</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Knowledge gathered in the previous step(s)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Significant properties</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-022</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Evaluate current impact of erroneous format structures (low, middle, high…) against significant properties. For example, if the erroneous format structure affects the Image Unique Identifier (EXIF tag) and that the presence of internal technical metadata is not deemed significant by the TDA, the impact will be deemed low.</span>
-                    <span>If the impact is evaluated as “low”, consider not proceeding further.</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Risk impact</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Data: source <em>File</em> / <em>Representation</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Tools: as many <a href="https://coptr.digipres.org/index.php/Validation">validation tools</a> as possible; as a default, reference parsing tools associated with the format</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-010</cpp:supplier>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Tools: <a href="https://coptr.digipres.org/index.php/Metadata_Extraction">metadata extractors</a></span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-009</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Use different validation tools and metadata extractors to identify precisely which format structures are responsible for the detected issue</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Errors and warnings</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Source <em>File</em> or <em>Representation</em> properties</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="5">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Errors and warnings</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Format specifications</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Compare with format specifications to determine the distance between erroneous <em>File</em> structures and specification requirements</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Estimated deviation from the specification</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="6">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If there is no deviation, consider contributing to improvement of software (rendering, validation, etc.) that returned the false positive, and do not proceed further.</span>
-                    <span>If the deviation from the standard cannot be assessed, consider not proceeding further.</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Issues / contributions to tools</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="7">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Errors and warnings</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Source <em>File</em> or <em>Representation</em> properties</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Estimated deviation from the specification</span>
-                    </cpp:inputElement>
-                </cpp:input> 
-                <cpp:stepDescription>
-                    <span>Revise results of step 1 in light of outputs of steps 2 and 3, then go to step 6</span>    
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Revised risk impact</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="8">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Revised impact level and consequence</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Decide whether or not to perform file repair</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="9">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Preservation action registry</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-012</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Request a repair method.</span>
-                    <span>If no repair method is available, consider not proceeding further</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Repair method</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="10">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Tool: edition tool / <a href="https://coptr.digipres.org/index.php/Binary_%26_Hexidecimal_Editing">hexadecimal editor</a></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Perform chosen repair method</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Target <em>File</em> or <em>Representation</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="11">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Data: Target <em>File</em> or <em>Representation</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Tools: metadata extractors and validation tools used in step 2</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-009</cpp:supplier>
-                    <cpp:supplier>CPP-010</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Document in the Provenance Information the creation of a new <em>Representation</em>. Trigger new AIP Version.</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Run metadata extraction and file format validation on the target <em>File</em> or <em>Representation</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Target <em>File</em> or <em>Representation</em> properties</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-             <cpp:step stepNumber="12">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Target <em>File</em> or <em>Representation</em> properties (in particular validity status)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Significant properties</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-022</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Control that the target <em>File</em> or <em>Representation</em> has expected validity status and significant properties.</span>
-                    <span>If the <em>File</em> or <em>Representation</em> is still invalid, assess the outcome of the repair method:</span>
-                    <ul>
-                        <li>If the repair method was successful (i.e., fixed indeed an erroneous format structure), resume the process from step 1 with the target <em>File</em> or <em>Representation</em>;</li>
-                        <li>If the repair method was unsuccessful, resume the process from step 7 with the source <em>File</em> or <em>Representation</em></li> 
-                    </ul>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Decision whether the repair method should be confirmed</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="13">
-                <cpp:stepDescription>
-                    <span>Decide which <em>File</em> or <em>Representation</em> should be retained (source, target or both).</span>
-                    <span>If target <em>File</em> or <em>Representation</em> is to be retained, proceed with further steps. If not, the process ends</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="14">
-                <cpp:stepDescription>
-                    <span>Document precisely the nature of the operation performed (tool and version used, date, options or command-line arguments, etc.)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>New Provenance metadata</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="15" optional="true">
-                <cpp:stepDescription>
-                    <span>Optional: Update the Preservation action registry with the new process description</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>New or updated repair method</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-012</cpp:customer>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Observation of failure to render or use a <em>File</em> or <em>
+                                Representation</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Source <em>File</em> or <em>Representation</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Any software that takes the format as input, in particular <a
+                                    href="https://coptr.digipres.org/index.php/Rendering">rendering
+                                tools</a></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Use rendering tools and edition tools to check whether the erroneous
+                            format structures impact the <em>File</em>’s content and features</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Effect on the <em>File</em>’s content and features</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Error message</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Literature or knowledge bases on validation errors. An example of
+                                such a knowledge base is the <a
+                                    href="https://github.com/openpreserve/jhove/wiki">JHOVE wiki</a>
+                                that associates an impact assessment and remediation suggestion.</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If Format validation has returned that the <em>File</em> is invalid,
+                            check whether knowledge bases on validation errors already have assessed
+                            the erroneous format structures’ impact</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Impact as assessed by external resources</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Knowledge gathered in the previous step(s)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Significant properties</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-022</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Evaluate current impact of erroneous format structures (low, middle,
+                            high…) against significant properties. For example, if the erroneous
+                            format structure affects the Image Unique Identifier (EXIF tag) and that
+                            the presence of internal technical metadata is not deemed significant by
+                            the TDA, the impact will be deemed low.</span>
+                        <span>If the impact is evaluated as “low”, consider not proceeding further.</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Risk impact</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Data: source <em>File</em> / <em>Representation</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Tools: as many <a
+                                    href="https://coptr.digipres.org/index.php/Validation">validation
+                                tools</a> as possible; as a default, reference parsing tools
+                                associated with the format</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-010</cpp:supplier>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Tools: <a
+                                    href="https://coptr.digipres.org/index.php/Metadata_Extraction">metadata
+                                extractors</a></span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-009</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Use different validation tools and metadata extractors to identify
+                            precisely which format structures are responsible for the detected issue</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Errors and warnings</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Source <em>File</em> or <em>Representation</em> properties</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Errors and warnings</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Format specifications</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Compare with format specifications to determine the distance between
+                            erroneous <em>File</em> structures and specification requirements</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Estimated deviation from the specification</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If there is no deviation, consider contributing to improvement of
+                            software (rendering, validation, etc.) that returned the false positive,
+                            and do not proceed further.</span>
+                        <span>If the deviation from the standard cannot be assessed, consider not
+                            proceeding further.</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Issues / contributions to tools</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="7">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Errors and warnings</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Source <em>File</em> or <em>Representation</em> properties</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Estimated deviation from the specification</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Revise results of step 1 in light of outputs of steps 2 and 3, then go
+                            to step 6</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Revised risk impact</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="8">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Revised impact level and consequence</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Decide whether or not to perform file repair</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="9">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Preservation action registry</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-012</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Request a repair method.</span>
+                        <span>If no repair method is available, consider not proceeding further</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Repair method</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="10">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Tool: edition tool / <a
+                                    href="https://coptr.digipres.org/index.php/Binary_%26_Hexidecimal_Editing">hexadecimal
+                                editor</a></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Perform chosen repair method</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Target <em>File</em> or <em>Representation</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="11">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Data: Target <em>File</em> or <em>Representation</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Tools: metadata extractors and validation tools used in step 2</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-009</cpp:supplier>
+                        <cpp:supplier>CPP-010</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Document in the Provenance Information the creation of a new <em>
+                            Representation</em>. Trigger new AIP Version.</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Run metadata extraction and file format validation on the target <em>
+                                File</em> or <em>Representation</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Target <em>File</em> or <em>Representation</em> properties</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="12">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Target <em>File</em> or <em>Representation</em> properties (in
+                                particular validity status)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Significant properties</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-022</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Control that the target <em>File</em> or <em>Representation</em> has
+                            expected validity status and significant properties.</span>
+                        <span>If the <em>File</em> or <em>Representation</em> is still invalid,
+                            assess the outcome of the repair method:</span>
+                        <ul>
+                            <li>If the repair method was successful (i.e., fixed indeed an erroneous
+                                format structure), resume the process from step 1 with the target <em>
+                                File</em> or <em>Representation</em>;</li>
+                            <li>If the repair method was unsuccessful, resume the process from step
+                                7 with the source <em>File</em> or <em>Representation</em></li>
+                        </ul>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Decision whether the repair method should be confirmed</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="13">
+                    <cpp:stepDescription>
+                        <span>Decide which <em>File</em> or <em>Representation</em> should be
+                            retained (source, target or both).</span>
+                        <span>If target <em>File</em> or <em>Representation</em> is to be retained,
+                            proceed with further steps. If not, the process ends</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="14">
+                    <cpp:stepDescription>
+                        <span>Document precisely the nature of the operation performed (tool and
+                            version used, date, options or command-line arguments, etc.)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>New Provenance metadata</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="15" optional="true">
+                    <cpp:stepDescription>
+                        <span>Optional: Update the Preservation action registry with the new process
+                            description</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>New or updated repair method</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-012</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span>Erroneous format structures can cause rendering issues or prevent expected use of the <em>File</em> or <em>Representation</em>.</span>
-                <span>In order to decide whether to perform the repair method, TDA should weigh the impact and likelihood of the risk against the <em>Information Object</em> value, the operation complexity and available knowledge of its staff.</span>
+                <span>Erroneous format structures can cause rendering issues or prevent expected use
+                    of the <em>File</em> or <em>Representation</em>.</span>
+                <span>In order to decide whether to perform the repair method, TDA should weigh the
+                    impact and likelihood of the risk against the <em>Information Object</em> value,
+                    the operation complexity and available knowledge of its staff.</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Potentially, inability to render the <em>File</em>. See <a href="https://openpreservation.org/blogs/validation-ok-they-said-fixing-the-rendering-of-a-so-called-valid-pdf/">Caron, Bertrand. “‘Validation OK’ They Said: Fixing the Rendering of a So-Called Valid PDF.” Open Preservation Foundation (blog), May 21, 2025.</a></span>
+                <span>Potentially, inability to render the <em>File</em>. See <a
+                        href="https://openpreservation.org/blogs/validation-ok-they-said-fixing-the-rendering-of-a-so-called-valid-pdf/">Caron,
+                    Bertrand. “‘Validation OK’ They Said: Fixing the Rendering of a So-Called Valid
+                    PDF.” Open Preservation Foundation (blog), May 21, 2025.</a></span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span>If the TDA is performing format validation, having defined procedures to handle errors by investigating their cause and correcting structures is necessary as a proper response. It is recommended that a TDA maintains an institutional Preservation Actions Registry that includes common validation errors and potential solutions to fix them.</span>
+                <span>If the TDA is performing format validation, having defined procedures to
+                    handle errors by investigating their cause and correcting structures is
+                    necessary as a proper response. It is recommended that a TDA maintains an
+                    institutional Preservation Actions Registry that includes common validation
+                    errors and potential solutions to fix them.</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Without comparative support, the know-how or the resources required to manage the investigation process and repair actions can get lost, resulting in <em>Files</em> either remaining invalid and at a risk of being preserved properly, or not even ingested at all.</span>
+                <span>Without comparative support, the know-how or the resources required to manage
+                    the investigation process and repair actions can get lost, resulting in <em>
+                    Files</em> either remaining invalid and at a risk of being preserved properly,
+                    or not even ingested at all.</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -443,21 +535,27 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Validation is generally implemented as part of an ingest workflow. If validation fails, a decision can be taken to ingest the <em>File</em> or <em>Representation</em> as is, reject it or repair the erroneous structures.</span>
+                <span>Validation is generally implemented as part of an ingest workflow. If
+                    validation fails, a decision can be taken to ingest the <em>File</em> or <em>
+                    Representation</em> as is, reject it or repair the erroneous structures.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Risk Mitigation, as the provider of all actions aiming at limiting the impact or likelihood of identified risks, is intended to prescribe appropriate methods to repair the <em>File</em> or <em>Representation</em>.</span>
+                <span>Risk Mitigation, as the provider of all actions aiming at limiting the impact
+                    or likelihood of identified risks, is intended to prescribe appropriate methods
+                    to repair the <em>File</em> or <em>Representation</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Modifying the <em>File</em>’s Bitstream in order to correct faulty structures can cause unexpected changes to the rendering and behaviour of an <em>Object</em>. Thus file repair should also be evaluated based on significant properties.</span>
+                <span>Modifying the <em>File</em>’s Bitstream in order to correct faulty structures
+                    can cause unexpected changes to the rendering and behaviour of an <em>Object</em>.
+                    Thus file repair should also be evaluated based on significant properties.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
@@ -471,28 +569,34 @@
             <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Tools extracting properties of the <em>File</em> or <em>Representation</em> are useful, if not necessary, for analysing which format structures are erroneous.</span>
+                <span>Tools extracting properties of the <em>File</em> or <em>Representation</em>
+                    are useful, if not necessary, for analysing which format structures are
+                    erroneous.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Fixing invalid <em>Files</em> produces Provenance metadata and data for quality reporting to the stakeholders</span>
+                <span>Fixing invalid <em>Files</em> produces Provenance metadata and data for
+                    quality reporting to the stakeholders</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Both operations affect the <em>Files</em>’ Bitstream and aim at reducing the risk. Migration is typically performed to mitigate an obsolescence risk, while repair handles format structure issues.</span>
+                <span>Both operations affect the <em>Files</em>’ Bitstream and aim at reducing the
+                    risk. Migration is typically performed to mitigate an obsolescence risk, while
+                    repair handles format structure issues.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Alternative to</cpp:relationshipType>
             <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>In some cases where no intact copy of corrupted or broken data is available, repairing the structure of an altered copy is the only option.</span>
+                <span>In some cases where no intact copy of corrupted or broken data is available,
+                    repairing the structure of an altered copy is the only option.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -500,7 +604,8 @@
         <cpp:mapping>
             <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
             <cpp:correspondingTerm>
-                <span>“The approach to resolving issues e.g. whether the digital objects are (...) fixed by the repository"</span>
+                <span>“The approach to resolving issues e.g. whether the digital objects are (...)
+                    fixed by the repository"</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
                 <span>R10 “Quality assurance”</span>
@@ -528,9 +633,9 @@
             <cpp:frameworkName>OAIS</cpp:frameworkName>
             <cpp:correspondingTerm>
                 <span>/</span>
-        </cpp:correspondingTerm>
-           <cpp:correspondingSection>
-            <span>/</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>/</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
@@ -552,17 +657,25 @@
                     <cpp:institutionCountry>DE</cpp:institutionCountry>
                 </cpp:institution>
                 <cpp:linkToDocumentation xml:lang="en">
-                    <cpp:hyperlink>https://openpreservation.org/blogs/a-date-with-pdf-hul-133-improperly-formed-date/</cpp:hyperlink>
+                    <cpp:hyperlink>
+                        https://openpreservation.org/blogs/a-date-with-pdf-hul-133-improperly-formed-date/</cpp:hyperlink>
                     <cpp:comment>Lindlar, Micky. “A Date with PDF-HUL-133 ‘Improperly Formed Date.’” Open Preservation Foundation (blog), May 13, 2024.</cpp:comment>
                 </cpp:linkToDocumentation>
                 <cpp:triggerEvent>
-                    <span>A PDF <em>File</em> that was to be ingested was analyzed by TIB and errors were returned by validation tools (JHOVE, pdfcpu and qpdf).</span>
+                    <span>A PDF <em>File</em> that was to be ingested was analyzed by TIB and errors
+                        were returned by validation tools (JHOVE, pdfcpu and qpdf).</span>
                 </cpp:triggerEvent>
                 <cpp:problemStatement>
-                    <span>The creation and modification dates are incorrectly formatted, and as a consequence rendering tools cannot display these dates in their metadata panel.</span>
+                    <span>The creation and modification dates are incorrectly formatted, and as a
+                        consequence rendering tools cannot display these dates in their metadata
+                        panel.</span>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
-                    <span>After analysing the formatting issue and comparing it to the expected format from the specification, TIB compared two different repair methods, applied them and compared the result between source and target <em>Files</em>. The final decision was to retain only the source format, as the risk associated with this format structure issue was deemed low.</span>
+                    <span>After analysing the formatting issue and comparing it to the expected
+                        format from the specification, TIB compared two different repair methods,
+                        applied them and compared the result between source and target <em>Files</em>.
+                        The final decision was to retain only the source format, as the risk
+                        associated with this format structure issue was deemed low.</span>
                 </cpp:proposedSolution>
             </cpp:useCase>
             <cpp:useCase>
@@ -572,18 +685,30 @@
                     <cpp:institutionCountry>DE</cpp:institutionCountry>
                 </cpp:institution>
                 <cpp:linkToDocumentation xml:lang="en">
-                    <cpp:hyperlink>https://openpreservation.org/blogs/validation-ok-they-said-fixing-the-rendering-of-a-so-called-valid-pdf/.</cpp:hyperlink>
+                    <cpp:hyperlink>
+                        https://openpreservation.org/blogs/validation-ok-they-said-fixing-the-rendering-of-a-so-called-valid-pdf/.</cpp:hyperlink>
                     <cpp:comment>Caron, Bertrand. “‘Validation OK’ They Said: Fixing the Rendering of a So-Called Valid PDF.” Open Preservation Foundation (blog), May 21, 2025.</cpp:comment>
                 </cpp:linkToDocumentation>
                 <cpp:triggerEvent>
-                    <span>A PDF <em>File</em> that was to be ingested was identified by TIB could not be displayed by Adobe Reader.</span>
+                    <span>A PDF <em>File</em> that was to be ingested was identified by TIB could
+                        not be displayed by Adobe Reader.</span>
                 </cpp:triggerEvent>
                 <cpp:problemStatement>
-                    <span>The analysis used validation tools to identify the erroneous format structure: very high values for integers, for some properties where smaller values were expected by the rendering tools.</span>
+                    <span>The analysis used validation tools to identify the erroneous format
+                        structure: very high values for integers, for some properties where smaller
+                        values were expected by the rendering tools.</span>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
-                    <span>Though no deviation was noticed from the specification, TIB considered the risk as high as Adobe Reader is the default rendering tool for PDFs.</span>
-                    <span>After performing the repair, significant properties (textual content, visual aspect) were checked with the tool <a href="https://mark-summerfield.github.io/comparepdfcmd.html">comparepdf</a> to confirm that no important information or feature was lost in the process. After noticing that the process caused the loss of unreferenced PDF objects (undisplayed but potentially meaningful pieces of information located in the PDF file) that were considered as a significant property, the repair method was corrected.</span>
+                    <span>Though no deviation was noticed from the specification, TIB considered the
+                        risk as high as Adobe Reader is the default rendering tool for PDFs.</span>
+                    <span>After performing the repair, significant properties (textual content,
+                        visual aspect) were checked with the tool <a
+                            href="https://mark-summerfield.github.io/comparepdfcmd.html">comparepdf</a>
+                        to confirm that no important information or feature was lost in the process.
+                        After noticing that the process caused the loss of unreferenced PDF objects
+                        (undisplayed but potentially meaningful pieces of information located in the
+                        PDF file) that were considered as a significant property, the repair method
+                        was corrected.</span>
                     <span>The decision was to retain only the repaired <em>File</em>.</span>
                 </cpp:proposedSolution>
             </cpp:useCase>
@@ -601,12 +726,14 @@
                 <cpp:hyperlink>
                     https://wiki.tib.eu/confluence/spaces/lza/pages/93608641/Preservation+Management#PreservationManagement-Migration</cpp:hyperlink>
             </cpp:linkToDocumentation>
-              <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest?preview=/93608618/310285406/mets-deposit.png#Ingest-PAIProcessdiagrammMETSdeposit</cpp:hyperlink>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest?preview=/93608618/310285406/mets-deposit.png#Ingest-PAIProcessdiagrammMETSdeposit</cpp:hyperlink>
                 <cpp:comment>File Repair is part of all ingest routines after validation stack process</cpp:comment>
             </cpp:linkToDocumentation>
             <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest?preview=/93608618/310285408/oai_deposit.png#Ingest-OAIDpsProcessdiagrammOAI-PMHdeposit</cpp:hyperlink>
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608618/Ingest?preview=/93608618/310285408/oai_deposit.png#Ingest-OAIDpsProcessdiagrammOAI-PMHdeposit</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
     </cpp:referenceImplementations>

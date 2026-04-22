@@ -43,48 +43,48 @@ Redundancy is required to mitigate risks such as data corruption and unintention
 
 ## Process Steps
 
-| Step | Supplier(s) | Input(s)                            | Description                                                   | Output(s)                                  | Customer(s) |
-| :--- | :---------- | :---------------------------------- | :------------------------------------------------------------ | :----------------------------------------- | :---------- |
+| Step | Supplier(s) | Input(s)                            | Description                                                   | Output(s)                                      | Customer(s) |
+| :--- | :---------- | :---------------------------------- | :------------------------------------------------------------ | :--------------------------------------------- | :---------- |
 | 1    | `CPP-012`<br>`CPP-029` | - Copy management policy<br>- Storage management information<br>- *AIP* | Identify and locate *AIP* to be replicated                    | - Inventory of *AIP* to be replicated<br>- Source storage medium with *AIP* |             |
-| 2    |             | - *Copy management policy*          | Select target storage medium to copy the *AIP* to             | - Target storage medium                    |             |
-| 3    |             | - Source storage medium with *AIP*<br>- Target storage medium<br>- *AIP* | Start the copy process (steps 4 to 8).                        |                                            |             |
-| 4    |             |                                     | Retrieve the *AIP* from the source storage medium             |                                            |             |
-| 5    |             |                                     | Copy the *AIP* to the new storage medium                      | - New copy of *AIP*                        |             |
-| 6    |             | - Existing/previous Fixity metadata | Validate the fixity of the *AIP* on the target storage medium | - Valid status (step 7)<br>                        *Fixity Metadata*><br>- Invalid status (go back to step 4)<br>                        *Fixity Metadata* |             |
-| 7    |             |                                     | Update the fixity for the new *AIP* copy                      | - *Fixity Metadata*                        |             |
-| 8    |             |                                     | Update the storage location for the new *AIP* copy            | - *Storage management information*         |             |
-| 9    |             |                                     | Create preservation *Event metadata* of the replication       | - *Provenance metadata*                    |             |
+| 2    |             | - *Copy management policy*          | Select target storage medium to copy the *AIP* to             | - Target storage medium                        |             |
+| 3    |             | - Source storage medium with *AIP*<br>- Target storage medium<br>- *AIP* | Start the copy process (steps 4 to 8).                        |                                                |             |
+| 4    |             |                                     | Retrieve the *AIP* from the source storage medium             |                                                |             |
+| 5    |             |                                     | Copy the *AIP* to the new storage medium                      | - New copy of *AIP*                            |             |
+| 6    |             | - Existing/previous Fixity metadata | Validate the fixity of the *AIP* on the target storage medium | - Valid status (step 7)<br>                            *Fixity Metadata*><br>- Invalid status (go back to step 4)<br>                            *Fixity Metadata* |             |
+| 7    |             |                                     | Update the fixity for the new *AIP* copy                      | - *Fixity Metadata*                            |             |
+| 8    |             |                                     | Update the storage location for the new *AIP* copy            | - *Storage management information*             |             |
+| 9    |             |                                     | Create preservation *Event metadata* of the replication       | - *Provenance metadata*                        |             |
 
 ## Rationale / Worst Case
 
-| Purpose                                                                   | Worst Case                                                                                             |
-| :------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------- |
-| Have multiple copies of data                                              | Handling data corruption or destruction requires intact copies to restore lost <br>                    data from. |
-| Copies in different storage locations with different location based risks | If data is not stored in different locations, any disaster to the location is a <br>                    single point of failure. The same applies to the type of risk associated with the <br>                    locations (e.g. political risk, risk of natural disasters etc.). |
-| Copies should exist on different type of storage media                    | Systematic errors in a storage media can affect all copies on the same type of <br>                    media. |
-| Offline copies that are not accessible by normal procedures               | Offline copies are safe from malicious users or software, as they cannot be <br>                    accessed by normal means. |
-| Open source storage solutions                                             | Vendor lock-in in storage solutions can pose a risk to the copies on those media <br>                    if they have a dependency to an outside partner. |
+| Purpose                                                                   | Worst Case                                                                                        |
+| :------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------ |
+| Have multiple copies of data                                              | Handling data corruption or destruction requires intact copies to restore lost<br>                    data from. |
+| Copies in different storage locations with different location based risks | If data is not stored in different locations, any disaster to the location is a<br>                    single point of failure. The same applies to the type of risk associated with<br>                    the<br>                    locations (e.g. political risk, risk of natural disasters etc.). |
+| Copies should exist on different type of storage media                    | Systematic errors in a storage media can affect all copies on the same type of<br>                    media. |
+| Offline copies that are not accessible by normal procedures               | Offline copies are safe from malicious users or software, as they cannot be<br>                    accessed by normal means. |
+| Open source storage solutions                                             | Vendor lock-in in storage solutions can pose a risk to the copies on those media<br>                    if they have a dependency to an outside partner. |
 
 ## Relationships
 
-| Type                    | Related CPP | Description                                                                                           |
-| :---------------------- | :---------- | :---------------------------------------------------------------------------------------------------- |
-| Requires                | CPP-012     | A TDAs storage policy, that defines how data is stored, the amount of parallel <br>                    copies etc, is based on a TDAs risk assessment and mitigation. |
-| Requires                | CPP-005     | Soft dependency (i.e. may require): When a *Digital Object* or *File* is <br>                    replicated, the replicant may be assigned a new PID. |
-| Not to be confused with | CPP-030     | Replication creates new parallel copies of *AIPs*, while Refreshment replaces<br>                    *AIPs* onto new storage media. |
-| Affinity with           | CPP-002     | All new *AIP* copies must have their checksum validated to verify that the<br>                    process was successful. The checksum validation is more mechanical in its nature <br>                    in Replication, only aiming at verification of the copy process. In contrast to <br>                    CPP-002, it does not have to negotiate with producers or examine the results. |
-| Affinity with           | CPP-004     | A replication-like process is performed in data corruption management, in which <br>                    *AIPs* must be replicated to replace corrupted *AIPs*. |
-| Affinity with           | CPP-006     | Replication creates new parallel copies of *AIPs* within a TDAs archival <br>                    storage. AIP Batch Export exports *AIPs* to external locations. |
+| Type                    | Related CPP | Description                                                                                                                   |
+| :---------------------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| Requires                | CPP-012     | A TDAs storage policy, that defines how data is stored, the amount of parallel<br>                    copies etc, is based on a TDAs risk assessment and mitigation. |
+| Requires                | CPP-005     | Soft dependency (i.e. may require): When a *Digital Object* or *File* is replicated, the replicant may be assigned a new PID. |
+| Not to be confused with | CPP-030     | Replication creates new parallel copies of *AIPs*, while Refreshment<br>                    replaces *AIPs* onto new storage media. |
+| Affinity with           | CPP-002     | All new *AIP* copies must have their checksum validated to verify that<br>                    the process was successful. The checksum validation is more mechanical in its<br>                    nature in Replication, only aiming at verification of the copy process. In<br>                    contrast to CPP-002, it does not have to negotiate with producers or examine the<br>                    results. |
+| Affinity with           | CPP-004     | A replication-like process is performed in data corruption management, in<br>                    which *AIPs* must be replicated to replace corrupted *AIPs*. |
+| Affinity with           | CPP-006     | Replication creates new parallel copies of *AIPs* within a TDAs<br>                    archival storage. AIP Batch Export exports *AIPs* to external locations. |
 
 ## Framework Mappings
 
-| Framework     | Term                                                                                                       | Section                                          |
-| :------------ | :--------------------------------------------------------------------------------------------------------- | :----------------------------------------------- |
-| CoreTrustSeal | Multiple copies                                                                                            | R14 Storage and Integrity                        |
-| Nestor Seal   | Selection of suitable storage media, redundancy, refreshing, media migration                               | C15 Integrity: Functions of the archival storage |
-| ISO 16363     | Not explicitly mentioning the process of making copies, but section 5.1.2 comes <br>                    close, where it mentions managing copies: Repositories may require a different <br>                    number of copies for each class, or manage versions needed to meet access requirements | 5.1.2                                            |
-| OAIS          | Replace Media<br>                Replication<br>                Refreshment                                | 4.2.3.4<br><br>5.2.4.3<br><br>5.2.4.2            |
-| PREMIS        | Replication<br>                Media Migration<br>                Media Refreshment                        | Glossary                                         |
+| Framework     | Term                                                                                               | Section                                          |
+| :------------ | :------------------------------------------------------------------------------------------------- | :----------------------------------------------- |
+| CoreTrustSeal | Multiple copies                                                                                    | R14 Storage and Integrity                        |
+| Nestor Seal   | Selection of suitable storage media, redundancy, refreshing, media migration                       | C15 Integrity: Functions of the archival storage |
+| ISO 16363     | Not explicitly mentioning the process of making copies, but section 5.1.2 comes<br>                    close, where it mentions managing copies: Repositories may require a different<br>                    number of copies for each class, or manage versions needed to meet access<br>                    requirements | 5.1.2                                            |
+| OAIS          | Replace Media<br>                Replication<br>                Refreshment                        | 4.2.3.4<br><br>5.2.4.3<br><br>5.2.4.2            |
+| PREMIS        | Replication<br>                Media Migration<br>                Media Refreshment                | Glossary                                         |
 
 ## Reference Implementations
 

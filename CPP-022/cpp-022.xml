@@ -141,136 +141,138 @@
         </cpp:triggerEvents>
 
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Community needs</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-018</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Study Community needs and derive required <em>Object</em> property</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Organisational high-level property</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Community needs</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-018</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Study Community needs and derive required <em>Object</em> property</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Organisational high-level property</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
 
 
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Organisational high-level property</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Map the organisational high-level property to one or several concrete
-                        extractable property(ies)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Associated concrete extractable property(ies)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Organisational high-level property</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Map the organisational high-level property to one or several concrete
+                            extractable property(ies)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Associated concrete extractable property(ies)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
 
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Gather a test set of a given <em>Object</em> type</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Test set</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Gather a test set of a given <em>Object</em> type</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Test set</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
 
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Associated concrete extractable property(ies)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Select a tool capable of extracting the concrete property(ies)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Extractor tool</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Associated concrete extractable property(ies)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Select a tool capable of extracting the concrete property(ies)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Extractor tool</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
 
-            <cpp:step stepNumber="5">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Test set</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Candidate extractor tool</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Run the candidate extractor tool on the test set</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Candidate extractor tool output</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Test set</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Candidate extractor tool</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Run the candidate extractor tool on the test set</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Candidate extractor tool output</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
 
-            <cpp:step stepNumber="6">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Candidate extractor tool output</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Determine whether the significant property is identifiable in the
-                        candidate extractor tool output</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Significant properties detection method confirmed: extractor tool
-                            chosen (step 7)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>No detection method confirmed (resume steps 4-6)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Candidate extractor tool output</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Determine whether the significant property is identifiable in the
+                            candidate extractor tool output</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Significant properties detection method confirmed: extractor tool
+                                chosen (step 7)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>No detection method confirmed (resume steps 4-6)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
 
-            <cpp:step stepNumber="7">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Chosen extractor tool output</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Determine the interpretation of the extractor tool output (path to the
-                        property, error tolerance, etc.)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Significant properties detection method: path or expression to extract
-                            the significant properties from the tool’s output</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-009</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-
+                <cpp:step stepNumber="7">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Chosen extractor tool output</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Determine the interpretation of the extractor tool output (path to the
+                            property, error tolerance, etc.)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Significant properties detection method: path or expression to
+                                extract
+                                the significant properties from the tool’s output</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-009</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
 
@@ -336,9 +338,9 @@
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>File Migration implies the production of a <em>Representation</em> supposed
-                    to act as a preservation copy and must rely on significant properties to
-                    determine its success or failure.</span>
+                <span>File Migration implies the production of a <em>Representation</em> supposed to
+                    act as a preservation copy and must rely on significant properties to determine
+                    its success or failure.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
@@ -460,11 +462,11 @@
                     <span>An EPUB production service provider had to convince publishers of the
                         benefits of reflowable EPUBs. The publishers had to accept that reflowable
                         ebooks' visual aspect and page layout were not significant.</span>
-                    <span>In this example, a stakeholder - a service provider, followed by an industry sector -
-                        determined explicitly that a property of a specific <em>Object</em> (digital
-                        books in reflowable EPUB format) should not be considered significant. TDAs
-                        should then acknowledge this and make no attempt at preserving this
-                        property.</span>
+                    <span>In this example, a stakeholder - a service provider, followed by an
+                        industry sector - determined explicitly that a property of a specific <em>
+                        Object</em> (digital books in reflowable EPUB format) should not be
+                        considered significant. TDAs should then acknowledge this and make no
+                        attempt at preserving this property.</span>
                 </cpp:proposedSolution>
             </cpp:useCase>
         </cpp:useCases>

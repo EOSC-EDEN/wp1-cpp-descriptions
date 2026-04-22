@@ -233,168 +233,173 @@
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:stepDescription>
-                    <span>Retrieve corresponding AIP Metadata</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:stepDescription>
-                    <span>Identify the scope of versioning</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Update of Metadata (step 3a)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Addition or removal of Files (step 3b)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Replacement of an AIP (step 3c)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Additional incoming Metadata</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>AIP Metadata</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If the intended update concerns only Metadata, update
-                        the AIP Metadata</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Digital archive database update</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>SIP (if relevant)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>AIP</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>File(s) or Representation(s) that should replace
-                            existing File(s) or be added to the AIP</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Versioning policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If the update involves the addition of Files, request
-                        corresponding physical AIP and perform merging with
-                        incoming data and Metadata</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Content of the new AIP version</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Digital archive database update</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3c">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Versioning policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If the update is a “full update”, ingest data and
-                        Metadata as a complete replacement of the previous AIP
-                        version</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Digital archive database update</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>New PID for the new AIP version</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-005</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Request new identifier for the new AIP version</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>AIP version with PID assigned</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="5">
-                <cpp:stepDescription>
-                    <span>Document the date, requester, data or Metadata impacted,
-                        and reason for the versioning</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Provenance metadata</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="6">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Content of the new AIP version</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>AIP packaging policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Repackage the content of the new AIP according to the
-                        TDA’s current packaging standards</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>New AIP</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-029</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="7">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Versioning policy</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-012</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Manage the retention of previous version(s) (i.e. partial,
-                        total retainment or disposal)</span>
-                </cpp:stepDescription>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:stepDescription>
+                        <span>Retrieve corresponding AIP Metadata</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:stepDescription>
+                        <span>Identify the scope of versioning</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Update of Metadata (step 3a)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Addition or removal of Files (step 3b)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Replacement of an AIP (step 3c)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:stepGroup type="alternative"
+                    label="Alternative scenarios based on the scope of the update">
+                    <cpp:step stepNumber="3a">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Additional incoming Metadata</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>AIP Metadata</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>If the intended update concerns only Metadata, update
+                                the AIP Metadata</span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Digital archive database update</span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="3b">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>SIP (if relevant)</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>AIP</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>File(s) or Representation(s) that should replace
+                                    existing File(s) or be added to the AIP</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Versioning policy</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>If the update involves the addition of Files, request
+                                corresponding physical AIP and perform merging with
+                                incoming data and Metadata</span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Content of the new AIP version</span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Digital archive database update</span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="3c">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Versioning policy</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>If the update is a “full update”, ingest data and
+                                Metadata as a complete replacement of the previous AIP
+                                version</span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Digital archive database update</span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                </cpp:stepGroup>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>New PID for the new AIP version</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-005</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Request new identifier for the new AIP version</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>AIP version with PID assigned</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:stepDescription>
+                        <span>Document the date, requester, data or Metadata impacted,
+                            and reason for the versioning</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Provenance metadata</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Content of the new AIP version</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>AIP packaging policy</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Repackage the content of the new AIP according to the
+                            TDA’s current packaging standards</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>New AIP</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-029</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="7">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Versioning policy</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-012</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Manage the retention of previous version(s) (i.e. partial,
+                            total retainment or disposal)</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
@@ -407,16 +412,16 @@
                     versions.</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Inability to handle updating requests from the Producer 
-                    causes duplication because the TDA needs to store subsequent 
-                    AIP versions as new AIPs. See Caron, B. and Verrier, L. 2024. 
-                    From Products to Library Collections: Towards a Data-driven 
-                    Policy for Legal Deposit of Born-digital Sound at the 
-                    National Library of France. iPRES 2024 Papers - 
-                    International Conference on Digital Preservation. Available 
-                    at <a href="https://ipres2024.pubpub.org/pub/6m5xlcii/release/1">
-                        https://ipres2024.pubpub.org/pub/6m5xlcii/release/1
-                    </a>.</span>
+                <span>Inability to handle updating requests from the Producer causes duplication
+                    because the TDA needs to store subsequent AIP versions as new AIPs. See Caron,
+                    B. and Verrier, L. 2024. From Products to Library Collections: Towards a
+                    Data-driven Policy for Legal Deposit of Born-digital Sound at the National
+                    Library of France. iPRES 2024 Papers - International Conference on Digital
+                    Preservation. Available at <a
+                        href="https://ipres2024.pubpub.org/pub/6m5xlcii/release/1">
+                    https://ipres2024.pubpub.org/pub/6m5xlcii/release/1
+                    </a>
+                    .</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>

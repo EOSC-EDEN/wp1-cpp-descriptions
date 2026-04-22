@@ -151,166 +151,171 @@
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>File format identifier </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-008</cpp:supplier>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement optional="true">
-                        <span>Technical metadata</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-009</cpp:supplier>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>File format policy - Validation</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>According to input, select the right tool(s) to perform format validation.
-                        If
-                        the provided Metadata is not sufficient, perform CPP-009 (Metadata
-                        extraction).</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <a href="https://coptr.digipres.org/index.php/Validation">Validation
-                                tool(s)</a>
-                        </span>
-                        <span>(Format validation is generally performed by a single tool.
-                            Nevertheless,
-                            for some complex formats like PDF, TDAs may want to use more than one
-                            tool to identify possible structure errors.)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>File</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span><a href="https://coptr.digipres.org/index.php/Validation">Validation
-                            tool(s)</a>; as a default, reference parsing tools associated with the
-                            format </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Apply the validation tools(s)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Raw validation output</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement optional="true">
-                        <span>Errors and warnings</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3" optional="true">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Errors and warnings</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Raw validation output</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Check validity status</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Confirm Validity status (step 4)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Invalid file detected (step 3a)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Errors and warnings</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Validity status</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>File format specification</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Conduct technical analysis (e.g. rendition and other uses of the File,
-                        comparison with the file format specification, etc.) </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Results of manual tests</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Results of manual tests</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Assess and choose one among the following outputs (in the given order) </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Retain the File as it is</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Find another valid Representation (e.g. by establishing contact with
-                            the
-                            producer)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Trigger File Repair to correct the file structure</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-027</cpp:customer>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Reject the <em>Object</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:stepDescription>
-                    <span>Document the process</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Provenance metadata</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>File format identifier </span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-008</cpp:supplier>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement optional="true">
+                            <span>Technical metadata</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-009</cpp:supplier>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>File format policy - Validation</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>According to input, select the right tool(s) to perform format
+                            validation.
+                            If
+                            the provided Metadata is not sufficient, perform CPP-009 (Metadata
+                            extraction).</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <a href="https://coptr.digipres.org/index.php/Validation">Validation
+                                    tool(s)</a>
+                            </span>
+                            <span>(Format validation is generally performed by a single tool.
+                                Nevertheless,
+                                for some complex formats like PDF, TDAs may want to use more than
+                                one
+                                tool to identify possible structure errors.)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>File</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><a href="https://coptr.digipres.org/index.php/Validation">Validation
+                                tool(s)</a>; as a default, reference parsing tools associated with
+                                the format </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Apply the validation tools(s)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Raw validation output</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement optional="true">
+                            <span>Errors and warnings</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Errors and warnings</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Raw validation output</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Check validity status</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Confirm Validity status (step 4)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Invalid file detected (step 3a)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3a">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Errors and warnings</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Validity status</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>File format specification</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Conduct technical analysis (e.g. rendition and other uses of the File,
+                            comparison with the file format specification, etc.) </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Results of manual tests</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3b">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Results of manual tests</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Assess and choose one among the following outputs (in the given order) </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Retain the File as it is</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Find another valid Representation (e.g. by establishing contact
+                                with
+                                the
+                                producer)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Trigger File Repair to correct the file structure</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-027</cpp:customer>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Reject the <em>Object</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:stepDescription>
+                        <span>Document the process</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Provenance metadata</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
