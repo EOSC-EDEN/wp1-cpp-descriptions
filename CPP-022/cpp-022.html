@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-022_Significant_Properties_Definition</title></head><body><div class="introSection"><div class="title"><h1>Significant Properties Definition (CPP-022)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-022</td></tr><tr><td>CPP-Label</td><td>Significant Properties Definition</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Franziska Schwab</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-10</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA defines significant properties for sets of Information Objects (i.e., properties that it commits to preserve over the long term through preservation actions and rendition).
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="2">Documentation/guidance</td><td>Significant properties policy from equivalent TDAs</td></tr><tr><td>Community and stakeholders needs</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Documentation/guidance</td><td>Significant properties policy for a given Object type</td></tr><tr><td>Significant properties detection method</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Significant properties is a widely-adopted concept in the analog and digital preservation
+            sectors that can be defined as <em>“essential characteristics of a digital object which
+            must be preserved over time for the digital object to remain accessible and meaningful”</em>
+            (definition taken from the <a href="https://web.archive.org/web/20100504081357/http://www.dpconline.org/events/significant-properties.html">Digital
+            Preservation Coalition, British Library, and JISC joint workshop, “What to preserve?
+            Significant Properties of Digital Objects”</a>). It acknowledges that digital <em>Object</em>s
+            - just like analog Objects - are subject to intentional or unintentional changes and
+            that memory organisations should identify which of their properties are significant, and
+            should therefore be preserved by committing efforts and means. For a more in-depth
+            presentation of the concept of significant properties, see Montague, Lynne, and Eleonora
+            Nicchiarelli. “The Concept of Significant Properties.” The National Archives,
+            Österreichischen Nationalbibliothek, May 26, 2010. Available at <a href="https://www.planets-project.eu/docs/reports/Planets_PC3-D23A_TheConceptOfSignificantProperties.pdf">
+            https://www.planets-project.eu/docs/reports/Planets_PC3-D23A_TheConceptOfSignificantProperties.pdf</a>
+            .</p><p>Significant properties are declared for a certain <em>Object</em> type, although this
+            categorisation will vary. For example, one organisation can declare significant
+            properties for all its still images, while another will specify different significant
+            properties for digital photographs, graphic design works and screenshots. Significant
+            properties are generally classified into five top-level categories:</p><ul>
+            <li><em>Content</em>: the main signal(s) conveyed by the <em>Object</em> (e.g. textual,
+                visual, audiovisual, etc.);</li>
+            <li><em>Context</em>: the information documenting the circumstances of creation and
+                history of the <em>Object</em>;</li>
+            <li><em>Appearance</em>: the visual aspects of the <em>Object</em> (e.g. fonts, layouts,
+                colours, etc.);</li>
+            <li><em>Structure</em>: the organisation of the content (e.g. pages, sections, ordering,
+                etc.);</li>
+            <li><em>Behaviour</em>: all features beyond simple displaying (e.g. links, actions,
+                navigation, etc.)</li>
+        </ul><p>In addition to these categories, significant properties may be qualified by the
+            possibility to be determined in an automated way, or only by manual observation.
+            Significant properties that can be determined in an automated way are called
+            “extractable”. For example, the visual aspect of source and target PDFs can be easily
+            compared by means of tools like <a href="https://mark-summerfield.github.io/diffpdf.html">diffpdf</a>. On the other
+            hand, those significant properties that only a human action can assess are called
+            “observational”. The step-by-step description below focuses on extractable properties.
+            In cases where observational properties are considered significant by the TDA, it must
+            define a manual determination method that is incorporated in its processes.</p><p>Guidance can be provided to memory organisations on which properties of certain <em>
+            Object</em>s are generally considered significant, but the final decision of adopting
+            these or not is still the responsibility of the TDA. Thus, the definition of significant
+            properties is an institutional policy. Significant properties might even vary within the
+            same organisation from one project to another. For example, the history of changes
+            recorded as XMP internal <em>Metadata</em> in field xmpMM:History may be considered
+            crucial for born-digital digital photographs, but negligible for album thumbnails. </p><p>The significant properties policy should be produced or at least confirmed by the TDA
+            management, since it will influence the usability that the <em>Object</em>s will
+            support. For this reason, significant properties are likely to be more high-level,
+            organisational properties that will need to be mapped to technical extractable
+            properties. For example, for a significant property “audio signal quality”, the
+            technical properties associated will be sampling frequency, bit depth, etc. These
+            properties might change (e.g. if a conversion from audio signal in DSD64 1 bit / 2.8224
+            MHz is made to PCM 24 bits / 96kHz) but their evolution should be controlled to ensure
+            the audio signal quality is preserved.</p><p>In some cases, significant properties will be dictated by stakeholders (e.g. Producer,
+            Consumer, etc.) - see the use case “Page Layout as Significant Property of Reflowable
+            EPUBs” below. <b>Community Watch</b> (CPP-018) must therefore ensure that its
+            significant properties policy is aligned with the needs of its designated community.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>A new <em>Object</em> type is planned to be ingested by the TDA</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Community needs</span></td><td class="stepsColumn" rowspan="1"><span>Study Community needs and derive required <em>Object</em> property</span></td><td rowspan="1"><span>Organisational high-level property</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1"></td><td rowspan="1"><span>Organisational high-level property</span></td><td class="stepsColumn" rowspan="1"><span>Map the organisational high-level property to one or several concrete
+                        extractable property(ies)</span></td><td rowspan="1"><span>Associated concrete extractable property(ies)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"><span></span></td><td class="stepsColumn" rowspan="1"><span>Gather a test set of a given <em>Object</em> type</span></td><td rowspan="1"><span>Test set</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span>Associated concrete extractable property(ies)</span></td><td class="stepsColumn" rowspan="1"><span>Select a tool capable of extracting the concrete property(ies)</span></td><td rowspan="1"><span>Extractor tool</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">5</td><td rowspan="1"></td><td rowspan="1"><span>Test set</span></td><td class="stepsColumn" rowspan="2"><span>Run the candidate extractor tool on the test set</span></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Candidate extractor tool</span></td></tr><tr></tr><tr><td rowspan="2">6</td><td rowspan="2"></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td class="stepsColumn" rowspan="2"><span>Determine whether the significant property is identifiable in the
+                        candidate extractor tool output</span></td><td rowspan="1"><span>Significant properties detection method confirmed: extractor tool
+                            chosen (step 7)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>No detection method confirmed (resume steps 4-6)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"><span>Chosen extractor tool output</span></td><td class="stepsColumn" rowspan="1"><span>Determine the interpretation of the extractor tool output (path to the
+                        property, error tolerance, etc.)</span></td><td rowspan="1"><span>Significant properties detection method: path or expression to extract
+                            the significant properties from the tool’s output</span></td><td rowspan="1">CPP-009 (Metadata Extraction)</td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>If the TDA aims to do semantic / logical preservation, give access to its
+                    holdings to end users and create copies out of the original <em>Object</em>s,
+                    defining the significant properties of its <em>Object</em>s to be able to assess
+                    the success or failure of all preservation and access actions is required.</span></td><td><span>Without a significant properties policy and methods to detect that they are
+                    maintained in any modified preservation or derivative copy, the TDA may produce
+                    unnoticed faulty copies or render the <em>Object</em>s incorrectly.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-018</td><td>Community Watch</td><td><span>The Significant Properties Definition is fundamental to ensure that
+                    information and features supported by the <em>Object</em>s are those that the
+                    TDA’s designated community is expecting.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Affinity with</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span>As Data Quality Assessment identifies quality properties whose value will
+                    determine whether the <em>Object</em>s are ingested or not, these quality
+                    properties will likely be also considered significant by the TDA.</span></td></tr><tr><td>Affinity with</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>A TDA defines significant properties for digital <em>Object</em>s. These are
+                    then translated to Technical metadata that is ingested. The significant
+                    properties definition process also influences which Technical metadata standards
+                    are applied.</span></td></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>To report on the characteristics of <em>Object</em>s for deeper analysis, the
+                    significant properties must have been defined in the first place.</span></td></tr><tr><td>Required by</td><td>CPP-014</td><td>File Migration</td><td><span>File Migration implies the production of a <em>Representation</em> supposed
+                    to act as a preservation copy and must rely on significant properties to
+                    determine its success or failure.</span></td></tr><tr><td>Required by</td><td>CPP-015</td><td>Emulation and Rendering Tools</td><td><span>Rendering should be evaluated based on significant properties. The faulty
+                    rendering of an <em>Object</em> because of unsuitable hardware or software may
+                    go unnoticed and produce wrong interpretations from the TDA’s community.</span></td></tr><tr><td>Required by</td><td>CPP-026</td><td>File Normalisation</td><td><span>Like Format migration, Normalisation should be evaluated based on significant
+                    propertie</span></td></tr><tr><td>Required by</td><td>CPP-027</td><td>File Repair</td><td><span>Modifying the <em>File</em>’s <em>Bitstream</em> in order to correct faulty
+                    structures can cause unexpected changes to the rendering and behaviour of an <em>
+                    Object</em>. Thus, file repair should also be evaluated based on significant
+                    properties.</span></td></tr><tr><td>Required by</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>Although derivatives may not be subject to the same requirements as
+                    preservation <em>Representation</em>s, a TDA might consider providing access
+                    through copies that do not convey significant properties as a failure.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Compar[ing] the essential properties</span><br></br><span>Storage and Integrity</span></td><td><span>R07 Provenance and Authenticity</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Identification and documentation of significant properties</span></td><td><span>C13 Significant properties</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>Identification of transformational information properties</span></td><td><span>4.1.1 “The repository shall identify the Content Information and associated
+                    Preservation Objectives and the Transformational Information Properties that the
+                    repository will preserve.”</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Transformational information properties</span></td><td><span>5.2.4.5 “Transformation” and 5.3.4.2 Preservation of Access and Use Services</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Significant properties</span></td><td><span><em>significantProperties</em> semantic unit p. 50</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Page Layout as Significant Property of Reflowable EPUBs</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Ebooks publishers / digital books service provider, FR</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href=""></a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>Users of reflowable EPUBs may change their visual aspect by zooming or
+                        switching to another font.</span></td></tr><tr><td>Problem statement</td><td><span>In 2009-2010, French publishers were implementing workflows to produce
+                        digital books. Initially, they were concerned by the users’ ability to
+                        change the digital books’ visual aspect and page layout. They were tempted
+                        to use exclusively the EPUB 3 fixed-layout format to prevent users from
+                        doing so.</span></td></tr><tr><td>Proposed solution</td><td><span>An EPUB production service provider had to convince publishers of the
+                        benefits of reflowable EPUBs. The publishers had to accept that reflowable
+                        ebooks' visual aspect and page layout were not significant.</span><br></br><span>In this example, a stakeholder - a service provider, followed by an industry sector -
+                        determined explicitly that a property of a specific <em>Object</em> (digital
+                        books in reflowable EPUB format) should not be considered significant. TDAs
+                        should then acknowledge this and make no attempt at preserving this
+                        property.</span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608961/Significant+Properties
+                ">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608961/Significant+Properties
+                </a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2025040925236">https://urn.fi/urn:nbn:fi-fe2025040925236</a><div>(section 6.2.1)</div></td></tr><tr><td rowspan="1">Bibliothèque nationale de France, FR</td><td rowspan="1">Non-commercial digital preservation service</td><td>French</td><td><a href="https://bnf.hal.science/hal-03374030v2">https://bnf.hal.science/hal-03374030v2</a><div>(sections titled “Propriétés…”)</div></td></tr><tr><td rowspan="1">National Archives and Records Administration, US</td><td rowspan="1">National archive</td><td>English</td><td><a href="
+                    https://github.com/usnationalarchives/digital-preservation/tree/master/Digital_Preservation_Record_Categories">
+                    https://github.com/usnationalarchives/digital-preservation/tree/master/Digital_Preservation_Record_Categories</a></td></tr></table></div></div></body></html>
