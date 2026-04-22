@@ -191,23 +191,23 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="5a">
-          <cpp:input>
-            <cpp:inputElement>
-              <span>Authenticated and authorised request</span>
-            </cpp:inputElement>
-          </cpp:input>
-          <cpp:stepDescription>
-            <span>The TDA locates the <em>AIP</em> or set of <em>AIPs</em>, from which the <em>DIP</em>
-              is created</span>
-          </cpp:stepDescription>
-          <cpp:output>
-            <cpp:outputElement>
-              <span><em>AIP</em> or a set of <em>AIPs</em></span>
-            </cpp:outputElement>
-          </cpp:output>
-        </cpp:step>
-        <cpp:stepGroup type="alternative">
+        <cpp:stepGroup type="alternative" label="Authentication and authorisation of the DIP request">
+          <cpp:step stepNumber="5a">
+            <cpp:input>
+              <cpp:inputElement>
+                <span>Authenticated and authorised request</span>
+              </cpp:inputElement>
+            </cpp:input>
+            <cpp:stepDescription>
+              <span>The TDA locates the <em>AIP</em> or set of <em>AIPs</em>, from which the <em>DIP</em>
+                is created</span>
+            </cpp:stepDescription>
+            <cpp:output>
+              <cpp:outputElement>
+                <span><em>AIP</em> or a set of <em>AIPs</em></span>
+              </cpp:outputElement>
+            </cpp:output>
+          </cpp:step>
           <cpp:step stepNumber="5b">
             <cpp:input>
               <cpp:inputElement>
@@ -224,7 +224,7 @@
             </cpp:output>
           </cpp:step>
         </cpp:stepGroup>
-        <cpp:step stepNumber="6a">
+        <cpp:step stepNumber="6">
           <cpp:input>
             <cpp:inputElement>
               <span><em>AIP</em> or a set of <em>AIPs</em></span>
@@ -240,7 +240,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="6b">
+        <cpp:step stepNumber="7">
           <cpp:input>
             <cpp:inputElement>
               <span><em>AIP</em> or a set of <em>AIPs</em></span>
@@ -257,7 +257,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="6c">
+        <cpp:step stepNumber="8">
           <cpp:input>
             <cpp:inputElement>
               <span><em>AIP</em> or a set of <em>AIPs</em></span>
@@ -275,7 +275,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="6d">
+        <cpp:step stepNumber="9">
           <cpp:input>
             <cpp:inputElement>
               <span>
@@ -295,7 +295,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="7">
+        <cpp:step stepNumber="10">
           <cpp:input>
             <cpp:inputElement>
               <span>
