@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-013" xml:lang="en">
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-013" xml:lang="en">
     <cpp:header>
         <cpp:label>Object Management Reporting</cpp:label>
         <cpp:authors>
@@ -43,24 +45,23 @@
         <cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
-        <p>
-            Object management reporting is a process in which the TDA creates reports; outputs
-            <em>Provenance metadata</em>; and produces statistical data on the content it preserves. The
-            reporting is needed to enable effective management of <em>Objects</em>. Reporting is done for both
-            the TDA itself, helping it in its preservation planning and as input for <b>Risk Mitigation</b>
-            (CPP-012), and for the designated communities and stakeholders that produce and
-            consume the data. Effective reporting enables a TDA to conduct digital preservation and to
-            select the <em>Information packages</em> or <em>Objects</em> when performing preservation actions.
-        </p>
-        <p>
-            Reporting on the content includes reports and <em>Provenance metadata</em> from other CPPs that
-            perform actions on digital content. For example, this includes processes that periodically
-            check the quality of the data in <b>Data Quality Assessment</b> (CPP-019) or during triggered
-            events such as <b>Ingest</b> (CPP-029) and <b>Enabling Access</b> (CPP-025):
-        </p>
+        <p> Object management reporting is a process in which the TDA creates reports; outputs <em>Provenance
+            metadata</em>; and produces statistical data on the content it preserves. The reporting
+            is needed to enable effective management of <em>Objects</em>. Reporting is done for both
+            the TDA itself, helping it in its preservation planning and as input for <b>Risk
+            Mitigation</b> (CPP-012), and for the designated communities and stakeholders that
+            produce and consume the data. Effective reporting enables a TDA to conduct digital
+            preservation and to select the <em>Information packages</em> or <em>Objects</em> when
+            performing preservation actions. </p>
+        <p> Reporting on the content includes reports and <em>Provenance metadata</em> from other
+            CPPs that perform actions on digital content. For example, this includes processes that
+            periodically check the quality of the data in <b>Data Quality Assessment</b> (CPP-019)
+            or during triggered events such as <b>Ingest</b> (CPP-029) and <b>Enabling Access</b>
+            (CPP-025): </p>
         <ul>
             <li>Reports from periodic <b>Integrity Checking</b> (CPP-003);</li>
-            <li>Preservation actions taken and documented in <b>Data Corruption Management</b> (CPP-004);</li>
+            <li>Preservation actions taken and documented in <b>Data Corruption Management</b>
+                (CPP-004);</li>
             <li><b>Virus Scanning</b> reports (CPP-007);</li>
             <li><b>File Format Identification</b> (CPP-008) reports;</li>
             <li><b>File Format Validation</b> (CPP-010) reports;</li>
@@ -71,14 +72,14 @@
             <li><em>Metadata</em> from <b>Significant Properties Definition</b> (CPP-022);</li>
             <li>Preservation actions taken and documented in <b>File Repair</b> (CPP-027);</li>
             <li>Data from the <b>Creation of Derivatives</b> (CPP-028) process;</li>
-            <li><em>Metadata</em> from the access and use of <em>Objects</em> in TDA by the designated community;</li>
-            <li><em>Metadata</em> on the data volumes and growth rates of the <em>Objects</em> held by the TDA.</li>
+            <li><em>Metadata</em> from the access and use of <em>Objects</em> in TDA by the
+                designated community;</li>
+            <li><em>Metadata</em> on the data volumes and growth rates of the <em>Objects</em> held
+                by the TDA.</li>
         </ul>
-        <p>
-            As the purpose of reporting is to enable the preservation and the management of digital
-            <em>Objects</em>, the reports usually cover the main types of data that a TDA operates with. This may
-            include data on:
-        </p>
+        <p> As the purpose of reporting is to enable the preservation and the management of digital <em>
+            Objects</em>, the reports usually cover the main types of data that a TDA operates with.
+            This may include data on: </p>
         <ul>
             <li>File formats;</li>
             <li><em>Technical metadata</em> and significant properties of <em>Objects</em>;</li>
@@ -94,15 +95,16 @@
             The report types produced in the reporting process can be categorised as follows:
         </p>
         <ul>
-            <li><em>Statistical data</em> (e.g. number of <em>Objects</em>, file sizes etc.): Used for helping a TDA or
-                stakeholder assess the scope of preservation actions;</li>
-            <li><em>Provenance metadata</em> (i.e. documented preservation actions by the TDA): Used for
-                assessing the state of <em>Objects</em>, the so called "health" of the <em>Files</em>, and to add
-                authenticity by documenting the life-cycle of all digital content in a TDA;</li>
-            <li><em>In depth machine-actionable reports</em> (usually produced by tools): These are used as
-                input in other processes conducted by the TDA;</li>
-            <li><em>Links to knowledge base resources</em> (e.g. file format registries): These are used to
-                help a TDA in preservation planning.</li>
+            <li><em>Statistical data</em> (e.g. number of <em>Objects</em>, file sizes etc.): Used
+                for helping a TDA or stakeholder assess the scope of preservation actions;</li>
+            <li><em>Provenance metadata</em> (i.e. documented preservation actions by the TDA): Used
+                for assessing the state of <em>Objects</em>, the so called "health" of the <em>Files</em>,
+                and to add authenticity by documenting the life-cycle of all digital content in a
+                TDA;</li>
+            <li><em>In depth machine-actionable reports</em> (usually produced by tools): These are
+                used as input in other processes conducted by the TDA;</li>
+            <li><em>Links to knowledge base resources</em> (e.g. file format registries): These are
+                used to help a TDA in preservation planning.</li>
         </ul>
         <p>
             Reporting activities as well as the report types listed above feed into a wide range of
@@ -117,20 +119,20 @@
                 check that personal data is retained in compliance with GDPR);</li>
             <li>Optimisation and cost management (e.g. identification of expensive or inefficient
                 processes based on execution time and steps required, or optimising the use of
-                different storage classes for frequently or infrequently accessed data based on usage
+                different storage classes for frequently or infrequently accessed data based on
+                usage
                 statistics);</li>
             <li>Identification of anomalies in error rates or failures (e.g. unusually problematic
                 content from specific depositors);</li>
-            <li>Deaccessioning of <em>Objects</em> (e.g. reports on <em>Objects</em> that no longer need to be
-                retained because their retention schedules are about to expire, or reports on quality
-                assessment that mean <em>Objects</em> no longer meet the needs of a designated 
-                community);</li>
-            <li>Environmental sustainability (e.g. use of storage, processing and access statistics as
+            <li>Deaccessioning of <em>Objects</em> (e.g. reports on <em>Objects</em> that no longer
+                need to be retained because their retention schedules are about to expire, or
+                reports on quality assessment that mean <em>Objects</em> no longer meet the needs of
+                a designated community);</li>
+            <li>Environmental sustainability (e.g. use of storage, processing and access statistics
+                as
                 an input to calculating carbon footprint).</li>
         </ul>
-        <p>
-            When the process description uses the term <em>report</em>, it can be any of the above.
-        </p>
+        <p> When the process description uses the term <em>report</em>, it can be any of the above. </p>
     </cpp:descriptionAndScope>
     <cpp:process>
         <cpp:inputs>
@@ -152,284 +154,285 @@
         </cpp:outputs>
         <cpp:triggerEvents>
             <cpp:triggerEvent>
-                <cpp:description><span>Ingest</span></cpp:description>
+                <cpp:description>
+                    <span>Ingest</span>
+                </cpp:description>
                 <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
-                <cpp:description><span>Enabling Access</span></cpp:description>
+                <cpp:description>
+                    <span>Enabling Access</span>
+                </cpp:description>
                 <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
-                <cpp:description><span>Risk Mitigation</span></cpp:description>
+                <cpp:description>
+                    <span>Risk Mitigation</span>
+                </cpp:description>
                 <cpp:correspondingCPP>CPP-012</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
-                <cpp:description><span>Data Quality Assessment</span></cpp:description>
+                <cpp:description>
+                    <span>Data Quality Assessment</span>
+                </cpp:description>
                 <cpp:correspondingCPP>CPP-019</cpp:correspondingCPP>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
-                <cpp:description><span>Reporting needs from the stakeholders or designated communities</span></cpp:description>
+                <cpp:description>
+                    <span>Reporting needs from the stakeholders or designated communities</span>
+                </cpp:description>
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1a">
-                <cpp:input>
-                    <cpp:inputElement>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1a">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Reporting request (from CPPs, stakeholders or the consumers) in the
+                                form of a Report Specification
+                            </span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-029</cpp:supplier>
+                        <cpp:supplier>CPP-025</cpp:supplier>
+                        <cpp:supplier>CPP-012</cpp:supplier>
+                        <cpp:supplier>CPP-019</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Reporting request (from CPPs, stakeholders or the consumers) in the form of a Report Specification
+                            The TDA receives the request and determines what data is required to
+                            provide the requested report
                         </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-029</cpp:supplier>
-                    <cpp:supplier>CPP-025</cpp:supplier>
-                    <cpp:supplier>CPP-012</cpp:supplier>
-                    <cpp:supplier>CPP-019</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        The TDA receives the request and determines what data is required to provide the requested report
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                Specification of the data required for the report
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="1b">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Specification of the data required for the report</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Specification of the data required for the report
+                            Determine if reporting data is available
+                            (e.g. is it already an output of other CPPs)
                         </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Specification of the data required for the report</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        Determine if reporting data is available 
-                        (e.g. is it already an output of other CPPs)
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Availability of data required for the report</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1c">
-                <cpp:input>
-                    <cpp:inputElement>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Availability of data required for the report</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="1c" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Availability of data required for the report.
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Availability of data required for the report.
+                            If the reporting data is not available:
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        If the reporting data is not available:
-                    </span>
-                    <ol>
-                        <li>Determine the steps that would be needed in order to capture it</li>
-                        <li>Discuss reporting requirements with the requestor and agree revisions to report</li>
-                    </ol>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
+                        <ol>
+                            <li>Determine the steps that would be needed in order to capture it</li>
+                            <li>Discuss reporting requirements with the requestor and agree
+                                revisions to report</li>
+                        </ol>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                Modifications to (i) Report Specification and
+                                (ii) Specification of data required for the report
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2a" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Specification of data required for the report (from 1a or 1c)
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Modifications to (i) Report Specification and 
-                            (ii) Specification of data required for the report
+                            If needed, CPPs that produce the required data are revised so that the
+                            necessary
+                            data is produced and compiles the report (as provided by other CPPs)
                         </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2a">
-                <cpp:input>
-                    <cpp:inputElement>
                         <span>
-                            Specification of data required for the report (from 1a or 1c)
+                            The TDA gathers and aggregates the data needed for the report.
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        If needed, CPPs that produce the required data are revised so that the necessary 
-                        data is produced and compiles the report (as provided by other CPPs)
-                    </span>
-                    <span>
-                        The TDA gathers and aggregates the data needed for the report.
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                Data required for report
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2b" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Data required for report</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Report Specification</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Data required for report
+                            The report is compiled and reviewed with the requestor..
                         </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Data required for report</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Report Specification</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        The report is compiled and reviewed with the requestor..
-                    </span>
-                    <span>
-                        If further modifications are needed to the data 
-                        and data collection, then go to step 2a.
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
                         <span>
-                            Finalised Specification of Report
+                            If further modifications are needed to the data
+                            and data collection, then go to step 2a.
                         </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Reporting schedule</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        If the report is required on a regular basis, 
-                        e.g. monthly,   then a reporting schedule is set 
-                        and data is collected on a regular basis
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Data required for report</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-029</cpp:customer>
-                    <cpp:customer>CPP-025</cpp:customer>
-                    <cpp:customer>CPP-012</cpp:customer>
-                    <cpp:customer>CPP-019</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Data required for report (from 3a)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Gather and aggregate data for report</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Data for report.</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3c">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Data for report (from 3b)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Finalised Report Specification (from 2b)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Produce Report and deliver to Requestor.</span>
-                    <span>If a report is produced regularly, then loop to Step 3a.</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                Finalised Specification of Report
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3a" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Reporting schedule</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            If the report is required on a regular basis,
+                            e.g. monthly, then a reporting schedule is set
+                            and data is collected on a regular basis
+                        </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Data required for report</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-029</cpp:customer>
+                        <cpp:customer>CPP-025</cpp:customer>
+                        <cpp:customer>CPP-012</cpp:customer>
+                        <cpp:customer>CPP-019</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3b">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Data required for report (from 3a)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Gather and aggregate data for report</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Data for report.</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3c">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Data for report (from 3b)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Finalised Report Specification (from 2b)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Produce Report and deliver to Requestor.</span>
+                        <span>If a report is produced regularly, then loop to Step 3a.</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Report</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
-                <span>
-                    The TDA knows what <em>Information packages</em> it preserves 
-                    and what they contain
+                <span> The TDA knows what <em>Information packages</em> it preserves and what they
+                    contain </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span> Without being able to locate and report the data it holds, the TDA cannot
+                    perform any preservation actions or provide (e.g. searching by <em>Rights</em>, <em>
+                    Provenance</em> and <em>Descriptive metadata</em> within the <em>Information
+                    packages</em>). </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span> The TDA knows which file formats it holds and can locate these <em>Objects</em>
+                    within <em>Information packages</em>
                 </span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>
-                    Without being able to locate and report the data it holds, the 
-                    TDA cannot perform any preservation actions or provide (e.g. 
-                    searching by <em>Rights</em>, <em>Provenance</em> and 
-                    <em>Descriptive metadata</em> within the <em>Information packages</em>).
+                <span> Without knowing in what format the <em>Objects</em> it holds are, the TDA
+                    cannot plan preservation actions or inform the designated communities about
+                    preservation strategies. </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span> The TDA knows what metadata standards it holds and which standards apply to
+                    which <em>Objects</em>
                 </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span> Without being able to analyse the <em>Objects</em> and their significant
+                    properties, the TDA cannot plan preservation actions, provide discovery or
+                    access. </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span> The TDA maintains and generates <em>Provenance metadata</em> during
+                    preservation </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span> Processes that produce reports and <em>provenance data</em> must have their
+                    output stored. This information is needed to analyse the <em>Objects</em> in a
+                    TDA, create quality reports, provide designated communities with assurance of a
+                    high quality digital preservation </span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
             <cpp:purposeDescription>
                 <span>
-                    The TDA knows which file formats it holds and can locate these
-                    <em>Objects</em> within <em>Information packages</em>
-                </span>
-            </cpp:purposeDescription>
-            <cpp:worstCase>
-                <span>
-                    Without knowing in what format the <em>Objects</em> it holds are, 
-                    the TDA cannot plan preservation actions or inform the designated 
-                    communities about preservation strategies.
-                </span>
-            </cpp:worstCase>
-        </cpp:purpose>
-        <cpp:purpose>
-            <cpp:purposeDescription>
-                <span>
-                    The TDA knows what metadata standards it holds and which 
-                    standards apply to which <em>Objects</em>
-                </span>
-            </cpp:purposeDescription>
-            <cpp:worstCase>
-                <span>
-                    Without being able to analyse the <em>Objects</em> and their 
-                    significant properties, the TDA cannot plan preservation actions, 
-                    provide discovery or access.
-                </span>
-            </cpp:worstCase>
-        </cpp:purpose>
-        <cpp:purpose>
-            <cpp:purposeDescription>
-                <span>
-                    The TDA maintains and generates <em>Provenance metadata</em> 
-                    during preservation
-                </span>
-            </cpp:purposeDescription>
-            <cpp:worstCase>
-                <span>
-                    Processes that produce reports and <em>provenance data</em> must 
-                    have their output stored. This information is needed to analyse 
-                    the <em>Objects</em> in a TDA, create quality reports, provide 
-                    designated communities with assurance of a high quality digital 
-                    preservation
-                </span>
-            </cpp:worstCase>
-        </cpp:purpose>
-        <cpp:purpose>
-            <cpp:purposeDescription>
-                <span>
-                    The TDA knows its hardware infrastructure and 
+                    The TDA knows its hardware infrastructure and
                     has a plan for its management
                 </span>
             </cpp:purposeDescription>
             <cpp:worstCase>
                 <span>
-                    Without knowledge on the hardware infrastructure, the TDA 
-                    cannot maintain high-quality bit-level preservation and 
+                    Without knowledge on the hardware infrastructure, the TDA
+                    cannot maintain high-quality bit-level preservation and
                     report to the stakeholders.
                 </span>
             </cpp:worstCase>
@@ -458,20 +461,16 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Periodic integrity checking provides reports on the
-                    integrity of data and reports corrupted <em>AIPs</em>.
-                </span>
+                <span> Periodic integrity checking provides reports on the integrity of data and
+                    reports corrupted <em>AIPs</em>. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Fixing corrupted <em>AIPs</em> produces <em>Provenance metadata</em>
-                    and data for quality reporting to the stakeholders.
-                </span>
+                <span> Fixing corrupted <em>AIPs</em> produces <em>Provenance metadata</em> and data
+                    for quality reporting to the stakeholders. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
@@ -479,7 +478,7 @@
             <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <span>
-                    The management and reporting should require that the data 
+                    The management and reporting should require that the data
                     is identified with PIDs.
                 </span>
             </cpp:relationshipDescription>
@@ -509,11 +508,9 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    File format validation provide essential information on the
-                    well-formedness and validity of the <em>Objects</em>; validation
-                    errors; and data on the tools used in the process.
-                </span>
+                <span> File format validation provide essential information on the well-formedness
+                    and validity of the <em>Objects</em>; validation errors; and data on the tools
+                    used in the process. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
@@ -541,40 +538,30 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Metadata ingest provides new <em>Provenance metadata</em>.
-                </span>
+                <span> Metadata ingest provides new <em>Provenance metadata</em>. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    To report on the characteristics of <em>Objects</em> for deeper
-                    analysis, the significant properties must have been
-                    defined.
-                </span>
+                <span> To report on the characteristics of <em>Objects</em> for deeper analysis, the
+                    significant properties must have been defined. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Fixing invalid <em>Files</em> produces <em>Provenance metadata</em> and
-                    data for quality reporting to the stakeholders.
-                </span>
+                <span> Fixing invalid <em>Files</em> produces <em>Provenance metadata</em> and data
+                    for quality reporting to the stakeholders. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-028</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Creation of new <em>Objects</em> provides data for statistical
-                    reporting.
-                </span>
+                <span> Creation of new <em>Objects</em> provides data for statistical reporting. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
@@ -594,37 +581,25 @@
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    Enabling Access of contents include
-                    providing <em>Provenance metadata</em>,
-                    statistical data and quality reports to
-                    the consumer.
-                </span>
+                <span> Enabling Access of contents include providing <em>Provenance metadata</em>,
+                    statistical data and quality reports to the consumer. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    To plan and mitigate risks in
-                    preservation, a TDA needs to provide
-                    input on the preservation system, the
-                    quality of the data, significant
-                    properties in <em>Objects</em>, storage
-                    management <em>Metadata</em> etc.
-                </span>
+                <span> To plan and mitigate risks in preservation, a TDA needs to provide input on
+                    the preservation system, the quality of the data, significant properties in <em>
+                    Objects</em>, storage management <em>Metadata</em> etc. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>
-                    To evaluate the quality of the data, the
-                    process needs input in the form of
-                    various <em>Metadata</em>.
-                </span>
+                <span> To evaluate the quality of the data, the process needs input in the form of
+                    various <em>Metadata</em>. </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -721,7 +696,7 @@
             <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>
                     https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
-                </cpp:hyperlink>                
+                </cpp:hyperlink>
             </cpp:linkToDocumentation>
             <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>

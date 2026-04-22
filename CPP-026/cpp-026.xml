@@ -33,6 +33,15 @@
                 <cpp:versionDate>2026-03-30</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>2</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-04-07</cpp:versionDate>
+                <cpp:versionNotes>Version updated</cpp:versionNotes>
+            </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA performs operations on the data Objects prior to ingest 
@@ -131,32 +140,35 @@
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Each <em>File</em> in the <em>Information Package</em>
-                        </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-029</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Perform the Format Identification process on the <em>File</em>(s)</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="1b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Change in file format policy - Preferred formats</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-018</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        Find <em>Files</em> that require change of normalisation by format, then
-                    process each one
-                    </span>
-                </cpp:stepDescription>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:stepGroup type="alternative" label="Alternative triggers">
+                    <cpp:step stepNumber="1a">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Each <em>File</em> in the <em>Information Package</em>
+                                </span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-029</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Perform the Format Identification process on the <em>File</em>(s)</span>
+                        </cpp:stepDescription>
+                    </cpp:step>
+                    <cpp:step stepNumber="1b">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Change in file format policy - Preferred formats</span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-018</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>
+                                Find <em>Files</em> that require change of normalisation by format, then
+                            process each one
+                            </span>
+                        </cpp:stepDescription>
+                    </cpp:step>
+                </cpp:stepGroup>
             <cpp:step stepNumber="2">
                 <cpp:input>
                     <cpp:inputElement>
@@ -225,39 +237,41 @@
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="5a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>OK</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        Replace the original <em>File</em> with the normalised <em>File</em> (or add it) in the
-                        <em>SIP</em> or <em>AIP</em> and adapt the <em>Fixity metadata</em> and <em>Technical metadata</em>
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>updated <em>SIP</em> or <em>AIP</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="5b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Error</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Report the error for the system or operator to decide further action</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Stop the process</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="alternative" label="Alternative validation results">
+                <cpp:step stepNumber="5a">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>OK</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            Replace the original <em>File</em> with the normalised <em>File</em> (or add it) in the
+                            <em>SIP</em> or <em>AIP</em> and adapt the <em>Fixity metadata</em> and <em>Technical metadata</em>
+                        </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>updated <em>SIP</em> or <em>AIP</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5b">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Error</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Report the error for the system or operator to decide further action</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Stop the process</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
             <cpp:step stepNumber="6">
                 <cpp:stepDescription>
                     <span>Log the normalisation event and its outcome</span>
@@ -270,6 +284,7 @@
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>

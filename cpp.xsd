@@ -228,108 +228,29 @@
 						<xsd:element name="stepByStepDescription">
 							<xsd:complexType>
 								<xsd:sequence>
-									<xsd:element name="step" maxOccurs="unbounded">
+									<xsd:element name="stepGroup" type="stepGroupType" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="bpmnDiagram" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation xml:lang="en">Only a link to an image
+									representation of the BPMN diagram is currently provided in this
+									element.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="diagramImage">
 										<xsd:complexType>
-											<xsd:sequence>
-												<xsd:element name="input" minOccurs="0"
-													maxOccurs="unbounded">
-													<xsd:annotation>
-														<xsd:documentation xml:lang="en">Each step
-															may have input data, metadata, guidance
-															or tools. A CPP supplier may be
-															associated if it produces the input used
-															in this step.</xsd:documentation>
-													</xsd:annotation>
-													<xsd:complexType>
-														<xsd:sequence>
-															<xsd:element
-																name="inputElement">
-																<xsd:complexType>
-																	<xsd:complexContent>
-																		<xsd:extension
-																			base="tableCellContent">
-																			<xsd:attribute
-																				name="optional"
-																				type="xsd:boolean"
-																				default="false"></xsd:attribute>
-																		</xsd:extension>
-																	</xsd:complexContent>
-																</xsd:complexType>
-															</xsd:element>
-															<xsd:element name="supplier"
-																minOccurs="0" maxOccurs="unbounded"
-																type="cpp"></xsd:element>
-														</xsd:sequence>
-													</xsd:complexType>
-												</xsd:element>
-												<xsd:element name="stepDescription"
-													type="tableCellContent">
-													<xsd:annotation>
-														<xsd:documentation xml:lang="en">A free-text
-															description of the process step.</xsd:documentation>
-													</xsd:annotation>
-												</xsd:element>
-												<xsd:element name="output" minOccurs="0"
-													maxOccurs="unbounded">
-													<xsd:annotation>
-														<xsd:documentation xml:lang="en">Each step
-															may have output data, metadata, guidance
-															or tools. A CPP customer may be
-															associated if it consumes the output
-															produced by this step.</xsd:documentation>
-													</xsd:annotation>
-													<xsd:complexType>
-														<xsd:sequence>
-															<xsd:element
-																name="outputElement">
-																<xsd:complexType>
-																	<xsd:complexContent>
-																		<xsd:extension
-																			base="tableCellContent">
-																			<xsd:attribute
-																				name="optional"
-																				type="xsd:boolean"
-																				default="false"></xsd:attribute>
-																		</xsd:extension>
-																	</xsd:complexContent>
-																</xsd:complexType>
-															</xsd:element>
-															<xsd:element name="customer"
-																minOccurs="0"
-																maxOccurs="unbounded"
-																type="cpp"></xsd:element>
-														</xsd:sequence>
-													</xsd:complexType>
-												</xsd:element>
-											</xsd:sequence>
-											<xsd:attribute name="stepNumber"
-												type="xsd:string" use="required" />
-											<xsd:attribute name="optional"
-												type="xsd:boolean" default="false" />
-										</xsd:complexType>
-									</xsd:element>
-									<xsd:element name="bpmnDiagram" minOccurs="0">
-										<xsd:annotation>
-											<xsd:documentation xml:lang="en">Only a link to an image
-												representation of the BPMN diagram is currently
-												provided in this element.</xsd:documentation>
-										</xsd:annotation>
-										<xsd:complexType>
-											<xsd:sequence>
-												<xsd:element name="diagramImage">
-													<xsd:complexType>
-														<xsd:simpleContent>
-															<xsd:extension
-																base="xsd:anyURI">
-																<xsd:attribute
-																	name="alt"
-																	type="xsd:string"
-																	use="optional" />
-															</xsd:extension>
-														</xsd:simpleContent>
-													</xsd:complexType>
-												</xsd:element>
-											</xsd:sequence>
+											<xsd:simpleContent>
+												<xsd:extension
+													base="xsd:anyURI">
+													<xsd:attribute
+														name="alt"
+														type="xsd:string"
+														use="optional" />
+												</xsd:extension>
+											</xsd:simpleContent>
 										</xsd:complexType>
 									</xsd:element>
 								</xsd:sequence>
@@ -678,5 +599,113 @@
 					at said link is written.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="stepGroupType">
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:choice>
+				<xsd:element name="step">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="input" minOccurs="0"
+								maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Each step may have input data,
+										metadata, guidance or tools. A CPP supplier may be
+										associated if it produces the input used in this step.</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element
+											name="inputElement">
+											<xsd:complexType>
+												<xsd:complexContent>
+													<xsd:extension
+														base="tableCellContent">
+														<xsd:attribute
+															name="optional"
+															type="xsd:boolean"
+															default="false"></xsd:attribute>
+													</xsd:extension>
+												</xsd:complexContent>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="supplier"
+											minOccurs="0" maxOccurs="unbounded"
+											type="cpp"></xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="stepDescription"
+								type="tableCellContent">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">A free-text description of the
+										process step.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="output" minOccurs="0"
+								maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation xml:lang="en">Each step may have output data,
+										metadata, guidance or tools. A CPP customer may be
+										associated if it consumes the output produced by this step.</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element
+											name="outputElement">
+											<xsd:complexType>
+												<xsd:complexContent>
+													<xsd:extension
+														base="tableCellContent">
+														<xsd:attribute
+															name="optional"
+															type="xsd:boolean"
+															default="false"></xsd:attribute>
+													</xsd:extension>
+												</xsd:complexContent>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="customer"
+											minOccurs="0"
+											maxOccurs="unbounded"
+											type="cpp"></xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="stepNumber"
+							type="xsd:string" use="required" />
+						<xsd:attribute name="optional"
+							type="xsd:boolean" default="false" />
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="stepGroup" type="stepGroupType" />
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attribute name="type" use="required">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="sequence">
+						<xsd:annotation>
+							<xsd:documentation>The steps contained in this group must be performed
+								one after the other.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:enumeration>
+					<xsd:enumeration value="alternative">
+						<xsd:annotation>
+							<xsd:documentation>Only one among the steps contained in this group must
+								be performed.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:enumeration>
+					<xsd:enumeration value="parallel">
+						<xsd:annotation>
+							<xsd:documentation>The steps contained in this group must be performed
+								simultaneously.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:enumeration>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="label" xsi:type="xsd:string" />
 	</xsd:complexType>
 </xsd:schema>
