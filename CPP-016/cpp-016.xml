@@ -173,201 +173,203 @@
         </cpp:triggerEvents>
 
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Event with optional data</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Store event occurrence with timestamp and extra data</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Provenance metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>New checksum(s) created</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-001</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Store checksums with their respective algorithms and assign it to the given <em>File</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Fixity metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Checksum was validated</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-003</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Update the checksum’s last validation timestamp</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Fixity metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>New identifier</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-005</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Store the identifier and assign to the <em>Object</em> or <em>File</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Descriptive metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="5">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Format identifier and format registry identifier</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-008</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Store the format information and assign to the <em>File</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Technical metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="6">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Any <em>Metadata</em> extracted from the <em>File</em></span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-009</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Store the <em>Metadata</em> and assign to the <em>File</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Technical metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Provenance metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Descriptive metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Structural metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Rights metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="7">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Set of <em>Metadata</em></span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-017</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Replace the <em>Object</em> or <em>File</em> metadata with the minimal set and remove all references to the <em>Object</em> and <em>Files</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Any <em>Metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="8">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>New set of rights information</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-020</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Store the rights information and assign to the <em>Object</em> or <em>File</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Rights metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="9">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Requirement to anonymise/pseudonymise personal data</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-020</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Update <em>Descriptive metadata</em> and create new <em>AIP</em> version</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>descriptive metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="10">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Set of <em>Metadata</em></span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-012</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Used metadata standard has become obsolete and must be migrated</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Any <em>Metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="11">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Set of <em>Metadata</em> Information Packages</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If needed (after updating the <em>Metadata</em>): The TDA creates a new version of an <em>AIP</em> to store the new or updated <em>Metadata</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>AIP</em> version</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-021</cpp:customer>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Event with optional data</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Store event occurrence with timestamp and extra data</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Provenance metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>New checksum(s) created</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-001</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Store checksums with their respective algorithms and assign it to the given <em>File</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Fixity metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Checksum was validated</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-003</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Update the checksum’s last validation timestamp</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Fixity metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>New identifier</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-005</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Store the identifier and assign to the <em>Object</em> or <em>File</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Descriptive metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Format identifier and format registry identifier</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-008</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Store the format information and assign to the <em>File</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Technical metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Any <em>Metadata</em> extracted from the <em>File</em></span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-009</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Store the <em>Metadata</em> and assign to the <em>File</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Technical metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Provenance metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Descriptive metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Structural metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Rights metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="7">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Set of <em>Metadata</em></span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-017</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Replace the <em>Object</em> or <em>File</em> metadata with the minimal set and remove all references to the <em>Object</em> and <em>Files</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Any <em>Metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="8">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>New set of rights information</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-020</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Store the rights information and assign to the <em>Object</em> or <em>File</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Rights metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="9">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Requirement to anonymise/pseudonymise personal data</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-020</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Update <em>Descriptive metadata</em> and create new <em>AIP</em> version</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>descriptive metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="10">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Set of <em>Metadata</em></span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-012</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Used metadata standard has become obsolete and must be migrated</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Any <em>Metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="11">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Set of <em>Metadata</em> Information Packages</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If needed (after updating the <em>Metadata</em>): The TDA creates a new version of an <em>AIP</em> to store the new or updated <em>Metadata</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>AIP</em> version</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-021</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
 
