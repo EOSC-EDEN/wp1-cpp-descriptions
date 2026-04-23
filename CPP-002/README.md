@@ -43,12 +43,12 @@ A misalignment between the checksum algorithms used in the *Information Package*
 
 ## Process Steps
 
-| Step | Supplier(s) | Input(s)                               | Description                                                                | Output(s)                                                                                                                                           | Customer(s) |
-| :--- | :---------- | :------------------------------------- | :------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- | :---------- |
-| 1    | `CPP-001`   | - Fixity information<br>- Fixity information from *SIP* | Get the list of pre-calculated checksums with their respective algorithms  | - List of checksums and algorithms                                                                                                                  |             |
-| 2    |             | - List of checksums and algorithms<br>- Digital archive system configuration | Evaluate for each algorithm individually if it is supported by the system. | - Algorithm supported (step 3)<br>- Algorithm not supported:<br>                        * examine further procedure (e.g. based on legal agreements; submission policies; communication with producer, if possible)<br>                            <br>•  Process completed |             |
-| 3    |             | - *File*<br>- List of checksums and algorithms | For each algorithm, recalculate the checksum of the *File* and<br>                        match it with the given checksum | - All *File* checksums match (step 5)<br>- Alert that any of the *File* checksums does not match:<br>                        * Examine further procedure<br>                            <br>•  Process completed |             |
-| 5    |             | - All *File* checksums match           | Document the event and its timestamp                                       | - Datetime for the checksum generation in the Provenance metadata                                                                                   |             |
+| Step | Supplier(s) | Input(s)                               | Description                                                        | Output(s)                                                                                                                                               | Customer(s) |
+| :--- | :---------- | :------------------------------------- | :----------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------- |
+| 1    | `CPP-001`   | - Fixity information<br>- Fixity information from *SIP* | Get the list of pre-calculated checksums with their respective<br>                            algorithms | - List of checksums and algorithms                                                                                                                      |             |
+| 2    |             | - List of checksums and algorithms<br>- Digital archive system configuration | Evaluate for each algorithm individually if it is supported by the<br>                            system. | - Algorithm supported (step 3)<br>- Algorithm not supported:<br>                            * examine further procedure (e.g. based on legal agreements; submission policies; communication with producer, if possible)<br>                                <br>•  Process completed |             |
+| 3    |             | - *File*<br>- List of checksums and algorithms | For each algorithm, recalculate the checksum of the *File* and<br>                            match it with the given checksum | - All *File* checksums match (step 5)<br>- Alert that any of the *File* checksums does not match:<br>                            * Examine further procedure<br>                                <br>•  Process completed |             |
+| 5    |             | - All *File* checksums match           | Document the event and its timestamp                               | - Datetime for the checksum generation in the Provenance metadata                                                                                       |             |
 
 ## Rationale / Worst Case
 
@@ -73,7 +73,7 @@ A misalignment between the checksum algorithms used in the *Information Package*
 
 | Framework     | Term                                                                        | Section                                                       |
 | :------------ | :-------------------------------------------------------------------------- | :------------------------------------------------------------ |
-| CoreTrustSeal | Checksum (cf [Extended<br>                    Guidance<br>                        documentation](https://zenodo.org/records/7051096)) | Information Technology and Security/Storage & Integrity (R14) |
+| CoreTrustSeal | Checksum (cf [Extended<br>                        Guidance<br>                        documentation](https://zenodo.org/records/7051096)) | Information Technology and Security/Storage & Integrity (R14) |
 | OAIS          | Quality assurance                                                           | 4.2.3.3 (Ingest)                                              |
 
 ## Reference Implementations

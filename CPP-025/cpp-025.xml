@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-025" xml:lang="en">
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+  xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-025" xml:lang="en">
   <cpp:header>
     <cpp:label>Enabling Access</cpp:label>
     <cpp:authors>
@@ -42,36 +44,39 @@
     <cpp:logicalClassification>Dissemination</cpp:logicalClassification>
   </cpp:classification>
   <cpp:descriptionAndScope>
-    <p>Data access in digital preservation refers to the ability to retrieve, view, and use preserved
-		digital materials in meaningful ways over extended periods of time. The access as a whole
-		involves several aspects. This CPP concentrates on the aspects within technical
-		accessibility, and leaves out aspects like <b>Enabling Discovery</b> (CPP-024) and delivery
-		methods (e.g. user interfaces and APIs). A TDA must implement access to the data it
-		preserves to consumers that are authorised to access the data in question.</p>
-    <p>Technical accessibility means ensuring that digital <em>Files</em> remain readable and usable despite
-		technological change. This requires maintaining compatibility with current systems through
-		<b>File Migration</b> (CPP-014), emulation strategies (CPP-015 <b>Emulation and Rendering
-		Tools</b>), or preservation of legacy hardware and software environments. The preserved data
-		must be retrievable from storage systems and renderable in forms that users can actually
-		engage with.</p>
-    <p>From a technical point of view, <b>Enabling Access</b> is about providing <em>DIPs</em> containing the
-		requested data in appropriate <em>Representations</em>. The TDA, upon receiving a request, creates
-		and provides a <em>DIP</em> from one or more <em>AIPs</em> stored in the TDA. The TDA also, if it supports
-		this, provides access to derivatives that are <em>Representations</em> of the preserved data that are
-		specifically created for use, viewing, or interaction, rather than giving them access to the
-		master data. The derivatives can be created at different stages of digital preservation: in
-		pre-ingest phase, during ingest, within the preservation lifespan, or on the fly when the
-		derivative is needed. This approach is TDA-dependent and can be enforced by a policy. In
-		any of these cases, however, the access process should always provide the data in the form
-		of a <em>DIP</em> by a TDA to a consumer (e.g. end user; portal or aggregator; data publication
-		platform or some other service or system communicating with the TDA).</p>
-    <p>The accessed data may include restrictions or sensitive, confidential or rights-protected parts
-		(CPP-020 <b>Rights Management</b>). Also, an organisation’s data can be non-public, and/or
-		non-accessible for other organisations. Therefore, access should incorporate authentication
-		and authorisation functions to control who can access what data, implementing necessary
-		restrictions while enabling legitimate use. Restrictions on accessing data (particularly digital
-		<em>Objects</em>) are usually different from restrictions to find and discover data (CPP-024 <b>Enabling
-		Discovery</b>).</p>
+    <p>Data access in digital preservation refers to the ability to retrieve, view, and use
+      preserved digital materials in meaningful ways over extended periods of time. The access as a
+      whole involves several aspects. This CPP concentrates on the aspects within technical
+      accessibility, and leaves out aspects like <b>Enabling Discovery</b> (CPP-024) and delivery
+      methods (e.g. user interfaces and APIs). A TDA must implement access to the data it preserves
+      to consumers that are authorised to access the data in question.</p>
+    <p>Technical accessibility means ensuring that digital <em>Files</em> remain readable and usable
+      despite technological change. This requires maintaining compatibility with current systems
+      through <b>File Migration</b> (CPP-014), emulation strategies (CPP-015 <b>Emulation and
+      Rendering
+        Tools</b>), or preservation of legacy hardware and software environments. The preserved data
+      must be retrievable from storage systems and renderable in forms that users can actually
+      engage with.</p>
+    <p>From a technical point of view, <b>Enabling Access</b> is about providing <em>DIPs</em>
+      containing the requested data in appropriate <em>Representations</em>. The TDA, upon receiving
+      a request, creates and provides a <em>DIP</em> from one or more <em>AIPs</em> stored in the
+      TDA. The TDA also, if it supports this, provides access to derivatives that are <em>
+      Representations</em> of the preserved data that are specifically created for use, viewing, or
+      interaction, rather than giving them access to the master data. The derivatives can be created
+      at different stages of digital preservation: in pre-ingest phase, during ingest, within the
+      preservation lifespan, or on the fly when the derivative is needed. This approach is
+      TDA-dependent and can be enforced by a policy. In any of these cases, however, the access
+      process should always provide the data in the form of a <em>DIP</em> by a TDA to a consumer
+      (e.g. end user; portal or aggregator; data publication platform or some other service or
+      system communicating with the TDA).</p>
+    <p>The accessed data may include restrictions or sensitive, confidential or rights-protected
+      parts (CPP-020 <b>Rights Management</b>). Also, an organisation’s data can be non-public,
+      and/or non-accessible for other organisations. Therefore, access should incorporate
+      authentication and authorisation functions to control who can access what data, implementing
+      necessary restrictions while enabling legitimate use. Restrictions on accessing data
+      (particularly digital <em>Objects</em>) are usually different from restrictions to find and
+      discover data (CPP-024 <b>Enabling
+        Discovery</b>).</p>
   </cpp:descriptionAndScope>
   <cpp:process>
     <cpp:inputs>
@@ -107,212 +112,221 @@
       </cpp:triggerEvent>
     </cpp:triggerEvents>
     <cpp:stepByStepDescription>
-      <cpp:step stepNumber="1">
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>DIP</em> request</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA receives a <em>DIP</em> request specifying the type of data to be accessed</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Requester info from the request</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="2">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Requester info from the request</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA authenticates the request</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Authenticated request (step 3)</span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Rejected request (return rejection message to requester, got to step 4 and then
-					end the process after logging it)</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="3">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Requester info from the request</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Rights statement</span>
-          </cpp:inputElement>
-          <cpp:supplier>CPP-020</cpp:supplier>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA authorises the request</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Authorised request (step4)</span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Rejected request (return rejection message to requester, got to step 4 and then
-					end the process after logging it)</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="4">
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>DIP</em> request</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA logs the request for statistical reporting and auditing</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Access log</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="5a">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Authenticated and authorised request</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA locates the <em>AIP</em> or set of <em>AIPs</em>, from which the <em>DIP</em> is created</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span><em>AIP</em> or a set of <em>AIPs</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="5b">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Non-authenticated or unauthorised request</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA responds with error</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Error response</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="6a">
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>AIP</em> or a set of <em>AIPs</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA ensures that the selected <em>AIP</em> or set of <em>AIPs</em> is valid and intact (e.g. performs checksum validation and other potential checks)</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span><em>AIP</em> or a set of <em>AIPs</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="6b">
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>AIP</em> or a set of <em>AIPs</em></span>
-          </cpp:inputElement>
-          <cpp:supplier>CPP-020</cpp:supplier>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>If the request includes derivatives that should be created, the TDA uses CPP-028 (<b>Creation of Derivatives</b>) to create the copies on the fly (if the TDA supports this)</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span><em>AIP</em> or a set of <em>AIPs</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="6c">
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>AIP</em> or a set of <em>AIPs</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA creates a <em>DIP</em> from the <em>AIP</em> or set of <em>AIPs</em> (<em>AIP</em> to DIP transformation) and the potential derivatives</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>
-              <em>DIP</em>
-            </span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="6d">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>
-              <em>DIP</em>
-            </span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA checks that the created <em>DIP</em> is valid according to its specifications before making it available</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>
-              <em>DIP</em>
-            </span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="7">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>
-              <em>DIP</em>
-            </span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>The TDA makes the <em>DIP</em> available to the requester or consumer</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Delivered <em>DIP</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
+      <cpp:stepGroup type="sequence">
+        <cpp:step stepNumber="1">
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>DIP</em> request</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA receives a <em>DIP</em> request specifying the type of data to be accessed</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Requester info from the request</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="2">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Requester info from the request</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA authenticates the request</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Authenticated request (step 3)</span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Rejected request (return rejection message to requester, got to step 4 and then
+                end the process after logging it)</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="3">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Requester info from the request</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Rights statement</span>
+            </cpp:inputElement>
+            <cpp:supplier>CPP-020</cpp:supplier>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA authorises the request</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Authorised request (step4)</span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Rejected request (return rejection message to requester, got to step 4 and then
+                end the process after logging it)</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="4">
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>DIP</em> request</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA logs the request for statistical reporting and auditing</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Access log</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:stepGroup type="alternative" label="Authentication and authorisation of the DIP request">
+          <cpp:step stepNumber="5a">
+            <cpp:input>
+              <cpp:inputElement>
+                <span>Authenticated and authorised request</span>
+              </cpp:inputElement>
+            </cpp:input>
+            <cpp:stepDescription>
+              <span>The TDA locates the <em>AIP</em> or set of <em>AIPs</em>, from which the <em>DIP</em>
+                is created</span>
+            </cpp:stepDescription>
+            <cpp:output>
+              <cpp:outputElement>
+                <span><em>AIP</em> or a set of <em>AIPs</em></span>
+              </cpp:outputElement>
+            </cpp:output>
+          </cpp:step>
+          <cpp:step stepNumber="5b">
+            <cpp:input>
+              <cpp:inputElement>
+                <span>Non-authenticated or unauthorised request</span>
+              </cpp:inputElement>
+            </cpp:input>
+            <cpp:stepDescription>
+              <span>The TDA responds with error</span>
+            </cpp:stepDescription>
+            <cpp:output>
+              <cpp:outputElement>
+                <span>Error response</span>
+              </cpp:outputElement>
+            </cpp:output>
+          </cpp:step>
+        </cpp:stepGroup>
+        <cpp:step stepNumber="6">
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>AIP</em> or a set of <em>AIPs</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA ensures that the selected <em>AIP</em> or set of <em>AIPs</em> is valid
+              and intact (e.g. performs checksum validation and other potential checks)</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span><em>AIP</em> or a set of <em>AIPs</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="7">
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>AIP</em> or a set of <em>AIPs</em></span>
+            </cpp:inputElement>
+            <cpp:supplier>CPP-020</cpp:supplier>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>If the request includes derivatives that should be created, the TDA uses CPP-028 (<b>Creation
+              of Derivatives</b>) to create the copies on the fly (if the TDA supports this)</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span><em>AIP</em> or a set of <em>AIPs</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="8">
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>AIP</em> or a set of <em>AIPs</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA creates a <em>DIP</em> from the <em>AIP</em> or set of <em>AIPs</em> (<em>
+              AIP</em> to DIP transformation) and the potential derivatives</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>
+                <em>DIP</em>
+              </span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="9">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>
+                <em>DIP</em>
+              </span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA checks that the created <em>DIP</em> is valid according to its
+              specifications before making it available</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>
+                <em>DIP</em>
+              </span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="10">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>
+                <em>DIP</em>
+              </span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>The TDA makes the <em>DIP</em> available to the requester or consumer</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Delivered <em>DIP</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+      </cpp:stepGroup>
     </cpp:stepByStepDescription>
   </cpp:process>
   <cpp:rationaleWorstCase>
     <cpp:purpose>
       <cpp:purposeDescription>
         <span>Data access is an essential functionality of a TDA, because of
-				its purpose to maintain	the long-term availability of the
-				preserved information. Preservation aims to ensure that information
-				remains discoverable, accessible and usable.</span>
+          its purpose to maintain the long-term availability of the
+          preserved information. Preservation aims to ensure that information
+          remains discoverable, accessible and usable.</span>
       </cpp:purposeDescription>
       <cpp:worstCase>
-        <span>Without access, digital preservation becomes just an expensive storage.
-				Thus, the TDA fails to fulfill its purpose to maintain the long-term
-				availability of digital <em>Objects</em> over time.</span>
+        <span>Without access, digital preservation becomes just an expensive storage. Thus, the TDA
+          fails to fulfill its purpose to maintain the long-term availability of digital <em>Objects</em>
+          over time.</span>
       </cpp:worstCase>
     </cpp:purpose>
   </cpp:rationaleWorstCase>
@@ -321,8 +335,8 @@
       <cpp:relationshipType>Requires</cpp:relationshipType>
       <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
       <cpp:relationshipDescription>
-        <span>During the access process, the fixity of the provided digital
-				<em>Object</em> is validated.</span>
+        <span>During the access process, the fixity of the provided digital <em>Object</em> is
+          validated.</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
@@ -330,7 +344,7 @@
       <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
       <cpp:relationshipDescription>
         <span>Accessing digital <em>Objects</em>, <em>Files</em> or <em>Metadata</em> should be
-				based on identifiers as parameters.</span>
+          based on identifiers as parameters.</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
@@ -338,7 +352,7 @@
       <cpp:relatedCPP>CPP-020</cpp:relatedCPP>
       <cpp:relationshipDescription>
         <span>The TDA must assess access rights to check it is
-				authorised to provide access to the requester.</span>
+          authorised to provide access to the requester.</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
@@ -346,7 +360,7 @@
       <cpp:relatedCPP>CPP-015</cpp:relatedCPP>
       <cpp:relationshipDescription>
         <span>The access request is the trigger to invoke the rendering process or start up
-				the emulated environment.</span>
+          the emulated environment.</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
@@ -354,7 +368,7 @@
       <cpp:relatedCPP>CPP-017</cpp:relatedCPP>
       <cpp:relationshipDescription>
         <span>Disposal prevents access to the <em>Objects</em>. Also, preventing access can be
-				considered as "logical disposal".</span>
+          considered as "logical disposal".</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
@@ -362,16 +376,16 @@
       <cpp:relatedCPP>CPP-028</cpp:relatedCPP>
       <cpp:relationshipDescription>
         <span>The request for access can trigger the creation of a derivative
-				for rendering purposes (e.g. derivatives may be created on
-				the fly if Access cannot rely on an existing derivative).</span>
+          for rendering purposes (e.g. derivatives may be created on
+          the fly if Access cannot rely on an existing derivative).</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
       <cpp:relationshipType>Affinity with</cpp:relationshipType>
       <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
       <cpp:relationshipDescription>
-        <span>Access of contents includes providing <em>Provenance</em> metadata, statistical
-				data and quality reports to the consumer.</span>
+        <span>Access of contents includes providing <em>Provenance</em> metadata, statistical data
+          and quality reports to the consumer.</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
@@ -386,8 +400,8 @@
       <cpp:relatedCPP>CPP-024</cpp:relatedCPP>
       <cpp:relationshipDescription>
         <span>Enabling Discovery is about making data findable, while Enabling Access
-				is about providing the data to a consumer. Data may have different
-				restrictions for discovery and access.</span>
+          is about providing the data to a consumer. Data may have different
+          restrictions for discovery and access.</span>
       </cpp:relationshipDescription>
     </cpp:relationship>
     <cpp:relationship>
@@ -405,8 +419,10 @@
         <span>Access</span>
       </cpp:correspondingTerm>
       <cpp:correspondingSection>
-        <span>R01 The repository has an explicit mission to provide access to and preserve digital objects.</span>
-        <span>R03 The Repository has a plan to ensure ongoing access to and preservation of its data and metadata.</span>
+        <span>R01 The repository has an explicit mission to provide access to and preserve digital
+          objects.</span>
+        <span>R03 The Repository has a plan to ensure ongoing access to and preservation of its data
+          and metadata.</span>
       </cpp:correspondingSection>
     </cpp:mapping>
     <cpp:mapping>

@@ -115,229 +115,233 @@
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>SIP(s)</em>
-                        </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-029</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Receive and Stage Content: Content arrives and is placed
-                        in a temporary, isolated staging area designated for
-                        pre-ingest checks</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>SIP(s)</em> in the staging area</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>AIP(s)</em>
-                        </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-019</cpp:supplier>
-                    <cpp:supplier>CPP-025</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Select <em>AIP(s)</em> for virus scan and copy their <em>Files</em> to the
-                        staging area for checks</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>AIP(s)</em> in the staging area</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span><em>File(s)</em> in staging area</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Configured virus scanners</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Perform Scan: Initiate a comprehensive scan of all <em>Files</em> within
-                        the staged <em>Information packages</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Scan report/log (indicating clean <em>Files</em>, and any detected
-                            threats with file paths and malware names)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Scan report/log</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Evaluate Scan Results</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>All <em>Files</em> reported as clean (step 7)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Any <em>Files</em> reported as infected or suspicious (step 5)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="5">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Infected/suspicious file(s)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Scan report</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Guidelines for managing detected threats</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Handling infected or suspicious <em>Files</em>, the TDA conducts a first
-                        analysis</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Decontamination recommended: Move the identified <em>File(s)</em> to a
-                            secure quarantine area, isolated from other systems and content for
-                            further analysis and potential disinfection, and inform dedicated staff
-                            members (step 6)</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-013</cpp:customer>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Rejection recommended: Mark the <em>File(s)</em> (or the entire <em>
-                            SIP(s)</em> (as in case of ingest) for rejection. Notify the producer
-                            with reasons, if appropriate and/or defined by policy (end of the
-                            process)</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-013</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="6">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Quarantined file(s)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Notification to staff</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>In-Depth Analysis: The personnel analyses the threat,
-                        leading to multiple potential outcomes</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>False positive identified: the detected malware does not pose a
-                            threat. Whitelist the threat and move the <em>Files</em> from quarantine
-                            back to the staging (loop back to step 1)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Decontamination required and possible: The TDA disinfects the <em>
-                            Files</em> and moves the <em>Files</em> from quarantine back to the
-                            staging (loop back to step 1)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Decontamination required but not possible: Notify stakeholders: The
-                            TDA notifies the stakeholders that their content is at risk and that it
-                            most likely must be deleted and re-submitted. The <em>Files</em> are not
-                            moved away from the quarantine area. This is a more likely outcome for
-                            AIP <em>Files</em> that are scanned during the preservation (triggered
-                            by CPP-019). (step 7)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="7">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Scan report</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Actions taken (quarantine, disinfection, rejection)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Record the virus scan and its Outcome as a Preservation Event<br /> This
-                        documentation should include: </span>
-                    <ul>
-                        <li>Datetime of scan</li>
-                        <li>Scanner software name</li>
-                        <li>Virus definition file version/date</li>
-                        <li>Files scanned</li>
-                        <li>Outcome for each file (e.g., 'clean', 'infected - [virus_name]',
-                            'quarantined', 'rejected').</li>
-                        <li>Any additional actions taken</li>
-                    </ul>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Provenance metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-016</cpp:customer>
-                    <cpp:customer>CPP-013</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="8">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Clean <em>File(s)</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Documentation of scan event</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Proceed with Clean Content or finalise Rejection:</span>
-                    <ul>
-                        <li>If content is clean: release Files from the staging area or proceed with
-                            ingest</li>
-                        <li>If any relevant content was rejected: Finalise the rejection process and
-                            archive the documentation</li>
-                    </ul>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Clean <em>File(s)</em> passed to the next ingest stage, or rejection
-                            process completed</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-013</cpp:customer>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>SIP(s)</em>
+                            </span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-029</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Receive and Stage Content: Content arrives and is placed
+                            in a temporary, isolated staging area designated for
+                            pre-ingest checks</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>SIP(s)</em> in the staging area</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>AIP(s)</em>
+                            </span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-019</cpp:supplier>
+                        <cpp:supplier>CPP-025</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Select <em>AIP(s)</em> for virus scan and copy their <em>Files</em> to
+                            the staging area for checks</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>AIP(s)</em> in the staging area</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><em>File(s)</em> in staging area</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Configured virus scanners</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Perform Scan: Initiate a comprehensive scan of all <em>Files</em>
+                            within the staged <em>Information packages</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Scan report/log (indicating clean <em>Files</em>, and any detected
+                                threats with file paths and malware names)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Scan report/log</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Evaluate Scan Results</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>All <em>Files</em> reported as clean (step 7)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Any <em>Files</em> reported as infected or suspicious (step 5)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Infected/suspicious file(s)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Scan report</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Guidelines for managing detected threats</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Handling infected or suspicious <em>Files</em>, the TDA conducts a
+                            first analysis</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Decontamination recommended: Move the identified <em>File(s)</em>
+                                to a secure quarantine area, isolated from other systems and content
+                                for further analysis and potential disinfection, and inform
+                                dedicated staff members (step 6)</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-013</cpp:customer>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Rejection recommended: Mark the <em>File(s)</em> (or the entire <em>
+                                SIP(s)</em> (as in case of ingest) for rejection. Notify the
+                                producer with reasons, if appropriate and/or defined by policy (end
+                                of the process)</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-013</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Quarantined file(s)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Notification to staff</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>In-Depth Analysis: The personnel analyses the threat,
+                            leading to multiple potential outcomes</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>False positive identified: the detected malware does not pose a
+                                threat. Whitelist the threat and move the <em>Files</em> from
+                                quarantine back to the staging (loop back to step 1)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Decontamination required and possible: The TDA disinfects the <em>
+                                Files</em> and moves the <em>Files</em> from quarantine back to the
+                                staging (loop back to step 1)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Decontamination required but not possible: Notify stakeholders:
+                                The TDA notifies the stakeholders that their content is at risk and
+                                that it most likely must be deleted and re-submitted. The <em>Files</em>
+                                are not moved away from the quarantine area. This is a more likely
+                                outcome for AIP <em>Files</em> that are scanned during the
+                                preservation (triggered by CPP-019). (step 7)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="7">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Scan report</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Actions taken (quarantine, disinfection, rejection)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Record the virus scan and its Outcome as a Preservation Event<br />
+                            This documentation should include: </span>
+                        <ul>
+                            <li>Datetime of scan</li>
+                            <li>Scanner software name</li>
+                            <li>Virus definition file version/date</li>
+                            <li>Files scanned</li>
+                            <li>Outcome for each file (e.g., 'clean', 'infected - [virus_name]',
+                                'quarantined', 'rejected').</li>
+                            <li>Any additional actions taken</li>
+                        </ul>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Provenance metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-016</cpp:customer>
+                        <cpp:customer>CPP-013</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="8">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Clean <em>File(s)</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Documentation of scan event</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Proceed with Clean Content or finalise Rejection:</span>
+                        <ul>
+                            <li>If content is clean: release Files from the staging area or proceed
+                                with
+                                ingest</li>
+                            <li>If any relevant content was rejected: Finalise the rejection process
+                                and
+                                archive the documentation</li>
+                        </ul>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Clean <em>File(s)</em> passed to the next ingest stage, or
+                                rejection process completed</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-013</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
