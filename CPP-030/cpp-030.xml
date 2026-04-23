@@ -45,38 +45,51 @@
         <cpp:logicalClassification>Bit-level Preservation</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
-        <p>Refreshment is the process of anticipating the end of life of a storage medium and copying data to a new storage 
-            medium in order to safeguard <em>AIP</em>s on viable storage media at all times. It is a vital part of storage 
-            life-cycle management, and minimises the risk of data corruption.</p>
+        <p>Refreshment is the process of anticipating the end of life of a storage medium and
+            copying data to a new storage medium in order to safeguard <em>AIP</em>s on viable
+            storage media at all times. It is a vital part of storage life-cycle management, and
+            minimises the risk of data corruption.</p>
         <p>A TDA may also decide to refresh a storage medium for various reasons such as:</p>
         <ul>
-            <li>Mitigate corruption: Large, media-wide errors or corruption are detected (e.g. a magnetic tape has become 
-                unreadable) by CPP-004 (<b>Data Corruption Management</b>).</li>
-            <li>Mitigate costs and risks: A storage medium (e.g. a server) reaches the end of its life and is no longer 
-                being supported by the vendor, potentially resulting in increased support costs or risks of unpatched security 
+            <li>Mitigate corruption: Large, media-wide errors or corruption are detected (e.g. a
+                magnetic tape has become unreadable) by CPP-004 (<b>Data Corruption Management</b>).</li>
+            <li>Mitigate costs and risks: A storage medium (e.g. a server) reaches the end of its
+                life and is no longer
+                being supported by the vendor, potentially resulting in increased support costs or
+                risks of unpatched security
                 vulnerabilities.</li>
-            <li>Reduce costs and/or improve efficiency: For example, refreshing storage to take advantage of new generations 
-                of data tape and increase read/write speed, or to reduce physical footprint, power consumption etc.</li>
+            <li>Reduce costs and/or improve efficiency: For example, refreshing storage to take
+                advantage of new generations
+                of data tape and increase read/write speed, or to reduce physical footprint, power
+                consumption etc.</li>
         </ul>
-        <p>The process of refreshment makes no changes to the <em>AIP</em>s themselves but only operates on the storage 
-                layer. A TDA may decide to physically replace the medium with an identical medium (e.g. replace an old magnetic tape 
-                by a new similar one), or choose a new medium (e.g. replace magnetic tapes with a new generation of tapes or a 
-                completely different type of storage medium). During refreshment, all <em>AIP</em>s on an old storage medium are 
-                copied onto a new storage medium and their fixity is verified. It is important to note that the medium undergoing 
-                refreshment is not always the source for replicating the data (e.g. copies on offline storage media or corrupted 
-                storage media are typically refreshed from an available storage medium). The old storage medium (including all data 
-                on it) then is removed from use and is either destroyed, recycled or repurposed (depending on its type).</p>
-        <p>A TDA may use a wide range of storage mediums to achieve data replication and storage diversity. Examples of a 
-            storage medium include discrete physical media (e.g. data tapes or archival storage discs), storage servers (e.g. 
-            online storage provided as NAS, SAN, DAS etc.) or any combination of these (e.g. tiered storage that combines files 
-            servers and tape libraries). This is not an exhaustive list. Each copy of a TDA’s data can be on a storage medium 
+        <p>The process of refreshment makes no changes to the <em>AIP</em>s themselves but only
+            operates on the storage layer. A TDA may decide to physically replace the medium with an
+            identical medium (e.g. replace an old magnetic tape by a new similar one), or choose a
+            new medium (e.g. replace magnetic tapes with a new generation of tapes or a completely
+            different type of storage medium). During refreshment, all <em>AIP</em>s on an old
+            storage medium are copied onto a new storage medium and their fixity is verified. It is
+            important to note that the medium undergoing refreshment is not always the source for
+            replicating the data (e.g. copies on offline storage media or corrupted storage media
+            are typically refreshed from an available storage medium). The old storage medium
+            (including all data on it) then is removed from use and is either destroyed, recycled or
+            repurposed (depending on its type).</p>
+        <p>A TDA may use a wide range of storage mediums to achieve data replication and storage
+            diversity. Examples of a
+            storage medium include discrete physical media (e.g. data tapes or archival storage
+            discs), storage servers (e.g.
+            online storage provided as NAS, SAN, DAS etc.) or any combination of these (e.g. tiered
+            storage that combines files
+            servers and tape libraries). This is not an exhaustive list. Each copy of a TDA’s data
+            can be on a storage medium
             that consists of software, hardware and media.</p>
-        <p>The choice of storage types and their longevity is determined by <b>Risk Mitigation</b> (CPP-012). The TDA must 
-            have a strategy and a plan in place for:</p>
+        <p>The choice of storage types and their longevity is determined by <b>Risk Mitigation</b>
+            (CPP-012). The TDA must have a strategy and a plan in place for:</p>
         <ul>
             <li>Managing its storage hardware, software and media</li>
             <li>Defining intervals of regular replacement for different storage</li>
-            <li>Procedures for the refreshment of the storage medium before it reaches the end of its life cycle</li>
+            <li>Procedures for the refreshment of the storage medium before it reaches the end of
+                its life cycle</li>
         </ul>
     </cpp:descriptionAndScope>
     <cpp:process>
@@ -103,7 +116,8 @@
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>A storage medium is near the end of its life cycle and must be replaced by a new storage medium</span>
+                    <span>A storage medium is near the end of its life cycle and must be replaced by
+                        a new storage medium</span>
                 </cpp:description>
             </cpp:triggerEvent>
             <cpp:triggerEvent>
@@ -114,232 +128,242 @@
             </cpp:triggerEvent>
             <cpp:triggerEvent>
                 <cpp:description>
-                    <span>Potentials for reducing costs or improving efficiency by benefiting from storage medium 
+                    <span>Potentials for reducing costs or improving efficiency by benefiting from
+                        storage medium
                         technologies are identified</span>
                 </cpp:description>
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Storage management policy - Media, flagging a storage medium that must be refreshed</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-012</cpp:supplier>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Detection of a faulty storage medium</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-004</cpp:supplier>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Refreshment is identified as a way to reduce costs, increase efficiency, or improve 
-                            environmental sustainability</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Identify and locate the storage medium to be refreshed</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>The old storage medium that is to be refreshed</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Storage management information</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>List all <em>AIP</em>s on the old storage medium</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Inventory of <em>AIP</em>s involved in the refreshment</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Storage management policy - Media</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Select source medium to copy the <em>AIP</em>s from (can be from storage other than the medium to 
-                        be replaced)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Authoritative storage medium for replicating/copying the <em>AIP</em>s</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:stepDescription>
-                    <span>Provision of a fresh storage medium that will replace the old one</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>The fresh storage medium that will replace the old one</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="5">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Source storage medium of <em>AIP</em>s</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Fresh storage medium</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Inventory of <em>AIP</em>s involved in the refreshment</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>For each <em>AIP</em> individually, start the copy process (steps 6 to 10):</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="6">
-                <cpp:stepDescription>
-                    <span>Retrieve the <em>AIP</em> from the source storage medium</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="7">
-                <cpp:stepDescription>
-                    <span>Copy the <em>AIP</em> to the fresh storage medium</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>New copy of <em>AIP</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="8">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Existing/previous <em>Fixity metadata</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Validate the fixity of the <em>AIP</em> on the fresh storage medium</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Valid status (9) - <em>Fixity metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Invalid status (go back to 6) - <em>Fixity metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="9">
-                <cpp:stepDescription>
-                    <span>Record the fixity for the new <em>AIP</em> copy</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Fixity metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="10">
-                <cpp:stepDescription>
-                    <span>Update the storage location for the new <em>AIP</em> copy</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="11">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Inventory of <em>AIP</em>s involved in the refreshment</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Check that all <em>AIP</em>s in the inventory have been successfully copied</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Confirm completeness of the copy process (12)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Error (go back to copy process loop)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="12">
-                <cpp:stepDescription>
-                    <span>Update information about the fresh storage medium (e.g. <em>File</em> locations, media 
-                        identifiers) and mark the old medium and its contents as ready for deletion/decommissioning</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="13">
-                <cpp:stepDescription>
-                    <span>Create a preservation event for the refreshment</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Provenance metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="14">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Old storage medium that has been refreshed</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Ensure data security and that confidentiality is not compromised by making sure that data on the 
-                        old storage medium is properly deleted</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="15">
-                <cpp:stepDescription>
-                    <span>Decommission the old storage medium</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Record of decommissioning</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Storage management policy - Media, flagging a storage medium that
+                                must be refreshed</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-012</cpp:supplier>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Detection of a faulty storage medium</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-004</cpp:supplier>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Refreshment is identified as a way to reduce costs, increase
+                                efficiency, or improve
+                                environmental sustainability</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Identify and locate the storage medium to be refreshed</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>The old storage medium that is to be refreshed</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Storage management information</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>List all <em>AIP</em>s on the old storage medium</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Inventory of <em>AIP</em>s involved in the refreshment</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Storage management policy - Media</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Select source medium to copy the <em>AIP</em>s from (can be from
+                            storage other than the medium to be replaced)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Authoritative storage medium for replicating/copying the <em>AIP</em>
+                                s</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:stepDescription>
+                        <span>Provision of a fresh storage medium that will replace the old one</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>The fresh storage medium that will replace the old one</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Source storage medium of <em>AIP</em>s</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Fresh storage medium</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Inventory of <em>AIP</em>s involved in the refreshment</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>For each <em>AIP</em> individually, start the copy process (steps 6 to
+                            10):</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:stepDescription>
+                        <span>Retrieve the <em>AIP</em> from the source storage medium</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="7">
+                    <cpp:stepDescription>
+                        <span>Copy the <em>AIP</em> to the fresh storage medium</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>New copy of <em>AIP</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="8">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Existing/previous <em>Fixity metadata</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Validate the fixity of the <em>AIP</em> on the fresh storage medium</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Valid status (9) - <em>Fixity metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Invalid status (go back to 6) - <em>Fixity metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="9">
+                    <cpp:stepDescription>
+                        <span>Record the fixity for the new <em>AIP</em> copy</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Fixity metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="10">
+                    <cpp:stepDescription>
+                        <span>Update the storage location for the new <em>AIP</em> copy</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Storage management information</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="11">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Inventory of <em>AIP</em>s involved in the refreshment</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Check that all <em>AIP</em>s in the inventory have been successfully
+                            copied</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Confirm completeness of the copy process (12)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Error (go back to copy process loop)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="12">
+                    <cpp:stepDescription>
+                        <span>Update information about the fresh storage medium (e.g. <em>File</em>
+                            locations, media identifiers) and mark the old medium and its contents
+                            as ready for deletion/decommissioning</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Storage management information</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="13">
+                    <cpp:stepDescription>
+                        <span>Create a preservation event for the refreshment</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Provenance metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="14">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Old storage medium that has been refreshed</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Ensure data security and that confidentiality is not compromised by
+                            making sure that data on the
+                            old storage medium is properly deleted</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="15">
+                    <cpp:stepDescription>
+                        <span>Decommission the old storage medium</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Record of decommissioning</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
@@ -348,9 +372,11 @@
                 <span>Manage the storage infrastructure life cycle</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Storage medium deteriorates/ degrades/ becomes faulty over time, which increases the risk of data 
+                <span>Storage medium deteriorates/ degrades/ becomes faulty over time, which
+                    increases the risk of data
                     corruption.</span>
-                <span>Storage medium is no longer supported by the vendor, which increases risks to data due to lack of 
+                <span>Storage medium is no longer supported by the vendor, which increases risks to
+                    data due to lack of
                     maintenance or unpatched security vulnerabilities.</span>
             </cpp:worstCase>
         </cpp:purpose>
@@ -359,7 +385,8 @@
                 <span>Have multiple copies of data on multiple viable storage media</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>In cases of data corruption or destruction, recovery depends on having other intact copies</span>
+                <span>In cases of data corruption or destruction, recovery depends on having other
+                    intact copies</span>
             </cpp:worstCase>
         </cpp:purpose>
         <cpp:purpose>
@@ -367,7 +394,8 @@
                 <span>The TDA should achieve sustainability</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Using old or obsolete storage media results in higher costs, lower operational efficiency, or higher 
+                <span>Using old or obsolete storage media results in higher costs, lower operational
+                    efficiency, or higher
                     environmental impact (compared to latest storage medium technologies).</span>
             </cpp:worstCase>
         </cpp:purpose>
@@ -376,7 +404,8 @@
                 <span>Open source storage solutions</span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Vendor lock-in in storage solutions pose a risk of a strong dependency to an external partner.</span>
+                <span>Vendor lock-in in storage solutions pose a risk of a strong dependency to an
+                    external partner.</span>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -385,7 +414,8 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The strategy for data storage and storage infrastructure management is defined in a storage management 
+                <span>The strategy for data storage and storage infrastructure management is defined
+                    in a storage management
                     policy which is based on a TDAs risk assessment and mitigation.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
@@ -393,19 +423,21 @@
             <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-011</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Replication creates new parallel copies of individual <em>AIP</em>s, refreshment creates new copies 
-                    that replace the old ones. Moreover, CPP-011 aims for redundancy on an IP level, whereas Refreshment 
-                    operates on a storage medium level.</span>
+                <span>Replication creates new parallel copies of individual <em>AIP</em>s,
+                    refreshment creates new copies that replace the old ones. Moreover, CPP-011 aims
+                    for redundancy on an IP level, whereas Refreshment operates on a storage medium
+                    level.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>All new <em>AIP</em> copies must have their checksum validated to verify that the process was 
-                    successful. The checksum validation is more mechanical in its nature in Refreshment, only aiming at 
-                    verification of the copy process. In contrast to CPP-002, it does not have to negotiate with producers or 
-                    examine the results.</span>
+                <span>All new <em>AIP</em> copies must have their checksum validated to verify that
+                    the process was successful. The checksum validation is more mechanical in its
+                    nature in Refreshment, only aiming at verification of the copy process. In
+                    contrast to CPP-002, it does not have to negotiate with producers or examine the
+                    results.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
@@ -438,7 +470,8 @@
                 <span>migration</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <span>5.1.1.5 The repository shall have defined processes for storage media and/or hardware change (e.g., 
+                <span>5.1.1.5 The repository shall have defined processes for storage media and/or
+                    hardware change (e.g.,
                     refreshing, migration)</span>
             </cpp:correspondingSection>
         </cpp:mapping>
@@ -476,7 +509,8 @@
                 <cpp:institutionType>Research performing organisation</cpp:institutionType>
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Mediamigration</cpp:hyperlink>
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Mediamigration</cpp:hyperlink>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
         <cpp:publicDocumentation>
