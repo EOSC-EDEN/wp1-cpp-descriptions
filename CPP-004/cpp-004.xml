@@ -63,9 +63,11 @@
             read/write errors are detected. </p>
         <p>TData Corruption Management relies on the TDA having several parallel copies, preferably
             on different storage media and in different storage locations. The number of parallel
-            copies, and their storage conditions are defined in the TDA’s policies as maintained by Risk
+            copies, and their storage conditions are defined in the TDA’s policies as maintained by
+            Risk
             Mitigation (CPP-012) and a copy management policy in particular. In accordance with
-            agreed on best-practices, at least three copies are recommended, as there should exist at least
+            agreed on best-practices, at least three copies are recommended, as there should exist
+            at least
             two other valid copies in case one copy is corrupted or destroyed.</p>
     </cpp:descriptionAndScope>
     <cpp:process>
@@ -104,243 +106,247 @@
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Integrity checking report</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-003</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Identify and locate corrupted <em>AIPs</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Inventory of corrupted <em>AIPs</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Storage medium with broken <em>AIPs</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Report of media-wide errors</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Identify and locate the <em>AIPs</em> on the corrupted medium.</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Inventory of corrupted <em>AIPs</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Storage medium with media-wide errors packages</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Copy Management Policy</span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-012</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Select source medium to copy the <em>AIPs</em> from</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Authoritative storage medium for replicating/copying the <em>AIPs</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:stepDescription>
-                    <span>Select target storage medium (can, and often is, be same as the original
-                        storage medium identified in step 1a)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Target storage medium</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3b">
-                <cpp:stepDescription>
-                    <span>In case of media-wide errors: Provision of a fresh storage medium that
-                        will replace the old one.</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>The fresh storage medium that will replace the old one</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Source storage medium of <em>AIPs</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Target storage medium</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Inventory of <em>AIPs</em> involved in the process</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>For each AIP individually, start the copy process (steps 5 to 9):</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="5">
-                <cpp:stepDescription>
-                    <span>Retrieve the <em>AIP</em> from the source storage medium</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="6">
-                <cpp:stepDescription>
-                    <span>Copy the <em>AIP</em> to the target storage medium</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>New copy of AIP</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="7">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Existing Fixity metadata</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Validate the fixity of the <em>AIP</em> on the fresh storage medium</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Fixity Metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement optional="true">
-                        <span>Valid status (step 8)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement optional="true">
-                        <span>Invalid status (go back to step 5)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="8">
-                <cpp:stepDescription>
-                    <span>Update the fixity for the new <em>AIP</em> copy </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Fixity metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="9">
-                <cpp:stepDescription>
-                    <span>If the target storage medium is different from the original storage medium
-                        with the broken <em>AIP</em>:</span>
-                    <span>Update the storage location for the new <em>AIP</em> copy</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="10">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Inventory of <em>AIPs</em> involved in the process</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Check that all <em>AIPs</em> in the inventory have been successfully
-                        copied </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement optional="true">
-                        <span>Confirm completeness of the copy process (step 11)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement optional="true">
-                        <span>Error (go back to copy process loop)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="11">
-                <cpp:stepDescription>
-                    <span>In case of media-wide errors:</span>
-                    <span>Update information about the fresh storage medium (e.g. <em>File</em>
-                        locations, media identifiers) and mark the old medium and its contents as
-                        ready for deletion/decommissioning.</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="12">
-                <cpp:stepDescription>
-                    <span>Document the event and its timestamp</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Provenance Metadata</em>
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="13">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Original storage medium that has been refreshed</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>In case of media-wide errors</span>
-                    <span>Ensure data security and that confidentiality is not compromised by making
-                        sure that data on the original storage medium is properly deleted.</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="14">
-                <cpp:stepDescription>
-                    <span>Decommission the old storage medium</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Record of decommissioning</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1a">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Integrity checking report</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-003</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Identify and locate corrupted <em>AIPs</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Inventory of corrupted <em>AIPs</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Storage medium with broken <em>AIPs</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="1b">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Report of media-wide errors</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Identify and locate the <em>AIPs</em> on the corrupted medium.</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Inventory of corrupted <em>AIPs</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Storage medium with media-wide errors packages</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Copy Management Policy</span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-012</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Select source medium to copy the <em>AIPs</em> from</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Authoritative storage medium for replicating/copying the <em>AIPs</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:stepDescription>
+                        <span>Select target storage medium (can, and often is, be same as the
+                            original
+                            storage medium identified in step 1a)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Target storage medium</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3b">
+                    <cpp:stepDescription>
+                        <span>In case of media-wide errors: Provision of a fresh storage medium that
+                            will replace the old one.</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>The fresh storage medium that will replace the old one</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Source storage medium of <em>AIPs</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Target storage medium</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Inventory of <em>AIPs</em> involved in the process</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>For each AIP individually, start the copy process (steps 5 to 9):</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:stepDescription>
+                        <span>Retrieve the <em>AIP</em> from the source storage medium</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:stepDescription>
+                        <span>Copy the <em>AIP</em> to the target storage medium</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>New copy of AIP</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="7">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Existing Fixity metadata</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Validate the fixity of the <em>AIP</em> on the fresh storage medium</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Fixity Metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement optional="true">
+                            <span>Valid status (step 8)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement optional="true">
+                            <span>Invalid status (go back to step 5)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="8">
+                    <cpp:stepDescription>
+                        <span>Update the fixity for the new <em>AIP</em> copy </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Fixity metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="9" optional="true">
+                    <cpp:stepDescription>
+                        <span>If the target storage medium is different from the original storage
+                            medium with the broken <em>AIP</em>:</span>
+                        <span>Update the storage location for the new <em>AIP</em> copy</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Storage management information</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="10">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Inventory of <em>AIPs</em> involved in the process</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Check that all <em>AIPs</em> in the inventory have been successfully
+                            copied </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement optional="true">
+                            <span>Confirm completeness of the copy process (step 11)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement optional="true">
+                            <span>Error (go back to copy process loop)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="11" optional="true">
+                    <cpp:stepDescription>
+                        <span>In case of media-wide errors:</span>
+                        <span>Update information about the fresh storage medium (e.g. <em>File</em>
+                            locations, media identifiers) and mark the old medium and its contents
+                            as ready for deletion/decommissioning.</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Storage management information</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="12">
+                    <cpp:stepDescription>
+                        <span>Document the event and its timestamp</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                <em>Provenance Metadata</em>
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="13" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Original storage medium that has been refreshed</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>In case of media-wide errors</span>
+                        <span>Ensure data security and that confidentiality is not compromised by
+                            making
+                            sure that data on the original storage medium is properly deleted.</span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="14">
+                    <cpp:stepDescription>
+                        <span>Decommission the old storage medium</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Record of decommissioning</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>

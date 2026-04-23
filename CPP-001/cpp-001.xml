@@ -99,82 +99,86 @@
             </cpp:triggerEvent>
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Storage management policy - Checksum algorithms</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Get the list of accepted checksum algorithms</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>List of accepted checksum algorithms</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>File</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>List of checksum algorithms</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Calculate the checksum for each algorithm</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>List of checksums for the <em>File</em> based on different algorithms</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>List of checksums for the <em>File</em> based on different algorithms</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Store the checksums in the <em>Fixity metadata</em> for the <em>
-                            File</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Updated <em>Fixity metadata</em> of the <em>
-                                File</em> in the TDA database</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-002</cpp:customer>
-                    <cpp:customer>CPP-003</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>File</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Document the event and its datetime</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Datetime for the checksum generation and other related <em>Provenance
-                            metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Storage management policy - Checksum algorithms</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Get the list of accepted checksum algorithms</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>List of accepted checksum algorithms</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>File</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>List of checksum algorithms</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Calculate the checksum for each algorithm</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>List of checksums for the <em>File</em> based on different
+                                algorithms</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>List of checksums for the <em>File</em> based on different
+                                algorithms</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Store the checksums in the <em>Fixity metadata</em> for the <em>
+                                File</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Updated <em>Fixity metadata</em> of the <em>
+                                    File</em> in the TDA database</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-002</cpp:customer>
+                        <cpp:customer>CPP-003</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>File</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Document the event and its datetime</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Datetime for the checksum generation and other related <em>Provenance
+                                metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
@@ -239,7 +243,7 @@
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <span>The checksums and associated algorithms need to be stored in the <em>
-                    File</em>’s <em>Fixity metadata</em>.</span>
+                        File</em>’s <em>Fixity metadata</em>.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>

@@ -122,20 +122,7 @@
             potential. </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>
                         <em>SIP</em> or <em>AIP</em> import </span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>
                         <em>DIP</em> generation </span></td><td>CPP-025 (Enabling Access)</td></tr><tr><td><span>
-                        <em>AIP</em> export </span></td><td>CPP-006 (AIP Batch Export)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="2">1</td><td rowspan="1">CPP-001 (Checksum Generation and Recording)</td><td rowspan="1"><span>Fixity information</span></td><td class="stepsColumn" rowspan="2"><span>Get the list of pre-calculated checksums with their respective algorithms</span></td><td rowspan="2"><span>List of checksums and algorithms</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span> Fixity information from <em>SIP</em>
-                        </span></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>List of checksums and algorithms</span></td><td class="stepsColumn" rowspan="2"><span>Evaluate for each algorithm individually if it is supported by the system.</span></td><td rowspan="1"><span>Algorithm supported (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Digital archive system configuration</span></td><td rowspan="1"><span>Algorithm not supported:</span><ol>
-                            <li>
-                                examine further procedure (e.g. based on legal agreements;
-                                submission policies; communication with producer, if possible)
-                            </li>
-                            <li>Process completed</li>
-                        </ol></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>
-                            <em>File</em>
-                        </span></td><td class="stepsColumn" rowspan="2"><span>For each algorithm, recalculate the checksum of the <em>File</em> and
-                        match it with the given checksum</span></td><td rowspan="1"><span>All <em>File</em> checksums match (step 5)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>List of checksums and algorithms</span></td><td rowspan="1"><span>Alert that any of the <em>File</em> checksums does not match:</span><ol>
-                            <li>Examine further procedure</li>
-                            <li>Process completed</li>
-                        </ol></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"><span>All <em>File</em> checksums match</span></td><td class="stepsColumn" rowspan="1"><span>Document the event and its timestamp</span></td><td rowspan="1"><span>Datetime for the checksum generation in the Provenance metadata</span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Making sure the data content is still in the condition as intended </span></td><td><span>Data corruption during transfers into the system or during export could go
+                        <em>AIP</em> export </span></td><td>CPP-006 (AIP Batch Export)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Making sure the data content is still in the condition as intended </span></td><td><span>Data corruption during transfers into the system or during export could go
                     unnoticed</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-001</td><td>Checksum Generation and Recording</td><td><span>CPP-002 relies on fixity information as produced and stored by CPP-001, but
                     only
                     during CPP-025 Enabling Access and
@@ -162,7 +149,7 @@
                     different processes, but also trigger different responses.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
                         </a></td><td><span>Checksum (cf <a href="https://zenodo.org/records/7051096">Extended
-                    Guidance
+                        Guidance
                         documentation</a>) </span></td><td><span>Information Technology and Security/Storage &amp; Integrity (R14)</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
                         </a></td><td>/</td><td>/</td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
