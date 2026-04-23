@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
-    ID="CPP-018"
-    xml:lang="en">
-    <cpp:header>
-        <cpp:label>Community Watch</cpp:label>
-        <cpp:authors>
-            <cpp:author>Micky Lindlar</cpp:author>
-        </cpp:authors>
-        <cpp:contributors>
-            <cpp:contributor>Mattias Levlin</cpp:contributor>
-        </cpp:contributors>
-        <cpp:evaluators>
-            <cpp:evaluator>Felix Burger</cpp:evaluator>
-            <cpp:evaluator>Maria Benauer</cpp:evaluator>
-        </cpp:evaluators>
-        <cpp:history>
-            <cpp:version>
-                <cpp:versionNumber>
-                    <cpp:majorVersion>1</cpp:majorVersion>
-                    <cpp:minorVersion>0</cpp:minorVersion>
-                    <cpp:patchVersion>0</cpp:patchVersion>
-                </cpp:versionNumber>
-                <cpp:versionDate>2025-08-29</cpp:versionDate>
-                <cpp:versionNotes>Milestone version</cpp:versionNotes>
-            </cpp:version>
-            <cpp:version>
-                <cpp:versionNumber>
-                    <cpp:majorVersion>1</cpp:majorVersion>
-                    <cpp:minorVersion>1</cpp:minorVersion>
-                    <cpp:patchVersion>0</cpp:patchVersion>
-                </cpp:versionNumber>
-                <cpp:versionDate>2026-03-25</cpp:versionDate>
-                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
-            </cpp:version>
-        </cpp:history>
-    </cpp:header>
-    <cpp:shortDefinition>The TDA monitors its Designated Community in order to identify its evolving needs and knowledge.</cpp:shortDefinition>
-    <cpp:classification>
-        <cpp:oaisClassification>Preservation Planning</cpp:oaisClassification>
-        <cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
-    </cpp:classification>
-    <cpp:descriptionAndScope>
-        <p>The TDA must monitor its <em>Designated Community</em> in order to identify its evolving needs and knowledge.</p>
-        <p><em>Information packages</em> within a TDA are stored for a group of current and future users (i.e. the <em>Designated Community</em>).
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-018" xml:lang="en">
+	<cpp:header>
+		<cpp:label>Community Watch</cpp:label>
+		<cpp:authors>
+			<cpp:author>Micky Lindlar</cpp:author>
+		</cpp:authors>
+		<cpp:contributors>
+			<cpp:contributor>Mattias Levlin</cpp:contributor>
+		</cpp:contributors>
+		<cpp:evaluators>
+			<cpp:evaluator>Felix Burger</cpp:evaluator>
+			<cpp:evaluator>Maria Benauer</cpp:evaluator>
+		</cpp:evaluators>
+		<cpp:history>
+			<cpp:version>
+				<cpp:versionNumber>
+					<cpp:majorVersion>1</cpp:majorVersion>
+					<cpp:minorVersion>0</cpp:minorVersion>
+					<cpp:patchVersion>0</cpp:patchVersion>
+				</cpp:versionNumber>
+				<cpp:versionDate>2025-08-29</cpp:versionDate>
+				<cpp:versionNotes>Milestone version</cpp:versionNotes>
+			</cpp:version>
+			<cpp:version>
+				<cpp:versionNumber>
+					<cpp:majorVersion>1</cpp:majorVersion>
+					<cpp:minorVersion>1</cpp:minorVersion>
+					<cpp:patchVersion>0</cpp:patchVersion>
+				</cpp:versionNumber>
+				<cpp:versionDate>2026-03-25</cpp:versionDate>
+				<cpp:versionNotes>Migration to XML</cpp:versionNotes>
+			</cpp:version>
+		</cpp:history>
+	</cpp:header>
+	<cpp:shortDefinition>The TDA monitors its Designated Community in order to identify its evolving needs and knowledge.</cpp:shortDefinition>
+	<cpp:classification>
+		<cpp:oaisClassification>Preservation Planning</cpp:oaisClassification>
+		<cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
+	</cpp:classification>
+	<cpp:descriptionAndScope>
+		<p>The TDA must monitor its <em>Designated Community</em> in order to identify its evolving needs and knowledge.</p>
+		<p>
+			<em>Information packages</em> within a TDA are stored for a group of current and future users (i.e. the <em>Designated Community</em>).
             A <em>Designated Community</em> is always specific to a TDA and it may change over time (e.g. as data from a different sub-discipline are
             being deposited or the method of intended access or interaction to data changes over time). In addition to the <em>Designated Community</em>
             itself, the TDA should define what can be assumed as knowledge within the <em>Designated Community</em> (e.g. what language they speak, what 
@@ -53,16 +49,16 @@
             Designated Community</em>’s Knowledge Base. Lastly, the TDA must plan for the Preservation Objective, meaning how the <em>Designated 
             Community</em> can use the data. A Preservation Objective should be specific, actionable and measurable. While the <em>Designated 
             Community</em> is the “who” and “with what knowledge or skills”, the Preservation Objective is the “how”.</p>
-        <p>For example, see these two fictive TDAs:</p>
-        <ul>
-            <li>TDA1 preserves civil engineering data for research and practice within Germany. The data preserved is currently 3D point-cloud scans in 
+		<p>For example, see these two fictive TDAs:</p>
+		<ul>
+			<li>TDA1 preserves civil engineering data for research and practice within Germany. The data preserved is currently 3D point-cloud scans in 
                 file formats LAS/LAZ and e57. Based on the content they currently preserve, they define their <em>Designated Community</em> as researchers 
                 from the discipline of civil engineering including all subdisciplines as well as specialists working in these fields (e.g. as urban engineers 
                 within Germany). The <em>Designated Community</em>’s knowledge base is built on the German language; includes principles such as mechanics 
                 and materials science; methods such as simulation and surveying as well as tools such as Computer-Aided Design; and 3D point-cloud scanning. 
                 One of the <em>Preservation Objectives</em> is for the <em>Designated Community</em> to be able to render separate point-cloud scans of the 
                 same location on their own systems and to perform tasks including deformation monitoring on the data.</li>
-            <li>TDA2 preserves oral history data in a university located in Spain. The data preserved is from a long-term collaborative research project 
+			<li>TDA2 preserves oral history data in a university located in Spain. The data preserved is from a long-term collaborative research project 
                 between the institutes for political science and for recent Spanish history and contains interviews with contemporary witnesses on the 
                 Spanish Transformation to Democracy (La Transición Española). The data can currently only be accessed by staff from the two affiliated 
                 institutes. In 2040, access to the data will be opened to the wider research community. The TDA defines its <em>Designated Community</em> as 
@@ -70,629 +66,629 @@
                 </em>’s knowledge base is built on the Spanish, Catalan, Galician and Basque languages; includes the historical context of the data; 
                 political science concepts; and oral history and testimonial methods. One of the <em>Preservation Objectives</em> is for the <em>Designated 
                 Community</em> to be able to load the original data into their qualitative data software for coding and thematic analysis.</li>
-        </ul>
-        <p>The CPPs assume that the TDA’s <em>Designated Community</em> including its knowledge base and the <em>Preservation Objective</em> have 
+		</ul>
+		<p>The CPPs assume that the TDA’s <em>Designated Community</em> including its knowledge base and the <em>Preservation Objective</em> have 
             been defined and are available in guiding documentation such as a mission statement, a preservation policy or preservation action plan(s). 
             Such a <em>Designated Community</em> definition typically includes current depositors or data producers and current consumers of the data, 
             but also needs to take into account potential future user groups.</p>
-        <p>Often, the <em>Designated Communites</em> themselves look to the TDA for advice on data handling practices, especially connected to file 
+		<p>Often, the <em>Designated Communites</em> themselves look to the TDA for advice on data handling practices, especially connected to file 
             formats, data packaging or <em>Metadata</em>. To adequately support current day and future users, it is therefore crucial to also monitor 
             usage trends, good practice and risks associated with file formats, data types and <em>Metadata</em> which the TDA already supports or 
             intends to support in the future. This information is typically found outside of the research communities themselves. Communities to turn to 
             for this include digital preservation, digital curation and research data management communities as well as existing communities around file 
             formats, <em>Metadata</em> and software.</p>
-        <p>OAIS has the functions “Monitor <em>Designated Community</em>” and “Monitor Technology” feed into the “Preservation Watch” function. All 
+		<p>OAIS has the functions “Monitor <em>Designated Community</em>” and “Monitor Technology” feed into the “Preservation Watch” function. All 
             three are part of the preservation planning functional entity. In addition, OAIS mentions the environment itself (e.g. financial, political, 
             environmental) as a potential source to monitor and feed into Preservation Watch. In practice, the monitoring functions are often described 
             as “Technology Watch”, “Organisation Watch”, “Community Watch” and “Preservation Watch”.</p>
-        <p>Within the scope of the CPP, Community Watch covers monitoring of:</p>
-        <ul>
-            <li>The <em>Designated Community</em>, its <em>Knowledge Base</em> and <em>Usage Scenarios</em>;</li>
-            <li>Digital Preservation, Digital Curation, Research Data Management communities;</li>
-            <li>File Format Communities and (emerging) good practice, risks and developments;</li>
-            <li>Metadata Communities and (emerging) good practice, risks and developments;</li>
-            <li>Software Communities and (emerging) good practice risks and developments.</li>
-        </ul>
-        <p>The CPP Community Watch therefore covers more than monitoring the <em>Designated Community</em>. It integrates information sources closer 
+		<p>Within the scope of the CPP, Community Watch covers monitoring of:</p>
+		<ul>
+			<li>The <em>Designated Community</em>, its <em>Knowledge Base</em> and <em>Usage Scenarios</em>;</li>
+			<li>Digital Preservation, Digital Curation, Research Data Management communities;</li>
+			<li>File Format Communities and (emerging) good practice, risks and developments;</li>
+			<li>Metadata Communities and (emerging) good practice, risks and developments;</li>
+			<li>Software Communities and (emerging) good practice risks and developments.</li>
+		</ul>
+		<p>The CPP Community Watch therefore covers more than monitoring the <em>Designated Community</em>. It integrates information sources closer 
             to the Technology Watch or <em>Monitor Technology</em> (OAIS) function. Since it is important to stress the relevance of the unique <em>
             Designated Communites</em> whose <em>Preservation Objective</em> needs to be supported by matching tools and processes within the TDA, the 
             name <em>Community Watch</em> was chosen here.</p>
-    </cpp:descriptionAndScope>
-    <cpp:process>
-        <cpp:inputs>
-            <cpp:guidance>
-                <cpp:guidanceElement>Preservation Policy</cpp:guidanceElement>
-                <cpp:guidanceElement>Mission Statement</cpp:guidanceElement>
-                <cpp:guidanceElement>File Format Policy - Preferred formats</cpp:guidanceElement>
-                <cpp:guidanceElement>Emulation and rendering policy</cpp:guidanceElement>
-                <cpp:guidanceElement>List of emulation and rendering tools</cpp:guidanceElement>
-                <cpp:guidanceElement>File Format Policy - Identification</cpp:guidanceElement>
-                <cpp:guidanceElement>File Format Policy - Validation</cpp:guidanceElement>
-                <cpp:guidanceElement>List of identification and validation tools</cpp:guidanceElement>
-                <cpp:guidanceElement>Access Policy</cpp:guidanceElement>
-                <cpp:guidanceElement>List of tools used for derivatives generation or normalisation</cpp:guidanceElement>
-                <cpp:guidanceElement>Metadata recording policy</cpp:guidanceElement>
-                <cpp:guidanceElement>List of metadata schema or serialisation used</cpp:guidanceElement>
-                <cpp:guidanceElement>List of tools used for (automated) Metadata generation and handling</cpp:guidanceElement>
-                <cpp:guidanceElement>Designated Community definition</cpp:guidanceElement>
-                <cpp:guidanceElement>Description of Designated Community’s Knowledge Base</cpp:guidanceElement>
-                <cpp:guidanceElement>Preservation Objective</cpp:guidanceElement>
-            </cpp:guidance>
-        </cpp:inputs>
-        <cpp:outputs>
-            <cpp:guidance>
-                <cpp:guidanceElement>Report on changed Designated Community structure</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on updated file formats or data types used by Designated Community</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on changed or new significant properties</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on updated access, use and re-use requirements</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on updated Metadata requirements</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on updated legal or policy impact</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on updated methods, processes or concepts used by Designated Community</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on updated requirements for Preservation objective</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on risk</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on software changes</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on updates to file format identification and validation</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on changes to migration tools</cpp:guidanceElement>
-                <cpp:guidanceElement>Report on changes to Metadata generation and handling tools</cpp:guidanceElement>
-            </cpp:guidance>
-        </cpp:outputs>
-        <cpp:triggerEvents>
-            <cpp:triggerEvent>
-                <cpp:description>
-                    <span>Continuously running activitiy</span>
-                </cpp:description>
-            </cpp:triggerEvent>
-        </cpp:triggerEvents>
-        <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:stepDescription>
-                    <span>1. Designated Community and Knowledge Base Description</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="1-1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Mission Statement</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Preservation Policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Choose, design and implement methods to monitor changes in the <em>Designated Community</em> (e.g. user survey, feedback 
-                        form, web/usage analytics, support channel, scientific advisory boards etc.)</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="1-2">
-                <cpp:stepDescription>
-                    <span>Evaluate feedback from evaluation method</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="1-2a">
-                <cpp:stepDescription>
-                    <span>If an indicator is given for a changed <em>Designated Community</em> (i.e. new discipline uses data or previously defined 
-                        discipline no longer uses data)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on changed Designated Community structure</span>
-                        <span>Administrative entity for review of guidance documents (designated community definition)</span>
-                        <span>Update to Retention Policy</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-017</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1-2b">
-                <cpp:stepDescription>
-                    <span>If an indicator is given for a changed <em>Knowledge Base</em> impacting file formats or data types used</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on updated file formats or data types used by <em>Designated Community</em></span>
-                        <span>Update to File format policy</span>
-                        <span>Update to Emulation and rendering policy</span>
-                        <span>Update to Significant Properties Policy</span>
-                        <span>Update to preferred file formats list</span>
-                        <span>Update File format policy - Derivatives: formats</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-008</cpp:customer>
-                    <cpp:customer>CPP-015</cpp:customer>
-                    <cpp:customer>CPP-022</cpp:customer>
-                    <cpp:customer>CPP-026</cpp:customer>
-                    <cpp:customer>CPP-028</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1-2c">
-                <cpp:stepDescription>
-                    <span>If an indicator is given for a changed <em>Knowledge Base</em> impacting significant properties used or extracted from File 
-                        formats or data <em>Objects</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on changed or new significant properties</span>
-                        <span>Update to Significant Properties Policy</span>
-                        <span>Update to queries leveraging changed or new significant properties</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-022</cpp:customer>
-                    <cpp:customer>CPP-024</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1-2d">
-                <cpp:stepDescription>
-                    <span>If an indicator is given for a changed <em>Knowledge Base</em> impacting software used in accessing or interacting with 
-                        data or re-use scenarios</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on updated access, use and re-use requirements</span>
-                        <span>Update to Emulation and rendering Policy</span>
-                        <span>Update to queries</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-015</cpp:customer>
-                    <cpp:customer>CPP-024</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1-2e">
-                <cpp:stepDescription>
-                    <span>If indicator is given for changed <em>Metadata</em> width, depth, syntax or serialisation</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on updated <em>Metadata</em> requirements</span>
-                        <span>Update to metadata policy</span>
-                        <span>Update to queries</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-016</cpp:customer>
-                    <cpp:customer>CPP-024</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1-2f">
-                <cpp:stepDescription>
-                    <span>If indicator is given for legal or policy impacting restricted or extended access to <em>Objects</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on updated legal or policy impact</span>
-                        <span>Update on Rights Statements</span>
-                        <span>Update on Access Policy</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-020</cpp:customer>
-                    <cpp:customer>CPP-025</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1-2g">
-                <cpp:stepDescription>
-                    <span>If indicator is given for changed methods, processes or concepts</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on updated methods, processes or concepts by <em>Designated Community</em></span>
-                        <span>Administrative entity for review of guidance documents (Knowledge Base description)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1-3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Mission Statement</span>
-                        <span>Preservation Policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Check all steps above for impact on <em>Preservation Objective</em>. If an indicator is given for a changed <em>
-                        Preservation Objective</em></span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on updated requirements for <em>Preservation objective</em></span>
-                        <span>Administrative entity for review of guidance documents (Preservation objective, Designated Community Knowledge Base)</span>
-                        <span>Update on Quality properties</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-019</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:stepDescription>
-                    <span>2. Supported file formats and data types description</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="2-1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>File format policy - preferred file formats</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Choose, design and implement methods to monitor changes in file formats and data types, including networks around 
-                        supporting software (e.g. observing file format networks, observing digital preservation and digital curation networks, 
-                        conference proceedings, journal articles, querying knowledge bases etc.)</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="2-2">
-                <cpp:stepDescription>
-                    <span>Evaluate information</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="2-2a">
-                <cpp:stepDescription>
-                    <span>If risk in file format or data type is raised</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on risk</span>
-                        <span>Update on risk</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-023</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2-2ax">
-                <cpp:stepDescription>
-                    <span>If file format is no longer supported or rationale behind initial choice for format is no longer true (e.g. no longer 
-                        widely used)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on risk</span>
-                        <span>Administrative entity for review of impact (Preservation Intent definition)</span>
-                        <span>Update on risk</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-023</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2-2b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Emulation and rendering Policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>List of emulation and rendering tools</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If tool to support file formats rendering or emulation is no longer supported or available or a new version has become 
-                        available</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on software changes</span>
-                        <span>Update on risk</span>
-                        <span>Update to Emulation and rendering Policy</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-023</cpp:customer>
-                    <cpp:customer>CPP-015</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2-2c">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>File format Identification and Validation Policies</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>List of identification and validation tools</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If new tool or method to support file format identification or validation becomes available<br/>
-                        OR<br/>
-                        If file format identification or validation tools used is no longer supported or available<br/>
-                        OR<br/>
-                        If new versions of the tools have become available</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on updates for file format identification</span>
-                        <span>Update to File Format Policy</span>
-                        <span>Updates to File Format Validation Policy</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-008</cpp:customer>
-                    <cpp:customer>CPP-010</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="2-2d">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Access Policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>File Format Policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>List of tools used to derivatives generation or normalisation</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If there is a migration path defined in the Access policy (e.g. to create derivatives or to normalise <em>Files</em> in 
-                        pre-ingest) and the tool used for this is no longer supported or available, or a new version has become available</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on changes to migration tools</span>
-                        <span>Update to support for <em>DIP</em> creation</span>
-                        <span>Update to tools used for normalisation</span>
-                        <span>Update to File format policy - Derivatives: tools</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-025</cpp:customer>
-                    <cpp:customer>CPP-026</cpp:customer>
-                    <cpp:customer>CPP-028</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:stepDescription>
-                    <span>3. Supported <em>Metadata</em></span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="3-1">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Metadata policy</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>List of used metadata schema / serialisation in the TDA</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Choose, design and implement methods to monitor changes in syntax, schema and serialisation used for <em>Metadata</em> in 
-                        the TDA</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="3-2">
-                <cpp:stepDescription>
-                    <span>Evaluate information</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="3-2a">
-                <cpp:stepDescription>
-                    <span>If risk in <em>Metadata</em> syntax, schema or serialisation is raised</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on risk</span>
-                        <span>Administrative entity for review of impact (Preservation Intent definition)</span>
-                        <span>Update on risk</span>
-                        <span>Update to queries</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-023</cpp:customer>
-                    <cpp:customer>CPP-024</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3-2b">
-                <cpp:stepDescription>
-                    <span>If <em>Metadata</em> syntax, schema or serialisation is no longer supported or rationale behind initial choice for syntax, 
-                        schema or serialisation is no longer true (e.g. no longer widely used)</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on risk</span>
-                        <span>Administrative entity for review of impact (Preservation Intent definition)</span>
-                        <span>Update on risk</span>
-                        <span>Update to queries</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-023</cpp:customer>
-                    <cpp:customer>CPP-024</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3-2c">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>List of tools used within TDA for (automated) <em>Metadata</em> generation and handling (e.g. validation, conversion)</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If new method to support <em>Metadata</em> generation and handling
-                        becomes available<br/>
-                        OR<br/>
-                        If tools used are no longer supported/available<br/>
-                        OR<br/>
-                        If new versions of the tools have become available</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Report on changes to <em>Metadata</em> generation and handling tools tools</span>
-                        <span>Update to methods or tools for metadata extraction</span>
-                        <span>Update ot methods or tools for metadata ingest and management</span>
-                        <span>Update to queries</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-009</cpp:customer>
-                    <cpp:customer>CPP-016</cpp:customer>
-                    <cpp:customer>CPP-024</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-        </cpp:stepByStepDescription>
-    </cpp:process>
-    <cpp:rationaleWorstCase>
-        <cpp:purpose>
-            <cpp:purposeDescription>
-                <span>The TDA takes responsibility for the long-term stewardship of data for the Designated Community.</span>
-                <span><a href="https://www.nature.com/articles/s41597-020-0486-7#Sec4">TRUST : R-Reponsibility</a></span>
-                <span>The TDA must monitor and identify expectations and requirements of its Designated Community and act to meet these changing 
+	</cpp:descriptionAndScope>
+	<cpp:process>
+		<cpp:inputs>
+			<cpp:guidance>
+				<cpp:guidanceElement>Preservation Policy</cpp:guidanceElement>
+				<cpp:guidanceElement>Mission Statement</cpp:guidanceElement>
+				<cpp:guidanceElement>File Format Policy - Preferred formats</cpp:guidanceElement>
+				<cpp:guidanceElement>Emulation and rendering policy</cpp:guidanceElement>
+				<cpp:guidanceElement>List of emulation and rendering tools</cpp:guidanceElement>
+				<cpp:guidanceElement>File Format Policy - Identification</cpp:guidanceElement>
+				<cpp:guidanceElement>File Format Policy - Validation</cpp:guidanceElement>
+				<cpp:guidanceElement>List of identification and validation tools</cpp:guidanceElement>
+				<cpp:guidanceElement>Access Policy</cpp:guidanceElement>
+				<cpp:guidanceElement>List of tools used for derivatives generation or normalisation</cpp:guidanceElement>
+				<cpp:guidanceElement>Metadata recording policy</cpp:guidanceElement>
+				<cpp:guidanceElement>List of metadata schema or serialisation used</cpp:guidanceElement>
+				<cpp:guidanceElement>List of tools used for (automated) Metadata generation and handling</cpp:guidanceElement>
+				<cpp:guidanceElement>Designated Community definition</cpp:guidanceElement>
+				<cpp:guidanceElement>Description of Designated Community’s Knowledge Base</cpp:guidanceElement>
+				<cpp:guidanceElement>Preservation Objective</cpp:guidanceElement>
+			</cpp:guidance>
+		</cpp:inputs>
+		<cpp:outputs>
+			<cpp:guidance>
+				<cpp:guidanceElement>Report on changed Designated Community structure</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on updated file formats or data types used by Designated Community</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on changed or new significant properties</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on updated access, use and re-use requirements</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on updated Metadata requirements</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on updated legal or policy impact</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on updated methods, processes or concepts used by Designated Community</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on updated requirements for Preservation objective</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on risk</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on software changes</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on updates to file format identification and validation</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on changes to migration tools</cpp:guidanceElement>
+				<cpp:guidanceElement>Report on changes to Metadata generation and handling tools</cpp:guidanceElement>
+			</cpp:guidance>
+		</cpp:outputs>
+		<cpp:triggerEvents>
+			<cpp:triggerEvent>
+				<cpp:description>
+					<span>Continuously running activitiy</span>
+				</cpp:description>
+			</cpp:triggerEvent>
+		</cpp:triggerEvents>
+		<cpp:stepByStepDescription>
+			<cpp:stepGroup type="sequence">
+				<cpp:stepGroup type="sequence" label="1. Designated Community and Knowledge Base Description">
+					<cpp:step stepNumber="1-1">
+						<cpp:input>
+							<cpp:inputElement>
+								<span>Mission Statement</span>
+							</cpp:inputElement>
+						</cpp:input>
+						<cpp:input>
+							<cpp:inputElement>
+								<span>Preservation Policy</span>
+							</cpp:inputElement>
+						</cpp:input>
+						<cpp:stepDescription>
+							<span>Choose, design and implement methods to monitor changes in the <em>Designated Community</em> (e.g. user survey, feedback 
+                                  form, web/usage analytics, support channel, scientific advisory boards etc.)</span>
+						</cpp:stepDescription>
+					</cpp:step>
+					<cpp:stepGroup type="alternative" label="Evaluate feedback from evaluation method">
+						<cpp:step stepNumber="1-2a">
+							<cpp:stepDescription>
+								<span>If an indicator is given for a changed <em>Designated Community</em> (i.e. new discipline uses data or previously defined 
+                                      discipline no longer uses data)</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on changed Designated Community structure</span>
+									<span>Administrative entity for review of guidance documents (designated community definition)</span>
+									<span>Update to Retention Policy</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-017</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="1-2b">
+							<cpp:stepDescription>
+								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting file formats or data types used</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on updated file formats or data types used by <em>Designated Community</em>
+									</span>
+									<span>Update to File format policy</span>
+									<span>Update to Emulation and rendering policy</span>
+									<span>Update to Significant Properties Policy</span>
+									<span>Update to preferred file formats list</span>
+									<span>Update File format policy - Derivatives: formats</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-008</cpp:customer>
+								<cpp:customer>CPP-015</cpp:customer>
+								<cpp:customer>CPP-022</cpp:customer>
+								<cpp:customer>CPP-026</cpp:customer>
+								<cpp:customer>CPP-028</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="1-2c">
+							<cpp:stepDescription>
+								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting significant properties used or extracted from File 
+                                      formats or data <em>Objects</em>
+								</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on changed or new significant properties</span>
+									<span>Update to Significant Properties Policy</span>
+									<span>Update to queries leveraging changed or new significant properties</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-022</cpp:customer>
+								<cpp:customer>CPP-024</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="1-2d">
+							<cpp:stepDescription>
+								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting software used in accessing or interacting with 
+                                      data or re-use scenarios</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on updated access, use and re-use requirements</span>
+									<span>Update to Emulation and rendering Policy</span>
+									<span>Update to queries</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-015</cpp:customer>
+								<cpp:customer>CPP-024</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="1-2e">
+							<cpp:stepDescription>
+								<span>If indicator is given for changed <em>Metadata</em> width, depth, syntax or serialisation</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on updated <em>Metadata</em> requirements</span>
+									<span>Update to metadata policy</span>
+									<span>Update to queries</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-016</cpp:customer>
+								<cpp:customer>CPP-024</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="1-2f">
+							<cpp:stepDescription>
+								<span>If indicator is given for legal or policy impacting restricted or extended access to <em>Objects</em>
+								</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on updated legal or policy impact</span>
+									<span>Update on Rights Statements</span>
+									<span>Update on Access Policy</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-020</cpp:customer>
+								<cpp:customer>CPP-025</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="1-2g">
+							<cpp:stepDescription>
+								<span>If indicator is given for changed methods, processes or concepts</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on updated methods, processes or concepts by <em>Designated Community</em>
+									</span>
+									<span>Administrative entity for review of guidance documents (Knowledge Base description)</span>
+								</cpp:outputElement>
+							</cpp:output>
+						</cpp:step>
+					</cpp:stepGroup>
+					<cpp:step stepNumber="1-3">
+						<cpp:input>
+							<cpp:inputElement>
+								<span>Mission Statement</span>
+								<span>Preservation Policy</span>
+							</cpp:inputElement>
+						</cpp:input>
+						<cpp:stepDescription>
+							<span>Check all steps above for impact on <em>Preservation Objective</em>. If an indicator is given for a changed <em>
+                                  Preservation Objective</em>
+							</span>
+						</cpp:stepDescription>
+						<cpp:output>
+							<cpp:outputElement>
+								<span>Report on updated requirements for <em>Preservation objective</em>
+								</span>
+								<span>Administrative entity for review of guidance documents (Preservation objective, Designated Community Knowledge Base)</span>
+								<span>Update on Quality properties</span>
+							</cpp:outputElement>
+							<cpp:customer>CPP-019</cpp:customer>
+						</cpp:output>
+					</cpp:step>
+				</cpp:stepGroup>
+				<cpp:stepGroup type="sequence" label="2. Supported file formats and data types description">
+					<cpp:step stepNumber="2-1">
+						<cpp:input>
+							<cpp:inputElement>
+								<span>File format policy - preferred file formats</span>
+							</cpp:inputElement>
+						</cpp:input>
+						<cpp:stepDescription>
+							<span>Choose, design and implement methods to monitor changes in file formats and data types, including networks around 
+                                  supporting software (e.g. observing file format networks, observing digital preservation and digital curation networks, 
+                                  conference proceedings, journal articles, querying knowledge bases etc.)</span>
+						</cpp:stepDescription>
+					</cpp:step>
+					<cpp:stepGroup type="alternative" label="Evaluate information">
+						<cpp:step stepNumber="2-2a">
+							<cpp:stepDescription>
+								<span>If risk in file format or data type is raised</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on risk</span>
+									<span>Update on risk</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-023</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="2-2b">
+							<cpp:stepDescription>
+								<span>If file format is no longer supported or rationale behind initial choice for format is no longer true (e.g. no longer 
+                                      widely used)</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on risk</span>
+									<span>Administrative entity for review of impact (Preservation Intent definition)</span>
+									<span>Update on risk</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-023</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="2-2c">
+							<cpp:input>
+								<cpp:inputElement>
+									<span>Emulation and rendering Policy</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:input>
+								<cpp:inputElement>
+									<span>List of emulation and rendering tools</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:stepDescription>
+								<span>If tool to support file formats rendering or emulation is no longer supported or available or a new version has become 
+                                      available</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on software changes</span>
+									<span>Update on risk</span>
+									<span>Update to Emulation and rendering Policy</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-023</cpp:customer>
+								<cpp:customer>CPP-015</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="2-2d">
+							<cpp:input>
+								<cpp:inputElement>
+									<span>File format Identification and Validation Policies</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:input>
+								<cpp:inputElement>
+									<span>List of identification and validation tools</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:stepDescription>
+								<span>If new tool or method to support file format identification or validation becomes available<br/>
+                                      OR<br/>
+                                      If file format identification or validation tools used is no longer supported or available<br/>
+                                      OR<br/>
+                                      If new versions of the tools have become available</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on updates for file format identification</span>
+									<span>Update to File Format Policy</span>
+									<span>Updates to File Format Validation Policy</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-008</cpp:customer>
+								<cpp:customer>CPP-010</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="2-2e">
+							<cpp:input>
+								<cpp:inputElement>
+									<span>Access Policy</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:input>
+								<cpp:inputElement>
+									<span>File Format Policy</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:input>
+								<cpp:inputElement>
+									<span>List of tools used to derivatives generation or normalisation</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:stepDescription>
+								<span>If there is a migration path defined in the Access policy (e.g. to create derivatives or to normalise <em>Files</em> in 
+                                      pre-ingest) and the tool used for this is no longer supported or available, or a new version has become available</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on changes to migration tools</span>
+									<span>Update to support for <em>DIP</em> creation</span>
+									<span>Update to tools used for normalisation</span>
+									<span>Update to File format policy - Derivatives: tools</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-025</cpp:customer>
+								<cpp:customer>CPP-026</cpp:customer>
+								<cpp:customer>CPP-028</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+					</cpp:stepGroup>
+				</cpp:stepGroup>
+				<cpp:stepGroup type="sequence" label="3. Supported Metadata">
+					<cpp:step stepNumber="3-1">
+						<cpp:input>
+							<cpp:inputElement>
+								<span>Metadata policy</span>
+							</cpp:inputElement>
+						</cpp:input>
+						<cpp:input>
+							<cpp:inputElement>
+								<span>List of used metadata schema / serialisation in the TDA</span>
+							</cpp:inputElement>
+						</cpp:input>
+						<cpp:stepDescription>
+							<span>Choose, design and implement methods to monitor changes in syntax, schema and serialisation used for <em>Metadata</em> in 
+                                  the TDA</span>
+						</cpp:stepDescription>
+					</cpp:step>
+					<cpp:stepGroup type="alternative" label="Evaluate information">
+						<cpp:step stepNumber="3-2a">
+							<cpp:stepDescription>
+								<span>If risk in <em>Metadata</em> syntax, schema or serialisation is raised</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on risk</span>
+									<span>Administrative entity for review of impact (Preservation Intent definition)</span>
+									<span>Update on risk</span>
+									<span>Update to queries</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-023</cpp:customer>
+								<cpp:customer>CPP-024</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="3-2b">
+							<cpp:stepDescription>
+								<span>If <em>Metadata</em> syntax, schema or serialisation is no longer supported or rationale behind initial choice for syntax, 
+                                      schema or serialisation is no longer true (e.g. no longer widely used)</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on risk</span>
+									<span>Administrative entity for review of impact (Preservation Intent definition)</span>
+									<span>Update on risk</span>
+									<span>Update to queries</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-023</cpp:customer>
+								<cpp:customer>CPP-024</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+						<cpp:step stepNumber="3-2c">
+							<cpp:input>
+								<cpp:inputElement>
+									<span>List of tools used within TDA for (automated) <em>Metadata</em> generation and handling (e.g. validation, conversion)</span>
+								</cpp:inputElement>
+							</cpp:input>
+							<cpp:stepDescription>
+								<span>If new method to support <em>Metadata</em> generation and handling
+                                      becomes available<br/>
+                                      OR<br/>
+                                      If tools used are no longer supported/available<br/>
+                                      OR<br/>
+                                      If new versions of the tools have become available</span>
+							</cpp:stepDescription>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Report on changes to <em>Metadata</em> generation and handling tools tools</span>
+									<span>Update to methods or tools for metadata extraction</span>
+									<span>Update ot methods or tools for metadata ingest and management</span>
+									<span>Update to queries</span>
+								</cpp:outputElement>
+								<cpp:customer>CPP-009</cpp:customer>
+								<cpp:customer>CPP-016</cpp:customer>
+								<cpp:customer>CPP-024</cpp:customer>
+							</cpp:output>
+						</cpp:step>
+					</cpp:stepGroup>
+				</cpp:stepGroup>
+			</cpp:stepGroup>
+		</cpp:stepByStepDescription>
+	</cpp:process>
+	<cpp:rationaleWorstCase>
+		<cpp:purpose>
+			<cpp:purposeDescription>
+				<span>The TDA takes responsibility for the long-term stewardship of data for the Designated Community.</span>
+				<span>
+					<a href="https://www.nature.com/articles/s41597-020-0486-7#Sec4">TRUST : R-Reponsibility</a>
+				</span>
+				<span>The TDA must monitor and identify expectations and requirements of its Designated Community and act to meet these changing 
                     requirements.</span>
-                <span><a href="https://www.nature.com/articles/s41597-020-0486-7#Sec5">TRUST : U-User Focus</a></span>
-                <span>The TDA must use adequate tools to support the needs of the Designated Community and update these accordingly.</span>
-                <span><a href="https://www.nature.com/articles/s41597-020-0486-7#Sec7">TRUST : T-Technology</a></span>
-            </cpp:purposeDescription>
-            <cpp:worstCase>
-                <span>Data will not meet the needs of the <em>Designated Community</em>.</span>
-            </cpp:worstCase>
-        </cpp:purpose>
-        <cpp:purpose>
-            <cpp:purposeDescription>
-                <span>The TDA should conduct its own watch of the digital preservation, digital curation and research data management communities</span>
-                <span><a href="https://www.nature.com/articles/s41597-020-0486-7#Sec4">TRUST : R - Responsibility</a></span>
-                <span>The TDA should conduct its own watch of those file format, software and <em>Metadata</em> communities relevant to the TDA’s 
+				<span>
+					<a href="https://www.nature.com/articles/s41597-020-0486-7#Sec5">TRUST : U-User Focus</a>
+				</span>
+				<span>The TDA must use adequate tools to support the needs of the Designated Community and update these accordingly.</span>
+				<span>
+					<a href="https://www.nature.com/articles/s41597-020-0486-7#Sec7">TRUST : T-Technology</a>
+				</span>
+			</cpp:purposeDescription>
+			<cpp:worstCase>
+				<span>Data will not meet the needs of the <em>Designated Community</em>.</span>
+			</cpp:worstCase>
+		</cpp:purpose>
+		<cpp:purpose>
+			<cpp:purposeDescription>
+				<span>The TDA should conduct its own watch of the digital preservation, digital curation and research data management communities</span>
+				<span>
+					<a href="https://www.nature.com/articles/s41597-020-0486-7#Sec4">TRUST : R - Responsibility</a>
+				</span>
+				<span>The TDA should conduct its own watch of those file format, software and <em>Metadata</em> communities relevant to the TDA’s 
                     holdings</span>
-                <span><a href="https://www.nature.com/articles/s41597-020-0486-7#Sec7">TRUST : T-Technology</a></span>
-            </cpp:purposeDescription>
-            <cpp:worstCase>
-                <span>Processes adopted might not meet the needs of the <em>Designated Community</em> specific to the TDA.</span>
-            </cpp:worstCase>
-        </cpp:purpose>
-    </cpp:rationaleWorstCase>
-    <cpp:cppRelationships>
-        <cpp:relationship>
-            <cpp:relationshipType>Affected by</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>Either due to changing significant properties or due to updated tools, metadata extraction requirements can be affected.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Required by</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-012</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>Changing community needs affect the risks and the mitigation of those.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Required by</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>The signals from the community may affect the Data Quality Assessment. The Data Quality Assessment performed during Ingest may 
+				<span>
+					<a href="https://www.nature.com/articles/s41597-020-0486-7#Sec7">TRUST : T-Technology</a>
+				</span>
+			</cpp:purposeDescription>
+			<cpp:worstCase>
+				<span>Processes adopted might not meet the needs of the <em>Designated Community</em> specific to the TDA.</span>
+			</cpp:worstCase>
+		</cpp:purpose>
+	</cpp:rationaleWorstCase>
+	<cpp:cppRelationships>
+		<cpp:relationship>
+			<cpp:relationshipType>Affected by</cpp:relationshipType>
+			<cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+			<cpp:relationshipDescription>
+				<span>Either due to changing significant properties or due to updated tools, metadata extraction requirements can be affected.</span>
+			</cpp:relationshipDescription>
+		</cpp:relationship>
+		<cpp:relationship>
+			<cpp:relationshipType>Required by</cpp:relationshipType>
+			<cpp:relatedCPP>CPP-012</cpp:relatedCPP>
+			<cpp:relationshipDescription>
+				<span>Changing community needs affect the risks and the mitigation of those.</span>
+			</cpp:relationshipDescription>
+		</cpp:relationship>
+		<cpp:relationship>
+			<cpp:relationshipType>Required by</cpp:relationshipType>
+			<cpp:relatedCPP>CPP-019</cpp:relatedCPP>
+			<cpp:relationshipDescription>
+				<span>The signals from the community may affect the Data Quality Assessment. The Data Quality Assessment performed during Ingest may 
                     for example result in extraction of quality properties that are required by the <em>Designated Community</em>.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Required by</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>Significant Properties Definition is fundamental to ensure that information and features supported by the <em>Objects</em> are 
+			</cpp:relationshipDescription>
+		</cpp:relationship>
+		<cpp:relationship>
+			<cpp:relationshipType>Required by</cpp:relationshipType>
+			<cpp:relatedCPP>CPP-022</cpp:relatedCPP>
+			<cpp:relationshipDescription>
+				<span>Significant Properties Definition is fundamental to ensure that information and features supported by the <em>Objects</em> are 
                     those that the TDA’s <em>Designated Community</em> is expecting.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Required by</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>Risk is measured against the skills and tools available in the <em>Designated Community</em>.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Required by</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-024</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>The TDA must have identified the needs of its <em>Designated Community</em> in order to enable queries that support the 
+			</cpp:relationshipDescription>
+		</cpp:relationship>
+		<cpp:relationship>
+			<cpp:relationshipType>Required by</cpp:relationshipType>
+			<cpp:relatedCPP>CPP-023</cpp:relatedCPP>
+			<cpp:relationshipDescription>
+				<span>Risk is measured against the skills and tools available in the <em>Designated Community</em>.</span>
+			</cpp:relationshipDescription>
+		</cpp:relationship>
+		<cpp:relationship>
+			<cpp:relationshipType>Required by</cpp:relationshipType>
+			<cpp:relatedCPP>CPP-024</cpp:relatedCPP>
+			<cpp:relationshipDescription>
+				<span>The TDA must have identified the needs of its <em>Designated Community</em> in order to enable queries that support the 
                     community's defined query scenarios.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>May be required by</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-017</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>Community watch treats Disposal as a customer in cases where, for instance, a collection previously archived within the TDA has 
+			</cpp:relationshipDescription>
+		</cpp:relationship>
+		<cpp:relationship>
+			<cpp:relationshipType>May be required by</cpp:relationshipType>
+			<cpp:relatedCPP>CPP-017</cpp:relatedCPP>
+			<cpp:relationshipDescription>
+				<span>Community watch treats Disposal as a customer in cases where, for instance, a collection previously archived within the TDA has 
                     been also added to a different TDA and will be preserved there. Required actions downstream must be taken into account within the 
                     disposal process (e.g. notifying stakeholders about the changed preservation location).</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-    </cpp:cppRelationships>
-    <cpp:frameworkMappings>
-        <cpp:mapping>
-            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
-            <cpp:correspondingTerm>
-                <span>Designated Community</span>
-                <span>Mission and Scope</span>
-            </cpp:correspondingTerm>
-            <cpp:correspondingSection>
-                <span>R0(04) Designated Community. “A repository must have an understanding of the Designated Community’s composition, skills, 
+			</cpp:relationshipDescription>
+		</cpp:relationship>
+	</cpp:cppRelationships>
+	<cpp:frameworkMappings>
+		<cpp:mapping>
+			<cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+			<cpp:correspondingTerm>
+				<span>Designated Community</span>
+				<span>Mission and Scope</span>
+			</cpp:correspondingTerm>
+			<cpp:correspondingSection>
+				<span>R0(04) Designated Community. “A repository must have an understanding of the Designated Community’s composition, skills, 
                     knowledge base, and needs, and how these may transform over time. This includes an understanding of typical re-use scenarios and 
                     purposes[] It should also be clear how the applicant monitors and responds to changes in the needs of the Designated Community.</span>
-                <span>R1. The repository has an explicit mission to provide access to and preserve digital objects.</span>
-            </cpp:correspondingSection>
-        </cpp:mapping>
-        <cpp:mapping>
-            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
-            <cpp:correspondingTerm>
-                <span>Designated Communities</span>
-                <span>Community Watch</span>
-            </cpp:correspondingTerm>
-            <cpp:correspondingSection>
-                <span>C3. “Changes in the designated communities and their requirements should be monitored and mechanisms installed for dealing with 
+				<span>R1. The repository has an explicit mission to provide access to and preserve digital objects.</span>
+			</cpp:correspondingSection>
+		</cpp:mapping>
+		<cpp:mapping>
+			<cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+			<cpp:correspondingTerm>
+				<span>Designated Communities</span>
+				<span>Community Watch</span>
+			</cpp:correspondingTerm>
+			<cpp:correspondingSection>
+				<span>C3. “Changes in the designated communities and their requirements should be monitored and mechanisms installed for dealing with 
                     them.”</span>
-            </cpp:correspondingSection>
-        </cpp:mapping>
-        <cpp:mapping>
-            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
-            <cpp:correspondingTerm>
-                <span>/</span>
-            </cpp:correspondingTerm>
-            <cpp:correspondingSection>
-                <span>4.5.1 The repository shall specify minimum information requirements to enable the Designated Community to discover and identify 
+			</cpp:correspondingSection>
+		</cpp:mapping>
+		<cpp:mapping>
+			<cpp:frameworkName>ISO 16363</cpp:frameworkName>
+			<cpp:correspondingTerm>
+				<span>/</span>
+			</cpp:correspondingTerm>
+			<cpp:correspondingSection>
+				<span>4.5.1 The repository shall specify minimum information requirements to enable the Designated Community to discover and identify 
                     material of interest.</span>
-            </cpp:correspondingSection>
-        </cpp:mapping>
-        <cpp:mapping>
-            <cpp:frameworkName>OAIS</cpp:frameworkName>
-            <cpp:correspondingTerm>
-                <span>Monitor Designated Community function</span>
-            </cpp:correspondingTerm>
-            <cpp:correspondingSection>
-                <span>4.2.3.7 "The Monitor Designated Community function interacts with Archive Consumers and Producers to track changes in their 
+			</cpp:correspondingSection>
+		</cpp:mapping>
+		<cpp:mapping>
+			<cpp:frameworkName>OAIS</cpp:frameworkName>
+			<cpp:correspondingTerm>
+				<span>Monitor Designated Community function</span>
+			</cpp:correspondingTerm>
+			<cpp:correspondingSection>
+				<span>4.2.3.7 "The Monitor Designated Community function interacts with Archive Consumers and Producers to track changes in their 
                     service requirements and available product technologies.Such requirements might include data formats, media choices, preferences for 
                     software packages, new computing platforms, and mechanisms for communicating with the Archive.
                     This function may be accomplished via surveys, via a periodic formal review process, via community workshops where feedback is solicited or by 
                     individual interactions. This function will watch to ensure that the OAIS holdings remain Independently Understandable to the Designated Community. 
                     It provides reports, requirement alerts and emerging
                     standards to the Preservation Watch function. It sends preservation requirements to Develop Packaging Designs and Preservation Plans."</span>
-            </cpp:correspondingSection>
-        </cpp:mapping>
-        <cpp:mapping>
-            <cpp:frameworkName>PREMIS</cpp:frameworkName>
-            <cpp:correspondingTerm>
-                <span>/</span>
-            </cpp:correspondingTerm>
-            <cpp:correspondingSection>
-                <span>/</span>
-            </cpp:correspondingSection>
-        </cpp:mapping>
-    </cpp:frameworkMappings>
-    <cpp:referenceImplementations>
-        <cpp:publicDocumentation>
-            <cpp:institution>
-                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
-                <cpp:institutionCountry>DE</cpp:institutionCountry>
-                <cpp:institutionType>National library</cpp:institutionType>
-                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
-                <cpp:institutionType>Research infrastructure</cpp:institutionType>
-                <cpp:institutionType>Research performing organisation</cpp:institutionType>
-            </cpp:institution>
-            <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608286/Digital+preservation+at+TIB#DigitalpreservationatTIB-Cooperationandnetworks</cpp:hyperlink>
-            </cpp:linkToDocumentation>
-        </cpp:publicDocumentation>
-        <cpp:publicDocumentation>
-            <cpp:institution>
-                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
-                <cpp:institutionCountry>FI</cpp:institutionCountry>
-                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
-            </cpp:institution>
-            <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2023062157386</cpp:hyperlink>
-                <cpp:comment>Sections TBA</cpp:comment>
-            </cpp:linkToDocumentation>
-            <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2025040925236</cpp:hyperlink>
-                <cpp:comment>Sections V10, V14, V69, V80, 6.2.2, 7.1</cpp:comment>
-            </cpp:linkToDocumentation>
-        </cpp:publicDocumentation>
-        <cpp:publicDocumentation>
-            <cpp:institution>
-                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
-                <cpp:institutionCountry>CA</cpp:institutionCountry>
-                <cpp:institutionType>Digital preservation system</cpp:institutionType>
-            </cpp:institution>
-            <cpp:linkToDocumentation xml:lang="en">
-                <cpp:hyperlink>https://www.archivematica.org/en/community/resources/</cpp:hyperlink>
-            </cpp:linkToDocumentation>
-        </cpp:publicDocumentation>
-    </cpp:referenceImplementations>
+			</cpp:correspondingSection>
+		</cpp:mapping>
+		<cpp:mapping>
+			<cpp:frameworkName>PREMIS</cpp:frameworkName>
+			<cpp:correspondingTerm>
+				<span>/</span>
+			</cpp:correspondingTerm>
+			<cpp:correspondingSection>
+				<span>/</span>
+			</cpp:correspondingSection>
+		</cpp:mapping>
+	</cpp:frameworkMappings>
+	<cpp:referenceImplementations>
+		<cpp:publicDocumentation>
+			<cpp:institution>
+				<cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+				<cpp:institutionCountry>DE</cpp:institutionCountry>
+				<cpp:institutionType>National library</cpp:institutionType>
+				<cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+				<cpp:institutionType>Research infrastructure</cpp:institutionType>
+				<cpp:institutionType>Research performing organisation</cpp:institutionType>
+			</cpp:institution>
+			<cpp:linkToDocumentation xml:lang="en">
+				<cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608286/Digital+preservation+at+TIB#DigitalpreservationatTIB-Cooperationandnetworks</cpp:hyperlink>
+			</cpp:linkToDocumentation>
+		</cpp:publicDocumentation>
+		<cpp:publicDocumentation>
+			<cpp:institution>
+				<cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+				<cpp:institutionCountry>FI</cpp:institutionCountry>
+				<cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+			</cpp:institution>
+			<cpp:linkToDocumentation xml:lang="en">
+				<cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2023062157386</cpp:hyperlink>
+				<cpp:comment>Sections TBA</cpp:comment>
+			</cpp:linkToDocumentation>
+			<cpp:linkToDocumentation xml:lang="en">
+				<cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2025040925236</cpp:hyperlink>
+				<cpp:comment>Sections V10, V14, V69, V80, 6.2.2, 7.1</cpp:comment>
+			</cpp:linkToDocumentation>
+		</cpp:publicDocumentation>
+		<cpp:publicDocumentation>
+			<cpp:institution>
+				<cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+				<cpp:institutionCountry>CA</cpp:institutionCountry>
+				<cpp:institutionType>Digital preservation system</cpp:institutionType>
+			</cpp:institution>
+			<cpp:linkToDocumentation xml:lang="en">
+				<cpp:hyperlink>https://www.archivematica.org/en/community/resources/</cpp:hyperlink>
+			</cpp:linkToDocumentation>
+		</cpp:publicDocumentation>
+	</cpp:referenceImplementations>
 </cpp:cpp>
