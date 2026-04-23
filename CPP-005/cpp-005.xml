@@ -227,223 +227,226 @@ first component or file.
         </cpp:triggerEvents>
 
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>A producer or a TDA has a need to reserve an identifier, 
-                            (e.g. a PID, prior to the entity being added)
+            <cpp:stepGroup type="sequence">
+                    <cpp:step stepNumber="1a">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>A producer or a TDA has a need to reserve an identifier, 
+                                    (e.g. a PID, prior to the entity being added)
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Reservation of identifier prior to new entity assignment (step 2)</span>
+                        </cpp:stepDescription>
+                    </cpp:step>
+                    <cpp:step stepNumber="1b">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Object</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Information package</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Metadata</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>New entity added or a need to assign an identifier to an existing entity (step 2)</span>
+                        </cpp:stepDescription>
+                    </cpp:step>
+                    <cpp:step stepNumber="1c">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Object</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Information package</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Metadata</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Entity with an identifier has changed (step 4)</span>
+                        </cpp:stepDescription>
+                    </cpp:step>
+                    <cpp:step stepNumber="1d">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Object</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Information package</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    <em>Metadata</em>
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Entity is disposed (step 7)</span>
+                        </cpp:stepDescription>
+                    </cpp:step>
+
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Identifier creation and management policy</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Create a new identifier according to the TDAs policy for identifier 
+                            management
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Reservation of identifier prior to new entity assignment (step 2)</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="1b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Object</em>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Identifier</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>(new) Identifier</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Object</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Information package</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Metadata</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Assign the new identifier to the entity and add it as a part of 
+                            the entity’s <em>Metadata</em>
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Information package</em>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Metadata</em></span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-004</cpp:customer>
+                        <cpp:customer>CPP-011</cpp:customer>
+                        <cpp:customer>CPP-014</cpp:customer>
+                        <cpp:customer>CPP-016</cpp:customer>
+                        <cpp:customer>CPP-021</cpp:customer>
+                        <cpp:customer>CPP-025</cpp:customer>
+                        <cpp:customer>CPP-027</cpp:customer>
+                        <cpp:customer>CPP-028</cpp:customer>
+                        <cpp:customer>CPP-029</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Identifier creation and management policy</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If the changed entity has a PID assigned to it: evaluate if a new PID is required</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Need for new PID identified (go back to step 2)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>No need for new PID identified (step 5)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5">
+                    <cpp:stepDescription>
+                        <span>Update or add identifier relationships (e.g. hierarchical relations, sequential 
+                            relations etc.) for the assigned entity
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Metadata</em>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:stepDescription>
+                        <span>Update <em>Provenance metadata</em> for the entity so that identifiers have a history</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Provenance metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="7">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Disposed entity</em>
+                            </span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-017</cpp:supplier>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If the entity is disposed: retain minimum metadata and the 
+                            identifier for the disposed entity
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>New entity added or a need to assign an identifier to an existing entity (step 2)</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="1c">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Object</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Information package</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Metadata</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Entity with an identifier has changed (step 4)</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="1d">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Object</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Information package</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Metadata</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Entity is disposed (step 7)</span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Identifier creation and management policy</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Create a new identifier according to the TDAs policy for identifier 
-                        management
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Identifier</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>(new) Identifier</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Object</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Information package</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Metadata</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>Assign the new identifier to the entity and add it as a part of 
-                        the entity’s <em>Metadata</em>
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Metadata</em></span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-004</cpp:customer>
-                    <cpp:customer>CPP-011</cpp:customer>
-                    <cpp:customer>CPP-014</cpp:customer>
-                    <cpp:customer>CPP-016</cpp:customer>
-                    <cpp:customer>CPP-021</cpp:customer>
-                    <cpp:customer>CPP-025</cpp:customer>
-                    <cpp:customer>CPP-027</cpp:customer>
-                    <cpp:customer>CPP-028</cpp:customer>
-                    <cpp:customer>CPP-029</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="4">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Identifier creation and management policy</em>
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If the changed entity has a PID assigned to it: evaluate if a new PID is required</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Need for new PID identified (go back to step 2)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>No need for new PID identified (step 5)</span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="5">
-                <cpp:stepDescription>
-                    <span>Update or add identifier relationships (e.g. hierarchical relations, sequential 
-                        relations etc.) for the assigned entity
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="6">
-                <cpp:stepDescription>
-                    <span>Update <em>Provenance metadata</em> for the entity so that identifiers have a history</span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span><em>Provenance metadata</em></span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="7">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            <em>Disposed entity</em>
-                        </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-017</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>If the entity is disposed: retain minimum metadata and the 
-                        identifier for the disposed entity
-                    </span>
-                </cpp:stepDescription>
-            </cpp:step>
+                    </cpp:stepDescription>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
 
