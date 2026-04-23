@@ -148,282 +148,277 @@
       </cpp:triggerEvent>
     </cpp:triggerEvents>
     <cpp:stepByStepDescription>
-      <cpp:step stepNumber="1">
-        <cpp:stepDescription>
-          <span>Receive list of <em>AIPs</em> to be exported</span>
-        </cpp:stepDescription>
-      </cpp:step>
-      <cpp:step stepNumber="2">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Target structure and format of exported <em>AIP</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>Optional (if multiple target structures and formats are supported):<br/>Set export to transform
+      <cpp:stepGroup type="sequence">
+        <cpp:step stepNumber="1">
+          <cpp:stepDescription>
+            <span>aReceive list of <em>AIPs</em> to be exported</span>
+          </cpp:stepDescription>
+        </cpp:step>
+        <cpp:step stepNumber="2">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Target structure and format of exported <em>AIP</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>Optional (if multiple target structures and formats are supported):<br/>Set export to transform
 				exported <em>AIP</em> to desired structure and format</span>
-        </cpp:stepDescription>
-      </cpp:step>
-      <cpp:step stepNumber="3">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>List of <em>AIPs</em> to be exported</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>Select <em>AIPs</em> to be exported in TDA (e.g. by creating a set based on AIP identifiers
+          </cpp:stepDescription>
+        </cpp:step>
+        <cpp:step stepNumber="3">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>List of <em>AIPs</em> to be exported</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>Select <em>AIPs</em> to be exported in TDA (e.g. by creating a set based on AIP identifiers
 				and <em>AIP</em> version identifiers, if applicable)</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Inventory of <em>AIPs</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Inventory of <em>AIP</em> versions</span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Location of information belonging to <em>AIPs</em> and <em>AIP</em> versions</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="4">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Inventory of <em>AIPs</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Inventory of <em>AIPs</em> versions</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>Optional (depending on handling method for updates in TDA) for each <em>AIP</em>:</span>
-		  <span>Lock AIP to avoid it being updated during export</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Locked location of source <em>AIP</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="5">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Inventory of AIPs</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Inventory of AIPs versions</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>
-              <em>Storage Metadata Information</em>
-            </span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>For each <em>AIP</em> in inventory list:<br/>Create logical structure for <em>AIP</em></span>
-        </cpp:stepDescription>
-      </cpp:step>
-      <cpp:step stepNumber="6">
-        <cpp:stepDescription>
-          <span>For each <em>AIP</em> in inventory list:<br/>Write logical structure to target location</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Logical structure tree of exported <em>AIPs</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="7">
-        <cpp:stepDescription>
-          <span>For each <em>AIP</em> in inventory list:<br/>Copy <em>Files</em> to target location</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Files in logical structure tree of exported <em>AIPs</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="8">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Database query for <em>AIP</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>For each <em>AIP</em> in inventory list:</span>
-		  <span>If (additional) <em>Metadata</em> is stored in other place tha <em>AIP</em> (e.g., database):
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Inventory of <em>AIPs</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Inventory of <em>AIP</em> versions</span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Location of information belonging to <em>AIPs</em> and <em>AIP</em> versions</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="4">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Inventory of <em>AIPs</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Inventory of <em>AIPs</em> versions</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>Optional (depending on handling method for updates in TDA) for each <em>AIP</em>:</span>
+            <span>Lock AIP to avoid it being updated during export</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Locked location of source <em>AIP</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="5">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Inventory of AIPs</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Inventory of AIPs versions</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>
+                <em>Storage Metadata Information</em>
+              </span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>For each <em>AIP</em> in inventory list:<br/>Create logical structure for <em>AIP</em></span>
+          </cpp:stepDescription>
+        </cpp:step>
+        <cpp:step stepNumber="6">
+          <cpp:stepDescription>
+            <span>For each <em>AIP</em> in inventory list:<br/>Write logical structure to target location</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Logical structure tree of exported <em>AIPs</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="7">
+          <cpp:stepDescription>
+            <span>For each <em>AIP</em> in inventory list:<br/>Copy <em>Files</em> to target location</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Files in logical structure tree of exported <em>AIPs</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="8">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Database query for <em>AIP</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>For each <em>AIP</em> in inventory list:</span>
+            <span>If (additional) <em>Metadata</em> is stored in other place tha <em>AIP</em> (e.g., database):
 					collect all other information belonging to <em>AIP</em> (<em>Metadata</em>)</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>All information belonging to <em>AIP</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="9">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Result of Database query for <em>AIP</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Maping for export of selected <em>Metadata</em> from database to flat <em>Metadata</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>For each <em>AIP</em> in inventory list:</span>
-		  <span>If (additional) <em>Metadata</em> is stored in database, transform <em>Metadata</em> into target
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>All information belonging to <em>AIP</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="9">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Result of Database query for <em>AIP</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Maping for export of selected <em>Metadata</em> from database to flat <em>Metadata</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>For each <em>AIP</em> in inventory list:</span>
+            <span>If (additional) <em>Metadata</em> is stored in database, transform <em>Metadata</em> into target
 				format and write to target location, add export as provenance information into Metadata
 				<em>File</em> during transformation</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Metadata <em>File(s)</em> in target location</span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Provenance information in metadata <em>File(s)</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="10">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Inventory of <em>AIPs</em>
-</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Inventory of <em>AIP</em> versions
-</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>List of <em>Files</em> (excluding <em>Metadata</em> files) at target location</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>Fixity Metadata</em> from source <em>AIP</em>
-</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>For each <em>AIP</em> in inventory list: The <em>AIP</em> in the target should be verified,
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Metadata <em>File(s)</em> in target location</span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Provenance information in metadata <em>File(s)</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="10">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Inventory of <em>AIPs</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Inventory of <em>AIP</em> versions</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>List of <em>Files</em> (excluding <em>Metadata</em> files) at target location</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>Fixity Metadata</em> from source <em>AIP</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>For each <em>AIP</em> in inventory list: The <em>AIP</em> in the target should be verified,
 				including <em>Files</em> and <em>Metadata</em> to ensure it is complete and correct
 ´				(e.g. using checksums)</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Number of <em>Files</em> matches (step 12)
-</span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>All checksums match (step 12)
-</span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Alert that number of <em>Files</em> do not match
-</span>
-          </cpp:outputElement>
-        </cpp:output>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Alert that any of the <em>File</em>  checksums does not match
-</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="11">
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>AIP</em> ID</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>Optional (depending on handling method for updates in TDA):</span>
-		  <span>for each <em>AIP</em>: Release lock on <em>AIP</em></span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Released lock</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="12">
-        <cpp:input>
-          <cpp:inputElement>
-            <span><em>Files</em> in target location</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Target structure and format of exported <em>AIP</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>If required: perform additional repacking of <em>Files</em> at target location to meet
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Number of <em>Files</em> matches (step 12)</span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>All checksums match (step 12)</span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Alert that number of <em>Files</em> do not match</span>
+            </cpp:outputElement>
+          </cpp:output>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Alert that any of the <em>File</em>  checksums does not match</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="11">
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>AIP</em> ID</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>Optional (depending on handling method for updates in TDA):</span>
+            <span>for each <em>AIP</em>: Release lock on <em>AIP</em></span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Released lock</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="12">
+          <cpp:input>
+            <cpp:inputElement>
+              <span><em>Files</em> in target location</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Target structure and format of exported <em>AIP</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>If required: perform additional repacking of <em>Files</em> at target location to meet
 				target structure and format of exported <em>AIP</em> (e.g., tarball)</span>
-        </cpp:stepDescription>
-      </cpp:step>
-      <cpp:step stepNumber="13">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>List of <em>AIPs</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>Repeat steps 5-12 for each <em>AIP</em> to be exported</span>
-        </cpp:stepDescription>
-      </cpp:step>
-      <cpp:step stepNumber="14">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Documentation of Export <em>AIP</em> (supported target structure and format of exported <em>AIP</em>)</span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>Add documentation to target location</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Documentation of Export <em>AIP</em> (supported target structure and format of exported <em>AIP</em></span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
-      <cpp:step stepNumber="15">
-        <cpp:input>
-          <cpp:inputElement>
-            <span>Inventory of <em>AIPs</em></span>
-          </cpp:inputElement>
-        </cpp:input>
-        <cpp:stepDescription>
-          <span>Document export in audit trail</span>
-        </cpp:stepDescription>
-        <cpp:output>
-          <cpp:outputElement>
-            <span>Audit trail for export</span>
-          </cpp:outputElement>
-        </cpp:output>
-      </cpp:step>
+          </cpp:stepDescription>
+        </cpp:step>
+        <cpp:step stepNumber="13">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>List of <em>AIPs</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>Repeat steps 5-12 for each <em>AIP</em> to be exported</span>
+          </cpp:stepDescription>
+        </cpp:step>
+        <cpp:step stepNumber="14">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Documentation of Export <em>AIP</em> (supported target structure and format of exported <em>AIP</em>)</span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>Add documentation to target location</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Documentation of Export <em>AIP</em> (supported target structure and format of exported <em>AIP</em></span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+        <cpp:step stepNumber="15">
+          <cpp:input>
+            <cpp:inputElement>
+              <span>Inventory of <em>AIPs</em></span>
+            </cpp:inputElement>
+          </cpp:input>
+          <cpp:stepDescription>
+            <span>Document export in audit trail</span>
+          </cpp:stepDescription>
+          <cpp:output>
+            <cpp:outputElement>
+              <span>Audit trail for export</span>
+            </cpp:outputElement>
+          </cpp:output>
+        </cpp:step>
+      </cpp:stepGroup>
     </cpp:stepByStepDescription>
   </cpp:process>
   <cpp:rationaleWorstCase>
