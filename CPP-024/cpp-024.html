@@ -105,104 +105,92 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-024_Enabling_Discovery</title></head><body><div class="introSection"><div class="title"><h1>Enabling Discovery (CPP-024)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-024</td></tr><tr><td>CPP-Label</td><td>Enabling Discovery</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Mattias Levlin</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA provides catalogue services to its consumers to help them identify Objects that they may be interested in.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Optional: Derivatives useful for the consumer to identify the content and scope of the Object</td></tr><tr><td rowspan="1">Metadata</td><td>Digital Archive Database</td></tr><tr><td rowspan="2">Documentation/guidance</td><td>Query scenarios</td></tr><tr><td>Metadata mapping specifications</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Metadata</td><td>Catalogue service</td></tr><tr><td>Process execution report</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Enabling Discovery covers the extraction of the subset of <em>Metadata</em>
-		from the digital archive database to enable consumers to identify which
-		<em>Objects</em> they may be interested in. In OAIS, this subset is called
-		"Descriptive Information".</p><p>Discovery relies on CPP-018 (<b>Community Watch</b>) to study consumers’ 
-		needs regarding searches and elaborate query scenarios. Query scenarios are
-		use cases where the consumers identify a subset of the TDA holdings’ that
-		addresses their needs. Discovery is in charge of providing <em>Metadata</em>,
-		query and retrieval features that support these query scenarios in an
-		efficient way. If the TDA wants its Objects to be discoverable in third-party
-		catalogues (e.g. federated catalogues, portals etc.), it must perform this
-		process for each service in order to ensure that <em>Metadata</em> and
-		derivatives conform to the specifications of the third-party catalogue(s).</p><p>If the TDA provides direct access to its holdings for end users, then it may
-		also generate a <em>PID</em> (e.g. a DOI) for each accessible <em>Object</em>
-		so that it is referencable and locatable using third-party discovery services.
-		However, this CPP only focuses on the generation of <em>Metadata</em> that is
-		subsequently used for discovery (rather than the discovery process and the use 
-		of discovery services such as portals and catalogues). The details of registering
-		PIDs, publishing <em>Metadata</em> and/or data with third-party catalogues and
-		discovery services, as well as the access to <em>Objects</em> via PID resolution
-		and TDA services are beyond the scope of this CPP.</p><p>Enabling Discovery is also in charge of verifying the legal status of
-		<em>Metadata</em> based on rights assessment as issued by CPP-020 (<b>Rights
-		Management</b>). <em>Metadata</em> access might indeed need to be restricted,
-		so Discovery must ensure it disseminates these only to authorised users. </p><p>In addition to <em>Metadata</em>, discovery might provide derivative copies
-		(e.g. thumbnails, textual transcription, redacted copy, etc.) that would help
-		consumers in identifying the content and scope of the relevant <em>Objects</em>.
-		Indeed, access to the preservation copies or to a sufficiently complete
-		derivative is often limited to the TDA’s precinct.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>New <em>Object</em> or new <em>Object</em> version ingested</span></td><td>CPP-029 (Ingest), CPP-021 (AIP Versioning)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Query scenarios</span></td><td class="stepsColumn" rowspan="1"><span>Select the relevant <em>Metadata</em> (and possibly data) useful to the consumer</span></td><td rowspan="1"><span>Subset of <em>Metadata</em> to be exposed in the catalogue</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Query scenarios</span></td><td class="stepsColumn" rowspan="1"><span>Select the syntax or serialisations useful to the consumer</span></td><td rowspan="1"><span>Syntax of <em>Metadata</em> to be exposed in the catalogue</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">3a</td><td rowspan="1"></td><td rowspan="1"><span>New <em>AIP</em> or <em>AIP</em> version</span></td><td class="stepsColumn" rowspan="3"><span>Extraction: Extract the required subset of <em>Metadata</em> from the new <em>AIP</em> or <em>AIP</em> version</span></td><td rowspan="3"><span>Extracted discovery <em>Metadata</em></span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Subset of <em>Metadata</em> to be exposed in the catalogue</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Syntax of <em>Metadata</em> to be exposed in the catalogue</span></td></tr><tr></tr><tr><td rowspan="1">3b</td><td rowspan="1"></td><td rowspan="1"><span>Extracted discovery <em>Metadata</em></span></td><td class="stepsColumn" rowspan="1"><span>Mapping &amp; transformation: Map and transform the <em>Metadata</em>
-				according to the required format of the discovery catalogue</span></td><td rowspan="1"><span>Transformed discovery <em>Metadata</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3c</td><td rowspan="2"></td><td rowspan="2"><span>Transformed discovery <em>Metadata</em></span></td><td class="stepsColumn" rowspan="2"><span>Validation: Validate the resulting subset of <em>Metadata</em> against the target catalogue's schema</span></td><td rowspan="1"><span>Validation successful: Validated discovery <em>Metadata</em> (step 4)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Validation failed: Log the error and flag the record for review.
-					The record must not proceed to the discovery catalogue until corrected</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">4</td><td rowspan="1"></td><td rowspan="1"><span>Validated discovery <em>Metadata</em></span></td><td class="stepsColumn" rowspan="2"><span>Check rights status of discovery <em>Metadata</em></span></td><td rowspan="2"><span>Validated discovery <em>Metadata</em> with cleared rights</span></td><td rowspan="2"></td></tr><tr><td rowspan="1">CPP-020 (Rights Management)</td><td rowspan="1"><span>Rights statement</span></td></tr><tr></tr><tr><td rowspan="1">5a</td><td rowspan="1"></td><td rowspan="1"><span>Validated discovery <em>Metadata</em> with cleared rights</span></td><td class="stepsColumn" rowspan="1"><span>Add discovery <em>Metadata</em> for the <em>Object(s)</em> to the catalogue service.
-				The catalogue service may be provided by the TDA, by a third-party (e.g.
-				a federated catalogue), or by a combination of the two.</span></td><td rowspan="1"><span>Entry in catalogue service</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5b</td><td rowspan="1"></td><td rowspan="1"><span>Validated discovery <em>Metadata</em> with cleared rights</span></td><td class="stepsColumn" rowspan="1"><span>Optional: If the TDA requires a PID (e.g. DOI), because the <em>Object</em>
-				or <em>Metadata</em> about the <em>Object</em> will be publicly accessible
-				(e.g. open access), the TDA may request a PID from an appropriate registration
-				agency. The TDA may also add the PID to the <em>Metadata</em> in the
-				catalogue service.</span></td><td rowspan="1"><span>PID</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5c</td><td rowspan="1">CPP-025 (Enabling Access)<hr></hr>CPP-028 (Creation of Derivatives)</td><td rowspan="1"><span><em>DIP</em> or Derivatives</span></td><td class="stepsColumn" rowspan="1"><span>Optional: The TDA may provide versions of its <em>Objects</em> for inclusion
-				in the catalogue service (for example, thumbnails, preview versions, redacted
-				documents etc.). These are added to the catalogue entry for the
-				<em>Object</em>.</span></td><td rowspan="1"><span>Entry in catalogue service</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">6</td><td rowspan="1"></td><td rowspan="1"><span>Query scenarions</span></td><td class="stepsColumn" rowspan="2"><span>Verification: Using the defined query scenarions, perform a test query to confirm
-				that the new or updated <em>Object</em> is discoverable in the catalogue service.</span></td><td rowspan="1"><span>Verification successful: Verification confirmation in the process execution report</span></td><td rowspan="1">CPP-013 (Object Management Reporting)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Catalogue service</span></td><td rowspan="1"><span>Verification failed: If the <em>Object</em> is not found, log the failure as an incident to investigate the ingest and indexing chain</span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>If the TDA is providing access to its holdings to consumers, ensuring
-				query services that suit the consumers’ needs is mandatory.</span></td><td><span>If the catalogue service does not allow query scenarios useful to
-				the consumers, discoverability and usage of the TDA holdings is compromised.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>Enabling Discovery should make use of PIDs.</span></td></tr><tr><td>CPP-009</td><td>Metadata Extraction</td><td><span>Some Metadata provided to the consumer must have
-been extracted from the Files.</span></td></tr><tr><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Enabling Discovery relies on a correct metadata management process.
-				In particular, <em>Metadata</em> created by and within the TDA is
-				of particular interest to the consumer in order to understand
-				preservation actions that could have affected the <em>Object</em></span></td></tr><tr><td>CPP-018</td><td>Community Watch</td><td><span>The TDA must have identified the needs of its designated community in
-				order to enable queries that support the community's defined query scenarios.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Affinity with</td><td>CPP-025</td><td>Enabling Access</td><td><span>The distinction between <b>Enabling Discovery and Enabling Access</b> may
-				be blurred as derivative copies may be indexed and searched in the same
-				way as <em>Metadata</em>. In addition, these derivative copies may be
-				sufficient to address some consumers’ needs. Nevertheless, the distinction
-				is still useful as giving access to the original data is often governed
-				by specific legal constraints, and requires specific hardware
-				and software tools.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                </style><title>EOSC-EDEN_CPP-024_Enabling_Discovery</title></head><body><div class="introSection"><div class="title"><h1>Enabling Discovery (CPP-024)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-024</td></tr><tr><td>CPP-Label</td><td>Enabling Discovery</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Mattias Levlin</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA provides catalogue services to its consumers to help them identify Objects that they may be interested in.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Optional: Derivatives useful for the consumer to identify the content and scope of the Object</td></tr><tr><td rowspan="1">Metadata</td><td>Digital Archive Database</td></tr><tr><td rowspan="2">Documentation/guidance</td><td>Query scenarios</td></tr><tr><td>Metadata mapping specifications</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Metadata</td><td>Catalogue service</td></tr><tr><td>Process execution report</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Enabling Discovery covers the extraction of the subset of <em>Metadata</em> from the digital
+      archive database to enable consumers to identify which <em>Objects</em> they may be interested
+      in. In OAIS, this subset is called "Descriptive Information".</p><p>Discovery relies on CPP-018 (<b>Community Watch</b>) to study consumers’ needs regarding
+      searches and elaborate query scenarios. Query scenarios are use cases where the consumers
+      identify a subset of the TDA holdings’ that addresses their needs. Discovery is in charge of
+      providing <em>Metadata</em>, query and retrieval features that support these query scenarios
+      in an efficient way. If the TDA wants its Objects to be discoverable in third-party catalogues
+      (e.g. federated catalogues, portals etc.), it must perform this process for each service in
+      order to ensure that <em>Metadata</em> and derivatives conform to the specifications of the
+      third-party catalogue(s).</p><p>If the TDA provides direct access to its holdings for end users, then it may also generate a <em>
+      PID</em> (e.g. a DOI) for each accessible <em>Object</em> so that it is referencable and
+      locatable using third-party discovery services. However, this CPP only focuses on the
+      generation of <em>Metadata</em> that is subsequently used for discovery (rather than the
+      discovery process and the use of discovery services such as portals and catalogues). The
+      details of registering PIDs, publishing <em>Metadata</em> and/or data with third-party
+      catalogues and discovery services, as well as the access to <em>Objects</em> via PID
+      resolution and TDA services are beyond the scope of this CPP.</p><p>Enabling Discovery is also in charge of verifying the legal status of <em>Metadata</em> based
+      on rights assessment as issued by CPP-020 (<b>Rights
+        Management</b>). <em>Metadata</em> access might indeed need to be restricted, so Discovery
+      must ensure it disseminates these only to authorised users. </p><p>In addition to <em>Metadata</em>, discovery might provide derivative copies (e.g. thumbnails,
+      textual transcription, redacted copy, etc.) that would help consumers in identifying the
+      content and scope of the relevant <em>Objects</em>. Indeed, access to the preservation copies
+      or to a sufficiently complete derivative is often limited to the TDA’s precinct.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>New <em>Object</em> or new <em>Object</em> version ingested</span></td><td>CPP-029 (Ingest), CPP-021 (AIP Versioning)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>If the TDA is providing access to its holdings to consumers, ensuring
+          query services that suit the consumers’ needs is mandatory.</span></td><td><span>If the catalogue service does not allow query scenarios useful to
+          the consumers, discoverability and usage of the TDA holdings is compromised.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>Enabling Discovery should make use of PIDs.</span></td></tr><tr><td>CPP-009</td><td>Metadata Extraction</td><td><span>Some Metadata provided to the consumer must have
+          been extracted from the Files.</span></td></tr><tr><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Enabling Discovery relies on a correct metadata management process. In particular, <em>
+          Metadata</em> created by and within the TDA is of particular interest to the consumer in
+          order to understand preservation actions that could have affected the <em>Object</em></span></td></tr><tr><td>CPP-018</td><td>Community Watch</td><td><span>The TDA must have identified the needs of its designated community in
+          order to enable queries that support the community's defined query scenarios.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Affinity with</td><td>CPP-025</td><td>Enabling Access</td><td><span>The distinction between <b>Enabling Discovery and Enabling Access</b> may be blurred
+          as derivative copies may be indexed and searched in the same way as <em>Metadata</em>. In
+          addition, these derivative copies may be sufficient to address some consumers’ needs.
+          Nevertheless, the distinction is still useful as giving access to the original data is
+          often governed by specific legal constraints, and requires specific hardware and software
+          tools.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
                         </a></td><td><span>Discovery</span></td><td><span>R12 Discovery and Identification</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
                         </a></td><td><span>Research (options)</span></td><td><span>C4 Access</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link
                         </a></td><td><span>Discovery</span></td><td><span>4.5.1 The repository shall specify minimum information requirements to
-				enable the Designated Community to discover and identify material of interest.</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+          enable the Designated Community to discover and identify material of interest.</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
                                                 Link
-                        </a></td><td><span>No exact term is available in OAIS for Discovery, but the topic is approached through the Package Description notion</span></td><td><span>4.3.3.7 Unit Description</span><br></br><span>4.3.3.9 Collection Descriptions</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                        </a></td><td><span>No exact term is available in OAIS for Discovery, but the topic is approached through
+          the Package Description notion</span></td><td><span>4.3.3.7 Unit Description</span><br></br><span>4.3.3.9 Collection Descriptions</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
                                                 Link
                         </a></td><td><span>Discovery</span></td><td><span>Section "More on Objects", subsection "Intellectual Entities", p. 8.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>ePADD Discovery module</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Stanford University's Special Collections &amp; University Archives, USA, US</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="https://www.epaddproject.org/using-epadd/discovery-module">https://www.epaddproject.org/using-epadd/discovery-module</a><br></br>Discovery module for Stanford’s email collections: <a href="https://epadd-discovery.stanford.edu/epadd/collections">https://epadd-discovery.stanford.edu/epadd/collections</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Problem statement</td><td><span>Email collections are born-digital material that need and allow specific usages and
-				access. On the other hand, they raise privacy issues that force memory organisations
-				to give access to these collections only in the organisation’s precinct. Consumers
-				therefore need to identify the scope and content of the collection through remote
-				queries before planning an on-site visit.</span></td></tr><tr><td>Proposed solution</td><td><span>Beyond the mails’ Metadata, the full text was indexed and is searchable, though not
-				entirely readable - when accessing the mail, the full text is redacted, only the
-				searched term and email Metadata are displayed. Access to the mails’ collections is
-				possible only in the organisation’s precinct.</span></td></tr></table><h4>etsin.fairdata.fi (CSC): Open discovery for datasets with varied access conditions</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>CSC - IT Center for Science, Finland, FI</td></tr><tr><td style="width:20%">Hyperlink</td><td>Main Discovery Service: <a href="https://etsin.fairdata.fi/">https://etsin.fairdata.fi/</a><br></br>Example 1 (Direct Access via use-copy): FIRE Profile 3 <a href="https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405">https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405</a><br></br>Example 2 (Mediated Access): Drive-tested topsoil <a href="https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa">https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Problem statement</td><td><span>A TDA can host datasets with a wide variety of access conditions. Some may be open for
-					immediate download (e.g. via a use copy), while others may require human-mediated
-					access (even if their ultimate license is open). The challenge for a discovery service
-					is to represent a) these different states, b) providing access pathways for each
-					dataset without compromising the specific rights management and c) providing access
-					policies defined by the data owner.</span><br></br><span>The Finnish discovery portal etsin.fairdata.fi (CSC) hosts <em>Metadata</em> for both
-					active research data outside of the AIP context and for formally preserved
-					assets (<em>AIPs</em>). The first challenge is to provide a clear and reliable method for
-					users to discover <em>only</em> the preserved assets (with associated AIPs); and
-					second, to represent the specific access conditions for each of those preserved <em>AIPs</em>.</span></td></tr><tr><td>Proposed solution</td><td><span>The Fairdata services solve this by addressing the discovery of preserved assets by providing
-				a specific, filterable view of its catalogue. The URL parameter
-				?data_catalog__title=Fairdata+PAS+datasets in https://etsin.fairdata.fi/ creates a dedicated
-				view within Etsin that exclusively lists datasets corresponding to verified AIPs in
-				the long-term Digital Preservation Service (the filter is also selectable via the Etsin user
-				interface).</span><br></br><span>Within this view where only datasets with an associated AIP are
-				visible, the system handles varied access policies, as defined by the data owners. It can
-				enforce a spectrum of access conditions&gt;Example 1 (Direct Access): For some <em>AIPs</em>,
-				a "use copy" is made available for immediate download. Etsin provides a direct link to this
-				copy while also linking to the canonical AIP record (which is not available via
-				Etsin), separating simple use from the formal preservation record.</span><br></br><span>Example 2 (Mediated
-				Access): For other <em>AIPs</em>, access is controlled. Etsin displays a record that might
-				offer a link to a "preview dataset" but withholds the full data. It then provides explicit
-				instructions on the required procedure, such as "To get this dataset, please contact [email
-				address]."<span>
-			</span>Example 3 (Fully Mediated Access): The system can also handle cases where no preview or
-				data is available, and the only option for a user is to follow the human-mediated contact
-				instructions provided in the <em>Metadata</em>.</span><br></br><span>These examples demonstrate how a discovery service can provide a dedicated view for preserved
-				<em>AIPs</em> (CPP-024) while interpreting and enforcing a range of different access rules—from
-				fully open to fully mediated—as defined by rights and access policies (CPP-020) and taken
-				into account during the access process (CPP-025).</span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="5">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="5">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata">https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata</a><div>(Internal use:)</div></td></tr><tr><td>English</td><td><a href="https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
-">https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+            access. On the other hand, they raise privacy issues that force memory organisations
+            to give access to these collections only in the organisation’s precinct. Consumers
+            therefore need to identify the scope and content of the collection through remote
+            queries before planning an on-site visit.</span></td></tr><tr><td>Proposed solution</td><td><span>Beyond the mails’ Metadata, the full text was indexed and is searchable, though not
+            entirely readable - when accessing the mail, the full text is redacted, only the
+            searched term and email Metadata are displayed. Access to the mails’ collections is
+            possible only in the organisation’s precinct.</span></td></tr></table><h4>etsin.fairdata.fi (CSC): Open discovery for datasets with varied access conditions</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>CSC - IT Center for Science, Finland, FI</td></tr><tr><td style="width:20%">Hyperlink</td><td>Main Discovery Service: <a href="https://etsin.fairdata.fi/">https://etsin.fairdata.fi/</a><br></br>Example 1 (Direct Access via use-copy): FIRE Profile 3 <a href="https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405">https://etsin.fairdata.fi/dataset/5ab685f0-d515-41fa-877b-641589606405</a><br></br>Example 2 (Mediated Access): Drive-tested topsoil <a href="https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa">https://etsin.fairdata.fi/dataset/f59349c4-ac60-4305-8a9b-9ccc33a3f6fa</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Problem statement</td><td><span>A TDA can host datasets with a wide variety of access conditions. Some may be open
+            for
+            immediate download (e.g. via a use copy), while others may require human-mediated
+            access (even if their ultimate license is open). The challenge for a discovery service
+            is to represent a) these different states, b) providing access pathways for each
+            dataset without compromising the specific rights management and c) providing access
+            policies defined by the data owner.</span><br></br><span>The Finnish discovery portal etsin.fairdata.fi (CSC) hosts <em>Metadata</em> for
+            both active research data outside of the AIP context and for formally preserved assets (<em>
+            AIPs</em>). The first challenge is to provide a clear and reliable method for users to
+            discover <em>only</em> the preserved assets (with associated AIPs); and second, to
+            represent the specific access conditions for each of those preserved <em>AIPs</em>.</span></td></tr><tr><td>Proposed solution</td><td><span>The Fairdata services solve this by addressing the discovery of preserved assets by
+            providing
+            a specific, filterable view of its catalogue. The URL parameter
+            ?data_catalog__title=Fairdata+PAS+datasets in https://etsin.fairdata.fi/ creates a
+            dedicated
+            view within Etsin that exclusively lists datasets corresponding to verified AIPs in
+            the long-term Digital Preservation Service (the filter is also selectable via the Etsin
+            user
+            interface).</span><br></br><span>Within this view where only datasets with an associated AIP are visible, the system
+            handles varied access policies, as defined by the data owners. It can enforce a spectrum
+            of access conditions&gt;Example 1 (Direct Access): For some <em>AIPs</em>, a "use copy"
+            is made available for immediate download. Etsin provides a direct link to this copy
+            while also linking to the canonical AIP record (which is not available via Etsin),
+            separating simple use from the formal preservation record.</span><br></br><span>Example 2 (Mediated Access): For other <em>AIPs</em>, access is controlled. Etsin
+            displays a record that might offer a link to a "preview dataset" but withholds the full
+            data. It then provides explicit instructions on the required procedure, such as "To get
+            this dataset, please contact [email address]."<span>
+            </span>Example 3 (Fully Mediated Access): The system can also handle cases where no
+            preview or data is available, and the only option for a user is to follow the
+            human-mediated contact instructions provided in the <em>Metadata</em>.</span><br></br><span>These examples demonstrate how a discovery service can provide a dedicated view for
+            preserved <em>AIPs</em> (CPP-024) while interpreting and enforcing a range of different
+            access rules—from fully open to fully mediated—as defined by rights and access policies
+            (CPP-020) and taken into account during the access process (CPP-025).</span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="5">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="5">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata">https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata</a><div>(Internal use:)</div></td></tr><tr><td>English</td><td><a href="
+          https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
+">
+          https://knowledge.exlibrisgroup.com/Rosetta/Training/Rosetta_Essentials/Data_Management/7.1_Searching_the_Rosetta_Permanent_Repository
 </a><div>(also see)</div></td></tr><tr><td>English</td><td><a href="https://www.tib.eu/en/">https://www.tib.eu/en/</a><div>(External Use: TIB Portal:)</div></td></tr><tr><td>English</td><td><a href="https://av.tib.eu/">https://av.tib.eu/</a><div>(TIB AV Portal:)</div></td></tr><tr><td>English</td><td><a href="https://gvk.k10plus.de/LNG=EN">https://gvk.k10plus.de/LNG=EN</a><div>(Library union catalogue k10plus:)</div></td></tr></table></div></div></body></html>
