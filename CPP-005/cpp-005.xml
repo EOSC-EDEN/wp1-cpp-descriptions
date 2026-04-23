@@ -228,6 +228,7 @@ first component or file.
 
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
+                <cpp:stepGroup type="sequence">
                     <cpp:step stepNumber="1a">
                         <cpp:input>
                             <cpp:inputElement>
@@ -318,7 +319,7 @@ first component or file.
                             <span>Entity is disposed (step 7)</span>
                         </cpp:stepDescription>
                     </cpp:step>
-
+                </cpp:stepGroup>
                 <cpp:step stepNumber="2">
                     <cpp:input>
                         <cpp:inputElement>
