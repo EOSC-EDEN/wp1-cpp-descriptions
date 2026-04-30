@@ -84,10 +84,10 @@
         <p>
             The process takes a risk inventory as input. This risk inventory identifies several Objects,
             Metadata and other information that are included in the mitigation process (e.g.
-            Representations, Files and Information packages, Technical metadata and system configuration). 
-            The process creates preservation action plans (such as migration paths, preservation plans 
-            and updated policies) that take the identified risk into account and reports that will be 
-            acted upon by other processes.
+            <em>Representations</em>, <em>Files</em> and <em>Information packages</em>, Technical 
+            metadata and system configuration). The process creates preservation action plans (such 
+            as migration paths, preservation plans and updated policies) that take the identified 
+            risk into account and reports that will be acted upon by other processes.
         </p>
         <p>
             Beyond risk identification and risk assessment, which are in the scope of Risk Definition and
@@ -175,144 +175,146 @@
             </cpp:triggerEvent>            
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
-            <cpp:step stepNumber="1">
-                <cpp:input>
-                    <cpp:inputElement>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Risk inventory (such as
+                                format specifications,
+                                provenance, usage
+                                statistics, knowledge of
+                                threats and vulnerabilities
+                                targeted at file formats and
+                                storage systems, historical
+                                data (i.e. learnings from the
+                                past), vendor dependencies)
+                            </span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-023</cpp:supplier>
+                        <cpp:supplier>CPP-008</cpp:supplier>
+                        <cpp:supplier>CPP-009</cpp:supplier>
+                        <cpp:supplier>CPP-010</cpp:supplier>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><em>Metadata</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><em>Representations</em>, <em>Files</em>, <em>Objects</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Quality reports</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Statistical reports</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Changes in the designated communities</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Risk inventory (such as
-                            format specifications,
-                            provenance, usage
-                            statistics, knowledge of
-                            threats and vulnerabilities
-                            targeted at file formats and
-                            storage systems, historical
-                            data (i.e. learnings from the
-                            past), vendor dependencies)
+                            TDA finds out through ingest of
+                            new content, various reports, new
+                            risk assessments or changes in
+                            the designed community, that
+                            content in a TDA is at risk (e.g.
+                            that there are <em>Objects</em> in its
+                            holdings that are subject to threats
+                            related to file format issues)
                         </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-023</cpp:supplier>
-                    <cpp:supplier>CPP-008</cpp:supplier>
-                    <cpp:supplier>CPP-009</cpp:supplier>
-                    <cpp:supplier>CPP-010</cpp:supplier>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span><em>Metadata</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span><em>Representations, Files, Objects</em></span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Quality reports</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Statistical reports</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>Changes in the designated communities</span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        TDA finds out through ingest of
-                        new content, various reports, new
-                        risk assessments or changes in
-                        the designed community, that
-                        content in a TDA is at risk (e.g.
-                        that there are <em>Objects</em> in its
-                        holdings that are subject to threats
-                        related to file format issues)
-                    </span>
-                </cpp:stepDescription>
-            </cpp:step>
-            <cpp:step stepNumber="2">
-                <cpp:input>
-                    <cpp:inputElement>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Information about threats related to the particular risk
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Information about threats related to the particular risk
+                            The risk is investigated and
+                            evaluated in terms of possible
+                            data loss, loss in quality,
+                            significant property or feature
+                            degradation, risks related to the
+                            semantic understanding of the
+                            content (i.e. insufficient <em>Metadata</em>)
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        The risk is investigated and
-                        evaluated in terms of possible
-                        data loss, loss in quality,
-                        significant property or feature
-                        degradation, risks related to the
-                        semantic understanding of the
-                        content (i.e. insufficient <em>Metadata</em>)
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Investigation data about threats related to the risk</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-019</cpp:customer>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="3">
-                <cpp:input>
-                    <cpp:inputElement>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Investigation data about threats related to the risk</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-019</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Investigation data about threats related to the risk
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
                         <span>
-                            Investigation data about threats related to the risk
+                            The TDA formulates a risk mitigation plan and actions. It may include:
                         </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        The TDA formulates a risk mitigation plan and actions. It may include:
-                    </span>
-                    <ul>
-                        <li>
-                            Triggering preservation actions (such as Format Migration planning or 
-                            Metadata Ingest and Management)
-                        </li>
-                        <li>
-                            Formulating or updating new policies and plans that govern the TDA 
-                            (e.g. updated preservation plans for a specific file format)
-                        </li>
-                        <li>
-                            Creating reports on <em>Objects, Metadata</em>, statistical usage to
-                            facilitate decision making about risk mitigation
-                        </li>
-                    </ul>                    
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Migration paths and migration plans</span>
-                    </cpp:outputElement>
-                    <cpp:customer>CPP-014</cpp:customer>
-                    <cpp:customer>CPP-015</cpp:customer>
-                    <cpp:customer>CPP-003</cpp:customer>
-                    <cpp:customer>CPP-011</cpp:customer>
-                    <cpp:customer>CPP-013</cpp:customer>
-                    <cpp:customer>CPP-016</cpp:customer>
-                    <cpp:customer>CPP-030</cpp:customer>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>Preservation plans</span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            Other policies such as storage media usage,
-                            geographical dispersion of stored copies,
-                            frequency of integrity checking intervals etc.
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
+                        <ul>
+                            <li>
+                                Triggering preservation actions (such as Format Migration planning or 
+                                Metadata Ingest and Management)
+                            </li>
+                            <li>
+                                Formulating or updating new policies and plans that govern the TDA 
+                                (e.g. updated preservation plans for a specific file format)
+                            </li>
+                            <li>
+                                Creating reports on <em>Objects, Metadata</em>, statistical usage to
+                                facilitate decision making about risk mitigation
+                            </li>
+                        </ul>                    
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Migration paths and migration plans</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-014</cpp:customer>
+                        <cpp:customer>CPP-015</cpp:customer>
+                        <cpp:customer>CPP-003</cpp:customer>
+                        <cpp:customer>CPP-011</cpp:customer>
+                        <cpp:customer>CPP-013</cpp:customer>
+                        <cpp:customer>CPP-016</cpp:customer>
+                        <cpp:customer>CPP-030</cpp:customer>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Preservation plans</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                Other policies such as storage media usage,
+                                geographical dispersion of stored copies,
+                                frequency of integrity checking intervals etc.
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
@@ -582,7 +584,7 @@
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
                     <span>
-                        As the File is valid, no migration is suggested; instead, a
+                        As the <em>File</em> is valid, no migration is suggested; instead, a
                         rendering solution for displaying the embedded video is
                         identified for future access: the Okular viewer is then
                         recommended for this purpose.
