@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-006_AIP_Batch_Export</title></head><body><div class="introSection"><div class="title"><h1>AIP Batch Export (CPP-006)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-006</td></tr><tr><td>CPP-Label</td><td>AIP Batch Export</td></tr><tr><td>Author</td><td>Micky Lindlar</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Juha Lehtonen, Mikko Laukkanen</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>As part of an exit strategy, the TDA batch exports Information
+						packages and all associated Metadata in a manageable format/structure
+						for Ingest into another TDA.
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="2">Data</td><td>
+          AIP(s)
+        </td></tr><tr><td>
+          File(s)
+        </td></tr><tr><td rowspan="2">Metadata</td><td>Storage Metadata Information (Identifier of AIP to be exported, including to AIP versions)</td></tr><tr><td>Target location for export</td></tr><tr><td rowspan="4">Documentation/guidance</td><td>Contractual Documentation for batch export (for service providers, if applicable)</td></tr><tr><td>AIP specification</td></tr><tr><td>Exit Scenario Plan</td></tr><tr><td>Documentation of Export AIP (supported target structure and format)</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Data</td><td>External copies of one or several complete AIPs</td></tr><tr><td rowspan="1">Metadata</td><td>Only Metadata contained in AIPs</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>While the TDA manages <em>Information packages</em> across their life cycle, stores them
+		as <em>AIPs</em>, and delivers them as <em>DIPs</em> to its consumer, it also needs to
+		plan for situations in which an export of <em>AIPs</em> becomes necessary.</p><p>Scenarios that require an AIP Batch Export include, but are not limited to:</p><ul>
+      <li>
+        <p><em>Exit Scenario</em>: The TDA changes a major part of its system infrastructure,
+			such as the digital preservation workflow software or the database.</p>
+      </li>
+      <li>
+        <p><em>Succession Planning</em>: The TDA ceases to exist and needs to hand over its
+			archival holdings to a successor.</p>
+      </li>
+      <li>
+        <p><em>Additional External Storage</em>: The TDA wants to store additional offline copies
+			of their <em>AIPs</em>. The <em>AIP</em> export will create a <em>physical</em>
+			<em>AIP</em> as opposed to a logical one. This includes e.g. <em>Metadata</em> which
+			might be kept in a database to be written into an XML or JSON <em>File</em>.</p>
+      </li>
+      <li>
+        <p><em>Disposal</em>: If the TDA decides to dispose data (e.g. as part of Re-Appraisal)
+			the data might be handed over to an external entity such as a different TDA that
+			wants to preserve it. The <em>AIP</em> likely contains a level of information richness
+			(e.g. in form of versions and full audit trails) that the <em>DIP</em> format of the
+			TDA does not offer.</p>
+      </li>
+      <li>
+        <p><em>External Request for Export</em>: An external entity (e.g. a customer for a digital
+			preservation service) might request the data preserved by the TDA for use cases such
+			as verification of provenance information.</p>
+      </li>
+    </ul><p>This CPP may export 1-n <em>AIPs</em> including all <em>AIP</em> versions from the TDA to a
+		storage location external to the archival storage. The target location can be located externally
+		(e.g. an external SFTP server) or internally (e.g. to a different network share). The process
+		makes no assumption as to the type of storage exported to (e.g. disk, tape).</p><p>The exported <em>AIP</em> should include all available information where possible (i.e. contain
+		all <em>Files</em> and all accompanying <em>Metadata</em>). In addition to <em>Descriptive</em>,
+		<em>Structural</em>, <em>Administrative</em> and <em>Technical Metadata</em>, this includes any
+		<em>Provenance metadata</em> which might exist and describes any events undertaken on the
+		<em>Object</em> during its lifespan within the TDA.</p><p>The format and structure of the exported <em>AIP</em> should be documented including an explanation
+		of all internal identifiers or schemas that might be used within. This documentation needs to be
+		provided as a sidecar <em>File</em> with the AIP Batch Export.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span><em>AIP</em> is requested from external entity (e.g. customer for digital preservation service)</span></td><td></td></tr><tr><td><span>Succession plans are applied to transfer custody of <em>Objects</em> to another TDA</span></td><td></td></tr><tr><td><span>The TDA extends bit-level preservation capabilities and creates new (internal or outsourced)
+				copies of <em>AIPs</em> (e.g. to implement geographically distributed storage or to copy
+				<em>AIPs</em> to an offline storage system)</span></td><td></td></tr><tr><td><span>The TDA changes its system and all <em>Information packages</em> need to be exported (i.e. Exit scenario)</span></td><td></td></tr><tr><td><span>The TDA has flagged data for disposal and the <em>AIPs</em> are to be handed over to an external entity</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>When a TDA is closed down, it will have to pass data on to another TDA as part of succession planning.
+				This might have to happen on short notice.</span></td><td><span>Data is lost.</span></td></tr><tr><td><span>When a TDA acts as a service provider, data will have to be exported in bulk to those who
+				are subscribing to the service.</span></td><td><span>Data owner potentially loses control over data.</span></td></tr><tr><td><span>If a TDA is using external services and systems, e.g. for storing and preserving
+				its <em>AIPs</em>, then it may need to exchange or transfer <em>AIPs</em> to
+				or from third-party services and systems.</span></td><td><span>Data is lost, data can't be efficiently transferred between TDAs and preservation services.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-001</td><td>Checksum Generation and Recording</td><td><span><em>Fixity metadata</em> is used to verify the integrity of data written into the exported <em>AIP</em>.</span></td></tr><tr><td>CPP-002</td><td>Checksum Validation</td><td><span>To ensure the integrity of the data during transport from the TDA
+				storage, the exported <em>Files'</em> checksums need to be
+				verified.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Not to be confused with</td><td>CPP-017</td><td>Disposal</td><td><span>By default, batch export does not remove the content from the TDA.</span></td></tr><tr><td>Not to be confused with</td><td>CPP-025</td><td>Enabling Access</td><td><span>Access is typically granted to the <em>DIP</em> which may be different from
+				the <em>AIP</em> (e.g. the <em>DIP</em> <em>may</em> only present the last version
+				or one of several <em>Representations</em>). The <em>AIP</em> contains all
+				preservation <em>Metadata</em> which a <em>DIP</em> may not.</span></td></tr><tr><td>Affected by</td><td>CPP-021</td><td>AIP Versioning</td><td><span>Versioning impacts how the export will have to be run and where and how
+				information about the versions may be found. In addition a policy might
+				determine if only the last or all versions should be exported.</span></td></tr><tr><td>Affinity with</td><td>CPP-011</td><td>Replication</td><td><span>Replication creates new parallel copies of <em>AIPs</em> within a TDAs
+				archival storage. AIP Batch Export exports <em>AIPs</em> to external
+				locations.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>"Technical aspects of business continuity, disaster recovery and succession planning"</span></td><td><span>R15 Technical Infrastructure</span><br></br><span>Organisational aspects are covered in R03 Continuity of Service</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Export</span></td><td><span>C12 Crisis / successorship management</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>Export</span></td><td><span>4.3.5</span><br></br><span>Also touched in 3.1.2.2 "The repository shall monitor its organizational environment
+				to determine when to execute its succession plan, contingency plans, and/or
+				escrow arrangements."</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>/</span></td><td><span>The process is not described in OAIS but one of its purposes,
+				Succession Planning, is briefly mentioned in 3.3.6 "Follows
+				establised preservation policies and procedures".</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>/</span></td><td><span>/</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608980/Export+and+exit+scenario">https://wiki.tib.eu/confluence/spaces/lza/pages/93608980/Export+and+exit+scenario</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>Finnish</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(section 13)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="ihttps://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#downloading-an-aip">ihttps://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#downloading-an-aip</a></td></tr></table></div></div></body></html>
