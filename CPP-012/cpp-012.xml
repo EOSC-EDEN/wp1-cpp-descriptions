@@ -54,22 +54,19 @@
             preservation processes are triggered by, or get their input from risk mitigation.
         </p>
         <p>
-            Rosenthal et al. (https://www.dlib.org/dlib/november05/rosenthal/11rosenthal.html) 
-            present various threats for a TDA. Risks are related to media, hardware or software 
-            failure, or obsolescence; communication errors or failure of network services;
-            natural disasters; operator errors; external attacks; internal attacks; or economic or
-            organisational failure. For example, operator actions may include either recoverable or
-            irrecoverable operator errors.
+            Rosenthal et al. [1] present various threats for a TDA. Risks are related to media, 
+            hardware or software failure, or obsolescence; communication errors or failure of 
+            network services; natural disasters; operator errors; external attacks; internal 
+            attacks; or economic or organisational failure. For example, operator actions may 
+            include either recoverable or irrecoverable operator errors.
         </p>
         <p>
-            Regarding risks related to file formats, the NARA Digital Preservation Risk Matrix
-            (https://github.com/usnationalarchives/digital-preservation/blob/master/Digital_Preservation_Risk_Matrix/readme.md) 
+            Regarding risks related to file formats, the NARA Digital Preservation Risk Matrix [2]
             shows numerous risks for file formats. These are related to disclosure, adoption, transparency,
             self-documentation, external hardware and software dependencies, impact of patents, and
             technical protection mechanisms. For example, related to disclosure, the format may be at
             risk if it is proprietary, does not have public documentation, or the maintenance of the
-            documentation is not standardised. Moreover, the CHARM Risk Identification Framework
-            (https://discovery.dundee.ac.uk/en/studentTheses/disentangling-digital-preservation-risk) 
+            documentation is not standardised. Moreover, the CHARM Risk Identification Framework [3] 
             concentrates on risks of different aspects, related to digital content including Metadata, 
             and organisational and technological infrastructure.
         </p>
@@ -82,12 +79,12 @@
             problems before they become critical.
         </p>
         <p>
-            The process takes a risk inventory as input. This risk inventory identifies several Objects,
-            Metadata and other information that are included in the mitigation process (e.g.
-            <em>Representations</em>, <em>Files</em> and <em>Information packages</em>, Technical 
-            metadata and system configuration). The process creates preservation action plans (such 
-            as migration paths, preservation plans and updated policies) that take the identified 
-            risk into account and reports that will be acted upon by other processes.
+            The process takes a risk inventory as input. This risk inventory identifies several <em>
+            Objects</em>, <em>Metadata</em> and other information that are included in the mitigation 
+            process (e.g. <em>Representations</em>, <em>Files</em> and <em>Information packages</em>, 
+            <em>Technical metadata</em> and system configuration). The process creates preservation 
+            action plans (such as migration paths, preservation plans and updated policies) that take 
+            the identified risk into account and reports that will be acted upon by other processes.
         </p>
         <p>
             Beyond risk identification and risk assessment, which are in the scope of Risk Definition and
@@ -120,6 +117,12 @@
                 technological landscapes or organisational priorities.
             </li>
         </ul>
+        <p>[1] <a href="https://www.dlib.org/dlib/november05/rosenthal/11rosenthal.html">
+            https://www.dlib.org/dlib/november05/rosenthal/11rosenthal.html</a></p>
+        <p>[2] <a href="https://github.com/usnationalarchives/digital-preservation/blob/master/Digital_Preservation_Risk_Matrix/readme.md">
+            https://github.com/usnationalarchives/digital-preservation/blob/master/Digital_Preservation_Risk_Matrix/readme.md</a></p>
+        <p>[3] <a href="https://discovery.dundee.ac.uk/en/studentTheses/disentangling-digital-preservation-risk">
+            https://discovery.dundee.ac.uk/en/studentTheses/disentangling-digital-preservation-risk</a></p>
     </cpp:descriptionAndScope>
     <cpp:process>
         <cpp:inputs>
@@ -569,7 +572,8 @@
                         rendered by many PDF viewers. According to J. van der Knijff in
                         its blog post “Identification of PDF preservation risks with
                         VeraPDF and JHOVE” (available at
-                        https://bitsgalore.org/2023/05/25/identification-of-pdf-preservation-risks-with-verapdf-and-jhove.html), 
+                        <a href="https://bitsgalore.org/2023/05/25/identification-of-pdf-preservation-risks-with-verapdf-and-jhove.html">
+                            https://bitsgalore.org/2023/05/25/identification-of-pdf-preservation-risks-with-verapdf-and-jhove.html</a>), 
                         this risk should be mitigated.
                     </span>
                 </cpp:triggerEvent>
