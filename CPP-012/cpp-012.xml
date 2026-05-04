@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-012" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Risk Mitigation</cpp:label>
+        <cpp:authors>
+            <cpp:author>Mikko Laukkanen</cpp:author>
+            <cpp:author>Juha Lehtonen</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Bertrand Caron</cpp:contributor>
+            <cpp:contributor>Johan Kylander</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Franziska Schwab</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-27</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>
+        The TDA enables the design, development and management of plans for mitigating
+        identified preservation risks.
+    </cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Preservation Planning</cpp:oaisClassification>
+        <cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>
+            Risks can be viewed from various perspectives, for example, from a TDA level, from a 
+            digital content level, from a file format level, etc. The topic is extremely wide, and 
+            several risks and their mitigations are applicable to any industry. Many core digital 
+            preservation processes are triggered by, or get their input from risk mitigation.
+        </p>
+        <p>
+            Rosenthal et al. [1] present various threats for a TDA. Risks are related to media, 
+            hardware or software failure, or obsolescence; communication errors or failure of 
+            network services; natural disasters; operator errors; external attacks; internal 
+            attacks; or economic or organisational failure. For example, operator actions may 
+            include either recoverable or irrecoverable operator errors.
+        </p>
+        <p>
+            Regarding risks related to file formats, the NARA Digital Preservation Risk Matrix [2]
+            shows numerous risks for file formats. These are related to disclosure, adoption, transparency,
+            self-documentation, external hardware and software dependencies, impact of patents, and
+            technical protection mechanisms. For example, related to disclosure, the format may be at
+            risk if it is proprietary, does not have public documentation, or the maintenance of the
+            documentation is not standardised. Moreover, the CHARM Risk Identification Framework [3] 
+            concentrates on risks of different aspects, related to digital content including Metadata, 
+            and organisational and technological infrastructure.
+        </p>
+        <p>
+            Defining and extracting risks are defined in CPP-023 <b>Risk Definition and Extraction</b>, 
+            which defines how these risks are mitigated. Risk mitigation in digital preservation 
+            refers to the systematic identification, assessment, and management of threats that could 
+            lead to the loss, corruption, or inaccessibility of digital materials over time. It is a 
+            proactive approach to ensure long-term access to digital content by addressing potential 
+            problems before they become critical.
+        </p>
+        <p>
+            The process takes a risk inventory as input. This risk inventory identifies several <em>
+            Objects</em>, <em>Metadata</em> and other information that are included in the mitigation 
+            process (e.g. <em>Representations</em>, <em>Files</em> and <em>Information packages</em>, 
+            <em>Technical metadata</em> and system configuration). The process creates preservation 
+            action plans (such as migration paths, preservation plans and updated policies) that take 
+            the identified risk into account and reports that will be acted upon by other processes.
+        </p>
+        <p>
+            Beyond risk identification and risk assessment, which are in the scope of Risk Definition and
+            Extraction, this Risk Mitigation encompasses the following components:
+        </p>
+        <ul>
+            <li>
+                <em>Mitigation Strategies</em> are the specific actions taken to reduce identified 
+                risks. These include format migration (converting <em>Files</em> to more stable or 
+                widely-supported formats), emulation (creating software environments that can run obsolete
+                programs), replication (maintaining multiple copies across different locations and
+                storage systems), documentation (maintaining detailed <em>Metadata</em> and technical
+                specifications), and regular monitoring (systematic checking of file integrity and
+                accessibility).
+            </li>
+            <li>
+                <em>Creating and maintaining policies</em> ensures that the TDA has documented 
+                procedures that define and govern how mitigation strategies are implemented for 
+                identified risks, including 1) storage management related policies (the use of 
+                different types of storage media, geographically dispersed storage, life cycle 
+                management of hardware defining periodic integrity checks, the number of copies needed 
+                to create redundancy), 2) actionable preservation plans (defining means to preserve 
+                significant properties in file formats), and 3) quality assurance in the ingest 
+                phase (identification, validation, virus checks, <em>Metadata</em> requirements).
+            </li>
+            <li>
+                <em>Monitoring and Review</em> ensures that preservation strategies remain effective 
+                over time. This involves regular audits of digital collections, updating risk assessments 
+                as new threats emerge, and adjusting preservation plans based on changing
+                technological landscapes or organisational priorities.
+            </li>
+        </ul>
+        <p>[1] <a href="https://www.dlib.org/dlib/november05/rosenthal/11rosenthal.html">
+            https://www.dlib.org/dlib/november05/rosenthal/11rosenthal.html</a></p>
+        <p>[2] <a href="https://github.com/usnationalarchives/digital-preservation/blob/master/Digital_Preservation_Risk_Matrix/readme.md">
+            https://github.com/usnationalarchives/digital-preservation/blob/master/Digital_Preservation_Risk_Matrix/readme.md</a></p>
+        <p>[3] <a href="https://discovery.dundee.ac.uk/en/studentTheses/disentangling-digital-preservation-risk">
+            https://discovery.dundee.ac.uk/en/studentTheses/disentangling-digital-preservation-risk</a></p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:guidance>
+                <cpp:guidanceElement>Risk inventory</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:guidance>
+                <cpp:guidanceElement>Preservation action plans</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Planned or performed ingestion of a <em>File</em> in a new file format 
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-008</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Operational and statistical reports of <em>Digital Object</em> usage 
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-013</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Changes in the community 
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-018</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Data quality reports  
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-019</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>
+                        Detected risks   
+                    </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-023</cpp:correspondingCPP>
+            </cpp:triggerEvent>            
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Risk inventory (such as
+                                format specifications,
+                                provenance, usage
+                                statistics, knowledge of
+                                threats and vulnerabilities
+                                targeted at file formats and
+                                storage systems, historical
+                                data (i.e. learnings from the
+                                past), vendor dependencies)
+                            </span>
+                        </cpp:inputElement>
+                        <cpp:supplier>CPP-023</cpp:supplier>
+                        <cpp:supplier>CPP-008</cpp:supplier>
+                        <cpp:supplier>CPP-009</cpp:supplier>
+                        <cpp:supplier>CPP-010</cpp:supplier>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><em>Metadata</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><em>Representations</em>, <em>Files</em>, <em>Objects</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Quality reports</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Statistical reports</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Changes in the designated communities</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            TDA finds out through ingest of
+                            new content, various reports, new
+                            risk assessments or changes in
+                            the designed community, that
+                            content in a TDA is at risk (e.g.
+                            that there are <em>Objects</em> in its
+                            holdings that are subject to threats
+                            related to file format issues)
+                        </span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Information about threats related to the particular risk
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            The risk is investigated and
+                            evaluated in terms of possible
+                            data loss, loss in quality,
+                            significant property or feature
+                            degradation, risks related to the
+                            semantic understanding of the
+                            content (i.e. insufficient <em>Metadata</em>)
+                        </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Investigation data about threats related to the risk</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-019</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                Investigation data about threats related to the risk
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            The TDA formulates a risk mitigation plan and actions. It may include:
+                        </span>
+                        <ul>
+                            <li>
+                                Triggering preservation actions (such as Format Migration planning or 
+                                Metadata Ingest and Management)
+                            </li>
+                            <li>
+                                Formulating or updating new policies and plans that govern the TDA 
+                                (e.g. updated preservation plans for a specific file format)
+                            </li>
+                            <li>
+                                Creating reports on <em>Objects, Metadata</em>, statistical usage to
+                                facilitate decision making about risk mitigation
+                            </li>
+                        </ul>                    
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Migration paths and migration plans</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-014</cpp:customer>
+                        <cpp:customer>CPP-015</cpp:customer>
+                        <cpp:customer>CPP-003</cpp:customer>
+                        <cpp:customer>CPP-011</cpp:customer>
+                        <cpp:customer>CPP-013</cpp:customer>
+                        <cpp:customer>CPP-016</cpp:customer>
+                        <cpp:customer>CPP-030</cpp:customer>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Preservation plans</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>
+                                Other policies such as storage media usage,
+                                geographical dispersion of stored copies,
+                                frequency of integrity checking intervals etc.
+                            </span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    The CPP is very important in terms of guaranteeing the availability and
+                    accessibility of the <em>Digital Objects</em> and thus, in a larger aspect, 
+                    the operations and usability of the TDA.
+                </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    <em>Digital Objects</em> may become inaccessible, even in a non-reversible 
+                    way (e.g. due to corruption or data in proprietary, undocumented file formats
+                    without software support)
+                </span>
+                <span>
+                    With missing <em>Metadata</em>, the understandability of the Digital Objects 
+                    is lost
+                </span>
+                <span>
+                    Operational disruption of TDA
+                </span>
+                <span>
+                    Financial and legal consequences
+                </span>
+                <span>
+                    Cultural heritage loss
+                </span>
+                <span>
+                    Reputation damage
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-009</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Preservation actions (i.e. migration, emulation) in the storage depend on the 
+                    identification of <em>Files</em> that share the same properties.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-018</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Changing community needs affect the risks and the mitigation of those.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Risk mitigation is applied to the risks as defined in CPP-023.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-003</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The frequency and target of periodic integrity checks is defined by an
+                    institutional digital preservation policy as part of risk mitigation.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-004</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The number of parallel copies and their storage settings (i.e. storage media,
+                    locations) are defined in a TDA’s policy that arises out of mitigating risks to
+                    preserved data.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-007</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Virus scanning is a direct risk mitigation activity against threats to
+                    content integrity and system security triggered by CPP-012.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-011</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    A TDAs storage policy that defines how data is stored, the amount of
+                    parallel copies etc. is based on a TDAs risk assessment and mitigation.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Format migration requires this investigative process to determine the
+                    migration path that it should apply.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-015</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Risk Mitigation is in charge of defining the emulation and rendering policy that
+                    is meant to be applied by CPP-015.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-021</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Risk Mitigation acts as a supplier to AIP Versioning by providing risk
+                    mitigation policy details for handling the retention of previous versions (i.e.
+                    partial, total retainment or disposal).
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The Risk Mitigation CPP is in charge of designing normalisation paths whose
+                    output would retain all significant properties.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-027</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Risk Mitigation, as the provider of all actions aiming at limiting the impact or
+                    likelihood of identified risks, is intended to prescribe appropriate methods to
+                    repair the <em>File</em> or <em>Representation</em>.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-030</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The strategy for data storage and storage infrastructure management is
+                    defined in a storage management policy as based on a TDAs risk
+                    assessment and mitigation.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    To plan and mitigate risks in preservation, a TDA needs to provide
+                    input on the preservation system; the quality of the data; significant
+                    properties in <em>Objects</em>; <em>Storage management metadata</em> etc.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Affinity with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The ingest process must adhere to the risk mitigation policies.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Preservation plan </span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    The process is the main subject of R09 Preservation Plan but is implicitly
+                    referred to in most of the requirements.
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>(risk analysis) planned countermeasures</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    Term mentioned in C34 Security but the activity is implicitly referred to in most of
+                    the requirements.
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Risk management and risk mitigation</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>3.1.2.1</span>
+                <span>5.1.1</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Risk mitigation (part of preservation planning)</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>4.2.3.7</span>
+                <span>6.2.7</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Access to PDFs incorporating Rich Media features</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                    <cpp:institutionCountry>DE</cpp:institutionCountry>
+                    <cpp:institutionType>National library</cpp:institutionType>
+                    <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                    <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                    <cpp:institutionType>Research performing organisation</cpp:institutionType>
+                </cpp:institution>
+                <cpp:triggerEvent>
+                    <span>
+                        PDFs embedding videos are at risk: they may not be correctly
+                        rendered by many PDF viewers. According to J. van der Knijff in
+                        its blog post “Identification of PDF preservation risks with
+                        VeraPDF and JHOVE” (available at
+                        <a href="https://bitsgalore.org/2023/05/25/identification-of-pdf-preservation-risks-with-verapdf-and-jhove.html">
+                            https://bitsgalore.org/2023/05/25/identification-of-pdf-preservation-risks-with-verapdf-and-jhove.html</a>), 
+                        this risk should be mitigated.
+                    </span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>
+                        TIB received a PDF in 2025, for which the extractor tool
+                        veraPDF indicates that it contains videos as Rich Media, a
+                        feature included in the PDF specification version 1.7. Noticing
+                        that most PDF viewers display the video as a still image, and no
+                        warning to the user, it studies a way to handle the problem.
+                    </span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>
+                        As the <em>File</em> is valid, no migration is suggested; instead, a
+                        rendering solution for displaying the embedded video is
+                        identified for future access: the Okular viewer is then
+                        recommended for this purpose.
+                    </span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB - Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608641/Preservation+Management#PreservationManagement-Riskmanagement
+                </cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>        
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#preservation-planning
+                </cpp:hyperlink>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
