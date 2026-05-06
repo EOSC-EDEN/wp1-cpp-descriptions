@@ -34,7 +34,7 @@
                     <cpp:patchVersion>0</cpp:patchVersion>
                 </cpp:versionNumber>
                 <cpp:versionDate>2026-04-01</cpp:versionDate>
-                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+                <cpp:versionNotes>Migration to XML and different minor vocabulary corrections </cpp:versionNotes>
             </cpp:version>
         </cpp:history>
     </cpp:header>
@@ -88,8 +88,8 @@
         </p>
         <p>Identifiers and their <em>Metadata</em> should be updated according to the entity’s 
             life cycle. In particular, when an entity may be deleted, merged, split or become 
-            partially unavailable, its identifier should be preserved. Moreover, its Provenance 
-            metadata should be updated in order to provide proper detail of information to the 
+            partially unavailable, its identifier should be preserved. Moreover, its <em>Provenance 
+            metadata</em> should be updated in order to provide proper detail of information to the 
             end users about its initial entity as well as the relationships to potential new 
             entities that were created from the initial one. When using PIDs, some changes 
             (e.g. the creation of identical parallel copies of the data that create new internal 
@@ -113,11 +113,11 @@
             (e.g. by using qualifiers [2]) or might hide them by creating a whole new string for 
             components [3]. This CPP does not choose between these approaches. Similarly, it does 
             not make any assumptions on the organisation in charge of managing identifiers and 
-            whether identifiers are managed by the TDA directly. Since PID management is 
+            whether identifiers are managed by the TDA directly. Since <b>Identifier Management</b> is 
             relatively resource-intensive and can also be performed outside the scope of digital 
             long-term preservation, no assumptions are made here about the structure or 
             organisation of this work area; instead, reference is made only to the entity “the 
-            PID management service”.
+            identifier management service”.
         </p>
         <p>[1]This term is preferred over the “unique” adjective applied traditionally to 
             identifiers. Indeed, it suggests that an identifier must reference one and 
@@ -228,7 +228,7 @@ first component or file.
 
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:stepGroup type="sequence">
+                <cpp:stepGroup type="alternative">
                     <cpp:step stepNumber="1a">
                         <cpp:input>
                             <cpp:inputElement>
@@ -460,10 +460,14 @@ first component or file.
                 </span>
             </cpp:purposeDescription>
             <cpp:worstCase>
-                <span>Link rot as well as problems and challenges in: Internal data management 
-                    problems; System migrations; Format migrations; Activity tracking; 
-                    Interoperability
-                </span>
+                <span>Link rot as well as problems and challenges in:</span>
+                    <ul>
+                        <li>Internal data management problems;</li>
+                        <li>System migrations;</li>
+                        <li>Format migrations;</li>
+                        <li>Activity tracking;</li>
+                        <li>Interoperability</li>
+                    </ul>
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
@@ -534,7 +538,7 @@ first component or file.
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-011</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>When a Digital <em>Object</em> or <em>File</em> is replicated, the replicant may 
+                <span>When a Digital <em>Object</em> or <em>File</em> is replicated, the replica may 
                     be assigned a new identifier.
                 </span>
             </cpp:relationshipDescription>
@@ -552,7 +556,7 @@ first component or file.
             <cpp:relationshipType>May be required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>During format migration, the migrated <em>File</em> format may be 
+                <span>During <b>File Migration</b>, the migrated <em>File</em> may be 
                     assigned a new identifier.
                 </span>
             </cpp:relationshipDescription>
