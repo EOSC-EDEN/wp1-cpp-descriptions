@@ -65,6 +65,14 @@ If you are inclined to do so, you can suggest changes to the content of this rep
       * Typographical or spelling corrections  
       * Minor editorial adjustments (punctuation, line breaks, headings)
 
+#### Step-by-step description
+
+The step-by-step description is the most complex among all sections of the CPP documents. You should refer to the [wiki](https://github.com/EOSC-EDEN/wp1-cpp-descriptions/wiki/step-by-step-description) to find additional guidance on how to create or migrate that section.
+
+#### Relationships between CPPs
+
+Relationships between CPPs can be stated in different sections of the document. For more guidance on how to declare relationships, see the [wiki page dedicated to the topic](https://github.com/EOSC-EDEN/wp1-cpp-descriptions/wiki/relationships).
+
 ### Pull Request Process
 
 - Provide context for your changes in the pull request description;
@@ -119,4 +127,6 @@ While you can generate the derived files locally for your own purpose as much as
 
 ### For Repository Owners: Merging Process
 
-- Prefer the "Squash and merge" option to merge multiple commits in a single one. Also the source branch can be removed after successfully merging the PR.
+- When reviewing a PR, if you want to make more than a few comments, please create a branch based on the one you are reviewing, and ask the author to merge it.
+- Prefer the "Squash and merge" option to merge multiple commits in a single one.
+- Tthe source branch can be removed after successfully merging the PR.
