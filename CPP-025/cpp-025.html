@@ -112,60 +112,55 @@
           DIP
         </td></tr><tr><td rowspan="1">Metadata</td><td>
           Technical metadata
-        </td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Data access in digital preservation refers to the ability to retrieve, view, and use preserved
-		digital materials in meaningful ways over extended periods of time. The access as a whole
-		involves several aspects. This CPP concentrates on the aspects within technical
-		accessibility, and leaves out aspects like <b>Enabling Discovery</b> (CPP-024) and delivery
-		methods (e.g. user interfaces and APIs). A TDA must implement access to the data it
-		preserves to consumers that are authorised to access the data in question.</p><p>Technical accessibility means ensuring that digital <em>Files</em> remain readable and usable despite
-		technological change. This requires maintaining compatibility with current systems through
-		<b>File Migration</b> (CPP-014), emulation strategies (CPP-015 <b>Emulation and Rendering
-		Tools</b>), or preservation of legacy hardware and software environments. The preserved data
-		must be retrievable from storage systems and renderable in forms that users can actually
-		engage with.</p><p>From a technical point of view, <b>Enabling Access</b> is about providing <em>DIPs</em> containing the
-		requested data in appropriate <em>Representations</em>. The TDA, upon receiving a request, creates
-		and provides a <em>DIP</em> from one or more <em>AIPs</em> stored in the TDA. The TDA also, if it supports
-		this, provides access to derivatives that are <em>Representations</em> of the preserved data that are
-		specifically created for use, viewing, or interaction, rather than giving them access to the
-		master data. The derivatives can be created at different stages of digital preservation: in
-		pre-ingest phase, during ingest, within the preservation lifespan, or on the fly when the
-		derivative is needed. This approach is TDA-dependent and can be enforced by a policy. In
-		any of these cases, however, the access process should always provide the data in the form
-		of a <em>DIP</em> by a TDA to a consumer (e.g. end user; portal or aggregator; data publication
-		platform or some other service or system communicating with the TDA).</p><p>The accessed data may include restrictions or sensitive, confidential or rights-protected parts
-		(CPP-020 <b>Rights Management</b>). Also, an organisation’s data can be non-public, and/or
-		non-accessible for other organisations. Therefore, access should incorporate authentication
-		and authorisation functions to control who can access what data, implementing necessary
-		restrictions while enabling legitimate use. Restrictions on accessing data (particularly digital
-		<em>Objects</em>) are usually different from restrictions to find and discover data (CPP-024 <b>Enabling
-		Discovery</b>).</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Request for a <em>DIP</em></span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1"></td><td rowspan="1"><span><em>DIP</em> request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA receives a <em>DIP</em> request specifying the type of data to be accessed</span></td><td rowspan="1"><span>Requester info from the request</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="2"></td><td rowspan="2"><span>Requester info from the request</span></td><td class="stepsColumn" rowspan="2"><span>The TDA authenticates the request</span></td><td rowspan="1"><span>Authenticated request (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Rejected request (return rejection message to requester, got to step 4 and then
-					end the process after logging it)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>Requester info from the request</span></td><td class="stepsColumn" rowspan="2"><span>The TDA authorises the request</span></td><td rowspan="1"><span>Authorised request (step4)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1">CPP-020 (Rights Management)</td><td rowspan="1"><span>Rights statement</span></td><td rowspan="1"><span>Rejected request (return rejection message to requester, got to step 4 and then
-					end the process after logging it)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span><em>DIP</em> request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA logs the request for statistical reporting and auditing</span></td><td rowspan="1"><span>Access log</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5a</td><td rowspan="1"></td><td rowspan="1"><span>Authenticated and authorised request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA locates the <em>AIP</em> or set of <em>AIPs</em>, from which the <em>DIP</em> is created</span></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5b</td><td rowspan="1"></td><td rowspan="1"><span>Non-authenticated or unauthorised request</span></td><td class="stepsColumn" rowspan="1"><span>The TDA responds with error</span></td><td rowspan="1"><span>Error response</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6a</td><td rowspan="1"></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td class="stepsColumn" rowspan="1"><span>The TDA ensures that the selected <em>AIP</em> or set of <em>AIPs</em> is valid and intact (e.g. performs checksum validation and other potential checks)</span></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6b</td><td rowspan="1">CPP-020 (Rights Management)</td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td class="stepsColumn" rowspan="1"><span>If the request includes derivatives that should be created, the TDA uses CPP-028 (<b>Creation of Derivatives</b>) to create the copies on the fly (if the TDA supports this)</span></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6c</td><td rowspan="1"></td><td rowspan="1"><span><em>AIP</em> or a set of <em>AIPs</em></span></td><td class="stepsColumn" rowspan="1"><span>The TDA creates a <em>DIP</em> from the <em>AIP</em> or set of <em>AIPs</em> (<em>AIP</em> to DIP transformation) and the potential derivatives</span></td><td rowspan="1"><span>
-              <em>DIP</em>
-            </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6d</td><td rowspan="1"></td><td rowspan="1"><span>
-              <em>DIP</em>
-            </span></td><td class="stepsColumn" rowspan="1"><span>The TDA checks that the created <em>DIP</em> is valid according to its specifications before making it available</span></td><td rowspan="1"><span>
-              <em>DIP</em>
-            </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"><span>
-              <em>DIP</em>
-            </span></td><td class="stepsColumn" rowspan="1"><span>The TDA makes the <em>DIP</em> available to the requester or consumer</span></td><td rowspan="1"><span>Delivered <em>DIP</em></span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Data access is an essential functionality of a TDA, because of
-				its purpose to maintain	the long-term availability of the
-				preserved information. Preservation aims to ensure that information
-				remains discoverable, accessible and usable.</span></td><td><span>Without access, digital preservation becomes just an expensive storage.
-				Thus, the TDA fails to fulfill its purpose to maintain the long-term
-				availability of digital <em>Objects</em> over time.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-002</td><td>Checksum Validation</td><td><span>During the access process, the fixity of the provided digital
-				<em>Object</em> is validated.</span></td></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>Accessing digital <em>Objects</em>, <em>Files</em> or <em>Metadata</em> should be
-				based on identifiers as parameters.</span></td></tr><tr><td>CPP-020</td><td>Rights Management</td><td><span>The TDA must assess access rights to check it is
-				authorised to provide access to the requester.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-015</td><td>Emulation and Rendering Tools</td><td><span>The access request is the trigger to invoke the rendering process or start up
-				the emulated environment.</span></td></tr><tr><td>Required by</td><td>CPP-017</td><td>Disposal</td><td><span>Disposal prevents access to the <em>Objects</em>. Also, preventing access can be
-				considered as "logical disposal".</span></td></tr><tr><td>Required by</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>The request for access can trigger the creation of a derivative
-				for rendering purposes (e.g. derivatives may be created on
-				the fly if Access cannot rely on an existing derivative).</span></td></tr><tr><td>Affinity with</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>Access of contents includes providing <em>Provenance</em> metadata, statistical
-				data and quality reports to the consumer.</span></td></tr><tr><td>Affinity with</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span><em>DIPs</em> should conform to the quality aspects specified by the TDA.</span></td></tr><tr><td>Affinity with</td><td>CPP-024</td><td>Enabling Discovery</td><td><span>Enabling Discovery is about making data findable, while Enabling Access
-				is about providing the data to a consumer. Data may have different
-				restrictions for discovery and access.</span></td></tr><tr><td>Not to be confused with</td><td>CPP-006</td><td>AIP Batch Export</td><td><span>Enabling Access does not export the data from TDA.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+        </td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Data access in digital preservation refers to the ability to retrieve, view, and use
+      preserved digital materials in meaningful ways over extended periods of time. The access as a
+      whole involves several aspects. This CPP concentrates on the aspects within technical
+      accessibility, and leaves out aspects like <b>Enabling Discovery</b> (CPP-024) and delivery
+      methods (e.g. user interfaces and APIs). A TDA must implement access to the data it preserves
+      to consumers that are authorised to access the data in question.</p><p>Technical accessibility means ensuring that digital <em>Files</em> remain readable and usable
+      despite technological change. This requires maintaining compatibility with current systems
+      through <b>File Migration</b> (CPP-014), emulation strategies (CPP-015 <b>Emulation and
+      Rendering
+        Tools</b>), or preservation of legacy hardware and software environments. The preserved data
+      must be retrievable from storage systems and renderable in forms that users can actually
+      engage with.</p><p>From a technical point of view, <b>Enabling Access</b> is about providing <em>DIPs</em>
+      containing the requested data in appropriate <em>Representations</em>. The TDA, upon receiving
+      a request, creates and provides a <em>DIP</em> from one or more <em>AIPs</em> stored in the
+      TDA. The TDA also, if it supports this, provides access to derivatives that are <em>
+      Representations</em> of the preserved data that are specifically created for use, viewing, or
+      interaction, rather than giving them access to the master data. The derivatives can be created
+      at different stages of digital preservation: in pre-ingest phase, during ingest, within the
+      preservation lifespan, or on the fly when the derivative is needed. This approach is
+      TDA-dependent and can be enforced by a policy. In any of these cases, however, the access
+      process should always provide the data in the form of a <em>DIP</em> by a TDA to a consumer
+      (e.g. end user; portal or aggregator; data publication platform or some other service or
+      system communicating with the TDA).</p><p>The accessed data may include restrictions or sensitive, confidential or rights-protected
+      parts (CPP-020 <b>Rights Management</b>). Also, an organisation’s data can be non-public,
+      and/or non-accessible for other organisations. Therefore, access should incorporate
+      authentication and authorisation functions to control who can access what data, implementing
+      necessary restrictions while enabling legitimate use. Restrictions on accessing data
+      (particularly digital <em>Objects</em>) are usually different from restrictions to find and
+      discover data (CPP-024 <b>Enabling
+        Discovery</b>).</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Request for a <em>DIP</em></span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Data access is an essential functionality of a TDA, because of
+          its purpose to maintain the long-term availability of the
+          preserved information. Preservation aims to ensure that information
+          remains discoverable, accessible and usable.</span></td><td><span>Without access, digital preservation becomes just an expensive storage. Thus, the TDA
+          fails to fulfill its purpose to maintain the long-term availability of digital <em>Objects</em>
+          over time.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-002</td><td>Checksum Validation</td><td><span>During the access process, the fixity of the provided digital <em>Object</em> is
+          validated.</span></td></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>Accessing digital <em>Objects</em>, <em>Files</em> or <em>Metadata</em> should be
+          based on identifiers as parameters.</span></td></tr><tr><td>CPP-020</td><td>Rights Management</td><td><span>The TDA must assess access rights to check it is
+          authorised to provide access to the requester.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-015</td><td>Emulation and Rendering Tools</td><td><span>The access request is the trigger to invoke the rendering process or start up
+          the emulated environment.</span></td></tr><tr><td>Required by</td><td>CPP-017</td><td>Disposal</td><td><span>Disposal prevents access to the <em>Objects</em>. Also, preventing access can be
+          considered as "logical disposal".</span></td></tr><tr><td>Required by</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>The request for access can trigger the creation of a derivative
+          for rendering purposes (e.g. derivatives may be created on
+          the fly if Access cannot rely on an existing derivative).</span></td></tr><tr><td>Affinity with</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>Access of contents includes providing <em>Provenance</em> metadata, statistical data
+          and quality reports to the consumer.</span></td></tr><tr><td>Affinity with</td><td>CPP-019</td><td>Data Quality Assessment</td><td><span><em>DIPs</em> should conform to the quality aspects specified by the TDA.</span></td></tr><tr><td>Affinity with</td><td>CPP-024</td><td>Enabling Discovery</td><td><span>Enabling Discovery is about making data findable, while Enabling Access
+          is about providing the data to a consumer. Data may have different
+          restrictions for discovery and access.</span></td></tr><tr><td>Not to be confused with</td><td>CPP-006</td><td>AIP Batch Export</td><td><span>Enabling Access does not export the data from TDA.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
-                        </a></td><td><span>Access</span></td><td><span>R01 The repository has an explicit mission to provide access to and preserve digital objects.</span><br></br><span>R03 The Repository has a plan to ensure ongoing access to and preservation of its data and metadata.</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                        </a></td><td><span>Access</span></td><td><span>R01 The repository has an explicit mission to provide access to and preserve digital
+          objects.</span><br></br><span>R03 The Repository has a plan to ensure ongoing access to and preservation of its data
+          and metadata.</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
                         </a></td><td><span>Access</span></td><td><span>C4 Access</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link

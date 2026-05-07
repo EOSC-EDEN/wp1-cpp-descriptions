@@ -227,169 +227,169 @@
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
                 <cpp:stepGroup type="alternative" label="Alternative triggers">
-            <cpp:step stepNumber="1a">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            Quality reports 
-                        </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-004</cpp:supplier>
-                    <cpp:supplier>CPP-027</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        TDA finds out, from management events or other triggering events,
-                        that an <em>AIP</em> or <em>File</em> is corrupted and is not recoverable. The TDA
-                        decides to dispose of it.
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            Disposal request
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1b">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            Changes to the needs of the designated community
-                        </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-018</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        The designated community no longer has a need for the data, it is
-                        demonstrably not making any use of the data, and there is no expectation 
-                        that it will make any future use of the data. Therefore, the TDA decides to 
-                        dispose of the data.
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            Disposal request
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1c">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            Quality reports
-                        </span>
-                    </cpp:inputElement>
-                    <cpp:supplier>CPP-019</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        The quality of the data no longer meets the minimum requirements of the 
-                        designated community or the data is available in an alternative and higher quality
-                        version or format. Therefore, the TDA decides to dispose of the data.
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            Disposal request
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1d">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            Quality reports
-                        </span>
-                    </cpp:inputElement>                    
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            Intellectual property change
-                        </span>
-                    </cpp:inputElement>                    
-                    <cpp:supplier>CPP-020</cpp:supplier>
-                </cpp:input>
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            Risk detection
-                        </span>
-                    </cpp:inputElement>                    
-                    <cpp:supplier>CPP-023</cpp:supplier>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        TDA gets a trigger event indicating that an <em>AIP</em> or <em>File</em> needs 
-                        to be disposed of.
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            Disposal request
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            <cpp:step stepNumber="1e">
-                <cpp:input>
-                    <cpp:inputElement>
-                        <span>
-                            Appraisal reports 
-                        </span>
-                    </cpp:inputElement>
-                </cpp:input>
-                <cpp:stepDescription>
-                    <span>
-                        The retention period of the data has been fulfilled according to the
-                        appraisal or reappraisal of the data.
-                    </span>
-                </cpp:stepDescription>
-                <cpp:output>
-                    <cpp:outputElement>
-                        <span>
-                            <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
-                        </span>
-                    </cpp:outputElement>
-                </cpp:output>
-            </cpp:step>
-            </cpp:stepGroup>
+                    <cpp:step stepNumber="1a">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    Quality reports 
+                                </span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-004</cpp:supplier>
+                            <cpp:supplier>CPP-027</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>
+                                TDA finds out, from management events or other triggering events,
+                                that an <em>AIP</em> or <em>File</em> is corrupted and is not recoverable. The TDA
+                                decides to dispose of it.
+                            </span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    Storage management information (list of affected <em>AIPs</em>, <em>Files</em>)
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    Disposal request
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="1b">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    Changes to the needs of the designated community
+                                </span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-018</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>
+                                The designated community no longer has a need for the data, it is
+                                demonstrably not making any use of the data, and there is no expectation 
+                                that it will make any future use of the data. Therefore, the TDA decides to 
+                                dispose of the data.
+                            </span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    Disposal request
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="1c">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    Quality reports
+                                </span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-019</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>
+                                The quality of the data no longer meets the minimum requirements of the 
+                                designated community or the data is available in an alternative and higher quality
+                                version or format. Therefore, the TDA decides to dispose of the data.
+                            </span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    Disposal request
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="1d">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    Quality reports
+                                </span>
+                            </cpp:inputElement>                    
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    Intellectual property change
+                                </span>
+                            </cpp:inputElement>                    
+                            <cpp:supplier>CPP-020</cpp:supplier>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    Risk detection
+                                </span>
+                            </cpp:inputElement>                    
+                            <cpp:supplier>CPP-023</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>
+                                TDA gets a trigger event indicating that an <em>AIP</em> or <em>File</em> needs 
+                                to be disposed of.
+                            </span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    Disposal request
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="1e">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>
+                                    Appraisal reports 
+                                </span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>
+                                The retention period of the data has been fulfilled according to the
+                                appraisal or reappraisal of the data.
+                            </span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>
+                                    <em>Storage management information</em> (list of affected <em>AIPs</em>, <em>Files</em>)
+                                </span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                </cpp:stepGroup>
             <cpp:step stepNumber="2">
                 <cpp:input>
                     <cpp:inputElement>
@@ -603,8 +603,8 @@
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
-            </cpp:stepGroup>
-        </cpp:stepByStepDescription>
+        </cpp:stepGroup>
+    </cpp:stepByStepDescription>
     </cpp:process>
     <cpp:rationaleWorstCase>
         <cpp:purpose>

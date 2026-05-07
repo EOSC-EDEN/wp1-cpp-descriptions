@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
+    ID="CPP-020" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Rights management</cpp:label>
+        <cpp:authors>
+            <cpp:author>Bertrand Caron</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Johan Kylander</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+            <cpp:evaluator>Maria Benauer</cpp:evaluator>
+            <cpp:evaluator>Matthew Addis</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-03-26</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>The TDA manages rights related to the Information Objects, both for agents inside its scope
+(access, migrate, etc.) and for end users (access, reuse, etc.)</cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Administration</cpp:oaisClassification>
+        <cpp:logicalClassification>Other Activities</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>Rights Management is the process of performing rights assessments for <em>Objects</em>
+            and <em>Metadata</em> preserved by the TDA, and managing a rights registry that
+            describes rights basis applicable to these. The rights assessment process must
+            investigate and, if possible, obtain rights applying to both the TDA for retaining and
+            performing its preservation activities, and the consumer for accessing and reusing the <em>
+            Objects</em>.</p>
+        <p>The entity responsible for creating rights statements is the TDA, based on input from the
+            rights stakeholders. Managing rights can be complex and involve multiple and conflicting
+            perspectives. For example, a TDA will typically seek the rights to preserve its holdings
+            and provide open access to the widest possible community, but it also needs to respect
+            rights that limit what it can do and what access it can provide (e.g. data privacy under
+            GDPR). This adds extra complexity, for example a TDA will often be a data processor for
+            the data it is holding and providing access to on behalf of others, but it may also be a
+            data controller if ownership has been assigned to it or if it is directly involved in
+            data collection. Furthermore, in order to perform its mission, it may collect further
+            data about its users (e.g. to allow it to better understand and meet the needs of its
+            designated community) and this usage data also has rights associated with it.</p>
+        <p>The process of rights assessment consists in determining the rights status of a specific <em>
+            Object</em> or <em>Metadata</em> regarding different rights basis. Rights basis, as
+            defined as PREMIS, are of different types:</p>
+        <ul>
+            <li>Copyright and intellectual property</li>
+            <li>Laws</li>
+            <li>Licenses</li>
+            <li>Patents</li>
+            <li>TDA institutional policies</li>
+            <li>Contracts and service level agreements with the TDA partners</li>
+            <li>Etc.</li>
+        </ul>
+        <p>The output of rights assessment is a rights statement that defines:</p>
+        <ul>
+            <li>The rights basis applicable to the <em>Object</em> and <em>Metadata</em>;</li>
+            <li>The period of time during which the <em>Object</em> is governed by said rights
+                basis;</li>
+            <li>The rules these rights basis prescribe.</li>
+        </ul>
+        <p>Rules are actions (e.g. migrate, give access to, reuse, share, etc.) allowed, prohibited
+            or required by a certain agent (e.g. rights holder, grantor, data controller etc.) to a
+            certain agent (i.e. assignee), and conditions or restrictions limiting the scope of such
+            rules. Among these actions, retention is a crucial one that might be limited in time as <em>
+            Objects</em> may be subject to a retention schedule. After that time they can become a
+            liability and may be deleted.</p>
+        <p>The output of Rights Management is used to define the rights of the TDA to perform
+            several other processes. Only the most obvious ones are mentioned as direct customers
+            for the rights statement: Ingest, Enabling Access, Format Migration, Normalisation, File
+            Repair, Enabling Discovery, and Disposal. In other words, TDAs must ensure to obtain the
+            right to perform preservation actions from laws, licenses or explicit rights assignment
+            from rights stakeholders (i.e. rights holders, data subjects, data controllers,
+            regulators, funding bodies, etc.). They should also clarify to their consumers the
+            actions they are allowed to perform with the <em>Objects</em>. This implies that TDAs
+            must provide rights statements to the consumers.</p>
+        <p>Although Rights statements are commonly attached to Intellectual Entities (IE), they may
+            also apply to specific Representations of such IEs. They should also apply to all <em>
+            Metadata</em> provided to internal users or consumers, in particular to discovery <em>
+            Metadata</em>. This is especially important in cases where the <em>Metadata</em>
+            contains personal data. Complying with the restrictions set in rights statements forms a
+            part of how a TDA manages information security.</p>
+        <p>Rights management, as the production of rights statements, is a recurrent activity. A
+            minimal rights assessment must be performed at the ingest phase, but a more
+            comprehensive assessment may be postponed to a later time in the <em>Object</em>’s life
+            cycle, in particular, when a request for access is made to the TDA. In some cases the
+            outcome of a rights assessment process triggers a TDA to facilitate the update and
+            management of <em>Metadata</em> (e.g. cases where data must be pseudonymised or
+            anonymised) or even disposal, if the legal basis for preserving the data has changed.
+            External events can also trigger rights re-assessment activities (e.g. legislative holds
+            for compliance reasons, changes in consent, or notifications of possible infringement
+            for example copyright). In other cases, rights management can trigger or schedule
+            changes in access given to <em>Objects</em> for a designated community (e.g. embargoes
+            and leases on research data). A lease is the opposite of an embargo. An embargo
+            restricts access until a given time, for example a dataset can be publicly accessible
+            but only after a given date. A lease says that a dataset can be made accessible but only
+            before a given date and afterwards access is restricted or removed. Likewise, rights may
+            inform retention schedules that trigger future events such as transfer or disposal.
+            Therefore, it is important that the temporal aspect of rights are properly tracked and
+            managed.</p>
+        <p>A single rights basis usually applies to several <em>Objects</em> or <em>Metadata</em>
+            (e.g. a Creative Commons license). Thus, the Rights Management process also consists in
+            managing a rights basis registry.</p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Object</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Descriptive metadata</cpp:metadataElement>
+                <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:metadata>
+                <cpp:metadataElement>Optional: Rights metadata</cpp:metadataElement>
+            </cpp:metadata>
+            <cpp:guidance>
+                <cpp:guidanceElement>Rights statement</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Appraisal or re-appraisal</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Any process that requires rights clearance to act upon an <em>Object</em>,
+                        if a comprehensive rights assessment was not performed at ingest</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-014</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-026</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-027</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-024</cpp:correspondingCPP>
+                <cpp:correspondingCPP>CPP-017</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>In particular, access request </span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Revision after the end of a fixed-term rule (e.g. embargo, lease, etc.)</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Changes in legislation, changes in consent, infringement or take down
+                        requests, etc.</span>
+                </cpp:description>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:stepGroup type="sequence">
+                <cpp:step stepNumber="1">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Object</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Metadata</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Input from producer, rights holder and data controller</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Determine which rights basis apply to the <em>Object</em> or <em>
+                            Metadata</em></span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Applicable rights basis</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Applicable rights basis</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Input from producer, rights holder and data controller</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Determine (if possible by negotiation with producer, rights holder and
+                            data controller) the rules implied by the rights basis (action,
+                            assignee, duration, restrictions or conditions)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Applicable rules</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Applicable rights basis</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Input from producer, rights holder and data controller</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Determine (if possible by negotiation with producer, rights holder and
+                            data controller) the applicable dates of the rights basis (start and end
+                            date)</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Time-delimited status</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Applicable rights basis</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Applicable rules</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Time-delimited status</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If needed (depending on the the existing status of the <em>Object</em>
+                            and the applicable rights basis and rules) negotiate with the producer
+                            new rights assignment</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>New rights basis (e.g. contract, license, etc.)</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="5" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>New rights basis (e.g. contract, license, etc.)</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If a new rights basis had to be created (e.g. a new contract, new
+                            license, etc.), preserve its complete documentation</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Rights basis documentation</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="6">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Object</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Applicable rights basis</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Applicable rules</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Time-delimited status</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Associate the <em>Object</em> with the rights statement</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Rights statement</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-025</cpp:customer>
+                        <cpp:customer>CPP-029</cpp:customer>
+                        <cpp:customer>CPP-014</cpp:customer>
+                        <cpp:customer>CPP-026</cpp:customer>
+                        <cpp:customer>CPP-027</cpp:customer>
+                        <cpp:customer>CPP-024</cpp:customer>
+                        <cpp:customer>CPP-017</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="7" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Rights statement</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>Optionally, encode / map rights statement into machine-actionable form
+                            and record it as Rights metadata</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Rights metadata</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-016</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="8" optional="true">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>
+                                <em>Metadata</em>
+                            </span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>Information Packages</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>If the updated rights statement requires, trigger one of the following
+                            processes:</span>
+                        <ul>
+                            <li><em>Metadata</em> must be anonymised (or pseudonymised)</li>
+                            <li>Disposal of Information packages</li>
+                            <li>Grant / deny access to a specific community.</li>
+                        </ul>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span></span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-016</cpp:customer>
+                        <cpp:customer>CPP-017</cpp:customer>
+                        <cpp:customer>CPP-025</cpp:customer>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>A minimal rights assessment at the ingest phase is required, although a more
+                    comprehensive process may be carried out at a later time in the <em>Object</em>
+                    life cycle.</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>Without rights assessment, a TDA might be incapable of performing preservation
+                    actions.</span>
+                <span>Its consumers might be discouraged to use the <em>Object</em> if no explicit
+                    rights statement is provided by the TDA.</span>
+                <span>The TDA might be exposed to liability or legal and financial harm.</span>
+                <span>The TDA may end up retaining data for longer than needed or allowed, which can
+                    increase costs (e.g. storage).</span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Any information regarding the rights for the TDA and the end users needs to be
+                    stored and should be searchable and retrievable for all data.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>The TDA must assess access rights to check if it is authorised to provide
+                    access to the requester.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>Some minimal rights assessment must be performed during ingest to verify that
+                    the TDA should be in charge of preserving the content of the SIP.</span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Rights management</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>R02. The repository maintains all applicable rights and monitors compliance</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Monitor[ing] and document[ing] conformity with relevant regulations</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>C7 Legal conformity</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>/</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>3.5.1.1 The repository shall have contracts or deposit agreements which
+                    specify and transfer to it all necessary preservation rights, and those rights
+                    transferred shall be documented.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>No exact matching term exists in the OAIS functional model.</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>Among many rights considerations, OAIS reserves a specific treatment to Access
+                    RIghts Information in its informational model (section 4.3.2.4.3 “Preservation
+                    Description Information”). In addition, the section 3.3.3 “Obtains sufficient
+                    control for long term preservation” describes one of the OAIS’ responsibilities,
+                    providing some insights into the rights management process for the TDA internal
+                    needs.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>No exact matching term exists in PREMIS</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>PREMIS describes all metadata elements required to describe a comprehensive
+                    rights statement in its section on the Rights Entity. The topic of rights
+                    management is also covered in another section, “More on Rights”.</span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:useCases>
+            <cpp:useCase>
+                <cpp:useCasetitle>Negotiating Rights for Born-Digitals at the National Library of France</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Bibliothèque nationale de France (BnF), France</cpp:institutionLabel>
+                    <cpp:institutionCountry>FR</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>/</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>The born-digital acquisitions and donations process at the National
+                        Library of France collects <em>Objects</em> from creators (filmmakers,
+                        graphic designers, photographs, etc.). The <em>Objects</em> aim to document
+                        the creative processes that eventually produced a work of art, some of which
+                        being collective. Rights of different nature may apply to these archives.
+                        Therefore, the process includes a mandatory step consisting in assessing
+                        rights applicable to the collected <em>Objects</em>.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>The assessment usually leads to the signature of a contract which allows
+                        BnF to collect, copy, give access, migrate and exhibit <em>Objects</em>. In
+                        the case where the producer released the <em>Object</em> under an open
+                        license, it may allow BnF to perform such actions on the content without
+                        negotiating an explicit contract with the rights holder(s).</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>Rights negotiations cover primarily access rights (remotely and without
+                        any restriction via the digital library Gallica, on-premise via Gallica
+                        Intra Muros or on the library’s public workstations via an access request),
+                        retrieval (download) and reuse rights.</span>
+                </cpp:proposedSolution>
+            </cpp:useCase>
+        </cpp:useCases>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>TIB – Leibniz Information Centre for Science and Technology and University Library</cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-ADMAdministrativemetadata"</cpp:hyperlink>
+                <cpp:comment>Rights metadata</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>CSC – IT Center for Science Ltd.</cpp:institutionLabel>
+                <cpp:institutionCountry>FI</cpp:institutionCountry>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="fi">
+                <cpp:hyperlink>https://urn.fi/urn:nbn:fi-fe2024051731943</cpp:hyperlink>
+                <cpp:comment>Service contracts</cpp:comment>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://digitalpreservation.fi/en/toms</cpp:hyperlink>
+                <cpp:comment>Technical and Organisational Measures in the Digital Preservation Services</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights</cpp:hyperlink>
+                <cpp:comment>Rights statements</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Rosetta</cpp:institutionLabel>
+                <cpp:institutionCountry>IL</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights</cpp:hyperlink>
+                <cpp:comment>Acess rights</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>

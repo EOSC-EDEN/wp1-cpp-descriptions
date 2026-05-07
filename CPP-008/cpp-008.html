@@ -105,7 +105,7 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-008_File_Format_Identification</title></head><body><div class="introSection"><div class="title"><h1>File Format Identification (CPP-008)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-008</td></tr><tr><td>CPP-Label</td><td>File Format Identification</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer, Laura Molloy</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-12-10</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
+                </style><title>EOSC-EDEN_CPP-008_File_Format_Identification</title></head><body><div class="introSection"><div class="title"><h1>File Format Identification (CPP-008)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-008</td></tr><tr><td>CPP-Label</td><td>File Format Identification</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer, Laura Molloy</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-12-10</td><td>Migration to XML</td></tr><tr><td class="history">Version 1.2.0 - 2026-04-07</td><td>Added step group and sanitised step numbering</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
         The TDA identifies file formats to the appropriate level of precision,
         based on an existing registry (IANA MIME types, PRONOM, etc.). 
     </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>File</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>
@@ -115,11 +115,9 @@
                     Technical metadata (format identifier(s), accompanied by a registry identifier)
                 </td></tr><tr><td>
                     Provenance metadata (date; outcome (i.e. success or failure ); tool, version and output)
-                </td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p> According to PREMIS, a format is defined as <em>“a specific, pre-established structure
-            for the
-                organization of a digital file or bitstream”</em> and <em>“has to correspond to some
-            formal or informal
-                specification”</em> [ <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                </td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p> According to PREMIS, a format is defined as <em>“a specific, pre-established structure for the
+            organization of a digital file or bitstream”</em> and <em>“has to correspond to some formal or informal
+            specification”</em> [ <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
             https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf</a> - p. 249 “Format
             information”]. In other words, a format defines how information is stored and structured
             within a digital <em>File</em>. The format of a <em>File</em> is essential evidence to
@@ -129,29 +127,21 @@
             reasons:
         </p><ul>
             <li>
-                Format migration is driven by the source format information and requires format
-                identification
+                Format migration is driven by the source format information and requires format identification
                 to validate the migration process outcome;
             </li>
-            <li> Metadata extraction needs the format identifier to select the tools that extract
-                the <em>Metadata</em>; </li>
-            <li> Risk identification relies on the format information and Technical metadata of the <em>
-                File</em>. </li>
-            <li>
-                The choice between rendering or emulation can be driven by a format identifier.
-            </li>
+            <li>Metadata extraction needs the format identifier to select the tools that extract the <em>Metadata</em>; </li>
+            <li>Risk identification relies on the format information and Technical metadata of the <em> File</em>. </li>
+            <li>The choice between rendering or emulation can be driven by a format identifier.</li>
         </ul><p> There exists a vast number of file formats and format versions and many of them are
             registered in <em>File Format Registries</em>. These registries collect knowledge about
             known formats such as name, version, reference documentation, signature, etc. The format
             identification process depends on one or more registries for detecting possible file
             formats and gathering detailed information about a format. </p><p>
             The maintenance of format registries is generally a community effort and external to the
-            TDA. Some organisations have opted to maintain an in-house format registry, which
-            requires
-            specialised resources and a significant amount of digital preservation experience. In
-            any
-            case, recording the file format identifiers from the format registries is recommended.
-            Among
+            TDA. Some organisations have opted to maintain an in-house format registry, which requires
+            specialised resources and a significant amount of digital preservation experience. In any
+            case, recording the file format identifiers from the format registries is recommended. Among
             external registries, the following are particularly notable:
         </p><ul>
             <li> IANA (Media types); [ <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">
@@ -160,32 +150,22 @@
                 https://www.nationalarchives.gov.uk/PRONOM/Default.aspx</a>] </li>
             <li>Wikidata; [ <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Informatics/Structures/File_formats">
                 https://www.wikidata.org/wiki/Wikidata:WikiProject_Informatics/Structures/File_formats</a>
-                ]
-            </li>
+                ] </li>
             <li>Library of Congress (Format Descriptions); [ <a href="https://www.loc.gov/preservation/digital/formats/fdd/descriptions.shtml">
                 https://www.loc.gov/preservation/digital/formats/fdd/descriptions.shtml</a>] </li>
         </ul><p> Format identification is typically performed by the detection of format signatures (i.e.
             one or more byte sequences at relative positions at the beginning or the end of a <em>
             File</em>). This method prevents scanning the entire File and ensures reasonable
             performance even for large Files. </p><p>
-            The format identification may result in 0, 1 or multiple candidate file formats. Hence,
-            the
-            outcome of the format identification process may not be singular, or decisive (e.g. as
-            in the
-            case of generic file formats like text files, XML documents or ZIP archives). In such
-            cases,
-            additional tools (e.g. other format identification tools, schema validators, content
-            scanners,
-            etc.) may be employed to enrich the results and facilitate the selection of the most
-            probable
-            format. The application of identification tools can therefore be a simple procedure as
-            well as
-            a more complex workflow involving a cascade or parallel execution of multiple tools and
-            a
-            decision tree. It is up to the TDA to decide the level of complexity that is appropriate
-            in the
-            implementation of this step (driven by their context and requirements) in order to
-            achieve the
+            The format identification may result in 0, 1 or multiple candidate file formats. Hence, the
+            outcome of the format identification process may not be singular, or decisive (e.g. as in the
+            case of generic file formats like text files, XML documents or ZIP archives). In such cases,
+            additional tools (e.g. other format identification tools, schema validators, content scanners,
+            etc.) may be employed to enrich the results and facilitate the selection of the most probable
+            format. The application of identification tools can therefore be a simple procedure as well as
+            a more complex workflow involving a cascade or parallel execution of multiple tools and a
+            decision tree. It is up to the TDA to decide the level of complexity that is appropriate in the
+            implementation of this step (driven by their context and requirements) in order to achieve the
             most accurate and detailed format identification result.
         </p><p> All details about the File Format Identification process as well as its output(s) must
             be recorded (e.g. tools and tool versions used, identification method used, results,
@@ -193,13 +173,10 @@
             information about the format of a <em>File</em> (e.g. format identifier, format name,
             preferred file extensions, etc.) and will be stored in the <em>Provenance metadata</em>. </p><p>
             The TDA should have a procedure in place to deal with inconclusive format identification
-            results (e.g. multiple possible format identifications possible; no format could be
-            identified
+            results (e.g. multiple possible format identifications possible; no format could be identified
             [ Results can also be unsatisfying (e.g. unrecognised Files being categorised as
-            “application/octet-stream”) or not precise enough (e.g. EPUB Files being categorised as
-            ZIPs).];
-            format identified, but file extension does not match the format, etc.). Measures for
-            these
+            “application/octet-stream”) or not precise enough (e.g. EPUB Files being categorised as ZIPs).];
+            format identified, but file extension does not match the format, etc.). Measures for these
             ‘format identification exceptions’ could include instructions, such as:
         </p><ul>
             <li> Keep the results as-is, but add annotations on the issue in the <em>Technical</em>
@@ -223,27 +200,7 @@
             and typically performed by CPP-009 <b>Metadata extraction</b>. </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span> A new <em>SIP</em> is submitted and processed </span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>
                         <em>File</em> update or replacement due to a <em>Preservation Action</em>
                         (e.g. migration) </span></td><td>CPP-014 (File Migration)</td></tr><tr><td><span> Any other action that results in a new or updated <em>File</em> to be
-                        added to the system </span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="3">1</td><td rowspan="1"></td><td rowspan="1"><span>
-                            <em>File</em>
-                        </span></td><td class="stepsColumn" rowspan="3"><span>Apply the format identification tool(s) on the <em>File</em>
-                    </span></td><td rowspan="3"><span>File format identification information</span></td><td rowspan="3"></td></tr><tr><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>
-                            File format policy - Identification
-                        </span></td></tr><tr><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Tool: <a href="https://coptr.digipres.org/index.php/File_Format_Identification">format
-                            identification tool</a>
-                        </span></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="2"></td><td rowspan="2"><span>File format identification information</span></td><td class="stepsColumn" rowspan="2"><span>Parse and evaluate its output</span></td><td rowspan="1"><span>File format identification successful (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>File format could not be identified (step 2a)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="5">2a</td><td rowspan="1"></td><td rowspan="1"><span>File format identification information</span></td><td class="stepsColumn" rowspan="5"><span>Analyse the format identification information and decide on next steps</span></td><td rowspan="1"><span>A gap in the format registry is identified (step 2a- optional)</span></td><td rowspan="1"></td></tr><tr><td rowspan="4"></td><td rowspan="4"><span>File format policy - Identification</span></td><td rowspan="1"><span>Need for configuration update identified (step 2a- optional)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Manual file format identification possible (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Mark the <em>File</em> for later review and add the reason for review
-                            to the event information (step 5)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Reject the <em>File</em> (step 5)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2a-optional</td><td rowspan="2"></td><td rowspan="2"><span>
-                            <em>File</em>
-                        </span></td><td class="stepsColumn" rowspan="2"><span>Contribute to format registries by providing sample File to the registry
-                        administrators</span></td><td rowspan="1"><span>
-                            <em>File</em> samples</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Registry update request and/or signature submission</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2a-optional</td><td rowspan="1"></td><td rowspan="1"><span>Format Identification Tool</span></td><td class="stepsColumn" rowspan="1"><span>Update system configuration</span></td><td rowspan="1"><span>New configuration settings</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>File format information</span></td><td class="stepsColumn" rowspan="2"><span>Check if the file format is a container format and the policy requires its
-                        content to be extracted</span></td><td rowspan="1"><span>Extraction required (e.g. as part of the ingest processing):
-                            extract <em>File</em>, ingest it and start identification process anew
-                            (step 1). This loop can be repeated as many times as needed.</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>File format policy - Identification</span></td><td rowspan="1"><span>No extraction required (step 4)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span>File format information</span></td><td class="stepsColumn" rowspan="1"><span>Store the file format information in the <em>File's Technical metadata</em>
-                    </span></td><td rowspan="1"><span>Format information in <em>Technical metadata</em>
-                        </span></td><td rowspan="1">CPP-009 (Metadata Extraction)<hr></hr>CPP-010 (File Format Validation)<hr></hr>CPP-014 (File Migration)</td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Register a format identification event containing the tool(s) name
-                        and version and the(ir) outcome(s)</span></td><td rowspan="1"><span>
-                            <em>Provenance metadata</em>
-                        </span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Identify the <em>File's</em> format and store it with the <em>File's Technical
+                        added to the system </span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Identify the <em>File's</em> format and store it with the <em>File's Technical
                     metadata</em> during the <em>Object's</em> life cycle in the TDA</span></td><td><span>
                     <em>Files</em> becoming obsolete; impossibility to extract <em>Technical
                     metadata</em>; <em>File</em> being overlooked when identifying <em>
@@ -258,8 +215,7 @@
                     validation tool.</span></td></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>File format identification reports are required for a TDA to enable it to
                     manage its content.</span></td></tr><tr><td>Required by</td><td>CPP-014</td><td>File Migration</td><td><span>Format Migration needs to know the source format to aid application of the
                     appropriate migration plan.</span></td></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Format information needs to be stored with the <em>File's Technical metadata</em>
-                    .
-                </span></td></tr><tr><td>Required by</td><td>CPP-023</td><td>Risk Definition and Extraction</td><td><span>Risks can be related to a file format generic properties and concern all
+                    . </span></td></tr><tr><td>Required by</td><td>CPP-023</td><td>Risk Definition and Extraction</td><td><span>Risks can be related to a file format generic properties and concern all
                     instances of it.</span></td></tr><tr><td>Required by</td><td>CPP-026</td><td>File Normalisation</td><td><span>The format information of the File in question is one of the deciding input
                     parameters when considering File Normalisation.</span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>File formation identification is one of the core processes that must be
                     performed during ingest.</span></td></tr><tr><td>Required by</td><td>CPP-010</td><td>File Format Validation</td><td><span>CPP-008 is only about identifying the format while CPP-010 describes full
@@ -271,7 +227,7 @@
                     mentioned under R0(5) Levels of Curation.</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
                         </a></td><td></td><td><span>Nestor Seal does not explicitly mention Format Identification but this process
-                    is in scope, and sets the ground for C30 <em>Technical metadata</em>. </span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                    is in scope, and sets the ground for C30 <em>Technical metadata</em>.</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link
                         </a></td><td><span>"identify the file type"</span></td><td><span>4.2.5.1 "The repository shall have tools or methods to identify the file type
                     of all submitted Data Objects"</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
