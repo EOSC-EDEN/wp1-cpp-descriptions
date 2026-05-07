@@ -16,6 +16,10 @@
     <xsl:variable name="languages" select="document('languages.xml')" />
     <xsl:variable name="cpps" select="document('cpps.xml')" />
 
+    <xsl:param name="base-hue">210</xsl:param>
+    <xsl:param name="base-lightness">100</xsl:param>
+    <xsl:param name="lightness-step">10</xsl:param>
+
     <xsl:template match="/cpp:cpp">
 
         <xsl:variable name="CPP" select="@ID"></xsl:variable>
@@ -135,7 +139,7 @@
                     <xsl:text>_</xsl:text>
                     <xsl:value-of select="translate($LABEL,' ','_')" />
                 </title>
-            </head>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />            </head>
             <body>
 
                 <xsl:call-template name="IntroSection">
@@ -523,10 +527,8 @@
                 <th>Customer</th>
             </tr>
 
-            <xsl:for-each select="$data/cpp:step">
-                <xsl:call-template name="stepRow">
-                    <xsl:with-param name="data" select="." />
-                </xsl:call-template>
+            <xsl:for-each select="$data/cpp:stepGroup">
+                <xsl:apply-templates select="." mode="group" />
             </xsl:for-each>
 
         </table>
@@ -1059,12 +1061,122 @@
         </xsl:if>
     </xsl:template>
 
-    <!-- Generic template for a single step -->
-    <xsl:template name="stepRow">
-        <xsl:param name="data" />
+    <!-- Generic template for a step group -->
+    <xsl:template match="cpp:stepGroup" mode="group">
+        <xsl:param name="depth" select="0" />
+        <xsl:param name="parent-color" />
+        <!-- auto-numbering: concatenate parent number with position among siblings
+        <xsl:param name="my-number" select="''" />
+        -->
 
-        <xsl:variable name="cntInput" select="count($data/cpp:input)" />
-        <xsl:variable name="cntOutput" select="count($data/cpp:output)" />
+        <!-- compute the group color lightness-->
+        <xsl:variable name="baseLightness" select="$base-lightness" />
+        <xsl:variable name="step" select="$lightness-step" />
+        <xsl:variable name="calc" select="$baseLightness - ($depth * $step)" />
+
+        <xsl:variable name="light">
+            <xsl:choose>
+                <xsl:when test="$calc &lt; 0">
+                    <xsl:value-of select="0" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$calc" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <!-- color as CSS hsl -->
+        <xsl:variable name="my-color">
+            <xsl:value-of select="concat('hsl(', $base-hue, ',70%,', $light, '%)')" />
+        </xsl:variable>
+
+        <!-- Group label row: number cell uses parent-color, label cell uses my-color -->
+        <xsl:choose>
+            <xsl:when test="$depth = 0">
+                <tr>
+                    <td colspan="6">
+                        <xsl:attribute name="style">
+                            <xsl:text>background-color:</xsl:text>
+                            <xsl:value-of select="$my-color"/>
+                        </xsl:attribute>
+                        <xsl:call-template name="stepGroupLabel">
+                            <xsl:with-param name="type" select="@type"/>
+                            <xsl:with-param name="label" select="@label"/>
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:when>
+            <xsl:otherwise>
+                <tr>
+                    <td>
+                        <xsl:attribute name="style">
+                            <xsl:text>background-color:</xsl:text>
+                            <xsl:value-of select="$parent-color"/>
+                        </xsl:attribute>
+                        <xsl:value-of select="@stepNumber" />
+                        <!-- auto-numbering: 
+                        <xsl:value-of select="$my-number"/> -->
+                    </td>
+                    <td colspan="5">
+                        <xsl:attribute name="style">
+                            <xsl:text>background-color:</xsl:text>
+                            <xsl:value-of select="$my-color"/>
+                        <xsl:text>; padding:4px</xsl:text>
+                        </xsl:attribute>
+                        <xsl:call-template name="stepGroupLabel">
+                            <xsl:with-param name="type" select="@type"/>
+                            <xsl:with-param name="label" select="@label"/>
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:otherwise>
+        </xsl:choose>
+
+        <!-- Process children in document order: steps and nested stepGroup -->
+        <xsl:for-each select="node()[self::cpp:step or self::cpp:stepGroup]">
+            <!-- auto-numbering: concatenate parent number with position among siblings
+            <xsl:variable name="position" select="position()"/>
+            <xsl:variable name="child-number">
+                <xsl:choose>
+                    <xsl:when test="string-length($my-number) &gt; 0">
+                        <xsl:value-of select="concat($my-number, '.', $position)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="$position"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable> -->
+            <xsl:choose>
+                <xsl:when test="self::cpp:step">
+                    <xsl:apply-templates select="." mode="step">
+                        <xsl:with-param name="my-color" select="$my-color"/>
+                        <!-- auto-numbering:
+                        <xsl:with-param name="my-number" select="$child-number"/> -->
+                    </xsl:apply-templates>
+                </xsl:when>
+
+                <xsl:when test="self::cpp:stepGroup">
+                    <!-- call the same template for nested group -->
+                    <xsl:apply-templates select="." mode="group">
+                        <xsl:with-param name="depth" select="$depth + 1"/>
+                        <xsl:with-param name="parent-color" select="$my-color"/>
+                        <!-- auto-numbering: 
+                        <xsl:with-param name="my-number" select="$child-number"/> -->
+                    </xsl:apply-templates>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:for-each>
+
+    </xsl:template>
+
+    <!-- Generic template for a single step -->
+    <xsl:template match="cpp:step" mode="step">
+        <xsl:param name="my-color" />
+        <!-- auto-numbering: 
+        <xsl:param name="my-number" /> -->
+
+        <xsl:variable name="cntInput" select="count(cpp:input)" />
+        <xsl:variable name="cntOutput" select="count(cpp:output)" />
 
         <!-- make sure the value is at least 1 -->
         <xsl:variable name="cntInputSafe">
@@ -1100,19 +1212,24 @@
             </xsl:choose>
         </xsl:variable>
 
-        <xsl:call-template name="stepDataRow">
-            <xsl:with-param name="data" select="$data" />
+        <xsl:apply-templates select="." mode="data">
+            <xsl:with-param name="my-color" select="$my-color"/>
+            <xsl:with-param name="my-number"></xsl:with-param>
+            <!-- auto-numbering: 
+            <xsl:with-param name="my-number" select="$my-number"/> -->
             <xsl:with-param name="counter" select="1" />
             <xsl:with-param name="max" select="$cntMax" />
             <xsl:with-param name="maxInput" select="$cntInputSafe" />
             <xsl:with-param name="maxOutput" select="$cntOutputSafe" />
-        </xsl:call-template>
-        
+        </xsl:apply-templates>
+
     </xsl:template>
     
     <!-- Generic template for single data in step row -->
-    <xsl:template name="stepDataRow">
-        <xsl:param name="data" />
+    <xsl:template match="cpp:step" mode="data">
+        <xsl:param name="my-color" />
+        <!-- auto-numbering: 
+        <xsl:param name="my-number" /> -->
         <xsl:param name="counter" />
         <xsl:param name="max" />
         <xsl:param name="maxInput" />
@@ -1125,13 +1242,19 @@
                     <xsl:attribute name="rowspan">
                         <xsl:value-of select="$max" />
                     </xsl:attribute>
-                    <xsl:value-of select="$data/@stepNumber"></xsl:value-of>
+                    <xsl:attribute name="style">
+                        <xsl:text>background-color:</xsl:text>
+                        <xsl:value-of select="$my-color"/>
+                    </xsl:attribute>
+                    <!-- auto-numbering: 
+                    <xsl:value-of select="$my-number" /> -->
+                    <xsl:value-of select="@stepNumber"></xsl:value-of>
                 </xsl:element>
             </xsl:if>
             <xsl:if test="$counter &lt;= $maxInput">
                 <!-- input columns -->
                 <xsl:call-template name="stepInput">
-                    <xsl:with-param name="data" select="$data/cpp:input[$counter]" />
+                    <xsl:with-param name="data" select="cpp:input[$counter]" />
                     <xsl:with-param name="counter" select="$counter" />
                     <xsl:with-param name="max" select="$maxInput" />
                     <xsl:with-param name="total" select="$max" />
@@ -1144,13 +1267,13 @@
                         <xsl:value-of select="$max" />
                     </xsl:attribute>
                     <xsl:call-template name="copyContent">
-                        <xsl:with-param name="data" select="$data/cpp:stepDescription" />
+                        <xsl:with-param name="data" select="cpp:stepDescription" />
                     </xsl:call-template>
                 </xsl:element>
             </xsl:if>
             <xsl:if test="$counter &lt;= $maxOutput">
                 <xsl:call-template name="stepOutput">
-                    <xsl:with-param name="data" select="$data/cpp:output[$counter]" />
+                    <xsl:with-param name="data" select="cpp:output[$counter]" />
                     <xsl:with-param name="counter" select="$counter" />
                     <xsl:with-param name="max" select="$maxOutput" />
                     <xsl:with-param name="total" select="$max" />
@@ -1159,15 +1282,51 @@
         </tr>
 
         <xsl:if test="$counter &lt;= $max">
-            <xsl:call-template name="stepDataRow">
-                <xsl:with-param name="data" select="$data" />
+            <xsl:apply-templates select="." mode="data">
                 <xsl:with-param name="counter" select="$counter + 1" />
                 <xsl:with-param name="max" select="$max" />
                 <xsl:with-param name="maxInput" select="$maxInput" />
                 <xsl:with-param name="maxOutput" select="$maxOutput" />
-            </xsl:call-template>
+            </xsl:apply-templates>
         </xsl:if>
 
+    </xsl:template>
+
+    <xsl:template name="stepGroupLabel">
+        <xsl:param name="type" />
+        <xsl:param name="label" />
+
+    <!--
+        <xsl:choose>
+            <xsl:when test="$type='phase'">
+                <xsl:text>&#128336;</xsl:text>
+            </xsl:when>
+            <xsl:when test="$type='subprocess'">
+                <xsl:text>&#128295;</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>&#128193;</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
+    -->
+        <xsl:choose>
+            <xsl:when test="@type='sequence'">
+                <i class="fa-solid fa-arrow-down-1-9"></i>
+            </xsl:when>
+            <xsl:when test="@type='alternative'">
+                <i class="fa-solid fa-arrows-split-up-and-left"></i>
+            </xsl:when>
+            <xsl:when test="@type='parallel'">
+                <i class="fa-solid fa-arrows-down-to-line"></i>
+            </xsl:when>
+            <xsl:otherwise>
+            </xsl:otherwise>  
+        </xsl:choose>
+        <em><xsl:value-of select="$type"/></em>
+        <xsl:if test="$label">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="$label"/>
+        </xsl:if>
     </xsl:template>
 
     <!-- Generic template for a single step (HTML version) -->
