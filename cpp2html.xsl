@@ -1143,6 +1143,9 @@
                     <xsl:attribute name="rowspan">
                         <xsl:value-of select="$max" />
                     </xsl:attribute>
+                    <xsl:if test="$data/@optional='true'">
+                        <em>Optional: </em>
+                    </xsl:if>
                     <xsl:call-template name="copyContent">
                         <xsl:with-param name="data" select="$data/cpp:stepDescription" />
                     </xsl:call-template>
@@ -1202,6 +1205,9 @@
 
             <!-- step description-->
             <td colspan="4" class="stepsColumn">
+                <xsl:if test="$data/@optional='true'">
+                    <em>Optional: </em>
+                </xsl:if>
                 <xsl:call-template name="copyContent">
                     <xsl:with-param name="data" select="$data/cpp:stepDescription" />
                 </xsl:call-template>
@@ -1357,8 +1363,11 @@
         <xsl:param name="data" />
 
         <xsl:for-each select="$data/*">
-            <xsl:if test="position() &gt; 1 and name()='span'">
-                <br/>
+            <xsl:if test="position() &gt; 2 and name()='span'">
+                <br />
+            </xsl:if>
+            <xsl:if test="$data/@optional='true'">
+                <em>Optional: </em>
             </xsl:if>
             <xsl:copy-of select="."></xsl:copy-of>
         </xsl:for-each>
