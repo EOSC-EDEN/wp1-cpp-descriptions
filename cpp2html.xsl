@@ -1363,7 +1363,7 @@
         <xsl:param name="data" />
 
         <xsl:for-each select="$data/*">
-            <xsl:if test="position() &gt; 2 and name()='span'">
+            <xsl:if test="position() &gt; 1 and name()='span'">
                 <br />
             </xsl:if>
             <xsl:if test="$data/@optional='true'">
