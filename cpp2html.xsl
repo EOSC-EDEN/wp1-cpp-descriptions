@@ -523,7 +523,7 @@
                 <th>Customer</th>
             </tr>
 
-            <xsl:for-each select="$data/cpp:step">
+            <xsl:for-each select="$data//cpp:step">
                 <xsl:call-template name="stepRow">
                     <xsl:with-param name="data" select="." />
                 </xsl:call-template>
