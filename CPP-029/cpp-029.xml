@@ -374,7 +374,7 @@
                 </cpp:step>
                 <cpp:stepGroup type="alternative">
                     <cpp:stepGroup type="sequence">
-                        <cpp:step stepNumber="14.1">
+                        <cpp:step stepNumber="14a.1">
                             <cpp:input>
                                 <cpp:inputElement>
                                     <span><em>Information package</em> with fixity checked, identifier assigned, quality assessed, <em>Metadata</em> recorded and optionally new <em>Representation</em>s added</span>
@@ -389,7 +389,7 @@
                                 </cpp:outputElement>
                             </cpp:output>
                         </cpp:step>
-                        <cpp:step stepNumber="14.2">
+                        <cpp:step stepNumber="14a.2">
                             <cpp:input>
                                 <cpp:inputElement>
                                     <span><em>AIP</em></span>
@@ -406,7 +406,7 @@
                             </cpp:output>
                         </cpp:step>
                     </cpp:stepGroup>
-                    <cpp:step stepNumber="15">
+                    <cpp:step stepNumber="14b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Error-handling policies (in particular file format policy and validation policy)</span>
@@ -432,7 +432,7 @@
                         </cpp:output>
                     </cpp:step>
                 </cpp:stepGroup>
-                <cpp:step stepNumber="16">
+                <cpp:step stepNumber="15">
                     <cpp:stepDescription><span>Notification / report to the producer about the outcome of the ingest</span></cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
