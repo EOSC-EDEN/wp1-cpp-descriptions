@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-016_Metadata_Ingest_and_Management</title></head><body><div class="introSection"><div class="title"><h1>Metadata Ingest and Management (CPP-016)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-016</td></tr><tr><td>CPP-Label</td><td>Metadata Ingest and Management</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-09</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA ingests and manages all required Metadata including Metadata appropriate for
+                        specific content types (e.g. geospatial, audio visual).
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>File or Object</td></tr><tr><td rowspan="1">Metadata</td><td>Any Metadata from other process</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Metadata recording policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="5">Metadata</td><td>Provenance metadata</td></tr><tr><td>Technical metadata</td></tr><tr><td>Descriptive metadata</td></tr><tr><td>Structural metadata</td></tr><tr><td>Rights metadata</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p><em>Metadata</em> Ingest and Management is about ingesting, storing and maintaining <em>Metadata</em> to ensure the long-term preservation of the digital content. This <em>Metadata</em> (i.e. “data about the data”) provides contextual information about the <em>Object</em> and describes what the <em>Object</em> is; how it was created or acquired; how it should be managed and preserved; and how it can be
+        accessed and used in the future. There are different categories of <em>Metadata</em> relevant for
+        preservation:</p><ul>
+            <li><em>Descriptive metadata</em>: identifies the content, provides contextual information and serves as finding aid;</li>
+            <li><em>Technical metadata</em>: contains details on the file formats, features and hard-/software used, compression, etc.;</li>
+            <li><em>Fixity metadata</em>: stores information regarding the bitwise state of a <em>File</em>. It is used to help to detect any changes made to the <em>File’s</em> data;</li>
+            <li><em>Provenance metadata</em>: records the origin of the data and keeps track of any processes performed on the data;</li>
+            <li><em>Structural metadata</em>: stores the relationships between <em>Files</em> and logical parts.</li>
+            <li><em>Rights metadata</em>: contains all relevant information about the rights to retain, manipulate and reproduce the data.</li>
+        </ul><p>The <em>Metadata</em> is to be stored in a format that complies with an open and commonly used standard. Most categories of <em>Metadata</em> have their own specialised metadata formats and it is therefore not required to store all <em>Metadata</em> in a single format. Some common metadata standards are:</p><ul>
+            <li><b>PREMIS</b> for <em>Provenance metadata</em></li>
+            <li><b>METS</b> for <em>Structural metadata</em></li>
+            <li><b>Dublin Core, MODS</b> for <em>Descriptive metadata</em></li>
+        </ul><p>The <em>Metadata</em> can be assigned to <em>Objects</em> or <em>Files</em> and it must at all times be clear to what <em>Object</em> or <em>File</em> it is assigned. Some parts of the <em>Metadata</em> will be static (e.g. checksums and <em>File</em> size) while others will be dynamic and continue to be enhanced or updated during the life cycle of the <em>Object</em> in the TDA. It is important for the TDA to keep the <em>Metadata</em> safe at all times. No matter how well the data is protected by redundant copies and off-site backups, if <em>Metadata</em> is missing the data can no longer be identified and loses its context and thus most of its value.</p><p>New <em>Metadata</em> is usually created and added during the ingest phase, alongside the <em>Objects</em> it relates to. Several processes can and will update <em>Metadata</em> during the preservation. If the <em>Metadata</em> changes in a way that alters the understanding or interpretation of the <em>Objects</em> it preserves, the TDA creates new <em>AIP</em> versions that include the updated <em>Metadata</em>.</p><p>In the <em>Provenance metadata</em>, event <em>Metadata</em> serves as witness of the execution of the processes performed on the data. A TDA typically documents the preservation actions it performs as <em>Provenance metadata</em>, thus serving as an audit trail of the <em>Objects</em>. Such event <em>Metadata</em> contains:</p><ul>
+            <li>An identifier and description of the process;</li>
+            <li>A timestamp indicating when the process execution happened;</li>
+            <li>Optionally extra <em>Metadata</em> associated to the event:
+                <ul>
+                    <li>Event outcome: Single value data that documents the result of the process. (e.g. ‘Success’, ‘OK’, ‘Virus free”). The value is typically limited by a controlled vocabulary;</li>
+                    <li>Process information: <em>Metadata</em> set that documents the tool and environment that was used to perform the process. It will include the tool’s name, its version and any configuration parameters that can influence its outcome like virus database version, plugin version, execution parameters, etc.</li>
+                    <li>More detailed event result information like ignored warnings, multiple results outcomes, etc.</li>
+                </ul>
+            </li>
+        </ul><p>The <em>Metadata</em> can be stored in many ways [1]. For example, alongside the data <em>Files</em> in a METS <em>File</em>, in a relational database as fields, records and tables, in a noSQL database as documents, in a RDF store as a graph of triples or any combination of the above. The storage technology is not relevant as long as the <em>Metadata</em> 1) can be searched, retrieved and updated through open and well-documented common standards, and 2) is clearly and consistently linked to the <em>Object</em> or <em>File</em>. Usage of identifiers and URIs are key</p><p>[1] See also PREMIS v3 - pg 25 “Storing metadata”</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Any process that generates event timestamps, optionally including outcome data (Most CPPs)</span></td><td></td></tr><tr><td><span>A new checksum was generated </span></td><td>CPP-001 (Checksum Generation and Recording)</td></tr><tr><td><span>A checksum was validated</span></td><td>CPP-003 (Integrity Checking)</td></tr><tr><td><span>A new identifier was generated and attached to an <em>Object</em></span></td><td>CPP-005 (Identifier Management)</td></tr><tr><td><span>A format was assigned to a <em>File</em> </span></td><td>CPP-008 (File Format Identification)</td></tr><tr><td><span><em>Metadata</em> was extracted from a <em>File</em></span></td><td>CPP-009 (Metadata Extraction)</td></tr><tr><td><span>Missing <em>Metadata</em> has been identified, or used metadata standards have become obsolete</span></td><td>CPP-012 (Risk Mitigation)</td></tr><tr><td><span><em>Object</em> is removed</span></td><td>CPP-017 (Disposal)</td></tr><tr><td><span><em>Object</em> rights changed</span></td><td>CPP-020 (Rights Management)</td></tr><tr><td><span><em>Descriptive metadata</em> must be pseudonymised/anonymised</span></td><td>CPP-020 (Rights Management)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span><a href="https://www.go-fair.org/fair-principles/f3-metadata-clearly-explicitly-include-identifier-data-describe">FAIR F3</a> <em>Metadata</em> clearly and explicitly include the identifier of the data they describe</span></td><td><span>If the connection between <em>Metadata</em> and the <em>Object</em>’s data is lost, <em>Object</em>s can no longer be found by searching the <em>Metadata</em>.</span></td></tr><tr><td><span><a href="https://www.go-fair.org/fair-principles/f4-metadata-registered-indexed-searchable-resource">FAIR F4 </a>(Meta)data are registered or indexed in a searchable resource</span></td><td><span>Without searchability it is not possible to retrieve sets of relevant data based on characteristics described in the <em>Metadata</em>.</span></td></tr><tr><td><span><a href="https://www.go-fair.org/fair-principles/a2-metadata-accessible-even-data-no-longer-available">FAIR A2 </a><em>Metadata</em> should be accessible even when the data is no longer available</span></td><td><span>Storing a tombstone metadata for disposed content serves as a witness of the data’s existence beyond its disposal.</span></td></tr><tr><td><span><a href="https://www.go-fair.org/fair-principles/i1-metadata-use-formal-accessible-shared-broadly-applicable-language-knowledge-representation">FAIR I1</a>(Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation</span></td><td><span>Lack of understanding the language in which the <em>Metadata</em> is expressed leads to misinterpretation or even loss of information.</span></td></tr><tr><td><span><a href="https://www.go-fair.org/fair-principles/r1-3-metadata-meet-domain-relevant-community-standards">FAIR R1.3 </a>(Meta)data meet domain-relevant community standards</span></td><td><span>Lack of understanding the language in which the <em>Metadata</em> is expressed leads to misinterpretation or even loss of information.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-001</td><td>Checksum Generation and Recording</td><td><span>The checksums and associated algorithms need to be stored in the <em>File</em>’s <em>Fixity metadata</em>.</span></td></tr><tr><td>CPP-003</td><td>Integrity Checking</td><td><span>The timestamp of the <em>File</em>’s checksum needs to be updated to keep track of the last successful check.</span></td></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>The TDA must store the Persistent Identifier and link it to the <em>Object</em> or <em>File</em>.</span></td></tr><tr><td>CPP-008</td><td>File Format Identification</td><td><span>Format information needs to be stored with the <em>File</em>’s <em>Technical metadata</em>.</span></td></tr><tr><td>CPP-009</td><td>Metadata Extraction</td><td><span>Any <em>Metadata</em> that was extracted from the <em>File</em> needs to be stored, searchable and retrievable.</span></td></tr><tr><td>CPP-017</td><td>Disposal</td><td><span>A tombstone consisting of <em>Metadata</em> only - without the actual data - has to be kept as a witness of the data’s former presence.</span></td></tr><tr><td>CPP-020</td><td>Rights Management</td><td><span>Any information regarding the rights for the TDA and the end users on the data needs to be stored and should be searchable and retrievable.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span><em>Metadata</em> ingest provides new <em>Provenance metadata</em>.</span></td></tr><tr><td>Required by</td><td>CPP-024</td><td>Enabling Discovery</td><td><span>Enabling Discovery relies on a correct <em>Metadata</em> management process. In particular, <em>Metadata</em> created by and within the TDA is of particular interest to the consumer in order to understand preservation actions that could have affected the <em>Object</em>.</span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>The ingest process produces <em>Technical, Rights and Provenance metadata</em> that are recorded in the Information package and digital archive database by <em>Metadata</em> Ingest and Management.</span></td></tr><tr><td>Affinity with</td><td>CPP-022</td><td>Significant Properties Definition</td><td><span>A TDA defines significant properties for digital <em>Object</em>s. These are then translated to <em>Technical metadata</em> that is ingested. The significant properties definition process also influences which <em>Technical metadata</em> standards are applied.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Provenance and authenticity</span><br></br><span>Storage and Integrity</span></td><td><span>R07</span><br></br><span>R14</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Logging the preservation measures</span></td><td><span>C31, page 49</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>Information Management</span></td><td><span>Section 4.5, page 4-26</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td></td><td><span>OAIS mentions <em>Metadata</em>, but does not discuss metadata ingest or metadata management</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Storing metadata</span></td><td><span>Section with the same title in the introduction</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata">
+                    https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata</a></td></tr><tr><td rowspan="2">CSC – IT Center for Science Ltd., FI</td><td rowspan="2">Non-commercial digital preservation service</td><td>Finnish</td><td><a href="https://urn.fi/urn:nbn:fi-fe2020100578094">https://urn.fi/urn:nbn:fi-fe2020100578094</a><div>(Annex 4, section 2.2.1)</div></td></tr><tr><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(section 2.4.4. and 3.3.)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfers-with-metadata">
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfers-with-metadata</a><div>(Import metadata)</div></td></tr></table></div></div></body></html>
