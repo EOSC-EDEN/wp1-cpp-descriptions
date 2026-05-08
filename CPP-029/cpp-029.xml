@@ -46,16 +46,15 @@
         <cpp:logicalClassification>Lifecycle Management</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
-
         <p>Ingest is a high-level CPP, that is composed of or utilised by many other CPPs, and refers to
         the process of acquiring and incorporating data into a TDA. In its most abstract form, Ingest
         describes the process in which a TDA receives a <em>SIP</em> and transforms it into one or several
         <em>AIP</em>(s) through a process that includes <b>Data Quality Assessment</b> (CPP-019). At the end of
         a successful ingest, the data is preserved in the TDA for future use.</p>
 
-        <p>The Ingest process begins with the transfer of digital <em>Object</em>s and <em>Metadata</em> from their source
-        environment to the TDA in the form of a <em>SIP</em>. The digital preservation workflow triggered by
-        the submission ensures that the data is properly prepared for long-term storage, discovery
+        <p>The Ingest process begins with the transfer of digital <em>Object</em>s and <em>Metadata</em> from 
+        their source environment to the TDA in the form of a <em>SIP</em>. The digital preservation workflow 
+        triggered by the submission ensures that the data is properly prepared for long-term storage, discovery
         and access. The workflow ensures that essential <em>Metadata</em> about the creation, structure, and
         context (CPP-016 <b>Metadata Ingest and Management</b>) of the data exists. <em>Fixity metadata</em>
         that will be essential for future preservation actions must also exist before the data can be
@@ -77,8 +76,8 @@
         to support <b>Enabling Discovery</b> (CPP-024); perform <b>Enabling Access</b> (CPP-025) for
         cataloging purposes; and generate <em>Provenance metadata</em> that documents the transfer and
         processing history of the <em>Object</em>s. In order to evaluate the <em>SIP</em> and its contents, the TDA
-        ensures that the <em>SIP</em> structure is valid and that the <em>SIP</em> is not incomplete (i.e. all <em>Object</em>s and
-        <em>Metadata</em> are present).</p>
+        ensures that the <em>SIP</em> structure is valid and that the <em>SIP</em> is not incomplete (i.e. 
+        all <em>Object</em>s and <em>Metadata</em> are present).</p>
 
         <p><em>SIP</em>s that conform to the TDAs requirements and policies are transformed into <em>AIP</em>s which
         are sent to preservation in the archival storage of a TDA. <em>SIP</em>s that do not conform to the
@@ -86,9 +85,7 @@
         and validation policy). The TDA can either reject the submitted data, ask the producer to
         address the issues before proceeding, flag the data as problematic and ingest it as it is, or
         perform an operation to address the identified issues.</p> 
-
     </cpp:descriptionAndScope>
-
     <cpp:process>
         <cpp:inputs>
             <cpp:data>
@@ -104,7 +101,6 @@
             <cpp:guidance>
                 <cpp:guidanceElement>Packaging policy</cpp:guidanceElement>
             </cpp:guidance>
-
         </cpp:inputs>
         <cpp:outputs>
             <cpp:data>
@@ -119,8 +115,6 @@
                 <cpp:guidanceElement>Packaging policy</cpp:guidanceElement>
             </cpp:guidance>
         </cpp:outputs>
-
-
         <cpp:triggerEvents>
             <cpp:triggerEvent>
                 <cpp:description>
@@ -128,7 +122,6 @@
                 </cpp:description>
             </cpp:triggerEvent>
         </cpp:triggerEvents>
-
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
                 <cpp:step stepNumber="1">
@@ -152,8 +145,6 @@
                         <cpp:customer>CPP-005</cpp:customer>
                     </cpp:output>
                 </cpp:step>
-
-
                 <cpp:step stepNumber="2">
                     <cpp:input>
                         <cpp:inputElement>
@@ -164,7 +155,6 @@
                         <span>Submission of data to a TDA (<em>SIP</em> transfer)</span>
                     </cpp:stepDescription>
                 </cpp:step>
-
                 <cpp:step stepNumber="3a">
                     <cpp:input>
                         <cpp:inputElement>
@@ -181,7 +171,6 @@
                         <cpp:customer>CPP-021</cpp:customer>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="3b">
                     <cpp:input>
                         <cpp:inputElement>
@@ -202,8 +191,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
-
                 <cpp:step stepNumber="4">
                     <cpp:input>
                         <cpp:inputElement>
@@ -220,7 +207,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="5">
                     <cpp:input>
                         <cpp:inputElement>
@@ -247,7 +233,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="6a">
                     <cpp:input>
                         <cpp:inputElement>
@@ -271,7 +256,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="6b">
                     <cpp:input>
                         <cpp:inputElement>
@@ -295,7 +279,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="7">
                     <cpp:input>
                         <cpp:inputElement>
@@ -314,7 +297,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="8">
                     <cpp:input>
                         <cpp:inputElement>
@@ -337,8 +319,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
-
                 <cpp:step stepNumber="9">
                     <cpp:input>
                         <cpp:inputElement>
@@ -355,7 +335,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="10">
                     <cpp:input>
                         <cpp:inputElement>
@@ -377,7 +356,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="11">
                     <cpp:input>
                         <cpp:inputElement>
@@ -453,7 +431,6 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-
                 <cpp:step stepNumber="14">
                     <cpp:stepDescription><span>Notification / report to the producer about the outcome of the ingest</span></cpp:stepDescription>
                     <cpp:output>
@@ -465,7 +442,6 @@
             </cpp:stepGroup>
         </cpp:stepByStepDescription>
     </cpp:process>
-
     <cpp:rationaleWorstCase>
         <cpp:purpose>
             <cpp:purposeDescription>
@@ -498,7 +474,6 @@
             </cpp:worstCase>
         </cpp:purpose>
     </cpp:rationaleWorstCase>
-
     <cpp:cppRelationships>
         <!--Dependencies-->
         <cpp:relationship>
@@ -540,44 +515,63 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-020</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Some minimal rights assessment must be performed during ingest to verify that the TDA should be in charge of preserving the content of the <em>SIP</em>.</span>
+                <span>
+                    Some minimal rights assessment must be performed during ingest to 
+                    verify that the TDA should be in charge of preserving the content 
+                    of the <em>SIP</em>.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-016</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>The ingest process produces <em>Technical, Rights and Provenance metadata</em> that are recorded in the <em>Information package</em> and digital archive database by <em>Metadata</em> Ingest and Management.</span>
+                <span>
+                    The ingest process produces <em>Technical, Rights and Provenance 
+                    metadata</em> that are recorded in the <em>Information package</em> 
+                    and digital archive database by <em>Metadata</em> Ingest and Management.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
-            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-010</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Soft dependency (i.e. may require): A TDA may validate the format of the submitted <em>File</em>s in the ingest phase.</span>
+                <span>
+                    A TDA may validate the format of the submitted <em>File</em>s in the 
+                    ingest phase.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
-            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-019</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Soft dependency (i.e. may require): The TDA may have quality requirements that may be checked during ingest.</span>
+                <span>
+                    The TDA may have quality requirements that may be checked during ingest.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
-            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relationshipType>May require</cpp:relationshipType>
             <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Soft dependency (i.e. may require): The ingest may require that the digital <em>Object</em>s are first normalised before ingestion.</span>
+                <span>
+                    The ingest may require that the digital <em>Object</em>s are first 
+                    normalised before ingestion.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
-
         <!--other relations-->
         <cpp:relationship>
             <cpp:relationshipType>Required by</cpp:relationshipType>
             <cpp:relatedCPP>CPP-021</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Versioning implies several delicate operations, in particular in the case of a partial update, where the incoming <em>SIP</em> should be merged with the existing <em>AIP</em>.</span>
+                <span>
+                    Versioning implies several delicate operations, in particular in the case 
+                    of a partial update, where the incoming <em>SIP</em> should be merged with 
+                    the existing <em>AIP</em>.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>
@@ -598,25 +592,14 @@
             <cpp:relationshipType>Affinity with</cpp:relationshipType>
             <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Ingest is both an important provider of reporting data to the TDA (via other CPPs) as well as a customer, as the ingest checks and outcomes must be reported to the producer.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Affects</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-001</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span>A new <em>SIP</em> being submitted and processed triggers Checksum Generation.</span>
-            </cpp:relationshipDescription>
-        </cpp:relationship>
-        <cpp:relationship>
-            <cpp:relationshipType>Affects</cpp:relationshipType>
-            <cpp:relatedCPP>CPP-002</cpp:relatedCPP>
-            <cpp:relationshipDescription>
-                <span><em>SIP</em> ingest triggers Checksum Validation.</span>
+                <span>
+                    Ingest is both an important provider of reporting data to the TDA 
+                    (via other CPPs) as well as a customer, as the ingest checks and outcomes 
+                    must be reported to the producer.
+                </span>
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
-
     <cpp:frameworkMappings>
         <!-- certification -->
         <cpp:mapping>
@@ -648,7 +631,6 @@
                 <span>4.2. Ingest: Creation of the <em>AIP</em></span>
             </cpp:correspondingSection>
         </cpp:mapping>
-
         <!-- other frameworks and reference documents -->
         <cpp:mapping>
             <cpp:frameworkName>OAIS</cpp:frameworkName>
@@ -671,7 +653,6 @@
             </cpp:correspondingSection>
         </cpp:mapping>
     </cpp:frameworkMappings>
-
     <cpp:referenceImplementations>
         <!-- example use cases -->
         <cpp:useCases>
@@ -689,7 +670,6 @@
                 </cpp:problemStatement>
             </cpp:useCase>
         </cpp:useCases>
-
         <!-- Documentatoion -->
         <cpp:publicDocumentation>
             <cpp:institution>
@@ -725,7 +705,7 @@
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/</cpp:hyperlink>
-                <cpp:comment>Transfer (steps that lead up to creating a SIP, e.g. checksum generation, file format identification etc.)</cpp:comment>
+                <cpp:comment>Transfer - steps that lead up to creating a SIP, e.g. checksum generation, file format identification etc.</cpp:comment>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
         <cpp:publicDocumentation>
@@ -736,10 +716,8 @@
             </cpp:institution>
             <cpp:linkToDocumentation xml:lang="en">
                 <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/</cpp:hyperlink>
-                <cpp:comment>Ingest (steps from SIP to AIP, e.g. file format normalisation)</cpp:comment>
+                <cpp:comment>Ingest - steps from SIP to AIP, e.g. file format normalisation</cpp:comment>
             </cpp:linkToDocumentation>
         </cpp:publicDocumentation>
-
-
     </cpp:referenceImplementations>
 </cpp:cpp>
