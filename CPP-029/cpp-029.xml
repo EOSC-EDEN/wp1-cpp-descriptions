@@ -155,7 +155,7 @@
                         <span>Submission of data to a TDA (<em>SIP</em> transfer)</span>
                     </cpp:stepDescription>
                 </cpp:step>
-                <cpp:step stepNumber="3a">
+                <cpp:step stepNumber="3">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>SIP</em></span>
@@ -171,7 +171,7 @@
                         <cpp:customer>CPP-021</cpp:customer>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="3b">
+                <cpp:step stepNumber="4">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>SIP</em></span>
@@ -191,7 +191,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="4">
+                <cpp:step stepNumber="5">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>File</em>s in the <em>SIP</em></span>
@@ -207,7 +207,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="5">
+                <cpp:step stepNumber="6">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Quality assessment report</span>
@@ -233,7 +233,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="6a">
+                <cpp:step stepNumber="7">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>SIP</em></span>
@@ -256,7 +256,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="6b">
+                <cpp:step stepNumber="8" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Format policy - Validation</span>
@@ -266,7 +266,7 @@
                         <cpp:supplier>CPP-010</cpp:supplier>
                     </cpp:input>
                     <cpp:stepDescription>
-                        <span>Optional: Perform Format Validation if the TDAs format policy states that validation must be performed</span>
+                        <span>Perform Format Validation if the TDAs format policy states that validation must be performed</span>
                     </cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
@@ -279,7 +279,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="7">
+                <cpp:step stepNumber="9">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>Object</em>s in the <em>SIP</em></span>
@@ -297,7 +297,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="8">
+                <cpp:step stepNumber="10">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>Metadata</em> provided by the producer</span>
@@ -319,7 +319,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="9">
+                <cpp:step stepNumber="11">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Identifier</span>
@@ -335,7 +335,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="10">
+                <cpp:step stepNumber="12" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>File</em>s in the <em>SIP</em></span>
@@ -356,7 +356,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="11">
+                <cpp:step stepNumber="13" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>File</em>s in the <em>SIP</em> </span>
@@ -372,66 +372,67 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:stepGroup type="sequence">
-                    <cpp:step stepNumber="12a">
+                <cpp:stepGroup type="alternative">
+                    <cpp:stepGroup type="sequence">
+                        <cpp:step stepNumber="14.1">
+                            <cpp:input>
+                                <cpp:inputElement>
+                                    <span><em>Information package</em> with fixity checked, identifier assigned, quality assessed, <em>Metadata</em> recorded and optionally new <em>Representation</em>s added</span>
+                                </cpp:inputElement>
+                            </cpp:input>
+                            <cpp:stepDescription>
+                                <span>If <em>SIP</em> conforms to the requirements (steps 7a and 7b): <em>SIP</em> transformation to <em>AIP</em></span>
+                            </cpp:stepDescription>
+                            <cpp:output>
+                                <cpp:outputElement>
+                                    <span><em>AIP</em></span>
+                                </cpp:outputElement>
+                            </cpp:output>
+                        </cpp:step>
+                        <cpp:step stepNumber="14.2">
+                            <cpp:input>
+                                <cpp:inputElement>
+                                    <span><em>AIP</em></span>
+                                </cpp:inputElement>
+                            </cpp:input>
+                            <cpp:stepDescription>
+                                <span>Move the <em>AIP</em> to the archival storage</span>
+                            </cpp:stepDescription>
+                            <cpp:output>
+                                <cpp:outputElement>
+                                    <span><em>AIP</em> on multiple locations</span>
+                                </cpp:outputElement>
+                                <cpp:customer>CPP-011</cpp:customer>
+                            </cpp:output>
+                        </cpp:step>
+                    </cpp:stepGroup>
+                    <cpp:step stepNumber="15">
                         <cpp:input>
                             <cpp:inputElement>
-                                <span><em>Information package</em> with fixity checked, identifier assigned, quality assessed, <em>Metadata</em> recorded and optionally new <em>Representation</em>s added</span>
+                                <span>Error-handling policies (in particular file format policy and validation policy)</span>
                             </cpp:inputElement>
                         </cpp:input>
                         <cpp:stepDescription>
-                            <span>If <em>SIP</em> conforms to the requirements (steps 7a and 7b): <em>SIP</em> transformation to <em>AIP</em></span>
+                            <span>If <em>SIP</em> doesn’t conform to the requirements, perform one of these actions:
+                                    (a) Rejection of <em>SIP</em>;
+                                    (b) Request the producer to address the issues;
+                                    (c) Flag the data as problematic and ingest it as it is;
+                                    (d) Perform an operation to address the identified issues.
+                            </span>
                         </cpp:stepDescription>
                         <cpp:output>
                             <cpp:outputElement>
-                                <span><em>AIP</em></span>
+                                <span>Error report to the submitter of the <em>SIP</em> (producer)</span>
                             </cpp:outputElement>
                         </cpp:output>
-                    </cpp:step>
-
-                    <cpp:step stepNumber="12b">
-                        <cpp:input>
-                            <cpp:inputElement>
-                                <span><em>AIP</em></span>
-                            </cpp:inputElement>
-                        </cpp:input>
-                        <cpp:stepDescription>
-                            <span>Move the <em>AIP</em> to the archival storage</span>
-                        </cpp:stepDescription>
                         <cpp:output>
                             <cpp:outputElement>
-                                <span><em>AIP</em> on multiple locations</span>
+                                <span>Trigger technical analysis</span>
                             </cpp:outputElement>
-                            <cpp:customer>CPP-011</cpp:customer>
                         </cpp:output>
                     </cpp:step>
                 </cpp:stepGroup>
-                <cpp:step stepNumber="13">
-                    <cpp:input>
-                        <cpp:inputElement>
-                            <span>Error-handling policies (in particular file format policy and validation policy)</span>
-                        </cpp:inputElement>
-                    </cpp:input>
-                    <cpp:stepDescription>
-                        <span>If <em>SIP</em> doesn’t conform to the requirements, perform one of these actions:
-                                (a) Rejection of <em>SIP</em>;
-                                (b) Request the producer to address the issues;
-                                (c) Flag the data as problematic and ingest it as it is;
-                                (d) Perform an operation to address the identified issues.
-                        </span>
-                    </cpp:stepDescription>
-                    <cpp:output>
-                        <cpp:outputElement>
-                            <span>Error report to the submitter of the <em>SIP</em> (producer)</span>
-                        </cpp:outputElement>
-                    </cpp:output>
-                    <cpp:output>
-                        <cpp:outputElement>
-                            <span>Trigger technical analysis</span>
-                        </cpp:outputElement>
-                    </cpp:output>
-                </cpp:step>
-                <cpp:step stepNumber="14">
+                <cpp:step stepNumber="16">
                     <cpp:stepDescription><span>Notification / report to the producer about the outcome of the ingest</span></cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
