@@ -142,7 +142,7 @@
 		<cpp:stepByStepDescription>
 			<cpp:stepGroup type="sequence">
 				<cpp:stepGroup type="sequence" label="1. Designated Community and Knowledge Base Description">
-					<cpp:step stepNumber="1-1">
+					<cpp:step stepNumber="1.1">
 						<cpp:input>
 							<cpp:inputElement>
 								<span>Mission Statement</span>
@@ -159,42 +159,65 @@
 						</cpp:stepDescription>
 					</cpp:step>
 					<cpp:stepGroup type="alternative" label="Evaluate feedback from evaluation method">
-						<cpp:step stepNumber="1-2a">
+						<cpp:step stepNumber="1.2.a">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Designated Community</em> (i.e. new discipline uses data or previously defined 
-                                      discipline no longer uses data)</span>
+                                      discipline no longer uses data):</span>
+								<span>review of guidance documents (designated community definition) by an administrative entity </span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on changed Designated Community structure</span>
-									<span>Administrative entity for review of guidance documents (designated community definition)</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to Retention Policy</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-017</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1-2b">
+						<cpp:step stepNumber="1.2.b">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting file formats or data types used</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
-									<span>Report on updated file formats or data types used by <em>Designated Community</em>
-									</span>
+									<span>Report on updated file formats or data types used by <em>Designated Community</em></span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to File format policy</span>
-									<span>Update to Emulation and rendering policy</span>
-									<span>Update to Significant Properties Policy</span>
-									<span>Update to preferred file formats list</span>
-									<span>Update File format policy - Derivatives: formats</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-008</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to Emulation and rendering policy</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-015</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to Significant Properties Policy</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-022</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to preferred file formats list</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-026</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update File format policy - Derivatives: formats</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-028</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1-2c">
+						<cpp:step stepNumber="1.2.c">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting significant properties used or extracted from File 
                                       formats or data <em>Objects</em>
@@ -203,14 +226,22 @@
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on changed or new significant properties</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to Significant Properties Policy</span>
-									<span>Update to queries leveraging changed or new significant properties</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-022</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to queries leveraging changed or new significant properties</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1-2d">
+						<cpp:step stepNumber="1.2.d">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting software used in accessing or interacting with 
                                       data or re-use scenarios</span>
@@ -218,28 +249,44 @@
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on updated access, use and re-use requirements</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to Emulation and rendering Policy</span>
-									<span>Update to queries</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-015</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to queries</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1-2e">
+						<cpp:step stepNumber="1.2.e">
 							<cpp:stepDescription>
 								<span>If indicator is given for changed <em>Metadata</em> width, depth, syntax or serialisation</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on updated <em>Metadata</em> requirements</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to metadata policy</span>
-									<span>Update to queries</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-016</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to queries</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1-2f">
+						<cpp:step stepNumber="1.2.f">
 							<cpp:stepDescription>
 								<span>If indicator is given for legal or policy impacting restricted or extended access to <em>Objects</em>
 								</span>
@@ -247,27 +294,34 @@
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on updated legal or policy impact</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update on Rights Statements</span>
-									<span>Update on Access Policy</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-020</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update on Access Policy</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-025</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1-2g">
+						<cpp:step stepNumber="1.2.g">
 							<cpp:stepDescription>
-								<span>If indicator is given for changed methods, processes or concepts</span>
+								<span>If indicator is given for changed methods, processes or concepts:</span>
+								<span>review of guidance documents (Knowledge Base description) by an administrative entity</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
-									<span>Report on updated methods, processes or concepts by <em>Designated Community</em>
-									</span>
-									<span>Administrative entity for review of guidance documents (Knowledge Base description)</span>
+									<span>Report on updated methods, processes or concepts by <em>Designated Community</em></span>
 								</cpp:outputElement>
 							</cpp:output>
 						</cpp:step>
 					</cpp:stepGroup>
-					<cpp:step stepNumber="1-3">
+					<cpp:step stepNumber="1.3">
 						<cpp:input>
 							<cpp:inputElement>
 								<span>Mission Statement</span>
@@ -276,14 +330,16 @@
 						</cpp:input>
 						<cpp:stepDescription>
 							<span>Check all steps above for impact on <em>Preservation Objective</em>. If an indicator is given for a changed <em>
-                                  Preservation Objective</em>
-							</span>
+                                  Preservation Objective</em>:</span>
+							<span>review of guidance documents (Preservation objective, Designated Community Knowledge Base) by an administrative entity </span>
 						</cpp:stepDescription>
 						<cpp:output>
 							<cpp:outputElement>
-								<span>Report on updated requirements for <em>Preservation objective</em>
-								</span>
-								<span>Administrative entity for review of guidance documents (Preservation objective, Designated Community Knowledge Base)</span>
+								<span>Report on updated requirements for <em>Preservation objective</em></span>
+							</cpp:outputElement>
+						</cpp:output>
+						<cpp:output>
+							<cpp:outputElement>
 								<span>Update on Quality properties</span>
 							</cpp:outputElement>
 							<cpp:customer>CPP-019</cpp:customer>
@@ -291,7 +347,7 @@
 					</cpp:step>
 				</cpp:stepGroup>
 				<cpp:stepGroup type="sequence" label="2. Supported file formats and data types description">
-					<cpp:step stepNumber="2-1">
+					<cpp:step stepNumber="2.1">
 						<cpp:input>
 							<cpp:inputElement>
 								<span>File format policy - preferred file formats</span>
@@ -304,33 +360,41 @@
 						</cpp:stepDescription>
 					</cpp:step>
 					<cpp:stepGroup type="alternative" label="Evaluate information">
-						<cpp:step stepNumber="2-2a">
+						<cpp:step stepNumber="2.2.a">
 							<cpp:stepDescription>
 								<span>If risk in file format or data type is raised</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on risk</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update on risk</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-023</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2-2b">
+						<cpp:step stepNumber="2.2.b">
 							<cpp:stepDescription>
 								<span>If file format is no longer supported or rationale behind initial choice for format is no longer true (e.g. no longer 
-                                      widely used)</span>
+                                      widely used):</span>
+								<span>review of guidance documents (Preservation Intent definition) by an administrative entity</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on risk</span>
-									<span>Administrative entity for review of impact (Preservation Intent definition)</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update on risk</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-023</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2-2c">
+						<cpp:step stepNumber="2.2.c">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>Emulation and rendering Policy</span>
@@ -348,14 +412,22 @@
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on software changes</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update on risk</span>
-									<span>Update to Emulation and rendering Policy</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-023</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to Emulation and rendering Policy</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-015</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2-2d">
+						<cpp:step stepNumber="2.2.d">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>File format Identification and Validation Policies</span>
@@ -376,14 +448,22 @@
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on updates for file format identification</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to File Format Policy</span>
-									<span>Updates to File Format Validation Policy</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-008</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Updates to File Format Validation Policy</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-010</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2-2e">
+						<cpp:step stepNumber="2.2.e">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>Access Policy</span>
@@ -406,19 +486,31 @@
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on changes to migration tools</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to support for <em>DIP</em> creation</span>
-									<span>Update to tools used for normalisation</span>
-									<span>Update to File format policy - Derivatives: tools</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-025</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to tools used for normalisation</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-026</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to File format policy - Derivatives: tools</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-028</cpp:customer>
 							</cpp:output>
 						</cpp:step>
 					</cpp:stepGroup>
 				</cpp:stepGroup>
 				<cpp:stepGroup type="sequence" label="3. Supported Metadata">
-					<cpp:step stepNumber="3-1">
+					<cpp:step stepNumber="3.1">
 						<cpp:input>
 							<cpp:inputElement>
 								<span>Metadata policy</span>
@@ -435,38 +527,54 @@
 						</cpp:stepDescription>
 					</cpp:step>
 					<cpp:stepGroup type="alternative" label="Evaluate information">
-						<cpp:step stepNumber="3-2a">
+						<cpp:step stepNumber="3.2.a">
 							<cpp:stepDescription>
-								<span>If risk in <em>Metadata</em> syntax, schema or serialisation is raised</span>
+								<span>If risk in <em>Metadata</em> syntax, schema or serialisation is raised:</span>
+								<span>review of guidance documents (Preservation Intent definition) by an administrative entity</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on risk</span>
-									<span>Administrative entity for review of impact (Preservation Intent definition)</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update on risk</span>
-									<span>Update to queries</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-023</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to queries</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="3-2b">
+						<cpp:step stepNumber="3.2.b">
 							<cpp:stepDescription>
 								<span>If <em>Metadata</em> syntax, schema or serialisation is no longer supported or rationale behind initial choice for syntax, 
-                                      schema or serialisation is no longer true (e.g. no longer widely used)</span>
+                                      schema or serialisation is no longer true (e.g. no longer widely used):</span>
+								<span>review of guidance documents (Preservation Intent definition) by an administrative entity</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on risk</span>
-									<span>Administrative entity for review of impact (Preservation Intent definition)</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update on risk</span>
-									<span>Update to queries</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-023</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to queries</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="3-2c">
+						<cpp:step stepNumber="3.2.c">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>List of tools used within TDA for (automated) <em>Metadata</em> generation and handling (e.g. validation, conversion)</span>
@@ -483,12 +591,24 @@
 							<cpp:output>
 								<cpp:outputElement>
 									<span>Report on changes to <em>Metadata</em> generation and handling tools tools</span>
+								</cpp:outputElement>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
 									<span>Update to methods or tools for metadata extraction</span>
-									<span>Update ot methods or tools for metadata ingest and management</span>
-									<span>Update to queries</span>
 								</cpp:outputElement>
 								<cpp:customer>CPP-009</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to methods or tools for metadata ingest and management</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-016</cpp:customer>
+							</cpp:output>
+							<cpp:output>
+								<cpp:outputElement>
+									<span>Update to queries</span>
+								</cpp:outputElement>
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
