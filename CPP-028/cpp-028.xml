@@ -3,7 +3,7 @@
     xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" 
     ID="CPP-028" xml:lang="en">
     <cpp:header>
-        <cpp:label>CreationofDerivatives</cpp:label>
+        <cpp:label>Creation of Derivatives</cpp:label>
         <cpp:authors>
             <cpp:author>Kris Dekeyser</cpp:author>
         </cpp:authors>
@@ -44,7 +44,7 @@
     </cpp:classification>
     <cpp:descriptionAndScope>
         <p>
-            The process of Creation of Derivatives refers to generating new <em>Representations</em>> of a digital
+            The process of Creation of Derivatives refers to generating new <em>Representations</em> of a digital
             <em>Object</em> (based on the original <em>Representation</em> of the <em>Object</em>) to address specific needs of the
             <em>Designated Community</em>. Some of these needs are:
         </p>
@@ -469,7 +469,7 @@
                     derivations for the sake of a <em>DIP</em> and
                     creating derivative copies and storing
                     them in the TDA. In the latter case, they
-                    suggest it is added as an API linked to
+                    suggest it is added as an <em>AIP</em> linked to
                     the source <em>AIP</em>, ignoring the fact that it
                     could be stored as a <em>Representation</em>
                     within the same <em>AIP</em>.
