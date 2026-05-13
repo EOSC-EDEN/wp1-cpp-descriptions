@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+                    :root {
+                        --main-width: 800px;
+                        --main-margin: auto;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: 100%;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                        border: none;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style><title>EOSC-EDEN_CPP-015_Emulation_and_Rendering_Tools</title></head><body><div class="introSection"><div class="title"><h1>Emulation and Rendering Tools (CPP-015)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-015</td></tr><tr><td>CPP-Label</td><td>Emulation and Rendering Tools</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burer, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-10</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA enables the rendering of Objects via the application of emulation and/or other
+                        specialist tools.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>
+          Representation
+        </td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Emulation and rendering policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Data</td><td>Representation rendered in a suitable environment</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Digital preservation is all about ensuring long-term access to digital content despite the
+        challenges of obsolescence, degradation, and technological change. Emulation and
+        Rendering tools are important strategies in achieving that goal, and together with <em>File</em>
+        migration ensure that digital content remains usable to the <em>Designated Community</em>.</p><p>Emulation attempts to recreate the original habitat - both hardware and software - of the
+        digital <em>Object</em> in order to interact with it in the way it was intended. This is achieved by
+        preserving both the content and the experience of the original environment. The purpose of
+        emulation is to simulate the original operating system and the tools that are needed to
+        interact with the <em>Object</em>.</p><p>Rendering tools interpret and display the digital <em>Objects</em> in the current environment using
+        viewers based on modern technology. It is not uncommon for rendering tools to convert the
+        digital <em>Object</em> into a more accessible form before displaying it. In such cases, viewers and
+        converters collaborate to achieve the required result.</p><p>In addition to maintaining the <em>Bitstream</em> integrity of its holdings, semantic digital preservation
+        entails ensuring their continued readability and usability. This necessitates that the TDA
+        identifies the required environments and tools to support the actions its <em>Designated
+        Community</em> is authorised to perform, regardless of whether direct access to the holdings is
+        currently being provided.</p><p>Emulation and Rendering are two very different techniques to achieve a similar goal. They
+    differ in some essential aspects:</p><ul>
+      <li>
+        <em>Authenticity</em>: Emulation aims for the best authenticity by reproducing the entire look
+        and feel of the original environment. The output of the rendering process may do a
+        pretty decent job in reproducing the original <em>Representation</em> of the <em>Object</em>, but the
+        interaction will be simulated at best. The rendering’s conversion operation can be
+        lossy and generate a less accurate result. Rendering is also more vulnerable to slight
+        format changes and thus requires Format Validation.
+      </li>
+      <li>
+        <em>User Experience</em>: Again, Emulation obtains the highest score as it will reinstate the
+        original hard- and software as good as possible and allows the user to interact with
+        the <em>Object</em> to its full potential. Rendering will typically reduce the experience to a
+        read-only view of the data with a limited set of operations available.
+      </li>
+      <li>
+        <em>Preservation Scope</em>: In order to render the <em>Object</em>, only the content needs to be
+        preserved. For emulation, however, both content and its environment need to be
+        preserved.
+      </li>
+      <li>
+        <em>Technical Overhead</em>: The requirements for Emulation are very high. A lot of
+        resources (e.g. CPU and memory) are required to fire up the emulation. Moreover,
+        the configuration and maintenance of an emulation environment is complex and time
+        consuming. Performance may suffer and emulation does not scale easily. Rendering
+        on the other hand, is relatively simple to set up, especially when no conversion is
+        required or the conversion is done beforehand. Performance is mostly great, unless
+        the <em>Object</em> is stored in slow off-line storage. The technique causes little problems for
+        scaling.
+      </li>
+      <li>
+        <em>Licensing</em>: Licensing of the operating system and software interacting with the <em>Object</em>
+        may be a concern for emulation. For rendering of most common file formats, open
+        source libraries and tools are available and licensing is less of a concern.
+      </li>
+    </ul><p>The choice for emulation versus rendering is captured in the Emulation and Rendering
+        Policy. There are many possible decision factors and strategies for choosing emulation over
+        rendering. For example:</p><ul>
+      <li>Manual configuration by archive maintainer;</li>
+      <li>Requested by consumer;</li>
+      <li>Decision based on format;</li>
+      <li>Decision based on <em>Technical metadata</em>;</li>
+      <li>Decision based on collection preferences, policies, agreements with producer, etc.</li>
+    </ul></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Access requested to a given <em>Object</em></span></td><td>CPP-025 (Enabling Access)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1">CPP-025 (Enabling Access)</td><td rowspan="1"><span><em>Representation</em> identifier</span></td><td class="stepsColumn" rowspan="1"><span>Collect <em>the Object's</em> <em>Representation</em></span></td><td rowspan="1"><span>
+                  <em>Representation</em>
+                </span><br></br><span>
+                  <em>Technical metadata</em>
+                </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                  <em>Representation</em>
+                </span></td><td class="stepsColumn" rowspan="2"><span>Collect the Environment <em>Objects</em> associated with the <em>Representation</em> (if present)</span></td><td rowspan="2"><span>Environment <em>Objects</em></span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                  <em>Technical metadata</em>
+                </span></td></tr><tr></tr><tr><td rowspan="4">3</td><td rowspan="1"></td><td rowspan="1"><span>
+                  <em>Representation</em>
+                </span></td><td class="stepsColumn" rowspan="4"><span>Decide on strategy</span></td><td rowspan="1"><span>Emulation (proceed to "Emulation")</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                  <em>Technical metadata</em>
+                </span></td><td rowspan="3"><span>Rendering (proceed to "Rendering")</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Environment <em>Object</em></span></td></tr><tr><td rowspan="1">CPP-012 (Risk Mitigation)<hr></hr>CPP-018 (Community Watch)</td><td rowspan="1"><span>Emulation and rendering policy</span></td></tr><tr></tr><tr><td rowspan="1">E1</td><td rowspan="1"></td><td rowspan="1"><span>Environment <em>Object</em></span></td><td class="stepsColumn" rowspan="1"><span>Retrieve the emulation properties from the Environment:</span><ul>
+                  <li>Hardware to be emulated</li>
+                  <li>Operation System type and version</li>
+                  <li>Tools to be installed in the OS</li>
+                </ul></td><td rowspan="1"><span>Emulation information</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">E2</td><td rowspan="1"></td><td rowspan="1"><span>Emulation information</span></td><td class="stepsColumn" rowspan="1"><span>Prepare Emulation environment:</span><ul>
+                  <li>initialise the virtual machine based on operating system requirement</li>
+                  <li>install the software requirements</li>
+                </ul></td><td rowspan="1"><span>Initialised emulated environment</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">E3</td><td rowspan="1"></td><td rowspan="1"><span>Emulated environment</span></td><td class="stepsColumn" rowspan="2"><span>Inject or copy the <em>Representation</em> content in the emulated environment</span></td><td rowspan="2"><span>Complete emulated environment</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> information</span></td></tr><tr></tr><tr><td rowspan="1">E4</td><td rowspan="1"></td><td rowspan="1"><span>Complete emulated environment</span></td><td class="stepsColumn" rowspan="1"><span>Start the emulated environment and redirect input and output to the consumer</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">R1</td><td rowspan="1">CPP-025 (Enabling Access)</td><td rowspan="1"><span><em>Representation</em> identifier</span></td><td class="stepsColumn" rowspan="1"><span>Get the <em>Object</em>'s <em>representation</em></span></td><td rowspan="1"><span>
+                    <em>Representation</em>
+                  </span><br></br><span>
+                    <em>Technical metadata</em>
+                  </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">R2</td><td rowspan="1"></td><td rowspan="1"><span>
+                    <em>Representation</em>
+                  </span><br></br><span>
+                    <em>Technical metadata</em>
+                  </span></td><td class="stepsColumn" rowspan="1"><span>Retrieve the <em>Representation</em> content</span></td><td rowspan="1"><span><em>Representation</em> content</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">R3</td><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> Information</span></td><td class="stepsColumn" rowspan="2"><span>Make a choice of rendering tool</span></td><td rowspan="2"><span>Rendering tool</span></td><td rowspan="2"></td></tr><tr><td rowspan="1">CPP-012 (Risk Mitigation)<hr></hr>CPP-018 (Community Watch)</td><td rowspan="1"><span>Emulation and rendering policy</span></td></tr><tr></tr><tr><td rowspan="2">R4</td><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> content</span></td><td class="stepsColumn" rowspan="2"><span>Execute the Rendering tool and hand over the <em>Representation</em>
+                  content</span></td><td rowspan="2"></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Rendering tool</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>It is good practice to provide the tools to let the consumer
+                interact with the data (Except in the case of dark
+                archives).</span></td><td><span></span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-025</td><td>Enabling Access</td><td><span>The access request is the trigger to invoke the rendering process
+                or start up the emulated environment.</span></td></tr><tr><td>CPP-010</td><td>File Format Validation</td><td><span>In order to have a decent level of confidence in the rendering 
+                process, the <em>File</em>’s format needs to be validated.</span></td></tr><tr><td>CPP-012</td><td>Risk Mitigation</td><td><span>Risk Mitigation is in charge of defining the emulation and
+                rendering policy that is meant to be applied by this CPP.</span></td></tr><tr><td>CPP-022</td><td>Significant Properties Definition</td><td><span>Rendering should be evaluated based on significant properties.
+                The faulty rendering of an <em>Object</em> because of unsuitable hardware
+                or software may go unnoticed and produce wrong interpretations
+                from the TDA’s community.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>The process of selecting tools for emulation and rendering
+                provides data to the TDA for reporting to the designated
+                communities.</span></td></tr><tr><td>Facilitated by</td><td>CPP-014</td><td>File Migration</td><td><span>May be needed to support rendering tools in the long term.</span></td></tr><tr><td>Facilitated by</td><td>CPP-026</td><td>File Normalisation</td><td><span>Normalisation of the file formats can reduce the effort and
+                complexity for rendering and emulation significantly.</span></td></tr><tr><td>Facilitated by</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>Derivatives in formats and/or structures that are easier to render
+                can be created prior to the rendering process to avoid time and
+                resource consuming conversion processes.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                                Link
+                        </a></td><td><span>Preservation Plan</span></td><td><span>R09 - Preservation Plan refers to emulation as a possible
+                preservation strategy</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                                Link
+                        </a></td><td><span>Emulation strategy</span></td><td><span>C24 Interpretability of the archival information</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
+                                Link
+                        </a></td><td><span>/</span></td><td><span>In scope of 3.3.1 “The repository shall have defined its
+                Designated Community and associated knowledge base(s) and shall
+                have these definitions appropriately accessible.”</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                                                Link
+                        </a></td><td><span>Representation Information</span><br></br><span>Rendering Software and Access Software</span></td><td><span>4.3.2.3.3 Representation Information Networks</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                                                Link
+                        </a></td><td><span>Emulation</span><br></br><span>Render</span></td><td><span>Emulation is mentioned several times w.r.t. PreservationLevel and
+                Environment Objects. Rendering is mentioned in sections
+                discussing Representations, Relations and Environment objects.
+                Both processes are also described in the glossary.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Rendering images with ICC profile embedded</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France, FR</td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>In addition to its digital library, Gallica, BnF might provide
+                access to its digital images with embedded ICC profiles on its
+                public computer stations.</span></td></tr><tr><td>Problem statement</td><td><span>The diversity of born-digital images collected by BnF requires
+                rendering software aware of its complexity. The rendering tool
+                should be able to handle several file formats, different colour
+                models, and many other more or less common characteristics of
+                image <em>Files</em>: multi-image TIFFs, orientation indicated by an EXIF
+                tag, etc. In particular, it should use the embedded ICC profile
+                to enable proper colour management.</span></td></tr><tr><td>Proposed solution</td><td><span>BnF selected the XnView freeware as its solution for displaying
+                images to its <em>Designated Community</em>. Though the software was
+                natively supporting embedded ICC profiles, the setting was not
+                activated by default, which illustrates the importance of
+                adjusting the tool settings to ensure faithful rendering of
+                digital <em>Objects</em>.</span></td></tr></table></div><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608641/Preservation+Management#PreservationManagement-Emulation">https://wiki.tib.eu/confluence/spaces/lza/pages/93608641/Preservation+Management#PreservationManagement-Emulation</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>English</td><td><a href="https://urn.fi/urn:nbn:fi-fe2025040925236">https://urn.fi/urn:nbn:fi-fe2025040925236</a><div>(section 8)</div></td></tr></table></div></div></body></html>

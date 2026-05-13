@@ -44,13 +44,13 @@ In any of these cases, the file repair process would end and another error-handl
 
 ### Outputs
 
-| Type     | Output                                                                     |
-| :------- | :------------------------------------------------------------------------- |
-| Metadata | Properties of target File or Representation                                |
-| Metadata | New/updated File or Representation properties                              |
-| Metadata | Provenance metadata                                                        |
-| Metadata | Optional: file comparison between source and target File / Representation. |
-| Guidance | Optional: updated Preservation action registry                             |
+| Type     | Output                                                           |
+| :------- | :--------------------------------------------------------------- |
+| Metadata | Properties of target File or Representation                      |
+| Metadata | New/updated File or Representation properties                    |
+| Metadata | Provenance metadata                                              |
+| Metadata | File comparison between source and target File / Representation. |
+| Guidance | Updated Preservation action registry                             |
 
 ### Trigger Events
 
@@ -79,7 +79,7 @@ In any of these cases, the file repair process would end and another error-handl
 | 12   | `CPP-022`   | - Target *File* or *Representation* properties (in<br>                                particular validity status)<br>- Significant properties | Control that the target *File* or *Representation* has<br>                            expected validity status and significant properties.<br>                        If the *File* or *Representation* is still invalid,<br>                            assess the outcome of the repair method:<br>                        <br>•  If the repair method was successful (i.e., fixed indeed an erroneous format structure), resume the process from step 1 with the target *File* or *Representation*;<br>                            <br>•  If the repair method was unsuccessful, resume the process from step 7 with the source *File* or *Representation* | - Decision whether the repair method should be confirmed                                      |             |
 | 13   |             |                                                                                                                                            | Decide which *File* or *Representation* should be<br>                            retained (source, target or both).<br>                        If target *File* or *Representation* is to be retained,<br>                            proceed with further steps. If not, the process ends |                                                                                               |             |
 | 14   |             |                                                                                                                                            | Document precisely the nature of the operation performed (tool and<br>                            version used, date, options or command-line arguments, etc.)        | - New Provenance metadata                                                                     |             |
-| 15   |             |                                                                                                                                            | Optional: Update the Preservation action registry with the new process<br>                            description                                                     | - New or updated repair method                                                                | `CPP-012`   |
+| 15   |             |                                                                                                                                            | Update the Preservation action registry with the new process<br>                            description                                                               | - New or updated repair method                                                                | `CPP-012`   |
 
 ## Rationale / Worst Case
 

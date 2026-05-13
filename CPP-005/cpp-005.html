@@ -178,7 +178,49 @@
         </p><p>[2] For example, the identifier &lt;id:c8b&gt; will be assigned to a Representation, and &lt;id:c8b/001&gt; to its
 first component or file.
         </p><p>[3] In the previous example, the identifier &lt;id:t5g&gt; could then be assigned to the first component or file.
-        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Pre-ingest transfer preparation</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Ingestion workflow</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Creation of new <em>File</em>s or Representations</span></td><td>CPP-028 (Creation of Derivatives)</td></tr><tr><td><span>Replacement of corrupted <em>File</em>s</span></td><td>CPP-004 (Data Corruption Management)</td></tr><tr><td><span>Data export</span></td><td>CPP-006 (AIP Batch Export)</td></tr><tr><td><span>Data replication</span></td><td>CPP-011 (Replication)</td></tr><tr><td><span>Data migration</span></td><td>CPP-014 (File Migration)</td></tr><tr><td><span>Data normalisation</span></td><td>CPP-026 (File Normalisation)</td></tr><tr><td><span><em>Metadata</em> ingest and creation</span></td><td>CPP-016 (Metadata Ingest and Management)</td></tr><tr><td><span>Data version update</span></td><td>CPP-021 (AIP Versioning)</td></tr><tr><td><span>Broken <em>File</em> needs a new identifier</span></td><td>CPP-027 (File Repair)</td></tr><tr><td><span><em>Information package</em>, <em>File</em> or <em>Metadata</em> is removed from the TDA holdings</span></td><td>CPP-017 (Disposal)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>The rationale for implementing PIDs in TDAs stems from fundamental 
+        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Pre-ingest transfer preparation</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Ingestion workflow</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Creation of new <em>File</em>s or Representations</span></td><td>CPP-028 (Creation of Derivatives)</td></tr><tr><td><span>Replacement of corrupted <em>File</em>s</span></td><td>CPP-004 (Data Corruption Management)</td></tr><tr><td><span>Data export</span></td><td>CPP-006 (AIP Batch Export)</td></tr><tr><td><span>Data replication</span></td><td>CPP-011 (Replication)</td></tr><tr><td><span>Data migration</span></td><td>CPP-014 (File Migration)</td></tr><tr><td><span>Data normalisation</span></td><td>CPP-026 (File Normalisation)</td></tr><tr><td><span><em>Metadata</em> ingest and creation</span></td><td>CPP-016 (Metadata Ingest and Management)</td></tr><tr><td><span>Data version update</span></td><td>CPP-021 (AIP Versioning)</td></tr><tr><td><span>Broken <em>File</em> needs a new identifier</span></td><td>CPP-027 (File Repair)</td></tr><tr><td><span><em>Information package</em>, <em>File</em> or <em>Metadata</em> is removed from the TDA holdings</span></td><td>CPP-017 (Disposal)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1a</td><td rowspan="1"></td><td rowspan="1"><span>A producer or a TDA has a need to reserve an identifier, 
+                                    (e.g. a PID, prior to the entity being added)
+                                </span></td><td class="stepsColumn" rowspan="1"><span>Reservation of identifier prior to new entity assignment (step 2)</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">1b</td><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Object</em>
+                                </span></td><td class="stepsColumn" rowspan="3"><span>New entity added or a need to assign an identifier to an existing entity (step 2)</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Information package</em>
+                                </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Metadata</em>
+                                </span></td></tr><tr></tr><tr><td rowspan="3">1c</td><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Object</em>
+                                </span></td><td class="stepsColumn" rowspan="3"><span>Entity with an identifier has changed (step 4)</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Information package</em>
+                                </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Metadata</em>
+                                </span></td></tr><tr></tr><tr><td rowspan="3">1d</td><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Object</em>
+                                </span></td><td class="stepsColumn" rowspan="3"><span>Entity is disposed (step 7)</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Information package</em>
+                                </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Metadata</em>
+                                </span></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Identifier creation and management policy</em>
+                            </span></td><td class="stepsColumn" rowspan="1"><span>Create a new identifier according to the TDAs policy for identifier 
+                            management
+                        </span></td><td rowspan="1"><span>Identifier</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="4">3</td><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>(new) Identifier</em>
+                            </span></td><td class="stepsColumn" rowspan="4"><span>Assign the new identifier to the entity and add it as a part of 
+                            the entity’s <em>Metadata</em>
+                        </span></td><td rowspan="4"><span><em>Metadata</em></span></td><td rowspan="4">CPP-004 (Data Corruption Management)<hr></hr>CPP-011 (Replication)<hr></hr>CPP-014 (File Migration)<hr></hr>CPP-016 (Metadata Ingest and Management)<hr></hr>CPP-021 (AIP Versioning)<hr></hr>CPP-025 (Enabling Access)<hr></hr>CPP-027 (File Repair)<hr></hr>CPP-028 (Creation of Derivatives)<hr></hr>CPP-029 (Ingest)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Object</em>
+                            </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Information package</em>
+                            </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Metadata</em>
+                            </span></td></tr><tr></tr><tr><td rowspan="2">4</td><td rowspan="2"></td><td rowspan="2"><span>
+                                <em>Identifier creation and management policy</em>
+                            </span></td><td class="stepsColumn" rowspan="2"><span>If the changed entity has a PID assigned to it: evaluate if a new PID is required</span></td><td rowspan="1"><span>Need for new PID identified (go back to step 2)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>No need for new PID identified (step 5)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update or add identifier relationships (e.g. hierarchical relations, sequential 
+                            relations etc.) for the assigned entity
+                        </span></td><td rowspan="1"><span><em>Metadata</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">6</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update <em>Provenance metadata</em> for the entity so that identifiers have a history</span></td><td rowspan="1"><span><em>Provenance metadata</em></span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1">CPP-017 (Disposal)</td><td rowspan="1"><span>
+                                <em>Disposed entity</em>
+                            </span></td><td class="stepsColumn" rowspan="1"><span>If the entity is disposed: retain minimum metadata and the 
+                            identifier for the disposed entity
+                        </span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>The rationale for implementing PIDs in TDAs stems from fundamental 
                     challenges in maintaining long-term access to digital objects and the core 
                     mission of preservation itself.
                 </span></td><td><span>Link rot as well as problems and challenges in:</span><ul>

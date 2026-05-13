@@ -42,8 +42,8 @@ Specific implementation approaches are outside of the scope of this CPP.. Howeve
 | Type     | Input                                                                                                                             |
 | :------- | :-------------------------------------------------------------------------------------------------------------------------------- |
 | Data     | AIP                                                                                                                               |
-| Data     | Optional: SIP (if Versioning is triggered by an updating request the Producer)                                                    |
-| Data     | Optional: File(s) or Representation(s) that should replace existing ones or be added to an AIP                                    |
+| Data     | SIP (if Versioning is triggered by an updating request the Producer)                                                              |
+| Data     | File(s) or Representation(s) that should replace existing ones or be added to an AIP                                              |
 | Metadata | Metadata that should be added to the Information Package (i.e. Descriptive, Technical, Structural and/or Administrative metadata) |
 | Guidance | Versioning Policy                                                                                                                 |
 | Guidance | AIP packaging policy                                                                                                              |
