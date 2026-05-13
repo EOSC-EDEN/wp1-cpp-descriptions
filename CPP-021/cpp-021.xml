@@ -176,9 +176,9 @@
         <cpp:inputs>
             <cpp:data>
                 <cpp:dataElement>AIP</cpp:dataElement>
-                <cpp:dataElement>Optional: SIP (if Versioning is triggered by 
+                <cpp:dataElement optional="true">SIP (if Versioning is triggered by 
                     an updating request the Producer)</cpp:dataElement>
-                <cpp:dataElement>Optional: File(s) or Representation(s) that 
+                <cpp:dataElement optional="true">File(s) or Representation(s) that 
                     should replace existing ones or be added to an AIP</cpp:dataElement>
             </cpp:data>
             <cpp:metadata>

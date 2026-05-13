@@ -44,10 +44,10 @@ A single rights basis usually applies to several *Objects* or *Metadata* (e.g. a
 
 ### Outputs
 
-| Type     | Output                    |
-| :------- | :------------------------ |
-| Metadata | Optional: Rights metadata |
-| Guidance | Rights statement          |
+| Type     | Output           |
+| :------- | :--------------- |
+| Metadata | Rights metadata  |
+| Guidance | Rights statement |
 
 ### Trigger Events
 
