@@ -16,9 +16,11 @@
     <xsl:variable name="languages" select="document('languages.xml')" />
     <xsl:variable name="cpps" select="document('cpps.xml')" />
 
-    <xsl:param name="base-hue">210</xsl:param>
-    <xsl:param name="base-lightness">100</xsl:param>
-    <xsl:param name="lightness-step">10</xsl:param>
+    <xsl:variable name="group-sequence-hue">210</xsl:variable>
+    <xsl:variable name="group-alternative-hue">150</xsl:variable>
+    <xsl:variable name="group-parallel-hue">330</xsl:variable>
+    <xsl:variable name="base-lightness">95</xsl:variable>
+    <xsl:variable name="lightness-step">10</xsl:variable>
 
     <xsl:template match="/cpp:cpp">
 
@@ -143,7 +145,8 @@
                     <xsl:text>_</xsl:text>
                     <xsl:value-of select="translate($LABEL,' ','_')" />
                 </title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />            </head>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            </head>
             <body>
 
                 <xsl:call-template name="IntroSection">
@@ -1078,6 +1081,7 @@
         <xsl:variable name="step" select="$lightness-step" />
         <xsl:variable name="calc" select="$baseLightness - ($depth * $step)" />
 
+        <!-- color as CSS hsl -->
         <xsl:variable name="light">
             <xsl:choose>
                 <xsl:when test="$calc &lt; 0">
@@ -1089,7 +1093,20 @@
             </xsl:choose>
         </xsl:variable>
 
-        <!-- color as CSS hsl -->
+        <xsl:variable name="base-hue">
+            <xsl:choose>
+                <xsl:when test="@type='sequence'">
+                    <xsl:value-of select="$group-sequence-hue"/>
+                </xsl:when>
+                <xsl:when test="@type='alternative'">
+                    <xsl:value-of select="$group-alternative-hue"/>
+                </xsl:when>
+                <xsl:when test="@type='parallel'">
+                    <xsl:value-of select="$group-parallel-hue"></xsl:value-of>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+
         <xsl:variable name="my-color">
             <xsl:value-of select="concat('hsl(', $base-hue, ',70%,', $light, '%)')" />
         </xsl:variable>
@@ -1125,7 +1142,7 @@
                         <xsl:attribute name="style">
                             <xsl:text>background-color:</xsl:text>
                             <xsl:value-of select="$my-color"/>
-                        <xsl:text>; padding:4px</xsl:text>
+                            <xsl:text>; padding:4px</xsl:text>
                         </xsl:attribute>
                         <xsl:call-template name="stepGroupLabel">
                             <xsl:with-param name="type" select="@type"/>
@@ -1324,7 +1341,7 @@
                 <i class="fa-solid fa-arrows-down-to-line"></i>
             </xsl:when>
             <xsl:otherwise>
-            </xsl:otherwise>  
+            </xsl:otherwise>
         </xsl:choose>
         <em><xsl:value-of select="$type"/></em>
         <xsl:if test="$label">
