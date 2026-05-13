@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpp:cpp xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" 
+    ID="CPP-028" xml:lang="en">
+    <cpp:header>
+        <cpp:label>Creation of Derivatives</cpp:label>
+        <cpp:authors>
+            <cpp:author>Kris Dekeyser</cpp:author>
+        </cpp:authors>
+        <cpp:contributors>
+            <cpp:contributor>Juha Lehtonen</cpp:contributor>
+        </cpp:contributors>
+        <cpp:evaluators>
+            <cpp:evaluator>Matthew Addis</cpp:evaluator>
+            <cpp:evaluator>Felix Burger</cpp:evaluator>
+        </cpp:evaluators>
+        <cpp:history>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2025-08-29</cpp:versionDate>
+                <cpp:versionNotes>Milestone version</cpp:versionNotes>
+            </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-04-24</cpp:versionDate>
+                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+            </cpp:version>
+        </cpp:history>
+    </cpp:header>
+    <cpp:shortDefinition>
+        The TDA generates derivative copies to address the specific needs of its Designated Community.
+    </cpp:shortDefinition>
+    <cpp:classification>
+        <cpp:oaisClassification>Access</cpp:oaisClassification>
+        <cpp:logicalClassification>Generation of New Files</cpp:logicalClassification>
+    </cpp:classification>
+    <cpp:descriptionAndScope>
+        <p>
+            The process of Creation of Derivatives refers to generating new <em>Representations</em> of a digital
+            <em>Object</em> (based on the original <em>Representation</em> of the <em>Object</em>) to address specific needs of the
+            <em>Designated Community</em>. Some of these needs are:
+        </p>
+        <ul>
+            <li>
+                Provide easy access to the information for a broader community (e.g. conversion
+                from TIFF to JPEG in order to allow viewing in a web browser)
+            </li>
+            <li>
+                Provide access for a specific user base (e.g. converting CAD <em>Files</em> to a specific
+                format that is more commonly in use by a group of researchers)
+            </li>
+            <li>
+                Provide different forms of access to the data (e.g. combining a tree of HTML-pages,
+                images and other resources into a WARC <em>File</em>; unpacking a ZIP <em>File</em>; compiling data
+                into a pivot table or chart)
+            </li>
+            <li>
+                Provide access to the data in formats that address accessibility challenges (e.g.
+                creating DAISY derivatives of PDFs for visually impaired consumers)
+            </li>
+            <li>
+                Restricting or protecting the access to the data (e.g. creating a PDF from an e-book
+                containing only the first few pages; lowering the resolution and watermarking;
+                thumbnails)
+            </li>
+            <li>
+                Enriching the information (e.g. adding AI-generated transcriptions as subtitles to a
+                video; overlaying transparent OCR text over a scanned image in a PDF; adding
+                AI-generated <em>Descriptive metadata</em>)
+            </li>
+        </ul>
+        <p>
+            Creation of Derivatives differs from other processes that create new <em>Files</em> or
+            <em>Representations</em>:
+        </p>
+        <ul>
+            <li>
+                Unlike <b>File Migration</b> (CPP-014), Creation of Derivatives reproduces only the
+                information and significant properties of the original that is useful to address specific
+                needs of the Designated Community. Thus, the output of Creation of Derivatives may
+                lack part of the information that is not required to satisfy said needs.
+            </li>
+            <li>
+                <b>File Normalisation</b> (CPP-026) is performed during ingest and aims at reducing the
+                number of formats by converting <em>Files</em> or <em>Representations</em> to preservation formats
+                defined by the institutional formats policy.
+            </li>
+            <li>
+                <b>File Migration</b> (CPP-014) is performed after ingest to address a specific preservation
+                risk.
+            </li>
+        </ul>
+        <p>
+            Derivative copies can be short-lived and there can be more than one derivative copy for a
+            given original. For example, derivative copies for a video master <em>File</em> could include multiple
+            resolutions, different levels of compression and different encoding schemes (e.g. suited for
+            previewing rather than reuse). The derivative videos may be generated to support
+            contemporary web delivery standards such as HTML5 and as a result may be short lived
+            compared to the copies created as a result of migration and/or normalisation.
+        </p>
+        <p>
+            It is up to the TDA to decide how far they take this and if they support any of these use
+            cases, if at all. The generation of the derivative copies can be performed during delivery,
+            during or before the ingestion or any time during the <em>Object</em>’s life cycle in the TDA.
+            Performance, <em>Object</em> size, availability of conversion tools and workflows, and user
+            requirements will be some of the elements that could play a role in this decision.
+        </p>
+        <p>
+            Depending on whether the derivative copy maintains the significant properties of the original
+            <em>Object</em>, the derivative copy may then (a) be added to the same <em>AIP</em> as the original (e.g. as a
+            new <em>Representation</em>), (b) result in a new <em>AIP</em> that is stored in addition to the original and is
+            linked to it, or (c) may be held in a <em>DIP</em> which in turn may be stored temporarily or
+            permanently, and is linked to the original <em>AIP</em>. In PREMIS terms, the derivative copies can
+            be stored as a new <em>Representation</em> if the derivative copy is a complete and meaningful
+            rendition of the <em>Intellectual Entity</em>. However, if the derivative copies change the meaning and
+            of the original (e.g. significant properties are not maintained) then a new <em>AIP</em> or <em>DIP</em> is
+            recommended.
+        </p>
+    </cpp:descriptionAndScope>
+    <cpp:process>
+        <cpp:inputs>
+            <cpp:data>
+                <cpp:dataElement>Source Representation of an Object</cpp:dataElement>
+            </cpp:data>
+            <cpp:guidance>
+                <cpp:guidanceElement>File format policy - Derivatives</cpp:guidanceElement>
+            </cpp:guidance>
+        </cpp:inputs>
+        <cpp:outputs>
+            <cpp:data>
+                <cpp:dataElement>A new Representation, a new AIP, or a DIP</cpp:dataElement>
+            </cpp:data>
+            <cpp:metadata>
+                <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
+                <cpp:metadataElement>Structural metadata</cpp:metadataElement>
+            </cpp:metadata>
+        </cpp:outputs>
+        <cpp:triggerEvents>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span>Request for access to a digital <em>Object</em></span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-025</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+            <cpp:triggerEvent>
+                <cpp:description>
+                    <span><em>SIP</em> processing during Ingest</span>
+                </cpp:description>
+                <cpp:correspondingCPP>CPP-029</cpp:correspondingCPP>
+            </cpp:triggerEvent>
+        </cpp:triggerEvents>
+        <cpp:stepByStepDescription>
+            <cpp:stepGroup type="sequence">
+                <cpp:stepGroup type="alternative" label="Alternative triggers">
+                    <cpp:step stepNumber="1a">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Request for access copy and requested <em>Object(s)</em></span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-025</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Identify the <em>Representation</em> to be processed</span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span><em>Representation</em></span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="1b">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Ingest of a <em>SIP</em></span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-029</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Iterate over the <em>Representations</em> in the <em>SIP</em></span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span><em>Representation</em></span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                </cpp:stepGroup>
+                <cpp:step stepNumber="2">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><em>Representation</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>File format policy - Derivatives</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            Determine if a derivative is needed by applying the rules in the policy
+                            to the <em>Files</em> in the <em>Representation</em>.
+                            End the process unless a derivative is needed
+                        </span>
+                    </cpp:stepDescription>
+                </cpp:step>
+                <cpp:step stepNumber="3">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span><em>Representation</em></span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>File format policy - Derivatives: tools</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            Determine the migration path and apply it to the source <em>File(s)</em> in the <em>Representation</em>
+                        </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>New <em>File</em> or set of <em>Files</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:step stepNumber="4">
+                    <cpp:input>
+                        <cpp:inputElement>
+                            <span>File format policy - Derivatives</span>
+                        </cpp:inputElement>
+                    </cpp:input>
+                    <cpp:stepDescription>
+                        <span>
+                            Decide on the packaging of the <em>File(s)</em>: a new <em>Representation</em>, 
+                            a new <em>AIP</em> or a <em>DIP</em>.
+                        </span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Representation</em>, <em>AIP</em> or <em>DIP</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+                <cpp:stepGroup type="alternative" label="Alternative outputs step 4">
+                    <cpp:step stepNumber="5a">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span><em>DIP</em></span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Deliver the <em>DIP</em> and end the process</span>
+                        </cpp:stepDescription>
+                    </cpp:step>
+                    <cpp:step stepNumber="5b">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span><em>Representation</em> or <em>AIP</em></span>
+                            </cpp:inputElement>
+                            <cpp:supplier>CPP-001</cpp:supplier>
+                            <cpp:supplier>CPP-008</cpp:supplier>
+                            <cpp:supplier>CPP-009</cpp:supplier>
+                            <cpp:supplier>CPP-010</cpp:supplier>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>
+                                Apply the characterisation processes against the new <em>Object</em>,
+                                optionally by running the ingest process and all its subprocesses</span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Validated <em>Object</em></span>
+                            </cpp:outputElement>
+                            <cpp:customer>CPP-015</cpp:customer>
+                        </cpp:output>
+                    </cpp:step>
+                </cpp:stepGroup>
+                <cpp:step stepNumber="6">
+                    <cpp:stepDescription>
+                        <span>Report migration performed, success/failure, <em>Files</em> generated</span>
+                    </cpp:stepDescription>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Audit trail</span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Provenance metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span><em>Structural metadata</em></span>
+                        </cpp:outputElement>
+                    </cpp:output>
+                </cpp:step>
+            </cpp:stepGroup>
+        </cpp:stepByStepDescription>
+    </cpp:process>
+    <cpp:rationaleWorstCase>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>
+                    FAIR Interoperable: I1. (Meta)data use a formal, accessible, shared, and
+                    broadly applicable language for knowledge representation.
+                </span>
+                <span>
+                    FAIR Reusable: R1.3. (Meta)data meet domain-relevant community standards
+                </span>
+                <span>
+                    i.o.w. To support Interoperability and Reuse of the data, it should be made
+                    available in a format or structure that closely matches its usage.
+                </span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    The consumer of the data may resort to other tools to convert it and corrupt 
+                    or distort the data in the process.
+                </span>
+                <span>
+                    The consumer of the data may be unable to use the data because it is not in a format 
+                    they can use and they do not have the tools/knowledge to convert it themselves.
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+        <cpp:purpose>
+            <cpp:purposeDescription>
+                <span>FAIR Findable</span>
+            </cpp:purposeDescription>
+            <cpp:worstCase>
+                <span>
+                    Without derivative copies, the consumer of the data may find it difficult and time consuming to
+                    assess whether the data contains the content they need, for example they cannot easily
+                    preview/inspect derivatives that allow them to determine if they should go ahead and retrieve the
+                    full dataset.
+                </span>
+            </cpp:worstCase>
+        </cpp:purpose>
+    </cpp:rationaleWorstCase>
+    <cpp:cppRelationships>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-022</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Though derivative copies may not be subject to the same
+                    requirements as preservation copies, providing access
+                    through copies that do not convey significant properties
+                    might be considered a TDA failure.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Requires</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-025</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    The request for access can trigger the creation of a
+                    derivative copy for rendering purposes.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May require</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-005</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    A derivative copy of a <em>File</em> may get its own identifier.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>May require</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-029</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    During ingest derivative copies may be created.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Required by</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-013</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Creation of new <em>Objects</em> provides data
+                    for statistical reporting.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Facilitates</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-015</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Derived copies in a different format or
+                    structure than the original
+                    <em>Representation</em> can help in rendering
+                    the data or simulating the environment.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Creation of a derivatives creates an
+                    additional <em>Representation</em> to be
+                    retained, while the migration outcome
+                    is supposed to replace its source.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+        <cpp:relationship>
+            <cpp:relationshipType>Not to be confused with</cpp:relationshipType>
+            <cpp:relatedCPP>CPP-026</cpp:relatedCPP>
+            <cpp:relationshipDescription>
+                <span>
+                    Unlike File Normalisation (CPP-026),
+                    Creation of Derivatives (CPP-028)
+                    reproduces only the information and
+                    significant properties of the original
+                    that is useful to address specific needs
+                    of the <em>Designated Community</em>. Thus,
+                    the output of Creation of Derivatives
+                    may lack part of the information that is
+                    not required to satisfy said needs.
+                    Normalisation aims to maintain all the
+                    significant properties of the original.
+                </span>
+            </cpp:relationshipDescription>
+        </cpp:relationship>
+    </cpp:cppRelationships>
+    <cpp:frameworkMappings>
+        <cpp:mapping>
+            <cpp:frameworkName>ISO 16363</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>dissemination of digital objects</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    4.6.2 dissemination may simply be a
+                    copy, a simple format transformation or a
+                    more complex derivation
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>OAIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span><em>DIP</em> and derived <em>AIP</em></span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    OAIS differentiates between generating
+                    derivations for the sake of a <em>DIP</em> and
+                    creating derivative copies and storing
+                    them in the TDA. In the latter case, they
+                    suggest it is added as an <em>AIP</em> linked to
+                    the source <em>AIP</em>, ignoring the fact that it
+                    could be stored as a <em>Representation</em>
+                    within the same <em>AIP</em>.
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+        <cpp:mapping>
+            <cpp:frameworkName>PREMIS</cpp:frameworkName>
+            <cpp:correspondingTerm>
+                <span>Relationships</span>
+            </cpp:correspondingTerm>
+            <cpp:correspondingSection>
+                <span>
+                    Derivation relationships can be defined
+                    between <em>Objects</em>
+                </span>
+            </cpp:correspondingSection>
+        </cpp:mapping>
+    </cpp:frameworkMappings>
+    <cpp:referenceImplementations>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>
+                    TIB - Leibniz Information Centre for Science and Technology and University Library
+                </cpp:institutionLabel>
+                <cpp:institutionCountry>DE</cpp:institutionCountry>
+                <cpp:institutionType>National library</cpp:institutionType>
+                <cpp:institutionType>Non-commercial digital preservation service</cpp:institutionType>
+                <cpp:institutionType>Research infrastructure</cpp:institutionType>
+                <cpp:institutionType>Research performing organisation</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608628/Pre-Ingest?preview=/93608628/93608629/pre-ingest.png</cpp:hyperlink>
+                <cpp:comment>part of pre-ingest routines</cpp:comment>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://wiki.tib.eu/confluence/spaces/lza/pages/93608628/Pre-Ingest?preview=/93608628/310285401/film_digitization.png</cpp:hyperlink>
+                <cpp:comment>part of pre-ingest routines</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+        <cpp:publicDocumentation>
+            <cpp:institution>
+                <cpp:institutionLabel>Archivematica</cpp:institutionLabel>
+                <cpp:institutionCountry>CA</cpp:institutionCountry>
+                <cpp:institutionType>Digital preservation system</cpp:institutionType>
+            </cpp:institution>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#normalize</cpp:hyperlink>
+                <cpp:comment>
+                    In Archivematica, creating derivatives (called access copies) are part of normalisation.
+                ​</cpp:comment>
+            </cpp:linkToDocumentation>
+            <cpp:linkToDocumentation xml:lang="en">
+                <cpp:hyperlink>https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization</cpp:hyperlink>
+                <cpp:comment>
+                    In Archivematica, creating derivatives (called access copies) are part of normalisation.
+                ​</cpp:comment>
+            </cpp:linkToDocumentation>
+        </cpp:publicDocumentation>
+    </cpp:referenceImplementations>
+</cpp:cpp>
