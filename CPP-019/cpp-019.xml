@@ -468,7 +468,7 @@
                 </cpp:step>
                 <cpp:step stepNumber="6" optional="true">
                     <cpp:stepDescription>
-                        <span> Optional: The quality of an <em>Object</em>, <em>AIP</em> or <em>
+                        <span>The quality of an <em>Object</em>, <em>AIP</em> or <em>
                             Metadata</em> can be enhanced or modified based on the quality
                             assessment report. It may run for example some of the following CPPs: </span>
                         <ul>

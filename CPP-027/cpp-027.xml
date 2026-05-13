@@ -134,10 +134,10 @@
                 <cpp:metadataElement>Properties of target File or Representation</cpp:metadataElement>
                 <cpp:metadataElement>New/updated File or Representation properties</cpp:metadataElement>
                 <cpp:metadataElement>Provenance metadata</cpp:metadataElement>
-                <cpp:metadataElement>Optional: file comparison between source and target File / Representation.</cpp:metadataElement>
+                <cpp:metadataElement optional="true">File comparison between source and target File / Representation.</cpp:metadataElement>
             </cpp:metadata>
             <cpp:guidance>
-                <cpp:guidanceElement>Optional: updated Preservation action registry</cpp:guidanceElement>
+                <cpp:guidanceElement optional="true">Updated Preservation action registry</cpp:guidanceElement>
             </cpp:guidance>
         </cpp:outputs>
         <cpp:triggerEvents>
@@ -485,7 +485,7 @@
                 </cpp:step>
                 <cpp:step stepNumber="15" optional="true">
                     <cpp:stepDescription>
-                        <span>Optional: Update the Preservation action registry with the new process
+                        <span>Update the Preservation action registry with the new process
                             description</span>
                     </cpp:stepDescription>
                     <cpp:output>
