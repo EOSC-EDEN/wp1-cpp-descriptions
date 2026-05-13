@@ -29,8 +29,8 @@
             <head>
                 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -74,10 +74,14 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
