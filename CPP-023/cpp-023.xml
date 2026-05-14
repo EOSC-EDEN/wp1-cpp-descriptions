@@ -43,14 +43,14 @@
         <cpp:logicalClassification>Preservation Planning</cpp:logicalClassification>
     </cpp:classification>
     <cpp:descriptionAndScope>
-        <p>Risk Definition and Extraction is a multi-tiered process that a) identifies risks caused
+        <p>Risk Properties Definition and Extraction is a multi-tiered process that a) identifies risks caused
             by the specific properties and content of a file, b) defines methods to detect these
             risks based on file analysis (i.e. format identification, metadata extraction and format
             validation), and c) holds responsibility for performing technology watch. Together with
             CPP-012 Risk Mitigation, which defines which actions can be undertaken to reduce the
-            likelihood or impact of the risk, CPP-023 Risk Definition and Extraction is an essential
+            likelihood or impact of the risk, CPP-023 Risk Properties Definition and Extraction is an essential
             process in the scope of the broader, on-going “risk management” activity.</p>
-        <p>Risk Definition and Extraction is also the process responsible for technology watch. It
+        <p>Risk Properties Definition and Extraction is also the process responsible for technology watch. It
             receives updates from Community Watch (CPP-018), such as conference papers, specialised
             literature and journals, vendor announcements, etc. Based on that, it evaluates the
             impact of the risk with regard to the skills, objectives and means of the Designated
@@ -96,7 +96,7 @@
             preservation analysts, while significant properties should be defined by the TDA
             management and stakeholders.</p>
         <p>The step-by-step description below focuses more specifically on the risk extraction part
-            of the process. Like Risk Mitigation, Risk Definition and Extraction focuses on a
+            of the process. Like Risk Mitigation, Risk Properties Definition and Extraction focuses on a
             specific subset of risks - in this case, risks related to inherent properties of <em>
             Files</em>. Although of major impact, the definition and detection of risks caused by
             organisational, financial or security issues are not described.</p>
@@ -388,15 +388,15 @@
         <cpp:mapping>
             <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>
             <cpp:correspondingSection>
-                <span>CTS does not explicitly mention Risk definition and extraction, although it is
+                <span>CTS does not explicitly mention Risk Properties Definition and Extraction, although it is
                     within the scope of R09 (Preservation planning).</span>
             </cpp:correspondingSection>
         </cpp:mapping>
         <cpp:mapping>
             <cpp:frameworkName>Nestor Seal</cpp:frameworkName>
             <cpp:correspondingSection>
-                <span>Nestor Seal does not explicitly mention Risk definition and extraction,
-                    although C11 Preservation measures are based on a risk definition process as
+                <span>Nestor Seal does not explicitly mention Risk Properties Definition and Extraction,
+                    although C11 Preservation measures are based on a risk properties definition process as
                     described in this CPP.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
@@ -406,7 +406,7 @@
                 <span>“identifying each preservation risk”</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <span>ISO 16363 mentions Risk definition and extraction in section 4.3.1: “The
+                <span>ISO 16363 mentions Risk Properties Definition and Extraction in section 4.3.1: “The
                     repository shall have documented preservation strategies relevant to its
                     holdings.”</span>
             </cpp:correspondingSection>
@@ -417,7 +417,7 @@
                 <span>Preservation watch</span>
             </cpp:correspondingTerm>
             <cpp:correspondingSection>
-                <span>Risk Definition and Extraction is covered by both Monitor Technology and
+                <span>Risk Properties Definition and Extraction is covered by both Monitor Technology and
                     Preservation Watch functions.</span>
             </cpp:correspondingSection>
         </cpp:mapping>
