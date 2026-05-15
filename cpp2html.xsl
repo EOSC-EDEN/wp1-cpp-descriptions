@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
-        xmlns:xhtml="http://www.w3.org/1999/xhtml" 
-        xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-        xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" 
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-        xmlns="http://www.w3.org/1999/xhtml" 
-        xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ cpp.xsd" 
-        xmlns:exslt="http://exslt.org/common" 
-        xmlns:math="http://exslt.org/math" 
-        xmlns:str="http://exslt.org/strings" 
-        xmlns:func="http://exslt.org/functions" 
-        extension-element-prefixes="exslt math func str" 
-        version="1.0">
+<xsl:stylesheet xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ cpp.xsd" xmlns:exslt="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:str="http://exslt.org/strings" xmlns:func="http://exslt.org/functions" extension-element-prefixes="exslt math func str" version="1.0">
     <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
 
     <xsl:variable name="SPACE" select="' '"></xsl:variable>
@@ -543,7 +531,7 @@
             <tr>
                 <th>
                     <xsl:attribute name="colspan">
-                        <xsl:value-of select="$maxStepDepth"/>
+                        <xsl:value-of select="$maxStepDepth" />
                     </xsl:attribute>
                     <xsl:text>No</xsl:text>
                 </th>
@@ -622,7 +610,7 @@
 
     <xsl:template name="dependencyTable">
 
-        <xsl:param name="data"/>
+        <xsl:param name="data" />
 
         <table class="dependencies">
             <tr>
@@ -665,7 +653,7 @@
 
     <xsl:template name="relationTable">
 
-        <xsl:param name="data"/>
+        <xsl:param name="data" />
 
         <table class="relations">
             <tr>
@@ -702,7 +690,7 @@
     <!-- certification table -->
 
     <xsl:template name="certificationTable">
-        <xsl:param name="data"/>
+        <xsl:param name="data" />
 
         <table class="certificationTable">
             <tr>
@@ -752,7 +740,7 @@
 
     <xsl:template name="frameworkTable">
 
-        <xsl:param name="data"/>
+        <xsl:param name="data" />
 
         <table class="frameworks">
             <tr>
@@ -802,7 +790,7 @@
     <!-- Use case section -->
 
     <xsl:template name="useCases">
-        <xsl:param name="data"/>
+        <xsl:param name="data" />
 
         <xsl:for-each select="$data/cpp:useCase">
 
@@ -820,7 +808,7 @@
     <!-- Use case table -->
 
     <xsl:template name="useCaseTable">
-        <xsl:param name="data"/>
+        <xsl:param name="data" />
 
         <table class="useCaseTable">
             <tr>
@@ -842,17 +830,17 @@
                     <td>
                         <xsl:for-each select="$data/cpp:linkToDocumentation">
                             <xsl:if test="position() &gt; 1">
-                                <br/>
+                                <br />
                             </xsl:if>
                             <xsl:if test="cpp:comment">
-                                <xsl:value-of select="cpp:comment"/>
-                                <xsl:value-of select="$SPACE"/>
+                                <xsl:value-of select="cpp:comment" />
+                                <xsl:value-of select="$SPACE" />
                             </xsl:if>
                             <xsl:element name="a">
                                 <xsl:attribute name="href">
                                     <xsl:value-of select="cpp:hyperlink" />
                                 </xsl:attribute>
-                                <xsl:value-of select="cpp:hyperlink"/>
+                                <xsl:value-of select="cpp:hyperlink" />
                             </xsl:element>
                         </xsl:for-each>
                     </td>
@@ -903,7 +891,7 @@
     <!-- Public documentation template -->
 
     <xsl:template name="publicDocumentationTable">
-        <xsl:param name="data"/>
+        <xsl:param name="data" />
 
         <table class="publicDocumentation">
             <tr>
@@ -929,7 +917,7 @@
             <xsl:text>, </xsl:text>
             <xsl:value-of select="cpp:institution/cpp:institutionCountry" />
         </xsl:variable>
-        <xsl:variable name="institutionTypes" select="cpp:institution/cpp:institutionType/text()"/>
+        <xsl:variable name="institutionTypes" select="cpp:institution/cpp:institutionType/text()" />
 
         <xsl:for-each select="cpp:linkToDocumentation">
             <xsl:variable name="langcode" select="./@xml:lang" />
@@ -938,7 +926,7 @@
                     <xsl:attribute name="href">
                         <xsl:value-of select="./cpp:hyperlink" />
                     </xsl:attribute>
-                    <xsl:value-of select="./cpp:hyperlink"/>
+                    <xsl:value-of select="./cpp:hyperlink" />
                 </xsl:element>
                 <xsl:if test="./cpp:comment">
                     <xsl:element name="div">
@@ -1102,10 +1090,10 @@
         <xsl:variable name="base-hue">
             <xsl:choose>
                 <xsl:when test="@type='sequence'">
-                    <xsl:value-of select="$group-sequence-hue"/>
+                    <xsl:value-of select="$group-sequence-hue" />
                 </xsl:when>
                 <xsl:when test="@type='alternative'">
-                    <xsl:value-of select="$group-alternative-hue"/>
+                    <xsl:value-of select="$group-alternative-hue" />
                 </xsl:when>
                 <xsl:when test="@type='parallel'">
                     <xsl:value-of select="$group-parallel-hue"></xsl:value-of>
@@ -1118,8 +1106,8 @@
         </xsl:variable>
 
         <!-- calculate number and label width -->
-        <xsl:variable name="stepColumns" select="1"/>
-        <xsl:variable name="labelColumns" select="$totalColumnCount - $stepColumns"/>
+        <xsl:variable name="stepColumns" select="0" />
+        <xsl:variable name="labelColumns" select="$totalColumnCount - $stepColumns" />
 
         <xsl:variable name="stepRows" select="number(cpp:stepRowCount(.))" />
 
@@ -1129,13 +1117,13 @@
                 <td>
                     <xsl:attribute name="style">
                         <xsl:text>background-color:</xsl:text>
-                        <xsl:value-of select="$parent-color"/>
+                        <xsl:value-of select="$parent-color" />
                     </xsl:attribute>
                     <xsl:attribute name="rowspan">
-                        <xsl:value-of select="$stepRows"/>
+                        <xsl:value-of select="$stepRows" />
                     </xsl:attribute>
                     <xsl:attribute name="colspan">
-                        <xsl:value-of select="$stepColumns"/>
+                        <xsl:value-of select="$stepColumns" />
                     </xsl:attribute>
                     <xsl:value-of select="@stepNumber" />
                 </td>
@@ -1143,15 +1131,15 @@
             <td>
                 <xsl:attribute name="style">
                     <xsl:text>background-color:</xsl:text>
-                    <xsl:value-of select="$my-color"/>
+                    <xsl:value-of select="$my-color" />
                     <xsl:text>; padding:4px</xsl:text>
                 </xsl:attribute>
                 <xsl:attribute name="colspan">
-                    <xsl:value-of select="$labelColumns"/>
+                    <xsl:value-of select="$labelColumns" />
                 </xsl:attribute>
                 <xsl:call-template name="stepGroupLabel">
-                    <xsl:with-param name="type" select="@type"/>
-                    <xsl:with-param name="label" select="@label"/>
+                    <xsl:with-param name="type" select="@type" />
+                    <xsl:with-param name="label" select="@label" />
                 </xsl:call-template>
             </td>
         </tr>
@@ -1161,16 +1149,16 @@
             <xsl:choose>
                 <xsl:when test="self::cpp:step">
                     <xsl:apply-templates select="." mode="step">
-                        <xsl:with-param name="my-color" select="$my-color"/>
-                        <xsl:with-param name="depth" select="$depth"/>
+                        <xsl:with-param name="my-color" select="$my-color" />
+                        <xsl:with-param name="depth" select="$depth" />
                     </xsl:apply-templates>
                 </xsl:when>
 
                 <xsl:when test="self::cpp:stepGroup">
                     <!-- call the same template for nested group -->
                     <xsl:apply-templates select="." mode="group">
-                        <xsl:with-param name="depth" select="$depth + 1"/>
-                        <xsl:with-param name="parent-color" select="$my-color"/>
+                        <xsl:with-param name="depth" select="$depth + 1" />
+                        <xsl:with-param name="parent-color" select="$my-color" />
                     </xsl:apply-templates>
                 </xsl:when>
             </xsl:choose>
@@ -1181,9 +1169,9 @@
     <!-- Generic template for a single step -->
     <xsl:template match="cpp:step" mode="step">
         <xsl:param name="my-color" />
-        <xsl:param name="depth" select="0"/>
+        <xsl:param name="depth" select="0" />
 
-        <xsl:variable name="stepColumns" select="$maxStepDepth - $depth"/>
+        <xsl:variable name="stepColumns" select="$maxStepDepth - $depth" />
 
         <xsl:variable name="rowCount">
             <xsl:value-of select="number(cpp:stepRowCount(.))" />
@@ -1193,8 +1181,8 @@
         <xsl:variable name="cntOutput" select="count(cpp:output)" />
 
         <xsl:apply-templates select="." mode="data">
-            <xsl:with-param name="my-color" select="$my-color"/>
-            <xsl:with-param name="stepColumns" select="$stepColumns"/>
+            <xsl:with-param name="my-color" select="$my-color" />
+            <xsl:with-param name="stepColumns" select="$stepColumns" />
             <xsl:with-param name="counter" select="1" />
             <xsl:with-param name="max" select="$rowCount" />
             <xsl:with-param name="maxInput" select="$cntInput" />
@@ -1226,7 +1214,7 @@
                         </xsl:attribute>
                         <xsl:attribute name="style">
                             <xsl:text>background-color:</xsl:text>
-                            <xsl:value-of select="$my-color"/>
+                            <xsl:value-of select="$my-color" />
                         </xsl:attribute>
                         <xsl:value-of select="@stepNumber"></xsl:value-of>
                     </xsl:element>
@@ -1318,11 +1306,11 @@
         </xsl:choose>
         <xsl:text>&#160;</xsl:text>
         <em>
-            <xsl:value-of select="$type"/>
+            <xsl:value-of select="$type" />
         </em>
         <xsl:if test="$label">
             <xsl:text> - </xsl:text>
-            <xsl:value-of select="$label"/>
+            <xsl:value-of select="$label" />
         </xsl:if>
     </xsl:template>
 
@@ -1647,7 +1635,7 @@
     <!-- helper template: sums rows for a set of children -->
     <xsl:template name="count-children-rows">
         <xsl:param name="nodes" />
-        <xsl:param name="currentTotal" select="0"/>
+        <xsl:param name="currentTotal" select="0" />
 
         <xsl:choose>
             <xsl:when test="not($nodes)">
@@ -1665,7 +1653,7 @@
                 <xsl:choose>
                     <xsl:when test="name($first) = 'cpp:step'">
                         <xsl:variable name="r">
-                            <xsl:value-of select="number(cpp:stepRowCount($first))"/>
+                            <xsl:value-of select="number(cpp:stepRowCount($first))" />
                         </xsl:variable>
                         <!--
                         <xsl:call-template name="debug">
@@ -1673,14 +1661,14 @@
                         </xsl:call-template>
                         -->
                         <xsl:call-template name="count-children-rows">
-                            <xsl:with-param name="nodes" select="$rest"/>
-                            <xsl:with-param name="currentTotal" select="$currentTotal + number($r)"/>
+                            <xsl:with-param name="nodes" select="$rest" />
+                            <xsl:with-param name="currentTotal" select="$currentTotal + number($r)" />
                         </xsl:call-template>
                     </xsl:when>
 
                     <xsl:when test="name($first) = 'cpp:stepGroup'">
                         <xsl:variable name="r">
-                            <xsl:value-of select="number(cpp:stepRowCount($first))"/>
+                            <xsl:value-of select="number(cpp:stepRowCount($first))" />
                         </xsl:variable>
                         <!--
                         <xsl:call-template name="debug">
@@ -1688,15 +1676,15 @@
                         </xsl:call-template>
                         -->
                         <xsl:call-template name="count-children-rows">
-                            <xsl:with-param name="nodes" select="$rest"/>
-                            <xsl:with-param name="currentTotal" select="$currentTotal + number($r)"/>
+                            <xsl:with-param name="nodes" select="$rest" />
+                            <xsl:with-param name="currentTotal" select="$currentTotal + number($r)" />
                         </xsl:call-template>
                     </xsl:when>
 
                     <xsl:otherwise>
                         <xsl:call-template name="count-children-rows">
-                            <xsl:with-param name="nodes" select="$rest"/>
-                            <xsl:with-param name="currentTotal" select="$currentTotal"/>
+                            <xsl:with-param name="nodes" select="$rest" />
+                            <xsl:with-param name="currentTotal" select="$currentTotal" />
                         </xsl:call-template>
                     </xsl:otherwise>
                 </xsl:choose>
