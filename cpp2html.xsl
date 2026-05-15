@@ -1029,10 +1029,13 @@
         <xsl:variable name="cnt">
             <xsl:choose>
                 <xsl:when test="count($optionalData) &gt; 0">
-                    <xsl:value-of select="count($requiredData) + 1"></xsl:value-of>
+                    <xsl:value-of select="count($requiredData) + 1" />
+                </xsl:when>
+                <xsl:when test="count($requiredData) = 0">
+                    <xsl:value-of select="1" />
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="count($requiredData)"></xsl:value-of>
+                    <xsl:value-of select="count($requiredData)" />
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -1055,6 +1058,11 @@
 
         <xsl:if test="count($optionalData) &gt; 0">
             <tr>
+                <xsl:if test="count($requiredData) = 0">
+                    <td>
+                        <xsl:value-of select="$header" />
+                    </td>
+                </xsl:if>
                 <td>
                     <table class="embedded">
                         <xsl:for-each select="$optionalData">
