@@ -130,7 +130,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    <!-- border: none; -->
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -1040,40 +1045,29 @@
             </xsl:choose>
         </xsl:variable>
 
-        <xsl:for-each select="$requiredData">
+        <xsl:if test="count($requiredData) &gt; 0 or count($optionalData) &gt; 0">
             <tr>
-                <xsl:if test="position()=1">
-                    <xsl:element name="td">
-                        <xsl:attribute name="rowspan">
-                            <xsl:value-of select="$cnt" />
-                        </xsl:attribute>
-                        <xsl:value-of select="$header" />
-                    </xsl:element>
-                </xsl:if>
                 <td>
-                    <xsl:value-of select="." />
+                    <xsl:value-of select="$header" />
                 </td>
-            </tr>
-        </xsl:for-each>
-
-        <xsl:if test="count($optionalData) &gt; 0">
-            <tr>
-                <xsl:if test="count($requiredData) = 0">
-                    <td>
-                        <xsl:value-of select="$header" />
-                    </td>
-                </xsl:if>
                 <td>
                     <table class="embedded">
+                        <xsl:for-each select="$requiredData">
+                            <tr>
+                                <td colspan="2">
+                                    <xsl:value-of select="." />
+                                </td>
+                            </tr>
+                        </xsl:for-each>
                         <xsl:for-each select="$optionalData">
                             <tr>
                                 <xsl:if test="position()=1">
-                                    <xsl:element name="td">
+                                    <td class="optionalHeader">
                                         <xsl:attribute name="rowspan">
                                             <xsl:value-of select="count($optionalData)" />
                                         </xsl:attribute>
-                                        <em>Optional</em>
-                                    </xsl:element>
+                                        Optional
+                                    </td>
                                 </xsl:if>
                                 <td>
                                     <xsl:value-of select="." />
