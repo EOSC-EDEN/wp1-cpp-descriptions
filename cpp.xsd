@@ -716,7 +716,7 @@
 		<xsd:attribute name="stepGroupNumber" use="required" type="stepOrStepGroupNumber" />
 	</xsd:complexType>
 	<xsd:simpleType name="stepOrStepGroupNumber">
-		<xsd:restriction base="xsd:ID">
+		<xsd:restriction base="xsd:string">
 			<xsd:pattern
 				value="((\d{1,2}|[IVLX]{1,7}|[a-z]{1,2})\.)*(\d{1,2}|[IVLX]{1,7}|[a-z]{1,2})"></xsd:pattern>
 		</xsd:restriction>
