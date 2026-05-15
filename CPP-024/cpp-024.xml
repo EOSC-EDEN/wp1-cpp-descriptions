@@ -276,7 +276,7 @@
         <cpp:step stepNumber="6">
           <cpp:input>
             <cpp:inputElement>
-              <span>Query scenarions</span>
+              <span>Query scenarios</span>
             </cpp:inputElement>
           </cpp:input>
           <cpp:input>
