@@ -14,8 +14,14 @@
 			Preservation Processes in a machine-readable form.</p>
 		</xsd:documentation>
 		<xsd:documentation xml:lang="en">
-			<p>Change History
-				October 2025: initial draft.</p>
+			<p>Change History</p>
+			<ul>
+				<li>October 2025: initial draft.</li>
+				<li>12.03.2026: OAIS and logical classifications were added.</li>
+				<li>22.04.2026: step groups added.</li>
+				<li>14.05.2026: number attribute added to step groups, institution country can be
+			"non applicable" or "multiple".</li>
+			</ul>
 		</xsd:documentation>
 	</xsd:annotation>
 	<xsd:element name="cpp">
@@ -559,7 +565,7 @@
 				</xsd:annotation>
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
-						<xsd:pattern value="\w{2}"></xsd:pattern>
+						<xsd:pattern value="\w{2}|N/A|MUL"></xsd:pattern>
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
@@ -674,7 +680,7 @@
 							</xsd:element>
 						</xsd:sequence>
 						<xsd:attribute name="stepNumber"
-							type="xsd:string" use="required" />
+							type="stepOrStepGroupNumber" use="required" />
 						<xsd:attribute name="optional"
 							type="xsd:boolean" default="false" />
 					</xsd:complexType>
@@ -707,5 +713,12 @@
 			</xsd:simpleType>
 		</xsd:attribute>
 		<xsd:attribute name="label" xsi:type="xsd:string" />
+		<xsd:attribute name="stepGroupNumber" use="required" type="stepOrStepGroupNumber" />
 	</xsd:complexType>
+	<xsd:simpleType name="stepOrStepGroupNumber">
+		<xsd:restriction base="xsd:ID">
+			<xsd:pattern
+				value="((\d{1,2}|[IVLX]{1,7}|[a-z]{1,2})\.)*(\d{1,2}|[IVLX]{1,7}|[a-z]{1,2})"></xsd:pattern>
+		</xsd:restriction>
+	</xsd:simpleType>
 </xsd:schema>
