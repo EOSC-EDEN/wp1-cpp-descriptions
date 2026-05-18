@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -47,10 +47,19 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td > span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
@@ -94,7 +103,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -105,10 +119,10 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-015_Emulation_and_Rendering_Tools</title></head><body><div class="introSection"><div class="title"><h1>Emulation and Rendering Tools (CPP-015)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-015</td></tr><tr><td>CPP-Label</td><td>Emulation and Rendering Tools</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burer, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-10</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA enables the rendering of Objects via the application of emulation and/or other
-                        specialist tools.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>
+                </style><title>EOSC-EDEN_CPP-015_Emulation_and_Rendering_Tools</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Emulation and Rendering Tools (CPP-015)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-015</td></tr><tr><td>CPP-Label</td><td>Emulation and Rendering Tools</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burer, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-10</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA enables the rendering of Objects via the application of emulation and/or other
+                        specialist tools.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">
           Representation
-        </td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Emulation and rendering policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="1">Data</td><td>Representation rendered in a suitable environment</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Digital preservation is all about ensuring long-term access to digital content despite the
+        </td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Emulation and rendering policy</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Representation rendered in a suitable environment</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Digital preservation is all about ensuring long-term access to digital content despite the
         challenges of obsolescence, degradation, and technological change. Emulation and
         Rendering tools are important strategies in achieving that goal, and together with <em>File</em>
         migration ensure that digital content remains usable to the <em>Designated Community</em>.</p><p>Emulation attempts to recreate the original habitat - both hardware and software - of the
@@ -166,35 +180,35 @@
       <li>Decision based on format;</li>
       <li>Decision based on <em>Technical metadata</em>;</li>
       <li>Decision based on collection preferences, policies, agreements with producer, etc.</li>
-    </ul></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Access requested to a given <em>Object</em></span></td><td>CPP-025 (Enabling Access)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1">CPP-025 (Enabling Access)</td><td rowspan="1"><span><em>Representation</em> identifier</span></td><td class="stepsColumn" rowspan="1"><span>Collect <em>the Object's</em> <em>Representation</em></span></td><td rowspan="1"><span>
+    </ul></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Access requested to a given <em>Object</em></span></td><td>CPP-025 (Enabling Access)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th colspan="5">No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td style="background-color:hsl(210,70%,95%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em></td></tr><tr><td style="background-color:hsl(210,70%,95%)" rowspan="8" colspan="0"></td><td style="background-color:hsl(210,70%,90%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em> - Initial strategy selection</td></tr><tr><td rowspan="1" colspan="4" style="background-color:hsl(210,70%,90%)">1</td><td rowspan="1">CPP-025 (Enabling Access)</td><td rowspan="1"><span><em>Representation</em> identifier</span></td><td class="stepsColumn" rowspan="1"><span>Collect <em>the Object's</em> <em>Representation</em></span></td><td rowspan="1"><span>
                   <em>Representation</em>
-                </span><br></br><span>
+                </span><span>
                   <em>Technical metadata</em>
-                </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                </span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="4" style="background-color:hsl(210,70%,90%)">2</td><td rowspan="1"></td><td rowspan="1"><span>
                   <em>Representation</em>
                 </span></td><td class="stepsColumn" rowspan="2"><span>Collect the Environment <em>Objects</em> associated with the <em>Representation</em> (if present)</span></td><td rowspan="2"><span>Environment <em>Objects</em></span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
                   <em>Technical metadata</em>
-                </span></td></tr><tr></tr><tr><td rowspan="4">3</td><td rowspan="1"></td><td rowspan="1"><span>
+                </span></td></tr><tr><td rowspan="4" colspan="4" style="background-color:hsl(210,70%,90%)">3</td><td rowspan="1"></td><td rowspan="1"><span>
                   <em>Representation</em>
                 </span></td><td class="stepsColumn" rowspan="4"><span>Decide on strategy</span></td><td rowspan="1"><span>Emulation (proceed to "Emulation")</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
                   <em>Technical metadata</em>
-                </span></td><td rowspan="3"><span>Rendering (proceed to "Rendering")</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Environment <em>Object</em></span></td></tr><tr><td rowspan="1">CPP-012 (Risk Mitigation)<hr></hr>CPP-018 (Community Watch)</td><td rowspan="1"><span>Emulation and rendering policy</span></td></tr><tr></tr><tr><td rowspan="1">E1</td><td rowspan="1"></td><td rowspan="1"><span>Environment <em>Object</em></span></td><td class="stepsColumn" rowspan="1"><span>Retrieve the emulation properties from the Environment:</span><ul>
+                </span></td><td rowspan="3"><span>Rendering (proceed to "Rendering")</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Environment <em>Object</em></span></td></tr><tr><td rowspan="1">CPP-012 (Risk Mitigation)<hr></hr>CPP-018 (Community Watch)</td><td rowspan="1"><span>Emulation and rendering policy</span></td></tr><tr><td style="background-color:hsl(210,70%,95%)" rowspan="14" colspan="0"></td><td style="background-color:hsl(150,70%,90%); padding:4px" colspan="10"><i class="fa-solid fa-arrows-split-up-and-left"></i> <em>alternative</em> - Emulation or Rendering</td></tr><tr><td style="background-color:hsl(150,70%,90%)" rowspan="6" colspan="0"></td><td style="background-color:hsl(210,70%,85%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em> - Emulation</td></tr><tr><td rowspan="1" colspan="3" style="background-color:hsl(210,70%,85%)">E1</td><td rowspan="1"></td><td rowspan="1"><span>Environment <em>Object</em></span></td><td class="stepsColumn" rowspan="1"><span>Retrieve the emulation properties from the Environment:</span><ul>
                   <li>Hardware to be emulated</li>
                   <li>Operation System type and version</li>
                   <li>Tools to be installed in the OS</li>
-                </ul></td><td rowspan="1"><span>Emulation information</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">E2</td><td rowspan="1"></td><td rowspan="1"><span>Emulation information</span></td><td class="stepsColumn" rowspan="1"><span>Prepare Emulation environment:</span><ul>
+                </ul></td><td rowspan="1"><span>Emulation information</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="3" style="background-color:hsl(210,70%,85%)">E2</td><td rowspan="1"></td><td rowspan="1"><span>Emulation information</span></td><td class="stepsColumn" rowspan="1"><span>Prepare Emulation environment:</span><ul>
                   <li>initialise the virtual machine based on operating system requirement</li>
                   <li>install the software requirements</li>
-                </ul></td><td rowspan="1"><span>Initialised emulated environment</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">E3</td><td rowspan="1"></td><td rowspan="1"><span>Emulated environment</span></td><td class="stepsColumn" rowspan="2"><span>Inject or copy the <em>Representation</em> content in the emulated environment</span></td><td rowspan="2"><span>Complete emulated environment</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> information</span></td></tr><tr></tr><tr><td rowspan="1">E4</td><td rowspan="1"></td><td rowspan="1"><span>Complete emulated environment</span></td><td class="stepsColumn" rowspan="1"><span>Start the emulated environment and redirect input and output to the consumer</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">R1</td><td rowspan="1">CPP-025 (Enabling Access)</td><td rowspan="1"><span><em>Representation</em> identifier</span></td><td class="stepsColumn" rowspan="1"><span>Get the <em>Object</em>'s <em>representation</em></span></td><td rowspan="1"><span>
+                </ul></td><td rowspan="1"><span>Initialised emulated environment</span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="3" style="background-color:hsl(210,70%,85%)">E3</td><td rowspan="1"></td><td rowspan="1"><span>Emulated environment</span></td><td class="stepsColumn" rowspan="2"><span>Inject or copy the <em>Representation</em> content in the emulated environment</span></td><td rowspan="2"><span>Complete emulated environment</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> information</span></td></tr><tr><td rowspan="1" colspan="3" style="background-color:hsl(210,70%,85%)">E4</td><td rowspan="1"></td><td rowspan="1"><span>Complete emulated environment</span></td><td class="stepsColumn" rowspan="1"><span>Start the emulated environment and redirect input and output to the consumer</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr><td style="background-color:hsl(150,70%,90%)" rowspan="7" colspan="0"></td><td style="background-color:hsl(210,70%,85%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em> - Rendering</td></tr><tr><td rowspan="1" colspan="3" style="background-color:hsl(210,70%,85%)">R1</td><td rowspan="1">CPP-025 (Enabling Access)</td><td rowspan="1"><span><em>Representation</em> identifier</span></td><td class="stepsColumn" rowspan="1"><span>Get the <em>Object</em>'s <em>representation</em></span></td><td rowspan="1"><span>
                     <em>Representation</em>
-                  </span><br></br><span>
+                  </span><span>
                     <em>Technical metadata</em>
-                  </span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">R2</td><td rowspan="1"></td><td rowspan="1"><span>
+                  </span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="3" style="background-color:hsl(210,70%,85%)">R2</td><td rowspan="1"></td><td rowspan="1"><span>
                     <em>Representation</em>
-                  </span><br></br><span>
+                  </span><span>
                     <em>Technical metadata</em>
-                  </span></td><td class="stepsColumn" rowspan="1"><span>Retrieve the <em>Representation</em> content</span></td><td rowspan="1"><span><em>Representation</em> content</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">R3</td><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> Information</span></td><td class="stepsColumn" rowspan="2"><span>Make a choice of rendering tool</span></td><td rowspan="2"><span>Rendering tool</span></td><td rowspan="2"></td></tr><tr><td rowspan="1">CPP-012 (Risk Mitigation)<hr></hr>CPP-018 (Community Watch)</td><td rowspan="1"><span>Emulation and rendering policy</span></td></tr><tr></tr><tr><td rowspan="2">R4</td><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> content</span></td><td class="stepsColumn" rowspan="2"><span>Execute the Rendering tool and hand over the <em>Representation</em>
-                  content</span></td><td rowspan="2"></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Rendering tool</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>It is good practice to provide the tools to let the consumer
+                  </span></td><td class="stepsColumn" rowspan="1"><span>Retrieve the <em>Representation</em> content</span></td><td rowspan="1"><span><em>Representation</em> content</span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="3" style="background-color:hsl(210,70%,85%)">R3</td><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> Information</span></td><td class="stepsColumn" rowspan="2"><span>Make a choice of rendering tool</span></td><td rowspan="2"><span>Rendering tool</span></td><td rowspan="2"></td></tr><tr><td rowspan="1">CPP-012 (Risk Mitigation)<hr></hr>CPP-018 (Community Watch)</td><td rowspan="1"><span>Emulation and rendering policy</span></td></tr><tr><td rowspan="2" colspan="3" style="background-color:hsl(210,70%,85%)">R4</td><td rowspan="1"></td><td rowspan="1"><span><em>Representation</em> content</span></td><td class="stepsColumn" rowspan="2"><span>Execute the Rendering tool and hand over the <em>Representation</em>
+                  content</span></td><td rowspan="2"></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Rendering tool</span></td></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>It is good practice to provide the tools to let the consumer
                 interact with the data (Except in the case of dark
                 archives).</span></td><td><span></span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-025</td><td>Enabling Access</td><td><span>The access request is the trigger to invoke the rendering process
                 or start up the emulated environment.</span></td></tr><tr><td>CPP-010</td><td>File Format Validation</td><td><span>In order to have a decent level of confidence in the rendering 
@@ -218,9 +232,9 @@
                 Designated Community and associated knowledge base(s) and shall
                 have these definitions appropriately accessible.”</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
                                                 Link
-                        </a></td><td><span>Representation Information</span><br></br><span>Rendering Software and Access Software</span></td><td><span>4.3.2.3.3 Representation Information Networks</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
+                        </a></td><td><span>Representation Information</span><span>Rendering Software and Access Software</span></td><td><span>4.3.2.3.3 Representation Information Networks</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
                                                 Link
-                        </a></td><td><span>Emulation</span><br></br><span>Render</span></td><td><span>Emulation is mentioned several times w.r.t. PreservationLevel and
+                        </a></td><td><span>Emulation</span><span>Render</span></td><td><span>Emulation is mentioned several times w.r.t. PreservationLevel and
                 Environment Objects. Rendering is mentioned in sections
                 discussing Representations, Relations and Environment objects.
                 Both processes are also described in the glossary.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Rendering images with ICC profile embedded</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France, FR</td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>In addition to its digital library, Gallica, BnF might provide

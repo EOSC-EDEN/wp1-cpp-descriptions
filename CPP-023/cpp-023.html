@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -47,10 +47,19 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td > span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
@@ -94,7 +103,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -105,7 +119,7 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-023_Risk_Properties_Definition_and_Extraction</title></head><body><div class="introSection"><div class="title"><h1>Risk Properties Definition and Extraction (CPP-023)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-023</td></tr><tr><td>CPP-Label</td><td>Risk Properties Definition and Extraction</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Franziska Schwab, Maria Benauer, Felix Burger</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 2.0.0 - 2025-04-21</td><td>Substantial revision of the description section and the process description to align interdependencies with CPP-012: Short definition and label modified - Revision of the global outputs and the structure of the Definition and scope section - Separation of the step-by-step description into Assessment and Extraction - Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA monitors preservation risks and defines detection methods for determining whether the deposited digital objects are subject to these risks.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="2">Alerts</td><td>Technology alerts</td></tr><tr><td>Community alerts</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="3">Documentation/guidance</td><td>Risk property</td></tr><tr><td>Risk property detection method</td></tr><tr><td>Updated risk inventory</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Risk Properties Definition and Extraction is a multi-tiered process that a) identifies risks caused
+                </style><title>EOSC-EDEN_CPP-023_Risk_Properties_Definition_and_Extraction</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Risk Properties Definition and Extraction (CPP-023)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-023</td></tr><tr><td>CPP-Label</td><td>Risk Properties Definition and Extraction</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Franziska Schwab, Maria Benauer, Felix Burger</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 2.0.0 - 2025-04-21</td><td>Substantial revision of the description section and the process description to align interdependencies with CPP-012: Short definition and label modified - Revision of the global outputs and the structure of the Definition and scope section - Separation of the step-by-step description into Assessment and Extraction - Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA monitors preservation risks and defines detection methods for determining whether the deposited digital objects are subject to these risks.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Alerts</td><td><table class="embedded"><tr><td colspan="2">Technology alerts</td></tr><tr><td colspan="2">Community alerts</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Risk property</td></tr><tr><td colspan="2">Risk property detection method</td></tr><tr><td colspan="2">Updated risk inventory</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Risk Properties Definition and Extraction is a multi-tiered process that a) identifies risks caused
             by the specific properties and content of a file, b) defines methods to detect these
             risks based on file analysis (i.e. format identification, metadata extraction and format
             validation), and c) holds responsibility for performing technology watch. Together with
@@ -154,18 +168,18 @@
             of the process. Like Risk Mitigation, Risk Properties Definition and Extraction focuses on a
             specific subset of risks - in this case, risks related to inherent properties of <em>
             Files</em>. Although of major impact, the definition and detection of risks caused by
-            organisational, financial or security issues are not described.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Community alerts</span></td><td>CPP-018 (Community Watch)</td></tr><tr><td><span>Technology alerts</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="3">1</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Information sources for digital preservation</span></td><td class="stepsColumn" rowspan="3"><span>Receive community and technology alerts</span></td><td rowspan="3"><span>Risk</span></td><td rowspan="3"></td></tr><tr><td rowspan="1">CPP-010 (File Format Validation)<hr></hr>CPP-027 (File Repair)</td><td rowspan="1"><span>New findings gained through technical analysis</span></td></tr><tr><td rowspan="1">CPP-023 (Risk Properties Definition and Extraction)</td><td rowspan="1"><span>Risk properties policy and detection method</span></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="1"><span>Evaluate the risk likelihood and impact.</span></td><td rowspan="1"><span>Assessment of risk likelihood and impact</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="1"><span>Gather a test set of <em>Files</em> (compiled of both files that are
-                            subject to this risk and a control group).</span></td><td rowspan="1"><span>Test set</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="1"><span>Select a candidate tool for identifying the risk</span></td><td rowspan="1"><span>Candidate extractor tool</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">5</td><td rowspan="1"></td><td rowspan="1"><span>Test set</span></td><td class="stepsColumn" rowspan="2"><span>Run the candidate extractor tool on the test set</span></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Candidate extractor tool</span></td></tr><tr></tr><tr><td rowspan="2">6</td><td rowspan="2"></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td class="stepsColumn" rowspan="2"><span>Determine which property in the candidate extractor tool output helps
+            organisational, financial or security issues are not described.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Community alerts</span></td><td>CPP-018 (Community Watch)</td></tr><tr><td><span>Technology alerts</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th colspan="5">No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td style="background-color:hsl(210,70%,95%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em></td></tr><tr><td rowspan="3" colspan="5" style="background-color:hsl(210,70%,95%)">1</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Information sources for digital preservation</span></td><td class="stepsColumn" rowspan="3"><span>Receive community and technology alerts</span></td><td rowspan="3"><span>Risk</span></td><td rowspan="3"></td></tr><tr><td rowspan="1">CPP-010 (File Format Validation)<hr></hr>CPP-027 (File Repair)</td><td rowspan="1"><span>New findings gained through technical analysis</span></td></tr><tr><td rowspan="1">CPP-023 (Risk Properties Definition and Extraction)</td><td rowspan="1"><span>Risk properties policy and detection method</span></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">2</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="1"><span>Evaluate the risk likelihood and impact.</span></td><td rowspan="1"><span>Assessment of risk likelihood and impact</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">3</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="1"><span>Gather a test set of <em>Files</em> (compiled of both files that are
+                            subject to this risk and a control group).</span></td><td rowspan="1"><span>Test set</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">4</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="1"><span>Select a candidate tool for identifying the risk</span></td><td rowspan="1"><span>Candidate extractor tool</span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">5</td><td rowspan="1"></td><td rowspan="1"><span>Test set</span></td><td class="stepsColumn" rowspan="2"><span>Run the candidate extractor tool on the test set</span></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Candidate extractor tool</span></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">6</td><td rowspan="2"></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td class="stepsColumn" rowspan="2"><span>Determine which property in the candidate extractor tool output helps
                             distinguish those <em>Files</em> that are affected by the risk and those
                             that are not.</span></td><td rowspan="1"><span>Successful identification of a risk property detection method
-                                (extractor tool) (step 7)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>No method identified: resume steps 3-5</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"><span>Chosen extractor tool output</span></td><td class="stepsColumn" rowspan="1"><span>Determine the interpretation of the extractor tool output</span></td><td rowspan="1"><span>Risk property detection method: path / expression to extract the
-                                risk property from the tool’s output.</span><br></br><span>(This interpretation should resolve to a true/false statement
+                                (extractor tool) (step 7)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>No method identified: resume steps 3-5</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">7</td><td rowspan="1"></td><td rowspan="1"><span>Chosen extractor tool output</span></td><td class="stepsColumn" rowspan="1"><span>Determine the interpretation of the extractor tool output</span></td><td rowspan="1"><span>Risk property detection method: path / expression to extract the
+                                risk property from the tool’s output.</span><span>(This interpretation should resolve to a true/false statement
                                 about the file being subject to the risk or not. It can be simple
                                 (an XPATH to the textual content of an element in an XML output) or
                                 more complex. See, about this, the use case about multipage TIFFs
-                                below.)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="3">8</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="3"><span>Update the risk inventory with the risk, risk property and risk
+                                below.)</span></td><td rowspan="1"></td></tr><tr><td rowspan="3" colspan="5" style="background-color:hsl(210,70%,95%)">8</td><td rowspan="1"></td><td rowspan="1"><span>Risk</span></td><td class="stepsColumn" rowspan="3"><span>Update the risk inventory with the risk, risk property and risk
                             property detection method.</span></td><td rowspan="3"><span>Updated risk inventory</span></td><td rowspan="3">CPP-009 (Metadata Extraction)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Risk property</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Risk property detection method: path / expression to extract the
-                                risk property from the tool’s output</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Risk assessment is critical for digital preservation activities because
+                                risk property from the tool’s output</span></td></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Risk assessment is critical for digital preservation activities because
                     identifying risks related to the inherent characteristics of <em>Files</em> is
                     required for a semantic / logical preservation approach.</span></td><td><span>The impact of the absence of risk assessment on <em>Files</em>’
                     characteristics may lead to different problems:</span><ul>
@@ -226,7 +240,7 @@
                         Representations</em> that are at risk in order to take batch action on all
                         previously ingested Objects. Triggers for such risk reports include:
                         Certificate, Encryption, End of life, Non-Standard, Obsolete, Outdated,
-                        Propriety.</span><br></br><span>This spreadsheet was elaborated by the Rosetta Users Group as a risk
+                        Propriety.</span><span>This spreadsheet was elaborated by the Rosetta Users Group as a risk
                         inventory that provides a list of risks and methods for their detection The
                         detection can be based on the file format identifier (PUID, in this case) or
                         on a file property.</span></td></tr><tr><td>Proposed solution</td><td><span>The line titled “TIFF with multiple pages” is a risk property, identified
@@ -242,11 +256,11 @@
                         misrendered JPEG, it was noticed that the misrendered JPEG had four samples
                         per pixel instead of three, as it happens with most RGB images. Since color
                         space information was missing, it was first assumed that there was an alpha
-                        channel added for transparency.</span><br></br><span>However, further investigation into the specification and internet
+                        channel added for transparency.</span><span>However, further investigation into the specification and internet
                         articles revealed that an alpha channel was highly unlikely. In a next step,
                         the TDA therefore downloaded the files and ran more tools against the JPEGs.
                         Exiftool listed a Color Transform value of YCCK, which was confirmed by
-                        checking the file’s APP14 block data.</span><br></br><span>Closer visual inspection of the web viewer revealed indeed small
+                        checking the file’s APP14 block data.</span><span>Closer visual inspection of the web viewer revealed indeed small
                         variations of different shadings of black in places where there was a lot of
                         contrast in the original image. This pattern also seemed consistent with a
                         YCbCr interpretation of the YCCK data. An investigation of all the JPEG
