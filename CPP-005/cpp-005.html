@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -47,10 +47,19 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td > span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
@@ -94,7 +103,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -105,9 +119,9 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-005_Identifier_Management</title></head><body><div class="introSection"><div class="title"><h1>Identifier Management (CPP-005)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-005</td></tr><tr><td>CPP-Label</td><td>Identifier Management</td></tr><tr><td>Author</td><td>Mikko Laukkanen, Juha Lehtonen</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-01</td><td>Migration to XML and different minor vocabulary corrections </td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>Identifiers are assigned to Objects, Information packages 
+                </style><title>EOSC-EDEN_CPP-005_Identifier_Management</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Identifier Management (CPP-005)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-005</td></tr><tr><td>CPP-Label</td><td>Identifier Management</td></tr><tr><td>Author</td><td>Mikko Laukkanen, Juha Lehtonen</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-01</td><td>Migration to XML and different minor vocabulary corrections </td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>Identifiers are assigned to Objects, Information packages 
         and/or Metadata, and managed along to their life cycle.
-    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="2">Data</td><td>Information package</td></tr><tr><td>Object</td></tr><tr><td rowspan="2">Metadata</td><td>Technical metadata</td></tr><tr><td>Descriptive metadata</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Identifier creation and management policy</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Metadata</td><td>Identifier-enriched Information package, Object(s) or Metadata</td></tr><tr><td>Provenance metadata</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Identifier management is the process of creating and updating identifiers 
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Information package</td></tr><tr><td colspan="2">Object</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Technical metadata</td></tr><tr><td colspan="2">Descriptive metadata</td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Identifier creation and management policy</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Identifier-enriched Information package, Object(s) or Metadata</td></tr><tr><td colspan="2">Provenance metadata</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Identifier management is the process of creating and updating identifiers 
             and assigning them to <em>Object</em>s, <em>Metadata</em> or <em>Information package</em>s. Identifiers 
             are essential components of digital preservation systems, serving as stable, 
             long-term references to Digital <em>Object</em>s that can remain valid even when the 
@@ -178,7 +192,49 @@
         </p><p>[2] For example, the identifier &lt;id:c8b&gt; will be assigned to a Representation, and &lt;id:c8b/001&gt; to its
 first component or file.
         </p><p>[3] In the previous example, the identifier &lt;id:t5g&gt; could then be assigned to the first component or file.
-        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Pre-ingest transfer preparation</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Ingestion workflow</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Creation of new <em>File</em>s or Representations</span></td><td>CPP-028 (Creation of Derivatives)</td></tr><tr><td><span>Replacement of corrupted <em>File</em>s</span></td><td>CPP-004 (Data Corruption Management)</td></tr><tr><td><span>Data export</span></td><td>CPP-006 (AIP Batch Export)</td></tr><tr><td><span>Data replication</span></td><td>CPP-011 (Replication)</td></tr><tr><td><span>Data migration</span></td><td>CPP-014 (File Migration)</td></tr><tr><td><span>Data normalisation</span></td><td>CPP-026 (File Normalisation)</td></tr><tr><td><span><em>Metadata</em> ingest and creation</span></td><td>CPP-016 (Metadata Ingest and Management)</td></tr><tr><td><span>Data version update</span></td><td>CPP-021 (AIP Versioning)</td></tr><tr><td><span>Broken <em>File</em> needs a new identifier</span></td><td>CPP-027 (File Repair)</td></tr><tr><td><span><em>Information package</em>, <em>File</em> or <em>Metadata</em> is removed from the TDA holdings</span></td><td>CPP-017 (Disposal)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>The rationale for implementing PIDs in TDAs stems from fundamental 
+        </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Pre-ingest transfer preparation</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Ingestion workflow</span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>Creation of new <em>File</em>s or Representations</span></td><td>CPP-028 (Creation of Derivatives)</td></tr><tr><td><span>Replacement of corrupted <em>File</em>s</span></td><td>CPP-004 (Data Corruption Management)</td></tr><tr><td><span>Data export</span></td><td>CPP-006 (AIP Batch Export)</td></tr><tr><td><span>Data replication</span></td><td>CPP-011 (Replication)</td></tr><tr><td><span>Data migration</span></td><td>CPP-014 (File Migration)</td></tr><tr><td><span>Data normalisation</span></td><td>CPP-026 (File Normalisation)</td></tr><tr><td><span><em>Metadata</em> ingest and creation</span></td><td>CPP-016 (Metadata Ingest and Management)</td></tr><tr><td><span>Data version update</span></td><td>CPP-021 (AIP Versioning)</td></tr><tr><td><span>Broken <em>File</em> needs a new identifier</span></td><td>CPP-027 (File Repair)</td></tr><tr><td><span><em>Information package</em>, <em>File</em> or <em>Metadata</em> is removed from the TDA holdings</span></td><td>CPP-017 (Disposal)</td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th colspan="5">No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td style="background-color:hsl(210,70%,95%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em></td></tr><tr><td style="background-color:hsl(210,70%,95%)" rowspan="11" colspan="0"></td><td style="background-color:hsl(150,70%,90%); padding:4px" colspan="10"><i class="fa-solid fa-arrows-split-up-and-left"></i> <em>alternative</em></td></tr><tr><td rowspan="1" colspan="4" style="background-color:hsl(150,70%,90%)">1a</td><td rowspan="1"></td><td rowspan="1"><span>A producer or a TDA has a need to reserve an identifier, 
+                                    (e.g. a PID, prior to the entity being added)
+                                </span></td><td class="stepsColumn" rowspan="1"><span>Reservation of identifier prior to new entity assignment (step 2)</span></td><td rowspan="1"></td><td rowspan="1"></td></tr><tr><td rowspan="3" colspan="4" style="background-color:hsl(150,70%,90%)">1b</td><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Object</em>
+                                </span></td><td class="stepsColumn" rowspan="3"><span>New entity added or a need to assign an identifier to an existing entity (step 2)</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Information package</em>
+                                </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Metadata</em>
+                                </span></td></tr><tr><td rowspan="3" colspan="4" style="background-color:hsl(150,70%,90%)">1c</td><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Object</em>
+                                </span></td><td class="stepsColumn" rowspan="3"><span>Entity with an identifier has changed (step 4)</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Information package</em>
+                                </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Metadata</em>
+                                </span></td></tr><tr><td rowspan="3" colspan="4" style="background-color:hsl(150,70%,90%)">1d</td><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Object</em>
+                                </span></td><td class="stepsColumn" rowspan="3"><span>Entity is disposed (step 7)</span></td><td rowspan="3"></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Information package</em>
+                                </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                    <em>Metadata</em>
+                                </span></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">2</td><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Identifier creation and management policy</em>
+                            </span></td><td class="stepsColumn" rowspan="1"><span>Create a new identifier according to the TDAs policy for identifier 
+                            management
+                        </span></td><td rowspan="1"><span>Identifier</span></td><td rowspan="1"></td></tr><tr><td rowspan="4" colspan="5" style="background-color:hsl(210,70%,95%)">3</td><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>(new) Identifier</em>
+                            </span></td><td class="stepsColumn" rowspan="4"><span>Assign the new identifier to the entity and add it as a part of 
+                            the entity’s <em>Metadata</em>
+                        </span></td><td rowspan="4"><span><em>Metadata</em></span></td><td rowspan="4">CPP-004 (Data Corruption Management)<hr></hr>CPP-011 (Replication)<hr></hr>CPP-014 (File Migration)<hr></hr>CPP-016 (Metadata Ingest and Management)<hr></hr>CPP-021 (AIP Versioning)<hr></hr>CPP-025 (Enabling Access)<hr></hr>CPP-027 (File Repair)<hr></hr>CPP-028 (Creation of Derivatives)<hr></hr>CPP-029 (Ingest)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Object</em>
+                            </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Information package</em>
+                            </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
+                                <em>Metadata</em>
+                            </span></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">4</td><td rowspan="2"></td><td rowspan="2"><span>
+                                <em>Identifier creation and management policy</em>
+                            </span></td><td class="stepsColumn" rowspan="2"><span>If the changed entity has a PID assigned to it: evaluate if a new PID is required</span></td><td rowspan="1"><span>Need for new PID identified (go back to step 2)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>No need for new PID identified (step 5)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update or add identifier relationships (e.g. hierarchical relations, sequential 
+                            relations etc.) for the assigned entity
+                        </span></td><td rowspan="1"><span><em>Metadata</em></span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">6</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update <em>Provenance metadata</em> for the entity so that identifiers have a history</span></td><td rowspan="1"><span><em>Provenance metadata</em></span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">7</td><td rowspan="1">CPP-017 (Disposal)</td><td rowspan="1"><span>
+                                <em>Disposed entity</em>
+                            </span></td><td class="stepsColumn" rowspan="1"><span>If the entity is disposed: retain minimum metadata and the 
+                            identifier for the disposed entity
+                        </span></td><td rowspan="1"></td><td rowspan="1"></td></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>The rationale for implementing PIDs in TDAs stems from fundamental 
                     challenges in maintaining long-term access to digital objects and the core 
                     mission of preservation itself.
                 </span></td><td><span>Link rot as well as problems and challenges in:</span><ul>
@@ -211,11 +267,11 @@ first component or file.
                 </span></td></tr><tr><td>May be required by</td><td>CPP-026</td><td>File Normalisation</td><td><span>A normalised <em>File</em> format may be assigned with a new identifier.
                 </span></td></tr><tr><td>May be required by</td><td>CPP-027</td><td>File Repair</td><td><span>A repaired <em>File</em> may get a new identifier.</span></td></tr><tr><td>May be required by</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>A derivative of a <em>File</em> may get its own identifier.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
-                        </a></td><td><span>Persistent Identifiers</span></td><td><span>R09 Preservation Plan</span><br></br><span>R12 Discovery and Identification</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                        </a></td><td><span>Persistent Identifiers</span></td><td><span>R09 Preservation Plan</span><span>R12 Discovery and Identification</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
                         </a></td><td><span>Persistent Identifiers</span></td><td><span>C27 Identification</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link
-                        </a></td><td><span>Persistent Identifiers</span></td><td><span>4.2.4</span><br></br><span>4.2.5.4</span><br></br><span>4.2.6.3</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
+                        </a></td><td><span>Persistent Identifiers</span></td><td><span>4.2.4</span><span>4.2.5.4</span><span>4.2.6.3</span></td></tr></table></div><div class="frameworks"><h3>Other frameworks and reference documents</h3><table class="frameworks"><tr><th>Reference Document</th><th>Term used in framework to refer to the process</th><th>Section</th></tr><tr><td>OAIS <a href="https://ccsds.org/searchpubs/?gv_search=oais">
                                                 Link
                         </a></td><td><span>Persistent Identifiers</span></td><td><span>6.2.4</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
                                                 Link

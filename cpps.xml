@@ -67,7 +67,7 @@
          <label>Significant Properties Definition</label>
     </cpp>
    <cpp identifier="CPP-023">
-         <label>Risk Definition and Extraction</label>
+         <label>Risk Properties Definition and Extraction</label>
     </cpp>
    <cpp identifier="CPP-024">
          <label>Enabling Discovery</label>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -47,10 +47,19 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td > span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
@@ -94,7 +103,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -105,7 +119,7 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-003_Integrity_Checking</title></head><body><div class="introSection"><div class="title"><h1>Integrity Checking (CPP-003)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-003</td></tr><tr><td>CPP-Label</td><td>Integrity Checking</td></tr><tr><td>Author</td><td>Johan Kylander</td></tr><tr><td>Contributors</td><td>Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Maria Benauer, Felix Burger, Laura Molloy</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-10-23</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA supports periodic integrity checking, reporting any damaged or missing Files.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Information Package</td></tr><tr><td rowspan="2">Metadata</td><td>Fixity metadata</td></tr><tr><td>Storage management information</td></tr><tr><td rowspan="2">Documentation/guidance</td><td>Storage management policy - Integrity checking</td></tr><tr><td>Storage management policy - Checksum algorithms</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Metadata</td><td>Fixity metadata</td></tr><tr><td>Provenance metadata</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Integrity checking is a periodically performed process where a checksum is calculated for
+                </style><title>EOSC-EDEN_CPP-003_Integrity_Checking</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Integrity Checking (CPP-003)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-003</td></tr><tr><td>CPP-Label</td><td>Integrity Checking</td></tr><tr><td>Author</td><td>Johan Kylander</td></tr><tr><td>Contributors</td><td>Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Maria Benauer, Felix Burger, Laura Molloy</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-10-23</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA supports periodic integrity checking, reporting any damaged or missing Files.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Information Package</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Fixity metadata</td></tr><tr><td colspan="2">Storage management information</td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Storage management policy - Integrity checking</td></tr><tr><td colspan="2">Storage management policy - Checksum algorithms</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Fixity metadata</td></tr><tr><td colspan="2">Provenance metadata</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Integrity checking is a periodically performed process where a checksum is calculated for
             a target <em>Information Package</em> and compared to the existing stored checksum (as
             calculated in CPP-001 Checksum Generation and Recording). The goal of integrity checking
             is to confirm that a target <em>Information Package</em> has remained unaltered across
@@ -124,7 +138,24 @@
             Metadata</em>, should be documented as preservation actions.</p><p>If integrity checks discover problems in the integrity of the target <em>Information
             Packages</em>, this information must be clearly documented in a digital archive's
             system, so that the broken <em>Information Packages</em> can be restored from valid
-            copies (see CPP-004 Data Corruption Management).</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Frequency of integrity checks defined in a digital archive's policy</span></td><td>CPP-012 (Risk Mitigation)</td></tr><tr><td><span>Suspicion of an error triggering an integrity check on an ad hoc basis</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Periodic integrity checks on all copies</span></td><td><span>Data can get corrupted and degenerate (i.e. the chain of custody is not
+            copies (see CPP-004 Data Corruption Management).</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Frequency of integrity checks defined in a digital archive's policy</span></td><td>CPP-012 (Risk Mitigation)</td></tr><tr><td><span>Suspicion of an error triggering an integrity check on an ad hoc basis</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th colspan="5">No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td style="background-color:hsl(210,70%,95%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">1</td><td rowspan="2">CPP-012 (Risk Mitigation)</td><td rowspan="2"><span>Storage management policy - Integrity checking</span></td><td class="stepsColumn" rowspan="2"><span>Gather a batch of targets to check and their corresponding <em>Fixity
+                            metadata</em> (e.g. <em>Information Packages</em> whose last-checked
+                            timestamp is older than the specified checking frequency)</span></td><td rowspan="1"><span>
+                                <em>AIPs</em>
+                            </span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>
+                                <em>Fixity metadata</em>
+                            </span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">2a</td><td rowspan="1">CPP-001 (Checksum Generation and Recording)</td><td rowspan="1"><span>
+                                <em>Fixity metadata</em>
+                            </span></td><td class="stepsColumn" rowspan="1"><span>For each <em>AIP</em> in the selected batch: Gather the <em>AIP</em>'s
+                            fixity metadata</span></td><td rowspan="1"><span>
+                                <em>Fixity metadata</em>
+                            </span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">2b</td><td rowspan="1"></td><td rowspan="1"><span><em>Fixity metadata</em> (algorithms)</span></td><td class="stepsColumn" rowspan="1"><span>Calculate the checksum of the <em>AIP</em> from the specified <em>File</em>
+                            path</span></td><td rowspan="1"><span>
+                                <em>Fixity metadata</em>
+                            </span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">2c</td><td rowspan="2"></td><td rowspan="2"><span>
+                                <em>Fixity metadata</em>
+                            </span></td><td class="stepsColumn" rowspan="2"><span>Compare the calculated checksum with the stored checksum</span></td><td rowspan="1"><span>Checksums match: proceed to next step</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Alert that any of the checksums does not match: mark broken <em>
+                                AIP</em> for repair and proceed to next step</span></td><td rowspan="1">CPP-004 (Data Corruption Management)</td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">2d</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Store the new integrity checking event to the <em>AIP</em></span></td><td rowspan="1"><span>Provenance metadata</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">2e</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Update the timestamp of the integrity check</span></td><td rowspan="1"><span><em>Fixity metadata</em> (timestamp)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">3</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Document the event and its timestamp</span></td><td rowspan="1"><span>Provenance metadata</span></td><td rowspan="1"></td></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Periodic integrity checks on all copies</span></td><td><span>Data can get corrupted and degenerate (i.e. the chain of custody is not
                     safeguarded, and the authenticity of <em>IPs</em> may be destroyed)</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-001</td><td>Checksum Generation and Recording</td><td><span>CPP-001 is responsible for creating checksums that are used in integrity
                     checking.</span></td></tr><tr><td>CPP-012</td><td>Risk Mitigation</td><td><span>The frequency and target of periodic integrity checks (CPP-003) is defined by
                     an institutional storage management policy as part of risk mitigation (CPP-012).</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>Periodic integrity checking provides reports on the integrity of data and

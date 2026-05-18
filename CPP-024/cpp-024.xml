@@ -73,7 +73,7 @@
   <cpp:process>
     <cpp:inputs>
       <cpp:data>
-        <cpp:dataElement>Optional: Derivatives useful for the consumer to identify the content and scope of the Object</cpp:dataElement>
+        <cpp:dataElement optional="true">Derivatives useful for the consumer to identify the content and scope of the Object</cpp:dataElement>
       </cpp:data>
       <cpp:metadata>
         <cpp:metadataElement>Digital Archive Database</cpp:metadataElement>
@@ -242,7 +242,7 @@
             </cpp:inputElement>
           </cpp:input>
           <cpp:stepDescription>
-            <span>Optional: If the TDA requires a PID (e.g. DOI), because the <em>Object</em> or <em>
+            <span>If the TDA requires a PID (e.g. DOI), because the <em>Object</em> or <em>
               Metadata</em> about the <em>Object</em> will be publicly accessible (e.g. open
               access), the TDA may request a PID from an appropriate registration agency. The TDA
               may also add the PID to the <em>Metadata</em> in the catalogue service.</span>
@@ -263,7 +263,7 @@
             <cpp:supplier>CPP-028</cpp:supplier>
           </cpp:input>
           <cpp:stepDescription>
-            <span>Optional: The TDA may provide versions of its <em>Objects</em> for inclusion in
+            <span>The TDA may provide versions of its <em>Objects</em> for inclusion in
               the catalogue service (for example, thumbnails, preview versions, redacted documents
               etc.). These are added to the catalogue entry for the <em>Object</em>.</span>
           </cpp:stepDescription>
