@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -47,10 +47,19 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td > span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
@@ -94,7 +103,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -105,8 +119,8 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-022_Significant_Properties_Definition</title></head><body><div class="introSection"><div class="title"><h1>Significant Properties Definition (CPP-022)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-022</td></tr><tr><td>CPP-Label</td><td>Significant Properties Definition</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Franziska Schwab</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-10</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA defines significant properties for sets of Information Objects (i.e., properties that it commits to preserve over the long term through preservation actions and rendition).
-    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="2">Documentation/guidance</td><td>Significant properties policy from equivalent TDAs</td></tr><tr><td>Community and stakeholders needs</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Documentation/guidance</td><td>Significant properties policy for a given Object type</td></tr><tr><td>Significant properties detection method</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Significant properties is a widely-adopted concept in the analog and digital preservation
+                </style><title>EOSC-EDEN_CPP-022_Significant_Properties_Definition</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Significant Properties Definition (CPP-022)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-022</td></tr><tr><td>CPP-Label</td><td>Significant Properties Definition</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Franziska Schwab</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-04-10</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA defines significant properties for sets of Information Objects (i.e., properties that it commits to preserve over the long term through preservation actions and rendition).
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Significant properties policy from equivalent TDAs</td></tr><tr><td colspan="2">Community and stakeholders needs</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Significant properties policy for a given Object type</td></tr><tr><td colspan="2">Significant properties detection method</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Significant properties is a widely-adopted concept in the analog and digital preservation
             sectors that can be defined as <em>“essential characteristics of a digital object which
             must be preserved over time for the digital object to remain accessible and meaningful”</em>
             (definition taken from the <a href="https://web.archive.org/web/20100504081357/http://www.dpconline.org/events/significant-properties.html">Digital
@@ -159,13 +173,13 @@
             the audio signal quality is preserved.</p><p>In some cases, significant properties will be dictated by stakeholders (e.g. Producer,
             Consumer, etc.) - see the use case “Page Layout as Significant Property of Reflowable
             EPUBs” below. <b>Community Watch</b> (CPP-018) must therefore ensure that its
-            significant properties policy is aligned with the needs of its designated community.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>A new <em>Object</em> type is planned to be ingested by the TDA</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="1">1</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Community needs</span></td><td class="stepsColumn" rowspan="1"><span>Study Community needs and derive required <em>Object</em> property</span></td><td rowspan="1"><span>Organisational high-level property</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2</td><td rowspan="1"></td><td rowspan="1"><span>Organisational high-level property</span></td><td class="stepsColumn" rowspan="1"><span>Map the organisational high-level property to one or several concrete
-                            extractable property(ies)</span></td><td rowspan="1"><span>Associated concrete extractable property(ies)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">3</td><td rowspan="1"></td><td rowspan="1"><span></span></td><td class="stepsColumn" rowspan="1"><span>Gather a test set of a given <em>Object</em> type</span></td><td rowspan="1"><span>Test set</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span>Associated concrete extractable property(ies)</span></td><td class="stepsColumn" rowspan="1"><span>Select a tool capable of extracting the concrete property(ies)</span></td><td rowspan="1"><span>Extractor tool</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">5</td><td rowspan="1"></td><td rowspan="1"><span>Test set</span></td><td class="stepsColumn" rowspan="2"><span>Run the candidate extractor tool on the test set</span></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Candidate extractor tool</span></td></tr><tr></tr><tr><td rowspan="2">6</td><td rowspan="2"></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td class="stepsColumn" rowspan="2"><span>Determine whether the significant property is identifiable in the
+            significant properties policy is aligned with the needs of its designated community.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>A new <em>Object</em> type is planned to be ingested by the TDA</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th colspan="5">No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td style="background-color:hsl(210,70%,95%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">1</td><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Community needs</span></td><td class="stepsColumn" rowspan="1"><span>Study Community needs and derive required <em>Object</em> property</span></td><td rowspan="1"><span>Organisational high-level property</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">2</td><td rowspan="1"></td><td rowspan="1"><span>Organisational high-level property</span></td><td class="stepsColumn" rowspan="1"><span>Map the organisational high-level property to one or several concrete
+                            extractable property(ies)</span></td><td rowspan="1"><span>Associated concrete extractable property(ies)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">3</td><td rowspan="1"></td><td rowspan="1"><span></span></td><td class="stepsColumn" rowspan="1"><span>Gather a test set of a given <em>Object</em> type</span></td><td rowspan="1"><span>Test set</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">4</td><td rowspan="1"></td><td rowspan="1"><span>Associated concrete extractable property(ies)</span></td><td class="stepsColumn" rowspan="1"><span>Select a tool capable of extracting the concrete property(ies)</span></td><td rowspan="1"><span>Extractor tool</span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">5</td><td rowspan="1"></td><td rowspan="1"><span>Test set</span></td><td class="stepsColumn" rowspan="2"><span>Run the candidate extractor tool on the test set</span></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Candidate extractor tool</span></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">6</td><td rowspan="2"></td><td rowspan="2"><span>Candidate extractor tool output</span></td><td class="stepsColumn" rowspan="2"><span>Determine whether the significant property is identifiable in the
                             candidate extractor tool output</span></td><td rowspan="1"><span>Significant properties detection method confirmed: extractor tool
-                                chosen (step 7)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>No detection method confirmed (resume steps 4-6)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"><span>Chosen extractor tool output</span></td><td class="stepsColumn" rowspan="1"><span>Determine the interpretation of the extractor tool output (path to the
+                                chosen (step 7)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>No detection method confirmed (resume steps 4-6)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">7</td><td rowspan="1"></td><td rowspan="1"><span>Chosen extractor tool output</span></td><td class="stepsColumn" rowspan="1"><span>Determine the interpretation of the extractor tool output (path to the
                             property, error tolerance, etc.)</span></td><td rowspan="1"><span>Significant properties detection method: path or expression to
                                 extract
-                                the significant properties from the tool’s output</span></td><td rowspan="1">CPP-009 (Metadata Extraction)</td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>If the TDA aims to do semantic / logical preservation, give access to its
+                                the significant properties from the tool’s output</span></td><td rowspan="1">CPP-009 (Metadata Extraction)</td></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>If the TDA aims to do semantic / logical preservation, give access to its
                     holdings to end users and create copies out of the original <em>Object</em>s,
                     defining the significant properties of its <em>Object</em>s to be able to assess
                     the success or failure of all preservation and access actions is required.</span></td><td><span>Without a significant properties policy and methods to detect that they are
@@ -190,7 +204,7 @@
                     preservation <em>Representation</em>s, a TDA might consider providing access
                     through copies that do not convey significant properties as a failure.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
-                        </a></td><td><span>Compar[ing] the essential properties</span><br></br><span>Storage and Integrity</span></td><td><span>R07 Provenance and Authenticity</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
+                        </a></td><td><span>Compar[ing] the essential properties</span><span>Storage and Integrity</span></td><td><span>R07 Provenance and Authenticity</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
                         </a></td><td><span>Identification and documentation of significant properties</span></td><td><span>C13 Significant properties</span></td></tr><tr><td>ISO 16363 <a href="https://ccsds.org/wp-content/uploads/gravity_forms/5-448e85c647331d9cbaf66c096458bdd5/2025/01//652x0m2.pdf">
                                 Link
@@ -207,7 +221,7 @@
                         to use exclusively the EPUB 3 fixed-layout format to prevent users from
                         doing so.</span></td></tr><tr><td>Proposed solution</td><td><span>An EPUB production service provider had to convince publishers of the
                         benefits of reflowable EPUBs. The publishers had to accept that reflowable
-                        ebooks' visual aspect and page layout were not significant.</span><br></br><span>In this example, a stakeholder - a service provider, followed by an
+                        ebooks' visual aspect and page layout were not significant.</span><span>In this example, a stakeholder - a service provider, followed by an
                         industry sector - determined explicitly that a property of a specific <em>
                         Object</em> (digital books in reflowable EPUB format) should not be
                         considered significant. TDAs should then acknowledge this and make no

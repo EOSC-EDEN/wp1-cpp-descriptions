@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -47,10 +47,19 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td > span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
@@ -94,7 +103,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -105,8 +119,10 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-020_Rights_Management</title></head><body><div class="introSection"><div class="title"><h1>Rights Management (CPP-020)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-020</td></tr><tr><td>CPP-Label</td><td>Rights Management</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Matthew Addis</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA manages rights related to the Information Objects, both for agents inside its scope
-(access, migrate, etc.) and for end users (access, reuse, etc.)</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>Object</td></tr><tr><td rowspan="2">Metadata</td><td>Descriptive metadata</td></tr><tr><td>Provenance metadata</td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td><table class="embedded"><tr><td rowspan="1"><em>Optional</em></td><td>Rights metadata</td></tr></table></td></tr><tr><td rowspan="1">Documentation/guidance</td><td>Rights statement</td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Rights Management is the process of performing rights assessments for <em>Objects</em>
+                </style><title>EOSC-EDEN_CPP-020_Rights_Management</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Rights Management (CPP-020)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-020</td></tr><tr><td>CPP-Label</td><td>Rights Management</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Matthew Addis</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA manages rights related to the Information Objects, both for agents inside its scope
+(access, migrate, etc.) and for end users (access, reuse, etc.)</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Object</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Descriptive metadata</td></tr><tr><td colspan="2">Provenance metadata</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td class="optionalHeader" rowspan="1">
+                                        Optional
+                                    </td><td>Rights metadata</td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Rights statement</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Rights Management is the process of performing rights assessments for <em>Objects</em>
             and <em>Metadata</em> preserved by the TDA, and managing a rights registry that
             describes rights basis applicable to these. The rights assessment process must
             investigate and, if possible, obtain rights applying to both the TDA for retaining and
@@ -175,33 +191,33 @@
             (e.g. a Creative Commons license). Thus, the Rights Management process also consists in
             managing a rights basis registry.</p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span>Appraisal or re-appraisal</span></td><td></td></tr><tr><td><span>Any process that requires rights clearance to act upon an <em>Object</em>,
                         if a comprehensive rights assessment was not performed at ingest</span></td><td>CPP-025 (Enabling Access), CPP-029 (Ingest), CPP-014 (File Migration), CPP-026 (File Normalisation), CPP-027 (File Repair), CPP-024 (Enabling Discovery), CPP-017 (Disposal)</td></tr><tr><td><span>In particular, access request </span></td><td>CPP-025 (Enabling Access)</td></tr><tr><td><span>Revision after the end of a fixed-term rule (e.g. embargo, lease, etc.)</span></td><td></td></tr><tr><td><span>Changes in legislation, changes in consent, infringement or take down
-                        requests, etc.</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="3">1</td><td rowspan="1"></td><td rowspan="1"><span>
+                        requests, etc.</span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th colspan="5">No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td style="background-color:hsl(210,70%,95%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em></td></tr><tr><td rowspan="3" colspan="5" style="background-color:hsl(210,70%,95%)">1</td><td rowspan="1"></td><td rowspan="1"><span>
                                 <em>Object</em>
                             </span></td><td class="stepsColumn" rowspan="3"><span>Determine which rights basis apply to the <em>Object</em> or <em>
                             Metadata</em></span></td><td rowspan="3"><span>Applicable rights basis</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>
                                 <em>Metadata</em>
-                            </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr></tr><tr><td rowspan="2">2</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="2"><span>Determine (if possible by negotiation with producer, rights holder and
+                            </span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">2</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="2"><span>Determine (if possible by negotiation with producer, rights holder and
                             data controller) the rules implied by the rights basis (action,
-                            assignee, duration, restrictions or conditions)</span></td><td rowspan="2"><span>Applicable rules</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="2"><span>Determine (if possible by negotiation with producer, rights holder and
+                            assignee, duration, restrictions or conditions)</span></td><td rowspan="2"><span>Applicable rules</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">3</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="2"><span>Determine (if possible by negotiation with producer, rights holder and
                             data controller) the applicable dates of the rights basis (start and end
-                            date)</span></td><td rowspan="2"><span>Time-delimited status</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr></tr><tr><td rowspan="3">4</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="3"><em>Optional: </em><span>If needed (depending on the the existing status of the <em>Object</em>
+                            date)</span></td><td rowspan="2"><span>Time-delimited status</span></td><td rowspan="2"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Input from producer, rights holder and data controller</span></td></tr><tr><td rowspan="3" colspan="5" style="background-color:hsl(210,70%,95%)">4</td><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td><td class="stepsColumn" rowspan="3"><em>Optional: </em><span>If needed (depending on the the existing status of the <em>Object</em>
                             and the applicable rights basis and rules) negotiate with the producer
-                            new rights assignment</span></td><td rowspan="3"><span>New rights basis (e.g. contract, license, etc.)</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rules</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Time-delimited status</span></td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"><span>New rights basis (e.g. contract, license, etc.)</span></td><td class="stepsColumn" rowspan="1"><em>Optional: </em><span>If a new rights basis had to be created (e.g. a new contract, new
-                            license, etc.), preserve its complete documentation</span></td><td rowspan="1"><span>Rights basis documentation</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="4">6</td><td rowspan="1"></td><td rowspan="1"><span>
+                            new rights assignment</span></td><td rowspan="3"><span>New rights basis (e.g. contract, license, etc.)</span></td><td rowspan="3"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rules</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Time-delimited status</span></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">5</td><td rowspan="1"></td><td rowspan="1"><span>New rights basis (e.g. contract, license, etc.)</span></td><td class="stepsColumn" rowspan="1"><em>Optional: </em><span>If a new rights basis had to be created (e.g. a new contract, new
+                            license, etc.), preserve its complete documentation</span></td><td rowspan="1"><span>Rights basis documentation</span></td><td rowspan="1"></td></tr><tr><td rowspan="4" colspan="5" style="background-color:hsl(210,70%,95%)">6</td><td rowspan="1"></td><td rowspan="1"><span>
                                 <em>Object</em>
-                            </span></td><td class="stepsColumn" rowspan="4"><span>Associate the <em>Object</em> with the rights statement</span></td><td rowspan="4"><span>Rights statement</span></td><td rowspan="4">CPP-025 (Enabling Access)<hr></hr>CPP-029 (Ingest)<hr></hr>CPP-014 (File Migration)<hr></hr>CPP-026 (File Normalisation)<hr></hr>CPP-027 (File Repair)<hr></hr>CPP-024 (Enabling Discovery)<hr></hr>CPP-017 (Disposal)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rules</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Time-delimited status</span></td></tr><tr></tr><tr><td rowspan="1">7</td><td rowspan="1"></td><td rowspan="1"><span>Rights statement</span></td><td class="stepsColumn" rowspan="1"><em>Optional: </em><span>Optionally, encode / map rights statement into machine-actionable form
-                            and record it as Rights metadata</span></td><td rowspan="1"><span>Rights metadata</span></td><td rowspan="1">CPP-016 (Metadata Ingest and Management)</td></tr><tr></tr><tr><td rowspan="2">8</td><td rowspan="1"></td><td rowspan="1"><span>
+                            </span></td><td class="stepsColumn" rowspan="4"><span>Associate the <em>Object</em> with the rights statement</span></td><td rowspan="4"><span>Rights statement</span></td><td rowspan="4">CPP-025 (Enabling Access)<hr></hr>CPP-029 (Ingest)<hr></hr>CPP-014 (File Migration)<hr></hr>CPP-026 (File Normalisation)<hr></hr>CPP-027 (File Repair)<hr></hr>CPP-024 (Enabling Discovery)<hr></hr>CPP-017 (Disposal)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rights basis</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Applicable rules</span></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Time-delimited status</span></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">7</td><td rowspan="1"></td><td rowspan="1"><span>Rights statement</span></td><td class="stepsColumn" rowspan="1"><em>Optional: </em><span>Optionally, encode / map rights statement into machine-actionable form
+                            and record it as Rights metadata</span></td><td rowspan="1"><span>Rights metadata</span></td><td rowspan="1">CPP-016 (Metadata Ingest and Management)</td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">8</td><td rowspan="1"></td><td rowspan="1"><span>
                                 <em>Metadata</em>
                             </span></td><td class="stepsColumn" rowspan="2"><em>Optional: </em><span>If the updated rights statement requires, trigger one of the following
                             processes:</span><ul>
                             <li><em>Metadata</em> must be anonymised (or pseudonymised)</li>
                             <li>Disposal of Information packages</li>
                             <li>Grant / deny access to a specific community.</li>
-                        </ul></td><td rowspan="2"><span></span></td><td rowspan="2">CPP-016 (Metadata Ingest and Management)<hr></hr>CPP-017 (Disposal)<hr></hr>CPP-025 (Enabling Access)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Information Packages</span></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>A minimal rights assessment at the ingest phase is required, although a more
+                        </ul></td><td rowspan="2"><span></span></td><td rowspan="2">CPP-016 (Metadata Ingest and Management)<hr></hr>CPP-017 (Disposal)<hr></hr>CPP-025 (Enabling Access)</td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>Information Packages</span></td></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>A minimal rights assessment at the ingest phase is required, although a more
                     comprehensive process may be carried out at a later time in the <em>Object</em>
                     life cycle.</span></td><td><span>Without rights assessment, a TDA might be incapable of performing preservation
-                    actions.</span><br></br><span>Its consumers might be discouraged to use the <em>Object</em> if no explicit
-                    rights statement is provided by the TDA.</span><br></br><span>The TDA might be exposed to liability or legal and financial harm.</span><br></br><span>The TDA may end up retaining data for longer than needed or allowed, which can
+                    actions.</span><span>Its consumers might be discouraged to use the <em>Object</em> if no explicit
+                    rights statement is provided by the TDA.</span><span>The TDA might be exposed to liability or legal and financial harm.</span><span>The TDA may end up retaining data for longer than needed or allowed, which can
                     increase costs (e.g. storage).</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>/</td><td>/</td><td>/</td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Any information regarding the rights for the TDA and the end users needs to be
                     stored and should be searchable and retrievable for all data.</span></td></tr><tr><td>Required by</td><td>CPP-025</td><td>Enabling Access</td><td><span>The TDA must assess access rights to check if it is authorised to provide
                     access to the requester.</span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>Some minimal rights assessment must be performed during ingest to verify that
