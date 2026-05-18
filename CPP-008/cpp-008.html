@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
                     :root {
-                        --main-width: 800px;
-                        --main-margin: auto;
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
                         --main-font-family: Arial, sans-serif;
                         --main-font-size: 12pt;
                         --main-line-height: 1.5;
@@ -47,10 +47,19 @@
                         margin-top: 10px;
                     }
 
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td > span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
                     table {
                         border-collapse: collapse;
                         margin: 10px 0;
-                        width: 100%;
+                        width: auto;
                         border: 2px solid var(--border-color);
                         font-size: var(--table-font-size);
                     }
@@ -94,7 +103,12 @@
 
                     td:has(table.embedded) {
                         padding: 0;
-                        border: none;
+                                                                                                                                                                    
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
                     }
 
                     .stepsColumn {
@@ -105,17 +119,17 @@
                         background-color: #f9cb9c;
                     }
 
-                </style><title>EOSC-EDEN_CPP-008_File_Format_Identification</title></head><body><div class="introSection"><div class="title"><h1>File Format Identification (CPP-008)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-008</td></tr><tr><td>CPP-Label</td><td>File Format Identification</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer, Laura Molloy</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-12-10</td><td>Migration to XML</td></tr><tr><td class="history">Version 1.2.0 - 2026-04-07</td><td>Added step group and sanitised step numbering</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
+                </style><title>EOSC-EDEN_CPP-008_File_Format_Identification</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>File Format Identification (CPP-008)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-008</td></tr><tr><td>CPP-Label</td><td>File Format Identification</td></tr><tr><td>Author</td><td>Kris Dekeyser</td></tr><tr><td>Contributors</td><td>Bertrand Caron</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer, Laura Molloy</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2025-12-10</td><td>Migration to XML</td></tr><tr><td class="history">Version 1.2.0 - 2026-04-07</td><td>Added step group and sanitised step numbering</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
         The TDA identifies file formats to the appropriate level of precision,
         based on an existing registry (IANA MIME types, PRONOM, etc.). 
-    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td rowspan="1">Data</td><td>File</td></tr><tr><td rowspan="1">Documentation/guidance</td><td>
+    </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">File</td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">
                     File format policy - Identification (identification tool(s), handling of 
                     format identification issues, container extraction)
-                </td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td rowspan="2">Metadata</td><td>
+                </td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">
                     Technical metadata (format identifier(s), accompanied by a registry identifier)
-                </td></tr><tr><td>
+                </td></tr><tr><td colspan="2">
                     Provenance metadata (date; outcome (i.e. success or failure ); tool, version and output)
-                </td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p> According to PREMIS, a format is defined as <em>“a specific, pre-established structure for the
+                </td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p> According to PREMIS, a format is defined as <em>“a specific, pre-established structure for the
             organization of a digital file or bitstream”</em> and <em>“has to correspond to some formal or informal
             specification”</em> [ <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
             https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf</a> - p. 249 “Format
@@ -200,17 +214,17 @@
             and typically performed by CPP-009 <b>Metadata extraction</b>. </p></div><div class="processDescription"><h3>Process description</h3><div class="triggerEvents"><h4>Trigger event(s)</h4><table class="triggerEvents"><tr><th>Trigger Event</th><th>CPP-identifier</th></tr><tr><td><span> A new <em>SIP</em> is submitted and processed </span></td><td>CPP-029 (Ingest)</td></tr><tr><td><span>
                         <em>File</em> update or replacement due to a <em>Preservation Action</em>
                         (e.g. migration) </span></td><td>CPP-014 (File Migration)</td></tr><tr><td><span> Any other action that results in a new or updated <em>File</em> to be
-                        added to the system </span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th>No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td rowspan="3">1</td><td rowspan="1"></td><td rowspan="1"><span><em>File</em></span></td><td class="stepsColumn" rowspan="3"><span>Apply the format identification tool(s) on the <em>File</em>
+                        added to the system </span></td><td></td></tr></table></div><div class="processSteps"><h4>Step-by-step description</h4><table class="stepTable"><tr><th colspan="5">No</th><th>Supplier</th><th>Input</th><th class="stepsColumnHeader">Steps</th><th>Output</th><th>Customer</th></tr><tr><td style="background-color:hsl(210,70%,95%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em></td></tr><tr><td rowspan="3" colspan="5" style="background-color:hsl(210,70%,95%)">1</td><td rowspan="1"></td><td rowspan="1"><span><em>File</em></span></td><td class="stepsColumn" rowspan="3"><span>Apply the format identification tool(s) on the <em>File</em>
                         </span></td><td rowspan="3"><span>File format identification information</span></td><td rowspan="3"></td></tr><tr><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>File format policy - Identification</span></td></tr><tr><td rowspan="1">CPP-018 (Community Watch)</td><td rowspan="1"><span>Tool: <a href="https://coptr.digipres.org/index.php/File_Format_Identification">format
                                 identification tool</a>
-                            </span></td></tr><tr></tr><tr><td rowspan="2">2a</td><td rowspan="2"></td><td rowspan="2"><span>File format identification information</span></td><td class="stepsColumn" rowspan="2"><span>Parse and evaluate its output</span></td><td rowspan="1"><span>File format identification successful (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>File format could not be identified (step 2b)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="5">2b</td><td rowspan="1"></td><td rowspan="1"><span>File format identification information</span></td><td class="stepsColumn" rowspan="5"><span>Analyse the format identification information and decide on next steps</span></td><td rowspan="1"><span>A gap in the format registry is identified (step 2c)</span></td><td rowspan="1"></td></tr><tr><td rowspan="4"></td><td rowspan="4"><span>File format policy - Identification</span></td><td rowspan="1"><span>Need for configuration update identified (step 2d)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Manual file format identification possible (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Mark the <em>File</em> for later review and add the reason for
-                                    review to the event information (step 5)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Reject the <em>File</em> (step 5)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">2c</td><td rowspan="2"></td><td rowspan="2"><span><em>File</em></span></td><td class="stepsColumn" rowspan="2"><em>Optional: </em><span>Contribute to format registries by providing sample File to the registry
-                                administrators</span></td><td rowspan="1"><span><em>File</em> samples</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Registry update request and/or signature submission</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">2d</td><td rowspan="1"></td><td rowspan="1"><span>Format Identification Tool</span></td><td class="stepsColumn" rowspan="1"><em>Optional: </em><span>Update system configuration</span></td><td rowspan="1"><span>New configuration settings</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="2">3</td><td rowspan="1"></td><td rowspan="1"><span>File format information</span></td><td class="stepsColumn" rowspan="2"><span>Check if the file format is a container format and the policy requires its
+                            </span></td></tr><tr><td style="background-color:hsl(210,70%,95%)" rowspan="11" colspan="0"></td><td style="background-color:hsl(210,70%,90%); padding:4px" colspan="10"><i class="fa-solid fa-arrow-down-1-9"></i> <em>sequence</em> - Evaluation of format identification results</td></tr><tr><td rowspan="2" colspan="4" style="background-color:hsl(210,70%,90%)">2a</td><td rowspan="2"></td><td rowspan="2"><span>File format identification information</span></td><td class="stepsColumn" rowspan="2"><span>Parse and evaluate its output</span></td><td rowspan="1"><span>File format identification successful (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>File format could not be identified (step 2b)</span></td><td rowspan="1"></td></tr><tr><td rowspan="5" colspan="4" style="background-color:hsl(210,70%,90%)">2b</td><td rowspan="1"></td><td rowspan="1"><span>File format identification information</span></td><td class="stepsColumn" rowspan="5"><span>Analyse the format identification information and decide on next steps</span></td><td rowspan="1"><span>A gap in the format registry is identified (step 2c)</span></td><td rowspan="1"></td></tr><tr><td rowspan="4"></td><td rowspan="4"><span>File format policy - Identification</span></td><td rowspan="1"><span>Need for configuration update identified (step 2d)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Manual file format identification possible (step 3)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Mark the <em>File</em> for later review and add the reason for
+                                    review to the event information (step 5)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Reject the <em>File</em> (step 5)</span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="4" style="background-color:hsl(210,70%,90%)">2c</td><td rowspan="2"></td><td rowspan="2"><span><em>File</em></span></td><td class="stepsColumn" rowspan="2"><em>Optional: </em><span>Contribute to format registries by providing sample File to the registry
+                                administrators</span></td><td rowspan="1"><span><em>File</em> samples</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"><span>Registry update request and/or signature submission</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="4" style="background-color:hsl(210,70%,90%)">2d</td><td rowspan="1"></td><td rowspan="1"><span>Format Identification Tool</span></td><td class="stepsColumn" rowspan="1"><em>Optional: </em><span>Update system configuration</span></td><td rowspan="1"><span>New configuration settings</span></td><td rowspan="1"></td></tr><tr><td rowspan="2" colspan="5" style="background-color:hsl(210,70%,95%)">3</td><td rowspan="1"></td><td rowspan="1"><span>File format information</span></td><td class="stepsColumn" rowspan="2"><span>Check if the file format is a container format and the policy requires its
                             content to be extracted</span></td><td rowspan="1"><span>Extraction required (e.g. as part of the ingest
                                 processing): extract <em>File</em>, ingest it and start
                                 identification process anew (step 1). This loop can be
-                                repeated as many times as needed.</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>File format policy - Identification</span></td><td rowspan="1"><span>No extraction required (step 4)</span></td><td rowspan="1"></td></tr><tr></tr><tr><td rowspan="1">4</td><td rowspan="1"></td><td rowspan="1"><span>File format information</span></td><td class="stepsColumn" rowspan="1"><span>Store the file format information in the <em>File's Technical metadata</em></span></td><td rowspan="1"><span>Format information in <em>Technical metadata</em></span></td><td rowspan="1">CPP-009 (Metadata Extraction)<hr></hr>CPP-010 (File Format Validation)<hr></hr>CPP-014 (File Migration)</td></tr><tr></tr><tr><td rowspan="1">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Register a format identification event containing the tool(s) name
-                            and version and the(ir) outcome(s)</span></td><td rowspan="1"><span><em>Provenance metadata</em></span></td><td rowspan="1"></td></tr><tr></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Identify the <em>File's</em> format and store it with the <em>File's Technical
+                                repeated as many times as needed.</span></td><td rowspan="1"></td></tr><tr><td rowspan="1"></td><td rowspan="1"><span>File format policy - Identification</span></td><td rowspan="1"><span>No extraction required (step 4)</span></td><td rowspan="1"></td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">4</td><td rowspan="1"></td><td rowspan="1"><span>File format information</span></td><td class="stepsColumn" rowspan="1"><span>Store the file format information in the <em>File's Technical metadata</em></span></td><td rowspan="1"><span>Format information in <em>Technical metadata</em></span></td><td rowspan="1">CPP-009 (Metadata Extraction)<hr></hr>CPP-010 (File Format Validation)<hr></hr>CPP-014 (File Migration)</td></tr><tr><td rowspan="1" colspan="5" style="background-color:hsl(210,70%,95%)">5</td><td rowspan="1"></td><td rowspan="1"></td><td class="stepsColumn" rowspan="1"><span>Register a format identification event containing the tool(s) name
+                            and version and the(ir) outcome(s)</span></td><td rowspan="1"><span><em>Provenance metadata</em></span></td><td rowspan="1"></td></tr></table></div></div><div class="rationaleAndWorstCases"><h3>Rationale(s) and worst case(s)</h3><table class="rationaleAndWorstCases"><tr><th>Rationale</th><th>Impact of inaction or failure of the process</th></tr><tr><td><span>Identify the <em>File's</em> format and store it with the <em>File's Technical
                     metadata</em> during the <em>Object's</em> life cycle in the TDA</span></td><td><span>
                     <em>Files</em> becoming obsolete; impossibility to extract <em>Technical
                     metadata</em>; <em>File</em> being overlooked when identifying <em>
@@ -225,7 +239,7 @@
                     validation tool.</span></td></tr><tr><td>Required by</td><td>CPP-013</td><td>Object Management Reporting</td><td><span>File format identification reports are required for a TDA to enable it to
                     manage its content.</span></td></tr><tr><td>Required by</td><td>CPP-014</td><td>File Migration</td><td><span>Format Migration needs to know the source format to aid application of the
                     appropriate migration plan.</span></td></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Format information needs to be stored with the <em>File's Technical metadata</em>
-                    . </span></td></tr><tr><td>Required by</td><td>CPP-023</td><td>Risk Definition and Extraction</td><td><span>Risks can be related to a file format generic properties and concern all
+                    . </span></td></tr><tr><td>Required by</td><td>CPP-023</td><td>Risk Properties Definition and Extraction</td><td><span>Risks can be related to a file format generic properties and concern all
                     instances of it.</span></td></tr><tr><td>Required by</td><td>CPP-026</td><td>File Normalisation</td><td><span>The format information of the File in question is one of the deciding input
                     parameters when considering File Normalisation.</span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>File formation identification is one of the core processes that must be
                     performed during ingest.</span></td></tr><tr><td>Required by</td><td>CPP-010</td><td>File Format Validation</td><td><span>CPP-008 is only about identifying the format while CPP-010 describes full

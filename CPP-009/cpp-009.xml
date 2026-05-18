@@ -177,7 +177,7 @@
                             on
                             its
                             format identifier and on requirements from Significant Properties
-                            Definition, Data Quality Assessment and Risk Definition and Extraction</span>
+                            Definition, Data Quality Assessment and Risk Properties Definition and Extraction</span>
                     </cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
@@ -355,7 +355,7 @@
             <cpp:relationshipDescription>
                 <span>The selection of an appropriate extractor tool depends on requirements from
                     the
-                    Risk Definition and Extraction CPP.</span>
+                    Risk Properties Definition and Extraction CPP.</span>
             </cpp:relationshipDescription>
         </cpp:relationship>
         <cpp:relationship>

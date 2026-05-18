@@ -448,7 +448,7 @@
             <cpp:relationshipType>Requires</cpp:relationshipType>
             <cpp:relatedCPP>CPP-023</cpp:relatedCPP>
             <cpp:relationshipDescription>
-                <span>Risk Definition and Extraction identifies risks related to file format that
+                <span>Risk Properties Definition and Extraction identifies risks related to file format that
                     would trigger a File migration and provides the method to detect these risks in <em>
                     Files</em>.</span>
             </cpp:relationshipDescription>
