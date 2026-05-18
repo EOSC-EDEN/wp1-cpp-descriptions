@@ -32,6 +32,15 @@
         <cpp:versionDate>2026-04-10</cpp:versionDate>
         <cpp:versionNotes>Migration to XML</cpp:versionNotes>
       </cpp:version>
+            <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>2</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-05-18</cpp:versionDate>
+        <cpp:versionNotes>Reassigned step numbers based on new numbering rules.</cpp:versionNotes>
+      </cpp:version>
     </cpp:history>
   </cpp:header>
   <cpp:shortDefinition>The TDA enables the rendering of Objects via the application of emulation and/or other
@@ -222,9 +231,9 @@
             </cpp:output>
           </cpp:step>
         </cpp:stepGroup>
-        <cpp:stepGroup type="alternative" label="Emulation or Rendering">
-          <cpp:stepGroup type="sequence" label="Emulation">
-            <cpp:step stepNumber="E1">
+        <cpp:stepGroup type="alternative" label="Emulation or Rendering" stepGroupNumber="4">
+          <cpp:stepGroup type="sequence" label="Emulation" stepGroupNumber="4.a">
+            <cpp:step stepNumber="4.a.1">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Environment <em>Object</em></span>
@@ -244,7 +253,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="E2">
+            <cpp:step stepNumber="4.a.2">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Emulation information</span>
@@ -263,7 +272,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="E3">
+            <cpp:step stepNumber="4.a.3">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Emulated environment</span>
@@ -283,7 +292,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="E4">
+            <cpp:step stepNumber="4.a.4">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Complete emulated environment</span>
@@ -294,8 +303,8 @@
               </cpp:stepDescription>
             </cpp:step>
           </cpp:stepGroup>
-          <cpp:stepGroup type="sequence" label="Rendering">
-            <cpp:step stepNumber="R1">
+          <cpp:stepGroup type="sequence" label="Rendering" stepGroupNumber="4.b">
+            <cpp:step stepNumber="4.b.1">
               <cpp:input>
                 <cpp:inputElement>
                   <span><em>Representation</em> identifier</span>
@@ -316,7 +325,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="R2">
+            <cpp:step stepNumber="4.b.2">
               <cpp:input>
                 <cpp:inputElement>
                   <span>
@@ -336,7 +345,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="R3">
+            <cpp:step stepNumber="4.b.3">
               <cpp:input>
                 <cpp:inputElement>
                   <span><em>Representation</em> Information</span>
@@ -358,7 +367,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="R4">
+            <cpp:step stepNumber="4.b.4">
               <cpp:input>
                 <cpp:inputElement>
                   <span><em>Representation</em> content</span>

@@ -178,7 +178,7 @@
                     </cpp:output>
                 </cpp:step>
                 <cpp:stepGroup type="alternative" label="Events that trigger metadata creation or update">
-                    <cpp:step stepNumber="2a">
+                    <cpp:step stepNumber="2.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>New checksum(s) created</span>
@@ -194,7 +194,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2b">
+                    <cpp:step stepNumber="2.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Checksum was validated</span>
@@ -210,7 +210,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2c">
+                    <cpp:step stepNumber="2.c">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>New identifier</span>
@@ -226,7 +226,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2d">
+                    <cpp:step stepNumber="2.d">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Format identifier and format registry identifier</span>
@@ -242,7 +242,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2e">
+                    <cpp:step stepNumber="2.e">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Any <em>Metadata</em> extracted from the <em>File</em></span>
@@ -278,7 +278,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2f">
+                    <cpp:step stepNumber="2.f">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Set of <em>Metadata</em></span>
@@ -294,7 +294,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2g">
+                    <cpp:step stepNumber="2.g">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>New set of rights information</span>
@@ -310,7 +310,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2h">
+                    <cpp:step stepNumber="2.h">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Requirement to anonymise/pseudonymise personal data</span>
@@ -326,7 +326,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2i">
+                    <cpp:step stepNumber="2.i">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Set of <em>Metadata</em></span>

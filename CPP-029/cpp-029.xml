@@ -372,9 +372,9 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:stepGroup type="alternative">
-                    <cpp:stepGroup type="sequence">
-                        <cpp:step stepNumber="14a.1">
+                <cpp:stepGroup type="alternative" stepGroupNumber="14">
+                    <cpp:stepGroup type="sequence" stepGroupNumber="14.a">
+                        <cpp:step stepNumber="14.a.1">
                             <cpp:input>
                                 <cpp:inputElement>
                                     <span><em>Information package</em> with fixity checked, identifier assigned, quality assessed, <em>Metadata</em> recorded and optionally new <em>Representation</em>s added</span>
@@ -389,7 +389,7 @@
                                 </cpp:outputElement>
                             </cpp:output>
                         </cpp:step>
-                        <cpp:step stepNumber="14a.2">
+                        <cpp:step stepNumber="14.a.2">
                             <cpp:input>
                                 <cpp:inputElement>
                                     <span><em>AIP</em></span>
@@ -406,7 +406,7 @@
                             </cpp:output>
                         </cpp:step>
                     </cpp:stepGroup>
-                    <cpp:step stepNumber="14b">
+                    <cpp:step stepNumber="14.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Error-handling policies (in particular file format policy and validation policy)</span>

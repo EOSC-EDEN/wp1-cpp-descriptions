@@ -261,7 +261,7 @@
                 </cpp:step>
                 <cpp:stepGroup type="alternative"
                     label="Alternative scenarios based on the scope of the update">
-                    <cpp:step stepNumber="3a">
+                    <cpp:step stepNumber="3.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Additional incoming Metadata</span>
@@ -282,7 +282,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="3b">
+                    <cpp:step stepNumber="3.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>SIP (if relevant)</span>
@@ -320,7 +320,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="3c">
+                    <cpp:step stepNumber="3.c">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Versioning policy</span>

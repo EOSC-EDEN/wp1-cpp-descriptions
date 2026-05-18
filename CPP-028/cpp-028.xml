@@ -160,7 +160,7 @@
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
                 <cpp:stepGroup type="alternative" label="Alternative triggers">
-                    <cpp:step stepNumber="1a">
+                    <cpp:step stepNumber="1.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Request for access copy and requested <em>Object(s)</em></span>
@@ -176,7 +176,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="1b">
+                    <cpp:step stepNumber="1.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Ingest of a <em>SIP</em></span>
@@ -253,7 +253,7 @@
                     </cpp:output>
                 </cpp:step>
                 <cpp:stepGroup type="alternative" label="Alternative outputs step 4">
-                    <cpp:step stepNumber="5a">
+                    <cpp:step stepNumber="5.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span><em>DIP</em></span>
@@ -263,7 +263,7 @@
                             <span>Deliver the <em>DIP</em> and end the process</span>
                         </cpp:stepDescription>
                     </cpp:step>
-                    <cpp:step stepNumber="5b">
+                    <cpp:step stepNumber="5.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span><em>Representation</em> or <em>AIP</em></span>
