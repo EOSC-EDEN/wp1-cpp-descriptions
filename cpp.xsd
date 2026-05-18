@@ -713,7 +713,7 @@
 			</xsd:simpleType>
 		</xsd:attribute>
 		<xsd:attribute name="label" xsi:type="xsd:string" />
-		<xsd:attribute name="stepGroupNumber" use="required" type="stepOrStepGroupNumber" />
+		<xsd:attribute name="stepGroupNumber" type="stepOrStepGroupNumber" />
 	</xsd:complexType>
 	<xsd:simpleType name="stepOrStepGroupNumber">
 		<xsd:restriction base="xsd:string">
