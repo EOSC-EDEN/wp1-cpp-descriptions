@@ -29,12 +29,12 @@
             </cpp:version>
             <cpp:version>
                 <cpp:versionNumber>
-                    <cpp:majorVersion>1</cpp:majorVersion>
-                    <cpp:minorVersion>1</cpp:minorVersion>
+                    <cpp:majorVersion>2</cpp:majorVersion>
+                    <cpp:minorVersion>0</cpp:minorVersion>
                     <cpp:patchVersion>0</cpp:patchVersion>
                 </cpp:versionNumber>
-                <cpp:versionDate>2026-03-27</cpp:versionDate>
-                <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+                <cpp:versionDate>2026-05-19</cpp:versionDate>
+                <cpp:versionNotes>Revision of step 1 inputs/suppliers, step 3 outputs/customers, and migration to XML.</cpp:versionNotes>
             </cpp:version>
         </cpp:history>
     </cpp:header>
@@ -71,7 +71,7 @@
             and organisational and technological infrastructure.
         </p>
         <p>
-            Defining and extracting risks are defined in CPP-023 <b>Risk Definition and Extraction</b>, 
+            Defining and extracting risks are defined in CPP-023 <b>Risk Properties Definition and Extraction</b>, 
             which defines how these risks are mitigated. Risk mitigation in digital preservation 
             refers to the systematic identification, assessment, and management of threats that could 
             lead to the loss, corruption, or inaccessibility of digital materials over time. It is a 
@@ -87,8 +87,8 @@
             the identified risk into account and reports that will be acted upon by other processes.
         </p>
         <p>
-            Beyond risk identification and risk assessment, which are in the scope of Risk Definition and
-            Extraction, this Risk Mitigation encompasses the following components:
+            Beyond risk identification and risk assessment, which are in the scope of <b>Risk Properties Definition and
+            Extraction</b>, this Risk Mitigation encompasses the following components:
         </p>
         <ul>
             <li>
@@ -195,14 +195,14 @@
                             </span>
                         </cpp:inputElement>
                         <cpp:supplier>CPP-023</cpp:supplier>
-                        <cpp:supplier>CPP-008</cpp:supplier>
-                        <cpp:supplier>CPP-009</cpp:supplier>
-                        <cpp:supplier>CPP-010</cpp:supplier>
                     </cpp:input>
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>Metadata</em></span>
                         </cpp:inputElement>
+                        <cpp:supplier>CPP-008</cpp:supplier>
+                        <cpp:supplier>CPP-009</cpp:supplier>
+                        <cpp:supplier>CPP-010</cpp:supplier>
                     </cpp:input>
                     <cpp:input>
                         <cpp:inputElement>
@@ -213,16 +213,19 @@
                         <cpp:inputElement>
                             <span>Quality reports</span>
                         </cpp:inputElement>
+                        <cpp:supplier>CPP-019</cpp:supplier>
                     </cpp:input>
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Statistical reports</span>
                         </cpp:inputElement>
+                        <cpp:supplier>CPP-013</cpp:supplier>
                     </cpp:input>
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Changes in the designated communities</span>
                         </cpp:inputElement>
+                        <cpp:supplier>CPP-018</cpp:supplier>
                     </cpp:input>
                     <cpp:stepDescription>
                         <span>
@@ -277,7 +280,7 @@
                         </span>
                         <ul>
                             <li>
-                                Triggering preservation actions (such as Format Migration planning or 
+                                Triggering preservation actions (such as File Migration planning or 
                                 Metadata Ingest and Management)
                             </li>
                             <li>
@@ -295,17 +298,18 @@
                             <span>Migration paths and migration plans</span>
                         </cpp:outputElement>
                         <cpp:customer>CPP-014</cpp:customer>
-                        <cpp:customer>CPP-015</cpp:customer>
-                        <cpp:customer>CPP-003</cpp:customer>
-                        <cpp:customer>CPP-011</cpp:customer>
-                        <cpp:customer>CPP-013</cpp:customer>
-                        <cpp:customer>CPP-016</cpp:customer>
-                        <cpp:customer>CPP-030</cpp:customer>
                     </cpp:output>
                     <cpp:output>
                         <cpp:outputElement>
-                            <span>Preservation plans</span>
+                            <span>Emulation and rendering policies</span>
                         </cpp:outputElement>
+                        <cpp:customer>CPP-015</cpp:customer>
+                    </cpp:output>
+                    <cpp:output>
+                        <cpp:outputElement>
+                            <span>Preservation action plans</span>
+                        </cpp:outputElement>
+                        <cpp:customer>CPP-014</cpp:customer>
                     </cpp:output>
                     <cpp:output>
                         <cpp:outputElement>
@@ -315,6 +319,11 @@
                                 frequency of integrity checking intervals etc.
                             </span>
                         </cpp:outputElement>
+                        <cpp:customer>CPP-003</cpp:customer>
+                        <cpp:customer>CPP-011</cpp:customer>
+                        <cpp:customer>CPP-013</cpp:customer>
+                        <cpp:customer>CPP-016</cpp:customer>
+                        <cpp:customer>CPP-030</cpp:customer>
                     </cpp:output>
                 </cpp:step>
             </cpp:stepGroup>
@@ -429,7 +438,7 @@
             <cpp:relatedCPP>CPP-014</cpp:relatedCPP>
             <cpp:relationshipDescription>
                 <span>
-                    Format migration requires this investigative process to determine the
+                    File migration requires this investigative process to determine the
                     migration path that it should apply.
                 </span>
             </cpp:relationshipDescription>
