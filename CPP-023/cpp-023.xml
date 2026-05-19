@@ -465,7 +465,7 @@
                 <cpp:useCasetitle>Multi-page TIFFs</cpp:useCasetitle>
                 <cpp:institution>
                     <cpp:institutionLabel>Rosetta Users Group</cpp:institutionLabel>
-                    <cpp:institutionCountry>XX</cpp:institutionCountry>
+                    <cpp:institutionCountry>N/A</cpp:institutionCountry>
                 </cpp:institution>
                 <cpp:linkToDocumentation xml:lang="en">
                     <cpp:hyperlink>

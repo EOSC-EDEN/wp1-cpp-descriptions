@@ -661,7 +661,7 @@
                 <cpp:useCasetitle>Ingest processes described as workflows</cpp:useCasetitle>
                 <cpp:institution>
                     <cpp:institutionLabel>Several institutions</cpp:institutionLabel>
-                    <cpp:institutionCountry>XX</cpp:institutionCountry>
+                    <cpp:institutionCountry>MUL</cpp:institutionCountry>
                 </cpp:institution>
                 <cpp:linkToDocumentation xml:lang="eng">
                     <cpp:hyperlink>https://coptr.digipres.org/index.php/Workflow:Community_Owned_Workflows</cpp:hyperlink>
