@@ -116,7 +116,7 @@
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:stepGroup type="alternative" label="Elaboration of a media- or AIP-specific inventory">
+                <cpp:stepGroup type="alternative" label="Elaboration of a media- or AIP-specific inventory" stepGroupNumber="1">
                 <cpp:step stepNumber="1.a">
                     <cpp:input>
                         <cpp:inputElement>

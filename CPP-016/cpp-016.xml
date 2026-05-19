@@ -177,7 +177,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:stepGroup type="alternative" label="Events that trigger metadata creation or update">
+                <cpp:stepGroup type="alternative" label="Events that trigger metadata creation or update" stepGroupNumber="2">
                     <cpp:step stepNumber="2.a">
                         <cpp:input>
                             <cpp:inputElement>

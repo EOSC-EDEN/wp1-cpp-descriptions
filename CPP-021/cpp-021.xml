@@ -260,7 +260,7 @@
                     </cpp:output>
                 </cpp:step>
                 <cpp:stepGroup type="alternative"
-                    label="Alternative scenarios based on the scope of the update">
+                    label="Alternative scenarios based on the scope of the update" stepGroupNumber="3">
                     <cpp:step stepNumber="3.a">
                         <cpp:input>
                             <cpp:inputElement>

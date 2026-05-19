@@ -141,7 +141,7 @@
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:stepGroup type="alternative" label="Alternative triggers">
+                <cpp:stepGroup type="alternative" label="Alternative triggers" stepGroupNumber="1">
                     <cpp:step stepNumber="1.a">
                         <cpp:input>
                             <cpp:inputElement>
@@ -237,7 +237,7 @@
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
-            <cpp:stepGroup type="alternative" label="Alternative validation results">
+            <cpp:stepGroup type="alternative" label="Alternative validation results" stepGroupNumber="5">
                 <cpp:step stepNumber="5.a">
                     <cpp:input>
                         <cpp:inputElement>

@@ -228,7 +228,7 @@ first component or file.
 
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:stepGroup type="alternative">
+                <cpp:stepGroup type="alternative" stepGroupNumber="1">
                     <cpp:step stepNumber="1.a">
                         <cpp:input>
                             <cpp:inputElement>

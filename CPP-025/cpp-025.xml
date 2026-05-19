@@ -191,7 +191,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:stepGroup type="alternative" label="Authentication and authorisation of the DIP request">
+        <cpp:stepGroup type="alternative" label="Authentication and authorisation of the DIP request" stepGroupNumber="5">
           <cpp:step stepNumber="5.a">
             <cpp:input>
               <cpp:inputElement>

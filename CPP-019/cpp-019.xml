@@ -212,7 +212,7 @@
                     </cpp:output>
                 </cpp:step>
                 <cpp:stepGroup type="alternative"
-                    label="Different handling based on nature of quality properties">
+                    label="Different handling based on nature of quality properties" stepGroupNumber="3">
                     <cpp:step stepNumber="3.a">
                         <cpp:input>
                             <cpp:inputElement>

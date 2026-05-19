@@ -241,7 +241,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:stepGroup type="sequence" label="Evaluation of format identification results">
+                <cpp:stepGroup type="sequence" label="Evaluation of format identification results" stepGroupNumber="2">
                     <cpp:step stepNumber="2.1">
                         <cpp:input>
                             <cpp:inputElement>

@@ -129,7 +129,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:stepGroup type="sequence" label="Process for each AIP in the selected batch">
+                <cpp:stepGroup type="sequence" label="Process for each AIP in the selected batch" stepGroupNumber="2">
                 <cpp:step stepNumber="2.1">
                     <cpp:input>
                         <cpp:inputElement>
