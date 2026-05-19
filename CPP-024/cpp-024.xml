@@ -34,6 +34,15 @@
         <cpp:versionDate>2026-03-27</cpp:versionDate>
         <cpp:versionNotes>Migration to XML</cpp:versionNotes>
       </cpp:version>
+      <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>2</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-05-18</cpp:versionDate>
+        <cpp:versionNotes>Reassigned step numbers based on new numbering rules.</cpp:versionNotes>
+      </cpp:version>
     </cpp:history>
   </cpp:header>
   <cpp:shortDefinition>The TDA provides catalogue services to its consumers to help them identify Objects that they may be interested in.</cpp:shortDefinition>
@@ -132,7 +141,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="3a">
+        <cpp:step stepNumber="3">
           <cpp:input>
             <cpp:inputElement>
               <span>New <em>AIP</em> or <em>AIP</em> version</span>
@@ -158,7 +167,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="3b">
+        <cpp:step stepNumber="4">
           <cpp:input>
             <cpp:inputElement>
               <span>Extracted discovery <em>Metadata</em></span>
@@ -174,7 +183,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="3c">
+        <cpp:step stepNumber="5">
           <cpp:input>
             <cpp:inputElement>
               <span>Transformed discovery <em>Metadata</em></span>
@@ -196,7 +205,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="4">
+        <cpp:step stepNumber="6">
           <cpp:input>
             <cpp:inputElement>
               <span>Validated discovery <em>Metadata</em></span>
@@ -217,7 +226,7 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="5a">
+        <cpp:step stepNumber="7">
           <cpp:input>
             <cpp:inputElement>
               <span>Validated discovery <em>Metadata</em> with cleared rights</span>
@@ -235,7 +244,7 @@
             <!--><cpp:customer>Consumer</cpp:customer>-->
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="5b" optional="true">
+        <cpp:step stepNumber="8" optional="true">
           <cpp:input>
             <cpp:inputElement>
               <span>Validated discovery <em>Metadata</em> with cleared rights</span>
@@ -254,7 +263,7 @@
             <!--><cpp:customer>Consumer</cpp:customer>-->
           </cpp:output>
         </cpp:step>
-        <cpp:step stepNumber="5c" optional="true">
+        <cpp:step stepNumber="9" optional="true">
           <cpp:input>
             <cpp:inputElement>
               <span><em>DIP</em> or Derivatives</span>
@@ -276,7 +285,7 @@
         <cpp:step stepNumber="6">
           <cpp:input>
             <cpp:inputElement>
-              <span>Query scenarions</span>
+              <span>Query scenarios</span>
             </cpp:inputElement>
           </cpp:input>
           <cpp:input>

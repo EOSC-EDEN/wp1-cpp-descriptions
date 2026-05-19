@@ -10,7 +10,7 @@
       <cpp:contributor>Johan Kylander</cpp:contributor>
     </cpp:contributors>
     <cpp:evaluators>
-      <cpp:evaluator>Felix Burer</cpp:evaluator>
+      <cpp:evaluator>Felix Burger</cpp:evaluator>
       <cpp:evaluator>Maria Benauer</cpp:evaluator>
     </cpp:evaluators>
     <cpp:history>
@@ -31,6 +31,15 @@
         </cpp:versionNumber>
         <cpp:versionDate>2026-04-10</cpp:versionDate>
         <cpp:versionNotes>Migration to XML</cpp:versionNotes>
+      </cpp:version>
+            <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>2</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-05-18</cpp:versionDate>
+        <cpp:versionNotes>Reassigned step numbers based on new numbering rules.</cpp:versionNotes>
       </cpp:version>
     </cpp:history>
   </cpp:header>
@@ -134,8 +143,8 @@
     </cpp:triggerEvents>
     <cpp:stepByStepDescription>
       <cpp:stepGroup type="sequence">
-        <cpp:stepGroup type="sequence" label="Initial strategy selection">
-          <cpp:step stepNumber="1">
+        <cpp:stepGroup type="sequence" label="Initial strategy selection" stepGroupNumber="1">
+          <cpp:step stepNumber="1.1">
             <cpp:input>
               <cpp:inputElement>
                 <span><em>Representation</em> identifier</span>
@@ -156,7 +165,7 @@
               </cpp:outputElement>
             </cpp:output>
           </cpp:step>
-          <cpp:step stepNumber="2">
+          <cpp:step stepNumber="1.2">
             <cpp:input>
               <cpp:inputElement>
                 <span>
@@ -180,7 +189,7 @@
               </cpp:outputElement>
             </cpp:output>
           </cpp:step>
-          <cpp:step stepNumber="3">
+          <cpp:step stepNumber="1.3">
             <cpp:input>
               <cpp:inputElement>
                 <span>
@@ -222,9 +231,9 @@
             </cpp:output>
           </cpp:step>
         </cpp:stepGroup>
-        <cpp:stepGroup type="alternative" label="Emulation or Rendering">
-          <cpp:stepGroup type="sequence" label="Emulation">
-            <cpp:step stepNumber="E1">
+        <cpp:stepGroup type="alternative" label="Emulation or Rendering" stepGroupNumber="2">
+          <cpp:stepGroup type="sequence" label="Emulation" stepGroupNumber="2.a">
+            <cpp:step stepNumber="2.a.1">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Environment <em>Object</em></span>
@@ -244,7 +253,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="E2">
+            <cpp:step stepNumber="2.a.2">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Emulation information</span>
@@ -263,7 +272,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="E3">
+            <cpp:step stepNumber="2.a.3">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Emulated environment</span>
@@ -283,7 +292,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="E4">
+            <cpp:step stepNumber="2.a.4">
               <cpp:input>
                 <cpp:inputElement>
                   <span>Complete emulated environment</span>
@@ -294,8 +303,8 @@
               </cpp:stepDescription>
             </cpp:step>
           </cpp:stepGroup>
-          <cpp:stepGroup type="sequence" label="Rendering">
-            <cpp:step stepNumber="R1">
+          <cpp:stepGroup type="sequence" label="Rendering" stepGroupNumber="2.b">
+            <cpp:step stepNumber="2.b.1">
               <cpp:input>
                 <cpp:inputElement>
                   <span><em>Representation</em> identifier</span>
@@ -316,7 +325,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="R2">
+            <cpp:step stepNumber="2.b.2">
               <cpp:input>
                 <cpp:inputElement>
                   <span>
@@ -336,7 +345,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="R3">
+            <cpp:step stepNumber="2.b.3">
               <cpp:input>
                 <cpp:inputElement>
                   <span><em>Representation</em> Information</span>
@@ -358,7 +367,7 @@
                 </cpp:outputElement>
               </cpp:output>
             </cpp:step>
-            <cpp:step stepNumber="R4">
+            <cpp:step stepNumber="2.b.4">
               <cpp:input>
                 <cpp:inputElement>
                   <span><em>Representation</em> content</span>

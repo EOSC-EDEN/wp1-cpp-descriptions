@@ -191,8 +191,8 @@
             </cpp:outputElement>
           </cpp:output>
         </cpp:step>
-        <cpp:stepGroup type="alternative" label="Authentication and authorisation of the DIP request">
-          <cpp:step stepNumber="5a">
+        <cpp:stepGroup type="alternative" label="Authentication and authorisation of the DIP request" stepGroupNumber="5">
+          <cpp:step stepNumber="5.a">
             <cpp:input>
               <cpp:inputElement>
                 <span>Authenticated and authorised request</span>
@@ -208,7 +208,7 @@
               </cpp:outputElement>
             </cpp:output>
           </cpp:step>
-          <cpp:step stepNumber="5b">
+          <cpp:step stepNumber="5.b">
             <cpp:input>
               <cpp:inputElement>
                 <span>Non-authenticated or unauthorised request</span>

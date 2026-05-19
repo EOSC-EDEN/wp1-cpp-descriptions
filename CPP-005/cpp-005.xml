@@ -228,8 +228,8 @@ first component or file.
 
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:stepGroup type="alternative">
-                    <cpp:step stepNumber="1a">
+                <cpp:stepGroup type="alternative" stepGroupNumber="1">
+                    <cpp:step stepNumber="1.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>A producer or a TDA has a need to reserve an identifier, 
@@ -241,7 +241,7 @@ first component or file.
                             <span>Reservation of identifier prior to new entity assignment (step 2)</span>
                         </cpp:stepDescription>
                     </cpp:step>
-                    <cpp:step stepNumber="1b">
+                    <cpp:step stepNumber="1.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>
@@ -267,7 +267,7 @@ first component or file.
                             <span>New entity added or a need to assign an identifier to an existing entity (step 2)</span>
                         </cpp:stepDescription>
                     </cpp:step>
-                    <cpp:step stepNumber="1c">
+                    <cpp:step stepNumber="1.c">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>
@@ -293,7 +293,7 @@ first component or file.
                             <span>Entity with an identifier has changed (step 4)</span>
                         </cpp:stepDescription>
                     </cpp:step>
-                    <cpp:step stepNumber="1d">
+                    <cpp:step stepNumber="1.d">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>

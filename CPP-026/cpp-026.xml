@@ -141,8 +141,8 @@
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:stepGroup type="alternative" label="Alternative triggers">
-                    <cpp:step stepNumber="1a">
+                <cpp:stepGroup type="alternative" label="Alternative triggers" stepGroupNumber="1">
+                    <cpp:step stepNumber="1.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Each <em>File</em> in the <em>Information Package</em>
@@ -154,7 +154,7 @@
                             <span>Perform the Format Identification process on the <em>File</em>(s)</span>
                         </cpp:stepDescription>
                     </cpp:step>
-                    <cpp:step stepNumber="1b">
+                    <cpp:step stepNumber="1.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Change in file format policy - Preferred formats</span>
@@ -237,8 +237,8 @@
                     </cpp:outputElement>
                 </cpp:output>
             </cpp:step>
-            <cpp:stepGroup type="alternative" label="Alternative validation results">
-                <cpp:step stepNumber="5a">
+            <cpp:stepGroup type="alternative" label="Alternative validation results" stepGroupNumber="5">
+                <cpp:step stepNumber="5.a">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>OK</span>
@@ -256,7 +256,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="5b">
+                <cpp:step stepNumber="5.b">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Error</span>

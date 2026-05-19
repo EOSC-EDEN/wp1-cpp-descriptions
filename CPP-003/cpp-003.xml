@@ -129,7 +129,8 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="2a">
+                <cpp:stepGroup type="sequence" label="Process for each AIP in the selected batch" stepGroupNumber="2">
+                <cpp:step stepNumber="2.1">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>
@@ -139,7 +140,7 @@
                         <cpp:supplier>CPP-001</cpp:supplier>
                     </cpp:input>
                     <cpp:stepDescription>
-                        <span>For each <em>AIP</em> in the selected batch: Gather the <em>AIP</em>'s
+                        <span>Gather the <em>AIP</em>'s
                             fixity metadata</span>
                     </cpp:stepDescription>
                     <cpp:output>
@@ -150,7 +151,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="2b">
+                <cpp:step stepNumber="2.2">
                     <cpp:input>
                         <cpp:inputElement>
                             <span><em>Fixity metadata</em> (algorithms)</span>
@@ -168,7 +169,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="2c">
+                <cpp:step stepNumber="2.3">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>
@@ -192,7 +193,7 @@
                         <cpp:customer>CPP-004</cpp:customer>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="2d">
+                <cpp:step stepNumber="2.4">
                     <cpp:stepDescription>
                         <span>Store the new integrity checking event to the <em>AIP</em></span>
                     </cpp:stepDescription>
@@ -202,7 +203,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="2e">
+                <cpp:step stepNumber="2.5">
                     <cpp:stepDescription>
                         <span>Update the timestamp of the integrity check</span>
                     </cpp:stepDescription>
@@ -212,6 +213,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
+                </cpp:stepGroup>
                 <cpp:step stepNumber="3">
                     <cpp:stepDescription>
                         <span>Document the event and its timestamp</span>

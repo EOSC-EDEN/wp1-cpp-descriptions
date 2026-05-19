@@ -226,8 +226,8 @@
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:stepGroup type="alternative" label="Alternative triggers">
-                    <cpp:step stepNumber="1a">
+                <cpp:stepGroup type="alternative" label="Alternative triggers" stepGroupNumber="1">
+                    <cpp:step stepNumber="1.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>
@@ -259,7 +259,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="1b">
+                    <cpp:step stepNumber="1.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>
@@ -291,7 +291,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="1c">
+                    <cpp:step stepNumber="1.c">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>
@@ -322,7 +322,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="1d">
+                    <cpp:step stepNumber="1.d">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>
@@ -367,7 +367,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="1e">
+                    <cpp:step stepNumber="1.e">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>
@@ -718,11 +718,6 @@
             </cpp:relationshipDescription>
         </cpp:relationship>
     </cpp:cppRelationships>
-
-
-
-
-
     <cpp:frameworkMappings>
         <cpp:mapping>
             <cpp:frameworkName>CoreTrustSeal</cpp:frameworkName>

@@ -35,6 +35,15 @@
                 <cpp:versionDate>2026-03-26</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML, addition of Copy Management Policy as input for step 2.</cpp:versionNotes>
             </cpp:version>
+                  <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>2</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-05-18</cpp:versionDate>
+        <cpp:versionNotes>Reassigned step numbers based on new numbering rules.</cpp:versionNotes>
+      </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA replaces damaged Files from replicated copies and reports on actions taken.</cpp:shortDefinition>
@@ -107,7 +116,8 @@
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:step stepNumber="1a">
+                <cpp:stepGroup type="alternative" label="Elaboration of a media- or AIP-specific inventory" stepGroupNumber="1">
+                <cpp:step stepNumber="1.a">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Integrity checking report</span>
@@ -128,7 +138,8 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="1b">
+                </cpp:stepGroup>
+                <cpp:step stepNumber="1.b">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Report of media-wide errors</span>
@@ -176,7 +187,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="3b">
+                <cpp:step stepNumber="4" optional="true">
                     <cpp:stepDescription>
                         <span>In case of media-wide errors: Provision of a fresh storage medium that
                             will replace the old one.</span>
@@ -187,7 +198,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="4">
+                <cpp:step stepNumber="5">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Source storage medium of <em>AIPs</em></span>
@@ -204,15 +215,15 @@
                         </cpp:inputElement>
                     </cpp:input>
                     <cpp:stepDescription>
-                        <span>For each AIP individually, start the copy process (steps 5 to 9):</span>
+                        <span>For each AIP individually, start the copy process (steps 6 to 10):</span>
                     </cpp:stepDescription>
                 </cpp:step>
-                <cpp:step stepNumber="5">
+                <cpp:step stepNumber="6">
                     <cpp:stepDescription>
                         <span>Retrieve the <em>AIP</em> from the source storage medium</span>
                     </cpp:stepDescription>
                 </cpp:step>
-                <cpp:step stepNumber="6">
+                <cpp:step stepNumber="7">
                     <cpp:stepDescription>
                         <span>Copy the <em>AIP</em> to the target storage medium</span>
                     </cpp:stepDescription>
@@ -222,7 +233,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="7">
+                <cpp:step stepNumber="8">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Existing Fixity metadata</span>
@@ -240,16 +251,16 @@
                     </cpp:output>
                     <cpp:output>
                         <cpp:outputElement optional="true">
-                            <span>Valid status (step 8)</span>
+                            <span>Valid status (step 9)</span>
                         </cpp:outputElement>
                     </cpp:output>
                     <cpp:output>
                         <cpp:outputElement optional="true">
-                            <span>Invalid status (go back to step 5)</span>
+                            <span>Invalid status (go back to step 6)</span>
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="8">
+                <cpp:step stepNumber="9">
                     <cpp:stepDescription>
                         <span>Update the fixity for the new <em>AIP</em> copy </span>
                     </cpp:stepDescription>
@@ -261,7 +272,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="9" optional="true">
+                <cpp:step stepNumber="10" optional="true">
                     <cpp:stepDescription>
                         <span>If the target storage medium is different from the original storage
                             medium with the broken <em>AIP</em>:</span>
@@ -275,7 +286,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="10">
+                <cpp:step stepNumber="11">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Inventory of <em>AIPs</em> involved in the process</span>
@@ -287,7 +298,7 @@
                     </cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement optional="true">
-                            <span>Confirm completeness of the copy process (step 11)</span>
+                            <span>Confirm completeness of the copy process (step 12)</span>
                         </cpp:outputElement>
                     </cpp:output>
                     <cpp:output>
@@ -296,7 +307,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="11" optional="true">
+                <cpp:step stepNumber="12" optional="true">
                     <cpp:stepDescription>
                         <span>In case of media-wide errors:</span>
                         <span>Update information about the fresh storage medium (e.g. <em>File</em>
@@ -311,7 +322,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="12">
+                <cpp:step stepNumber="13">
                     <cpp:stepDescription>
                         <span>Document the event and its timestamp</span>
                     </cpp:stepDescription>
@@ -323,7 +334,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="13" optional="true">
+                <cpp:step stepNumber="14" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Original storage medium that has been refreshed</span>
@@ -336,7 +347,7 @@
                             sure that data on the original storage medium is properly deleted.</span>
                     </cpp:stepDescription>
                 </cpp:step>
-                <cpp:step stepNumber="14">
+                <cpp:step stepNumber="15">
                     <cpp:stepDescription>
                         <span>Decommission the old storage medium</span>
                     </cpp:stepDescription>

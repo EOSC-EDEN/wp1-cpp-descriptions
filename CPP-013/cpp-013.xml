@@ -34,6 +34,15 @@
                 <cpp:versionDate>2026-03-26</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+                  <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>2</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-05-18</cpp:versionDate>
+        <cpp:versionNotes>Reassigned step numbers based on new numbering rules.</cpp:versionNotes>
+      </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>
@@ -185,7 +194,8 @@
         </cpp:triggerEvents>
         <cpp:stepByStepDescription>
             <cpp:stepGroup type="sequence">
-                <cpp:step stepNumber="1a">
+                <cpp:stepGroup type="sequence" label="Determination and collection of required data" stepGroupNumber="1">
+                <cpp:step stepNumber="1.1">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>
@@ -212,7 +222,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="1b">
+                <cpp:step stepNumber="1.2">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Specification of the data required for the report</span>
@@ -230,7 +240,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="1c" optional="true">
+                <cpp:step stepNumber="1.3" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>
@@ -257,7 +267,9 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="2a" optional="true">
+                </cpp:stepGroup>
+                <cpp:stepGroup type="sequence" stepGroupNumber="2" label="Data aggregation">
+                <cpp:step stepNumber="2.1" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>
@@ -283,7 +295,7 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="2b" optional="true">
+                <cpp:step stepNumber="2.2" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Data required for report</span>
@@ -296,11 +308,11 @@
                     </cpp:input>
                     <cpp:stepDescription>
                         <span>
-                            The report is compiled and reviewed with the requestor..
+                            The report is compiled and reviewed with the requestor.
                         </span>
                         <span>
                             If further modifications are needed to the data
-                            and data collection, then go to step 2a.
+                            and data collection, then go to step 2.1.
                         </span>
                     </cpp:stepDescription>
                     <cpp:output>
@@ -311,7 +323,9 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="3a" optional="true">
+                </cpp:stepGroup>
+                <cpp:stepGroup type="sequence" stepGroupNumber="3" label="Handling recurring reports">
+                <cpp:step stepNumber="3.1" optional="true">
                     <cpp:input>
                         <cpp:inputElement>
                             <span>Reporting schedule</span>
@@ -334,10 +348,10 @@
                         <cpp:customer>CPP-019</cpp:customer>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="3b">
+                <cpp:step stepNumber="3.2">
                     <cpp:input>
                         <cpp:inputElement>
-                            <span>Data required for report (from 3a)</span>
+                            <span>Data required for report (from 3.1)</span>
                         </cpp:inputElement>
                     </cpp:input>
                     <cpp:stepDescription>
@@ -349,20 +363,21 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="3c">
+                </cpp:stepGroup>
+                <cpp:step stepNumber="4">
                     <cpp:input>
-                        <cpp:inputElement>
-                            <span>Data for report (from 3b)</span>
+                        <cpp:inputElement optional="true">
+                            <span>Data for report (from 3.2)</span>
                         </cpp:inputElement>
                     </cpp:input>
                     <cpp:input>
                         <cpp:inputElement>
-                            <span>Finalised Report Specification (from 2b)</span>
+                            <span>Finalised Report Specification (from 2.2)</span>
                         </cpp:inputElement>
                     </cpp:input>
                     <cpp:stepDescription>
                         <span>Produce Report and deliver to Requestor.</span>
-                        <span>If a report is produced regularly, then loop to Step 3a.</span>
+                        <span>If a report is produced regularly, then loop to Step 3.1.</span>
                     </cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
