@@ -136,7 +136,6 @@ def process_step_by_step(container, table_data, depth=0):
             table_data.append(process_step_to_row(child, depth=depth))
 
 def process_step_to_row(step, depth=0):
-    """Muuntaa yksittäisen cpp:step-elementin taulukkoriviksi."""
     step_number = step.get("stepNumber", "")
     optional = step.get("optional", "false").lower() == "true"
     indent = "\u00a0\u00a0" * depth
@@ -198,10 +197,6 @@ def parse_xml_to_markdown(xml_file):
     except ET.ParseError as e:
         logging.error(f"Failed to parse XML file: {xml_file}. Error: {e}")
         return None
-
-    # ns_map = {"cpp": "https://eden-fidelis.eu/cpp/cpp/"}
-
-    # Tästä ne lähti..
 
     header = find(root, "cpp:header")
     label = get_simple_text(find(header, "cpp:label"))
