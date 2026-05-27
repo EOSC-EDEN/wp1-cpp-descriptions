@@ -108,6 +108,84 @@ def format_markdown_table(headers, data):
 
     return "\n".join([header_line, separator_line] + data_lines)
 
+def process_step_by_step(container, table_data, depth=0):
+    for child in container:
+        local = child.tag.split("}")[-1] if "}" in child.tag else child.tag
+
+        if local == "stepGroup":
+            group_type = child.get("type", "")
+            group_label = child.get("label", "")
+
+            type_str = group_type.capitalize() if group_type else "Group"
+            label = f"{type_str}: {group_label}" if group_label else type_str
+
+            indent = "\u00a0\u00a0" * depth
+            if depth == 0:
+                formatted_label = f"**{indent}{label}**"
+            else:
+                formatted_label = f"***{indent}{label}***"
+
+            table_data.append({
+                "Step": formatted_label,
+                "Supplier(s)": "", "Input(s)": "",
+                "Description": "", "Output(s)": "", "Customer(s)": "",
+            })
+            process_step_by_step(child, table_data, depth=depth + 1)
+
+        elif local == "step":
+            table_data.append(process_step_to_row(child, depth=depth))
+
+def process_step_to_row(step, depth=0):
+    """Muuntaa yksittäisen cpp:step-elementin taulukkoriviksi."""
+    step_number = step.get("stepNumber", "")
+    optional = step.get("optional", "false").lower() == "true"
+    indent = "\u00a0\u00a0" * depth
+    step_label = f"{indent}{step_number}"
+    if optional:
+        step_label += " *(optional)*"
+
+    desc_md = element_to_markdown(find(step, "cpp:stepDescription"))
+
+    inputs_list = []
+    suppliers_set = set()
+    for inp in findall(step, "cpp:input"):
+        element_md = element_to_markdown(find(inp, "cpp:inputElement"))
+        if element_md:
+            inputs_list.append(f"- {element_md}")
+        supplier = get_simple_text(find(inp, "cpp:supplier"))
+        if supplier:
+            suppliers_set.add(f"`{supplier}`")
+
+    outputs_list = []
+    customers_set = set()
+    for outp in findall(step, "cpp:output"):
+        element_md = element_to_markdown(find(outp, "cpp:outputElement"))
+        if element_md:
+            outputs_list.append(f"- {element_md}")
+        for c in findall(outp, "cpp:customer"):
+            customer = get_simple_text(c)
+            if customer:
+                customers_set.add(f"`{customer}`")
+
+    return {
+        "Step": step_label,
+        "Supplier(s)": format_multiline_cell("<br>".join(sorted(suppliers_set))),
+        "Input(s)": format_multiline_cell("<br>".join(inputs_list)),
+        "Description": format_multiline_cell(desc_md),
+        "Output(s)": format_multiline_cell("<br>".join(outputs_list)),
+        "Customer(s)": format_multiline_cell("<br>".join(sorted(customers_set))),
+    }
+
+def find(parent, path):
+    ns_map = {"cpp": "https://eden-fidelis.eu/cpp/cpp/"}
+    return parent.find(path, ns_map)
+
+def findall(parent, path):
+    ns_map = {"cpp": "https://eden-fidelis.eu/cpp/cpp/"}
+    return parent.findall(path, ns_map)
+
+def get_simple_text(element):
+    return clean_text("".join(element.itertext())) if element is not None else ""
 
 def parse_xml_to_markdown(xml_file):
     """
@@ -121,16 +199,9 @@ def parse_xml_to_markdown(xml_file):
         logging.error(f"Failed to parse XML file: {xml_file}. Error: {e}")
         return None
 
-    ns_map = {"cpp": "https://eden-fidelis.eu/cpp/cpp/"}
+    # ns_map = {"cpp": "https://eden-fidelis.eu/cpp/cpp/"}
 
-    def find(parent, path):
-        return parent.find(path, ns_map)
-
-    def findall(parent, path):
-        return parent.findall(path, ns_map)
-
-    def get_simple_text(element):
-        return clean_text("".join(element.itertext())) if element is not None else ""
+    # Tästä ne lähti..
 
     header = find(root, "cpp:header")
     label = get_simple_text(find(header, "cpp:label"))
@@ -229,58 +300,15 @@ def parse_xml_to_markdown(xml_file):
                 })
             markdown += format_markdown_table(headers, table_data) + "\n\n"
 
-
-    steps = findall(process, ".//cpp:step") if process else []
-    if steps:
-        markdown += "## Process Steps\n\n"
-        table_data = []
+    step_by_step = find(process, "cpp:stepByStepDescription") if process else None
+    if step_by_step is not None:
         headers = ["Step", "Supplier(s)", "Input(s)", "Description", "Output(s)", "Customer(s)"]
+        table_data = []
+        process_step_by_step(step_by_step, table_data, depth=0)
 
-        for step in steps:
-            step_number = step.get("stepNumber", "")
-            desc_md = element_to_markdown(find(step, "cpp:stepDescription"))
-
-            # --- Inputs and Suppliers ---
-            inputs_list = []
-            suppliers_set = set()
-            for inp in findall(step, "cpp:input"):
-                element_md = element_to_markdown(find(inp, "cpp:inputElement"))
-                if element_md:
-                    inputs_list.append(f"- {element_md}")
-                
-                supplier = get_simple_text(find(inp, "cpp:supplier"))
-                if supplier:
-                    suppliers_set.add(f"`{supplier}`")
-
-            # --- Outputs and Customers ---
-            outputs_list = []
-            customers_set = set()
-            for outp in findall(step, "cpp:output"):
-                element_md = element_to_markdown(find(outp, "cpp:outputElement"))
-                if element_md:
-                    outputs_list.append(f"- {element_md}")
-                
-                customers = [get_simple_text(c) for c in findall(outp, "cpp:customer")]
-                for customer in customers:
-                    if customer:
-                        customers_set.add(f"`{customer}`")
-
-            # --- Format for table ---
-            suppliers_str = "<br>".join(sorted(list(suppliers_set)))
-            inputs_str = "<br>".join(inputs_list)
-            customers_str = "<br>".join(sorted(list(customers_set)))
-            outputs_str = "<br>".join(outputs_list)
-
-            table_data.append({
-                "Step": step_number,
-                "Supplier(s)": format_multiline_cell(suppliers_str),
-                "Input(s)": format_multiline_cell(inputs_str),
-                "Description": format_multiline_cell(desc_md),
-                "Output(s)": format_multiline_cell(outputs_str),
-                "Customer(s)": format_multiline_cell(customers_str),
-            })
-
-        markdown += format_markdown_table(headers, table_data) + "\n\n"
+        if table_data:
+            markdown += "## Process Steps\n\n"
+            markdown += format_markdown_table(headers, table_data) + "\n\n"
 
     rationale = find(root, "cpp:rationaleWorstCase")
     if rationale:
@@ -375,7 +403,6 @@ def parse_xml_to_markdown(xml_file):
             markdown += format_markdown_table(headers, table_data) + "\n\n"
 
     return markdown
-
 
 def main():
     start_dir = "."
