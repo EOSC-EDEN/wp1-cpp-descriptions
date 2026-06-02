@@ -23,7 +23,7 @@ The choice for emulation versus rendering is captured in the Emulation and Rende
 - Johan Kylander
 
 ## Evaluators
-- Felix Burer
+- Felix Burger
 - Maria Benauer
 
 ## Process Definition
@@ -43,19 +43,19 @@ The choice for emulation versus rendering is captured in the Emulation and Rende
 
 ## Process Steps
 
-| Step | Supplier(s) | Input(s)                               | Description                                                                         | Output(s)                              | Customer(s) |
-| :--- | :---------- | :------------------------------------- | :---------------------------------------------------------------------------------- | :------------------------------------- | :---------- |
-| 1    | `CPP-025`   | - *Representation* identifier          | Collect *the Object's* *Representation*                                             | - *Representation*<br>                *Technical metadata* |             |
-| 2    |             | - *Representation*<br>- *Technical metadata* | Collect the Environment *Objects* associated with the *Representation* (if present) | - Environment *Objects*                |             |
-| 3    | `CPP-012`   | - *Representation*<br>- *Technical metadata*<br>- Environment *Object*<br>- Emulation and rendering policy | Decide on strategy                                                                  | - Emulation (proceed to "Emulation")<br>- Rendering (proceed to "Rendering") |             |
-| E1   |             | - Environment *Object*                 | Retrieve the emulation properties from the Environment:<br>                <br>•  Hardware to be emulated<br>                  <br>•  Operation System type and version<br>                  <br>•  Tools to be installed in the OS | - Emulation information                |             |
-| E2   |             | - Emulation information                | Prepare Emulation environment:<br>                <br>•  initialise the virtual machine based on operating system requirement<br>                  <br>•  install the software requirements | - Initialised emulated environment     |             |
-| E3   |             | - Emulated environment<br>- *Representation* information | Inject or copy the *Representation* content in the emulated environment             | - Complete emulated environment        |             |
-| E4   |             | - Complete emulated environment        | Start the emulated environment and redirect input and output to the consumer        |                                        |             |
-| R1   | `CPP-025`   | - *Representation* identifier          | Get the *Object*'s *representation*                                                 | - *Representation*<br>                  *Technical metadata* |             |
-| R2   |             | - *Representation*<br>                  *Technical metadata* | Retrieve the *Representation* content                                               | - *Representation* content             |             |
-| R3   | `CPP-012`   | - *Representation* Information<br>- Emulation and rendering policy | Make a choice of rendering tool                                                     | - Rendering tool                       |             |
-| R4   |             | - *Representation* content<br>- Rendering tool | Execute the Rendering tool and hand over the *Representation*<br>                  content |                                        |             |
+| Step  | Supplier(s) | Input(s)                               | Description                                                                         | Output(s)                              | Customer(s) |
+| :---- | :---------- | :------------------------------------- | :---------------------------------------------------------------------------------- | :------------------------------------- | :---------- |
+| 1.1   | `CPP-025`   | - *Representation* identifier          | Collect *the Object's* *Representation*                                             | - *Representation*<br>                *Technical metadata* |             |
+| 1.2   |             | - *Representation*<br>- *Technical metadata* | Collect the Environment *Objects* associated with the *Representation* (if present) | - Environment *Objects*                |             |
+| 1.3   | `CPP-012`   | - *Representation*<br>- *Technical metadata*<br>- Environment *Object*<br>- Emulation and rendering policy | Decide on strategy                                                                  | - Emulation (proceed to "Emulation")<br>- Rendering (proceed to "Rendering") |             |
+| 2.a.1 |             | - Environment *Object*                 | Retrieve the emulation properties from the Environment:<br>                <br>•  Hardware to be emulated<br>                  <br>•  Operation System type and version<br>                  <br>•  Tools to be installed in the OS | - Emulation information                |             |
+| 2.a.2 |             | - Emulation information                | Prepare Emulation environment:<br>                <br>•  initialise the virtual machine based on operating system requirement<br>                  <br>•  install the software requirements | - Initialised emulated environment     |             |
+| 2.a.3 |             | - Emulated environment<br>- *Representation* information | Inject or copy the *Representation* content in the emulated environment             | - Complete emulated environment        |             |
+| 2.a.4 |             | - Complete emulated environment        | Start the emulated environment and redirect input and output to the consumer        |                                        |             |
+| 2.b.1 | `CPP-025`   | - *Representation* identifier          | Get the *Object*'s *representation*                                                 | - *Representation*<br>                  *Technical metadata* |             |
+| 2.b.2 |             | - *Representation*<br>                  *Technical metadata* | Retrieve the *Representation* content                                               | - *Representation* content             |             |
+| 2.b.3 | `CPP-012`   | - *Representation* Information<br>- Emulation and rendering policy | Make a choice of rendering tool                                                     | - Rendering tool                       |             |
+| 2.b.4 |             | - *Representation* content<br>- Rendering tool | Execute the Rendering tool and hand over the *Representation*<br>                  content |                                        |             |
 
 ## Rationale / Worst Case
 
