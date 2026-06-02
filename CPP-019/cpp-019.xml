@@ -212,8 +212,8 @@
                     </cpp:output>
                 </cpp:step>
                 <cpp:stepGroup type="alternative"
-                    label="Different handling based on nature of quality properties">
-                    <cpp:step stepNumber="3a">
+                    label="Different handling based on nature of quality properties" stepGroupNumber="3">
+                    <cpp:step stepNumber="3.a">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -247,7 +247,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="3b">
+                    <cpp:step stepNumber="3.b">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -276,7 +276,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="3c">
+                    <cpp:step stepNumber="3.c">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -315,7 +315,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="3d">
+                    <cpp:step stepNumber="3.d">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -351,7 +351,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="3e">
+                    <cpp:step stepNumber="3.e">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>
@@ -375,7 +375,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="3f">
+                    <cpp:step stepNumber="3.f">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Specification of the data required for the assessment</span>

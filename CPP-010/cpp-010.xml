@@ -35,6 +35,15 @@
                 <cpp:versionDate>2025-10-23</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>2</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-05-18</cpp:versionDate>
+                <cpp:versionNotes>Reassigned step numbers based on new numbering rules.</cpp:versionNotes>
+            </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>The TDA validates Files against File format specifications.</cpp:shortDefinition>
@@ -236,76 +245,81 @@
                     </cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
-                            <span>Confirm Validity status (step 4)</span>
+                            <span>Confirm Validity status (step 5)</span>
                         </cpp:outputElement>
                     </cpp:output>
                     <cpp:output>
                         <cpp:outputElement>
-                            <span>Invalid file detected (step 3a)</span>
+                            <span>Invalid file detected (step group 4)</span>
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:step stepNumber="3a">
-                    <cpp:input>
-                        <cpp:inputElement>
-                            <span>Errors and warnings</span>
-                        </cpp:inputElement>
-                    </cpp:input>
-                    <cpp:input>
-                        <cpp:inputElement>
-                            <span>Validity status</span>
-                        </cpp:inputElement>
-                    </cpp:input>
-                    <cpp:input>
-                        <cpp:inputElement>
-                            <span>File format specification</span>
-                        </cpp:inputElement>
-                    </cpp:input>
-                    <cpp:stepDescription>
-                        <span>Conduct technical analysis (e.g. rendition and other uses of the File,
-                            comparison with the file format specification, etc.) </span>
-                    </cpp:stepDescription>
-                    <cpp:output>
-                        <cpp:outputElement>
-                            <span>Results of manual tests</span>
-                        </cpp:outputElement>
-                    </cpp:output>
-                </cpp:step>
-                <cpp:step stepNumber="3b">
-                    <cpp:input>
-                        <cpp:inputElement>
-                            <span>Results of manual tests</span>
-                        </cpp:inputElement>
-                    </cpp:input>
-                    <cpp:stepDescription>
-                        <span>Assess and choose one among the following outputs (in the given order) </span>
-                    </cpp:stepDescription>
-                    <cpp:output>
-                        <cpp:outputElement>
-                            <span>Retain the File as it is</span>
-                        </cpp:outputElement>
-                    </cpp:output>
-                    <cpp:output>
-                        <cpp:outputElement>
-                            <span>Find another valid Representation (e.g. by establishing contact
-                                with
-                                the
-                                producer)</span>
-                        </cpp:outputElement>
-                    </cpp:output>
-                    <cpp:output>
-                        <cpp:outputElement>
-                            <span>Trigger File Repair to correct the file structure</span>
-                        </cpp:outputElement>
-                        <cpp:customer>CPP-027</cpp:customer>
-                    </cpp:output>
-                    <cpp:output>
-                        <cpp:outputElement>
-                            <span>Reject the <em>Object</em></span>
-                        </cpp:outputElement>
-                    </cpp:output>
-                </cpp:step>
-                <cpp:step stepNumber="4">
+                <cpp:stepGroup type="sequence" stepGroupNumber="4" label="Error-handling">
+                    <cpp:step stepNumber="4.1">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Errors and warnings</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Validity status</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>File format specification</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Conduct technical analysis (e.g. rendition and other uses of the
+                                File,
+                                comparison with the file format specification, etc.) </span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Results of manual tests</span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                    <cpp:step stepNumber="4.2">
+                        <cpp:input>
+                            <cpp:inputElement>
+                                <span>Results of manual tests</span>
+                            </cpp:inputElement>
+                        </cpp:input>
+                        <cpp:stepDescription>
+                            <span>Assess and choose one among the following outputs (in the given
+                                order) </span>
+                        </cpp:stepDescription>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Retain the File as it is</span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Find another valid Representation (e.g. by establishing
+                                    contact
+                                    with
+                                    the
+                                    producer)</span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Trigger File Repair to correct the file structure</span>
+                            </cpp:outputElement>
+                            <cpp:customer>CPP-027</cpp:customer>
+                        </cpp:output>
+                        <cpp:output>
+                            <cpp:outputElement>
+                                <span>Reject the <em>Object</em></span>
+                            </cpp:outputElement>
+                        </cpp:output>
+                    </cpp:step>
+                </cpp:stepGroup>
+                <cpp:step stepNumber="5">
                     <cpp:stepDescription>
                         <span>Document the process</span>
                     </cpp:stepDescription>

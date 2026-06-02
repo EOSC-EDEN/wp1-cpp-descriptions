@@ -44,6 +44,15 @@
                 <cpp:versionDate>2026-04-07</cpp:versionDate>
                 <cpp:versionNotes>Added step group and sanitised step numbering</cpp:versionNotes>
             </cpp:version>
+                  <cpp:version>
+        <cpp:versionNumber>
+          <cpp:majorVersion>1</cpp:majorVersion>
+          <cpp:minorVersion>3</cpp:minorVersion>
+          <cpp:patchVersion>0</cpp:patchVersion>
+        </cpp:versionNumber>
+        <cpp:versionDate>2026-05-18</cpp:versionDate>
+        <cpp:versionNotes>Reassigned step numbers based on new numbering rules.</cpp:versionNotes>
+      </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>
@@ -232,8 +241,8 @@
                         </cpp:outputElement>
                     </cpp:output>
                 </cpp:step>
-                <cpp:stepGroup type="sequence" label="Evaluation of format identification results">
-                    <cpp:step stepNumber="2a">
+                <cpp:stepGroup type="sequence" label="Evaluation of format identification results" stepGroupNumber="2">
+                    <cpp:step stepNumber="2.1">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>File format identification information</span>
@@ -253,7 +262,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2b">
+                    <cpp:step stepNumber="2.2">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>File format identification information</span>
@@ -294,7 +303,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2c" optional="true">
+                    <cpp:step stepNumber="2.3" optional="true">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span><em>File</em></span>
@@ -315,7 +324,7 @@
                             </cpp:outputElement>
                         </cpp:output>
                     </cpp:step>
-                    <cpp:step stepNumber="2d" optional="true">
+                    <cpp:step stepNumber="2.4" optional="true">
                         <cpp:input>
                             <cpp:inputElement>
                                 <span>Format Identification Tool</span>

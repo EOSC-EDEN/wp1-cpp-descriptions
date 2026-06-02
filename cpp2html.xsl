@@ -1127,7 +1127,7 @@
                     <xsl:attribute name="colspan">
                         <xsl:value-of select="$stepColumns" />
                     </xsl:attribute>
-                    <xsl:value-of select="@stepNumber" />
+                    <xsl:value-of select="@stepGroupNumber" />
                 </td>
             </xsl:if>
             <td>
