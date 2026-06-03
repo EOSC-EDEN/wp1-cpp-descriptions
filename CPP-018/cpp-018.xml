@@ -141,7 +141,7 @@
 		</cpp:triggerEvents>
 		<cpp:stepByStepDescription>
 			<cpp:stepGroup type="sequence">
-				<cpp:stepGroup type="sequence" label="1. Designated Community and Knowledge Base Description">
+				<cpp:stepGroup type="sequence" label="Designated Community and Knowledge Base Description" stepGroupNumber="1">
 					<cpp:step stepNumber="1.1">
 						<cpp:input>
 							<cpp:inputElement>
@@ -158,7 +158,7 @@
                                   form, web/usage analytics, support channel, scientific advisory boards etc.)</span>
 						</cpp:stepDescription>
 					</cpp:step>
-					<cpp:stepGroup type="alternative" label="Evaluate feedback from evaluation method">
+					<cpp:stepGroup type="alternative" label="Evaluate feedback from evaluation method" stepGroupNumber="1.2">
 						<cpp:step stepNumber="1.2.a">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Designated Community</em> (i.e. new discipline uses data or previously defined 
@@ -346,7 +346,7 @@
 						</cpp:output>
 					</cpp:step>
 				</cpp:stepGroup>
-				<cpp:stepGroup type="sequence" label="2. Supported file formats and data types description">
+				<cpp:stepGroup type="sequence" label="Supported file formats and data types description" stepGroupNumber="2">
 					<cpp:step stepNumber="2.1">
 						<cpp:input>
 							<cpp:inputElement>
@@ -359,7 +359,7 @@
                                   conference proceedings, journal articles, querying knowledge bases etc.)</span>
 						</cpp:stepDescription>
 					</cpp:step>
-					<cpp:stepGroup type="alternative" label="Evaluate information">
+					<cpp:stepGroup type="alternative" label="Evaluate information" stepGroupNumber="2.2">
 						<cpp:step stepNumber="2.2.a">
 							<cpp:stepDescription>
 								<span>If risk in file format or data type is raised</span>
@@ -509,7 +509,7 @@
 						</cpp:step>
 					</cpp:stepGroup>
 				</cpp:stepGroup>
-				<cpp:stepGroup type="sequence" label="3. Supported Metadata">
+				<cpp:stepGroup type="sequence" label="Supported Metadata" stepGroupNumber="3">
 					<cpp:step stepNumber="3.1">
 						<cpp:input>
 							<cpp:inputElement>
@@ -526,7 +526,7 @@
                                   the TDA</span>
 						</cpp:stepDescription>
 					</cpp:step>
-					<cpp:stepGroup type="alternative" label="Evaluate information">
+					<cpp:stepGroup type="alternative" label="Evaluate information" stepGroupNumber="3.2">
 						<cpp:step stepNumber="3.2.a">
 							<cpp:stepDescription>
 								<span>If risk in <em>Metadata</em> syntax, schema or serialisation is raised:</span>
