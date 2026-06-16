@@ -159,7 +159,7 @@
 						</cpp:stepDescription>
 					</cpp:step>
 					<cpp:stepGroup type="parallel" label="Evaluate feedback from evaluation method" stepGroupNumber="1.2">
-						<cpp:step stepNumber="1.2.a" optional="true">
+						<cpp:step stepNumber="1.2.I" optional="true">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Designated Community</em> (i.e. new discipline uses data or previously defined 
                                       discipline no longer uses data):</span>
@@ -177,7 +177,7 @@
 								<cpp:customer>CPP-017</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1.2.b" optional="true">
+						<cpp:step stepNumber="1.2.II" optional="true">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting file formats or data types used</span>
 							</cpp:stepDescription>
@@ -217,7 +217,7 @@
 								<cpp:customer>CPP-028</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1.2.c" optional="true">
+						<cpp:step stepNumber="1.2.III" optional="true">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting significant properties used or extracted from File 
                                       formats or data <em>Objects</em>
@@ -241,7 +241,7 @@
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1.2.d" optional="true">
+						<cpp:step stepNumber="1.2.IV" optional="true">
 							<cpp:stepDescription>
 								<span>If an indicator is given for a changed <em>Knowledge Base</em> impacting software used in accessing or interacting with 
                                       data or re-use scenarios</span>
@@ -264,7 +264,7 @@
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1.2.e" optional="true">
+						<cpp:step stepNumber="1.2.V" optional="true">
 							<cpp:stepDescription>
 								<span>If indicator is given for changed <em>Metadata</em> width, depth, syntax or serialisation</span>
 							</cpp:stepDescription>
@@ -286,7 +286,7 @@
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1.2.f" optional="true">
+						<cpp:step stepNumber="1.2.VI" optional="true">
 							<cpp:stepDescription>
 								<span>If indicator is given for legal or policy impacting restricted or extended access to <em>Objects</em>
 								</span>
@@ -309,7 +309,7 @@
 								<cpp:customer>CPP-025</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="1.2.g" optional="true">
+						<cpp:step stepNumber="1.2.VII" optional="true">
 							<cpp:stepDescription>
 								<span>If indicator is given for changed methods, processes or concepts:</span>
 								<span>review of guidance documents (Knowledge Base description) by an administrative entity</span>
@@ -360,7 +360,7 @@
 						</cpp:stepDescription>
 					</cpp:step>
 					<cpp:stepGroup type="parallel" label="Evaluate information" stepGroupNumber="2.2">
-						<cpp:step stepNumber="2.2.a" optional="true">
+						<cpp:step stepNumber="2.2.I" optional="true">
 							<cpp:stepDescription>
 								<span>If risk in file format or data type is raised</span>
 							</cpp:stepDescription>
@@ -376,7 +376,7 @@
 								<cpp:customer>CPP-023</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2.2.b" optional="true">
+						<cpp:step stepNumber="2.2.II" optional="true">
 							<cpp:stepDescription>
 								<span>If file format is no longer supported or rationale behind initial choice for format is no longer true (e.g. no longer 
                                       widely used):</span>
@@ -394,7 +394,7 @@
 								<cpp:customer>CPP-023</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2.2.c" optional="true">
+						<cpp:step stepNumber="2.2.III" optional="true">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>Emulation and rendering Policy</span>
@@ -427,7 +427,7 @@
 								<cpp:customer>CPP-015</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2.2.d" optional="true">
+						<cpp:step stepNumber="2.2.IV" optional="true">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>File format Identification and Validation Policies</span>
@@ -463,7 +463,7 @@
 								<cpp:customer>CPP-010</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="2.2.e" optional="true">
+						<cpp:step stepNumber="2.2.V" optional="true">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>Access Policy</span>
@@ -527,7 +527,7 @@
 						</cpp:stepDescription>
 					</cpp:step>
 					<cpp:stepGroup type="parallel" label="Evaluate information" stepGroupNumber="3.2">
-						<cpp:step stepNumber="3.2.a" optional="true">
+						<cpp:step stepNumber="3.2.I" optional="true">
 							<cpp:stepDescription>
 								<span>If risk in <em>Metadata</em> syntax, schema or serialisation is raised:</span>
 								<span>review of guidance documents (Preservation Intent definition) by an administrative entity</span>
@@ -550,7 +550,7 @@
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="3.2.b" optional="true">
+						<cpp:step stepNumber="3.2.II" optional="true">
 							<cpp:stepDescription>
 								<span>If <em>Metadata</em> syntax, schema or serialisation is no longer supported or rationale behind initial choice for syntax, 
                                       schema or serialisation is no longer true (e.g. no longer widely used):</span>
@@ -574,7 +574,7 @@
 								<cpp:customer>CPP-024</cpp:customer>
 							</cpp:output>
 						</cpp:step>
-						<cpp:step stepNumber="3.2.c" optional="true">
+						<cpp:step stepNumber="3.2.III" optional="true">
 							<cpp:input>
 								<cpp:inputElement>
 									<span>List of tools used within TDA for (automated) <em>Metadata</em> generation and handling (e.g. validation, conversion)</span>
