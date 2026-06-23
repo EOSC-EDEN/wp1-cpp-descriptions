@@ -109,6 +109,7 @@ def format_markdown_table(headers, data):
     return "\n".join([header_line, separator_line] + data_lines)
 
 def process_step_by_step(container, table_data, depth=0):
+    """Recursively traverses stepGroup and step elements, appending rows to table_data."""
     for child in container:
         local = child.tag.split("}")[-1] if "}" in child.tag else child.tag
 
@@ -136,6 +137,10 @@ def process_step_by_step(container, table_data, depth=0):
             table_data.append(process_step_to_row(child, depth=depth))
 
 def process_step_to_row(step, depth=0):
+    """
+    Converts a single step XML element into a dict row for the process steps table.
+    Takes into account the optionality and depth with indendation
+    """
     step_number = step.get("stepNumber", "")
     optional = step.get("optional", "false").lower() == "true"
     indent = "\u00a0\u00a0" * depth
@@ -176,14 +181,17 @@ def process_step_to_row(step, depth=0):
     }
 
 def find(parent, path):
+    """Finds the first matching subelement using the CPP namespace."""
     ns_map = {"cpp": "https://eden-fidelis.eu/cpp/cpp/"}
     return parent.find(path, ns_map)
 
 def findall(parent, path):
+    """Finds all matching subelements using the CPP namespace."""
     ns_map = {"cpp": "https://eden-fidelis.eu/cpp/cpp/"}
     return parent.findall(path, ns_map)
 
 def get_simple_text(element):
+    """Returns cleaned plain text from an element, ignoring all child tags."""
     return clean_text("".join(element.itertext())) if element is not None else ""
 
 def parse_xml_to_markdown(xml_file):
@@ -400,6 +408,7 @@ def parse_xml_to_markdown(xml_file):
     return markdown
 
 def main():
+    """Walks the working directory and generates a README.md for each CPP-* folder."""
     start_dir = "."
     logging.info(f"Starting script in directory: {os.path.abspath(start_dir)}")
     for root_dir, _, files in os.walk(start_dir):
