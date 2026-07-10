@@ -36,6 +36,15 @@
                 <cpp:versionDate>2025-10-16</cpp:versionDate>
                 <cpp:versionNotes>Migration to XML</cpp:versionNotes>
             </cpp:version>
+            <cpp:version>
+                <cpp:versionNumber>
+                    <cpp:majorVersion>1</cpp:majorVersion>
+                    <cpp:minorVersion>2</cpp:minorVersion>
+                    <cpp:patchVersion>0</cpp:patchVersion>
+                </cpp:versionNumber>
+                <cpp:versionDate>2026-07-10</cpp:versionDate>
+                <cpp:versionNotes>Added use case on WARC Virus Checker.</cpp:versionNotes>
+            </cpp:version>
         </cpp:history>
     </cpp:header>
     <cpp:shortDefinition>Information packages are virus checked, with appropriate
@@ -512,6 +521,25 @@
                         scanner.<br /> ... </span>
                 </cpp:proposedSolution>
             </cpp:useCase>
+            <cpp:useCase>
+                <cpp:useCasetitle>WARC Virus Checker and NSFW (Not-Safe-For-Work) Content Detection Tool</cpp:useCasetitle>
+                <cpp:institution>
+                    <cpp:institutionLabel>Bibliothèque nationale de Luxembourg</cpp:institutionLabel>
+                    <cpp:institutionCountry>LU</cpp:institutionCountry>
+                </cpp:institution>
+                <cpp:linkToDocumentation xml:lang="en">
+                    <cpp:hyperlink>https://digital.library.unt.edu/ark:/67531/metadc2472470/</cpp:hyperlink>
+                </cpp:linkToDocumentation>
+                <cpp:triggerEvent>
+                    <span>Bibliothèque nationale de Luxembourg (BnL) collects and preserves web archives that might contain viruses. These viruses may damage the library's infrastructures or the user's device.</span>
+                </cpp:triggerEvent>
+                <cpp:problemStatement>
+                    <span>Web archives are bundled into WARC containers. BnL needed to extract files from these containers and use an open source virus scanner to identify malware in them.</span>
+                </cpp:problemStatement>
+                <cpp:proposedSolution>
+                    <span>BnL developed a Python script to extract files from WARC containers and scan them with the <a href="https://www.clamav.net/">ClamAV virus scanner</a>. The tool also detects NSFW ('Not Safe for Work') content with the help of the `nsfwdetection` PyTorch model. It can be used as a command-line tool or as an API. Results are either displayed in the terminal or returned as JSON by the API. WARC containing viruses are ingested, but the user is informed of their presence.</span>
+                </cpp:proposedSolution>
+        </cpp:useCase>
         </cpp:useCases>
         <cpp:publicDocumentation>
             <cpp:institution>
