@@ -53,7 +53,7 @@ def element_to_markdown(element):
         elif tag == "ul":
             parts.append(f"\n{child_content}")
         elif tag == "li":
-            parts.append(f"\n* {clean_text(child_content)}")
+            parts.append(f"\n* {clean_text(child_content)}\n")
         elif tag == "br":
             parts.append("\n")
         else:  # Default for unknown tags
@@ -108,7 +108,7 @@ def format_markdown_table(headers, data):
 
     return "\n".join([header_line, separator_line] + data_lines)
 
-def process_step_by_step(container, table_data, depth=0):
+def process_step_by_step(container, table_data, depth=0, group_context=None):
     """Recursively traverses stepGroup and step elements, appending rows to table_data."""
     for child in container:
         local = child.tag.split("}")[-1] if "}" in child.tag else child.tag
@@ -122,21 +122,22 @@ def process_step_by_step(container, table_data, depth=0):
 
             indent = "\u00a0\u00a0" * depth
             if depth == 0:
-                formatted_label = f"**{indent}{label}**"
+                formatted_label = f"{indent}**{label}**"
             else:
-                formatted_label = f"***{indent}{label}***"
+                formatted_label = f"{indent}***{label}***"
 
             table_data.append({
                 "Step": formatted_label,
                 "Supplier(s)": "", "Input(s)": "",
                 "Description": "", "Output(s)": "", "Customer(s)": "",
             })
-            process_step_by_step(child, table_data, depth=depth + 1)
+            new_context = {"label": group_label, "type": group_type}
+            process_step_by_step(child, table_data, depth=depth + 1, group_context=new_context)
 
         elif local == "step":
-            table_data.append(process_step_to_row(child, depth=depth))
+            table_data.append(process_step_to_row(child, depth=depth, group_context=group_context))
 
-def process_step_to_row(step, depth=0):
+def process_step_to_row(step, depth=0, group_context=None):
     """
     Converts a single step XML element into a dict row for the process steps table.
     Takes into account the optionality and depth with indendation
@@ -149,6 +150,12 @@ def process_step_to_row(step, depth=0):
         step_label += " *(optional)*"
 
     desc_md = element_to_markdown(find(step, "cpp:stepDescription"))
+    if group_context:
+        group_type = group_context.get("type", "")
+        group_label = group_context.get("label", "")
+        if group_type or group_label:
+            suffix = f"{group_type}: {group_label}" if group_type and group_label else group_type or group_label
+            desc_md = f"{desc_md} ({suffix})".strip()
 
     inputs_list = []
     suppliers_set = set()
@@ -233,7 +240,9 @@ def parse_xml_to_markdown(xml_file):
     else:
         description_and_scope = ""
 
-    markdown = f"# {label or 'No Label Found'}\n\n"
+    cpp_id = root.get("ID", "")
+    title = f"{label} ({cpp_id})" if label and cpp_id else label or "No Label Found"
+    markdown = f"# {title}\n\n"
     if short_definition:
         markdown += f"**Short Definition:** {short_definition}\n\n"
     if description_and_scope:
@@ -395,13 +404,19 @@ def parse_xml_to_markdown(xml_file):
         public_docs = findall(references, "cpp:publicDocumentation")
         if public_docs:
             markdown += "### Public Documentation\n\n"
-            headers = ["Institution", "Link", "Comment"]
+            headers = ["Institution", "Organization type", "Language", "Link"]
             table_data = []
             for doc in public_docs:
+                link_el = find(doc, "cpp:linkToDocumentation")
+                link = element_to_markdown(find(doc, "cpp:linkToDocumentation/cpp:hyperlink"))
+                comment = get_simple_text(find(doc, "cpp:linkToDocumentation/cpp:comment"))
+                org_types = [get_simple_text(el) for el in findall(doc, "cpp:institution/cpp:institutionType")]
+                language = link_el.get("{http://www.w3.org/XML/1998/namespace}lang", "") if link_el is not None else ""
                 table_data.append({
                     "Institution": get_simple_text(find(doc, "cpp:institution/cpp:institutionLabel")),
-                    "Link": element_to_markdown(find(doc, "cpp:linkToDocumentation/cpp:hyperlink")),
-                    "Comment": get_simple_text(find(doc, "cpp:linkToDocumentation/cpp:comment")),
+                    "Organization type": ", ".join(org_types),
+                    "Language": language,
+                    "Link": f"{link} ({comment})" if comment else link,
                 })
             markdown += format_markdown_table(headers, table_data) + "\n\n"
 
