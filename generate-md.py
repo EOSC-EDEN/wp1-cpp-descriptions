@@ -37,8 +37,11 @@ def element_to_markdown(element):
 
         # Apply formatting based on the tag
         if tag == "p":
-            # Paragraphs are block-level. Add newlines and clean the entire content.
-            parts.append(f"\n\n{clean_text(child_content)}")
+            # Paragraphs are block-level. Preserve newlines if content contains list items.
+            if "\n-" in child_content:
+                parts.append(f"\n\n{child_content.strip()}")
+            else:
+                parts.append(f"\n\n{clean_text(child_content)}")
         elif tag == "em":
             # Inline tags just wrap the content.
             parts.append(f"*{child_content}*")
@@ -51,9 +54,10 @@ def element_to_markdown(element):
             else:
                 parts.append(f"[{child_content}]({href})")
         elif tag == "ul":
-            parts.append(f"\n{child_content}")
+            cleaned = re.sub(r"\n[ \t]+\n", "\n", child_content)
+            parts.append(f"\n{cleaned}")
         elif tag == "li":
-            parts.append(f"\n* {clean_text(child_content)}\n")
+            parts.append(f"\n- {clean_text(child_content)}")
         elif tag == "br":
             parts.append("\n")
         else:  # Default for unknown tags
@@ -116,9 +120,12 @@ def process_step_by_step(container, table_data, depth=0, group_context=None):
         if local == "stepGroup":
             group_type = child.get("type", "")
             group_label = child.get("label", "")
+            group_number = child.get("stepGroupNumber", "")
 
             type_str = group_type.capitalize() if group_type else "Group"
             label = f"{type_str}: {group_label}" if group_label else type_str
+            if group_number:
+                label = f"{group_number} {label}"
 
             indent = "\u00a0\u00a0" * depth
             if depth == 0:
@@ -178,13 +185,16 @@ def process_step_to_row(step, depth=0, group_context=None):
             if customer:
                 customers_set.add(f"`{customer}`")
 
+    def step_cell(text):
+        return format_multiline_cell(text).replace("<br>", ", ")
+
     return {
         "Step": step_label,
-        "Supplier(s)": format_multiline_cell("<br>".join(sorted(suppliers_set))),
-        "Input(s)": format_multiline_cell("<br>".join(inputs_list)),
-        "Description": format_multiline_cell(desc_md),
-        "Output(s)": format_multiline_cell("<br>".join(outputs_list)),
-        "Customer(s)": format_multiline_cell("<br>".join(sorted(customers_set))),
+        "Supplier(s)": step_cell("<br>".join(sorted(suppliers_set))),
+        "Input(s)": step_cell("<br>".join(inputs_list)),
+        "Description": step_cell(desc_md),
+        "Output(s)": step_cell("<br>".join(outputs_list)),
+        "Customer(s)": step_cell("<br>".join(sorted(customers_set))),
     }
 
 def find(parent, path):
@@ -232,7 +242,7 @@ def parse_xml_to_markdown(xml_file):
     if description_and_scope_raw:
         description_and_scope = "\n\n".join(
             [
-                clean_text(p)
+                p.strip() if "\n-" in p else clean_text(p)
                 for p in description_and_scope_raw.split("\n\n")
                 if p.strip()
             ]
