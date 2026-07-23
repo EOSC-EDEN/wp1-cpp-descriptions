@@ -439,11 +439,11 @@
 								</cpp:inputElement>
 							</cpp:input>
 							<cpp:stepDescription>
-								<span>If new tool or method to support file format identification or validation becomes available<br/>
-                                      OR<br/>
-                                      If file format identification or validation tools used is no longer supported or available<br/>
-                                      OR<br/>
-                                      If new versions of the tools have become available</span>
+								<span>If new tool or method to support file format identification or validation becomes available</span>
+                                      <span>OR</span>
+									  <span>If file format identification or validation tools used is no longer supported or available</span>
+                                      <span>OR</span>
+                                      <span>If new versions of the tools have become available</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
@@ -522,8 +522,7 @@
 							</cpp:inputElement>
 						</cpp:input>
 						<cpp:stepDescription>
-							<span>Choose, design and implement methods to monitor changes in syntax, schema and serialisation used for <em>Metadata</em> in 
-                                  the TDA</span>
+							<span>Choose, design and implement methods to monitor changes in syntax, schema and serialisation used for <em>Metadata</em> in the TDA</span>
 						</cpp:stepDescription>
 					</cpp:step>
 					<cpp:stepGroup type="parallel" label="Evaluate information" stepGroupNumber="3.2">
@@ -582,11 +581,11 @@
 							</cpp:input>
 							<cpp:stepDescription>
 								<span>If new method to support <em>Metadata</em> generation and handling
-                                      becomes available<br/>
-                                      OR<br/>
-                                      If tools used are no longer supported/available<br/>
-                                      OR<br/>
-                                      If new versions of the tools have become available</span>
+                                      becomes available</span>
+                                      <span>OR</span>
+                                      <span>If tools used are no longer supported/available</span>
+									  <span>OR</span>
+                                      <span>If new versions of the tools have become available</span>
 							</cpp:stepDescription>
 							<cpp:output>
 								<cpp:outputElement>
