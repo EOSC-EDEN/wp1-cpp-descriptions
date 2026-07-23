@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relations>
+    <relation identifier="triggered_by">
+        <node>//cpp:triggerEvent/cpp:correspondingCPP/text()</node>
+        <inverse_of>triggers</inverse_of>
+    </relation>
+    <relation identifier="triggers">
+        <inverse_of>triggered_by</inverse_of>
+    </relation>
+    <relation identifier="requires">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Requires']/cpp:relatedCPP/text()</node>
+        <inverse_of>required_by</inverse_of>
+    </relation>
+    <relation identifier="required_by">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Required by']/cpp:relatedCPP/text()</node>
+        <inverse_of>requires</inverse_of>
+    </relation>
+    <relation identifier="may_require">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'May require']/cpp:relatedCPP/text()</node>
+        <inverse_of>may_be_required_by</inverse_of>
+    </relation>
+    <relation identifier="may_be_required_by">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'May be required by']/cpp:relatedCPP/text()</node>
+        <inverse_of>may_require</inverse_of>
+    </relation>
+    <relation identifier="affects">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Affects']/cpp:relatedCPP/text()</node>
+        <inverse_of>affected_by</inverse_of>
+    </relation>
+    <relation identifier="affected_by">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Affected by']/cpp:relatedCPP/text()</node>
+        <inverse_of>affects</inverse_of>
+    </relation>
+    <relation identifier="facilitates">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Facilitates']/cpp:relatedCPP/text()</node>
+        <inverse_of>facilitated_by</inverse_of>
+    </relation>
+    <relation identifier="facilitated_by">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Facilitated by']/cpp:relatedCPP/text()</node>
+        <inverse_of>facilitates</inverse_of>
+    </relation>
+    <relation identifier="affinity_with">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Affinity with']/cpp:relatedCPP/text()</node>
+        <inverse_of>affinity_with</inverse_of>
+    </relation>
+    <relation identifier="not_to_be_confused_with">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Not to be confused with']/cpp:relatedCPP/text()</node>
+        <inverse_of>not_to_be_confused_with</inverse_of>
+    </relation>
+    <relation identifier="alternative_to">
+        <node>//cpp:relationship[cpp:relationshipType/text() = 'Alternative to']/cpp:relatedCPP/text()</node>
+        <inverse_of>alternative_to</inverse_of>
+    </relation>
+    <relation identifier="supplier_to_customer">
+        <node>//cpp:output/cpp:customer/text()</node>
+        <inverse_of>customer_to_supplier</inverse_of>
+    </relation>
+    <relation identifier="customer_to_supplier" hidden="true">
+        <node>//cpp:input/cpp:supplier/text()</node>
+        <inverse_of>supplier_to_customer</inverse_of>
+    </relation>
+</relations>
