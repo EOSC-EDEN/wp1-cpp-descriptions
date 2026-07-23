@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classifications>
+     <classification identifier="bit-level" cluster="logical">
+          <label>Bit-level Preservation</label>
+     </classification>
+     <classification identifier="ingest" cluster="oais">
+          <label>Ingest</label>
+     </classification>
+     <classification identifier="storage" cluster="oais">
+          <label>Storage</label>
+     </classification>
+     <classification identifier="dissemination" cluster="logical">
+          <label>Dissemination</label>
+     </classification>
+          <classification identifier="dataManagement" cluster="oais">
+               <label>Data Management</label>
+          </classification>
+     <classification identifier="characterisation" cluster="logical">
+          <label>Characterisation</label>
+     </classification>
+     <classification identifier="administration" cluster="oais">
+          <label>Administration</label>
+     </classification>
+     <classification identifier="planning" cluster="logical">
+          <label>Preservation Planning</label>
+     </classification>
+     <classification identifier="preservationPlanning" cluster="oais">
+          <label>Preservation Planning</label>
+     </classification>
+     <classification identifier="generation" cluster="logical">
+          <label>Generation of New Files</label>
+     </classification>
+     <classification identifier="access" cluster="oais">
+          <label>Access</label>
+     </classification>
+     <classification identifier="other" cluster="logical">
+          <label>Other Activities</label>
+     </classification>
+     <classification identifier="lifecycle" cluster="logical">
+          <label>Lifecycle Management</label>
+     </classification>
+</classifications>
