@@ -186,7 +186,7 @@ def process_step_to_row(step, depth=0, group_context=None):
                 customers_set.add(f"`{customer}`")
 
     def step_cell(text):
-        return format_multiline_cell(text).replace("<br>", ", ")
+        return format_multiline_cell(text).replace("<br>", " ")
 
     return {
         "Step": step_label,
