@@ -1,4 +1,4 @@
-# Checksum Generation and Recording
+# Checksum Generation and Recording (CPP-001)
 
 **Short Definition:** The TDA (Trustworthy Digital Archive) records checksums for every File.
 
@@ -47,12 +47,13 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 
 ## Process Steps
 
-| Step | Supplier(s) | Input(s)                                              | Description                                                 | Output(s)                                                            | Customer(s) |
-| :--- | :---------- | :---------------------------------------------------- | :---------------------------------------------------------- | :------------------------------------------------------------------- | :---------- |
-| 1    |             | - Storage management policy - Checksum algorithms     | Get the list of accepted checksum algorithms                | - List of accepted checksum algorithms                               |             |
-| 2    |             | - *File*<br>- *List of checksum algorithms*           | Calculate the checksum for each algorithm                   | - List of checksums for the *File* based on different<br>                                algorithms |             |
-| 3    |             | - List of checksums for the *File* based on different<br>                                algorithms | Store the checksums in the *Fixity metadata* for the *File* | - Updated *Fixity metadata* of the *File* in the TDA database        | `CPP-002`<br>`CPP-003` |
-| 4    |             | - *File*                                              | Document the event and its datetime                         | - Datetime for the checksum generation and other related *Provenance<br>                                metadata* |             |
+| Step         | Supplier(s) | Input(s)                                                                                         | Description                                                            | Output(s)                                                                                                      | Customer(s)         |
+| :----------- | :---------- | :----------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------- | :------------------ |
+| **Sequence** |             |                                                                                                  |                                                                        |                                                                                                                |                     |
+|   1          |             | - Storage management policy - Checksum algorithms                                                | Get the list of accepted checksum algorithms (sequence)                | - List of accepted checksum algorithms                                                                         |                     |
+|   2          |             | - *File* - *List of checksum algorithms*                                                         | Calculate the checksum for each algorithm (sequence)                   | - List of checksums for the *File* based on different                                 algorithms               |                     |
+|   3          |             | - List of checksums for the *File* based on different                                 algorithms | Store the checksums in the *Fixity metadata* for the *File* (sequence) | - Updated *Fixity metadata* of the *File* in the TDA database                                                  | `CPP-002` `CPP-003` |
+|   4          |             | - *File*                                                                                         | Document the event and its datetime (sequence)                         | - Datetime for the checksum generation and other related *Provenance                                 metadata* |                     |
 
 ## Rationale / Worst Case
 
@@ -85,11 +86,11 @@ The Checksum Generation and Recording process is the action of acquiring and sto
 
 ### Public Documentation
 
-| Institution                                                                        | Link                                                                                                               | Comment         |
-| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- | :-------------- |
-| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                    |                 |
-| CSC – IT Center for Science Ltd.                                                   | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                    | section 2.4.4.2 |
-| Archivematica                                                                      | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices |                 |
+| Institution                                                                        | Organization type                                                                                                        | Language | Link                                                                                                               |
+| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | National library, Non-commercial digital preservation service, Research infrastructure, Research performing organisation | en       | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata                    |
+| CSC – IT Center for Science Ltd.                                                   | Non-commercial digital preservation service                                                                              | en       | https://wiki.tib.eu/confluence/spaces/lza/pages/93608951/Metadata#Metadata-TMDTechnicalmetadata (section 2.4.4.2)  |
+| Archivematica                                                                      | Digital preservation system                                                                                              | en       | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#transfer-tab-microservices |
 
 
 

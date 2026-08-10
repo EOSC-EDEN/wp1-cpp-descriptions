@@ -1,11 +1,16 @@
-# Replication
+# Replication (CPP-011)
 
 **Short Definition:** The TDA automatically manages the replication of Information Packages to multiple storage locations (potentially in different geographical locations).
 
 ## Description and Scope
 Replication is the process of copying data to a new storage medium in order to create new identical copies of *AIP(s)*. All new copies created must have their fixity verified to ensure that the process was completed successfully. The process creates new parallel copies to achieve redundancy in the storage system. The process of replication makes no changes to the AIPs themselves but only operates on the storage layer to add storage locations for the new copies.
 
-Redundancy is required to mitigate risks such as data corruption and unintentional or unwarranted data destruction by creating a fault tolerance. The number of parallel copies and the choice of media types is determined by how a TDA implements **Risk Mitigation** (CPP-012). Typically, strategies for the following aspects of redundancy and replication should be covered in the TDA policy: * *Creation of fault tolerance*: The creation of at least three parallel copies is recommended. In this way, the data is always stored on two other valid copies in cases where one copy is corrupted or destroyed; * *Use of diverse storage media*: Employing different storage media helps to avoid systematic errors and vulnerabilities and reduces the risk of vendor lock-in in a single storage solution; * *Geographical distribution of copies*: Storing the copies geographically dispersed reduces location based risks such as environmental disasters or political instability; * *Offline storage of copies*: Storing some copies offline reduces the risk of unwarranted tampering of the data by malicious users or software.
+Redundancy is required to mitigate risks such as data corruption and unintentional or unwarranted data destruction by creating a fault tolerance. The number of parallel copies and the choice of media types is determined by how a TDA implements **Risk Mitigation** (CPP-012). Typically, strategies for the following aspects of redundancy and replication should be covered in the TDA policy:
+        
+- *Creation of fault tolerance*: The creation of at least three parallel copies is recommended. In this way, the data is always stored on two other valid copies in cases where one copy is corrupted or destroyed;
+- *Use of diverse storage media*: Employing different storage media helps to avoid systematic errors and vulnerabilities and reduces the risk of vendor lock-in in a single storage solution;
+- *Geographical distribution of copies*: Storing the copies geographically dispersed reduces location based risks such as environmental disasters or political instability;
+- *Offline storage of copies*: Storing some copies offline reduces the risk of unwarranted tampering of the data by malicious users or software.
 
 ## Authors
 - Johan Kylander
@@ -43,17 +48,18 @@ Redundancy is required to mitigate risks such as data corruption and unintention
 
 ## Process Steps
 
-| Step | Supplier(s) | Input(s)                            | Description                                                   | Output(s)                                      | Customer(s) |
-| :--- | :---------- | :---------------------------------- | :------------------------------------------------------------ | :--------------------------------------------- | :---------- |
-| 1    | `CPP-012`<br>`CPP-029` | - Copy management policy<br>- Storage management information<br>- *AIP* | Identify and locate *AIP* to be replicated                    | - Inventory of *AIP* to be replicated<br>- Source storage medium with *AIP* |             |
-| 2    |             | - *Copy management policy*          | Select target storage medium to copy the *AIP* to             | - Target storage medium                        |             |
-| 3    |             | - Source storage medium with *AIP*<br>- Target storage medium<br>- *AIP* | Start the copy process (steps 4 to 8).                        |                                                |             |
-| 4    |             |                                     | Retrieve the *AIP* from the source storage medium             |                                                |             |
-| 5    |             |                                     | Copy the *AIP* to the new storage medium                      | - New copy of *AIP*                            |             |
-| 6    |             | - Existing/previous Fixity metadata | Validate the fixity of the *AIP* on the target storage medium | - Valid status (step 7)<br>                            *Fixity Metadata*><br>- Invalid status (go back to step 4)<br>                            *Fixity Metadata* |             |
-| 7    |             |                                     | Update the fixity for the new *AIP* copy                      | - *Fixity Metadata*                            |             |
-| 8    |             |                                     | Update the storage location for the new *AIP* copy            | - *Storage management information*             |             |
-| 9    |             |                                     | Create preservation *Event metadata* of the replication       | - *Provenance metadata*                        |             |
+| Step         | Supplier(s)         | Input(s)                                                           | Description                                                              | Output(s)                                                                                                                                                 | Customer(s) |
+| :----------- | :------------------ | :----------------------------------------------------------------- | :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------- |
+| **Sequence** |                     |                                                                    |                                                                          |                                                                                                                                                           |             |
+|   1          | `CPP-012` `CPP-029` | - Copy management policy - Storage management information - *AIP*  | Identify and locate *AIP* to be replicated (sequence)                    | - Inventory of *AIP* to be replicated - Source storage medium with *AIP*                                                                                  |             |
+|   2          |                     | - *Copy management policy*                                         | Select target storage medium to copy the *AIP* to (sequence)             | - Target storage medium                                                                                                                                   |             |
+|   3          |                     | - Source storage medium with *AIP* - Target storage medium - *AIP* | Start the copy process (steps 4 to 8). (sequence)                        |                                                                                                                                                           |             |
+|   4          |                     |                                                                    | Retrieve the *AIP* from the source storage medium (sequence)             |                                                                                                                                                           |             |
+|   5          |                     |                                                                    | Copy the *AIP* to the new storage medium (sequence)                      | - New copy of *AIP*                                                                                                                                       |             |
+|   6          |                     | - Existing/previous Fixity metadata                                | Validate the fixity of the *AIP* on the target storage medium (sequence) | - Valid status (step 7)                             *Fixity Metadata*> - Invalid status (go back to step 4)                             *Fixity Metadata* |             |
+|   7          |                     |                                                                    | Update the fixity for the new *AIP* copy (sequence)                      | - *Fixity Metadata*                                                                                                                                       |             |
+|   8          |                     |                                                                    | Update the storage location for the new *AIP* copy (sequence)            | - *Storage management information*                                                                                                                        |             |
+|   9          |                     |                                                                    | Create preservation *Event metadata* of the replication (sequence)       | - *Provenance metadata*                                                                                                                                   |             |
 
 ## Rationale / Worst Case
 
@@ -90,11 +96,11 @@ Redundancy is required to mitigate risks such as data corruption and unintention
 
 ### Public Documentation
 
-| Institution                                                                        | Link                                                                                                   | Comment       |
-| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------- | :------------ |
-| TIB – Leibniz Information Centre for Science and Technology and University Library | https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Redundancy   |               |
-| CSC – IT Center for Science Ltd.                                                   | https://urn.fi/urn:nbn:fi-fe2023062157386                                                              | section 3.2.4 |
-| Archivematica                                                                      | https://archivematica.org/en/docs/archivematica-1.17/admin-manual/maintenance/maintenance/#data-backup |               |
+| Institution                                                                        | Organization type                                                                                                        | Language | Link                                                                                                   |
+| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------- |
+| TIB – Leibniz Information Centre for Science and Technology and University Library | National library, Non-commercial digital preservation service, Research infrastructure, Research performing organisation | en       | https://wiki.tib.eu/confluence/spaces/lza/pages/93608373/Archival+Storage#ArchivalStorage-Redundancy   |
+| CSC – IT Center for Science Ltd.                                                   | Non-commercial digital preservation service                                                                              | fi       | https://urn.fi/urn:nbn:fi-fe2023062157386 (section 3.2.4)                                              |
+| Archivematica                                                                      | Digital preservation system                                                                                              | en       | https://archivematica.org/en/docs/archivematica-1.17/admin-manual/maintenance/maintenance/#data-backup |
 
 
 
