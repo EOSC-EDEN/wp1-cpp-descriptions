@@ -288,7 +288,7 @@
           </cpp:input>
           <cpp:input>
             <cpp:inputElement>
-              <span>Maping for export of selected <em>Metadata</em> from database to flat <em>Metadata</em></span>
+              <span>Mapping for export of selected <em>Metadata</em> from database to flat <em>Metadata</em></span>
             </cpp:inputElement>
           </cpp:input>
           <cpp:stepDescription>
