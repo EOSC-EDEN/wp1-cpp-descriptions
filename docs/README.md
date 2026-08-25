@@ -1,4 +1,4 @@
-![Markdown Logo](../EOSCEDEN_ColourPos.png)
+![Markdown Logo](EOSCEDEN_ColourPos.png)
 
 # Core Preservation Processes
 
