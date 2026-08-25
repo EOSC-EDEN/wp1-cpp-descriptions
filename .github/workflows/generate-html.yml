@@ -55,7 +55,7 @@ jobs:
           # Transform each cpp-*.xml under directories that start with CPP-
           while IFS= read -r -d '' xml; do
             found=1
-            out="${xml%.xml}.html"
+            out="/public_html/$(basename "${xml%.xml}").html"
             echo "Transforming '$xml' -> '$out'"
             mkdir -p "$(dirname "$out")"
             if ! xsltproc "$XSL_FILE" "$xml" > "$out"; then
