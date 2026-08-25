@@ -56,7 +56,7 @@ jobs:
           # Transform each cpp-*.xml under directories that start with CPP-
           while IFS= read -r -d '' xml; do
             found=1
-            out="/public_html/$(basename "${xml%.xml}").html"
+            out="public_html/$(basename "${xml%.xml}").html"
             echo "Transforming '$xml' -> '$out'"
             mkdir -p "$(dirname "$out")"
             if ! xsltproc "$XSL_FILE" "$xml" > "$out"; then
@@ -69,7 +69,7 @@ jobs:
             echo "No CPP-*/cpp-*.xml files were found to transform."
           fi
 
-      - name: Commit updated/new CPP-*/cpp-*.html files
+      - name: Commit updated/new public_html/cpp-*.html files
         if: always()
         shell: bash
         env:
@@ -83,21 +83,21 @@ jobs:
 
           staged=false
 
-          # Stage modified or added HTML files matching CPP-*/cpp-*.html
+          # Stage modified or added HTML files matching public_html/cpp-*.html
           # 1) staged/modified relative to HEAD
           while IFS= read -r -d '' f; do
             git add -f "$f"
             staged=true
-          done < <(git diff --name-only --diff-filter=AM HEAD -z | grep -z -E '^CPP-[^/]+/cpp-.*\.html$' || true)
+          done < <(git diff --name-only --diff-filter=AM HEAD -z | grep -z -E '^public_html/cpp-.*\.html$' || true)
 
           # 2) untracked HTML files that match the pattern
           while IFS= read -r -d '' f; do
             git add -f "$f"
             staged=true
-          done < <(git ls-files --others --exclude-standard -z | grep -z -E '^CPP-[^/]+/cpp-.*\.html$' || true)
+          done < <(git ls-files --others --exclude-standard -z | grep -z -E '^public_html/cpp-.*\.html$' || true)
 
           if [ "$staged" = false ]; then
-            echo "No CPP-*/cpp-*.html updates to commit."
+            echo "No cpp-*.html updates to commit."
             exit 0
           fi
 
