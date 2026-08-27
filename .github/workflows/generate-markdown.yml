@@ -3,7 +3,7 @@ name: Generate CPP README markdown files
 on:
   push:
     branches:
-      - dev
+      - main
     paths:
       - 'generate-md.py'
       - 'CPP-*/cpp-*.xml'
