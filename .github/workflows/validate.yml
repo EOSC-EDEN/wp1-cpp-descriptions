@@ -3,7 +3,7 @@ name: Validate CPP XML
 on:
     pull_request:
         branches:
-            - dev
+            - main
         paths:
             - 'CPP-*/cpp-*.xml'
             - 'cpp.xsd'
