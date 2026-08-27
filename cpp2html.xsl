@@ -1,0 +1,1707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml" xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ cpp.xsd" xmlns:exslt="http://exslt.org/common" xmlns:math="http://exslt.org/math" xmlns:str="http://exslt.org/strings" xmlns:func="http://exslt.org/functions" extension-element-prefixes="exslt math func str" version="1.0">
+    <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
+
+    <xsl:variable name="SPACE" select="' '"></xsl:variable>
+    <xsl:variable name="USCORE" select="'_'"></xsl:variable>
+
+    <xsl:variable name="frameworks" select="document('frameworks.xml')" />
+
+    <xsl:variable name="languages" select="document('languages.xml')" />
+    <xsl:variable name="cpps" select="document('cpps.xml')" />
+
+    <xsl:variable name="group-sequence-hue">210</xsl:variable>
+    <xsl:variable name="group-alternative-hue">150</xsl:variable>
+    <xsl:variable name="group-parallel-hue">330</xsl:variable>
+    <xsl:variable name="base-lightness">95</xsl:variable>
+    <xsl:variable name="lightness-step">5</xsl:variable>
+
+    <xsl:variable name="maxStepDepth" select="5" />
+    <xsl:variable name="dataColumnCount" select="5" />
+    <xsl:variable name="totalColumnCount" select="$maxStepDepth + $dataColumnCount" />
+
+    <xsl:template match="/cpp:cpp">
+
+        <xsl:variable name="CPP" select="@ID"></xsl:variable>
+        <xsl:variable name="LABEL" select="$cpps//cpp[@identifier=$CPP]/label"></xsl:variable>
+
+        <html>
+            <head>
+                <style type="text/css">
+                    :root {
+                        --main-width: 100%;
+                        --main-margin: 20px 100px 50px;
+                        --main-font-family: Arial, sans-serif;
+                        --main-font-size: 12pt;
+                        --main-line-height: 1.5;
+                        --main-background-color: #fff;
+                        --main-color: #000;
+                        --border-color: #222;
+                        --header-background-color: #e0e0e0;
+                        --table-font-size: 12pt;
+                    }
+
+                    body {
+                        font-family: var(--main-font-family);
+                        font-size: var(--main-font-size);
+                        line-height: var(--main-line-height);
+                        margin: var(--main-margin);
+                        max-width: var(--main-width);
+                        background-color: var(--main-background-color);
+                        color: var(--main-color);
+                    }
+
+                    h1 {
+                        font-size: 26pt;
+                        font-weight: normal;
+                    }
+
+                    h2 {
+                        font-size: 20pt;
+                        font-weight: normal;
+                        margin-top: 20px;
+                    }
+
+                    h3 {
+                        font-size: 16pt;
+                        font-weight: normal;
+                        margin-top: 15px;
+                    }
+
+                    h4 {
+                        font-size: 14pt;
+                        font-weight: normal;
+                        margin-top: 10px;
+                    }
+
+                    p, ul, nl, dl {
+                        max-width: 60rem;
+                    }
+
+                    td &gt; span + span {
+                        display: block;
+                        padding-top: 0.5rem;
+                    }
+
+                    table {
+                        border-collapse: collapse;
+                        margin: 10px 0;
+                        width: auto;
+                        border: 2px solid var(--border-color);
+                        font-size: var(--table-font-size);
+                    }
+
+                    th,
+                    td {
+                        border: 2px solid var(--border-color);
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    th {
+                        background-color: var(--header-background-color);
+                        font-weight: bold;
+                    }
+
+                    th, td {
+                        border: 2px solid #000;
+                        padding: 8px;
+                        text-align: left;
+                        vertical-align: top;
+                    }
+
+                    table.intro td:first-child {
+                        font-weight: bold;
+                    }
+
+                    table.intro td.history {
+                        font-weight: normal;
+                        background-color: var(--main-background-color);
+                    }
+
+                    table.embedded {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                        border-collapse: collapse;
+                        border: hidden;
+                    }
+
+                    td:has(table.embedded) {
+                        padding: 0;
+                                                                                                                                                                    <!-- border: none; -->
+                    }
+
+                    td.optionalHeader {
+                        font-style: italic;
+                        width: 1%;
+                    }
+
+                    .stepsColumn {
+                        background-color: #fce5cd;
+                    }
+
+                    .stepsColumnHeader {
+                        background-color: #f9cb9c;
+                    }
+
+                </style>
+                <title>
+                    <xsl:text>EOSC-EDEN_</xsl:text>
+                    <xsl:value-of select="$CPP" />
+                    <xsl:text>_</xsl:text>
+                    <xsl:value-of select="translate($LABEL,' ','_')" />
+                </title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            </head>
+            <body>
+
+                <xsl:call-template name="IntroSection">
+                    <xsl:with-param name="CPP" select="$CPP" />
+                    <xsl:with-param name="LABEL" select="$LABEL" />
+                </xsl:call-template>
+
+                <xsl:call-template name="descriptionSection" />
+
+                <xsl:call-template name="dependenciesSection" />
+
+                <xsl:call-template name="linksSection" />
+
+                <xsl:call-template name="referencesSection" />
+
+            </body>
+        </html>
+    </xsl:template>
+
+    <xsl:template name="IntroSection" match="cpp:cpp">
+        <xsl:param name="CPP" />
+        <xsl:param name="LABEL" />
+
+        <div class="introSection">
+
+            <xsl:call-template name="title">
+                <xsl:with-param name="CPP" select="$CPP" />
+                <xsl:with-param name="LABEL" select="$LABEL" />
+            </xsl:call-template>
+
+            <xsl:apply-templates mode="introTable" select="cpp:header">
+                <xsl:with-param name="CPP" select="$CPP" />
+                <xsl:with-param name="LABEL" select="$LABEL" />
+            </xsl:apply-templates>
+
+        </div>
+
+    </xsl:template>
+
+    <xsl:template name="descriptionSection" match="cpp:cpp">
+
+        <div class="descriptionSection">
+
+            <h2>1. Description of the CPP</h2>
+
+            <p>
+                <xsl:value-of select="cpp:shortDefinition" />
+            </p>
+
+            <div class="inoutTable">
+
+                <h3>Inputs and outputs</h3>
+
+                <xsl:call-template name="inoutTable">
+                    <xsl:with-param name="inputs" select="cpp:process/cpp:inputs" />
+                    <xsl:with-param name="outputs" select="cpp:process/cpp:outputs" />
+                </xsl:call-template>
+
+            </div>
+
+
+            <div class="definitionAndScope">
+
+                <h3>Definition and scope</h3>
+
+                <xsl:call-template name="copyContent">
+                    <xsl:with-param name="data" select="cpp:descriptionAndScope" />
+                </xsl:call-template>
+
+            </div>
+
+            <div class="processDescription">
+
+                <h3>Process description</h3>
+
+                <div class="triggerEvents">
+
+                    <h4>Trigger event&#40;s&#41;</h4>
+
+                    <xsl:call-template name="triggerEvents">
+                        <xsl:with-param name="data" select="cpp:process/cpp:triggerEvents" />
+                    </xsl:call-template>
+
+                </div>
+
+                <div class="processSteps">
+
+                    <h4>Step-by-step description</h4>
+
+                    <xsl:call-template name="stepTable">
+                        <xsl:with-param name="data" select="cpp:process/cpp:stepByStepDescription" />
+                    </xsl:call-template>
+
+                </div>
+
+            </div>
+
+
+            <div class="rationaleAndWorstCases">
+
+                <h3>Rationale&#40;s&#41; and worst case&#40;s&#41;</h3>
+
+                <xsl:call-template name="rationaleTable">
+                    <xsl:with-param name="data" select="cpp:rationaleWorstCase" />
+                </xsl:call-template>
+
+            </div>
+
+        </div>
+
+    </xsl:template>
+
+    <xsl:template name="dependenciesSection" match="cpp:cpp">
+
+        <div class="dependenciesSection">
+
+            <h2>2. Dependencies and relationships with other CPPs</h2>
+
+            <div class="dependencies">
+
+                <h3>Dependencies</h3>
+
+                <xsl:call-template name="dependencyTable">
+                    <xsl:with-param name="data" select="cpp:cppRelationships/cpp:relationship[cpp:relationshipType='Requires']" />
+                </xsl:call-template>
+
+            </div>
+
+            <div class="otherRelations">
+
+                <h3>Other relations</h3>
+
+                <xsl:call-template name="relationTable">
+                    <xsl:with-param name="data" select="cpp:cppRelationships/cpp:relationship[cpp:relationshipType!='Requires']" />
+                </xsl:call-template>
+
+            </div>
+
+        </div>
+
+    </xsl:template>
+
+    <xsl:template name="linksSection" match="cpp:cpp">
+
+        <div class="linksSection">
+
+            <h2>3. Links to frameworks</h2>
+
+            <div class="certification">
+
+                <h3>Certification</h3>
+
+                <xsl:call-template name="certificationTable">
+                    <xsl:with-param name="data" select="cpp:frameworkMappings" />
+                </xsl:call-template>
+
+            </div>
+
+            <div class="frameworks">
+
+                <h3>Other frameworks and reference documents</h3>
+
+                <xsl:call-template name="frameworkTable">
+                    <xsl:with-param name="data" select="cpp:frameworkMappings" />
+                </xsl:call-template>
+
+            </div>
+        </div>
+
+    </xsl:template>
+
+    <xsl:template name="referencesSection">
+
+        <div class="referencesSection">
+
+            <h2>4. Reference implementations</h2>
+
+            <xsl:if test="count(cpp:referenceImplementations/cpp:useCases/cpp:useCase) &gt; 0">
+                <div class="usecases">
+
+                    <h3>Use cases</h3>
+
+                    <xsl:call-template name="useCases">
+                        <xsl:with-param name="data" select="cpp:referenceImplementations/cpp:useCases" />
+                    </xsl:call-template>
+
+                </div>
+            </xsl:if>
+
+            <xsl:if test="count(cpp:referenceImplementations/cpp:publicDocumentation) &gt; 0">
+                <div class="documenation">
+
+                    <h3>Publicly available documentation</h3>
+
+                    <xsl:call-template name="publicDocumentationTable">
+                        <xsl:with-param name="data" select="cpp:referenceImplementations" />
+                    </xsl:call-template>
+
+                </div>
+            </xsl:if>
+        </div>
+
+    </xsl:template>
+
+    <!-- Intro section templates -->
+
+    <xsl:template name="title">
+        <xsl:param name="CPP" />
+        <xsl:param name="LABEL" />
+
+        <div class="title">
+            <h1>
+                <xsl:value-of select="$LABEL" />
+                <xsl:value-of select="$SPACE" />
+                <xsl:text>&#40;</xsl:text>
+                <xsl:value-of select="$CPP" />
+                <xsl:text>&#41;</xsl:text>
+            </h1>
+        </div>
+
+    </xsl:template>
+
+    <xsl:template match="cpp:header" mode="introTable">
+        <xsl:param name="CPP" />
+        <xsl:param name="LABEL" />
+
+        <div class="introTable">
+            <table class="intro">
+                <tr>
+                    <td>CPP-Identifier</td>
+                    <td>
+                        <xsl:value-of select="$CPP" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>CPP-Label</td>
+                    <td>
+                        <xsl:value-of select="$LABEL" />
+                    </td>
+                </tr>
+                <xsl:apply-templates select="cpp:authors" />
+                <xsl:apply-templates select="cpp:contributors" />
+                <xsl:apply-templates select="cpp:evaluators" />
+                <xsl:apply-templates select="cpp:dateCompleted" />
+                <xsl:apply-templates select="cpp:history" />
+
+            </table>
+        </div>
+
+    </xsl:template>
+
+    <xsl:template name="authorRow" match="cpp:authors">
+        <tr>
+            <td>Author</td>
+            <td>
+                <xsl:for-each select="cpp:author">
+                    <xsl:value-of select="." />
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                        <xsl:value-of select="$SPACE" />
+                    </xsl:if>
+                </xsl:for-each>
+            </td>
+        </tr>
+    </xsl:template>
+
+    <xsl:template name="contributorRow" match="cpp:contributors">
+        <tr>
+            <td>Contributors</td>
+            <td>
+                <xsl:for-each select="cpp:contributor">
+                    <xsl:value-of select="." />
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                        <xsl:value-of select="$SPACE" />
+                    </xsl:if>
+                </xsl:for-each>
+            </td>
+        </tr>
+    </xsl:template>
+
+    <xsl:template name="evaluatorRow" match="cpp:evaluators">
+        <tr>
+            <td>Evaluators</td>
+            <td>
+                <xsl:for-each select="cpp:evaluator">
+                    <xsl:value-of select="." />
+                    <xsl:if test="position() != last()">
+                        <xsl:text>,</xsl:text>
+                        <xsl:value-of select="$SPACE" />
+                    </xsl:if>
+                </xsl:for-each>
+            </td>
+        </tr>
+    </xsl:template>
+
+    <xsl:template name="dateRow" match="cpp:dateCompleted">
+        <tr>
+            <td>Date of edition completed</td>
+            <td>
+                <xsl:value-of select="cpp:dateCompleted" />
+            </td>
+        </tr>
+    </xsl:template>
+
+    <xsl:template name="historyRows" match="cpp:history">
+        <tr>
+            <th>Change history</th>
+            <th>Comments</th>
+        </tr>
+        <xsl:for-each select="cpp:version">
+            <xsl:variable name="VERSION_MAJOR" select="cpp:versionNumber/cpp:majorVersion"></xsl:variable>
+            <xsl:variable name="VERSION_MINOR" select="cpp:versionNumber/cpp:minorVersion"></xsl:variable>
+            <xsl:variable name="VERSION_PATCH" select="cpp:versionNumber/cpp:patchVersion"></xsl:variable>
+            <xsl:variable name="VERSION_DATE" select="cpp:versionDate"></xsl:variable>
+            <tr>
+                <td class="history">
+                    <xsl:text>Version </xsl:text>
+                    <xsl:value-of select="$VERSION_MAJOR" />
+                    <xsl:text>.</xsl:text>
+                    <xsl:value-of select="$VERSION_MINOR" />
+                    <xsl:text>.</xsl:text>
+                    <xsl:value-of select="$VERSION_PATCH" />
+                    <xsl:text> - </xsl:text>
+                    <xsl:value-of select="$VERSION_DATE" />
+                </td>
+                <td>
+                    <xsl:value-of select="cpp:versionNotes" />
+                </td>
+            </tr>
+        </xsl:for-each>
+    </xsl:template>
+
+    <!-- Description section templates -->
+
+    <xsl:template name="inoutTable">
+        <xsl:param name="inputs" />
+        <xsl:param name="outputs" />
+
+        <table class="inout">
+            <xsl:apply-templates select="$inputs" mode="inout_table" />
+            <xsl:apply-templates select="$outputs" mode="inout_table" />
+        </table>
+
+    </xsl:template>
+
+    <xsl:template name="triggerEvents">
+        <xsl:param name="data" />
+
+        <table class="triggerEvents">
+            <tr>
+                <th>Trigger Event</th>
+                <th>CPP-identifier</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:triggerEvent">
+                <tr>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="./cpp:description" />
+                        </xsl:call-template>
+                    </td>
+                    <td>
+                        <xsl:call-template name="cppIdLabel">
+                            <xsl:with-param name="cpp_identifier" select="./cpp:correspondingCPP" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:for-each>
+        </table>
+
+    </xsl:template>
+
+    <!-- Step-by-step description table -->
+    <xsl:template name="stepTable">
+        <xsl:param name="data" />
+
+        <table class="stepTable">
+            <tr>
+                <th>
+                    <xsl:attribute name="colspan">
+                        <xsl:value-of select="$maxStepDepth" />
+                    </xsl:attribute>
+                    <xsl:text>No</xsl:text>
+                </th>
+                <th>Supplier</th>
+                <th>Input</th>
+                <th class="stepsColumnHeader">Steps</th>
+                <th>Output</th>
+                <th>Customer</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:stepGroup">
+                <xsl:apply-templates select="." mode="group" />
+            </xsl:for-each>
+
+        </table>
+
+    </xsl:template>
+
+    <!-- Step-by-step description table (HTML version) -->
+    <xsl:template name="stepTableHTML">
+        <xsl:param name="data" />
+
+        <table class="stepTable">
+            <tr>
+                <th rowspan="2" width="10%">No</th>
+                <th colspan="4" class="stepsColumnHeader">Step description</th>
+            </tr>
+            <tr>
+                <th width="20%">Supplier</th>
+                <th width="35%">Input</th>
+                <th width="35%">Output</th>
+                <th width="20%">Customer</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:step">
+                <xsl:call-template name="stepRowHTML">
+                    <xsl:with-param name="data" select="." />
+                </xsl:call-template>
+            </xsl:for-each>
+
+        </table>
+
+    </xsl:template>
+
+    <!-- Rationale and worst case table -->
+
+    <xsl:template name="rationaleTable">
+        <xsl:param name="data" />
+
+        <table class="rationaleAndWorstCases">
+            <tr>
+                <th>Rationale</th>
+                <th>Impact of inaction or failure of the process</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:purpose">
+                <tr>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="./cpp:purposeDescription" />
+                        </xsl:call-template>
+                    </td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="./cpp:worstCase" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:for-each>
+
+        </table>
+
+    </xsl:template>
+
+    <!-- dependencies table -->
+
+    <xsl:template name="dependencyTable">
+
+        <xsl:param name="data" />
+
+        <table class="dependencies">
+            <tr>
+                <th>CPP-ID</th>
+                <th>CPP-Title</th>
+                <th>Relationship description</th>
+            </tr>
+
+            <xsl:if test="not($data)">
+                <tr>
+                    <td>/</td>
+                    <td>/</td>
+                    <td>/</td>
+                </tr>
+            </xsl:if>
+
+            <xsl:for-each select="$data">
+                <tr>
+                    <td>
+                        <xsl:value-of select="cpp:relatedCPP" />
+                    </td>
+                    <td>
+                        <xsl:call-template name="cppLabelFromId">
+                            <xsl:with-param name="cpp_identifier" select="cpp:relatedCPP" />
+                        </xsl:call-template>
+                    </td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="cpp:relationshipDescription" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:for-each>
+
+        </table>
+
+    </xsl:template>
+
+    <!-- relations table -->
+
+    <xsl:template name="relationTable">
+
+        <xsl:param name="data" />
+
+        <table class="relations">
+            <tr>
+                <th>Relation</th>
+                <th>CPP-ID</th>
+                <th>CPP-Title</th>
+                <th>Relationship description</th>
+            </tr>
+
+            <xsl:for-each select="$data">
+                <tr>
+                    <td>
+                        <xsl:value-of select="cpp:relationshipType" />
+                    </td>
+                    <td>
+                        <xsl:value-of select="cpp:relatedCPP" />
+                    </td>
+                    <td>
+                        <xsl:call-template name="cppLabelFromId">
+                            <xsl:with-param name="cpp_identifier" select="cpp:relatedCPP" />
+                        </xsl:call-template>
+                    </td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="cpp:relationshipDescription" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:for-each>
+
+        </table>
+    </xsl:template>
+
+    <!-- certification table -->
+
+    <xsl:template name="certificationTable">
+        <xsl:param name="data" />
+
+        <table class="certificationTable">
+            <tr>
+                <th>Certification framework</th>
+                <th>Term used in framework to refer to the CPP</th>
+                <th>Section</th>
+            </tr>
+
+            <xsl:for-each select="$frameworks//framework[@type='certification']">
+                <xsl:variable name="certData" select="$data/cpp:mapping[cpp:frameworkName = current()/@code]" />
+                <tr>
+                    <td>
+                        <xsl:value-of select="name" />
+                        <xsl:value-of select="$SPACE" />
+                        <xsl:element name="a">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="link" />
+                            </xsl:attribute>
+                                Link
+                        </xsl:element>
+                    </td>
+                    <xsl:choose>
+                        <xsl:when test="not($certData)">
+                            <td>/</td>
+                            <td>/</td>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$certData/cpp:correspondingTerm" />
+                                </xsl:call-template>
+                            </td>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$certData/cpp:correspondingSection" />
+                                </xsl:call-template>
+                            </td>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </tr>
+            </xsl:for-each>
+        </table>
+
+    </xsl:template>
+
+    <!-- framework table -->
+
+    <xsl:template name="frameworkTable">
+
+        <xsl:param name="data" />
+
+        <table class="frameworks">
+            <tr>
+                <th>Reference Document</th>
+                <th>Term used in framework to refer to the process</th>
+                <th>Section</th>
+            </tr>
+
+            <xsl:for-each select="$frameworks//framework[@type='other']">
+                <xsl:variable name="frameworkData" select="$data/cpp:mapping[cpp:frameworkName = current()/@code]" />
+                <tr>
+                    <td>
+                        <xsl:value-of select="name" />
+                        <xsl:value-of select="$SPACE" />
+                        <xsl:element name="a">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="link" />
+                            </xsl:attribute>
+                                                Link
+                        </xsl:element>
+                    </td>
+                    <xsl:choose>
+                        <xsl:when test="not($frameworkData)">
+                            <td>/</td>
+                            <td>/</td>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$frameworkData/cpp:correspondingTerm" />
+                                </xsl:call-template>
+                            </td>
+                            <td>
+                                <xsl:call-template name="copyContent">
+                                    <xsl:with-param name="data" select="$frameworkData/cpp:correspondingSection" />
+                                </xsl:call-template>
+                            </td>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </tr>
+            </xsl:for-each>
+
+        </table>
+
+    </xsl:template>
+
+    <!-- Use case section -->
+
+    <xsl:template name="useCases">
+        <xsl:param name="data" />
+
+        <xsl:for-each select="$data/cpp:useCase">
+
+            <h4>
+                <xsl:value-of select="cpp:useCasetitle" />
+            </h4>
+
+            <xsl:call-template name="useCaseTable">
+                <xsl:with-param name="data" select="." />
+            </xsl:call-template>
+        </xsl:for-each>
+
+    </xsl:template>
+
+    <!-- Use case table -->
+
+    <xsl:template name="useCaseTable">
+        <xsl:param name="data" />
+
+        <table class="useCaseTable">
+            <tr>
+                <th colspan="2">Institutional background</th>
+            </tr>
+
+            <tr>
+                <td style="width:20%">Institution</td>
+                <td>
+                    <xsl:value-of select="$data/cpp:institution/cpp:institutionLabel" />
+                    <xsl:text>, </xsl:text>
+                    <xsl:value-of select="$data/cpp:institution/cpp:institutionCountry" />
+                </td>
+            </tr>
+
+            <xsl:if test="$data/cpp:linkToDocumentation">
+                <tr>
+                    <td style="width:20%">Hyperlink</td>
+                    <td>
+                        <xsl:for-each select="$data/cpp:linkToDocumentation">
+                            <xsl:if test="position() &gt; 1">
+                                <br />
+                            </xsl:if>
+                            <xsl:if test="cpp:comment">
+                                <xsl:value-of select="cpp:comment" />
+                                <xsl:value-of select="$SPACE" />
+                            </xsl:if>
+                            <xsl:element name="a">
+                                <xsl:attribute name="href">
+                                    <xsl:value-of select="cpp:hyperlink" />
+                                </xsl:attribute>
+                                <xsl:value-of select="cpp:hyperlink" />
+                            </xsl:element>
+                        </xsl:for-each>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <tr>
+                <th colspan="2">Description</th>
+            </tr>
+
+            <xsl:if test="$data/cpp:triggerEvent">
+                <tr>
+                    <td>Trigger event</td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="$data/cpp:triggerEvent" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <xsl:if test="$data/cpp:problemStatement">
+                <tr>
+                    <td>Problem statement</td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="$data/cpp:problemStatement" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:if>
+
+            <xsl:if test="$data/cpp:proposedSolution">
+                <tr>
+                    <td>Proposed solution</td>
+                    <td>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="$data/cpp:proposedSolution" />
+                        </xsl:call-template>
+                    </td>
+                </tr>
+            </xsl:if>
+
+        </table>
+
+    </xsl:template>
+
+    <!-- Public documentation template -->
+
+    <xsl:template name="publicDocumentationTable">
+        <xsl:param name="data" />
+
+        <table class="publicDocumentation">
+            <tr>
+                <th style="width:20%">Institution</th>
+                <th style="width:20%">Organisation type</th>
+                <th style="width:10%">Language</th>
+                <th style="width:50%">Hyperlink</th>
+            </tr>
+
+            <xsl:for-each select="$data/cpp:publicDocumentation">
+                <xsl:apply-templates select="." />
+            </xsl:for-each>
+
+        </table>
+
+    </xsl:template>
+
+    <xsl:template match="cpp:publicDocumentation">
+
+        <xsl:variable name="cnt" select="count(cpp:linkToDocumentation)"></xsl:variable>
+        <xsl:variable name="institution">
+            <xsl:value-of select="cpp:institution/cpp:institutionLabel" />
+            <xsl:text>, </xsl:text>
+            <xsl:value-of select="cpp:institution/cpp:institutionCountry" />
+        </xsl:variable>
+        <xsl:variable name="institutionTypes" select="cpp:institution/cpp:institutionType/text()" />
+
+        <xsl:for-each select="cpp:linkToDocumentation">
+            <xsl:variable name="langcode" select="./@xml:lang" />
+            <xsl:variable name="hyperlink">
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:value-of select="./cpp:hyperlink" />
+                    </xsl:attribute>
+                    <xsl:value-of select="./cpp:hyperlink" />
+                </xsl:element>
+                <xsl:if test="./cpp:comment">
+                    <xsl:element name="div">
+                        <xsl:text>&#40;</xsl:text>
+                        <xsl:value-of select="./cpp:comment" />
+                        <xsl:text>&#41;</xsl:text>
+                    </xsl:element>
+                </xsl:if>
+            </xsl:variable>
+
+            <tr>
+                <xsl:if test="position()=1">
+                    <xsl:element name="td">
+                        <xsl:attribute name="rowspan">
+                            <xsl:value-of select="$cnt" />
+                        </xsl:attribute>
+                        <xsl:value-of select="$institution" />
+                    </xsl:element>
+                    <xsl:element name="td">
+                        <xsl:attribute name="rowspan">
+                            <xsl:value-of select="$cnt" />
+                        </xsl:attribute>
+                        <xsl:for-each select="$institutionTypes">
+                            <xsl:value-of select="." />
+                            <xsl:if test="position() != last()">
+                                <hr />
+                            </xsl:if>
+                        </xsl:for-each>
+                    </xsl:element>
+                </xsl:if>
+
+                <td>
+                    <xsl:value-of select="$languages//language[@code=$langcode]/label" />
+                </td>
+
+                <td>
+                    <xsl:copy-of select="$hyperlink" />
+                </td>
+            </tr>
+        </xsl:for-each>
+    </xsl:template>
+
+    <!-- Input and output rows templates -->
+
+    <xsl:template match="cpp:inputs" mode="inout_table">
+        <tr>
+            <th colspan="2">Input&#40;s&#41;</th>
+        </tr>
+
+        <xsl:call-template name="inoutTableElements">
+            <xsl:with-param name="inout_data" select="." />
+        </xsl:call-template>
+
+    </xsl:template>
+
+    <xsl:template match="cpp:outputs" mode="inout_table">
+        <tr>
+            <th colspan="2">Output&#40;s&#41;</th>
+        </tr>
+
+        <xsl:call-template name="inoutTableElements">
+            <xsl:with-param name="inout_data" select="." />
+        </xsl:call-template>
+
+    </xsl:template>
+
+    <xsl:template name="inoutTableElements">
+        <xsl:param name="inout_data" />
+
+        <xsl:call-template name="multiRowHeader">
+            <xsl:with-param name="data" select="$inout_data/cpp:data/cpp:dataElement" />
+            <xsl:with-param name="header" select="'Data'" />
+        </xsl:call-template>
+
+        <xsl:call-template name="multiRowHeader">
+            <xsl:with-param name="data" select="$inout_data/cpp:metadata/cpp:metadataElement" />
+            <xsl:with-param name="header" select="'Metadata'" />
+        </xsl:call-template>
+
+        <xsl:call-template name="multiRowHeader">
+            <xsl:with-param name="data" select="$inout_data/cpp:guidance/cpp:guidanceElement" />
+            <xsl:with-param name="header" select="'Documentation/guidance'" />
+        </xsl:call-template>
+
+        <xsl:call-template name="multiRowHeader">
+            <xsl:with-param name="data" select="$inout_data/cpp:alerts/cpp:alert" />
+            <xsl:with-param name="header" select="'Alerts'" />
+        </xsl:call-template>
+
+    </xsl:template>
+
+    <!-- Generic template for multi-row headers-->
+    <xsl:template name="multiRowHeader">
+        <xsl:param name="data" />
+        <xsl:param name="header" />
+
+        <xsl:variable name="requiredData" select="$data[@optional!='true' or not(@optional)]" />
+        <xsl:variable name="optionalData" select="$data[@optional='true']" />
+
+        <xsl:variable name="cnt">
+            <xsl:choose>
+                <xsl:when test="count($optionalData) &gt; 0">
+                    <xsl:value-of select="count($requiredData) + 1" />
+                </xsl:when>
+                <xsl:when test="count($requiredData) = 0">
+                    <xsl:value-of select="1" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="count($requiredData)" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:if test="count($requiredData) &gt; 0 or count($optionalData) &gt; 0">
+            <tr>
+                <td>
+                    <xsl:value-of select="$header" />
+                </td>
+                <td>
+                    <table class="embedded">
+                        <xsl:for-each select="$requiredData">
+                            <tr>
+                                <td colspan="2">
+                                    <xsl:value-of select="." />
+                                </td>
+                            </tr>
+                        </xsl:for-each>
+                        <xsl:for-each select="$optionalData">
+                            <tr>
+                                <xsl:if test="position()=1">
+                                    <td class="optionalHeader">
+                                        <xsl:attribute name="rowspan">
+                                            <xsl:value-of select="count($optionalData)" />
+                                        </xsl:attribute>
+                                        Optional
+                                    </td>
+                                </xsl:if>
+                                <td>
+                                    <xsl:value-of select="." />
+                                </td>
+                            </tr>
+                        </xsl:for-each>
+                    </table>
+                </td>
+            </tr>
+        </xsl:if>
+    </xsl:template>
+
+    <!-- Generic template for a step group -->
+    <xsl:template match="cpp:stepGroup" mode="group">
+        <xsl:param name="depth" select="0" />
+        <xsl:param name="parent-color" />
+
+        <!-- compute the group color lightness-->
+        <xsl:variable name="lightness" select="$base-lightness - ($depth * $lightness-step)" />
+
+        <!-- color as CSS hsl -->
+        <xsl:variable name="base-hue">
+            <xsl:choose>
+                <xsl:when test="@type='sequence'">
+                    <xsl:value-of select="$group-sequence-hue" />
+                </xsl:when>
+                <xsl:when test="@type='alternative'">
+                    <xsl:value-of select="$group-alternative-hue" />
+                </xsl:when>
+                <xsl:when test="@type='parallel'">
+                    <xsl:value-of select="$group-parallel-hue"></xsl:value-of>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:variable name="my-color">
+            <xsl:value-of select="concat('hsl(', $base-hue, ',70%,', $lightness, '%)')" />
+        </xsl:variable>
+
+        <!-- calculate number and label width -->
+        <xsl:variable name="stepColumns" select="0" />
+        <xsl:variable name="labelColumns" select="$totalColumnCount - $stepColumns" />
+
+        <xsl:variable name="stepRows" select="number(cpp:stepRowCount(.))" />
+
+        <!-- Group label row: number cell uses parent-color, label cell uses my-color -->
+        <tr>
+            <xsl:if test="$depth &gt; 0">
+                <td>
+                    <xsl:attribute name="style">
+                        <xsl:text>background-color:</xsl:text>
+                        <xsl:value-of select="$parent-color" />
+                    </xsl:attribute>
+                    <xsl:attribute name="rowspan">
+                        <xsl:value-of select="$stepRows" />
+                    </xsl:attribute>
+                    <xsl:attribute name="colspan">
+                        <xsl:value-of select="$stepColumns" />
+                    </xsl:attribute>
+                    <xsl:value-of select="@stepGroupNumber" />
+                </td>
+            </xsl:if>
+            <td>
+                <xsl:attribute name="style">
+                    <xsl:text>background-color:</xsl:text>
+                    <xsl:value-of select="$my-color" />
+                    <xsl:text>; padding:4px</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="colspan">
+                    <xsl:value-of select="$labelColumns" />
+                </xsl:attribute>
+                <xsl:call-template name="stepGroupLabel">
+                    <xsl:with-param name="type" select="@type" />
+                    <xsl:with-param name="label" select="@label" />
+                </xsl:call-template>
+            </td>
+        </tr>
+
+        <!-- Process children in document order: steps and nested stepGroup -->
+        <xsl:for-each select="node()[self::cpp:step or self::cpp:stepGroup]">
+            <xsl:choose>
+                <xsl:when test="self::cpp:step">
+                    <xsl:apply-templates select="." mode="step">
+                        <xsl:with-param name="my-color" select="$my-color" />
+                        <xsl:with-param name="depth" select="$depth" />
+                    </xsl:apply-templates>
+                </xsl:when>
+
+                <xsl:when test="self::cpp:stepGroup">
+                    <!-- call the same template for nested group -->
+                    <xsl:apply-templates select="." mode="group">
+                        <xsl:with-param name="depth" select="$depth + 1" />
+                        <xsl:with-param name="parent-color" select="$my-color" />
+                    </xsl:apply-templates>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:for-each>
+
+    </xsl:template>
+
+    <!-- Generic template for a single step -->
+    <xsl:template match="cpp:step" mode="step">
+        <xsl:param name="my-color" />
+        <xsl:param name="depth" select="0" />
+
+        <xsl:variable name="stepColumns" select="$maxStepDepth - $depth" />
+
+        <xsl:variable name="rowCount">
+            <xsl:value-of select="number(cpp:stepRowCount(.))" />
+        </xsl:variable>
+
+        <xsl:variable name="cntInput" select="count(cpp:input)" />
+        <xsl:variable name="cntOutput" select="count(cpp:output)" />
+
+        <xsl:apply-templates select="." mode="data">
+            <xsl:with-param name="my-color" select="$my-color" />
+            <xsl:with-param name="stepColumns" select="$stepColumns" />
+            <xsl:with-param name="counter" select="1" />
+            <xsl:with-param name="max" select="$rowCount" />
+            <xsl:with-param name="maxInput" select="$cntInput" />
+            <xsl:with-param name="maxOutput" select="$cntOutput" />
+        </xsl:apply-templates>
+
+    </xsl:template>
+
+    <!-- Generic template for single data in step row -->
+    <xsl:template match="cpp:step" mode="data">
+        <xsl:param name="my-color" />
+        <xsl:param name="stepColumns" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="maxInput" />
+        <xsl:param name="maxOutput" />
+
+        <tr>
+            <xsl:choose>
+                <xsl:when test="$counter = 1">
+
+                    <!-- step number -->
+                    <xsl:element name="td">
+                        <xsl:attribute name="rowspan">
+                            <xsl:value-of select="$max" />
+                        </xsl:attribute>
+                        <xsl:attribute name="colspan">
+                            <xsl:value-of select="$stepColumns" />
+                        </xsl:attribute>
+                        <xsl:attribute name="style">
+                            <xsl:text>background-color:</xsl:text>
+                            <xsl:value-of select="$my-color" />
+                        </xsl:attribute>
+                        <xsl:value-of select="@stepNumber"></xsl:value-of>
+                    </xsl:element>
+
+                    <!-- input columns -->
+                    <xsl:call-template name="stepInput">
+                        <xsl:with-param name="data" select="cpp:input[$counter]" />
+                        <xsl:with-param name="counter" select="$counter" />
+                        <xsl:with-param name="max" select="$maxInput" />
+                        <xsl:with-param name="total" select="$max" />
+                    </xsl:call-template>
+
+                    <!-- step description -->
+                    <xsl:element name="td">
+                        <xsl:attribute name="class">stepsColumn</xsl:attribute>
+                        <xsl:attribute name="rowspan">
+                            <xsl:value-of select="$max" />
+                        </xsl:attribute>
+                        <xsl:if test="./@optional='true'">
+                            <em>Optional: </em>
+                        </xsl:if>
+                        <xsl:call-template name="copyContent">
+                            <xsl:with-param name="data" select="cpp:stepDescription" />
+                        </xsl:call-template>
+                    </xsl:element>
+
+                    <!-- output columns -->
+                    <xsl:call-template name="stepOutput">
+                        <xsl:with-param name="data" select="cpp:output[$counter]" />
+                        <xsl:with-param name="counter" select="$counter" />
+                        <xsl:with-param name="max" select="$maxOutput" />
+                        <xsl:with-param name="total" select="$max" />
+                    </xsl:call-template>
+
+                </xsl:when>
+                <xsl:otherwise>
+                    <!-- no step number in subsequent rows -->
+
+                    <xsl:if test="$counter &lt;= $maxInput">
+                        <!-- input columns -->
+                        <xsl:call-template name="stepInput">
+                            <xsl:with-param name="data" select="cpp:input[$counter]" />
+                            <xsl:with-param name="counter" select="$counter" />
+                            <xsl:with-param name="max" select="$maxInput" />
+                            <xsl:with-param name="total" select="$max" />
+                        </xsl:call-template>
+                    </xsl:if>
+
+                    <xsl:if test="$counter &lt;= $maxOutput">
+                        <!-- output columns -->
+                        <xsl:call-template name="stepOutput">
+                            <xsl:with-param name="data" select="cpp:output[$counter]" />
+                            <xsl:with-param name="counter" select="$counter" />
+                            <xsl:with-param name="max" select="$maxOutput" />
+                            <xsl:with-param name="total" select="$max" />
+                        </xsl:call-template>
+                    </xsl:if>
+                </xsl:otherwise>
+            </xsl:choose>
+        </tr>
+
+        <xsl:if test="$counter &lt; $max">
+            <xsl:apply-templates select="." mode="data">
+                <xsl:with-param name="counter" select="$counter + 1" />
+                <xsl:with-param name="max" select="$max" />
+                <xsl:with-param name="maxInput" select="$maxInput" />
+                <xsl:with-param name="maxOutput" select="$maxOutput" />
+            </xsl:apply-templates>
+        </xsl:if>
+
+    </xsl:template>
+
+    <xsl:template name="stepGroupLabel">
+        <xsl:param name="type" />
+        <xsl:param name="label" />
+
+        <xsl:choose>
+            <xsl:when test="@type='sequence'">
+                <i class="fa-solid fa-arrow-down-1-9"></i>
+            </xsl:when>
+            <xsl:when test="@type='alternative'">
+                <i class="fa-solid fa-arrows-split-up-and-left"></i>
+            </xsl:when>
+            <xsl:when test="@type='parallel'">
+                <i class="fa-solid fa-arrows-down-to-line"></i>
+            </xsl:when>
+            <xsl:otherwise>
+            </xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>&#160;</xsl:text>
+        <em>
+            <xsl:value-of select="$type" />
+        </em>
+        <xsl:if test="$label">
+            <xsl:text> - </xsl:text>
+            <xsl:value-of select="$label" />
+        </xsl:if>
+    </xsl:template>
+
+    <!-- Generic template for a single step (HTML version) -->
+    <xsl:template name="stepRowHTML">
+        <xsl:param name="data" />
+
+        <xsl:variable name="inputData" select="$data/cpp:input" />
+        <xsl:variable name="outputData" select="$data/cpp:output" />
+
+        <xsl:variable name="cntInput" select="count($inputData)" />
+        <xsl:variable name="cntOutput" select="count($outputData)" />
+
+        <xsl:variable name="maxCnt">
+            <xsl:choose>
+                <xsl:when test="$cntInput &lt; $cntOutput">
+                    <xsl:value-of select="$cntOutput" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$cntInput" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <tr>
+            <!-- step number -->
+            <xsl:element name="td">
+                <xsl:attribute name="rowspan">
+                    <xsl:value-of select="$maxCnt + 1" />
+                </xsl:attribute>
+                <xsl:value-of select="$data/@stepNumber"></xsl:value-of>
+            </xsl:element>
+
+            <!-- step description-->
+            <td colspan="4" class="stepsColumn">
+                <xsl:if test="$data/@optional='true'">
+                    <em>Optional: </em>
+                </xsl:if>
+                <xsl:call-template name="copyContent">
+                    <xsl:with-param name="data" select="$data/cpp:stepDescription" />
+                </xsl:call-template>
+            </td>
+        </tr>
+
+        <xsl:call-template name="stepDataRowHTML">
+            <xsl:with-param name="inputData" select="$inputData" />
+            <xsl:with-param name="outputData" select="$outputData" />
+            <xsl:with-param name="counter" select="1" />
+            <xsl:with-param name="max" select="$maxCnt" />
+            <xsl:with-param name="maxInput" select="$cntInput" />
+            <xsl:with-param name="maxOutput" select="$cntOutput" />
+        </xsl:call-template>
+
+    </xsl:template>
+
+    <xsl:template name="stepDataRowHTML">
+        <xsl:param name="inputData" />
+        <xsl:param name="outputData" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="maxInput" />
+        <xsl:param name="maxOutput" />
+
+        <tr>
+            <!-- input columns -->
+            <xsl:if test="$counter = 1 and $maxInput = 0">
+                <td></td>
+                <td></td>
+            </xsl:if>
+            <xsl:if test="$counter &lt;= $maxInput">
+                <xsl:call-template name="stepInput">
+                    <xsl:with-param name="data" select="$inputData[$counter]" />
+                    <xsl:with-param name="counter" select="$counter" />
+                    <xsl:with-param name="max" select="$maxInput" />
+                    <xsl:with-param name="total" select="$max" />
+                </xsl:call-template>
+            </xsl:if>
+            <!-- output columns -->
+            <xsl:if test="$counter = 1 and $maxOutput = 0">
+                <td></td>
+                <td></td>
+            </xsl:if>
+            <xsl:if test="$counter &lt;= $maxOutput">
+                <xsl:call-template name="stepOutput">
+                    <xsl:with-param name="data" select="$outputData[$counter]" />
+                    <xsl:with-param name="counter" select="$counter" />
+                    <xsl:with-param name="max" select="$maxOutput" />
+                    <xsl:with-param name="total" select="$max" />
+                </xsl:call-template>
+            </xsl:if>
+        </tr>
+
+        <xsl:if test="$counter &lt; $max">
+            <xsl:call-template name="stepDataRowHTML">
+                <xsl:with-param name="inputData" select="$inputData" />
+                <xsl:with-param name="outputData" select="$outputData" />
+                <xsl:with-param name="counter" select="$counter + 1" />
+                <xsl:with-param name="max" select="$max" />
+                <xsl:with-param name="maxInput" select="$maxInput" />
+                <xsl:with-param name="maxOutput" select="$maxOutput" />
+            </xsl:call-template>
+        </xsl:if>
+
+    </xsl:template>
+
+    <!-- print input columns -->
+    <xsl:template name="stepInput">
+        <xsl:param name="data" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="total" />
+
+        <xsl:variable name="rowspan">
+            <xsl:choose>
+                <xsl:when test="$max = 0">
+                    <xsl:value-of select="$total" />
+                </xsl:when>
+                <xsl:when test="$counter = $max">
+                    <xsl:value-of select="$total - $counter + 1" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="1" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:for-each select="$data/cpp:supplier">
+                <xsl:if test="position()!=1">
+                    <hr />
+                </xsl:if>
+                <xsl:call-template name="cppIdLabel">
+                    <xsl:with-param name="cpp_identifier" select="." />
+                </xsl:call-template>
+            </xsl:for-each>
+        </xsl:element>
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:call-template name="copyContent">
+                <xsl:with-param name="data" select="$data/cpp:inputElement" />
+            </xsl:call-template>
+        </xsl:element>
+
+    </xsl:template>
+
+    <!-- print output columns -->
+    <xsl:template name="stepOutput">
+        <xsl:param name="data" />
+        <xsl:param name="counter" />
+        <xsl:param name="max" />
+        <xsl:param name="total" />
+
+        <xsl:variable name="rowspan">
+            <xsl:choose>
+                <xsl:when test="$max = 0">
+                    <xsl:value-of select="$total" />
+                </xsl:when>
+                <xsl:when test="$counter = $max">
+                    <xsl:value-of select="$total - $counter + 1" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="1" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:call-template name="copyContent">
+                <xsl:with-param name="data" select="$data/cpp:outputElement" />
+            </xsl:call-template>
+        </xsl:element>
+        <xsl:element name="td">
+            <xsl:attribute name="rowspan">
+                <xsl:value-of select="$rowspan" />
+            </xsl:attribute>
+            <xsl:for-each select="$data/cpp:customer">
+                <xsl:if test="position()!=1">
+                    <hr />
+                </xsl:if>
+                <xsl:call-template name="cppIdLabel">
+                    <xsl:with-param name="cpp_identifier" select="." />
+                </xsl:call-template>
+            </xsl:for-each>
+        </xsl:element>
+    </xsl:template>
+
+    <!-- Generic formatted text template -->
+    <xsl:template name="copyContent">
+        <xsl:param name="data" />
+
+        <xsl:for-each select="$data/*">
+            <xsl:if test="$data/@optional='true'">
+                <em>Optional: </em>
+            </xsl:if>
+            <xsl:copy-of select="."></xsl:copy-of>
+        </xsl:for-each>
+    </xsl:template>
+
+    <!-- CPP label from identifier -->
+
+    <xsl:template name="cppLabelFromId">
+        <xsl:param name="cpp_identifier" />
+
+        <xsl:choose>
+            <xsl:when test="string-length($cpp_identifier)=0">
+                <!-- <xsl:text>NO CPP IDENTIFIER PROVIDED.</xsl:text> -->
+            </xsl:when>
+            <xsl:when test="not($cpps//cpp[@identifier=$cpp_identifier])">
+                <xsl:text>UNKNOWN CPP IDENTIFIER: </xsl:text>
+                <xsl:value-of select="$cpp_identifier" />
+                <xsl:text>.</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="cpp_label" select="$cpps//cpp[@identifier=$cpp_identifier]/label" />
+                <xsl:value-of select="$cpp_label" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <!-- CPP identifier and label between brackets -->
+
+    <xsl:template name="cppIdLabel">
+        <xsl:param name="cpp_identifier" />
+
+        <xsl:for-each select="$cpp_identifier">
+            <xsl:if test="position() &gt; 1">
+                <xsl:text>, </xsl:text>
+            </xsl:if>
+            <xsl:variable name="identifier" select="." />
+            <xsl:choose>
+                <xsl:when test="string-length($identifier)=0">
+                    <!-- <xsl:text>NO CPP IDENTIFIER PROVIDED.</xsl:text> -->
+                </xsl:when>
+                <xsl:when test="not($cpps//cpp[@identifier=$identifier])">
+                    <xsl:text>UNKNOWN CPP IDENTIFIER: </xsl:text>
+                    <xsl:value-of select="$identifier" />
+                    <xsl:text>.</xsl:text>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="cpp_label">
+                        <xsl:call-template name="cppLabelFromId">
+                            <xsl:with-param name="cpp_identifier" select="$identifier" />
+                        </xsl:call-template>
+                    </xsl:variable>
+
+                    <xsl:value-of select="$identifier" />
+                    <xsl:text> &#40;</xsl:text>
+                    <xsl:value-of select="$cpp_label" />
+                    <xsl:text>&#41;</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:for-each>
+    </xsl:template>
+
+    <!-- counts number of rows needed for a given step or stepRow element -->
+    <func:function name="cpp:stepRowCount">
+        <xsl:param name="node" />
+        <func:result>
+            <xsl:choose>
+                <xsl:when test="local-name($node) = 'step'">
+                    <!--
+                    <xsl:call-template name="debug">
+                        <xsl:with-param name="message" select="concat('Processing step (', $node/@stepNumber, ')')"/>
+                    </xsl:call-template>
+                    -->
+                    <!-- count the number of input, output and description elements -->
+                    <xsl:variable name="nInput">
+                        <xsl:value-of select="count($node/cpp:input)" />
+                    </xsl:variable>
+                    <xsl:variable name="nOutput">
+                        <xsl:value-of select="count($node/cpp:output)" />
+                    </xsl:variable>
+                    <xsl:variable name="nDesc">
+                        <xsl:value-of select="count($node/cpp:stepDescription)" />
+                    </xsl:variable>
+                    <!--
+                    <xsl:call-template name="debug">
+                        <xsl:with-param name="message" select="concat('step (', $node/@stepNumber, ') has ', $nInput, ' input(s), ', $nOutput, ' output(s) and ', $nDesc, ' description(s)')"/>
+                    </xsl:call-template>
+                    -->
+                    <xsl:choose>
+                        <xsl:when test="$nInput &gt;= $nOutput and $nInput &gt;= $nDesc">
+                            <xsl:value-of select="$nInput" />
+                        </xsl:when>
+                        <xsl:when test="$nOutput &gt;= $nInput and $nOutput &gt;= $nDesc">
+                            <xsl:value-of select="$nOutput" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$nDesc" />
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                    <!--                    
+                    <xsl:call-template name="debug">
+                        <xsl:with-param name="message" select="concat('Processing ', $node/@type, ' group (', $node/@label, ')')"></xsl:with-param>
+                    </xsl:call-template>
+                    -->
+                    <!-- collect children -->
+                    <xsl:variable name="children" select="$node/*[self::cpp:step | self::cpp:stepGroup]" />
+
+                    <xsl:variable name="total">
+                        <xsl:call-template name="count-children-rows">
+                            <xsl:with-param name="nodes" select="$children" />
+                            <xsl:with-param name="currentTotal" select="1" />
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:value-of select="$total" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </func:result>
+    </func:function>
+
+    <!-- helper template: sums rows for a set of children -->
+    <xsl:template name="count-children-rows">
+        <xsl:param name="nodes" />
+        <xsl:param name="currentTotal" select="0" />
+
+        <xsl:choose>
+            <xsl:when test="not($nodes)">
+                <!--
+                <xsl:call-template name="debug">
+                    <xsl:with-param name="message" select="concat('No more children, current total: ', $currentTotal)"/>
+                </xsl:call-template>
+                -->
+                <xsl:value-of select="$currentTotal" />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="first" select="$nodes[1]" />
+                <xsl:variable name="rest" select="$nodes[position() &gt; 1]" />
+
+                <xsl:choose>
+                    <xsl:when test="name($first) = 'cpp:step'">
+                        <xsl:variable name="r">
+                            <xsl:value-of select="number(cpp:stepRowCount($first))" />
+                        </xsl:variable>
+                        <!--
+                        <xsl:call-template name="debug">
+                            <xsl:with-param name="message" select="concat('step (', $first/@stepNumber, '), adding ', $r, ' lines')"/>
+                        </xsl:call-template>
+                        -->
+                        <xsl:call-template name="count-children-rows">
+                            <xsl:with-param name="nodes" select="$rest" />
+                            <xsl:with-param name="currentTotal" select="$currentTotal + number($r)" />
+                        </xsl:call-template>
+                    </xsl:when>
+
+                    <xsl:when test="name($first) = 'cpp:stepGroup'">
+                        <xsl:variable name="r">
+                            <xsl:value-of select="number(cpp:stepRowCount($first))" />
+                        </xsl:variable>
+                        <!--
+                        <xsl:call-template name="debug">
+                            <xsl:with-param name="message" select="concat($first/@type,' group (', $first/@label, '), adding ', $r, ' lines')"/>
+                        </xsl:call-template>
+                        -->
+                        <xsl:call-template name="count-children-rows">
+                            <xsl:with-param name="nodes" select="$rest" />
+                            <xsl:with-param name="currentTotal" select="$currentTotal + number($r)" />
+                        </xsl:call-template>
+                    </xsl:when>
+
+                    <xsl:otherwise>
+                        <xsl:call-template name="count-children-rows">
+                            <xsl:with-param name="nodes" select="$rest" />
+                            <xsl:with-param name="currentTotal" select="$currentTotal" />
+                        </xsl:call-template>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
+
+    <!-- debug -->
+
+    <xsl:template name="debug">
+        <xsl:param name="message" />
+        <xsl:message>
+            <xsl:text>DEBUG: </xsl:text>
+            <xsl:copy-of select="string($message)" />
+        </xsl:message>
+    </xsl:template>
+
+</xsl:stylesheet>

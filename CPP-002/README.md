@@ -1,0 +1,93 @@
+# Checksum Validation (CPP-002)
+
+**Short Definition:** The TDA validates checksums against those stored in the Information Package at Ingest or Access.
+
+## Description and Scope
+The Checksum Validation process compares the checksums that come with the *Information Package*, with checksums based on the current state of the *File*'s data. Checksums of *Files* are validated at *Ingest* or *Access* to a TDA. The checksums may be either part of 1) a *SIP*; 2) an imported *AIP*; or 3) an *AIP* stored in the *TDA*.
+
+A misalignment between the checksum algorithms used in the *Information Package* and the TDA's checksum policy's list of algorithms may occur. For example, incoming *Information Packages* (*SIPs* and *AIPs*) may include a checksum with a different algorithm created by the producer. In the case of *AIPs*, the checksum policy might have been updated during the lifecycle of the TDA, resulting in the removal and/or addition of algorithms. In such cases, the process should use whatever algorithm is associated with a given checksum to the best of its potential.
+
+## Authors
+- Kris Dekeyser
+
+## Contributors
+- Johan Kylander
+
+## Evaluators
+- Felix Burger
+- Maria Benauer
+- Laura Molloy
+
+## Process Definition
+
+### Inputs
+
+| Type     | Input           |
+| :------- | :-------------- |
+| Data     | File            |
+| Metadata | Fixity metadata |
+
+### Outputs
+
+| Type     | Output                                                                      |
+| :------- | :-------------------------------------------------------------------------- |
+| Metadata | Provenance metadata (the checksum validation event, including the datetime) |
+
+### Trigger Events
+
+| Description           | Corresponding CPP |
+| :-------------------- | :---------------- |
+| *SIP* or *AIP* import | `CPP-029`         |
+| *DIP* generation      | `CPP-025`         |
+| *AIP* export          | `CPP-006`         |
+
+## Process Steps
+
+| Step         | Supplier(s) | Input(s)                                                                  | Description                                                                                                                            | Output(s)                                                                                                                                                                                                                                                              | Customer(s) |
+| :----------- | :---------- | :------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------- |
+| **Sequence** |             |                                                                           |                                                                                                                                        |                                                                                                                                                                                                                                                                        |             |
+|   1          | `CPP-001`   | - Fixity information - Fixity information from *SIP*                      | Get the list of pre-calculated checksums with their respective                             algorithms (sequence)                       | - List of checksums and algorithms                                                                                                                                                                                                                                     |             |
+|   2          |             | - List of checksums and algorithms - Digital archive system configuration | Evaluate for each algorithm individually if it is supported by the                             system. (sequence)                      | - Algorithm supported (step 3) - Algorithm not supported:                             - examine further procedure (e.g. based on legal agreements; submission policies; communication with producer, if possible)                                  - Process completed |             |
+|   3          |             | - *File* - List of checksums and algorithms                               | For each algorithm, recalculate the checksum of the *File* and                             match it with the given checksum (sequence) | - All *File* checksums match (step 5) - Alert that any of the *File* checksums does not match:                             - Examine further procedure                                  - Process completed                                                            |             |
+|   5          |             | - All *File* checksums match                                              | Document the event and its timestamp (sequence)                                                                                        | - Datetime for the checksum generation in the Provenance metadata                                                                                                                                                                                                      |             |
+
+## Rationale / Worst Case
+
+| Purpose                                                            | Worst Case                                                                 |
+| :----------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| Making sure the data content is still in the condition as intended | Data corruption during transfers into the system or during export could go<br>                    unnoticed |
+
+## Relationships
+
+| Type                    | Related CPP | Description                                                                                             |
+| :---------------------- | :---------- | :------------------------------------------------------------------------------------------------------ |
+| Requires                | CPP-001     | CPP-002 relies on fixity information as produced and stored by CPP-001, but<br>                    only<br>                    during CPP-025 Enabling Access and<br>                    CPP-006 AIP Batch Export. During CPP-029 Ingest, the fixity information supplied<br>                    by the SIP will be used instead. |
+| Required by             | CPP-006     | To ensure the integrity of the data during transport from the TDA storage the<br>                    exported Files' checksums need to be verified. |
+| Required by             | CPP-025     | As the *DIP* is created, all *File* checksums need to be<br>                    validated to ensure that the *DIP* is representative of the *AIP*. |
+| Required by             | CPP-029     | For any *SIP* submitted to the TDA all included *File* checksums<br>                    need to be checked to validate the integrity of the *Files*. |
+| Affinity with           | CPP-004     | All new *AIP* copies must have their checksum validated to verify that<br>                    the process was successful. However, the checksum validation is more mechanical<br>                    in its nature, only aiming at verification of the copy process. The CPP-002<br>                    checksum validation is more comprehensive (including negotiations with<br>                    producers and validation of results). |
+| Affinity with           | CPP-030     | All new *AIP* copies must have their checksum validated to verify that<br>                    the process was successful. However, the checksum validation is more mechanical<br>                    in its nature, only aiming at verification of the copy process. The CPP-002<br>                    checksum validation is more comprehensive (including negotiations with<br>                    producers and validation of results). |
+| Affinity with           | CPP-011     | When *Files* are replicated, successful replication is validated by<br>                    comparing the replicated *Files'* checksums against the original *Files'* checksums |
+| Not to be confused with | CPP-003     | Both CPPs get input from CPP-001, and both calculate a checksum from an *Information<br>                    package* and compare it to a given checksum. The difference is that CPP-002<br>                    is done during the *Ingest* or *Access* phases (relating to<br>                    transfer of content, changes in space), while CPP-003 is done periodically<br>                    during the preservation of the contents in the archival storage (relating to<br>                    changes over time). Thus, CPP-002 and CPP-003 are not only triggered by<br>                    different processes, but also trigger different responses. |
+
+## Framework Mappings
+
+| Framework     | Term                                                                        | Section                                                       |
+| :------------ | :-------------------------------------------------------------------------- | :------------------------------------------------------------ |
+| CoreTrustSeal | Checksum (cf [Extended<br>                        Guidance<br>                        documentation](https://zenodo.org/records/7051096)) | Information Technology and Security/Storage & Integrity (R14) |
+| OAIS          | Quality assurance                                                           | 4.2.3.3 (Ingest)                                              |
+
+## Reference Implementations
+
+### Public Documentation
+
+| Institution                                                                        | Organization type                                                                                                        | Language | Link                                                                                                                              |
+| :--------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| TIB - Leibniz Information Centre for Science and Technology and University Library | National library, Non-commercial digital preservation service, Research infrastructure, Research performing organisation | en       | https://wiki.tib.eu/confluence/spaces/lza/pages/93608391/Preservation+of+data+integrity+as+part+of+the+process+routines           |
+| CSC - IT Center for Science Ltd.                                                   | Non-commercial digital preservation service                                                                              | en       | https://urn.fi/urn:nbn:fi-fe2024051731943 (Annex 3, section 2.1.1)                                                                |
+| Archivematica                                                                      | Digital preservation system                                                                                              | en       | https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/transfer/transfer/#create-a-transfer-with-existing-checksums |
+
+
+
+---
+
