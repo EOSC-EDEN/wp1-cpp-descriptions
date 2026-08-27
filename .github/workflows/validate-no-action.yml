@@ -3,7 +3,7 @@ name: No validation required
 on:
     pull_request:
         branches:
-            - dev
+            - main
         paths-ignore:
             - 'CPP-*/cpp-*.xml'
             - 'cpp.xsd'
