@@ -50,6 +50,16 @@ You can access individually the last version of  each Core Preservation Process 
 * [CPP-029 Ingest](cpp-029.html)
 * [CPP-030 Refreshment](cpp-030.html)
 
+## Visualisation tool
+
+The [CPP Visualisation tool](https://eosc-eden.github.io/wp1-cpp-visualization) allows you to explore the relationships that exists between the CPPs.
+
+The tool groups the CPPs in one of two selectable classification schemas and allows you to filter on relation types. The graph can be clicked-through
+to deep-dive into the relations and related CPPs.
+
+Next to the graph, the tool also provides a grid representation where you have an overview of all source and target CPPs and their relationships. You 
+can click on a box to see the relationship details and access the descriptions of the CPPs on either end of the relation.
+
 ## Contribution and Discussion
 
 Do you have feedback or questions?  EOSC EDEN warmly welcomes your thoughts on the CPPs. Please engage in the discussion through our Github repository:
