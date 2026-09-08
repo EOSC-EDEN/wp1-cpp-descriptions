@@ -1,10 +1,12 @@
 ![Markdown Logo](EOSCEDEN_ColourPos.png)
 
-# Core Preservation Processes
+# Core Preservation Processes (CPPs)
 
-## Definition
+Core Preservation Processes are developped within the [EOSC EDEN project](https://eden-fidelis.eu/). See the [project page](https://eden-fidelis.eu/core-preservation-processes) for additional information.
 
-A Core Preservation Process (CPP) is a specific action that every Trustworthy Digital Archive should undertake adequately - either directly or through its associated parties or services, in order to fulfill its digital preservation missions as evidenced in its preservation policy.
+## Introducing Core Preservation Processes
+
+A Core Preservation Process is a specific action that every Trustworthy Digital Archive should undertake adequately - either directly or through its associated parties or services, in order to fulfill its digital preservation missions as evidenced in its preservation policy.
 
 The following assertions define the scope of CPPs:
 
@@ -16,7 +18,7 @@ The following assertions define the scope of CPPs:
 
 * CPPs are described as a sequence of implementable steps, either by humans or by automation.
 
-## List of Core Preservation Processes
+## List of CPPs
 
 You can access individually the last version of  each Core Preservation Process through the following links:
 * [CPP-001 Checksum Generation and Recording](cpp-001.html)
@@ -50,13 +52,32 @@ You can access individually the last version of  each Core Preservation Process 
 * [CPP-029 Ingest](cpp-029.html)
 * [CPP-030 Refreshment](cpp-030.html)
 
+## Visualisation tool
+
+The [CPP Visualisation tool](https://eosc-eden.github.io/wp1-cpp-visualization) allows you to explore the relationships that exists between the CPPs.
+
+The tool groups the CPPs in one of two selectable classification schemas and allows you to filter on relation types. The graph can be clicked-through to deep-dive into the relations and related CPPs.
+
+Next to the graph, the tool also provides a grid representation where you have an overview of all source and target CPPs and their relationships. You can click on a box to see the relationship details and access the descriptions of the CPPs on either end of the relation.
+
 ## Contribution and Discussion
 
 Do you have feedback or questions?  EOSC EDEN warmly welcomes your thoughts on the CPPs. Please engage in the discussion through our Github repository:
 
 * ***[https://github.com/EOSC-EDEN/wp1-cpp-descriptions](https://github.com/EOSC-EDEN/wp1-cpp-descriptions)***
 
-## Zenodo Publication
+## Other Resources
 
-You can also refer to the CPPs in an earlier version by citing this Zenodo publication:
-* EOSC EDEN T1.2, Micky Lindlar, Bertrand Caron, et al. M1.1 Report on Identification of Core Preservation Processes. Zenodo, 2025. https://doi.org/10.5281/ZENODO.16992451.
+### Zenodo Publication
+
+You can refer to the CPPs in an earlier version by citing this Zenodo publication: EOSC EDEN T1.2, Micky Lindlar, Bertrand Caron, et al. M1.1 Report on Identification of Core Preservation Processes. Zenodo, 2025. https://doi.org/10.5281/ZENODO.16992451.
+
+### Video Presentations
+
+A three-minute introduction:
+
+[![](https://markdown-videos-api.jorgenkh.no/youtube/p6_z2pxKiJ4)](https://youtu.be/p6_z2pxKiJ4)
+
+A fifty-minute webinar:
+
+[![](https://markdown-videos-api.jorgenkh.no/youtube/OVBQmRYoNCg)](https://youtu.be/OVBQmRYoNCg)
