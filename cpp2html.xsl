@@ -59,7 +59,7 @@
         <xsl:param name="CPP" />
         <xsl:param name="LABEL" />
 
-        <div class="introSection">
+        <div class="introSection" id="introSection">
 
             <xsl:call-template name="title">
                 <xsl:with-param name="CPP" select="$CPP" />
@@ -77,7 +77,7 @@
 
     <xsl:template name="descriptionSection" match="cpp:cpp">
 
-        <div class="descriptionSection">
+        <div class="descriptionSection" id="descriptionSection">
 
             <h2>1. Description of the CPP</h2>
 
@@ -150,7 +150,7 @@
 
     <xsl:template name="dependenciesSection" match="cpp:cpp">
 
-        <div class="dependenciesSection">
+        <div class="dependenciesSection" id="dependenciesSection">
 
             <h2>2. Dependencies and relationships with other CPPs</h2>
 
@@ -180,7 +180,7 @@
 
     <xsl:template name="linksSection" match="cpp:cpp">
 
-        <div class="linksSection">
+        <div class="linksSection" id="linksSection">
 
             <h2>3. Links to frameworks</h2>
 
@@ -209,7 +209,7 @@
 
     <xsl:template name="referencesSection">
 
-        <div class="referencesSection">
+        <div class="referencesSection" id="referencesSection">
 
             <h2>4. Reference implementations</h2>
 
