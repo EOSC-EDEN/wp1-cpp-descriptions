@@ -3,7 +3,16 @@
     <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
 
     <xsl:variable name="SPACE" select="' '"></xsl:variable>
-    <xsl:variable name="USCORE" select="'_'"></xsl:variable>
+    <xsl:variable name="LOWERCASE" select="'abcdefghijklmnopqrstuvwxyz'"></xsl:variable>
+    <xsl:variable name="UPPERCASE" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"></xsl:variable>
+
+    <xsl:variable name="GITHUB_OWNER" select="'eosc-eden'"></xsl:variable>
+    <xsl:variable name="GITHUB_REPO" select="'wp1-cpp-descriptions'"></xsl:variable>
+    <xsl:variable name="GITHUB_BRANCH" select="'main'"></xsl:variable>
+    <xsl:variable name="GITHUB_REPO_URL" select="concat('https://github.com/', $GITHUB_OWNER, '/', $GITHUB_REPO)"></xsl:variable>
+    <xsl:variable name="GITHUB_BLOB_URL" select="concat($GITHUB_REPO_URL, '/blob/', $GITHUB_BRANCH, '/')"></xsl:variable>
+    <xsl:variable name="GITHUB_EDIT_URL" select="concat($GITHUB_REPO_URL, '/edit/', $GITHUB_BRANCH, '/')"></xsl:variable>
+    <xsl:variable name="GITHUB_PAGES_URL" select="concat('https://', $GITHUB_OWNER, '.github.io/', $GITHUB_REPO, '/')"></xsl:variable>
 
     <xsl:variable name="frameworks" select="document('frameworks.xml')" />
 
@@ -24,129 +33,12 @@
 
         <xsl:variable name="CPP" select="@ID"></xsl:variable>
         <xsl:variable name="LABEL" select="$cpps//cpp[@identifier=$CPP]/label"></xsl:variable>
+        <xsl:variable name="CPP_UPPER" select="translate($CPP,$LOWERCASE,$UPPERCASE)"></xsl:variable>
+        <xsl:variable name="CPP_LOWER" select="translate($CPP,$UPPERCASE,$LOWERCASE)"></xsl:variable>
 
         <html>
             <head>
-                <style type="text/css">
-                    :root {
-                        --main-width: 100%;
-                        --main-margin: 20px 100px 50px;
-                        --main-font-family: Arial, sans-serif;
-                        --main-font-size: 12pt;
-                        --main-line-height: 1.5;
-                        --main-background-color: #fff;
-                        --main-color: #000;
-                        --border-color: #222;
-                        --header-background-color: #e0e0e0;
-                        --table-font-size: 12pt;
-                    }
-
-                    body {
-                        font-family: var(--main-font-family);
-                        font-size: var(--main-font-size);
-                        line-height: var(--main-line-height);
-                        margin: var(--main-margin);
-                        max-width: var(--main-width);
-                        background-color: var(--main-background-color);
-                        color: var(--main-color);
-                    }
-
-                    h1 {
-                        font-size: 26pt;
-                        font-weight: normal;
-                    }
-
-                    h2 {
-                        font-size: 20pt;
-                        font-weight: normal;
-                        margin-top: 20px;
-                    }
-
-                    h3 {
-                        font-size: 16pt;
-                        font-weight: normal;
-                        margin-top: 15px;
-                    }
-
-                    h4 {
-                        font-size: 14pt;
-                        font-weight: normal;
-                        margin-top: 10px;
-                    }
-
-                    p, ul, nl, dl {
-                        max-width: 60rem;
-                    }
-
-                    td &gt; span + span {
-                        display: block;
-                        padding-top: 0.5rem;
-                    }
-
-                    table {
-                        border-collapse: collapse;
-                        margin: 10px 0;
-                        width: auto;
-                        border: 2px solid var(--border-color);
-                        font-size: var(--table-font-size);
-                    }
-
-                    th,
-                    td {
-                        border: 2px solid var(--border-color);
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    th {
-                        background-color: var(--header-background-color);
-                        font-weight: bold;
-                    }
-
-                    th, td {
-                        border: 2px solid #000;
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    table.intro td:first-child {
-                        font-weight: bold;
-                    }
-
-                    table.intro td.history {
-                        font-weight: normal;
-                        background-color: var(--main-background-color);
-                    }
-
-                    table.embedded {
-                        width: 100%;
-                        margin: 0;
-                        padding: 0;
-                        border-collapse: collapse;
-                        border: hidden;
-                    }
-
-                    td:has(table.embedded) {
-                        padding: 0;
-                                                                                                                                                                    <!-- border: none; -->
-                    }
-
-                    td.optionalHeader {
-                        font-style: italic;
-                        width: 1%;
-                    }
-
-                    .stepsColumn {
-                        background-color: #fce5cd;
-                    }
-
-                    .stepsColumnHeader {
-                        background-color: #f9cb9c;
-                    }
-
-                </style>
+                <link rel="stylesheet" type="text/css" href="cpp.css" />
                 <title>
                     <xsl:text>EOSC-EDEN_</xsl:text>
                     <xsl:value-of select="$CPP" />
@@ -157,18 +49,88 @@
             </head>
             <body>
 
-                <xsl:call-template name="IntroSection">
-                    <xsl:with-param name="CPP" select="$CPP" />
-                    <xsl:with-param name="LABEL" select="$LABEL" />
-                </xsl:call-template>
+                <header class="pageHeader" id="pageHeader">
+                    <span class="pageHeaderIndex">
+                        <a href="{$GITHUB_PAGES_URL}" title="Back to CPPs home page">
+                            <i class="fa-solid fa-house"></i>
+                            <xsl:text> Index</xsl:text>
+                        </a>
+                    </span>
+                    <nav class="pageHeaderNav">
+                        <a href="#mainContent">Top</a>
+                        <a href="#descriptionSection">Description</a>
+                        <a href="#dependenciesSection">Dependencies</a>
+                        <a href="#linksSection">Frameworks</a>
+                        <a href="#referencesSection">Reference implementations</a>
+                    </nav>
+                    <span class="pageHeaderLinks">
+                        <a href="{concat($GITHUB_BLOB_URL, '03_Glossary.pdf')}" title="View Glossary on GitHub">
+                            <i class="fa-solid fa-book"></i>
+                            <xsl:text> Glossary</xsl:text>
+                        </a>
+                    </span>
+                </header>
 
-                <xsl:call-template name="descriptionSection" />
+                <main class="pageContent" id="mainContent">
 
-                <xsl:call-template name="dependenciesSection" />
+                    <xsl:call-template name="IntroSection">
+                        <xsl:with-param name="CPP" select="$CPP" />
+                        <xsl:with-param name="LABEL" select="$LABEL" />
+                    </xsl:call-template>
 
-                <xsl:call-template name="linksSection" />
+                    <xsl:call-template name="descriptionSection" />
 
-                <xsl:call-template name="referencesSection" />
+                    <xsl:call-template name="dependenciesSection" />
+
+                    <xsl:call-template name="linksSection" />
+
+                    <xsl:call-template name="referencesSection" />
+
+                </main>
+
+                <footer class="pageFooter" id="pageFooter">
+                    <span class="pageFooterLinks">
+                        <a title="View LICENSE on GitHub">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="concat($GITHUB_BLOB_URL, 'LICENSE')" />
+                            </xsl:attribute>
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <xsl:text> License</xsl:text>
+                        </a>
+                        <a title="View PDF on GitHub">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="$GITHUB_BLOB_URL" />
+                                <xsl:value-of select="$CPP_UPPER" />
+                                <xsl:text>/EOSC-EDEN_</xsl:text>
+                                <xsl:value-of select="$CPP_UPPER" />
+                                <xsl:text>_</xsl:text>
+                                <xsl:value-of select="translate($LABEL,' ','_')" />
+                                <xsl:text>.pdf</xsl:text>
+                            </xsl:attribute>
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <xsl:text> PDF</xsl:text>
+                        </a>
+                    </span>
+                    <span class="pageFooterIdentifier">
+                        <xsl:value-of select="$CPP" />
+                        <xsl:text>:</xsl:text>
+                        <xsl:value-of select="$SPACE" />
+                        <xsl:value-of select="$LABEL" />
+                    </span>
+                    <span class="pageFooterEdit">
+                        <a title="Edit source on GitHub">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="$GITHUB_EDIT_URL" />
+                                <xsl:value-of select="$CPP_UPPER" />
+                                <xsl:text>/</xsl:text>
+                                <xsl:value-of select="$CPP_LOWER" />
+                                <xsl:text>.xml</xsl:text>
+                            </xsl:attribute>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <xsl:text> Edit on GitHub</xsl:text>
+                        </a>
+                    </span>
+                </footer>
 
             </body>
         </html>
@@ -178,7 +140,7 @@
         <xsl:param name="CPP" />
         <xsl:param name="LABEL" />
 
-        <div class="introSection">
+        <div class="introSection" id="introSection">
 
             <xsl:call-template name="title">
                 <xsl:with-param name="CPP" select="$CPP" />
@@ -196,7 +158,7 @@
 
     <xsl:template name="descriptionSection" match="cpp:cpp">
 
-        <div class="descriptionSection">
+        <div class="descriptionSection" id="descriptionSection">
 
             <h2>1. Description of the CPP</h2>
 
@@ -269,7 +231,7 @@
 
     <xsl:template name="dependenciesSection" match="cpp:cpp">
 
-        <div class="dependenciesSection">
+        <div class="dependenciesSection" id="dependenciesSection">
 
             <h2>2. Dependencies and relationships with other CPPs</h2>
 
@@ -299,7 +261,7 @@
 
     <xsl:template name="linksSection" match="cpp:cpp">
 
-        <div class="linksSection">
+        <div class="linksSection" id="linksSection">
 
             <h2>3. Links to frameworks</h2>
 
@@ -328,7 +290,7 @@
 
     <xsl:template name="referencesSection">
 
-        <div class="referencesSection">
+        <div class="referencesSection" id="referencesSection">
 
             <h2>4. Reference implementations</h2>
 
