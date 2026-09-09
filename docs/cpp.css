@@ -198,9 +198,9 @@ td.optionalHeader {
     right: 0;
     height: var(--page-footer-height);
     box-sizing: border-box;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     font-size: 11pt;
     gap: 20px;
     padding: 0 20px;
@@ -211,6 +211,7 @@ td.optionalHeader {
 
 .pageFooterIdentifier {
     font-weight: bold;
+    justify-self: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -218,6 +219,7 @@ td.optionalHeader {
 
 .pageFooterLinks {
     display: flex;
+    justify-self: start;
     gap: 15px;
     white-space: nowrap;
 }
@@ -228,5 +230,21 @@ td.optionalHeader {
 }
 
 .pageFooterLinks a:hover {
+    text-decoration: underline;
+}
+
+.pageFooterEdit {
+    display: flex;
+    justify-self: end;
+    gap: 15px;
+    white-space: nowrap;
+}
+
+.pageFooterEdit a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.pageFooterEdit a:hover {
     text-decoration: underline;
 }

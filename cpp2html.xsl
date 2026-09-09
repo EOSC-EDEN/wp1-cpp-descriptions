@@ -89,12 +89,6 @@
                 </main>
 
                 <footer class="pageFooter" id="pageFooter">
-                    <span class="pageFooterIdentifier">
-                        <xsl:value-of select="$CPP" />
-                        <xsl:text>:</xsl:text>
-                        <xsl:value-of select="$SPACE" />
-                        <xsl:value-of select="$LABEL" />
-                    </span>
                     <span class="pageFooterLinks">
                         <a title="View LICENSE on GitHub">
                             <xsl:attribute name="href">
@@ -116,6 +110,14 @@
                             <i class="fa-solid fa-file-pdf"></i>
                             <xsl:text> PDF</xsl:text>
                         </a>
+                    </span>
+                    <span class="pageFooterIdentifier">
+                        <xsl:value-of select="$CPP" />
+                        <xsl:text>:</xsl:text>
+                        <xsl:value-of select="$SPACE" />
+                        <xsl:value-of select="$LABEL" />
+                    </span>
+                    <span class="pageFooterEdit">
                         <a title="Edit source on GitHub">
                             <xsl:attribute name="href">
                                 <xsl:value-of select="$GITHUB_EDIT_URL" />
