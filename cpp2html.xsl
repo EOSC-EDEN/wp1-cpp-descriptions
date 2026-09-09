@@ -50,6 +50,12 @@
             <body>
 
                 <header class="pageHeader" id="pageHeader">
+                    <span class="pageHeaderIndex">
+                        <a href="{$GITHUB_PAGES_URL}" title="Back to CPPs home page">
+                            <i class="fa-solid fa-house"></i>
+                            <xsl:text> Index</xsl:text>
+                        </a>
+                    </span>
                     <nav class="pageHeaderNav">
                         <a href="#mainContent">Top</a>
                         <a href="#descriptionSection">Description</a>
@@ -58,14 +64,9 @@
                         <a href="#referencesSection">Reference implementations</a>
                     </nav>
                     <span class="pageHeaderLinks">
-                        <a href="#mainContent">Back to top &#8593;</a>
                         <a href="{concat($GITHUB_BLOB_URL, '03_Glossary.pdf')}" title="View Glossary on GitHub">
                             <i class="fa-solid fa-book"></i>
                             <xsl:text> Glossary</xsl:text>
-                        </a>
-                        <a href="{$GITHUB_PAGES_URL}" title="Back to CPPs home page">
-                            <i class="fa-solid fa-house"></i>
-                            <xsl:text> Index</xsl:text>
                         </a>
                     </span>
                 </header>
