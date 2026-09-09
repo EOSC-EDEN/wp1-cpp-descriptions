@@ -1,125 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-                    :root {
-                        --main-width: 100%;
-                        --main-margin: 20px 100px 50px;
-                        --main-font-family: Arial, sans-serif;
-                        --main-font-size: 12pt;
-                        --main-line-height: 1.5;
-                        --main-background-color: #fff;
-                        --main-color: #000;
-                        --border-color: #222;
-                        --header-background-color: #e0e0e0;
-                        --table-font-size: 12pt;
-                    }
-
-                    body {
-                        font-family: var(--main-font-family);
-                        font-size: var(--main-font-size);
-                        line-height: var(--main-line-height);
-                        margin: var(--main-margin);
-                        max-width: var(--main-width);
-                        background-color: var(--main-background-color);
-                        color: var(--main-color);
-                    }
-
-                    h1 {
-                        font-size: 26pt;
-                        font-weight: normal;
-                    }
-
-                    h2 {
-                        font-size: 20pt;
-                        font-weight: normal;
-                        margin-top: 20px;
-                    }
-
-                    h3 {
-                        font-size: 16pt;
-                        font-weight: normal;
-                        margin-top: 15px;
-                    }
-
-                    h4 {
-                        font-size: 14pt;
-                        font-weight: normal;
-                        margin-top: 10px;
-                    }
-
-                    p, ul, nl, dl {
-                        max-width: 60rem;
-                    }
-
-                    td > span + span {
-                        display: block;
-                        padding-top: 0.5rem;
-                    }
-
-                    table {
-                        border-collapse: collapse;
-                        margin: 10px 0;
-                        width: auto;
-                        border: 2px solid var(--border-color);
-                        font-size: var(--table-font-size);
-                    }
-
-                    th,
-                    td {
-                        border: 2px solid var(--border-color);
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    th {
-                        background-color: var(--header-background-color);
-                        font-weight: bold;
-                    }
-
-                    th, td {
-                        border: 2px solid #000;
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    table.intro td:first-child {
-                        font-weight: bold;
-                    }
-
-                    table.intro td.history {
-                        font-weight: normal;
-                        background-color: var(--main-background-color);
-                    }
-
-                    table.embedded {
-                        width: 100%;
-                        margin: 0;
-                        padding: 0;
-                        border-collapse: collapse;
-                        border: hidden;
-                    }
-
-                    td:has(table.embedded) {
-                        padding: 0;
-                                                                                                                                                                    
-                    }
-
-                    td.optionalHeader {
-                        font-style: italic;
-                        width: 1%;
-                    }
-
-                    .stepsColumn {
-                        background-color: #fce5cd;
-                    }
-
-                    .stepsColumnHeader {
-                        background-color: #f9cb9c;
-                    }
-
-                </style><title>EOSC-EDEN_CPP-006_AIP_Batch_Export</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>AIP Batch Export (CPP-006)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-006</td></tr><tr><td>CPP-Label</td><td>AIP Batch Export</td></tr><tr><td>Author</td><td>Micky Lindlar</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Juha Lehtonen, Mikko Laukkanen</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr><tr><td class="history">Version 1.2.0 - 2026-07-24</td><td>Added a step group for steps specific to a single AIP, steps renumbered accordingly.</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>As part of an exit strategy, the TDA batch exports Information
+<link rel="stylesheet" type="text/css" href="cpp.css"></link><title>EOSC-EDEN_CPP-006_AIP_Batch_Export</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><header class="pageHeader" id="pageHeader"><span class="pageHeaderIndex"><a href="https://eosc-eden.github.io/wp1-cpp-descriptions/" title="Back to CPPs home page"><i class="fa-solid fa-house"></i> Index</a></span><nav class="pageHeaderNav"><a href="#mainContent">Top</a><a href="#descriptionSection">Description</a><a href="#dependenciesSection">Dependencies</a><a href="#linksSection">Frameworks</a><a href="#referencesSection">Reference implementations</a></nav><span class="pageHeaderLinks"><a href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/03_Glossary.pdf" title="View Glossary on GitHub"><i class="fa-solid fa-book"></i> Glossary</a></span></header><main class="pageContent" id="mainContent"><div class="introSection" id="introSection"><div class="title"><h1>AIP Batch Export (CPP-006)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-006</td></tr><tr><td>CPP-Label</td><td>AIP Batch Export</td></tr><tr><td>Author</td><td>Micky Lindlar</td></tr><tr><td>Contributors</td><td>Bertrand Caron, Juha Lehtonen, Mikko Laukkanen</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr><tr><td class="history">Version 1.2.0 - 2026-07-24</td><td>Added a step group for steps specific to a single AIP, steps renumbered accordingly.</td></tr></table></div></div><div class="descriptionSection" id="descriptionSection"><h2>1. Description of the CPP</h2><p>As part of an exit strategy, the TDA batch exports Information
 						packages and all associated Metadata in a manageable format/structure
 						for Ingest into another TDA.
     </p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">
@@ -180,7 +61,7 @@
 				This might have to happen on short notice.</span></td><td><span>Data is lost.</span></td></tr><tr><td><span>When a TDA acts as a service provider, data will have to be exported in bulk to those who
 				are subscribing to the service.</span></td><td><span>Data owner potentially loses control over data.</span></td></tr><tr><td><span>If a TDA is using external services and systems, e.g. for storing and preserving
 				its <em>AIPs</em>, then it may need to exchange or transfer <em>AIPs</em> to
-				or from third-party services and systems.</span></td><td><span>Data is lost, data can't be efficiently transferred between TDAs and preservation services.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-001</td><td>Checksum Generation and Recording</td><td><span><em>Fixity metadata</em> is used to verify the integrity of data written into the exported <em>AIP</em>.</span></td></tr><tr><td>CPP-002</td><td>Checksum Validation</td><td><span>To ensure the integrity of the data during transport from the TDA
+				or from third-party services and systems.</span></td><td><span>Data is lost, data can't be efficiently transferred between TDAs and preservation services.</span></td></tr></table></div></div><div class="dependenciesSection" id="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-001</td><td>Checksum Generation and Recording</td><td><span><em>Fixity metadata</em> is used to verify the integrity of data written into the exported <em>AIP</em>.</span></td></tr><tr><td>CPP-002</td><td>Checksum Validation</td><td><span>To ensure the integrity of the data during transport from the TDA
 				storage, the exported <em>Files'</em> checksums need to be
 				verified.</span></td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Not to be confused with</td><td>CPP-017</td><td>Disposal</td><td><span>By default, batch export does not remove the content from the TDA.</span></td></tr><tr><td>Not to be confused with</td><td>CPP-025</td><td>Enabling Access</td><td><span>Access is typically granted to the <em>DIP</em> which may be different from
 				the <em>AIP</em> (e.g. the <em>DIP</em> <em>may</em> only present the last version
@@ -189,7 +70,7 @@
 				information about the versions may be found. In addition a policy might
 				determine if only the last or all versions should be exported.</span></td></tr><tr><td>Affinity with</td><td>CPP-011</td><td>Replication</td><td><span>Replication creates new parallel copies of <em>AIPs</em> within a TDAs
 				archival storage. AIP Batch Export exports <em>AIPs</em> to external
-				locations.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+				locations.</span></td></tr></table></div></div><div class="linksSection" id="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
                         </a></td><td><span>"Technical aspects of business continuity, disaster recovery and succession planning"</span></td><td><span>R15 Technical Infrastructure</span><span>Organisational aspects are covered in R03 Continuity of Service</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
@@ -203,4 +84,4 @@
 				Succession Planning, is briefly mentioned in 3.3.6 "Follows
 				establised preservation policies and procedures".</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
                                                 Link
-                        </a></td><td><span>/</span></td><td><span>/</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608980/Export+and+exit+scenario">https://wiki.tib.eu/confluence/spaces/lza/pages/93608980/Export+and+exit+scenario</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>Finnish</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(section 13)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="ihttps://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#downloading-an-aip">ihttps://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#downloading-an-aip</a></td></tr></table></div></div></body></html>
+                        </a></td><td><span>/</span></td><td><span>/</span></td></tr></table></div></div><div class="referencesSection" id="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB – Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="https://wiki.tib.eu/confluence/spaces/lza/pages/93608980/Export+and+exit+scenario">https://wiki.tib.eu/confluence/spaces/lza/pages/93608980/Export+and+exit+scenario</a></td></tr><tr><td rowspan="1">CSC – IT Center for Science Ltd., FI</td><td rowspan="1">Non-commercial digital preservation service</td><td>Finnish</td><td><a href="https://urn.fi/urn:nbn:fi-fe2024051731943">https://urn.fi/urn:nbn:fi-fe2024051731943</a><div>(section 13)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="ihttps://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#downloading-an-aip">ihttps://www.archivematica.org/en/docs/archivematica-1.17/user-manual/archival-storage/archival-storage/#downloading-an-aip</a></td></tr></table></div></div></main><footer class="pageFooter" id="pageFooter"><span class="pageFooterLinks"><a title="View LICENSE on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/LICENSE"><i class="fa-solid fa-scale-balanced"></i> License</a><a title="View PDF on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/CPP-006/EOSC-EDEN_CPP-006_AIP_Batch_Export.pdf"><i class="fa-solid fa-file-pdf"></i> PDF</a></span><span class="pageFooterIdentifier">CPP-006: AIP Batch Export</span><span class="pageFooterEdit"><a title="Edit source on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/edit/main/CPP-006/cpp-006.xml"><i class="fa-solid fa-pen-to-square"></i> Edit on GitHub</a></span></footer></body></html>

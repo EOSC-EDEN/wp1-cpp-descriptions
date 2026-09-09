@@ -1,125 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-                    :root {
-                        --main-width: 100%;
-                        --main-margin: 20px 100px 50px;
-                        --main-font-family: Arial, sans-serif;
-                        --main-font-size: 12pt;
-                        --main-line-height: 1.5;
-                        --main-background-color: #fff;
-                        --main-color: #000;
-                        --border-color: #222;
-                        --header-background-color: #e0e0e0;
-                        --table-font-size: 12pt;
-                    }
-
-                    body {
-                        font-family: var(--main-font-family);
-                        font-size: var(--main-font-size);
-                        line-height: var(--main-line-height);
-                        margin: var(--main-margin);
-                        max-width: var(--main-width);
-                        background-color: var(--main-background-color);
-                        color: var(--main-color);
-                    }
-
-                    h1 {
-                        font-size: 26pt;
-                        font-weight: normal;
-                    }
-
-                    h2 {
-                        font-size: 20pt;
-                        font-weight: normal;
-                        margin-top: 20px;
-                    }
-
-                    h3 {
-                        font-size: 16pt;
-                        font-weight: normal;
-                        margin-top: 15px;
-                    }
-
-                    h4 {
-                        font-size: 14pt;
-                        font-weight: normal;
-                        margin-top: 10px;
-                    }
-
-                    p, ul, nl, dl {
-                        max-width: 60rem;
-                    }
-
-                    td > span + span {
-                        display: block;
-                        padding-top: 0.5rem;
-                    }
-
-                    table {
-                        border-collapse: collapse;
-                        margin: 10px 0;
-                        width: auto;
-                        border: 2px solid var(--border-color);
-                        font-size: var(--table-font-size);
-                    }
-
-                    th,
-                    td {
-                        border: 2px solid var(--border-color);
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    th {
-                        background-color: var(--header-background-color);
-                        font-weight: bold;
-                    }
-
-                    th, td {
-                        border: 2px solid #000;
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    table.intro td:first-child {
-                        font-weight: bold;
-                    }
-
-                    table.intro td.history {
-                        font-weight: normal;
-                        background-color: var(--main-background-color);
-                    }
-
-                    table.embedded {
-                        width: 100%;
-                        margin: 0;
-                        padding: 0;
-                        border-collapse: collapse;
-                        border: hidden;
-                    }
-
-                    td:has(table.embedded) {
-                        padding: 0;
-                                                                                                                                                                    
-                    }
-
-                    td.optionalHeader {
-                        font-style: italic;
-                        width: 1%;
-                    }
-
-                    .stepsColumn {
-                        background-color: #fce5cd;
-                    }
-
-                    .stepsColumnHeader {
-                        background-color: #f9cb9c;
-                    }
-
-                </style><title>EOSC-EDEN_CPP-020_Rights_Management</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Rights Management (CPP-020)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-020</td></tr><tr><td>CPP-Label</td><td>Rights Management</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Matthew Addis</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA manages rights related to the Information Objects, both for agents inside its scope
+<link rel="stylesheet" type="text/css" href="cpp.css"></link><title>EOSC-EDEN_CPP-020_Rights_Management</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><header class="pageHeader" id="pageHeader"><span class="pageHeaderIndex"><a href="https://eosc-eden.github.io/wp1-cpp-descriptions/" title="Back to CPPs home page"><i class="fa-solid fa-house"></i> Index</a></span><nav class="pageHeaderNav"><a href="#mainContent">Top</a><a href="#descriptionSection">Description</a><a href="#dependenciesSection">Dependencies</a><a href="#linksSection">Frameworks</a><a href="#referencesSection">Reference implementations</a></nav><span class="pageHeaderLinks"><a href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/03_Glossary.pdf" title="View Glossary on GitHub"><i class="fa-solid fa-book"></i> Glossary</a></span></header><main class="pageContent" id="mainContent"><div class="introSection" id="introSection"><div class="title"><h1>Rights Management (CPP-020)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-020</td></tr><tr><td>CPP-Label</td><td>Rights Management</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Johan Kylander</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Matthew Addis</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection" id="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA manages rights related to the Information Objects, both for agents inside its scope
 (access, migrate, etc.) and for end users (access, reuse, etc.)</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Object</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Descriptive metadata</td></tr><tr><td colspan="2">Provenance metadata</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td class="optionalHeader" rowspan="1">
                                         Optional
                                     </td><td>Rights metadata</td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Rights statement</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>Rights Management is the process of performing rights assessments for <em>Objects</em>
@@ -218,10 +99,10 @@
                     life cycle.</span></td><td><span>Without rights assessment, a TDA might be incapable of performing preservation
                     actions.</span><span>Its consumers might be discouraged to use the <em>Object</em> if no explicit
                     rights statement is provided by the TDA.</span><span>The TDA might be exposed to liability or legal and financial harm.</span><span>The TDA may end up retaining data for longer than needed or allowed, which can
-                    increase costs (e.g. storage).</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>/</td><td>/</td><td>/</td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Any information regarding the rights for the TDA and the end users needs to be
+                    increase costs (e.g. storage).</span></td></tr></table></div></div><div class="dependenciesSection" id="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>/</td><td>/</td><td>/</td></tr></table></div><div class="otherRelations"><h3>Other relations</h3><table class="relations"><tr><th>Relation</th><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>Required by</td><td>CPP-016</td><td>Metadata Ingest and Management</td><td><span>Any information regarding the rights for the TDA and the end users needs to be
                     stored and should be searchable and retrievable for all data.</span></td></tr><tr><td>Required by</td><td>CPP-025</td><td>Enabling Access</td><td><span>The TDA must assess access rights to check if it is authorised to provide
                     access to the requester.</span></td></tr><tr><td>Required by</td><td>CPP-029</td><td>Ingest</td><td><span>Some minimal rights assessment must be performed during ingest to verify that
-                    the TDA should be in charge of preserving the content of the SIP.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                    the TDA should be in charge of preserving the content of the SIP.</span></td></tr></table></div></div><div class="linksSection" id="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
                         </a></td><td><span>Rights management</span></td><td><span>R02. The repository maintains all applicable rights and monitors compliance</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
@@ -240,7 +121,7 @@
                                                 Link
                         </a></td><td><span>No exact matching term exists in PREMIS</span></td><td><span>PREMIS describes all metadata elements required to describe a comprehensive
                     rights statement in its section on the Rights Entity. The topic of rights
-                    management is also covered in another section, “More on Rights”.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Negotiating Rights for Born-Digitals at the National Library of France</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France (BnF), France, FR</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="/">/</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>The born-digital acquisitions and donations process at the National
+                    management is also covered in another section, “More on Rights”.</span></td></tr></table></div></div><div class="referencesSection" id="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Negotiating Rights for Born-Digitals at the National Library of France</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France (BnF), France, FR</td></tr><tr><td style="width:20%">Hyperlink</td><td><a href="/">/</a></td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>The born-digital acquisitions and donations process at the National
                         Library of France collects <em>Objects</em> from creators (filmmakers,
                         graphic designers, photographs, etc.). The <em>Objects</em> aim to document
                         the creative processes that eventually produced a work of art, some of which
@@ -259,4 +140,4 @@
                     https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights">
                     https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights</a><div>(Rights statements)</div></td></tr><tr><td rowspan="1">Rosetta, IL</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
                     https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights">
-                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights</a><div>(Acess rights)</div></td></tr></table></div></div></body></html>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/ingest/ingest/#add-premis-rights</a><div>(Acess rights)</div></td></tr></table></div></div></main><footer class="pageFooter" id="pageFooter"><span class="pageFooterLinks"><a title="View LICENSE on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/LICENSE"><i class="fa-solid fa-scale-balanced"></i> License</a><a title="View PDF on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/CPP-020/EOSC-EDEN_CPP-020_Rights_Management.pdf"><i class="fa-solid fa-file-pdf"></i> PDF</a></span><span class="pageFooterIdentifier">CPP-020: Rights Management</span><span class="pageFooterEdit"><a title="Edit source on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/edit/main/CPP-020/cpp-020.xml"><i class="fa-solid fa-pen-to-square"></i> Edit on GitHub</a></span></footer></body></html>

@@ -1,125 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-                    :root {
-                        --main-width: 100%;
-                        --main-margin: 20px 100px 50px;
-                        --main-font-family: Arial, sans-serif;
-                        --main-font-size: 12pt;
-                        --main-line-height: 1.5;
-                        --main-background-color: #fff;
-                        --main-color: #000;
-                        --border-color: #222;
-                        --header-background-color: #e0e0e0;
-                        --table-font-size: 12pt;
-                    }
-
-                    body {
-                        font-family: var(--main-font-family);
-                        font-size: var(--main-font-size);
-                        line-height: var(--main-line-height);
-                        margin: var(--main-margin);
-                        max-width: var(--main-width);
-                        background-color: var(--main-background-color);
-                        color: var(--main-color);
-                    }
-
-                    h1 {
-                        font-size: 26pt;
-                        font-weight: normal;
-                    }
-
-                    h2 {
-                        font-size: 20pt;
-                        font-weight: normal;
-                        margin-top: 20px;
-                    }
-
-                    h3 {
-                        font-size: 16pt;
-                        font-weight: normal;
-                        margin-top: 15px;
-                    }
-
-                    h4 {
-                        font-size: 14pt;
-                        font-weight: normal;
-                        margin-top: 10px;
-                    }
-
-                    p, ul, nl, dl {
-                        max-width: 60rem;
-                    }
-
-                    td > span + span {
-                        display: block;
-                        padding-top: 0.5rem;
-                    }
-
-                    table {
-                        border-collapse: collapse;
-                        margin: 10px 0;
-                        width: auto;
-                        border: 2px solid var(--border-color);
-                        font-size: var(--table-font-size);
-                    }
-
-                    th,
-                    td {
-                        border: 2px solid var(--border-color);
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    th {
-                        background-color: var(--header-background-color);
-                        font-weight: bold;
-                    }
-
-                    th, td {
-                        border: 2px solid #000;
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    table.intro td:first-child {
-                        font-weight: bold;
-                    }
-
-                    table.intro td.history {
-                        font-weight: normal;
-                        background-color: var(--main-background-color);
-                    }
-
-                    table.embedded {
-                        width: 100%;
-                        margin: 0;
-                        padding: 0;
-                        border-collapse: collapse;
-                        border: hidden;
-                    }
-
-                    td:has(table.embedded) {
-                        padding: 0;
-                                                                                                                                                                    
-                    }
-
-                    td.optionalHeader {
-                        font-style: italic;
-                        width: 1%;
-                    }
-
-                    .stepsColumn {
-                        background-color: #fce5cd;
-                    }
-
-                    .stepsColumnHeader {
-                        background-color: #f9cb9c;
-                    }
-
-                </style><title>EOSC-EDEN_CPP-017_Disposal</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>Disposal (CPP-017)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-017</td></tr><tr><td>CPP-Label</td><td>Disposal</td></tr><tr><td>Author</td><td>Mikko Laukkanen, Juha Lehtonen</td></tr><tr><td>Contributors</td><td>Kris Dekeyser, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>
+<link rel="stylesheet" type="text/css" href="cpp.css"></link><title>EOSC-EDEN_CPP-017_Disposal</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><header class="pageHeader" id="pageHeader"><span class="pageHeaderIndex"><a href="https://eosc-eden.github.io/wp1-cpp-descriptions/" title="Back to CPPs home page"><i class="fa-solid fa-house"></i> Index</a></span><nav class="pageHeaderNav"><a href="#mainContent">Top</a><a href="#descriptionSection">Description</a><a href="#dependenciesSection">Dependencies</a><a href="#linksSection">Frameworks</a><a href="#referencesSection">Reference implementations</a></nav><span class="pageHeaderLinks"><a href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/03_Glossary.pdf" title="View Glossary on GitHub"><i class="fa-solid fa-book"></i> Glossary</a></span></header><main class="pageContent" id="mainContent"><div class="introSection" id="introSection"><div class="title"><h1>Disposal (CPP-017)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-017</td></tr><tr><td>CPP-Label</td><td>Disposal</td></tr><tr><td>Author</td><td>Mikko Laukkanen, Juha Lehtonen</td></tr><tr><td>Contributors</td><td>Kris Dekeyser, Johan Kylander</td></tr><tr><td>Evaluators</td><td>Matthew Addis, Felix Burger, Maria Benauer</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-27</td><td>Migration to XML</td></tr></table></div></div><div class="descriptionSection" id="descriptionSection"><h2>1. Description of the CPP</h2><p>
         The TDA enables the managed disposal of Information Packages and permits the retention
         and maintenance of Metadata even when the content of the Information Package has been
         removed from the TDA.
@@ -377,7 +258,7 @@
                  </span></td><td><span>
                     Increased costs data storage costs. Increased environmental footprint. Increased 
                     time and effort for future preservation activities (e.g. re-appraisal)
-                </span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>
+                </span></td></tr></table></div></div><div class="dependenciesSection" id="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>
                     Identifiers must be taken care of during disposal
                 </span></td></tr><tr><td>CPP-018</td><td>Community Watch</td><td><span>
                     Soft dependency (i.e. may require): Community watch treats Disposal as a customer in 
@@ -393,7 +274,7 @@
                     has to be kept as a witness of the data’s former presence.
                 </span></td></tr><tr><td>Not to be confused with</td><td>CPP-006</td><td>AIP Batch Export</td><td><span>
                     Disposal does not export the <em>Objects</em> from TDA.
-                </span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                </span></td></tr></table></div></div><div class="linksSection" id="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
                         </a></td><td><span>Deletion</span></td><td><span>
                     R14 The repository applies documented processes to ensure data and <em>Metadata</em>
@@ -406,7 +287,7 @@
                                                 Link
                         </a></td><td><span>Deletion</span></td><td><span>3.3.6</span></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
                                                 Link
-                        </a></td><td><span>Deaccession </span></td><td><span>Glossary</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB - Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
+                        </a></td><td><span>Deaccession </span></td><td><span>Glossary</span></td></tr></table></div></div><div class="referencesSection" id="referencesSection"><h2>4. Reference implementations</h2><div class="documenation"><h3>Publicly available documentation</h3><table class="publicDocumentation"><tr><th style="width:20%">Institution</th><th style="width:20%">Organisation type</th><th style="width:10%">Language</th><th style="width:50%">Hyperlink</th></tr><tr><td rowspan="1">TIB - Leibniz Information Centre for Science and Technology and University Library, DE</td><td rowspan="1">National library<hr></hr>Non-commercial digital preservation service<hr></hr>Research infrastructure<hr></hr>Research performing organisation</td><td>English</td><td><a href="
                     https://knowledge.exlibrisgroup.com/Rosetta/Product_Documentation/Rosetta_Staff_Users_Guide/Data_Managers/005_Delete%2C_Restore%2C_Move%2C_and_Purge_IEs#About_Deleting.2C_Recovering.2C_and_Purging_an_IE
                 ">
                     https://knowledge.exlibrisgroup.com/Rosetta/Product_Documentation/Rosetta_Staff_Users_Guide/Data_Managers/005_Delete%2C_Restore%2C_Move%2C_and_Purge_IEs#About_Deleting.2C_Recovering.2C_and_Purging_an_IE
@@ -417,4 +298,4 @@
                 </a><div>(
                     No explicit support for retention management, but there is a request/approve workflow 
                     for AIP deletion
-                )</div></td></tr></table></div></div></body></html>
+                )</div></td></tr></table></div></div></main><footer class="pageFooter" id="pageFooter"><span class="pageFooterLinks"><a title="View LICENSE on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/LICENSE"><i class="fa-solid fa-scale-balanced"></i> License</a><a title="View PDF on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/CPP-017/EOSC-EDEN_CPP-017_Disposal.pdf"><i class="fa-solid fa-file-pdf"></i> PDF</a></span><span class="pageFooterIdentifier">CPP-017: Disposal</span><span class="pageFooterEdit"><a title="Edit source on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/edit/main/CPP-017/cpp-017.xml"><i class="fa-solid fa-pen-to-square"></i> Edit on GitHub</a></span></footer></body></html>

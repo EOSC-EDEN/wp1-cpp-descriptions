@@ -1,125 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:cpp="https://eden-fidelis.eu/cpp/cpp/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-                    :root {
-                        --main-width: 100%;
-                        --main-margin: 20px 100px 50px;
-                        --main-font-family: Arial, sans-serif;
-                        --main-font-size: 12pt;
-                        --main-line-height: 1.5;
-                        --main-background-color: #fff;
-                        --main-color: #000;
-                        --border-color: #222;
-                        --header-background-color: #e0e0e0;
-                        --table-font-size: 12pt;
-                    }
-
-                    body {
-                        font-family: var(--main-font-family);
-                        font-size: var(--main-font-size);
-                        line-height: var(--main-line-height);
-                        margin: var(--main-margin);
-                        max-width: var(--main-width);
-                        background-color: var(--main-background-color);
-                        color: var(--main-color);
-                    }
-
-                    h1 {
-                        font-size: 26pt;
-                        font-weight: normal;
-                    }
-
-                    h2 {
-                        font-size: 20pt;
-                        font-weight: normal;
-                        margin-top: 20px;
-                    }
-
-                    h3 {
-                        font-size: 16pt;
-                        font-weight: normal;
-                        margin-top: 15px;
-                    }
-
-                    h4 {
-                        font-size: 14pt;
-                        font-weight: normal;
-                        margin-top: 10px;
-                    }
-
-                    p, ul, nl, dl {
-                        max-width: 60rem;
-                    }
-
-                    td > span + span {
-                        display: block;
-                        padding-top: 0.5rem;
-                    }
-
-                    table {
-                        border-collapse: collapse;
-                        margin: 10px 0;
-                        width: auto;
-                        border: 2px solid var(--border-color);
-                        font-size: var(--table-font-size);
-                    }
-
-                    th,
-                    td {
-                        border: 2px solid var(--border-color);
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    th {
-                        background-color: var(--header-background-color);
-                        font-weight: bold;
-                    }
-
-                    th, td {
-                        border: 2px solid #000;
-                        padding: 8px;
-                        text-align: left;
-                        vertical-align: top;
-                    }
-
-                    table.intro td:first-child {
-                        font-weight: bold;
-                    }
-
-                    table.intro td.history {
-                        font-weight: normal;
-                        background-color: var(--main-background-color);
-                    }
-
-                    table.embedded {
-                        width: 100%;
-                        margin: 0;
-                        padding: 0;
-                        border-collapse: collapse;
-                        border: hidden;
-                    }
-
-                    td:has(table.embedded) {
-                        padding: 0;
-                                                                                                                                                                    
-                    }
-
-                    td.optionalHeader {
-                        font-style: italic;
-                        width: 1%;
-                    }
-
-                    .stepsColumn {
-                        background-color: #fce5cd;
-                    }
-
-                    .stepsColumnHeader {
-                        background-color: #f9cb9c;
-                    }
-
-                </style><title>EOSC-EDEN_CPP-014_File_Migration</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><div class="introSection"><div class="title"><h1>File Migration (CPP-014)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-014</td></tr><tr><td>CPP-Label</td><td>File Migration</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Matthew Addis</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr><tr><td class="history">Version 1.1.1 - 2026-04-01</td><td>Correction of "Format Migration" to "File Migration"</td></tr></table></div></div><div class="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA supports batch modifications of previously ingested Files to prevent a preservation or access-related risk.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Source File or Representation (https://id.loc.gov/vocabulary/preservation/objectCategory/rep.html) whose property(ies) are(were) flagged as a risk that requires action.</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Technical Metadata (source File or Representation)</td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Preservation action registry</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Target File or Representation which successfully passes the requirements of risk assessment.</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Technical Metadata (target File or Representation)</td></tr><tr><td colspan="2">Provenance metadata</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>File migration is the production of one or several new <em>Representation(s)</em> in
+<link rel="stylesheet" type="text/css" href="cpp.css"></link><title>EOSC-EDEN_CPP-014_File_Migration</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"></link></head><body><header class="pageHeader" id="pageHeader"><span class="pageHeaderIndex"><a href="https://eosc-eden.github.io/wp1-cpp-descriptions/" title="Back to CPPs home page"><i class="fa-solid fa-house"></i> Index</a></span><nav class="pageHeaderNav"><a href="#mainContent">Top</a><a href="#descriptionSection">Description</a><a href="#dependenciesSection">Dependencies</a><a href="#linksSection">Frameworks</a><a href="#referencesSection">Reference implementations</a></nav><span class="pageHeaderLinks"><a href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/03_Glossary.pdf" title="View Glossary on GitHub"><i class="fa-solid fa-book"></i> Glossary</a></span></header><main class="pageContent" id="mainContent"><div class="introSection" id="introSection"><div class="title"><h1>File Migration (CPP-014)</h1></div><div class="introTable"><table class="intro"><tr><td>CPP-Identifier</td><td>CPP-014</td></tr><tr><td>CPP-Label</td><td>File Migration</td></tr><tr><td>Author</td><td>Bertrand Caron</td></tr><tr><td>Contributors</td><td>Kris Dekeyser</td></tr><tr><td>Evaluators</td><td>Felix Burger, Maria Benauer, Matthew Addis</td></tr><tr><th>Change history</th><th>Comments</th></tr><tr><td class="history">Version 1.0.0 - 2025-08-29</td><td>Milestone version</td></tr><tr><td class="history">Version 1.1.0 - 2026-03-26</td><td>Migration to XML</td></tr><tr><td class="history">Version 1.1.1 - 2026-04-01</td><td>Correction of "Format Migration" to "File Migration"</td></tr></table></div></div><div class="descriptionSection" id="descriptionSection"><h2>1. Description of the CPP</h2><p>The TDA supports batch modifications of previously ingested Files to prevent a preservation or access-related risk.</p><div class="inoutTable"><h3>Inputs and outputs</h3><table class="inout"><tr><th colspan="2">Input(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Source File or Representation (https://id.loc.gov/vocabulary/preservation/objectCategory/rep.html) whose property(ies) are(were) flagged as a risk that requires action.</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Technical Metadata (source File or Representation)</td></tr></table></td></tr><tr><td>Documentation/guidance</td><td><table class="embedded"><tr><td colspan="2">Preservation action registry</td></tr></table></td></tr><tr><th colspan="2">Output(s)</th></tr><tr><td>Data</td><td><table class="embedded"><tr><td colspan="2">Target File or Representation which successfully passes the requirements of risk assessment.</td></tr></table></td></tr><tr><td>Metadata</td><td><table class="embedded"><tr><td colspan="2">Technical Metadata (target File or Representation)</td></tr><tr><td colspan="2">Provenance metadata</td></tr></table></td></tr></table></div><div class="definitionAndScope"><h3>Definition and scope</h3><p>File migration is the production of one or several new <em>Representation(s)</em> in
             response to a risk assessment, with the goal of replacing the original <em>File</em> or <em>
             Representation</em> with an equivalent containing the same information and supporting
             the same features. The choice to actually retain the source <em>Representation</em> or
@@ -175,7 +56,7 @@
                     format that is usable means that data may also lose Interoperability and
                     Reusability, either directly or because DIPs can no longer be created easily for
                     a designated community.</span></td><td><span>The contents of <em>Files</em> or <em>Representations</em> cannot be used
-                    either in whole or in part.</span></td></tr></table></div></div><div class="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>Soft dependency (i.e. may require): During file migration, the migrated file
+                    either in whole or in part.</span></td></tr></table></div></div><div class="dependenciesSection" id="dependenciesSection"><h2>2. Dependencies and relationships with other CPPs</h2><div class="dependencies"><h3>Dependencies</h3><table class="dependencies"><tr><th>CPP-ID</th><th>CPP-Title</th><th>Relationship description</th></tr><tr><td>CPP-005</td><td>Identifier Management</td><td><span>Soft dependency (i.e. may require): During file migration, the migrated file
                     format may be assigned a new identifier.</span></td></tr><tr><td>CPP-008</td><td>File Format Identification</td><td><span>File migration requires that the format of the <em>Files</em> is known with
                     certainty.</span></td></tr><tr><td>CPP-009</td><td>Metadata Extraction</td><td><span>File format identification is generally limited to an indication of the
                     container format, while migration can apply to any property of the <em>Files</em>.
@@ -194,7 +75,7 @@
                     Format Migration have thus several steps in common (documentation, control,
                     decision on whether to retain the source <em>File</em>, etc.).</span></td></tr><tr><td>Not to be confused with</td><td>CPP-028</td><td>Creation of Derivatives</td><td><span>Creation of a derivative creates an additional <em>Representation</em> to be
                     retained, while the outcome of migration and normalisation is supposed to
-                    replace its source.</span></td></tr></table></div></div><div class="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
+                    replace its source.</span></td></tr></table></div></div><div class="linksSection" id="linksSection"><h2>3. Links to frameworks</h2><div class="certification"><h3>Certification</h3><table class="certificationTable"><tr><th>Certification framework</th><th>Term used in framework to refer to the CPP</th><th>Section</th></tr><tr><td>CTS <a href="https://zenodo.org/records/7051012">
                                 Link
                         </a></td><td><span>Format migration</span></td><td><span>R09 “Preservation Plan”</span></td></tr><tr><td>Nestor Seal <a href="https://d-nb.info/135630141X/34">
                                 Link
@@ -213,7 +94,7 @@
                 </ul></td></tr><tr><td>PREMIS <a href="https://www.loc.gov/standards/premis/v3/premis-3-0-final.pdf">
                                                 Link
                         </a></td><td><span>(Format / Forward) migration</span></td><td><span>"Format migration" is defined by PREMIS as a transformation that is performed
-                    to address compatibility issues with newer software and hardware.</span></td></tr></table></div></div><div class="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Discontinuation of Finale and Preservation Strategy for MUS(X) Files</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France (BnF), France, FR</td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>In August 2024, the software company MakeMusic announced that its software
+                    to address compatibility issues with newer software and hardware.</span></td></tr></table></div></div><div class="referencesSection" id="referencesSection"><h2>4. Reference implementations</h2><div class="usecases"><h3>Use cases</h3><h4>Discontinuation of Finale and Preservation Strategy for MUS(X) Files</h4><table class="useCaseTable"><tr><th colspan="2">Institutional background</th></tr><tr><td style="width:20%">Institution</td><td>Bibliothèque nationale de France (BnF), France, FR</td></tr><tr><th colspan="2">Description</th></tr><tr><td>Trigger event</td><td><span>In August 2024, the software company MakeMusic announced that its software
                         Finale would be discontinued. The maintenance was to end one year after the
                         announcement.</span></td></tr><tr><td>Problem statement</td><td><span>The alternative to Finale that was suggested was <a href="https://en.wikipedia.org/wiki/Dorico">Dorico</a>, which does not
                         support the native file formats produced by Finale, <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000632.shtml">
@@ -258,4 +139,4 @@
                     https://urn.fi/urn:nbn:fi-fe2025040925236">
                     https://urn.fi/urn:nbn:fi-fe2025040925236</a><div>(Section 7)</div></td></tr><tr><td rowspan="1">Archivematica, CA</td><td rowspan="1">Digital preservation system</td><td>English</td><td><a href="
                     https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization">
-                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization</a></td></tr></table></div></div></body></html>
+                    https://www.archivematica.org/en/docs/archivematica-1.17/user-manual/preservation/preservation-planning/#normalization</a></td></tr></table></div></div></main><footer class="pageFooter" id="pageFooter"><span class="pageFooterLinks"><a title="View LICENSE on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/LICENSE"><i class="fa-solid fa-scale-balanced"></i> License</a><a title="View PDF on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/blob/main/CPP-014/EOSC-EDEN_CPP-014_File_Migration.pdf"><i class="fa-solid fa-file-pdf"></i> PDF</a></span><span class="pageFooterIdentifier">CPP-014: File Migration</span><span class="pageFooterEdit"><a title="Edit source on GitHub" href="https://github.com/eosc-eden/wp1-cpp-descriptions/edit/main/CPP-014/cpp-014.xml"><i class="fa-solid fa-pen-to-square"></i> Edit on GitHub</a></span></footer></body></html>
