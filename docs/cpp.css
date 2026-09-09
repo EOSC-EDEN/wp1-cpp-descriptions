@@ -9,6 +9,13 @@
     --border-color: #222;
     --header-background-color: #e0e0e0;
     --table-font-size: 12pt;
+    --page-header-height: 36px;
+    --page-footer-height: 36px;
+}
+
+html {
+    /* keep anchor-jump targets visible below the fixed header */
+    scroll-padding-top: calc(var(--page-header-height) + 20px);
 }
 
 body {
@@ -19,6 +26,8 @@ body {
     max-width: var(--main-width);
     background-color: var(--main-background-color);
     color: var(--main-color);
+    padding-top: var(--page-header-height);
+    padding-bottom: var(--page-footer-height);
 }
 
 h1 {
@@ -114,4 +123,93 @@ td.optionalHeader {
 
 .stepsColumnHeader {
     background-color: #f9cb9c;
+}
+
+.pageHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--page-header-height);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11pt;
+    gap: 20px;
+    padding: 0 20px;
+    background-color: var(--header-background-color);
+    border-bottom: 2px solid var(--border-color);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.pageHeaderNav {
+    display: flex;
+    gap: 15px;
+    white-space: nowrap;
+}
+
+.pageHeaderNav a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.pageHeaderNav a:hover {
+    text-decoration: underline;
+}
+
+.pageHeaderLinks {
+    display: flex;
+    gap: 15px;
+    white-space: nowrap;
+}
+
+.pageHeaderLinks a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.pageHeaderLinks a:hover {
+    text-decoration: underline;
+}
+
+.pageFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--page-footer-height);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11pt;
+    gap: 20px;
+    padding: 0 20px;
+    background-color: var(--header-background-color);
+    border-top: 2px solid var(--border-color);
+    z-index: 1000;
+}    
+
+.pageFooterIdentifier {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}    
+
+.pageFooterLinks {
+    display: flex;
+    gap: 15px;
+    white-space: nowrap;
+}
+
+.pageFooterLinks a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.pageFooterLinks a:hover {
+    text-decoration: underline;
 }

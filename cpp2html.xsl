@@ -3,7 +3,16 @@
     <xsl:output method="html" encoding="utf-8" indent="yes" doctype-system="about:legacy-compat" />
 
     <xsl:variable name="SPACE" select="' '"></xsl:variable>
-    <xsl:variable name="USCORE" select="'_'"></xsl:variable>
+    <xsl:variable name="LOWERCASE" select="'abcdefghijklmnopqrstuvwxyz'"></xsl:variable>
+    <xsl:variable name="UPPERCASE" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"></xsl:variable>
+
+    <xsl:variable name="GITHUB_OWNER" select="'eosc-eden'"></xsl:variable>
+    <xsl:variable name="GITHUB_REPO" select="'wp1-cpp-descriptions'"></xsl:variable>
+    <xsl:variable name="GITHUB_BRANCH" select="'main'"></xsl:variable>
+    <xsl:variable name="GITHUB_REPO_URL" select="concat('https://github.com/', $GITHUB_OWNER, '/', $GITHUB_REPO)"></xsl:variable>
+    <xsl:variable name="GITHUB_BLOB_URL" select="concat($GITHUB_REPO_URL, '/blob/', $GITHUB_BRANCH, '/')"></xsl:variable>
+    <xsl:variable name="GITHUB_EDIT_URL" select="concat($GITHUB_REPO_URL, '/edit/', $GITHUB_BRANCH, '/')"></xsl:variable>
+    <xsl:variable name="GITHUB_PAGES_URL" select="concat('https://', $GITHUB_OWNER, '.github.io/', $GITHUB_REPO, '/')"></xsl:variable>
 
     <xsl:variable name="frameworks" select="document('frameworks.xml')" />
 
@@ -24,6 +33,8 @@
 
         <xsl:variable name="CPP" select="@ID"></xsl:variable>
         <xsl:variable name="LABEL" select="$cpps//cpp[@identifier=$CPP]/label"></xsl:variable>
+        <xsl:variable name="CPP_UPPER" select="translate($CPP,$LOWERCASE,$UPPERCASE)"></xsl:variable>
+        <xsl:variable name="CPP_LOWER" select="translate($CPP,$UPPERCASE,$LOWERCASE)"></xsl:variable>
 
         <html>
             <head>
@@ -38,18 +49,85 @@
             </head>
             <body>
 
-                <xsl:call-template name="IntroSection">
-                    <xsl:with-param name="CPP" select="$CPP" />
-                    <xsl:with-param name="LABEL" select="$LABEL" />
-                </xsl:call-template>
+                <header class="pageHeader" id="pageHeader">
+                    <nav class="pageHeaderNav">
+                        <a href="#mainContent">Top</a>
+                        <a href="#descriptionSection">Description</a>
+                        <a href="#dependenciesSection">Dependencies</a>
+                        <a href="#linksSection">Frameworks</a>
+                        <a href="#referencesSection">Reference implementations</a>
+                    </nav>
+                    <span class="pageHeaderLinks">
+                        <a href="#mainContent">Back to top &#8593;</a>
+                        <a href="{concat($GITHUB_BLOB_URL, '03_Glossary.pdf')}" title="View Glossary on GitHub">
+                            <i class="fa-solid fa-book"></i>
+                            <xsl:text> Glossary</xsl:text>
+                        </a>
+                        <a href="{$GITHUB_PAGES_URL}" title="Back to CPPs home page">
+                            <i class="fa-solid fa-house"></i>
+                            <xsl:text> Index</xsl:text>
+                        </a>
+                    </span>
+                </header>
 
-                <xsl:call-template name="descriptionSection" />
+                <main class="pageContent" id="mainContent">
 
-                <xsl:call-template name="dependenciesSection" />
+                    <xsl:call-template name="IntroSection">
+                        <xsl:with-param name="CPP" select="$CPP" />
+                        <xsl:with-param name="LABEL" select="$LABEL" />
+                    </xsl:call-template>
 
-                <xsl:call-template name="linksSection" />
+                    <xsl:call-template name="descriptionSection" />
 
-                <xsl:call-template name="referencesSection" />
+                    <xsl:call-template name="dependenciesSection" />
+
+                    <xsl:call-template name="linksSection" />
+
+                    <xsl:call-template name="referencesSection" />
+
+                </main>
+
+                <footer class="pageFooter" id="pageFooter">
+                    <span class="pageFooterIdentifier">
+                        <xsl:value-of select="$CPP" />
+                        <xsl:text>:</xsl:text>
+                        <xsl:value-of select="$SPACE" />
+                        <xsl:value-of select="$LABEL" />
+                    </span>
+                    <span class="pageFooterLinks">
+                        <a title="View LICENSE on GitHub">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="concat($GITHUB_BLOB_URL, 'LICENSE')" />
+                            </xsl:attribute>
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <xsl:text> License</xsl:text>
+                        </a>
+                        <a title="View PDF on GitHub">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="$GITHUB_BLOB_URL" />
+                                <xsl:value-of select="$CPP_UPPER" />
+                                <xsl:text>/EOSC-EDEN_</xsl:text>
+                                <xsl:value-of select="$CPP_UPPER" />
+                                <xsl:text>_</xsl:text>
+                                <xsl:value-of select="translate($LABEL,' ','_')" />
+                                <xsl:text>.pdf</xsl:text>
+                            </xsl:attribute>
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <xsl:text> PDF</xsl:text>
+                        </a>
+                        <a title="Edit source on GitHub">
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="$GITHUB_EDIT_URL" />
+                                <xsl:value-of select="$CPP_UPPER" />
+                                <xsl:text>/</xsl:text>
+                                <xsl:value-of select="$CPP_LOWER" />
+                                <xsl:text>.xml</xsl:text>
+                            </xsl:attribute>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <xsl:text> Edit on GitHub</xsl:text>
+                        </a>
+                    </span>
+                </footer>
 
             </body>
         </html>
