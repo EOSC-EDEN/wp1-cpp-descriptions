@@ -1,0 +1,122 @@
+name: Generate HTML from CPP XML
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'cpp2pdf.xsl'
+      - 'frameworks.xml'
+      - 'cpps.xml'
+      - 'CPP-*/cpp-*.xml'
+      - '.fop/**'
+
+permissions:
+  contents: write
+
+jobs:
+  print-and-commit:
+    if: github.actor != 'github-actions[bot]'
+    name: Print and commit PDF generation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.ACTION_BOT_APP_ID }}
+          private-key: ${{ secrets.ACTION_BOT_PRIVATE_KEY }}
+          
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: set up JDK
+        uses: actions/setup-java@v6
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Install Apache FOP
+        run: |
+          wget https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.11-bin.zip
+          unzip fop-2.11-bin.zip
+          sudo mv fop-2.11 /opt/fop
+          echo "export PATH=\$PATH:/opt/fop/bin" >> $GITHUB_ENV
+          
+
+      - name: Print each CPP-*/cpp-*.xml to PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Check if the XSL file exists.
+          XSL_FILE='cpp2pdf.xsl'
+          if [ -z "$XSL_FILE" ]; then
+            echo "cpp2pdf.xsl not found in repository; nothing to do."
+            exit 0
+          fi
+          echo "Using XSLT stylesheet: $XSL_FILE"
+
+          found=0
+          # Transform each cpp-*.xml under directories that start with CPP-
+          while IFS= read -r -d '' xml; do
+            found=1
+            out="$(dirname "$xml")/$(basename "${xml%.xml}").pdf"
+            echo "Printing '$xml' -> '$out'"
+            if ! fop -xml "$xml" -xsl "$XSL_FILE" -pdf "$out"; then
+              echo "Printing failed for $xml" >&2
+              exit 1
+            fi
+          done < <(find . -type f -path "./CPP-*/*" -name 'cpp-*.xml' -print0 || true)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No CPP-*/cpp-*.xml files were found to transform."
+          fi
+
+      - name: Commit updated/new cpp-*.pdf files
+        if: always()
+        shell: bash
+        env:
+          GIT_AUTHOR_NAME: "github-actions[bot]"
+          GIT_AUTHOR_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
+        run: |
+          set -euo pipefail
+
+          git config user.name "$GIT_AUTHOR_NAME"
+          git config user.email "$GIT_AUTHOR_EMAIL"
+
+          staged=false
+
+          # Stage modified or added PDF files matching CPP-*/cpp-*.pdf
+          # 1) staged/modified relative to HEAD
+          while IFS= read -r -d '' f; do
+            git add -f "$f"
+            staged=true
+          done < <(git diff --name-only --diff-filter=AM HEAD -z | grep -z -E '^CPP-*/cpp-.*\.pdf$' || true)
+
+          # 2) untracked PDF files that match the pattern
+          while IFS= read -r -d '' f; do
+            git add -f "$f"
+            staged=true
+          done < <(git ls-files --others --exclude-standard -z | grep -z -E '^CPP-*/cpp-.*\.pdf$' || true)
+
+          if [ "$staged" = false ]; then
+            echo "No cpp-*.pdf updates to commit."
+            exit 0
+          fi
+
+          # Commit any changes to the PDF files
+          git commit -m "Updated CPP PDF descriptions"
+
+          # Pull any changes committed in the mean time (e.g. from other actions)
+          git pull --no-ff
+
+          # Push back to the branch that triggered the workflow
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          echo "Pushing commit to branch: ${BRANCH}"
+          git push origin ${{ github.ref }}

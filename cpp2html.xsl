@@ -25,7 +25,7 @@
     <xsl:variable name="base-lightness">95</xsl:variable>
     <xsl:variable name="lightness-step">5</xsl:variable>
 
-    <xsl:variable name="maxStepDepth" select="5" />
+    <xsl:variable name="maxStepDepth" select="number(cpp:maxGroupDepth(/cpp:cpp/cpp:process/cpp:stepByStepDescription))" />
     <xsl:variable name="dataColumnCount" select="5" />
     <xsl:variable name="totalColumnCount" select="$maxStepDepth + $dataColumnCount" />
 
@@ -101,10 +101,8 @@
                             <xsl:attribute name="href">
                                 <xsl:value-of select="$GITHUB_BLOB_URL" />
                                 <xsl:value-of select="$CPP_UPPER" />
-                                <xsl:text>/EOSC-EDEN_</xsl:text>
-                                <xsl:value-of select="$CPP_UPPER" />
-                                <xsl:text>_</xsl:text>
-                                <xsl:value-of select="translate($LABEL,' ','_')" />
+                                <xsl:text>/</xsl:text>
+                                <xsl:value-of select="$CPP_LOWER" />
                                 <xsl:text>.pdf</xsl:text>
                             </xsl:attribute>
                             <i class="fa-solid fa-file-pdf"></i>
@@ -1535,6 +1533,59 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:for-each>
+    </xsl:template>
+
+    <!-- counts the deepest stepGroup nesting reachable from $node (0 = no nested stepGroup) -->
+    <func:function name="cpp:maxGroupDepth">
+        <xsl:param name="node" />
+        <func:result>
+            <xsl:variable name="childGroups" select="$node/cpp:stepGroup" />
+            <xsl:choose>
+                <xsl:when test="not($childGroups)">
+                    <xsl:value-of select="0" />
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:variable name="deepestChild">
+                        <xsl:call-template name="max-child-group-depth">
+                            <xsl:with-param name="nodes" select="$childGroups" />
+                            <xsl:with-param name="currentMax" select="0" />
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:value-of select="1 + number($deepestChild)" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </func:result>
+    </func:function>
+
+    <!-- helper template: keeps the largest maxGroupDepth found across a set of stepGroup nodes -->
+    <xsl:template name="max-child-group-depth">
+        <xsl:param name="nodes" />
+        <xsl:param name="currentMax" select="0" />
+
+        <xsl:choose>
+            <xsl:when test="not($nodes)">
+                <xsl:value-of select="$currentMax" />
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="first" select="$nodes[1]" />
+                <xsl:variable name="rest" select="$nodes[position() &gt; 1]" />
+                <xsl:variable name="depth" select="number(cpp:maxGroupDepth($first))" />
+                <xsl:variable name="newMax">
+                    <xsl:choose>
+                        <xsl:when test="$depth &gt; $currentMax">
+                            <xsl:value-of select="$depth" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$currentMax" />
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <xsl:call-template name="max-child-group-depth">
+                    <xsl:with-param name="nodes" select="$rest" />
+                    <xsl:with-param name="currentMax" select="$newMax" />
+                </xsl:call-template>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <!-- counts number of rows needed for a given step or stepRow element -->

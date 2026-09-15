@@ -1,0 +1,22 @@
+<fop version="1.0">
+  <font-base>fonts/</font-base>
+  <renderers>
+    <renderer mime="application/pdf">
+      <fonts>
+        <font kerning="yes" embed-url="ARIAL.TTF">
+          <font-triplet name="Helvetica" style="normal" weight="normal"/>
+        </font>
+        <font kerning="yes" embed-url="ARIALI.TTF">
+          <font-triplet name="Helvetica" style="italic" weight="normal"/>
+        </font>
+        <font kerning="yes" embed-url="ARIALBD.TTF">
+          <font-triplet name="Helvetica" style="normal" weight="bold" />
+        </font>
+        <font kerning="yes" embed-url="ARIALBI.TTF">
+          <font-triplet name="Helvetica" style="italic" weight="bold" />
+        </font>
+      </fonts>
+      <pdf-a-mode>PDF/A-1b</pdf-a-mode>
+    </renderer>
+  </renderers>
+</fop>
