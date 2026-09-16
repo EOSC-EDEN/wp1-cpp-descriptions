@@ -4,7 +4,7 @@ This repository contains the descriptions of the 30 Core Preservation Processes 
 
 ## Contributing
 
-Feedback is sought by the Work Package 1 Task 1.2 group both on the structure and the content of the CPP descriptions. Please then refer to the [contribution instructions](CONTRIBUTING.md).
+Feedback is sought by the CPP maintainers both on the structure and the content of the CPP descriptions. Please then refer to the [contribution instructions](CONTRIBUTING.md).
 
 ## Source files and formats in the repository
 
