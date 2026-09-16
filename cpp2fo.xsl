@@ -1879,7 +1879,7 @@
     </xsl:template>
 
     <xsl:template match="xhtml:br" mode="fo-inline">
-        <fo:block />
+        <fo:block>&#160;</fo:block>
     </xsl:template>
 
     <xsl:template match="xhtml:a" mode="fo-inline">
