@@ -1768,7 +1768,7 @@
             <xsl:attribute name="number-rows-spanned">
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
-            <xsl:if test="count($data/cpp:supplier)=0">
+            <xsl:if test="count($data/cpp:customer)=0">
                 <fo:block/>
             </xsl:if>
             <xsl:for-each select="$data/cpp:customer">
