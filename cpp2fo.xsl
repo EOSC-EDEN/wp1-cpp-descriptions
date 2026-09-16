@@ -101,8 +101,7 @@
     </xsl:template>
 
     <xsl:template name="cell2Attrs">
-        <xsl:attribute name="border-top">0.5pt solid #222</xsl:attribute>
-        <xsl:attribute name="padding">4pt</xsl:attribute>
+<xsl:attribute name="border-top">0.5pt solid #222</xsl:attribute>
     </xsl:template>
 
     <xsl:template name="headerCellAttrs">
