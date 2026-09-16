@@ -79,7 +79,7 @@ jobs:
           fi
 
       - name: Commit updated/new cpp-*.pdf files
-        if: always()
+        if: success()
         shell: bash
         env:
           GIT_AUTHOR_NAME: "github-actions[bot]"
