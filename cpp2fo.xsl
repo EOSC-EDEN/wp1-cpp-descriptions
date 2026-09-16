@@ -100,6 +100,11 @@
         <xsl:attribute name="padding">4pt</xsl:attribute>
     </xsl:template>
 
+    <xsl:template name="cell2Attrs">
+        <xsl:attribute name="border-top">0.5pt solid #222</xsl:attribute>
+        <xsl:attribute name="padding">4pt</xsl:attribute>
+    </xsl:template>
+
     <xsl:template name="headerCellAttrs">
         <xsl:call-template name="cellAttrs" />
         <xsl:attribute name="background-color">#e0e0e0</xsl:attribute>
@@ -1702,16 +1707,19 @@
             <xsl:attribute name="number-rows-spanned">
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
-            <fo:block>
-                <xsl:for-each select="$data/cpp:supplier">
+            <xsl:if test="count($data/cpp:supplier)=0">
+                <fo:block/>
+            </xsl:if>
+            <xsl:for-each select="$data/cpp:supplier">
+                <fo:block margin="0" padding="1mm">
                     <xsl:if test="position()!=1">
-                        <fo:block />
+                        <xsl:call-template name="cell2Attrs"></xsl:call-template>
                     </xsl:if>
                     <xsl:call-template name="cppIdLabel">
                         <xsl:with-param name="cpp_identifier" select="." />
                     </xsl:call-template>
-                </xsl:for-each>
-            </fo:block>
+                </fo:block>
+            </xsl:for-each>
         </fo:table-cell>
         <fo:table-cell>
             <xsl:call-template name="cellAttrs" />
@@ -1760,16 +1768,19 @@
             <xsl:attribute name="number-rows-spanned">
                 <xsl:value-of select="$rowspan" />
             </xsl:attribute>
-            <fo:block>
-                <xsl:for-each select="$data/cpp:customer">
+            <xsl:if test="count($data/cpp:supplier)=0">
+                <fo:block/>
+            </xsl:if>
+            <xsl:for-each select="$data/cpp:customer">
+                <fo:block margin="0" padding="1mm">
                     <xsl:if test="position()!=1">
-                        <fo:block />
+                        <xsl:call-template name="cell2Attrs"></xsl:call-template>
                     </xsl:if>
                     <xsl:call-template name="cppIdLabel">
                         <xsl:with-param name="cpp_identifier" select="." />
                     </xsl:call-template>
-                </xsl:for-each>
-            </fo:block>
+                </fo:block>
+            </xsl:for-each>
         </fo:table-cell>
     </xsl:template>
 
