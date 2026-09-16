@@ -54,7 +54,7 @@ jobs:
 
           # Check if the XSL file exists.
           XSL_FILE='cpp2fo.xsl'
-          if [ -z "$XSL_FILE" ]; then
+          if [ ! -f "$XSL_FILE" ]; then
             echo "cpp2fo.xsl not found in repository; nothing to do."
             exit 0
           fi
