@@ -559,7 +559,7 @@
 
     <xsl:template name="referencesSection">
 
-        <fo:block font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}" break-before="page">4. Reference implementations</fo:block>
+        <fo:block font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}">4. Reference implementations</fo:block>
 
         <xsl:if test="count(cpp:referenceImplementations/cpp:useCases/cpp:useCase) &gt; 0">
 
