@@ -7,8 +7,9 @@ on:
       - main
     paths:
       - 'cpp2fo.xsl'
-      - 'frameworks.xml'
       - 'cpps.xml'
+      - 'frameworks.xml'
+      - 'languages.xml'
       - 'CPP-*/cpp-*.xml'
       - '.fop/**'
 
