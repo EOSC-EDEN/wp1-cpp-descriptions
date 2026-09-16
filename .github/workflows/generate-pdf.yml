@@ -44,12 +44,9 @@ jobs:
 
       - name: Install Apache FOP
         run: |
-          wget https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.11-bin.zip
-          unzip fop-2.11-bin.zip
-          sudo mv fop-2.11 /opt/fop
-          echo "PATH=\$PATH:/opt/fop/bin" >> $GITHUB_ENV
+          sudo apt-get update
+          sudo apt-get install -y fop
           
-
       - name: Print each CPP-*/cpp-*.xml to PDF
         shell: bash
         run: |
