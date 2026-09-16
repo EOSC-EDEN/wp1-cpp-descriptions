@@ -1,4 +1,4 @@
-name: Generate HTML from CPP XML
+name: Generate PDF from CPP XML
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'cpp2pdf.xsl'
+      - 'cpp2fo.xsl'
       - 'frameworks.xml'
       - 'cpps.xml'
       - 'CPP-*/cpp-*.xml'
@@ -46,7 +46,7 @@ jobs:
           wget https://archive.apache.org/dist/xmlgraphics/fop/binaries/fop-2.11-bin.zip
           unzip fop-2.11-bin.zip
           sudo mv fop-2.11 /opt/fop
-          echo "export PATH=\$PATH:/opt/fop/bin" >> $GITHUB_ENV
+          echo "PATH=\$PATH:/opt/fop/bin" >> $GITHUB_ENV
           
 
       - name: Print each CPP-*/cpp-*.xml to PDF
@@ -55,9 +55,9 @@ jobs:
           set -euo pipefail
 
           # Check if the XSL file exists.
-          XSL_FILE='cpp2pdf.xsl'
+          XSL_FILE='cpp2fo.xsl'
           if [ -z "$XSL_FILE" ]; then
-            echo "cpp2pdf.xsl not found in repository; nothing to do."
+            echo "cpp2fo.xsl not found in repository; nothing to do."
             exit 0
           fi
           echo "Using XSLT stylesheet: $XSL_FILE"
@@ -68,7 +68,7 @@ jobs:
             found=1
             out="$(dirname "$xml")/$(basename "${xml%.xml}").pdf"
             echo "Printing '$xml' -> '$out'"
-            if ! fop -xml "$xml" -xsl "$XSL_FILE" -pdf "$out"; then
+            if ! fop -xml "$xml" -xsl "$XSL_FILE" -c ".fop/fop.xml" -pdf "$out"; then
               echo "Printing failed for $xml" >&2
               exit 1
             fi
@@ -97,13 +97,13 @@ jobs:
           while IFS= read -r -d '' f; do
             git add -f "$f"
             staged=true
-          done < <(git diff --name-only --diff-filter=AM HEAD -z | grep -z -E '^CPP-*/cpp-.*\.pdf$' || true)
+          done < <(git diff --name-only --diff-filter=AM HEAD -z | grep -z -E '^CPP-[^/]+/cpp-.*\.pdf$' || true)
 
           # 2) untracked PDF files that match the pattern
           while IFS= read -r -d '' f; do
             git add -f "$f"
             staged=true
-          done < <(git ls-files --others --exclude-standard -z | grep -z -E '^CPP-*/cpp-.*\.pdf$' || true)
+          done < <(git ls-files --others --exclude-standard -z | grep -z -E '^CPP-[^/]+/cpp-.*\.pdf$' || true)
 
           if [ "$staged" = false ]; then
             echo "No cpp-*.pdf updates to commit."
