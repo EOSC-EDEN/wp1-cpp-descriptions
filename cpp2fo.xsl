@@ -1872,7 +1872,7 @@
         </fo:inline>
     </xsl:template>
 
-    <xsl:template match="xhtml:strong" mode="fo-inline">
+    <xsl:template match="xhtml:strong|xhtml:b" mode="fo-inline">
         <fo:inline font-weight="bold">
             <xsl:apply-templates mode="fo-inline" />
         </fo:inline>
