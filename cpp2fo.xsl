@@ -587,8 +587,9 @@
 
         <fo:block space-after="4pt">
             <fo:table width="100%" table-layout="fixed" space-after="8pt" keep-with-previous="always" font-size="{$table-font-size}">
+                <fo:table-column column-width="proportional-column-width(2)" />
                 <fo:table-column column-width="proportional-column-width(1)" />
-                <fo:table-column column-width="proportional-column-width(3)" />
+                <fo:table-column column-width="proportional-column-width(8)" />
                 <fo:table-body>
                     <xsl:apply-templates select="$inputs" mode="inout_table" />
                     <xsl:apply-templates select="$outputs" mode="inout_table" />
@@ -600,7 +601,7 @@
 
     <xsl:template match="cpp:inputs" mode="inout_table">
         <fo:table-row keep-together.within-page="always" keep-with-previous="always" keep-with-next="always">
-            <fo:table-cell number-columns-spanned="2">
+            <fo:table-cell number-columns-spanned="3">
                 <xsl:call-template name="headerCellAttrs" />
                 <fo:block>Input&#40;s&#41;</fo:block>
             </fo:table-cell>
@@ -614,7 +615,7 @@
 
     <xsl:template match="cpp:outputs" mode="inout_table">
         <fo:table-row keep-together.within-page="always" keep-with-previous="always" keep-with-next="always">
-            <fo:table-cell number-columns-spanned="2">
+            <fo:table-cell number-columns-spanned="3">
                 <xsl:call-template name="headerCellAttrs" />
                 <fo:block>Output&#40;s&#41;</fo:block>
             </fo:table-cell>
@@ -658,52 +659,62 @@
 
         <xsl:variable name="requiredData" select="$data[@optional!='true' or not(@optional)]" />
         <xsl:variable name="optionalData" select="$data[@optional='true']" />
+        <xsl:variable name="totalRowsRequired" select="count($requiredData)" />
+        <xsl:variable name="totalRowsOptional" select="count($optionalData)" />
+        <xsl:variable name="totalRows" select="$totalRowsRequired + $totalRowsOptional"></xsl:variable>
 
-        <xsl:if test="count($requiredData) &gt; 0 or count($optionalData) &gt; 0">
+        <xsl:for-each select="$requiredData">
             <fo:table-row keep-together.within-page="always">
+                <!-- First column cell spanning all rows -->
+                <xsl:if test="position() = 1">
+                    <fo:table-cell number-rows-spanned="{$totalRows}">
+                        <xsl:call-template name="cellAttrs" />
+                        <fo:block font-weight="bold">
+                            <xsl:value-of select="$header" />
+                        </fo:block>
+                    </fo:table-cell>
+                </xsl:if>
+
+                <!--- the data cell for the required data element, spanning two columns -->
+                <fo:table-cell number-columns-spanned="2">
+                    <xsl:call-template name="cellAttrs" />
+                    <fo:block>
+                        <xsl:value-of select="." />
+                    </fo:block>
+                </fo:table-cell>
+            </fo:table-row>
+        </xsl:for-each>
+
+        <xsl:for-each select="$optionalData">
+            <fo:table-row keep-together.within-page="always">
+                <!-- First column cell spanning all rows -->
+                <xsl:if test="position() = 1 and $totalRowsRequired=0">
+                    <fo:table-cell number-rows-spanned="{$totalRows}">
+                        <xsl:call-template name="cellAttrs" />
+                        <fo:block font-weight="bold">
+                            <xsl:value-of select="$header" />
+                        </fo:block>
+                    </fo:table-cell>
+                </xsl:if>
+
+                <!-- The fixed Optional text column -->
+                <xsl:if test="position() = 1">
+                    <fo:table-cell number-rows-spanned="{$totalRowsOptional}" font-style="italic">
+                        <xsl:call-template name="cellAttrs" />
+                        <fo:block>Optional</fo:block>
+                    </fo:table-cell>
+                </xsl:if>
+
+                <!-- The data cell for the optional data element -->
                 <fo:table-cell>
                     <xsl:call-template name="cellAttrs" />
                     <fo:block>
-                        <xsl:value-of select="$header" />
+                        <xsl:value-of select="." />
                     </fo:block>
                 </fo:table-cell>
-                <fo:table-cell padding="0">
-                    <xsl:call-template name="cellAttrs" />
-                    <fo:table width="100%" table-layout="fixed" border-collapse="collapse">
-                        <fo:table-column column-width="proportional-column-width(1)" />
-                        <fo:table-column column-width="proportional-column-width(6)" />
-                        <fo:table-body>
-                            <xsl:for-each select="$requiredData">
-                                <fo:table-row keep-together.within-page="always">
-                                    <fo:table-cell number-columns-spanned="2" padding="2pt">
-                                        <fo:block>
-                                            <xsl:value-of select="." />
-                                        </fo:block>
-                                    </fo:table-cell>
-                                </fo:table-row>
-                            </xsl:for-each>
-                            <xsl:for-each select="$optionalData">
-                                <fo:table-row keep-together.within-page="always">
-                                    <xsl:if test="position()>1">
-                                        <xsl:attribute name="keep-with-previous">always</xsl:attribute>
-                                    </xsl:if>
-                                    <xsl:if test="position()=1">
-                                        <fo:table-cell number-rows-spanned="{count($optionalData)}" padding="2pt" font-style="italic">
-                                            <fo:block>Optional</fo:block>
-                                        </fo:table-cell>
-                                    </xsl:if>
-                                    <fo:table-cell padding="2pt">
-                                        <fo:block>
-                                            <xsl:value-of select="." />
-                                        </fo:block>
-                                    </fo:table-cell>
-                                </fo:table-row>
-                            </xsl:for-each>
-                        </fo:table-body>
-                    </fo:table>
-                </fo:table-cell>
             </fo:table-row>
-        </xsl:if>
+        </xsl:for-each>
+
     </xsl:template>
 
     <!-- Trigger events table -->
