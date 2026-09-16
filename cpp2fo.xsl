@@ -1949,7 +1949,7 @@
                     </fo:list-item-label>
                     <fo:list-item-body start-indent="body-start()">
                         <fo:block>
-                            <xsl:apply-templates mode="fo-inline" />
+                            <xsl:apply-templates mode="fo-block" />
                         </fo:block>
                     </fo:list-item-body>
                 </fo:list-item>
@@ -1969,7 +1969,7 @@
                     </fo:list-item-label>
                     <fo:list-item-body start-indent="body-start()">
                         <fo:block>
-                            <xsl:apply-templates mode="fo-inline" />
+                            <xsl:apply-templates mode="fo-block" />
                         </fo:block>
                     </fo:list-item-body>
                 </fo:list-item>
