@@ -1631,6 +1631,31 @@
         <xsl:param name="type" />
         <xsl:param name="label" />
 
+        <fo:instream-foreign-object content-width="1em" content-height="1em">
+            <xsl:choose>
+                <xsl:when test="$type='sequence'">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. -->
+                        <path fill="currentColor" d="M418.7 38c8.3 6 13.3 15.7 13.3 26l0 96 16 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-96 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l16 0 0-51.6-5.9 2c-16.8 5.6-34.9-3.5-40.5-20.2s3.5-34.9 20.2-40.5l48-16c9.8-3.3 20.5-1.6 28.8 4.4zM365.1 430.6l11.7-18c-32.9-9.9-56.8-40.5-56.8-76.6 0-44.2 35.8-80 80-80s80 35.8 80 80c0 22.9-6.6 45.3-19.1 64.5l-42.1 64.9c-9.6 14.8-29.4 19.1-44.3 9.4s-19.1-29.4-9.4-44.3zM424 336a24 24 0 1 0 -48 0 24 24 0 1 0 48 0zM150.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-96-96c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L96 370.7 96 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 306.7 41.4-41.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3l-96 96z"/>
+                    </svg>
+                </xsl:when>
+                <xsl:when test="$type='alternative'">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. -->
+                        <path fill="currentColor" d="M342.6-22.6c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l41.4-41.4 0 195.9c-18.8-10.9-40.7-17.1-64-17.1l-114.7 0 41.4-41.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 320 224 320c35.3 0 64 28.7 64 64 0 70.7 57.3 128 128 128l32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-32 0c-35.3 0-64-28.7-64-64l0-306.7 41.4 41.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-96-96z"/>
+                    </svg>
+                </xsl:when>
+                <xsl:when test="$type='parallel'">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. -->
+                        <path fill="currentColor" d="M214.6 310.6l-64 64c-12.5 12.5-32.8 12.5-45.3 0l-64-64c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L96 274.7 96 32c0-17.7 14.3-32 32-32s32 14.3 32 32l0 242.7 9.4-9.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3zm256 0l-64 64c-12.5 12.5-32.8 12.5-45.3 0l-64-64c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l9.4 9.4 0-242.7c0-17.7 14.3-32 32-32s32 14.3 32 32l0 242.7 9.4-9.4c12.5-12.5 32.8-12.5 45.3 0s12.5 32.8 0 45.3zM32 512c-17.7 0-32-14.3-32-32s14.3-32 32-32l448 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 512z"/>
+                    </svg>
+                </xsl:when>
+            </xsl:choose>
+        </fo:instream-foreign-object>
+
+        <xsl:text>&#160;</xsl:text>
+
         <fo:inline font-style="italic">
             <xsl:value-of select="$type" />
         </fo:inline>
