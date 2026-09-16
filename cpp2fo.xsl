@@ -129,6 +129,110 @@
                 </fo:simple-page-master>
             </fo:layout-master-set>
 
+            <fo:bookmark-tree>
+                <fo:bookmark internal-destination="title">
+                    <fo:bookmark-title>
+                        <xsl:value-of select="concat($LABEL, ' (', $CPP, ')')" />
+                    </fo:bookmark-title>
+                </fo:bookmark>
+
+                <fo:bookmark internal-destination="description">
+                    <fo:bookmark-title>
+                        <xsl:text>1. Description of the CPP</xsl:text>
+                    </fo:bookmark-title>
+                    <fo:bookmark internal-destination="inputsAndOutputs">
+                        <fo:bookmark-title>
+                            <xsl:text>Inputs and outputs</xsl:text>
+                        </fo:bookmark-title>
+                    </fo:bookmark>
+                    <fo:bookmark internal-destination="definitionAndScope">
+                        <fo:bookmark-title>
+                            <xsl:text>Definition and scope</xsl:text>
+                        </fo:bookmark-title>
+                    </fo:bookmark>
+                    <fo:bookmark internal-destination="processDescription">
+                        <fo:bookmark-title>
+                            <xsl:text>Process description</xsl:text>
+                        </fo:bookmark-title>
+                        <fo:bookmark internal-destination="triggerEvents">
+                            <fo:bookmark-title>
+                                <xsl:text>Trigger event(s)</xsl:text>
+                            </fo:bookmark-title>
+                        </fo:bookmark>
+                        <fo:bookmark internal-destination="stepByStepDescription">
+                            <fo:bookmark-title>
+                                <xsl:text>Step-by-step description</xsl:text>
+                            </fo:bookmark-title>
+                        </fo:bookmark>
+                    </fo:bookmark>
+                    <fo:bookmark internal-destination="rationaleWorstCase">
+                        <fo:bookmark-title>
+                            <xsl:text>Rationale(s) and worst case(s)</xsl:text>
+                        </fo:bookmark-title>
+                    </fo:bookmark>
+                </fo:bookmark>
+
+                <fo:bookmark internal-destination="dependencies">
+                    <fo:bookmark-title>
+                        <xsl:text>2. Dependencies and relationships with other CPPs</xsl:text>
+                    </fo:bookmark-title>
+                    <fo:bookmark internal-destination="dependenciesTable">
+                        <fo:bookmark-title>
+                            <xsl:text>Dependencies</xsl:text>
+                        </fo:bookmark-title>
+                    </fo:bookmark>
+                    <fo:bookmark internal-destination="otherRelations">
+                        <fo:bookmark-title>
+                            <xsl:text>Other relations</xsl:text>
+                        </fo:bookmark-title>
+                    </fo:bookmark>
+                </fo:bookmark>
+
+                <fo:bookmark internal-destination="links">
+                    <fo:bookmark-title>
+                        <xsl:text>3. Links to frameworks</xsl:text>
+                    </fo:bookmark-title>
+                    <fo:bookmark internal-destination="certificationTable">
+                        <fo:bookmark-title>
+                            <xsl:text>Certification</xsl:text>
+                        </fo:bookmark-title>
+                    </fo:bookmark>
+                    <fo:bookmark internal-destination="otherFrameworks">
+                        <fo:bookmark-title>
+                            <xsl:text>Other frameworks and reference documents</xsl:text>
+                        </fo:bookmark-title>
+                    </fo:bookmark>
+                </fo:bookmark>
+
+                <fo:bookmark internal-destination="references">
+                    <fo:bookmark-title>
+                        <xsl:text>4. Reference implementations</xsl:text>
+                    </fo:bookmark-title>
+                    <xsl:if test="count(cpp:referenceImplementations/cpp:useCases/cpp:useCase) &gt; 0">
+                        <fo:bookmark internal-destination="useCases">
+                            <fo:bookmark-title>
+                                <xsl:text>Use cases</xsl:text>
+                            </fo:bookmark-title>
+                            <xsl:for-each select="cpp:referenceImplementations/cpp:useCases/cpp:useCase">
+                                <fo:bookmark internal-destination="{concat('useCase-', position())}">
+                                    <fo:bookmark-title>
+                                        <xsl:value-of select="cpp:useCasetitle" />
+                                    </fo:bookmark-title>
+                                </fo:bookmark>
+                            </xsl:for-each>
+                        </fo:bookmark>
+                    </xsl:if>
+                    <xsl:if test="count(cpp:referenceImplementations/cpp:publicDocumentation) &gt; 0">
+                        <fo:bookmark internal-destination="publicDocumentation">
+                            <fo:bookmark-title>
+                                <xsl:text>Publicly available documentation</xsl:text>
+                            </fo:bookmark-title>
+                        </fo:bookmark>
+                    </xsl:if>
+                </fo:bookmark>
+
+            </fo:bookmark-tree>
+
             <!-- Part 1 (portrait): title, intro table, description up to Process description -->
             <fo:page-sequence master-reference="cpp-page">
 
@@ -295,7 +399,7 @@
         <xsl:param name="CPP" />
         <xsl:param name="LABEL" />
 
-        <fo:block font-size="{$title-font-size}" font-weight="{$title-font-weight}" font-style="{$title-font-style}" space-before="{$title-space-before}" space-after="{$title-space-after}">
+        <fo:block id="title" font-size="{$title-font-size}" font-weight="{$title-font-weight}" font-style="{$title-font-style}" space-before="{$title-space-before}" space-after="{$title-space-after}">
             <xsl:value-of select="$LABEL" />
             <xsl:value-of select="$SPACE" />
             <xsl:text>&#40;</xsl:text>
@@ -309,7 +413,7 @@
         <xsl:param name="CPP" />
         <xsl:param name="LABEL" />
 
-        <fo:block space-after="{$body-space-after}">
+        <fo:block id="introTable" space-after="{$body-space-after}">
             <fo:table width="100%" table-layout="fixed" space-after="12pt" font-size="{$table-font-size}">
                 <fo:table-column column-width="proportional-column-width({$left-column-width})" />
                 <fo:table-column column-width="proportional-column-width({$right-column-width})" />
@@ -471,20 +575,26 @@
 
     <xsl:template name="descriptionSectionIntro" match="cpp:cpp">
 
-        <fo:block font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}" break-before="page">1. Description of the CPP</fo:block>
+        <fo:block id="description" font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}" break-before="page">
+            1. Description of the CPP
+        </fo:block>
 
         <fo:block font-weight="{$body-font-weight}" font-style="{$body-font-style}" space-before="{$body-space-before}" space-after="{$body-space-after}">
             <xsl:value-of select="cpp:shortDefinition" />
         </fo:block>
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Inputs and outputs</fo:block>
+        <fo:block id="inputsAndOutputs" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+            Inputs and outputs
+        </fo:block>
 
         <xsl:call-template name="inoutTable">
             <xsl:with-param name="inputs" select="cpp:process/cpp:inputs" />
             <xsl:with-param name="outputs" select="cpp:process/cpp:outputs" />
         </xsl:call-template>
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Definition and scope</fo:block>
+        <fo:block id="definitionAndScope" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+            Definition and scope
+        </fo:block>
 
         <xsl:call-template name="copyContentFO">
             <xsl:with-param name="data" select="cpp:descriptionAndScope" />
@@ -494,15 +604,21 @@
 
     <xsl:template name="descriptionSectionProcess" match="cpp:cpp">
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Process description</fo:block>
+        <fo:block id="processDescription" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+            Process description
+        </fo:block>
 
-        <fo:block font-size="{$h3-font-size}" font-weight="{$h3-font-weight}" font-style="{$h3-font-style}" space-before="{$h3-space-before}" space-after="{$h3-space-after}">Trigger event&#40;s&#41;</fo:block>
+        <fo:block id="triggerEvents" font-size="{$h3-font-size}" font-weight="{$h3-font-weight}" font-style="{$h3-font-style}" space-before="{$h3-space-before}" space-after="{$h3-space-after}">
+            Trigger event&#40;s&#41;
+        </fo:block>
 
         <xsl:call-template name="triggerEvents">
             <xsl:with-param name="data" select="cpp:process/cpp:triggerEvents" />
         </xsl:call-template>
 
-        <fo:block font-size="{$h3-font-size}" font-weight="{$h3-font-weight}" font-style="{$h3-font-style}" space-before="{$h3-space-before}" space-after="{$h3-space-after}">Step-by-step description</fo:block>
+        <fo:block id="stepByStepDescription" font-size="{$h3-font-size}" font-weight="{$h3-font-weight}" font-style="{$h3-font-style}" space-before="{$h3-space-before}" space-after="{$h3-space-after}">
+            Step-by-step description
+        </fo:block>
 
         <xsl:call-template name="stepTable">
             <xsl:with-param name="data" select="cpp:process/cpp:stepByStepDescription" />
@@ -512,7 +628,7 @@
 
     <xsl:template name="descriptionSectionRationale" match="cpp:cpp">
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Rationale&#40;s&#41; and worst case&#40;s&#41;</fo:block>
+        <fo:block id="rationaleWorstCase" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Rationale&#40;s&#41; and worst case&#40;s&#41;</fo:block>
 
         <xsl:call-template name="rationaleTable">
             <xsl:with-param name="data" select="cpp:rationaleWorstCase" />
@@ -522,15 +638,21 @@
 
     <xsl:template name="dependenciesSection" match="cpp:cpp">
 
-        <fo:block font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}" break-before="page">2. Dependencies and relationships with other CPPs</fo:block>
+        <fo:block id="dependencies" font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}" break-before="page">
+            2. Dependencies and relationships with other CPPs
+        </fo:block>
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Dependencies</fo:block>
+        <fo:block id="dependenciesTable" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+            Dependencies
+        </fo:block>
 
         <xsl:call-template name="dependencyTable">
             <xsl:with-param name="data" select="cpp:cppRelationships/cpp:relationship[cpp:relationshipType='Requires']" />
         </xsl:call-template>
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Other relations</fo:block>
+        <fo:block id="otherRelations" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+            Other relations
+        </fo:block>
 
         <xsl:call-template name="relationTable">
             <xsl:with-param name="data" select="cpp:cppRelationships/cpp:relationship[cpp:relationshipType!='Requires']" />
@@ -540,15 +662,21 @@
 
     <xsl:template name="linksSection" match="cpp:cpp">
 
-        <fo:block font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}" break-before="page">3. Links to frameworks</fo:block>
+        <fo:block id="links" font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}" break-before="page">
+            3. Links to frameworks
+        </fo:block>
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Certification</fo:block>
+        <fo:block id="certificationTable" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+            Certification
+        </fo:block>
 
         <xsl:call-template name="certificationTable">
             <xsl:with-param name="data" select="cpp:frameworkMappings" />
         </xsl:call-template>
 
-        <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Other frameworks and reference documents</fo:block>
+        <fo:block id="otherFrameworks" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+            Other frameworks and reference documents
+        </fo:block>
 
         <xsl:call-template name="frameworkTable">
             <xsl:with-param name="data" select="cpp:frameworkMappings" />
@@ -558,12 +686,16 @@
 
     <xsl:template name="referencesSection">
 
-        <fo:block font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}">4. Reference implementations</fo:block>
+        <fo:block id="references" font-size="{$h1-font-size}" font-weight="{$h1-font-weight}" font-style="{$h1-font-style}" space-before="{$h1-space-before}" space-after="{$h1-space-after}">
+            4. Reference implementations
+        </fo:block>
 
         <xsl:if test="count(cpp:referenceImplementations/cpp:useCases/cpp:useCase) &gt; 0">
 
 
-            <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Use cases</fo:block>
+            <fo:block id="useCases" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">
+                Use cases
+            </fo:block>
 
             <xsl:call-template name="useCases">
                 <xsl:with-param name="data" select="cpp:referenceImplementations/cpp:useCases" />
@@ -573,7 +705,7 @@
 
         <xsl:if test="count(cpp:referenceImplementations/cpp:publicDocumentation) &gt; 0">
 
-            <fo:block font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Publicly available documentation</fo:block>
+            <fo:block id="publicDocumentation" font-size="{$h2-font-size}" font-weight="{$h2-font-weight}" font-style="{$h2-font-style}" space-before="{$h2-space-before}" space-after="{$h2-space-after}">Publicly available documentation</fo:block>
 
             <xsl:call-template name="publicDocumentationTable">
                 <xsl:with-param name="data" select="cpp:referenceImplementations" />
@@ -1187,7 +1319,7 @@
 
         <xsl:for-each select="$data/cpp:useCase">
 
-            <fo:block font-weight="bold" space-before="8pt" space-after="4pt">
+            <fo:block id="{concat('useCase-', position())}" font-weight="bold" space-before="8pt" space-after="4pt">
                 <xsl:value-of select="cpp:useCasetitle" />
             </fo:block>
 
