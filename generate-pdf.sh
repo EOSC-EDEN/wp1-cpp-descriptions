@@ -10,11 +10,11 @@ fi
 for file in $FILES; do
     dir="$(dirname "$file")"
     target="${dir}/$(basename "$file" .xml).pdf"
-    # fo="$(mktemp --suffix=.fo)"
-    # fo="${dir}/$(basename "$file" .xml).fo"
+    fo="$(mktemp --suffix=.fo)"
+    fo="${dir}/$(basename "$file" .xml).fo"
     echo "Processing $file -> $target..."
-    fop -xml "$file" -xsl "cpp2fo.xsl" -c ".fop/fop.xml" -pdf "$target"
-    # xsltproc cpp2fo.xsl "$file" > "$fo"
-    # fop -fo "$fo" -pdf "$target"
+    # fop -xml "$file" -xsl "cpp2fo.xsl" -c ".fop/fop.xml" -pdf "$target"
+    xsltproc cpp2fo.xsl "$file" > "$fo"
+    fop -fo "$fo" -pdf "$target"
     # rm -f "$fo"
 done
