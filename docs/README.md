@@ -81,3 +81,11 @@ A three-minute introduction:
 A fifty-minute webinar:
 
 [![](https://markdown-videos-api.jorgenkh.no/youtube/OVBQmRYoNCg)](https://youtu.be/OVBQmRYoNCg)
+
+### Glossary and Data Model
+
+CPPs rely on a high-level data model that combines three high-level entities: Information Object, Metadata, and Information Package. These notions and their subtypes are described in the glossary:
+
+EOSC-EDEN Task 1.2, _M1.1 Report on Identification of Core Preservation Processes: Glossary_, 2025-08-31. Available at https://github.com/EOSC-EDEN/wp1-cpp-descriptions/blob/main/03_Glossary.pdf.
+
+The Glossary also includes other terms specific to digital preservation used in process descriptions. Particular attention is given to the types of policies and procedures used to configure the processes. Finally, the various types of relationships linking the processes are described.
