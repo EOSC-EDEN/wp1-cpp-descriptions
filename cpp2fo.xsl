@@ -1977,6 +1977,14 @@
         </fo:list-block>
     </xsl:template>
 
+    <xsl:template match="xhtml:em | xhtml:strong | xhtml:b | xhtml:br | xhtml:a" mode="fo-block">
+        <xsl:apply-templates mode="fo-inline" select="." />
+    </xsl:template>
+
+    <xsl:template match="text()" mode="fo-block">
+        <xsl:apply-templates mode="fo-inline" select="." />
+    </xsl:template>
+
     <xsl:template match="text()" mode="fo-inline">
         <xsl:value-of select="." />
     </xsl:template>
