@@ -84,7 +84,7 @@ A fifty-minute webinar:
 
 ### Glossary and Data Model
 
-CPPs rely on a high-level data model that combines three high-level entities: Information Object, Metadata, and Information Package. These notions and their subtypes are described in the glossary:
+CPPs rely on a high-level data model that combines three high-level entities: Information Package, Information Object, and Metadata. These notions and their subtypes are described in the glossary:
 
 EOSC-EDEN Task 1.2, _M1.1 Report on Identification of Core Preservation Processes: Glossary_, 2025-08-31. Available at https://github.com/EOSC-EDEN/wp1-cpp-descriptions/blob/main/03_Glossary.pdf.
 
