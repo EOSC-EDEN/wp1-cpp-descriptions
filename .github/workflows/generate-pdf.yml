@@ -45,7 +45,7 @@ jobs:
       - name: Install Apache FOP
         run: |
           sudo apt-get update
-          sudo apt-get install -y fop
+          sudo apt-get install -y fop xsltproc
           
       - name: Print each CPP-*/cpp-*.xml to PDF
         shell: bash
@@ -66,10 +66,18 @@ jobs:
             found=1
             out="$(dirname "$xml")/$(basename "${xml%.xml}").pdf"
             echo "Printing '$xml' -> '$out'"
-            if ! fop -xml "$xml" -xsl "$XSL_FILE" -c ".fop/fop.xml" -pdf "$out"; then
-              echo "Printing failed for $xml" >&2
+            fo_file="$(dirname "$xml")/$(basename "${xml%.xml}").fo"
+            if ! xsltproc "$XSL_FILE" "$xml" > "$fo_file"; then
+              echo "XSLT transformation failed for $xml" >&2
+              rm -f "$fo_file"
               exit 1
             fi
+            if ! fop -fo "$fo_file" -xsl "$XSL_FILE" -c ".fop/fop.xml" -pdf "$out"; then
+              echo "Printing failed for $xml" >&2
+              rm -f "$fo_file" "$out"
+              exit 1
+            fi
+            rm -f "$fo_file"
           done < <(find . -type f -path "./CPP-*/*" -name 'cpp-*.xml' -print0 || true)
 
           if [ "$found" -eq 0 ]; then
