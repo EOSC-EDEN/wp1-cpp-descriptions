@@ -1338,16 +1338,15 @@
         <fo:table width="100%" table-layout="fixed" space-after="8pt" keep-with-previous="always" font-size="{$table-font-size}">
             <fo:table-column column-width="proportional-column-width(2)" />
             <fo:table-column column-width="proportional-column-width(10)" />
-            <fo:table-header>
+
+            <fo:table-body>
+
                 <fo:table-row keep-together.within-page="always" keep-with-previous="always" keep-with-next="always">
                     <fo:table-cell number-columns-spanned="2">
                         <xsl:call-template name="headerCellAttrs" />
                         <fo:block>Institutional background</fo:block>
                     </fo:table-cell>
                 </fo:table-row>
-            </fo:table-header>
-
-            <fo:table-body>
 
                 <fo:table-row keep-together.within-page="always">
                     <fo:table-cell>
