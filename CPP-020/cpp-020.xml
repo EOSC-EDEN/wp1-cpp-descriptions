@@ -4,7 +4,7 @@
     xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd"
     ID="CPP-020" xml:lang="en">
     <cpp:header>
-        <cpp:label>Rights management</cpp:label>
+        <cpp:label>Rights Management</cpp:label>
         <cpp:authors>
             <cpp:author>Bertrand Caron</cpp:author>
         </cpp:authors>
