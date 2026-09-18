@@ -298,8 +298,8 @@
                         </cpp:inputElement>
                     </cpp:input>
                     <cpp:stepDescription>
-                        <span>Record the virus scan and its Outcome as a Preservation Event<br />
-                            This documentation should include: </span>
+                        <span>Record the virus scan and its Outcome as a Preservation Event</span>
+                        <span>This documentation should include:</span>
                         <ul>
                             <li>Datetime of scan</li>
                             <li>Scanner software name</li>
@@ -516,9 +516,7 @@
                     </span>
                 </cpp:problemStatement>
                 <cpp:proposedSolution>
-                    <span>Python script to detect viruses using ClamAv virus scanner<br /><br /> def
-                        check_virus(path):<br /> """Scan files in directory with ClamAV virus
-                        scanner.<br /> ... </span>
+                    <span>Python script to detect viruses using ClamAv virus scanner</span>
                 </cpp:proposedSolution>
             </cpp:useCase>
             <cpp:useCase>

@@ -343,7 +343,8 @@
                         <cpp:supplier>CPP-026</cpp:supplier>
                     </cpp:input>
                     <cpp:stepDescription>
-                        <span>Optional (only if the TDA supports normalisation during ingest): Normalisation of data, including documenting the actions</span>
+                        <span>Only if the TDA supports normalisation during ingest:</span>
+                        <span>Normalisation of data, including documenting the actions</span>
                     </cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
@@ -364,7 +365,8 @@
                         <cpp:supplier>CPP-028</cpp:supplier>
                     </cpp:input>
                     <cpp:stepDescription>
-                        <span>(only if the TDA supports creating derivatives during ingest): Generation of derivatives Optional</span>
+                        <span>Only if the TDA supports creating derivatives during ingest:</span>
+                        <span>Generation of derivatives</span>
                     </cpp:stepDescription>
                     <cpp:output>
                         <cpp:outputElement>
