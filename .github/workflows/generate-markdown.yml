@@ -1,6 +1,7 @@
 name: Generate CPP README markdown files
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main

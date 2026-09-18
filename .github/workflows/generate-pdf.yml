@@ -72,7 +72,7 @@ jobs:
               rm -f "$fo_file"
               exit 1
             fi
-            if ! fop -fo "$fo_file" -xsl "$XSL_FILE" -c ".fop/fop.xml" -pdf "$out"; then
+            if ! fop -fo "$fo_file" -c ".fop/fop.xml" -pdf "$out"; then
               echo "Printing failed for $xml" >&2
               rm -f "$fo_file" "$out"
               exit 1
