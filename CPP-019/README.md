@@ -1,4 +1,4 @@
-# Dataqualityassessment (CPP-019)
+# Data Quality Assessment (CPP-019)
 
 **Short Definition:** The TDA evaluates and re-evaluates the data quality of Information Objects
 

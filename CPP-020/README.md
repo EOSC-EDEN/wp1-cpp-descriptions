@@ -1,4 +1,4 @@
-# Rights management (CPP-020)
+# Rights Management (CPP-020)
 
 **Short Definition:** The TDA manages rights related to the Information Objects, both for agents inside its scope (access, migrate, etc.) and for end users (access, reuse, etc.)
 
