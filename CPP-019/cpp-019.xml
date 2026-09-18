@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="https://eden-fidelis.eu/cpp/cpp/ ../cpp.xsd" ID="CPP-019" xml:lang="en">
     <cpp:header>
-        <cpp:label>Dataqualityassessment</cpp:label>
+        <cpp:label>Data Quality Assessment</cpp:label>
         <cpp:authors>
             <cpp:author>Mikko Laukkanen</cpp:author>
             <cpp:author>Juha Lehtonen</cpp:author>
