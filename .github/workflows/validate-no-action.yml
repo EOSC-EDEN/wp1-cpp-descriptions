@@ -1,6 +1,7 @@
 name: No validation required
 
 on:
+    workflow_dispatch:
     pull_request:
         branches:
             - main
