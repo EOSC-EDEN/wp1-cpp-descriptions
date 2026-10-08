@@ -34,12 +34,14 @@ jobs:
 
             - name: Validate XML files against cpp.xsd
               if: steps.find_files.outputs.no_files == 'false'
+              env:
+                SGML_CATALOG_FILES: .xml/catalog.xml
               run: |
                 set -e
                 errors=0
                 for f in $(cat /tmp/xml_files); do
                     echo "Validating $f against cpp.xsd"
-                    xmllint --noout --schema cpp.xsd "$f" || errors=$((errors+1))
+                    xmllint --noout --catalogs --schema cpp.xsd "$f" || errors=$((errors+1))
                 done
                 if [ $errors -gt 0 ]; then
                     echo "$errors file(s) failed validation"
