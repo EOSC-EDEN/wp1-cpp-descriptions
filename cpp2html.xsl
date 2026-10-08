@@ -36,8 +36,24 @@
         <xsl:variable name="CPP_UPPER" select="translate($CPP,$LOWERCASE,$UPPERCASE)"></xsl:variable>
         <xsl:variable name="CPP_LOWER" select="translate($CPP,$UPPERCASE,$LOWERCASE)"></xsl:variable>
 
-        <html>
+        <html lang="en">
             <head>
+                <meta name="description">
+                    <xsl:attribute name="content">This page describes <xsl:value-of select="$CPP" />, defined as the process by which <xsl:value-of select="cpp:shortDefinition" /></xsl:attribute>
+                </meta>
+                <meta name="author">
+                    <xsl:attribute name="content">
+                        <xsl:text>For EOSC-Eden by </xsl:text>
+                        <xsl:for-each select="cpp:header/cpp:authors/cpp:author">
+                            <xsl:value-of select="." />
+                            <xsl:if test="position() != last()">
+                                <xsl:text>,</xsl:text>
+                                <xsl:value-of select="$SPACE" />
+                            </xsl:if>
+                        </xsl:for-each>
+                    </xsl:attribute>
+                </meta>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="stylesheet" type="text/css" href="cpp.css" />
                 <title>
                     <xsl:text>EOSC-EDEN_</xsl:text>
