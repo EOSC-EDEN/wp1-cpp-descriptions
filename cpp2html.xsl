@@ -54,6 +54,7 @@
                     </xsl:attribute>
                 </meta>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="keywords" content="EOSC-EDEN, European Open Science Cloud, Digital preservation workflow, Long-term data curation, Research data management, Core preservation process" />  
                 <link rel="stylesheet" type="text/css" href="cpp.css" />
                 <title>
                     <xsl:text>EOSC-EDEN_</xsl:text>
