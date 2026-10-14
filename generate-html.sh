@@ -1,5 +1,10 @@
 #!/bin/env bash
-for file in CPP-*/cpp-*.xml; do
+FILES="CPP-*/cpp-*.xml"
+if [ "$1" ]; then
+    FILES="$1"
+fi
+
+for file in $FILES; do
     name="$(basename "${file%.*}")"
     target="docs/${name}.html"
     echo "Processing $file -> $target..."
