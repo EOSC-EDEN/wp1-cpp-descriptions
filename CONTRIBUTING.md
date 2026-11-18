@@ -60,7 +60,7 @@ Relationships between CPPs can be stated in different sections of the document. 
 
 - Provide context for your changes in the pull request description;
 - Link related issues, if relevant;
-- Ask for merging into the `dev` branch;
+- Ask for merging into the `main` branch;
 - Require a review from one or several of the repository owners, in particular [Kris Dekeyser](https://github.com/Kris-LIBIS), [Johan Kylander](https://github.com/johankylander) or [Bertrand Caron](https://github.com/BertrandCaron).
 
 ## Checking the XML file
